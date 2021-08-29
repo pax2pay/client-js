@@ -1,6 +1,6 @@
 {
 	"name": "@pax2pay/client",
-	"version": "0.0.43",
+	"version": "0.0.44",
 	"description": "Client library for the Pax2Pay API",
 	"author": "Pax2Pay Ltd.",
 	"license": "MIT",
