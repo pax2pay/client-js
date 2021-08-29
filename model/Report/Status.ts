@@ -1,0 +1,1 @@
+export type Status = "APPROVED" | "CREATED" | "DECLINED" | "DEPOSITED" | "UNKNOWN" | "WITHDRAWN"

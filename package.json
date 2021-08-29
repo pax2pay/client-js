@@ -1,0 +1,81 @@
+{
+	"name": "@pax2pay/client",
+	"version": "0.0.43",
+	"description": "Client library for the Pax2Pay API",
+	"author": "Pax2Pay Ltd.",
+	"license": "MIT",
+	"repository": "https://github.com/pax2pay/client-js",
+	"bugs": {
+		"url": "https://github.com/pax2pay/client-js/issues"
+	},
+	"homepage": "https://github.com/pax2pay/client-js",
+	"private": false,
+	"main": "dist/index.js",
+	"typings": "dist/index.d.ts",
+	"git": {
+		"tagName": "v${version}"
+	},
+	"github": {
+		"release": true
+	},
+	"jest": {
+		"globals": {
+			"ts-jest": {
+				"tsconfig": "tsconfig.test.json"
+			}
+		},
+		"transform": {
+			"^.+\\.(j|t)sx?$": "ts-jest"
+		},
+		"transformIgnorePatterns": [
+			"<rootDir>/node_modules/(?!(cryptly|authly|isoly|gracely|@pax2pay)/.*)"
+		],
+		"testEnvironment": "node",
+		"testRegex": "((\\.|/)(test|spec))(\\.|\\/.+)(jsx?|tsx?)$",
+		"testPathIgnorePatterns": [
+			"node_modules/",
+			"dist/"
+		],
+		"collectCoverageFrom": [
+			"**/*.{ts,tsx,js,jsx}",
+			"!**/node_modules/**",
+			"!**/dist/**"
+		],
+		"preset": "ts-jest",
+		"testMatch": null
+	},
+	"scripts": {
+		"dev": "watch 'npm run build' .",
+		"lint": "eslint '**/*.{js,ts,tsx}'",
+		"fix": "eslint '**/*.{js,ts,tsx}' --fix",
+		"build": "tsc -p .",
+		"test": "jest --maxWorkers=2",
+		"test:watch": "watch jest",
+		"prepare": "npm run build",
+		"clean": "rm -rf dist node_modules coverage"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.14.6",
+		"@types/isomorphic-fetch": "^0.0.35",
+		"@types/jest": "^26.0.23",
+		"@types/node": "^15.12.4",
+		"@typescript-eslint/eslint-plugin": "4.27.0",
+		"@typescript-eslint/parser": "4.27.0",
+		"babel-core": "^6.26.3",
+		"babel-jest": "^27.0.2",
+		"dotenv": "^10.0.0",
+		"eslint": "7.29.0",
+		"eslint-plugin-prettierx": "github:nilssonemma/eslint-plugin-prettierx#master",
+		"eslint-plugin-simple-import-sort": "^7.0.0",
+		"jest": "^27.0.4",
+		"openapi-to-ts": "^1.1.0",
+		"prettierx": "github:simonmika/prettierx#newline-before-clause",
+		"ts-jest": "^27.0.3",
+		"typescript": "^4.3.4",
+		"watch": "^1.0.2"
+	},
+	"dependencies": {
+		"isoly": "^0.1.11",
+		"isomorphic-fetch": "^3.0.0"
+	}
+}
