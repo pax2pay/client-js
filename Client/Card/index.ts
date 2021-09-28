@@ -24,7 +24,4 @@ export class Card extends Resource<model.CardResponseV2, model.CreateCardRequest
 	getTransactions() {
 		return this.connection.get<model.TransactionResponse>(`${this.folder}/transactions`)
 	}
-	getBackend() {
-		return this.backend
-	}
 }

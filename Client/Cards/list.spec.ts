@@ -75,46 +75,31 @@ describe("pax2pay.cards.create", () => {
 			})
 	)
 	it("create for all providers", async () => {
-		PROVIDERS.forEach(async provider => {
-			const cardTypes = await client?.cards.getCardTypes(provider)
-			if (ErrorResponse.is(cardTypes)) {
-				console.log("Error")
-			} else if (cardTypes) {
-				cardTypes.forEach(async cardType => {
-					const fundingAccountRequest = { providerCodes: [provider] }
-					const fundingAccountIds = await client?.cards.getFundingAccounts(fundingAccountRequest)
-					console.log(fundingAccountIds)
-					if (!ErrorResponse.is(fundingAccountIds) && fundingAccountIds) {
-						fundingAccountIds.forEach(async fundingAccount => {
-							const createCardRequest: model.CreateCardRequest = {
-								cardType: {
-									cardTypeId: cardType.cardTypeId,
-									description: cardType.description,
-									scheme: cardType.scheme,
-									funding: cardType.funding,
-									flags: cardType.flags,
-									bin: cardType.bin,
-								},
-								providerAccountId: fundingAccount.providerAccountId,
-								currency: fundingAccount.currency,
-								providerCode: provider,
-								balance: 10,
-							}
-
-							const cardResponse:
-								| ErrorResponse
-								| (Card & model.CardResponseV2)
-								| undefined = await client?.cards.create(createCardRequest)
-
-							if (!ErrorResponse.is(cardResponse) && cardResponse != undefined) {
-								console.log(cardResponse.getBackend())
-							}
-						})
-					}
-				})
-			}
-		})
-		const truth = true
-		expect(truth).toBeTruthy()
+		await Promise.all(
+			PROVIDERS.map(async provider => {
+				const cardTypes = await client?.cards.getCardTypes(provider)
+				if (ErrorResponse.is(cardTypes)) {
+					throw new Error(cardTypes.errors?.[0].message ?? "")
+				} else if (cardTypes) {
+					const promises = cardTypes.map(async cardType => {
+						const fundingAccountRequest = { providerCodes: [provider] }
+						const fundingAccountIds = await client?.cards.getFundingAccounts(fundingAccountRequest)
+						if (ErrorResponse.is(fundingAccountIds)) {
+							throw new Error(fundingAccountIds.errors?.[0].message ?? "")
+						} else if (fundingAccountIds) {
+							return await Promise.all(
+								fundingAccountIds.map(async fundingAccount => {
+									//will add code here that uses cardType to create cards
+									//for now just return the accounts, will use them to make cards
+									return fundingAccount
+								})
+							)
+						}
+					})
+					return await Promise.all(promises)
+				}
+			})
+		)
+		expect(true).toBeTruthy()
 	})
 })
