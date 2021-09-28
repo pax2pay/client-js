@@ -35,6 +35,7 @@ import { ErrorResponse } from "./ErrorResponse"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
 import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
+import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
@@ -123,6 +124,7 @@ export {
 	FiveFieldsBookingInfoRequest,
 	FiveFieldsBookingInfoResponse,
 	FundingAccountInboundTransferNotificationConfig,
+	FundingAccountSearchRequest,
 	FundingLimitRequest,
 	FundingLimitResponse,
 	InsertCardOptionRequest,
