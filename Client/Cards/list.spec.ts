@@ -1,7 +1,11 @@
 import * as dotenv from "dotenv"
 import * as pax2pay from "../../index"
+import { ErrorResponse } from "../../model"
+import * as model from "../../model"
 dotenv.config()
 jest.setTimeout(100000)
+
+const PROVIDERS: model.ProviderCode[] = ["conferma", "ixaris", "wex", "fake", "modulr", "pax2pay"]
 
 describe("pax2pay.cards.list", () => {
 	const client = pax2pay.Client.create(process.env.url)
@@ -57,5 +61,44 @@ describe("pax2pay.cards.list", () => {
 					usage: expect.any(String),
 					useAs: expect.any(String),
 				})
+	})
+})
+
+describe("pax2pay.cards.create", () => {
+	const client = pax2pay.Client.create(process.env.url)
+	beforeAll(
+		async () =>
+			await client?.auth.login({
+				username: process.env.username ?? "user",
+				password: process.env.password ?? "password",
+			})
+	)
+	it("create for all providers", async () => {
+		await Promise.all(
+			PROVIDERS.map(async provider => {
+				const cardTypes = await client?.cards.getCardTypes(provider)
+				if (ErrorResponse.is(cardTypes)) {
+					throw new Error(cardTypes.errors?.[0].message ?? "")
+				} else if (cardTypes) {
+					const promises = cardTypes.map(async cardType => {
+						const fundingAccountRequest: model.FundingAccountSearchRequest = { providerCodes: [provider] }
+						const fundingAccountIds = await client?.cards.getFundingAccounts(fundingAccountRequest)
+						if (ErrorResponse.is(fundingAccountIds)) {
+							throw new Error(fundingAccountIds.errors?.[0].message ?? "")
+						} else if (fundingAccountIds) {
+							return await Promise.all(
+								fundingAccountIds.map(async fundingAccount => {
+									//will add code here that uses cardType to create cards
+									//for now just return the accounts, will use them to make cards
+									return fundingAccount
+								})
+							)
+						}
+					})
+					return await Promise.all(promises)
+				}
+			})
+		)
+		expect(true).toBeTruthy()
 	})
 })
