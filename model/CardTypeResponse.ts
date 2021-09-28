@@ -8,6 +8,6 @@ export interface CardTypeResponse {
 	funding?: "DEBIT" | "CREDIT" | "PREPAID"
 	currencies?: string[]
 	flags?: ("CORPORATE" | "BUSINESS" | "CONSUMER")[]
-	bins?: string[]
+	bin?: string
 	preActive?: boolean
 }

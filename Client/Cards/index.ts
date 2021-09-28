@@ -28,4 +28,15 @@ export class Cards extends List<model.CardResponseV2, model.CardSearch, model.Cr
 		const result = await this.connection.get<model.CardResponseV2>(`cards/virtual/${providerCode}/${providerCardId}`)
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
+	async getCardTypes(providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardTypeResponse[]>(`v2/cards/types/${providerCode}`)
+		return result
+	}
+	async getFundingAccounts(searchRequest: any) {
+		const result = await this.connection.post<model.CardFundingAccountResponse[]>(
+			"funding-accounts/searches",
+			searchRequest
+		)
+		return result
+	}
 }
