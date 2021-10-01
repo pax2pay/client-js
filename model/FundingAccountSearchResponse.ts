@@ -1,10 +1,8 @@
 import * as isoly from "isoly"
 import { ProviderResponse } from "."
 import { OrganisationResponse } from "./OrganisationResponse"
-/**
- * Funding account information
- */
-export interface CardFundingAccountResponse {
+
+export interface FundingAccountSearchResponse {
 	id: number
 	providerAccountId: string
 	provider: ProviderResponse
