@@ -21,8 +21,13 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
 			cvv: expect.stringMatching(/\d{3}/),
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),
 			nameOnCard: expect.any(String),
+<<<<<<< HEAD
 			balance: result.providerCode == "modulr" ? mathExact("Add", result.balance, 1) : result.balance,
 			issueDate: new Date().toISOString().slice(0,10),
+=======
+			balance: result.balance,
+			issueDate: new Date().toJSON().slice(0,10),
+>>>>>>> WIP started amend and freeze
 			providerCardId: expect.any(String),
 			providerCode: result.providerCode,
 			usage: result.providerCode == "modulr" ? "SINGLE_USE_ALLOW_TEST_AUTH" : "SINGLE_USE",
@@ -34,8 +39,13 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
 			cvv: expect.stringMatching(/\d{3}/),
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),
 			nameOnCard: expect.any(String),
+<<<<<<< HEAD
 			balance: result.providerCode == "modulr" ? mathExact("Add", result.balance, 2) : result.balance,
 			issueDate: new Date().toISOString().slice(0,10),
+=======
+			balance: result.balance,
+			issueDate: new Date().toJSON().slice(0,10),
+>>>>>>> WIP started amend and freeze
 			providerCardId: expect.any(String),
 			providerCode: result.providerCode,
 			usage: result.providerCode == "modulr" ? "SINGLE_USE_ALLOW_TEST_AUTH" : "SINGLE_USE",
@@ -87,6 +97,11 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
 		        updatedOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),
 			},
 			creatingSystem: expect.any(String),
+<<<<<<< HEAD
 		},
+=======
+
+		}
+>>>>>>> WIP started amend and freeze
 	]
 }

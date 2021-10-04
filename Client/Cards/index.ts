@@ -9,7 +9,7 @@ export class Cards extends List<
 	model.CreateCardRequest,
 	Card
 > {
-	protected folder = "cards"
+	protected folder = "cards/virtual"
 	constructor(connection: Connection) {
 		super(connection)
 	}
