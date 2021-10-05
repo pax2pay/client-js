@@ -13,6 +13,7 @@ export class Card extends Resource<model.CardResponse, model.CreateCardRequest> 
 		return this.connection.get<model.CardResponse>(`${this.folder}/freeze`)
 	}
 	thaw() {
+<<<<<<< HEAD
 		this.connection.get<model.CardResponse>(`${this.folder}/thaw`)
 	}
 	cancel() {
@@ -20,6 +21,15 @@ export class Card extends Resource<model.CardResponse, model.CreateCardRequest> 
 	}
 	process() {
 		this.connection.get<model.CardResponse>(`${this.folder}/statements/processed`)
+=======
+		return this.connection.get<model.CardResponse>(`${this.folder}/thaw`)
+	}
+	cancel() {
+		return this.connection.get<model.CardResponse>(`${this.folder}/cancel`)
+	}
+	process() {
+		return this.connection.get<model.CardResponse>(`${this.folder}/statements/processed`)
+>>>>>>> Still wip, did actions for ixaris + corrections
 	}
 	getTransactions() {
 		return this.connection.get<model.TransactionResponse>(`${this.folder}/transactions`)
