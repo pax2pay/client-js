@@ -17,5 +17,5 @@ export interface AccountResponse {
 	accountType: "FUNDING" | "CARD"
 	fundingLimit?: FundingLimitResponse
 	updatedOn: string
-	createdOn: string
+	createdOn?: string
 }

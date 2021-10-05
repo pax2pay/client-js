@@ -1,6 +1,7 @@
+import { userInfo } from "os"
 import * as model from "../../../model"
 
-export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCardRequest, any, any] {
+export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCardRequest, model.CardResponseV2, model.CardResponse] {
 	const result: model.CreateCardRequest = {
 		cardType: {
 			cardTypeId: "VISA_DEBIT_CORPORATE",
@@ -21,11 +22,11 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),
 			nameOnCard: expect.any(String),
 			balance: result.balance,
-			issueDate: expect.stringMatching(/\d{4}-\d{2}-\d{2}/),
+			issueDate: new Date().toISOString().slice(0,10),
 			providerCardId: expect.any(String),
 			providerCode: result.providerCode,
 			usage: result.providerCode == "modulr" ? "SINGLE_USE_ALLOW_TEST_AUTH" : "SINGLE_USE",
-			createdBy: expect.any(String),
+			createdBy: process.env.username,
 		},
 		{
 			cardType: result.cardType.cardTypeId,
@@ -34,7 +35,7 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),
 			nameOnCard: expect.any(String),
 			balance: result.balance,
-			issueDate: expect.stringMatching(/\d{4}-\d{2}-\d{2}/),
+			issueDate: new Date().toISOString().slice(0,10),
 			providerCardId: expect.any(String),
 			providerCode: result.providerCode,
 			usage: result.providerCode == "modulr" ? "SINGLE_USE_ALLOW_TEST_AUTH" : "SINGLE_USE",
@@ -65,7 +66,7 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
         friendlyName: expect.any(String),
         balance: expect.any(Number),
         accountType: 'FUNDING',
-        updatedOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/)
+        updatedOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),
 			},
 			creatingSystem: expect.any(String),
 

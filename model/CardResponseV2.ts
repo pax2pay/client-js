@@ -1,9 +1,10 @@
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardTypeSpecification } from "./CardTypeSpecification"
+import { CardUsage } from "./CardUsage"
 import { ProviderCode } from "./ProviderCode"
 
 export interface CardResponseV2 {
-	cardType?: CardTypeSpecification
+	cardType?: CardTypeSpecification | string
 	cardNumber?: string
 	cvv?: string
 	expiryDate?: any
@@ -12,7 +13,7 @@ export interface CardResponseV2 {
 	issueDate?: string
 	providerCode?: ProviderCode
 	providerCardId?: string
-	usage?: "SINGLE_USE" | "MULTIPLE_USE"
+	usage?: CardUsage
 	fundingAccount?: CardFundingAccountResponse
 	createdBy?: string
 }

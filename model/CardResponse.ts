@@ -1,10 +1,11 @@
 import { AccountResponse } from "./AccountResponse"
 import { BookingInfo } from "./BookingInfo"
 import { CardTypeSpecification } from "./CardTypeSpecification"
+import { CardUsage } from "./CardUsage"
 import { ProviderCode } from "./ProviderCode"
 
 export interface CardResponse {
-	cardType?: CardTypeSpecification
+	cardType?: CardTypeSpecification | string
 	useAs?: string
 	nameOnCard?: string
 	cardNumber?: string
@@ -17,7 +18,7 @@ export interface CardResponse {
 	balance?: number
 	remainingBalance?: number
 	notes?: string
-	usage?: "SINGLE_USE" | "MULTIPLE_USE"
+	usage?: CardUsage
 	state?: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
 	providerCode?: ProviderCode
 	providerCardId?: string
