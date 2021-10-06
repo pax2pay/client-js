@@ -1,5 +1,4 @@
 import * as model from "../../../model"
-import bigDecimal = require("js-big-decimal")
 import { mathExact } from "math-exact"
 
 export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCardRequest, model.CardResponseV2, model.CardResponse] {
