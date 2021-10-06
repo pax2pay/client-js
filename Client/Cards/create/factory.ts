@@ -1,5 +1,5 @@
-import { mathExact } from "math-exact"
 import * as model from "../../../model"
+import { mathExact } from "math-exact"
 
 export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCardRequest, model.CardResponseV2, model.CardResponse] {
 	const result: model.CreateCardRequest = {
