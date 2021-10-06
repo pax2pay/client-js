@@ -1,4 +1,5 @@
 import * as dotenv from "dotenv"
+import { mathExact } from "math-exact"
 import * as pax2pay from "../../../index"
 import { factory } from "./factory"
 
@@ -24,17 +25,15 @@ describe("pax2pay.cards.create modulr", () => {
 					currency: currency,
 					providerAccountId: process.env[`accountModulr${currency.charAt(0)}${currency.toLowerCase().slice(1)}`],
 					providerCode: "modulr",
+					balance: mathExact("Divide", Math.round((Math.random() * 4 + 1) * 100), 100),
 				})
-
-				const cardV2 = await new Promise(resolve => {
-					return setTimeout(() => {
-						resolve(client?.cards.create(request))
-					}, 5000)
+				const cardV2 = await client?.cards.create({
+					...request,
+					balance: mathExact("Add", request.balance, 1),
 				})
-				const cardLegacy = await new Promise(resolve => {
-					return setTimeout(() => {
-						resolve(client?.cards.createLegacy(request))
-					}, 5000)
+				const cardLegacy = await client?.cards.createLegacy({
+					...request,
+					balance: mathExact("Add", request.balance, 2),
 				})
 
 				expect(cardV2).toMatchObject(expectedV2)

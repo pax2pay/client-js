@@ -1,5 +1,6 @@
-import { userInfo } from "os"
 import * as model from "../../../model"
+import bigDecimal = require("js-big-decimal")
+import { mathExact } from "math-exact"
 
 export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCardRequest, model.CardResponseV2, model.CardResponse] {
 	const result: model.CreateCardRequest = {
@@ -21,7 +22,7 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
 			cvv: expect.stringMatching(/\d{3}/),
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),
 			nameOnCard: expect.any(String),
-			balance: result.balance,
+			balance: result.providerCode == "modulr" ? mathExact("Add", result.balance, 1) : result.balance,
 			issueDate: new Date().toISOString().slice(0,10),
 			providerCardId: expect.any(String),
 			providerCode: result.providerCode,
@@ -34,13 +35,13 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
 			cvv: expect.stringMatching(/\d{3}/),
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),
 			nameOnCard: expect.any(String),
-			balance: result.balance,
+			balance: result.providerCode == "modulr" ? mathExact("Add", result.balance, 2) : result.balance,
 			issueDate: new Date().toISOString().slice(0,10),
 			providerCardId: expect.any(String),
 			providerCode: result.providerCode,
 			usage: result.providerCode == "modulr" ? "SINGLE_USE_ALLOW_TEST_AUTH" : "SINGLE_USE",
 			createdBy: expect.any(String),
-			remainingBalance: result.balance,
+			remainingBalance: result.providerCode == "modulr" ? mathExact("Add", result.balance, 2) : result.balance,
 			cardForm: "GENERATABLE",
 			state: "ACTIVE",
 			cardAccount: {
@@ -51,7 +52,7 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
         currency: result.currency,
         state: 'ACTIVE',
         friendlyName: expect.any(String),
-        balance: result.balance,
+        balance: result.providerCode == "modulr" ? mathExact("Add", result.balance, 2) : result.balance,
         accountType: 'CARD',
         updatedOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),
         createdOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),

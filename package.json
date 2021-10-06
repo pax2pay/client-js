@@ -76,6 +76,7 @@
 	},
 	"dependencies": {
 		"isoly": "^0.1.11",
-		"isomorphic-fetch": "^3.0.0"
+		"isomorphic-fetch": "^3.0.0",
+		"math-exact": "^1.0.5"
 	}
 }
