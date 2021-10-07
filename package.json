@@ -73,11 +73,7 @@
 		"watch": "^1.0.2"
 	},
 	"dependencies": {
-<<<<<<< HEAD
 		"isoly": "^0.1.16",
-=======
-		"isoly": "^0.1.11",
->>>>>>> Added tests for currently working providers.
 		"isomorphic-fetch": "^3.0.0",
 		"math-exact": "^1.0.5"
 	}

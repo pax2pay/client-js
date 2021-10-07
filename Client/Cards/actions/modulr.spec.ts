@@ -17,7 +17,7 @@ describe("pax2pay.cards.actions modulr", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	for (const currency of ["EUR", "GBP"])
+	for (const currency of ["EUR", "GBP", "USD", "PLN"])
 		for (const cardType of ["VISA_DEBIT_CORPORATE", "VISA", "VISA_CREDIT_CORPORATE", "VISA_DEBIT"])
 			it(`card ${currency} ${cardType}`, async () => {
 				const request = factory({
@@ -27,7 +27,7 @@ describe("pax2pay.cards.actions modulr", () => {
 					currency: currency,
 					providerAccountId: process.env[`accountModulr${currency.charAt(0)}${currency.toLowerCase().slice(1)}`],
 					providerCode: "modulr",
-					balance: mathExact("Divide", Math.round(Math.random() * 499 + 1), 100),
+					balance: mathExact("Divide", Math.round((Math.random() * 4 + 1) * 100), 100),
 				})
 
 				const cardLegacy = await client?.cards.createLegacy(request)

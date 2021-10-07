@@ -27,7 +27,7 @@ describe("pax2pay.cards.actions ixaris", () => {
 					providerAccountId: process.env[`accountIxaris${currency.charAt(0)}${currency.toLowerCase().slice(1)}`],
 					providerCode: "ixaris",
 					balance: 0,
-					friendlyName: new Date().toISOString().slice(0, 19) + "ixaris" + cardType + currency,
+					friendlyName: new Date().toISOString().slice(0, 20) + "ixaris" + cardType + currency,
 				})
 
 				const cardLegacy = await client?.cards.createLegacy(request)
