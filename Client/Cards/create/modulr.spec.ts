@@ -15,7 +15,7 @@ describe("pax2pay.cards.create modulr", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	for (const currency of ["EUR", "GBP"])
+	for (const currency of ["EUR", "GBP", "PLN", "USD"])
 		for (const cardType of ["VISA_DEBIT_CORPORATE", "VISA", "VISA_CREDIT_CORPORATE", "VISA_DEBIT"])
 			it(`card ${currency} ${cardType}`, async () => {
 				const [request, expectedV2, expectedLegacy] = factory({
