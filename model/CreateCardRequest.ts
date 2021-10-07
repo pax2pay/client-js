@@ -15,4 +15,5 @@ export interface CreateCardRequest {
 	fundingDate?: string
 	expiryDate?: any
 	usage?: "SINGLE_USE" | "MULTIPLE_USE"
+	friendlyName?: string
 }

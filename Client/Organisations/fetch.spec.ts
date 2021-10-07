@@ -12,8 +12,8 @@ describe("pax2pay.organisations.fetch", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	it("current org", async () => {
-		const name = process.env.username?.substring(0, 4)
+	it("mcom", async () => {
+		const name = "mcom"
 		expect(await client?.organisations.fetch(name)).toEqual({
 			code: name,
 			folder: "organisations/" + name,

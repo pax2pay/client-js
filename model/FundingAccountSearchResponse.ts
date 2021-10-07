@@ -1,21 +1,17 @@
-import { FundingLimitResponse } from "./FundingLimitResponse"
+import * as isoly from "isoly"
+import { ProviderResponse } from "."
 import { OrganisationResponse } from "./OrganisationResponse"
-import { ProviderResponse } from "./ProviderResponse"
-/**
- * The funding accounts created
- */
-export interface AccountResponse {
+
+export interface FundingAccountSearchResponse {
 	id: number
 	providerAccountId: string
 	provider: ProviderResponse
 	organisation: OrganisationResponse
-	currency: string
+	currency: isoly.Currency
 	state: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
 	friendlyName: string
 	balance: number
-	actualBalance?: number
 	accountType: "FUNDING" | "CARD"
-	fundingLimit?: FundingLimitResponse
-	updatedOn: string
-	createdOn?: string
+	updatedOn: isoly.Date
+	createdOn: isoly.Date
 }

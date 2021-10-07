@@ -1,0 +1,1 @@
+export type CardUsage = "SINGLE_USE" | "MULTIPLE_USE" | "SINGLE_USE_ALLOW_TEST_AUTH"
