@@ -46,30 +46,47 @@ export function factory(card: Partial<model.CreateCardRequest>): [model.CreateCa
 			cardAccount: {
 				id: expect.any(Number),
 				providerAccountId: expect.any(String),
-        provider: expect.objectContaining({ id: expect.any(Number), code: result.providerCode, name: expect.any(String), status: 'ACTIVE' }),
-        organisation: { code: expect.any(String), name: expect.any(String), status: 'ACTIVE' },
-        currency: result.currency,
-        state: 'ACTIVE',
-        friendlyName: expect.any(String),
-        balance: result.providerCode == "modulr" ? mathExact("Add", result.balance, 2) : result.balance,
-        accountType: 'CARD',
-        updatedOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),
-        createdOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),
+		        provider: expect.objectContaining({ 
+		        	id: expect.any(Number), 
+		        	code: result.providerCode, 
+		        	name: expect.any(String), 
+		        	status: 'ACTIVE' 
+		        }),
+		        organisation: { 
+		        	code: expect.any(String), 
+		        	name: expect.any(String), 
+		        	status: 'ACTIVE' 
+		        },
+		        currency: result.currency,
+		        state: 'ACTIVE',
+		        friendlyName: expect.any(String),
+		        balance: result.providerCode == "modulr" ? mathExact("Add", result.balance, 2) : result.balance,
+		        accountType: 'CARD',
+		        updatedOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),
+		        createdOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),
 			},
 			fundingAccount: {
 				id: expect.any(Number),
 				providerAccountId: expect.any(String),
-        provider: { id: expect.any(Number), code: result.providerCode, name: expect.any(String), status: 'ACTIVE' },
-        organisation: { code: expect.any(String), name: expect.any(String), status: 'ACTIVE' },
-        currency: result.currency,
-        state: 'ACTIVE',
-        friendlyName: expect.any(String),
-        balance: expect.any(Number),
-        accountType: 'FUNDING',
-        updatedOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),
+		        provider: { 
+		        	id: expect.any(Number), 
+		        	code: result.providerCode, 
+		        	name: expect.any(String), 
+		        	status: 'ACTIVE' 
+		        },
+		        organisation: { 
+		        	code: expect.any(String), 
+		        	name: expect.any(String), 
+		        	status: 'ACTIVE' 
+		        },
+		        currency: result.currency,
+		        state: 'ACTIVE',
+		        friendlyName: expect.any(String),
+		        balance: expect.any(Number),
+		        accountType: 'FUNDING',
+		        updatedOn: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/),
 			},
 			creatingSystem: expect.any(String),
-
 		},
 	]
 }
