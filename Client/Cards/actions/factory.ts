@@ -1,7 +1,7 @@
 import * as model from "../../../model"
 
 export function factory(card: Partial<model.CreateCardRequest>): model.CreateCardRequest {
-	const result: model.CreateCardRequest = {
+	const request: model.CreateCardRequest = {
 		cardType: {
 			cardTypeId: "VISA_DEBIT_CORPORATE",
 		},
@@ -13,5 +13,5 @@ export function factory(card: Partial<model.CreateCardRequest>): model.CreateCar
 		...card,
 	}
 
-	return result
+	return request
 }

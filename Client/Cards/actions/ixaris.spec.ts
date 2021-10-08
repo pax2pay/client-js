@@ -1,3 +1,4 @@
+import assert from "assert"
 import * as dotenv from "dotenv"
 import * as pax2pay from "../../../index"
 import { ErrorResponse } from "../../../model"
@@ -16,28 +17,25 @@ describe("pax2pay.cards.actions ixaris", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	for (const currency of ["EUR", "GBP", "USD"])
-		for (const cardType of ["VISA_DEBIT", "VISA_CREDIT", "MASTERCARD"])
-			it(`card ${currency} ${cardType}`, async () => {
-				const request = factory({
-					cardType: {
-						cardTypeId: cardType,
-					},
-					currency: currency,
-					providerAccountId: process.env[`accountIxaris${currency.charAt(0)}${currency.toLowerCase().slice(1)}`],
-					providerCode: "ixaris",
-					balance: 0,
-					friendlyName: new Date().toISOString().slice(0, 20) + "ixaris" + cardType + currency,
-				})
 
-				const cardLegacy = await client?.cards.createLegacy(request)
+	it("card GBP MASTERCARD", async () => {
+					const request = factory({
+						cardType: {
+							cardTypeId: "MASTERCARD",
+						},
+						currency: "GBP",
+						providerAccountId: process.env["accountIxarisGbp"],
+						providerCode: "ixaris",
+						balance: 0,
+						friendlyName: new Date().toISOString().slice(0, 20) + "ixaris" + "MASTERCARDGBP",
+					})
 
-				if (ErrorResponse.is(cardLegacy) || !cardLegacy)
-					throw Error("Could not create card.")
-				else if (!client)
-					throw Error("No client available")
-				else {
+					const cardLegacy = await client?.cards.createLegacy(request)
+
+					assert(!ErrorResponse.is(cardLegacy))
+					assert(cardLegacy != undefined)
+					assert(client != undefined)
 					await actionTest(cardLegacy, client)
-				}
-			})
+					
+				})
 })

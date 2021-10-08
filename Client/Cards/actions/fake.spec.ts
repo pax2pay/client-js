@@ -1,3 +1,4 @@
+import assert from "assert"
 import * as dotenv from "dotenv"
 import * as pax2pay from "../../../index"
 import { ErrorResponse } from "../../../model"
@@ -16,26 +17,23 @@ describe("pax2pay.cards.actions fake", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	for (const currency of ["EUR", "GBP", "SEK", "JPY", "BRL"])
-		for (const cardType of ["VISA_CREDIT", "MASTERCARD"])
-			it(`card ${currency} ${cardType}`, async () => {
+	
+			it("card EUR VISA_CREDIT", async () => {
 				const request = factory({
 					cardType: {
-						cardTypeId: cardType,
+						cardTypeId: "VISA_CREDIT",
 					},
-					currency: currency,
-					providerAccountId: process.env[`accountFake${currency.charAt(0)}${currency.toLowerCase().slice(1)}`],
+					currency: "EUR",
+					providerAccountId: process.env["accountFakeEur"],
 					providerCode: "fake",
 				})
 
 				const cardLegacy = await client?.cards.createLegacy(request)
 
-				if (ErrorResponse.is(cardLegacy) || !cardLegacy)
-					throw Error("Could not create card.")
-				else if (!client)
-					throw Error("No client available")
-				else {
-					await actionTest(cardLegacy, client)
-				}
+				assert(!ErrorResponse.is(cardLegacy))
+				assert(cardLegacy != undefined)
+				assert(client != undefined)
+				await actionTest(cardLegacy, client)
+				
 			})
 })
