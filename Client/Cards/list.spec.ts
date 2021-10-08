@@ -13,11 +13,8 @@ describe("pax2pay.cards.list", () => {
 			})
 	)
 	it("first page", async () => {
-		const list = await client?.cards.list()
-		expect(Array.isArray(list)).toEqual(true)
-		if (Array.isArray(list))
-			for (const card of list)
-				expect(card).toMatchObject({
+
+		const expected = {
 					balance: expect.any(Number),
 					cardAccount: {
 						accountType: "CARD",
@@ -56,6 +53,14 @@ describe("pax2pay.cards.list", () => {
 					state: expect.any(String),
 					usage: expect.any(String),
 					useAs: expect.any(String),
-				})
+				}
+
+		const list = await client?.cards.list()
+		if (Array.isArray(list))
+			for (const card of list)
+				expect(card).toMatchObject(expected)
+		else 
+			//if list only returns one card.
+			expect(list).toMatchObject(expected)
 	})
 })

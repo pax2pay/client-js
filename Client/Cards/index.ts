@@ -9,7 +9,7 @@ export class Cards extends List<
 	model.CreateCardRequest,
 	Card
 > {
-	protected folder = "cards"
+	protected folder = "cards/virtual"
 	constructor(connection: Connection) {
 		super(connection)
 	}
@@ -30,8 +30,8 @@ export class Cards extends List<
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
 	async createLegacy(request: model.CreateCardRequest) {
-		const result = await this.connection.post<model.CardResponseV2>("cards/virtual", request)
-		return model.ErrorResponse.is(result) ? result : this.map(result)
+		const result = await this.connection.post<model.CardResponse>("cards/virtual", request)
+		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
 	static create(connection: Connection): Cards {
 		return new Cards(connection)

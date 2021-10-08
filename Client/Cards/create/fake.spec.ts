@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv"
 import * as pax2pay from "../../../index"
+import { ErrorResponse } from "../../../model"
 import { factory } from "./factory"
 
 dotenv.config()
@@ -28,7 +29,16 @@ describe("pax2pay.cards.create fake", () => {
 				const cardV2 = await client?.cards.create(request)
 				const cardLegacy = await client?.cards.createLegacy(request)
 
-				expect(cardV2).toMatchObject(expectedV2)
-				expect(cardLegacy).toMatchObject(expectedLegacy)
+				if (ErrorResponse.is(cardV2))
+					throw Error(cardV2.errors?.[0].message)
+				else if (ErrorResponse.is(cardLegacy))
+					throw Error(cardLegacy.errors?.[0].message)
+				else {
+					expect(cardV2).toBeTruthy()
+					expect(cardLegacy).toBeTruthy()
+
+					expect(cardV2).toMatchObject(expectedV2)
+					expect(cardLegacy).toMatchObject(expectedLegacy)
+				}
 			})
 })
