@@ -26,15 +26,15 @@ export class BookingInfo{
 		return this.connection.get<model.BookingInfoResponse>(`${this.folder}/cards/${providerCode}/${cardId}/${format}`)
 	}
 
-	updateInfo(identifier: string, request: Partial<model.BookingInfo> | Partial<model.FiveFieldsBookingInfoRequest> | Partial<model.FlightBookingInfo>) {
+	updateInfo(identifier: string, request: Partial<model.FiveFieldsBookingInfoRequest> | Partial<model.FlightBookingInfo>) {
 		return this.connection.put<model.BookingInfo>(`${this.folder}/${identifier}`, request)
 	}
 
-	updateInfoForCard(providerCode: model.ProviderCode, cardId: string, request: Partial<model.BookingInfo> | Partial<model.FiveFieldsBookingInfoRequest> | Partial<model.FlightBookingInfo>) {
+	updateInfoForCard(providerCode: model.ProviderCode, cardId: string, request: Partial<model.FiveFieldsBookingInfoRequest> | Partial<model.FlightBookingInfo>) {
 		return this.connection.put<model.BookingInfo>(`${this.folder}/cards/${providerCode}/${cardId}`, request)
 	}
 
-	saveInfoForCard(providerCode: model.ProviderCode, cardId: string, request: Partial<model.BookingInfo> | Partial<model.FiveFieldsBookingInfoRequest> | Partial<model.FlightBookingInfo>) {
+	saveInfoForCard(providerCode: model.ProviderCode, cardId: string, request: Partial<model.FiveFieldsBookingInfoRequest> | Partial<model.FlightBookingInfo>) {
 		return this.connection.post<model.BookingInfo>(`${this.folder}/cards/${providerCode}/${cardId}`, request)
 	}
 

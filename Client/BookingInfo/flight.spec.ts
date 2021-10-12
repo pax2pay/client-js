@@ -76,7 +76,7 @@ describe("BookingInfo flight", () => {
 			...saveRequest,
 			timestamp: expect.stringMatching(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+/)
 		}
-		console.log(await client?.bookingInfo.saveInfoForCard(card.providerCode, card.providerCardId, saveRequest))
+		await client?.bookingInfo.saveInfoForCard(card.providerCode, card.providerCardId, saveRequest)
 		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId)).toMatchObject(expectedResponse)
 
 

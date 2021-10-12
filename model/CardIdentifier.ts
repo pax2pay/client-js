@@ -1,4 +1,4 @@
-import { ProviderCode } from ".";
+import { ProviderCode } from "./ProviderCode";
 
 
 export interface CardIdentifier {

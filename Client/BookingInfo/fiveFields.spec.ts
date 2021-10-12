@@ -47,13 +47,13 @@ describe("BookingInfo fiveFields", () => {
 				supplierCode: "TST" 
 		}
 
-		const getResponse = {
+		const expectedResponse = {
 				type: "FIVE_FIELDS",
 				...saveRequest
 			}
 		
 		await client?.bookingInfo.saveInfoForCard(card.providerCode, card.providerCardId, saveRequest)
-		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId)).toMatchObject(getResponse)
+		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId)).toMatchObject(expectedResponse)
 
 
 		const updateRequest = {
@@ -62,7 +62,7 @@ describe("BookingInfo fiveFields", () => {
 		expect(await client?.bookingInfo.updateInfoForCard(card.providerCode, card.providerCardId, updateRequest)).toMatchObject({
 			errors: [ { message: 'Cannot change values' } ]
     })
-		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId)).toMatchObject(getResponse)
+		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId)).toMatchObject(expectedResponse)
 
 		const secondSaveRequest = {
 				agentBookingReference: "Test",
@@ -73,7 +73,7 @@ describe("BookingInfo fiveFields", () => {
 		}
 
 		await client?.bookingInfo.saveInfoForCard(card.providerCode, card.providerCardId, secondSaveRequest)
-		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId)).toMatchObject(getResponse)
+		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId)).toMatchObject(expectedResponse)
 
 
 

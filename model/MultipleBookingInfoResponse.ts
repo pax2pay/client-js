@@ -1,4 +1,6 @@
-import { BookingInfo, BookingInfoIdentifier, CardIdentifier } from ".";
+import { BookingInfo } from "./BookingInfo"
+import { BookingInfoIdentifier } from "./BookingInfoIdentifier"
+import { CardIdentifier } from "./CardIdentifier"	
 
 export interface MultipleBookingInfoResponse {
 	missing?: (BookingInfoIdentifier | CardIdentifier)[]
