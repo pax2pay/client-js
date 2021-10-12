@@ -1,6 +1,7 @@
 import { Account as ClientAccount } from "./Account"
 import { Accounts as ClientAccounts } from "./Accounts"
 import { Auth as ClientAuth } from "./Auth"
+import { BookingInfo as ClientBookingInfo } from "./BookingInfo"
 import { Card as ClientCard } from "./Card"
 import { Cards as ClientCards } from "./Cards"
 import { Collection as ClientCollection } from "./Collection"
@@ -20,8 +21,9 @@ export class Client {
 		this.$authenticate = value
 	}
 	accounts = ClientAccounts.create(this.connection)
-	cards = ClientCards.create(this.connection)
 	auth = ClientAuth.create(this.connection)
+	bookingInfo = ClientBookingInfo.create(this.connection)
+	cards = ClientCards.create(this.connection)
 	users = ClientUsers.create(this.connection)
 	organisations = ClientOrganisations.create(this.connection)
 	reports = ClientReports.create(this.connection)

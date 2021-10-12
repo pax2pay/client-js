@@ -8,9 +8,11 @@ import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
 import { BookedProductInfo } from "./BookedProductInfo"
 import { BookingInfo } from "./BookingInfo"
+import { BookingInfoIdentifier } from "./BookingInfoIdentifier"
 import { BookingInfoRequest } from "./BookingInfoRequest"
 import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
+import { CardIdentifier } from "./CardIdentifier"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
@@ -34,6 +36,7 @@ import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
 import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
+import { FlightBookingInfo } from "./FlightBookingInfo"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
 import { FundingAccountSearchResponse } from "./FundingAccountSearchResponse"
@@ -44,6 +47,8 @@ import { InsertCardRequest } from "./InsertCardRequest"
 import { Issue } from "./Issue"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
+import { MultipleBookingInfoRequest } from "./MultipleBookingInfoRequest"
+import { MultipleBookingInfoResponse } from "./MultipleBookingInfoResponse"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
@@ -98,9 +103,11 @@ export {
 	BeneficiaryResponse,
 	BookedProductInfo,
 	BookingInfo,
+	BookingInfoIdentifier,
 	BookingInfoRequest,
 	BookingInfoResponse,
 	CardFundingAccountResponse,
+	CardIdentifier,
 	CardOptionSearch,
 	CardResponse,
 	CardResponseV2,
@@ -124,6 +131,7 @@ export {
 	ErrorResponse,
 	FiveFieldsBookingInfoRequest,
 	FiveFieldsBookingInfoResponse,
+	FlightBookingInfo,
 	FundingAccountInboundTransferNotificationConfig,
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
@@ -134,6 +142,8 @@ export {
 	Issue,
 	LoginRequest,
 	LoginResponse,
+	MultipleBookingInfoRequest,
+	MultipleBookingInfoResponse,
 	NonBeneficiaryTransferDestination,
 	OrganisationBalanceLimitResponse,
 	OrganisationConfig,
