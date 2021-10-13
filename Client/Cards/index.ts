@@ -4,12 +4,12 @@ import { Connection } from "../Connection"
 import { List } from "../List"
 
 export class Cards extends List<
-	model.CardResponseV2 | model.CardResponse,
+	(model.CardResponseV2 | model.CardResponse),
 	model.CardSearch,
 	model.CreateCardRequest,
 	Card
 > {
-	protected folder = "cards/virtual"
+	protected folder = "cards"
 	constructor(connection: Connection) {
 		super(connection)
 	}
