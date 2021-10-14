@@ -40,6 +40,10 @@ export class Cards extends List<
 		const result = await this.connection.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}`)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
+	async getCardsForProvider(providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardResponse[]>(`cards/virtual/${providerCode}`)
+		return this.convert(result)
+	}
 	async getCardTypes(providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardTypeResponse[]>(`v2/cards/types/${providerCode}`)
 		return result
