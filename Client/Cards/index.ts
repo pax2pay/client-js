@@ -14,10 +14,10 @@ export class Cards extends List<
 		super(connection)
 	}
 	protected getResourcePath(resource: model.CardResponseV2 | model.CardResponse): string {
-		return [this.folder, resource.providerCode, resource.providerCardId].join("/")
+		return [this.folder, "virtual", resource.providerCode, resource.providerCardId].join("/")
 	}
 	protected createResource(response: model.CardResponseV2): Card {
-		return new Card(this.connection, [this.folder, response.providerCode, response.providerCardId].join("/"), response)
+		return new Card(this.connection, [this.folder, "virtual", response.providerCode, response.providerCardId].join("/"), response)
 	}
 	protected map(response: model.CardResponseV2): Card & model.CardResponseV2 {
 		return Object.assign(new Card(this.connection, this.getResourcePath(response), response), response)
