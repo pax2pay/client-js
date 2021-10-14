@@ -37,7 +37,8 @@ describe("BookingInfo flight", () => {
 
 		assert(card.providerCode != undefined)
 		assert(card.providerCardId != undefined)
-		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId)).toMatchObject({"code": 7, "errors": [{"message": "Booking info not found"}], "status": 404})
+		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId))
+			.toMatchObject({errors: [{message: "Booking info not found"}], status: 404})
 
 		const saveRequest = {
 			passengers: {
@@ -83,17 +84,17 @@ describe("BookingInfo flight", () => {
 		const updateRequest = {
 			leadPassengerName: "Mr megalodon"
 		}
-		expect(await client?.bookingInfo.updateInfoForCard(card.providerCode, card.providerCardId, updateRequest)).toMatchObject({
-			errors: [ { message: 'Cannot change values' } ]
-    })
+		expect(await client?.bookingInfo.updateInfoForCard(card.providerCode, card.providerCardId, updateRequest))
+			.toMatchObject({errors: [{message: 'Cannot change values'}]})
 
-		expect(await client?.bookingInfo.getForCardSpecificFormat(card.providerCode, card.providerCardId, "FIVE_FIELDS")).toMatchObject({
+		expect(await client?.bookingInfo.getForCardSpecificFormat(card.providerCode, card.providerCardId, "FIVE_FIELDS"))
+			.toMatchObject({
 				agentBookingReference: "test",
 				departureDate: "2021-10-01", 
 				supplierBookingReference: "test",
 				leadPassengerName: "Mr flight",
 				supplierCode: "test" 
-		})
+			})
 
 		const secondSaveRequest = {
 				agentBookingReference: "Test",
@@ -103,7 +104,8 @@ describe("BookingInfo flight", () => {
 				supplierCode: "TST" 
 		}
 
-		await client?.bookingInfo.saveInfoForCard(card.providerCode, card.providerCardId, secondSaveRequest)
+		const secondSave = await client?.bookingInfo.saveInfoForCard(card.providerCode, card.providerCardId, secondSaveRequest)
+		assert(ErrorResponse.is(secondSave))
 		expect(await client?.bookingInfo.getForCard(card.providerCode, card.providerCardId)).toMatchObject(expectedResponse)
 
 
