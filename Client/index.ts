@@ -10,6 +10,7 @@ import { Organisation as ClientOrganisation } from "./Organisation"
 import { Organisations as ClientOrganisations } from "./Organisations"
 import { Reports as ClientReports } from "./Reports"
 import { Resource as ClientResource } from "./Resource"
+import { Transfers as ClientTransfers } from "./Transfers";
 import { User as ClientUser } from "./User"
 import { Users as ClientUsers } from "./Users"
 
@@ -25,6 +26,7 @@ export class Client {
 	users = ClientUsers.create(this.connection)
 	organisations = ClientOrganisations.create(this.connection)
 	reports = ClientReports.create(this.connection)
+	transfers = ClientTransfers.create(this.connection)
 	constructor(private connection: Connection, private $authenticate?: Authenticate) {
 		connection.unauthorized = async () => (await this.$authenticate?.(this)) ?? false
 	}
@@ -43,6 +45,7 @@ export namespace Client {
 	export type Organisation = ClientOrganisation
 	export type Organisations = ClientOrganisations
 	export type Reports = ClientReports
+	export type Transfers = ClientTransfers
 	export type User = ClientUser
 	export type Users = ClientUsers
 	export type Collection<
