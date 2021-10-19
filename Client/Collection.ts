@@ -15,4 +15,10 @@ export abstract class Collection<
 	async create(request: Request) {
 		return this.convert(await this.connection.post<Response>(this.folder, request))
 	}
+	async remove(user: string) {
+		return this.convert(await this.connection.remove<Response>(`${this.folder}/${user}`))
+	}
+	async update(request: Request) {
+		return this.convert(await this.connection.put<Response>(`${this.folder}/${request.user}`, request))
+	}
 }
