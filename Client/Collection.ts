@@ -1,3 +1,4 @@
+import * as model from "../model"
 import { Connection } from "./Connection"
 import { List } from "./List"
 
@@ -18,7 +19,7 @@ export abstract class Collection<
 	async remove(user: string) {
 		return this.convert(await this.connection.remove<Response>(`${this.folder}/${user}`))
 	}
-	async update(request: Request) {
-		return this.convert(await this.connection.put<Response>(`${this.folder}/${request.user}`, request))
+	async update(user: string, request: model.UserChangeRequest) {
+		return this.convert(await this.connection.put<Response>(`${this.folder}/${user}`, request))
 	}
 }
