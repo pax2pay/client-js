@@ -75,26 +75,9 @@ describe("pax2pay.transfers.create", () => {
 		}
 
 		const allOptionsResponse = await client?.transfers.create(testRequestAll)
-
-		const expected = {
-				status: 400,
-				code: 2,
-				errors: expect.arrayContaining([
-						{ 
-							field: 'transferRequest', 
-							value: 'OneOf', 
-							message: 'OneOf' 
-						},
-						{
-							field: 'transferRequest',
-							value: 'OneOf',
-							message: 'Invalid One Of'
-						},
-				])
-			}
-
-		expect(allOptionsResponse).toMatchObject(expected)
-
+		
+		expect(ErrorResponse.is(allOptionsResponse)).toBeTruthy()
+		
 		const testRequestTwo = {
 			...beneficiaryRequest,
 			...destinationRequest,
@@ -102,6 +85,6 @@ describe("pax2pay.transfers.create", () => {
 
 		const twoOptionsResponse = await client?.transfers.create(testRequestTwo)
 
-		expect(twoOptionsResponse).toMatchObject(expected)
+		expect(ErrorResponse.is(twoOptionsResponse)).toBeTruthy()
 	})
 })
