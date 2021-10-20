@@ -46,6 +46,31 @@ describe("pax2pay.transfers.create", () => {
 		assert(transfer != undefined)
 		
 		expect(transfer).toMatchObject(expected)
+
+		const saveBeneficiaryRequest = testData[2]
+		const expectedWithBeneficiary = testData[3]
+
+		const transferPlusNewBeneficiary = await client?.transfers.create(saveBeneficiaryRequest)
+
+		assert(!ErrorResponse.is(transferPlusNewBeneficiary))
+		assert(transferPlusNewBeneficiary != undefined)
+
+		expect(transferPlusNewBeneficiary).toMatchObject(expectedWithBeneficiary)
+
+		assert(transferPlusNewBeneficiary.beneficiary != undefined)
+		assert(transferPlusNewBeneficiary.beneficiary.beneficiaryId != undefined)
+		const beneficiary = await client?.beneficiaries.getBeneficiary(transferPlusNewBeneficiary.beneficiary.beneficiaryId)
+
+		assert(!ErrorResponse.is(beneficiary))
+		assert(beneficiary != undefined)
+
+		expect(beneficiary).toMatchObject({
+			transferDestination: transferPlusNewBeneficiary.beneficiary.transferDestination,
+			status: expect.stringMatching(/(ACTIVE)|(DELETED)|(OUTDATED)/),
+			fullName: expect.any(String),
+			beneficiaryId: transferPlusNewBeneficiary.beneficiary.beneficiaryId,
+			createdOn: expect.any(String),
+		})
 	})
 
 	it("with funding account", async () => {

@@ -78,7 +78,7 @@ export function forBeneficiary(): [model.TransferRequest, model.TransferResponse
 	]
 }
 
-export function forDestination(): [model.TransferRequest, model.TransferResponse] {
+export function forDestination(): [model.TransferRequest, model.TransferResponse, model.TransferRequest, model.TransferResponse] {
 
 	assert(process.env.testIban)
 
@@ -91,7 +91,22 @@ export function forDestination(): [model.TransferRequest, model.TransferResponse
 		reference: "iban transfer test"
 	}
 
+	const otherAccount = process.env["accountModulrEur2"]
+	assert(otherAccount)
+
+	const requestSaveBeneficiary = {
+		...basicRequest,
+		providerSourceAccountId: otherAccount,
+		destination: {
+			iban: process.env.testIban,
+			fullName: "Test Beneficiary tx",
+			saveAsNewBeneficiary: true
+		},
+		reference: "save beneficiary"
+	}
+
 	assert(request.currency)
+	assert(requestSaveBeneficiary.currency)
 
 	return [
 		request,
@@ -102,7 +117,23 @@ export function forDestination(): [model.TransferRequest, model.TransferResponse
 				currency: request.currency,
 				fullName: request.destination.fullName
 			},
+		},
+		requestSaveBeneficiary,
+		{
+			...basicExpected,
+			beneficiary: {
+				transferDestination: {
+					iban: request.destination.iban,
+					currency: requestSaveBeneficiary.currency,
+					fullName: requestSaveBeneficiary.destination.fullName
+				},
+				status: expect.stringMatching(/(ACTIVE)|(DELETED)|(OUTDATED)/),
+				fullName: expect.any(String),
+				beneficiaryId: expect.any(String),
+				createdOn: expect.any(String),
+			},
 		}
+		
 	]
 }
 

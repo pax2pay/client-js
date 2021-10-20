@@ -11,17 +11,20 @@ export class Beneficiaries extends List<
 	constructor(connection: Connection) {
 		super(connection)
 	}
+	static create(connection: Connection): Beneficiaries {
+		return new Beneficiaries(connection)
+	}
 	protected getResourcePath(resource: model.BeneficiaryResponse): string {
-		return [this.folder, resource.providerCode, resource.providerBeneficiaryId].join("/")
+		return [this.folder, resource.beneficiaryId].join("/")
 	}
 	protected createResource(response: model.BeneficiaryResponse): Beneficiary {
-		return new Beneficiary(this.connection, [this.folder, response.providerCode, response.providerBeneficiaryId].join("/"), response)
+		return new Beneficiary(this.connection, [this.folder, response.beneficiaryId].join("/"), response)
 	}
 	async getAll(){
 		return await this.connection.get<model.BeneficiaryResponse[]>(`${this.folder}`)
 	}
-	async getBeneficiary(provider: model.ProviderCode, BeneficiaryId: string){
-		return await this.connection.get<model.BeneficiaryResponse>([this.folder, provider, BeneficiaryId].join("/"))
+	async getBeneficiary(beneficiaryId: string){
+		return await this.connection.get<model.BeneficiaryResponse>([this.folder, beneficiaryId].join("/"))
 	}
 	protected map(response: model.BeneficiaryResponse): Beneficiary & model.BeneficiaryResponse {
 		return Object.assign(new Beneficiary(this.connection, this.getResourcePath(response), response), response)
