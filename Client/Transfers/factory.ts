@@ -47,42 +47,42 @@ const basicExpected = {
 	scheduled: expect.any(Boolean),
 }
 
-export function forBeneficiary(): [model.TransferRequest, model.TransferResponse] {
 
-	const request: model.TransferRequest = {
+export function getRequestForBeneficiary(): model.TransferRequest {
+
+	return {
 		...basicRequest,
 		beneficiaryId: process.env.beneficiaryModulr,
 	}
+}
+
+export function getExpectedForBeneficiary(request: model.TransferRequest): model.TransferResponse {
 
 	assert(request.currency)
 
-	return [
-		request,
-		{
-			...basicExpected,
-			amount: request.amount,
-			beneficiary: {
-				transferDestination: {
-					currency: request.currency,
-					fullName: expect.any(String), 
-				},
-				defaultReference: expect.any(String),
-				status: expect.stringMatching(/(ACTIVE)|(DELETED)|(OUTDATED)/),
-				fullName: expect.any(String),
-				beneficiaryId: process.env.beneficiaryModulr,
-				createdOn: expect.any(String),
+	return {
+		...basicExpected,
+		amount: request.amount,
+		beneficiary: {
+			transferDestination: {
+				currency: request.currency,
+				fullName: expect.any(String), 
 			},
-
-			
-		}
-	]
+			defaultReference: expect.any(String),
+			status: expect.stringMatching(/(ACTIVE)|(DELETED)|(OUTDATED)/),
+			fullName: expect.any(String),
+			beneficiaryId: process.env.beneficiaryModulr,
+			createdOn: expect.any(String),
+		},
+	}
 }
 
-export function forDestination(): [model.TransferRequest, model.TransferResponse, model.TransferRequest, model.TransferResponse] {
+export function getRequestForDestination(): model.TransferRequest {
+
 
 	assert(process.env.testIban)
 
-	const request = {
+	return {
 		...basicRequest,
 		destination: {
 			iban: process.env.testIban,
@@ -90,11 +90,26 @@ export function forDestination(): [model.TransferRequest, model.TransferResponse
 		},
 		reference: "iban transfer test"
 	}
+}
+export function getExpectedForDestination(request: model.TransferRequest): model.TransferResponse {
 
+	assert(request.currency)
+	assert(request.destination)
+	return {
+		...basicExpected,
+		destination: {
+			iban: request.destination.iban,
+			currency: request.currency,
+			fullName: request.destination.fullName
+		},
+	}
+}
+export function getRequestForDestinationPlusBeneficiary(): model.TransferRequest {
 	const otherAccount = process.env["accountModulrEur2"]
 	assert(otherAccount)
-
-	const requestSaveBeneficiary = {
+	assert(process.env.testIban)
+	
+	return {
 		...basicRequest,
 		providerSourceAccountId: otherAccount,
 		destination: {
@@ -104,59 +119,49 @@ export function forDestination(): [model.TransferRequest, model.TransferResponse
 		},
 		reference: "save beneficiary"
 	}
+}
+
+export function getExpectedForDestinationPlusBeneficiary(request: model.TransferRequest): model.TransferResponse {
 
 	assert(request.currency)
-	assert(requestSaveBeneficiary.currency)
-
-	return [
-		request,
-		{
-			...basicExpected,
-			destination: {
+	assert(request.destination)
+	return {
+		...basicExpected,
+		beneficiary: {
+			transferDestination: {
 				iban: request.destination.iban,
 				currency: request.currency,
 				fullName: request.destination.fullName
 			},
+			status: expect.stringMatching(/(ACTIVE)|(DELETED)|(OUTDATED)/),
+			fullName: expect.any(String),
+			beneficiaryId: expect.any(String),
+			createdOn: expect.any(String),
 		},
-		requestSaveBeneficiary,
-		{
-			...basicExpected,
-			beneficiary: {
-				transferDestination: {
-					iban: request.destination.iban,
-					currency: requestSaveBeneficiary.currency,
-					fullName: requestSaveBeneficiary.destination.fullName
-				},
-				status: expect.stringMatching(/(ACTIVE)|(DELETED)|(OUTDATED)/),
-				fullName: expect.any(String),
-				beneficiaryId: expect.any(String),
-				createdOn: expect.any(String),
-			},
-		}
-		
-	]
+	}
 }
 
-export function forFundingAccount(): [model.TransferRequest, any] {
+export function getRequestForFundingAccount(): model.TransferRequest {
 
-	const request: model.TransferRequest = {
+	return {
 		...basicRequest,
 		destinationProviderAccountId: process.env.accountModulrEur2,
 		reference: "acc transfer test"
-
 	}
-	return [
-		request,
-		{
-			...basicExpected,
-			destinationAccount: {
-				providerAccountId: request.destinationProviderAccountId
-			}
-		}
-	]
 }
 
-export function forGeneric(): model.TransferResponse {
+export function getExpectedForFundingAccount(request: model.TransferRequest) {
+
+	return {
+		...basicExpected,
+		destinationAccount: {
+			providerAccountId: request.destinationProviderAccountId
+		}
+	}
+}
+
+export function getExpectedForGeneric(): model.TransferResponse {
+
 	return {
 		...basicExpected,
 		sourceAccount: {

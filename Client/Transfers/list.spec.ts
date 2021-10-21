@@ -18,7 +18,7 @@ describe("pax2pay.transfers.list", () => {
 
 	it("first page", async () => {
 
-		const expected = factory.forGeneric()
+		const expected = factory.getExpectedForGeneric()
 
 		const transfers = await client?.transfers.list()
 

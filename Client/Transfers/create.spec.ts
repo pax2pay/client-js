@@ -19,10 +19,8 @@ describe("pax2pay.transfers.create", () => {
 
 	it("with beneficiary", async () => {
 
-		const testData = factory.forBeneficiary()
-		
-		const request: model.TransferRequest = testData[0]
-		const expected = testData[1]
+		const request: model.TransferRequest = factory.getRequestForBeneficiary()
+		const expected = factory.getExpectedForBeneficiary(request)
 
 		const transfer = await client?.transfers.create(request)
 
@@ -34,10 +32,8 @@ describe("pax2pay.transfers.create", () => {
 
 	it("with destination", async () => {
 
-		const testData = factory.forDestination()
-
-		const request: model.TransferRequest = testData[0]
-		const expected = testData[1]
+		const request: model.TransferRequest = factory.getRequestForDestination()
+		const expected = factory.getExpectedForDestination(request)
 
 		const transfer = await client?.transfers.create(request)
 
@@ -47,8 +43,8 @@ describe("pax2pay.transfers.create", () => {
 		
 		expect(transfer).toMatchObject(expected)
 
-		const saveBeneficiaryRequest = testData[2]
-		const expectedWithBeneficiary = testData[3]
+		const saveBeneficiaryRequest = factory.getRequestForDestinationPlusBeneficiary()
+		const expectedWithBeneficiary = factory.getExpectedForDestinationPlusBeneficiary(saveBeneficiaryRequest)
 
 		const transferPlusNewBeneficiary = await client?.transfers.create(saveBeneficiaryRequest)
 
@@ -75,10 +71,8 @@ describe("pax2pay.transfers.create", () => {
 
 	it("with funding account", async () => {
 
-		const testData = factory.forFundingAccount()
-
-		const request: model.TransferRequest = testData[0]
-		const expected = testData[1]
+		const request: model.TransferRequest = factory.getRequestForFundingAccount()
+		const expected = factory.getExpectedForFundingAccount(request)
 
 		const transfer = await client?.transfers.create(request)
 
@@ -89,9 +83,9 @@ describe("pax2pay.transfers.create", () => {
 	})
 
 	it("invalid input, multiple options", async () => {
-		const beneficiaryRequest = factory.forBeneficiary()[0]
-		const destinationRequest = factory.forDestination()[0]
-		const fundingAccountRequest = factory.forFundingAccount()[0]
+		const beneficiaryRequest = factory.getRequestForBeneficiary()
+		const destinationRequest = factory.getRequestForDestination()
+		const fundingAccountRequest = factory.getRequestForFundingAccount()
 
 		const testRequestAll = {
 			...beneficiaryRequest,
