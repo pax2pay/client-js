@@ -3,10 +3,7 @@ import { Beneficiary } from "../Beneficiary"
 import { Connection } from "../Connection"
 import { List } from "../List"
 
-export class Beneficiaries extends List<
-	model.BeneficiaryResponse,
-	model.BeneficiaryRequest
-> {
+export class Beneficiaries extends List<model.BeneficiaryResponse, model.BeneficiaryRequest> {
 	protected folder = "beneficiaries"
 	constructor(connection: Connection) {
 		super(connection)
@@ -20,10 +17,10 @@ export class Beneficiaries extends List<
 	protected createResource(response: model.BeneficiaryResponse): Beneficiary {
 		return new Beneficiary(this.connection, [this.folder, response.beneficiaryId].join("/"), response)
 	}
-	async getAll(){
+	async getAll() {
 		return await this.connection.get<model.BeneficiaryResponse[]>(`${this.folder}`)
 	}
-	async getBeneficiary(beneficiaryId: string){
+	async getBeneficiary(beneficiaryId: string) {
 		return await this.connection.get<model.BeneficiaryResponse>([this.folder, beneficiaryId].join("/"))
 	}
 	protected map(response: model.BeneficiaryResponse): Beneficiary & model.BeneficiaryResponse {

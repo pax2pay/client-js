@@ -3,11 +3,7 @@ import { Connection } from "../Connection"
 import { List } from "../List"
 import { Transfer } from "../Transfer"
 
-export class Transfers extends List<
-	model.TransferResponse,
-	model.TransferSearch,
-	model.TransferRequest
-> {
+export class Transfers extends List<model.TransferResponse, model.TransferSearch, model.TransferRequest> {
 	protected folder = "transfers"
 	constructor(connection: Connection) {
 		super(connection)
@@ -19,12 +15,16 @@ export class Transfers extends List<
 		return [this.folder, resource.providerCode, resource.providerTransferId].join("/")
 	}
 	protected createResource(response: model.TransferResponse): Transfer {
-		return new Transfer(this.connection, [this.folder, response.providerCode, response.providerTransferId].join("/"), response)
+		return new Transfer(
+			this.connection,
+			[this.folder, response.providerCode, response.providerTransferId].join("/"),
+			response
+		)
 	}
-	async getAll(){
+	async getAll() {
 		return await this.connection.get<model.TransferResponse[]>(`${this.folder}`)
 	}
-	async getTransfer(provider: model.ProviderCode, transferId: string){
+	async getTransfer(provider: model.ProviderCode, transferId: string) {
 		return await this.connection.get<model.TransferResponse>([this.folder, provider, transferId].join("/"))
 	}
 	protected map(response: model.TransferResponse): Transfer & model.TransferResponse {

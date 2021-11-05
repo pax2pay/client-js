@@ -1,4 +1,3 @@
-
 import assert from "assert"
 import * as dotenv from "dotenv"
 import { mathExact } from "math-exact"
@@ -19,24 +18,23 @@ describe("pax2pay.cards.actions modulr", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-			it("card USD VISA", async () => {
-				const request = factory({
-					cardType: {
-						cardTypeId: "VISA",
-					},
-					currency: "USD",
-					providerAccountId: process.env["accountModulrUsd"],
-					providerCode: "modulr",
-					balance: mathExact("Divide", Math.round((Math.random() * 4 + 1) * 100), 100),
-				})
+	it("card USD VISA", async () => {
+		const request = factory({
+			cardType: {
+				cardTypeId: "VISA",
+			},
+			currency: "USD",
+			providerAccountId: process.env["accountModulrUsd"],
+			providerCode: "modulr",
+			balance: mathExact("Divide", Math.round((Math.random() * 4 + 1) * 100), 100),
+		})
 
-				const cardLegacy = await client?.cards.createLegacy(request)
+		const cardLegacy = await client?.cards.createLegacy(request)
 
-				assert(!ErrorResponse.is(cardLegacy))
-				assert(cardLegacy != undefined)
-				assert(client != undefined)
-				
-				await actionTest(cardLegacy, client)
-				
-			})
+		assert(!ErrorResponse.is(cardLegacy))
+		assert(cardLegacy != undefined)
+		assert(client != undefined)
+
+		await actionTest(cardLegacy, client)
+	})
 })

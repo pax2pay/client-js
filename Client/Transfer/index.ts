@@ -6,5 +6,4 @@ export class Transfer extends Resource<model.TransferResponse, model.TransferReq
 	constructor(connection: Connection, folder: string, backend: model.TransferResponse) {
 		super(connection, folder, backend)
 	}
-	
 }

@@ -17,7 +17,6 @@ describe("pax2pay.transfers.list", () => {
 	)
 
 	it("first page", async () => {
-
 		const expected = factory.getExpectedForGeneric()
 
 		const transfers = await client?.transfers.list()
@@ -30,7 +29,7 @@ describe("pax2pay.transfers.list", () => {
 		for (const transfer of transfers)
 			expect(transfer).toMatchObject(expected)
 
-		const transfers100 = await client?.transfers.list(1,100)
+		const transfers100 = await client?.transfers.list(1, 100)
 
 		assert(!ErrorResponse.is(transfers100))
 		assert(transfers100 != undefined)
@@ -39,6 +38,5 @@ describe("pax2pay.transfers.list", () => {
 		expect(transfers100).toHaveLength(100)
 		for (const transfer of transfers100)
 			expect(transfer).toMatchObject(expected)
-
 	})
 })

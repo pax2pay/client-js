@@ -1,7 +1,7 @@
 import { Account as ClientAccount } from "./Account"
 import { Accounts as ClientAccounts } from "./Accounts"
 import { Auth as ClientAuth } from "./Auth"
-import { Beneficiaries as ClientBeneficiaries } from "./Beneficiaries";
+import { Beneficiaries as ClientBeneficiaries } from "./Beneficiaries"
 import { Card as ClientCard } from "./Card"
 import { Cards as ClientCards } from "./Cards"
 import { Collection as ClientCollection } from "./Collection"
@@ -11,7 +11,7 @@ import { Organisation as ClientOrganisation } from "./Organisation"
 import { Organisations as ClientOrganisations } from "./Organisations"
 import { Reports as ClientReports } from "./Reports"
 import { Resource as ClientResource } from "./Resource"
-import { Transfers as ClientTransfers } from "./Transfers";
+import { Transfers as ClientTransfers } from "./Transfers"
 import { User as ClientUser } from "./User"
 import { Users as ClientUsers } from "./Users"
 

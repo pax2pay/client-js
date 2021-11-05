@@ -6,5 +6,4 @@ export class Beneficiary extends Resource<model.BeneficiaryResponse, model.Benef
 	constructor(connection: Connection, folder: string, backend: model.BeneficiaryResponse) {
 		super(connection, folder, backend)
 	}
-	
 }

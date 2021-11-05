@@ -18,7 +18,6 @@ describe("pax2pay.transfers.create", () => {
 	)
 
 	it("with beneficiary", async () => {
-
 		const request: model.TransferRequest = factory.getRequestForBeneficiary()
 		const expected = factory.getExpectedForBeneficiary(request)
 
@@ -31,16 +30,14 @@ describe("pax2pay.transfers.create", () => {
 	})
 
 	it("with destination", async () => {
-
 		const request: model.TransferRequest = factory.getRequestForDestination()
 		const expected = factory.getExpectedForDestination(request)
 
 		const transfer = await client?.transfers.create(request)
 
-		
 		assert(!ErrorResponse.is(transfer))
 		assert(transfer != undefined)
-		
+
 		expect(transfer).toMatchObject(expected)
 
 		const saveBeneficiaryRequest = factory.getRequestForDestinationPlusBeneficiary()
@@ -70,7 +67,6 @@ describe("pax2pay.transfers.create", () => {
 	})
 
 	it("with funding account", async () => {
-
 		const request: model.TransferRequest = factory.getRequestForFundingAccount()
 		const expected = factory.getExpectedForFundingAccount(request)
 
@@ -90,13 +86,13 @@ describe("pax2pay.transfers.create", () => {
 		const testRequestAll = {
 			...beneficiaryRequest,
 			...destinationRequest,
-			...fundingAccountRequest
+			...fundingAccountRequest,
 		}
 
 		const allOptionsResponse = await client?.transfers.create(testRequestAll)
-		
+
 		expect(ErrorResponse.is(allOptionsResponse)).toBeTruthy()
-		
+
 		const testRequestTwo = {
 			...beneficiaryRequest,
 			...destinationRequest,

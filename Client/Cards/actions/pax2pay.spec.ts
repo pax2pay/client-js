@@ -34,8 +34,7 @@ describe("pax2pay.cards.actions pax2pay", () => {
 				assert(!ErrorResponse.is(cardLegacy))
 				assert(cardLegacy != undefined)
 				assert(client != undefined)
-			
+
 				await actionTest(cardLegacy, client)
-				
 			})
 })

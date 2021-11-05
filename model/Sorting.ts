@@ -3,4 +3,4 @@ export type Sorting<T extends { [key: string]: any } = { [key: string]: any }> =
 	| {
 			property: keyof T
 			direction?: "ascending" | "descending"
-	}
+	  }
