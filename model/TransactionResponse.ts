@@ -1,7 +1,8 @@
 import { BookingInfo } from "./BookingInfo"
+import { ProcessedStatement } from "./ProcessedStatement"
 import { TransactionType } from "./TransactionType"
 
-export interface TransactionResponse {
+export interface TransactionResponse extends Partial<ProcessedStatement> {
 	id: number
 	providerTransactionId: string
 	organisationCode: string
