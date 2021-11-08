@@ -19,23 +19,22 @@ describe("pax2pay.cards.actions ixaris", () => {
 	)
 
 	it("card GBP MASTERCARD", async () => {
-					const request = factory({
-						cardType: {
-							cardTypeId: "MASTERCARD",
-						},
-						currency: "GBP",
-						providerAccountId: process.env["accountIxarisGbp"],
-						providerCode: "ixaris",
-						balance: 0,
-						friendlyName: new Date().toISOString().slice(0, 20) + "ixaris" + "MASTERCARDGBP",
-					})
+		const request = factory({
+			cardType: {
+				cardTypeId: "MASTERCARD",
+			},
+			currency: "GBP",
+			providerAccountId: process.env["accountIxarisGbp"],
+			providerCode: "ixaris",
+			balance: 0,
+			friendlyName: new Date().toISOString().slice(0, 20) + "ixaris" + "MASTERCARDGBP",
+		})
 
-					const cardLegacy = await client?.cards.createLegacy(request)
+		const cardLegacy = await client?.cards.createLegacy(request)
 
-					assert(!ErrorResponse.is(cardLegacy))
-					assert(cardLegacy != undefined)
-					assert(client != undefined)
-					await actionTest(cardLegacy, client)
-					
-				})
+		assert(!ErrorResponse.is(cardLegacy))
+		assert(cardLegacy != undefined)
+		assert(client != undefined)
+		await actionTest(cardLegacy, client)
+	})
 })

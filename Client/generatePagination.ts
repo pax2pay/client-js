@@ -6,8 +6,8 @@ export function generatePagination<T extends { [key: string]: any } = { [key: st
 	sort: model.Sorting<T>[] = []
 ): string {
 	const result = [
-		...(page == 0 ? [`page=${page}`] : []),
-		...(size == 20 ? [`size=${size}`] : []),
+		...(page ? [`page=${page}`] : []),
+		...(size ? [`size=${size}`] : []),
 		...sort.map(s => `sort=${typeof s == "object" ? s + (s.direction == "descending" ? "desc" : "") : s}`),
 	].join("&")
 	return result ? "?" + result : ""

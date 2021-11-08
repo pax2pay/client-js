@@ -13,54 +13,53 @@ describe("pax2pay.cards.list", () => {
 			})
 	)
 	it("first page", async () => {
-
 		const expected = {
-					balance: expect.any(Number),
-					cardAccount: {
-						accountType: "CARD",
-						balance: expect.any(Number),
-						createdOn: expect.any(String),
-						currency: expect.any(String),
-						friendlyName: expect.any(String),
-						id: expect.any(Number),
-						organisation: {
-							code: expect.any(String),
-							name: expect.any(String),
-							status: expect.stringMatching(/(ACTIVE)|(INACTIVE)/),
-						},
-						provider: {
-							code: expect.any(String),
-							id: expect.any(Number),
-							name: expect.any(String),
-							status: "ACTIVE",
-						},
-						providerAccountId: expect.any(String),
-						state: expect.stringMatching(/(DELETED)|(ACTIVE)|(EXPIRED)/),
-						updatedOn: expect.any(String),
-					},
-					cardForm: expect.any(String),
-					cardNumber: expect.any(String),
-					cardType: expect.any(String),
-					createdBy: expect.any(String),
-					creatingSystem: expect.any(String),
-					cvv: expect.any(String),
-					expiryDate: expect.any(String),
-					folder: expect.any(String),
-					issueDate: expect.any(String),
-					nameOnCard: expect.any(String),
-					providerCardId: expect.any(String),
-					providerCode: expect.any(String),
-					state: expect.any(String),
-					usage: expect.any(String),
-					useAs: expect.any(String),
-				}
+			balance: expect.any(Number),
+			cardAccount: {
+				accountType: "CARD",
+				balance: expect.any(Number),
+				createdOn: expect.any(String),
+				currency: expect.any(String),
+				friendlyName: expect.any(String),
+				id: expect.any(Number),
+				organisation: {
+					code: expect.any(String),
+					name: expect.any(String),
+					status: expect.stringMatching(/(ACTIVE)|(INACTIVE)/),
+				},
+				provider: {
+					code: expect.any(String),
+					id: expect.any(Number),
+					name: expect.any(String),
+					status: "ACTIVE",
+				},
+				providerAccountId: expect.any(String),
+				state: expect.stringMatching(/(DELETED)|(ACTIVE)|(EXPIRED)/),
+				updatedOn: expect.any(String),
+			},
+			cardForm: expect.any(String),
+			cardNumber: expect.any(String),
+			cardType: expect.any(String),
+			createdBy: expect.any(String),
+			creatingSystem: expect.any(String),
+			cvv: expect.any(String),
+			expiryDate: expect.any(String),
+			folder: expect.any(String),
+			issueDate: expect.any(String),
+			nameOnCard: expect.any(String),
+			providerCardId: expect.any(String),
+			providerCode: expect.any(String),
+			state: expect.any(String),
+			usage: expect.any(String),
+			useAs: expect.any(String),
+		}
 
 		const list = await client?.cards.list()
 		if (Array.isArray(list))
 			for (const card of list)
 				expect(card).toMatchObject(expected)
-		else 
-			//if list only returns one card.
+		//if list only returns one card.
+		else
 			expect(list).toMatchObject(expected)
 	})
 })

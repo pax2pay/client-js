@@ -17,23 +17,22 @@ describe("pax2pay.cards.actions fake", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	
-			it("card EUR VISA_CREDIT", async () => {
-				const request = factory({
-					cardType: {
-						cardTypeId: "VISA_CREDIT",
-					},
-					currency: "EUR",
-					providerAccountId: process.env["accountFakeEur"],
-					providerCode: "fake",
-				})
 
-				const cardLegacy = await client?.cards.createLegacy(request)
+	it("card EUR VISA_CREDIT", async () => {
+		const request = factory({
+			cardType: {
+				cardTypeId: "VISA_CREDIT",
+			},
+			currency: "EUR",
+			providerAccountId: process.env["accountFakeEur"],
+			providerCode: "fake",
+		})
 
-				assert(!ErrorResponse.is(cardLegacy))
-				assert(cardLegacy != undefined)
-				assert(client != undefined)
-				await actionTest(cardLegacy, client)
-				
-			})
+		const cardLegacy = await client?.cards.createLegacy(request)
+
+		assert(!ErrorResponse.is(cardLegacy))
+		assert(cardLegacy != undefined)
+		assert(client != undefined)
+		await actionTest(cardLegacy, client)
+	})
 })
