@@ -1,12 +1,14 @@
 import { BookingInfo } from "./BookingInfo"
+import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { ProviderCode } from "./ProviderCode"
+import { CardAmendmentScheduledTaskRequest, CardStateChangeScheduledTaskRequest } from "./ScheduledTaskRequest"
 
 /**
  * Creates a virtual card.
  */
 export interface CreateCardRequest {
-	cardType: CardTypeSpecification
+	cardType: CardTypeSpecification | string
 	bookingInfo?: BookingInfo
 	providerAccountId?: string
 	providerCode: ProviderCode
@@ -15,5 +17,7 @@ export interface CreateCardRequest {
 	fundingDate?: string
 	expiryDate?: any
 	usage?: "SINGLE_USE" | "MULTIPLE_USE"
+	schedule?: (CardAmendmentScheduledTaskRequest | CardStateChangeScheduledTaskRequest)[]
 	friendlyName?: string
+	delivery?: CardDeliveryRequest
 }

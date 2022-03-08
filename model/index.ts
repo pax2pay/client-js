@@ -10,6 +10,7 @@ import { BookedProductInfo } from "./BookedProductInfo"
 import { BookingInfo } from "./BookingInfo"
 import { BookingInfoRequest } from "./BookingInfoRequest"
 import { BookingInfoResponse } from "./BookingInfoResponse"
+import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardResponse } from "./CardResponse"
@@ -62,6 +63,7 @@ import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsR
 import { Report } from "./Report"
 import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
+import { CardAmendmentScheduledTaskRequest, CardStateChangeScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { Sorting } from "./Sorting"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
@@ -100,11 +102,14 @@ export {
 	BookingInfo,
 	BookingInfoRequest,
 	BookingInfoResponse,
+	CardAmendmentScheduledTaskRequest,
+	CardDeliveryRequest,
 	CardFundingAccountResponse,
 	CardOptionSearch,
 	CardResponse,
 	CardResponseV2,
 	CardSearch,
+	CardStateChangeScheduledTaskRequest,
 	CardTypeResponse,
 	CardTypesConfig,
 	CardTypeSearchRequest,
