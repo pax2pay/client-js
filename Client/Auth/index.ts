@@ -2,6 +2,12 @@ import * as model from "../../model"
 import { Connection } from "../Connection"
 
 export class Auth {
+	get token(): string | undefined {
+		return this.connection.token
+	}
+	set token(value: string | undefined) {
+		this.connection.token = value
+	}
 	constructor(private connection: Connection) {}
 	async login(request: model.LoginRequest) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/login", request)
