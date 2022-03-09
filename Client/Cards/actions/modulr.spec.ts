@@ -31,6 +31,8 @@ describe("pax2pay.cards.actions modulr", () => {
 
 		const cardLegacy = await client?.cards.createLegacy(request)
 
+		console.log(cardLegacy)
+
 		assert(!ErrorResponse.is(cardLegacy))
 		assert(cardLegacy != undefined)
 		assert(client != undefined)

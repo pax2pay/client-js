@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv"
 import * as pax2pay from "../../../index"
+import { CreateCardRequest } from "../../../model"
 import { factory } from "./factory"
 
 dotenv.config()
@@ -19,9 +20,7 @@ describe("pax2pay.cards.create ixaris", () => {
 		for (const cardType of ["VISA_DEBIT", "VISA_CREDIT", "MASTERCARD"])
 			it(`card ${currency} ${cardType}`, async () => {
 				const [request, expectedV2, expectedLegacy] = factory({
-					cardType: {
-						cardTypeId: cardType,
-					},
+					cardType: cardType,
 					currency: currency,
 					providerAccountId: process.env[`accountIxaris${currency.charAt(0)}${currency.toLowerCase().slice(1)}`],
 					providerCode: "ixaris",
@@ -29,12 +28,12 @@ describe("pax2pay.cards.create ixaris", () => {
 				})
 
 				const cardV2 = await client?.cards.create({
-					...request,
-					friendlyName: request.friendlyName + "V2",
+					...(request as CreateCardRequest),
+					friendlyName: (request as CreateCardRequest).friendlyName + "V2",
 				})
 				const cardLegacy = await client?.cards.createLegacy({
-					...request,
-					friendlyName: request.friendlyName + "Legacy",
+					...(request as CreateCardRequest),
+					friendlyName: (request as CreateCardRequest).friendlyName + "Legacy",
 				})
 				expect(cardV2).toMatchObject(expectedV2)
 				expect(cardLegacy).toMatchObject(expectedLegacy)

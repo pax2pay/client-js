@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv"
 import { mathExact } from "math-exact"
 import * as pax2pay from "../../../index"
+import { CreateCardRequest } from "../../../model"
 import { factory } from "./factory"
 
 dotenv.config()
@@ -28,11 +29,12 @@ describe("pax2pay.cards.create modulr", () => {
 					balance: mathExact("Divide", Math.round((Math.random() * 4 + 1) * 100), 100),
 				})
 				const cardV2 = await client?.cards.create({
-					...request,
+					...(request as CreateCardRequest),
+					currency: (request as CreateCardRequest).currency,
 					balance: mathExact("Add", request.balance, 1),
 				})
 				const cardLegacy = await client?.cards.createLegacy({
-					...request,
+					...(request as CreateCardRequest),
 					balance: mathExact("Add", request.balance, 2),
 				})
 

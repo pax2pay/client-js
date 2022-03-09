@@ -12,6 +12,7 @@ describe("pax2pay.auth.login", () => {
 				password: process.env.password ?? "password",
 			})
 		).toMatchObject({
+			status: "SUCCESS",
 			effectiveOrganisation: { code: expect.any(String), name: expect.any(String) },
 		})
 	})

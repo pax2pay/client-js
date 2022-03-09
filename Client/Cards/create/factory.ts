@@ -5,9 +5,7 @@ export function factory(
 	card: Partial<model.CreateCardRequest>
 ) /*TODO: issue with linter : [model.CreateCardRequest, model.CardResponseV2, model.CardResponse] */ {
 	const request: model.CreateCardRequest = {
-		cardType: {
-			cardTypeId: "VISA_DEBIT_CORPORATE",
-		},
+		cardType: "VISA_DEBIT_CORPORATE",
 		providerAccountId: "AAAAAAA",
 		providerCode: "modulr",
 		balance: 1,
@@ -18,7 +16,7 @@ export function factory(
 	return [
 		request,
 		{
-			cardType: request.cardType.cardTypeId,
+			cardType: request.cardType,
 			cardNumber: expect.stringMatching(/\d{16}/),
 			cvv: expect.stringMatching(/\d{3}/),
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),
@@ -31,7 +29,7 @@ export function factory(
 			createdBy: process.env.username,
 		},
 		{
-			cardType: request.cardType.cardTypeId,
+			cardType: request.cardType,
 			cardNumber: expect.stringMatching(/\d{16}/),
 			cvv: expect.stringMatching(/\d{3}/),
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),

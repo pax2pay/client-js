@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv"
 import * as pax2pay from "../../../index"
-import { ErrorResponse } from "../../../model"
+import { CreateCardRequest, ErrorResponse } from "../../../model"
 import { factory } from "./factory"
 
 dotenv.config()
@@ -19,15 +19,15 @@ describe("pax2pay.cards.create fake", () => {
 		for (const cardType of ["VISA_CREDIT", "MASTERCARD"])
 			it(`card ${currency} ${cardType}`, async () => {
 				const [request, expectedV2, expectedLegacy] = factory({
-					cardType: {
-						cardTypeId: cardType,
-					},
+					cardType: cardType,
 					currency: currency,
 					providerAccountId: process.env[`accountFake${currency.charAt(0)}${currency.toLowerCase().slice(1)}`],
 					providerCode: "fake",
 				})
-				const cardV2 = await client?.cards.create(request)
-				const cardLegacy = await client?.cards.createLegacy(request)
+				console.log(request)
+
+				const cardV2 = await client?.cards.create(request as CreateCardRequest)
+				const cardLegacy = await client?.cards.createLegacy(request as CreateCardRequest)
 
 				if (ErrorResponse.is(cardV2))
 					throw Error(cardV2.errors?.[0].message)

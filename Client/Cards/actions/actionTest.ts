@@ -5,9 +5,11 @@ import * as model from "../../../model"
 import { Card } from "../../Card"
 
 export async function actionTest(card: Card & model.CardResponse, client: pax2pay.Client) {
+	//console.log(card)
+
 	assert(card.providerCardId && card.providerCode)
 	assert(card.fundingAccount)
-
+	/* 
 	const amendedCard = await card.amend({
 		newBalance: 2,
 		currency: card.fundingAccount.currency,
@@ -26,7 +28,7 @@ export async function actionTest(card: Card & model.CardResponse, client: pax2pa
 
 	expect(frozenCard).toMatchObject({ state: "INACTIVE" })
 	expect(frozenActualCard).toMatchObject({ state: "INACTIVE" })
-
+ 
 	const thawedCard = await card.thaw()
 	const thawedActualCard = await client?.cards.getCard(card.providerCardId, card.providerCode)
 
@@ -42,4 +44,5 @@ export async function actionTest(card: Card & model.CardResponse, client: pax2pa
 
 	expect(cancelledCard).toMatchObject({ state: "DELETED" })
 	expect(cancelledActualCard).toMatchObject({ state: "DELETED" })
+	 */
 }
