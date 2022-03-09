@@ -9,25 +9,25 @@ export interface FlightBookingInfoRequest {
 	timestamp?: isoly.DateTime
 }
 interface Passengers {
-	leadPassengerName: string
-	adults: number
-	children: number
-	infants: number
+	leadPassengerName?: string
+	adults?: number
+	children?: number
+	infants?: number
 }
 interface FlightInfo {
-	outbound: Segment
-	homebound: Segment
+	outbound?: Segment
+	homebound?: Segment
 }
 interface Segment {
-	from: string
-	to: string
-	date: isoly.Date
+	from?: string
+	to?: string
+	date?: isoly.Date
 }
 class References {
-	supplierCode: string
-	supplierName: string
-	supplierBookingReference: string
-	agentBookingReference: string
-	fabBasketReference: string
-	syndicatorName: string
+	supplierCode?: string
+	supplierName?: string
+	supplierBookingReference?: string
+	agentBookingReference?: string
+	fabBasketReference?: string
+	syndicatorName?: string
 }
