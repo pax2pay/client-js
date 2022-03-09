@@ -1,4 +1,4 @@
-import { BookingInfo } from "./BookingInfo"
+import { BookingInfoRequest } from "./BookingInfoRequest"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { ProviderCode } from "./ProviderCode"
@@ -9,7 +9,7 @@ import { CardAmendmentScheduledTaskRequest, CardStateChangeScheduledTaskRequest 
  */
 export interface CreateCardRequest {
 	cardType: CardTypeSpecification | string
-	bookingInfo?: BookingInfo
+	bookingInfo?: BookingInfoRequest
 	providerAccountId?: string
 	providerCode: ProviderCode
 	balance: number
