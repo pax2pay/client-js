@@ -35,14 +35,17 @@ import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
 import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
+import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
 import { FundingAccountSearchResponse } from "./FundingAccountSearchResponse"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
+import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
 import { Issue } from "./Issue"
+import { LegacyBookingInfoRequest } from "./LegacyBookingInfoRequest"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
@@ -129,14 +132,17 @@ export {
 	ErrorResponse,
 	FiveFieldsBookingInfoRequest,
 	FiveFieldsBookingInfoResponse,
+	FlightBookingInfoRequest,
 	FundingAccountInboundTransferNotificationConfig,
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
 	FundingLimitRequest,
 	FundingLimitResponse,
+	HotelBookingInfoRequest,
 	InsertCardOptionRequest,
 	InsertCardRequest,
 	Issue,
+	LegacyBookingInfoRequest,
 	LoginRequest,
 	LoginResponse,
 	NonBeneficiaryTransferDestination,
