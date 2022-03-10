@@ -1,10 +1,7 @@
 import * as isoly from "isoly"
+import { CardScheduleTaskType } from "./CardScheduleTaskType"
 
-enum CardScheduleTaskType {
-	CARD_AMENDMENT,
-	CARD_STATE_CHANGE,
-}
-interface ScheduledTaskRequest {
+export interface ScheduledTaskRequest {
 	dueOn: isoly.DateTime
 	status?:
 		| "TODO"
@@ -17,16 +14,5 @@ interface ScheduledTaskRequest {
 		| "PENDING"
 		| "PENDING_DECLINED"
 	taskId?: string
-	taskType?: CardScheduleTaskType.CARD_AMENDMENT | CardScheduleTaskType.CARD_STATE_CHANGE
-}
-
-export interface CardAmendmentScheduledTaskRequest extends ScheduledTaskRequest {
-	taskType: CardScheduleTaskType.CARD_AMENDMENT
-	newBalance?: number
-	balanceDifferential?: number
-	remainingBalance?: number
-}
-export interface CardStateChangeScheduledTaskRequest extends ScheduledTaskRequest {
-	taskType: CardScheduleTaskType.CARD_STATE_CHANGE
-	desiredState: "CANCEL" | "FREEZE" | "THAW"
+	taskType?: CardScheduleTaskType
 }

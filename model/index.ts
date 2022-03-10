@@ -10,12 +10,16 @@ import { BookedProductInfo } from "./BookedProductInfo"
 import { BookingInfo } from "./BookingInfo"
 import { BookingInfoRequest } from "./BookingInfoRequest"
 import { BookingInfoResponse } from "./BookingInfoResponse"
+import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
+import { CardScheduleTaskType } from "./CardScheduleTaskType"
 import { CardSearch } from "./CardSearch"
+import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
+import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
@@ -66,7 +70,7 @@ import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsR
 import { Report } from "./Report"
 import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
-import { CardAmendmentScheduledTaskRequest, CardStateChangeScheduledTaskRequest } from "./ScheduledTaskRequest"
+import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { Sorting } from "./Sorting"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
@@ -111,7 +115,9 @@ export {
 	CardOptionSearch,
 	CardResponse,
 	CardResponseV2,
+	CardScheduleTaskType,
 	CardSearch,
+	CardStateChangeDesiredState,
 	CardStateChangeScheduledTaskRequest,
 	CardTypeResponse,
 	CardTypesConfig,
@@ -162,6 +168,7 @@ export {
 	Report,
 	RoleResponse,
 	RolesetResponse,
+	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	Sorting,
 	SupplierBookingInfo,
