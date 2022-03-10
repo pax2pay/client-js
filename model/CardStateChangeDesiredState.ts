@@ -1,5 +1,1 @@
-export enum CardStateChangeDesiredState {
-	CANCEL,
-	FREEZE,
-	THAW,
-}
+export type CardStateChangeDesiredState = "CANCEL" | "FREEZE" | "THAW"
