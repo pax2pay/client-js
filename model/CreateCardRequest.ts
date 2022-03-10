@@ -1,8 +1,9 @@
 import { BookingInfoRequest } from "./BookingInfoRequest"
+import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
+import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { ProviderCode } from "./ProviderCode"
-import { CardAmendmentScheduledTaskRequest, CardStateChangeScheduledTaskRequest } from "./ScheduledTaskRequest"
 
 /**
  * Creates a virtual card.
