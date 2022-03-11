@@ -1,4 +1,6 @@
 import * as isoly from "isoly"
+import { Passengers } from "./Passengers"
+import { References } from "./References"
 
 export interface FlightBookingInfoRequest {
 	passengers?: Passengers
@@ -7,12 +9,6 @@ export interface FlightBookingInfoRequest {
 	cost?: number
 	currency?: isoly.Currency
 	timestamp?: isoly.DateTime
-}
-interface Passengers {
-	leadPassengerName?: string
-	adults?: number
-	children?: number
-	infants?: number
 }
 interface FlightInfo {
 	outbound?: Segment
@@ -23,11 +19,4 @@ interface Segment {
 	to?: string
 	date?: isoly.Date
 }
-class References {
-	supplierCode?: string
-	supplierName?: string
-	supplierBookingReference?: string
-	agentBookingReference?: string
-	fabBasketReference?: string
-	syndicatorName?: string
-}
+
