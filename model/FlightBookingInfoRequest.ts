@@ -19,4 +19,3 @@ interface Segment {
 	to?: string
 	date?: isoly.Date
 }
-

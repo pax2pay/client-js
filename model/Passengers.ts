@@ -1,6 +1,6 @@
 export interface Passengers {
-	leadPassengerName?: string;
-	adults?: number;
-	children?: number;
-	infants?: number;
+	leadPassengerName?: string
+	adults?: number
+	children?: number
+	infants?: number
 }

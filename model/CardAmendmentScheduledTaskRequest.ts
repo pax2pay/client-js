@@ -1,4 +1,3 @@
-import { CardScheduleTaskType } from "./CardScheduleTaskType"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 
 export interface CardAmendmentScheduledTaskRequest extends ScheduledTaskRequest {
