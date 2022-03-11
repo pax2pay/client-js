@@ -57,6 +57,7 @@ import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResp
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
+import { Passengers } from "./Passengers"
 import { PasswordChangeRequest } from "./PasswordChangeRequest"
 import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
@@ -66,6 +67,7 @@ import { PaymentOption } from "./PaymentOption"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
+import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
 import { RoleResponse } from "./RoleResponse"
@@ -156,6 +158,7 @@ export {
 	OrganisationConfig,
 	OrganisationRequest,
 	OrganisationResponse,
+	Passengers,
 	PasswordChangeRequest,
 	PasswordValidateRequest,
 	PasswordValidateResponse,
@@ -164,6 +167,7 @@ export {
 	PaymentOption,
 	ProcessedStatement,
 	ProviderResponse,
+	References,
 	RelogWithNewSessionDetailsRequest,
 	Report,
 	RoleResponse,

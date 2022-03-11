@@ -1,4 +1,3 @@
-import { CardScheduleTaskType } from "./CardScheduleTaskType"
 import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 
