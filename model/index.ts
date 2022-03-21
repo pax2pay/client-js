@@ -24,6 +24,7 @@ import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
+import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigRequest } from "./ConfigRequest"
@@ -125,6 +126,7 @@ export {
 	CardTypesConfig,
 	CardTypeSearchRequest,
 	CardTypeSpecification,
+	CardTypeSpecificationFlag,
 	ConfigMatchesRequest,
 	ConfigMatchesResponse,
 	ConfigRequest,
