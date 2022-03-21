@@ -1,7 +1,8 @@
-export type CardTypeSpecificationFlag = "CORPORATE" | "BUSINESS" | "CONSUMER"
+const cardTypeSpecificationFlags = ["CORPORATE", "BUSINESS", "CONSUMER"] as const
+export type CardTypeSpecificationFlag = typeof cardTypeSpecificationFlags[number]
 
 export namespace CardTypeSpecificationFlag {
-	export function is(value: CardTypeSpecificationFlag | any): value is CardTypeSpecificationFlag {
-		return value == "CORPORATE" || value == "BUSINESS" || value == "CONSUMER"
+	export function is(value: unknown): value is CardTypeSpecificationFlag {
+		return value == "string" && cardTypeSpecificationFlags.includes(value as CardTypeSpecificationFlag)
 	}
 }
