@@ -17,9 +17,10 @@ jobs:
             !~/cache/exclude
             **/node_modules
           key: ${{ runner.os }}-cache
-      - uses: actions/setup-node@v2
+      - name: "Setup Node"
+        uses: "actions/setup-node@v2"
         with:
-          node-version: '14.x'
+          node-version: 16
       - name: Update NPM
         run: npm install -g npm
       - name: Install Dependencies
@@ -29,8 +30,4 @@ jobs:
       - name: Lint
         run: npm run lint
       - name: Test
-        env:
-          url: ${{ secrets.URL }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
         run: npm run test
