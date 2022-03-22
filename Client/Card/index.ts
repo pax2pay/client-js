@@ -2,8 +2,8 @@ import * as model from "../../model"
 import { Connection } from "../Connection"
 import { Resource } from "../Resource"
 
-export class Card extends Resource<model.CardResponse, model.CreateCardRequest> {
-	constructor(connection: Connection, folder: string, backend: model.CardResponse) {
+export class Card extends Resource<model.CardResponse | model.CardResponseV2, model.CreateCardRequest> {
+	constructor(connection: Connection, folder: string, backend: model.CardResponse | model.CardResponseV2) {
 		super(connection, folder, backend)
 	}
 	amend(
