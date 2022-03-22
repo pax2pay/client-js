@@ -18,6 +18,8 @@ import {
 	CardOptionSearch,
 	CardResponse,
 	CardResponseV2,
+	CardScheduleResponse,
+	CardScheduleTaskStatus,
 	CardScheduleTaskType,
 	CardSearch,
 	CardStateChangeDesiredState,
@@ -44,6 +46,7 @@ import {
 	FiveFieldsBookingInfoResponse,
 	FlightBookingInfoRequest,
 	FundingAccountInboundTransferNotificationConfig,
+	FundingAccountResponseV2,
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
 	FundingLimitRequest,
@@ -100,6 +103,7 @@ import {
 	UserResponse,
 	UserRoleResponse,
 	UserSearchRequest,
+	YearMonth,
 } from "./model"
 
 export {
@@ -122,6 +126,8 @@ export {
 	CardOptionSearch,
 	CardResponse,
 	CardResponseV2,
+	CardScheduleResponse,
+	CardScheduleTaskStatus,
 	CardScheduleTaskType,
 	CardSearch,
 	CardStateChangeDesiredState,
@@ -148,6 +154,7 @@ export {
 	FiveFieldsBookingInfoResponse,
 	FlightBookingInfoRequest,
 	FundingAccountInboundTransferNotificationConfig,
+	FundingAccountResponseV2,
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
 	FundingLimitRequest,
@@ -172,6 +179,7 @@ export {
 	PaymentMethodOptionResponse,
 	PaymentOption,
 	ProcessedStatement,
+	ProviderCode,
 	ProviderResponse,
 	References,
 	RelogWithNewSessionDetailsRequest,
@@ -203,5 +211,5 @@ export {
 	UserResponse,
 	UserRoleResponse,
 	UserSearchRequest,
-	ProviderCode,
+	YearMonth,
 }

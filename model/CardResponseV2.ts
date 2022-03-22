@@ -1,20 +1,23 @@
-import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
+import { CardScheduleResponseItem } from "./CardScheduleResponse"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
+import { FundingAccountResponseV2 } from "./FundingAccountResponseV2"
 import { ProviderCode } from "./ProviderCode"
+import { YearMonth } from "./YearMonth"
 
 export interface CardResponseV2 {
 	cardType: CardTypeSpecification | string
 	cardNumber: string
 	cvv: string
-	expiryDate: string
+	expiryDate: YearMonth
 	nameOnCard: string
 	balance: number
 	issueDate: string
 	providerCode: ProviderCode
 	providerCardId: string
 	usage: CardUsage
-	fundingAccount: CardFundingAccountResponse
+	fundingAccount: FundingAccountResponseV2
+	schedule: CardScheduleResponseItem[]
 	createdBy: string
 }
 
@@ -25,14 +28,16 @@ export namespace CardResponseV2 {
 			(typeof value.cardType == "string" || CardTypeSpecification.is(value.cardType)) &&
 			typeof value.cardNumber == "string" &&
 			typeof value.cvv == "string" &&
-			typeof value.expiryDate == "string" &&
+			YearMonth.is(value.expiryDate) &&
 			typeof value.nameOnCard == "string" &&
 			typeof value.balance == "number" &&
 			typeof value.issueDate == "string" &&
 			ProviderCode.is(value.providerCode) &&
 			typeof value.providerCardId == "string" &&
 			CardUsage.is(value.usage) &&
-			CardFundingAccountResponse.is(value.fundingAccount) &&
+			FundingAccountResponseV2.is(value.fundingAccount) &&
+			Array.isArray(value.schedule) &&
+			value.schedule.every(CardScheduleResponseItem.is) &&
 			typeof value.createdBy == "string"
 		)
 	}
