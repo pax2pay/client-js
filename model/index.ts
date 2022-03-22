@@ -16,6 +16,8 @@ import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
+import { CardScheduleResponseItem } from "./CardScheduleResponse"
+import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
 import { CardSearch } from "./CardSearch"
 import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
@@ -42,6 +44,7 @@ import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
 import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
+import { FundingAccountResponseV2 } from "./FundingAccountResponseV2"
 import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
 import { FundingAccountSearchResponse } from "./FundingAccountSearchResponse"
 import { FundingLimitRequest } from "./FundingLimitRequest"
@@ -98,6 +101,7 @@ import { UserRequest } from "./UserRequest"
 import { UserResponse } from "./UserResponse"
 import { UserRoleResponse } from "./UserRoleResponse"
 import { UserSearchRequest } from "./UserSearchRequest"
+import { YearMonth } from "./YearMonth"
 
 export {
 	AccountCreationRequest,
@@ -118,6 +122,8 @@ export {
 	CardOptionSearch,
 	CardResponse,
 	CardResponseV2,
+	CardScheduleResponseItem as CardScheduleResponse,
+	CardScheduleTaskStatus,
 	CardScheduleTaskType,
 	CardSearch,
 	CardStateChangeDesiredState,
@@ -144,6 +150,7 @@ export {
 	FiveFieldsBookingInfoResponse,
 	FlightBookingInfoRequest,
 	FundingAccountInboundTransferNotificationConfig,
+	FundingAccountResponseV2,
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
 	FundingLimitRequest,
@@ -168,6 +175,7 @@ export {
 	PaymentMethodOptionResponse,
 	PaymentOption,
 	ProcessedStatement,
+	ProviderCode,
 	ProviderResponse,
 	References,
 	RelogWithNewSessionDetailsRequest,
@@ -199,5 +207,5 @@ export {
 	UserResponse,
 	UserRoleResponse,
 	UserSearchRequest,
-	ProviderCode,
+	YearMonth,
 }
