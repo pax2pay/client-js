@@ -14,7 +14,7 @@ export namespace CardScheduleResponseItem {
 	export function is(value: CardScheduleResponseItem | any): value is CardScheduleResponseItem {
 		return (
 			typeof value == "object" &&
-			isoly.DateTime.is(value.dueOn) &&
+			typeof value.dueOn == "string" &&
 			CardScheduleTaskStatus.is(value.status) &&
 			typeof value.statusText == "string" &&
 			CardScheduleTaskType.is(value.taskType) &&
