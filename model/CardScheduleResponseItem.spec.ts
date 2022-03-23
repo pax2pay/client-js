@@ -1,6 +1,4 @@
-import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
-import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduledTaskResponse"
 
 describe("", () => {
 	it("", () => {
@@ -65,7 +63,7 @@ describe("", () => {
 
 		expect(
 			response.every(a => {
-				return CardStateChangeScheduledTaskResponse.is(a) || CardAmendmentScheduledTaskResponse.is(a)
+				return CardScheduleResponseItem.is(a)
 			})
 		).toBeTruthy()
 	})

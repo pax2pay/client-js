@@ -1,7 +1,4 @@
-import { stringify } from "querystring"
-import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
-import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduledTaskResponse"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
 import { FundingAccountResponseV2 } from "./FundingAccountResponseV2"
@@ -20,7 +17,7 @@ export interface CardResponseV2 {
 	providerCardId: string
 	usage: CardUsage
 	fundingAccount: FundingAccountResponseV2
-	schedule: (CardStateChangeScheduledTaskResponse | CardAmendmentScheduledTaskResponse)[]
+	schedule: CardScheduleResponseItem[]
 	createdBy: string
 }
 
@@ -41,7 +38,7 @@ export namespace CardResponseV2 {
 			FundingAccountResponseV2.is(value.fundingAccount) &&
 			Array.isArray(value.schedule) &&
 			value.schedule.every((a: any) => {
-				return CardStateChangeScheduledTaskResponse.is(a) || CardAmendmentScheduledTaskResponse.is(a)
+				return CardScheduleResponseItem.is(a)
 			}) &&
 			typeof value.createdBy == "string"
 		)
