@@ -1,4 +1,4 @@
-import { CardScheduleResponseItem } from "./CardScheduleResponse"
+import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
 import { FundingAccountResponseV2 } from "./FundingAccountResponseV2"
@@ -37,7 +37,9 @@ export namespace CardResponseV2 {
 			CardUsage.is(value.usage) &&
 			FundingAccountResponseV2.is(value.fundingAccount) &&
 			Array.isArray(value.schedule) &&
-			value.schedule.every(CardScheduleResponseItem.is) &&
+			value.schedule.every((a: any) => {
+				return CardScheduleResponseItem.is(a)
+			}) &&
 			typeof value.createdBy == "string"
 		)
 	}

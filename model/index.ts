@@ -11,17 +11,19 @@ import { BookingInfo } from "./BookingInfo"
 import { BookingInfoRequest } from "./BookingInfoRequest"
 import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
+import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
-import { CardScheduleResponseItem } from "./CardScheduleResponse"
+import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
 import { CardSearch } from "./CardSearch"
 import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
+import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduledTaskResponse"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
@@ -117,17 +119,19 @@ export {
 	BookingInfoRequest,
 	BookingInfoResponse,
 	CardAmendmentScheduledTaskRequest,
+	CardAmendmentScheduledTaskResponse,
 	CardDeliveryRequest,
 	CardFundingAccountResponse,
 	CardOptionSearch,
 	CardResponse,
 	CardResponseV2,
-	CardScheduleResponseItem as CardScheduleResponse,
+	CardScheduleResponseItem,
 	CardScheduleTaskStatus,
 	CardScheduleTaskType,
 	CardSearch,
 	CardStateChangeDesiredState,
 	CardStateChangeScheduledTaskRequest,
+	CardStateChangeScheduledTaskResponse,
 	CardTypeResponse,
 	CardTypesConfig,
 	CardTypeSearchRequest,
