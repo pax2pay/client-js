@@ -1,7 +1,7 @@
 import * as isoly from "isoly"
 
 export interface CardDeliveryRequest {
-	to: Set<string>
+	to: string | [string, string]
 	message: string
 	linkExpiry: isoly.Date
 }
