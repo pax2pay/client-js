@@ -1,5 +1,6 @@
 import { AccountResponse } from "./AccountResponse"
 import { BookingInfo } from "./BookingInfo"
+import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
@@ -39,4 +40,5 @@ export interface CardResponse {
 	createdBy?: string
 	bookingInfo?: BookingInfo
 	schedule?: CardScheduleResponseItem[]
+	delivery?: CardDeliveryResponse
 }
