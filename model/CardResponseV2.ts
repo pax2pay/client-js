@@ -1,3 +1,4 @@
+import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
@@ -18,6 +19,7 @@ export interface CardResponseV2 {
 	usage: CardUsage
 	fundingAccount: FundingAccountResponseV2
 	schedule: CardScheduleResponseItem[]
+	delivery?: CardDeliveryResponse
 	createdBy: string
 }
 
@@ -40,6 +42,7 @@ export namespace CardResponseV2 {
 			value.schedule.every((a: any) => {
 				return CardScheduleResponseItem.is(a)
 			}) &&
+			(value.delivery == undefined || CardDeliveryResponse.is(value.delivery)) &&
 			typeof value.createdBy == "string"
 		)
 	}

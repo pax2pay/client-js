@@ -13,6 +13,9 @@ import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
+import { CardDeliveryResponse } from "./CardDeliveryResponse"
+import { CardDeliveryStatus } from "./CardDeliveryStatus"
+import { CardDeliveryType } from "./CardDeliveryType"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardResponse } from "./CardResponse"
@@ -121,6 +124,9 @@ export {
 	CardAmendmentScheduledTaskRequest,
 	CardAmendmentScheduledTaskResponse,
 	CardDeliveryRequest,
+	CardDeliveryResponse,
+	CardDeliveryStatus,
+	CardDeliveryType,
 	CardFundingAccountResponse,
 	CardOptionSearch,
 	CardResponse,
