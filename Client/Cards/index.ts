@@ -37,7 +37,10 @@ export class Cards extends List<
 		return new Cards(connection)
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}`)
+		const result = await this.connection.get<
+			model.CardResponse
+		>(`cards/virtual/${providerCode}/${providerCardId}?includeSchedules=true
+`)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
 	async getCardTypes(providerCode: model.ProviderCode) {
@@ -50,5 +53,10 @@ export class Cards extends List<
 			searchRequest
 		)
 		return result
+	}
+	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardResponse>(`/booking-info/cards/${providerCode}/${providerCardId}
+`)
+		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
 }
