@@ -14,6 +14,7 @@ import { BookedProductInfo } from "./BookedProductInfo"
 import { BookingInfo } from "./BookingInfo"
 import { BookingInfoRequest } from "./BookingInfoRequest"
 import { BookingInfoResponse } from "./BookingInfoResponse"
+import { BookingInfoType } from "./BookingInfoType"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
@@ -127,6 +128,7 @@ export {
 	BookingInfo,
 	BookingInfoRequest,
 	BookingInfoResponse,
+	BookingInfoType,
 	CardAmendmentScheduledTaskRequest,
 	CardAmendmentScheduledTaskResponse,
 	CardDeliveryRequest,
