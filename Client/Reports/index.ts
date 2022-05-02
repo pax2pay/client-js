@@ -38,7 +38,7 @@ export class Reports {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		return this.connection.post<model.AccountStatementResponse>(`/statement`, request)
+		return this.connection.post<model.AccountStatementResponse>(`statement`, request)
 	}
 
 	static create(connection: Connection) {
