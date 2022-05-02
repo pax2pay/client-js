@@ -4,6 +4,7 @@ import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { ProviderCode } from "./ProviderCode"
+import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 
 /**
  * Creates a virtual card.
@@ -18,7 +19,7 @@ export interface CreateCardRequest {
 	fundingDate?: string
 	expiryDate?: any
 	usage?: "SINGLE_USE" | "MULTIPLE_USE"
-	schedule?: (CardAmendmentScheduledTaskRequest | CardStateChangeScheduledTaskRequest)[]
+	schedule?: (CardAmendmentScheduledTaskRequest | CardStateChangeScheduledTaskRequest | ScheduledTaskRequest)[]
 	friendlyName?: string
 	delivery?: CardDeliveryRequest
 }
