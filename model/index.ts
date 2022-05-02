@@ -1,6 +1,10 @@
 import { AccountCreationRequest } from "./AccountCreationRequest"
 import { AccountResponse } from "./AccountResponse"
 import { AccountSearchRequest } from "./AccountSearchRequest"
+import { AccountStatementRequest } from "./AccountStatementRequest"
+import { AccountStatementResponse } from "./AccountStatementResponse"
+import { AccountStatementResponseItem } from "./AccountStatementResponseItem"
+import { AccountStatementTransactionType } from "./AccountStatementTransactionType"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AmendCardRequest } from "./AmendCardRequest"
@@ -58,6 +62,7 @@ import { Issue } from "./Issue"
 import { LegacyBookingInfoRequest } from "./LegacyBookingInfoRequest"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
+import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
@@ -109,6 +114,10 @@ export {
 	AccountCreationRequest,
 	AccountResponse,
 	AccountSearchRequest,
+	AccountStatementRequest,
+	AccountStatementResponse,
+	AccountStatementResponseItem,
+	AccountStatementTransactionType,
 	AddressInfo,
 	AgentBookingInfo,
 	AmendCardRequest,
@@ -166,6 +175,7 @@ export {
 	LegacyBookingInfoRequest,
 	LoginRequest,
 	LoginResponse,
+	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
 	OrganisationBalanceLimitResponse,
 	OrganisationConfig,
