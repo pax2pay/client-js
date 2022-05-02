@@ -37,9 +37,8 @@ export class Cards extends List<
 		return new Cards(connection)
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<
-			model.CardResponse
-		>(`cards/virtual/${providerCode}/${providerCardId}?includeSchedules=true
+		const result = await this.connection
+			.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}?includeSchedules=true
 `)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
