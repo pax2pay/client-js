@@ -9,4 +9,3 @@ export interface CardDeliveryResponse {
 	status: "SUCCESS" | "FAILURE" | "TODO"
 	statusText?: string
 }
-

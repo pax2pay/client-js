@@ -6,9 +6,7 @@ export class Card extends Resource<model.CardResponse | model.CardResponseV2, mo
 	constructor(connection: Connection, folder: string, backend: model.CardResponse | model.CardResponseV2) {
 		super(connection, folder, backend)
 	}
-	amend(
-		request: model.AmendCardRequest
-	): Promise<
+	amend(request: model.AmendCardRequest): Promise<
 		| model.CardResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503

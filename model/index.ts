@@ -1,6 +1,10 @@
 import { AccountCreationRequest } from "./AccountCreationRequest"
 import { AccountResponse } from "./AccountResponse"
 import { AccountSearchRequest } from "./AccountSearchRequest"
+import { AccountStatementRequest } from "./AccountStatementRequest"
+import { AccountStatementResponse } from "./AccountStatementResponse"
+import { AccountStatementResponseItem } from "./AccountStatementResponseItem"
+import { AccountStatementTransactionType } from "./AccountStatementTransactionType"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AmendCardRequest } from "./AmendCardRequest"
@@ -10,6 +14,7 @@ import { BookedProductInfo } from "./BookedProductInfo"
 import { BookingInfo } from "./BookingInfo"
 import { BookingInfoRequest } from "./BookingInfoRequest"
 import { BookingInfoResponse } from "./BookingInfoResponse"
+import { BookingInfoType } from "./BookingInfoType"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
@@ -58,6 +63,7 @@ import { Issue } from "./Issue"
 import { LegacyBookingInfoRequest } from "./LegacyBookingInfoRequest"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
+import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
@@ -109,6 +115,10 @@ export {
 	AccountCreationRequest,
 	AccountResponse,
 	AccountSearchRequest,
+	AccountStatementRequest,
+	AccountStatementResponse,
+	AccountStatementResponseItem,
+	AccountStatementTransactionType,
 	AddressInfo,
 	AgentBookingInfo,
 	AmendCardRequest,
@@ -118,6 +128,7 @@ export {
 	BookingInfo,
 	BookingInfoRequest,
 	BookingInfoResponse,
+	BookingInfoType,
 	CardAmendmentScheduledTaskRequest,
 	CardAmendmentScheduledTaskResponse,
 	CardDeliveryRequest,
@@ -166,6 +177,7 @@ export {
 	LegacyBookingInfoRequest,
 	LoginRequest,
 	LoginResponse,
+	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
 	OrganisationBalanceLimitResponse,
 	OrganisationConfig,
