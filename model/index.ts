@@ -18,6 +18,7 @@ import { BookingInfoType } from "./BookingInfoType"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
+import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardResponse } from "./CardResponse"
@@ -57,6 +58,7 @@ import { FundingAccountSearchResponse } from "./FundingAccountSearchResponse"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
 import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
+import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
 import { Issue } from "./Issue"
@@ -132,6 +134,7 @@ export {
 	CardAmendmentScheduledTaskRequest,
 	CardAmendmentScheduledTaskResponse,
 	CardDeliveryRequest,
+	CardDeliveryResponse,
 	CardFundingAccountResponse,
 	CardOptionSearch,
 	CardResponse,
@@ -171,6 +174,7 @@ export {
 	FundingLimitRequest,
 	FundingLimitResponse,
 	HotelBookingInfoRequest,
+	HotelBookingInfoResponse,
 	InsertCardOptionRequest,
 	InsertCardRequest,
 	Issue,
