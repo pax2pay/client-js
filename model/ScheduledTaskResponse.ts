@@ -5,4 +5,7 @@ export interface ScheduledTaskResponse {
 	status: string
 	taskType: string
 	taskId: string
+	newBalance?: number
+	remainingBalance?: number
+	balanceDifferential?: number
 }

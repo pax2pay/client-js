@@ -15,4 +15,7 @@ export interface ScheduledTaskRequest {
 		| "PENDING_DECLINED"
 	taskId?: string
 	taskType?: CardScheduleTaskType
+	newBalance?: number
+	remainingBalance?: number
+	balanceDifferential?: number
 }
