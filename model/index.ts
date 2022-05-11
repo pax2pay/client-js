@@ -51,6 +51,8 @@ import { ErrorResponse } from "./ErrorResponse"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
 import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
+import { FlightBookingInfoResponse } from "./FlightBookingInfoResponse"
+import { FlightInfo } from "./FlightInfo"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingAccountResponseV2 } from "./FundingAccountResponseV2"
 import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
@@ -59,6 +61,7 @@ import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
 import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
 import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
+import { HotelInfo } from "./HotelInfo"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
 import { Issue } from "./Issue"
@@ -86,6 +89,7 @@ import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsR
 import { Report } from "./Report"
 import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
+import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { Sorting } from "./Sorting"
@@ -167,6 +171,8 @@ export {
 	FiveFieldsBookingInfoRequest,
 	FiveFieldsBookingInfoResponse,
 	FlightBookingInfoRequest,
+	FlightBookingInfoResponse,
+	FlightInfo,
 	FundingAccountInboundTransferNotificationConfig,
 	FundingAccountResponseV2,
 	FundingAccountSearchRequest,
@@ -175,6 +181,7 @@ export {
 	FundingLimitResponse,
 	HotelBookingInfoRequest,
 	HotelBookingInfoResponse,
+	HotelInfo,
 	InsertCardOptionRequest,
 	InsertCardRequest,
 	Issue,
@@ -202,6 +209,7 @@ export {
 	Report,
 	RoleResponse,
 	RolesetResponse,
+	Room,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	Sorting,
