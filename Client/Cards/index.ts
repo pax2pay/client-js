@@ -1,4 +1,3 @@
-import { request } from "http"
 import * as model from "../../model"
 import { Card } from "../Card"
 import { Connection } from "../Connection"
