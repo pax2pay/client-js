@@ -1,3 +1,4 @@
+import { request } from "http"
 import * as model from "../../model"
 import { Card } from "../Card"
 import { Connection } from "../Connection"
@@ -56,6 +57,13 @@ export class Cards extends List<
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardResponse>(`/booking-info/cards/${providerCode}/${providerCardId}
 `)
-		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
+		return result
+	}
+	async putCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
+		const result = await this.connection.put<model.CardResponse>(
+			`/booking-info/cards/${providerCode}/${providerCardId}`,
+			request
+		)
+		return result
 	}
 }
