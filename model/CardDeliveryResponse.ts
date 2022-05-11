@@ -9,3 +9,17 @@ export interface CardDeliveryResponse {
 	status: "SUCCESS" | "FAILURE" | "TODO"
 	statusText?: string
 }
+export namespace CardDeliveryResponse {
+	export function is(value: CardDeliveryResponse | any): value is CardDeliveryResponse {
+		return (
+			typeof value == "object" &&
+			value.type == "EMAIL" &&
+			(typeof value.to == "string" || typeof value.to == "object") &&
+			typeof value.deliveredMessage == "string" &&
+			isoly.Date.is(value.linkExpiry) &&
+			typeof value.sent == "string" &&
+			typeof value.statusText == "string" &&
+			(value.status == "SUCCESS" || value.status == "FAILURE" || value.status == "TODO")
+		)
+	}
+}
