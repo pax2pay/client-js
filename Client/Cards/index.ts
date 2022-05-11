@@ -58,7 +58,7 @@ export class Cards extends List<
 `)
 		return result
 	}
-	async putCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
+	async editCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
 		const result = await this.connection.put<model.CardResponse>(
 			`/booking-info/cards/${providerCode}/${providerCardId}`,
 			request
