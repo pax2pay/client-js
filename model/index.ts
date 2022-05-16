@@ -64,6 +64,8 @@ import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
 import { HotelInfo } from "./HotelInfo"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
+import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
+import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
 import { Issue } from "./Issue"
 import { LegacyBookingInfoRequest } from "./LegacyBookingInfoRequest"
 import { LoginRequest } from "./LoginRequest"
@@ -184,6 +186,8 @@ export {
 	HotelInfo,
 	InsertCardOptionRequest,
 	InsertCardRequest,
+	InvoiceBookingInfoRequest,
+	InvoiceBookingInfoResponse,
 	Issue,
 	LegacyBookingInfoRequest,
 	LoginRequest,
