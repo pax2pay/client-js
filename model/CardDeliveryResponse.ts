@@ -18,7 +18,7 @@ export namespace CardDeliveryResponse {
 			typeof value.deliveredMessage == "string" &&
 			isoly.Date.is(value.linkExpiry) &&
 			typeof value.sent == "string" &&
-			typeof value.statusText == "string" &&
+			(typeof value.statusText == "string" || value.statusText == undefined) &&
 			(value.status == "SUCCESS" || value.status == "FAILURE" || value.status == "TODO")
 		)
 	}
