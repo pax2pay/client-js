@@ -7,3 +7,8 @@ export interface HotelInfo {
 	hotelName?: string
 	rooms?: Room[]
 }
+export namespace HotelInfo {
+	export function is(value: HotelInfo | any): value is HotelInfo {
+		return typeof value == "object" && isoly.Date.is(value.checkIn)
+	}
+}

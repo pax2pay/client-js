@@ -11,3 +11,14 @@ export interface HotelBookingInfoRequest {
 	currency?: isoly.Currency
 	timestamp?: isoly.DateTime
 }
+export namespace HotelBookingInfoRequest {
+	export function is(value: HotelBookingInfoRequest | any): value is HotelBookingInfoRequest {
+		return (
+			typeof value == "object" &&
+			HotelInfo.is(value.hotel) &&
+			References.is(value.references) &&
+			Passengers.is(value.passengers) &&
+			isoly.DateTime.is(value.timestamp)
+		)
+	}
+}
