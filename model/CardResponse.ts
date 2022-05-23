@@ -1,12 +1,9 @@
 import { AccountResponse } from "./AccountResponse"
-import { BookingInfo } from "./BookingInfo"
+import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
-import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
-import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
-import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
 import { ProviderCode } from "./ProviderCode"
 
 export interface CardResponse {
@@ -41,7 +38,7 @@ export interface CardResponse {
 		| "UNKNOWN"
 		| "UNDEFINED"
 	createdBy?: string
-	bookingInfo?: BookingInfo | FiveFieldsBookingInfoResponse | HotelBookingInfoResponse | InvoiceBookingInfoResponse
+	bookingInfo?: BookingInfoResponse
 	schedule?: CardScheduleResponseItem[]
 	delivery?: CardDeliveryResponse
 }
