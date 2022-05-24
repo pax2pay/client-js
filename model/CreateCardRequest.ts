@@ -22,4 +22,5 @@ export interface CreateCardRequest {
 	schedule?: (CardAmendmentScheduledTaskRequest | CardStateChangeScheduledTaskRequest | ScheduledTaskRequest)[]
 	friendlyName?: string
 	delivery?: CardDeliveryRequest
+	state?: string
 }
