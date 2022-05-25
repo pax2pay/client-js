@@ -15,4 +15,9 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	static create(connection: Connection) {
 		return new Users(connection)
 	}
+	async getUsersActiveRoles(username: string, token: string): Promise<string[] | model.ErrorResponse> {
+		this.connection.token = token
+		const result = await this.connection.get<string[]>(`users/${username}/roles/minified`)
+		return result
+	}
 }
