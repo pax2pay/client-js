@@ -1,18 +1,11 @@
 import * as isoly from "isoly"
+import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
 
 export interface ScheduledTaskRequest {
 	dueOn: isoly.DateTime
-	status?:
-		| "TODO"
-		| "CANCELLED"
-		| "CANCELLED_EXCEPTIONALLY"
-		| "SUCCESSFUL"
-		| "FAILED"
-		| "FAILED_EXCEPTIONALLY"
-		| "HALTED"
-		| "PENDING"
-		| "PENDING_DECLINED"
+	status?: CardScheduleTaskStatus
+	desiredState?: "CANCEL" | "FREEZE" | "THAW"
 	taskId?: string
 	taskType?: CardScheduleTaskType
 	newBalance?: number
