@@ -3,7 +3,7 @@ import { ScheduledTaskResponse } from "./ScheduledTaskResponse"
 
 export interface CardStateChangeScheduledTaskResponse extends ScheduledTaskResponse {
 	taskType: "CARD_STATE_CHANGE"
-	desiredState: CardStateChangeDesiredState
+	desiredState?: CardStateChangeDesiredState
 }
 
 export namespace CardStateChangeScheduledTaskResponse {
