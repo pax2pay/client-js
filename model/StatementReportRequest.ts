@@ -1,7 +1,7 @@
 import * as isoly from "isoly"
 import { ProviderCode } from "./ProviderCode"
 
-export interface AccountStatementRequest {
+export interface StatementReportRequest {
 	providerCode: ProviderCode
 	providerAccountId: string
 	period: {

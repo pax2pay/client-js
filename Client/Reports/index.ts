@@ -32,13 +32,13 @@ export class Reports {
 		return await this.connection.post<model.Report.Statement>(`../reports/statement`, request)
 	}
 
-	statementForTable(request: model.AccountStatementRequest): Promise<
-		| model.AccountStatementResponse
+	statementForTable(request: model.StatementReportRequest): Promise<
+		| model.StatementReportResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		return this.connection.post<model.AccountStatementResponse>(`statement`, request)
+		return this.connection.post<model.StatementReportResponse>(`statement`, request)
 	}
 
 	static create(connection: Connection) {
