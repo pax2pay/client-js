@@ -8,7 +8,7 @@ import { ProviderResponse } from "./ProviderResponse"
  * The funding accounts created
  */
 export interface AccountResponse {
-	id?: number
+	id: number
 	providerAccountId: string
 	provider: ProviderResponse
 	organisation: OrganisationResponse
@@ -27,7 +27,7 @@ export namespace AccountResponse {
 	export function is(value: AccountResponse | any): value is AccountResponse {
 		return (
 			typeof value == "object" &&
-			(value.id == undefined || typeof value.id == "number") &&
+			typeof value.id == "number" &&
 			typeof value.providerAccountId == "string" &&
 			ProviderResponse.is(value.provider) &&
 			OrganisationResponse.is(value.organisation) &&
