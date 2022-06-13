@@ -1,0 +1,17 @@
+const statementReportRowActionType = [
+	"AUTHORISATION",
+	"AUTHORISATION_DECLINED",
+	"SETTLEMENT",
+	"AUTHORISATION_AND_SETTLEMENT",
+	"REVERSAL",
+	"REFUND",
+	"TRANSFER_IN",
+	"TRANSFER_OUT",
+] as const
+export type StatementReportRowActionType = typeof statementReportRowActionType[number]
+
+export namespace StatementReportRowActionType {
+	export function is(value: unknown): value is StatementReportRowActionType {
+		return typeof value == "string" && statementReportRowActionType.includes(value as StatementReportRowActionType)
+	}
+}

@@ -1,15 +1,15 @@
 import { AccountCreationRequest } from "./AccountCreationRequest"
 import { AccountResponse } from "./AccountResponse"
 import { AccountSearchRequest } from "./AccountSearchRequest"
-import { AccountStatementRequest } from "./AccountStatementRequest"
-import { AccountStatementResponse } from "./AccountStatementResponse"
-import { AccountStatementResponseItem } from "./AccountStatementResponseItem"
-import { AccountStatementTransactionType } from "./AccountStatementTransactionType"
+import { AccountState } from "./AccountState"
+import { AccountType } from "./AccountType"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AmendCardRequest } from "./AmendCardRequest"
+import { AmountPair } from "./AmountPair"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
+import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
 import { BookedProductInfo } from "./BookedProductInfo"
 import { BookingInfo } from "./BookingInfo"
 import { BookingInfoRequest } from "./BookingInfoRequest"
@@ -95,6 +95,13 @@ import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { Sorting } from "./Sorting"
+import { StatementReportRequest } from "./StatementReportRequest"
+import { StatementReportResponse } from "./StatementReportResponse"
+import { StatementReportResponseRow } from "./StatementReportResponseRow"
+import { StatementReportRowActionType } from "./StatementReportRowActionType"
+import { StatementReportRowType } from "./StatementReportRowType"
+import { StatementRowIds } from "./StatementRowIds"
+import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
 import { TransactionResponse } from "./TransactionResponse"
 import { TransactionType } from "./TransactionType"
@@ -123,15 +130,15 @@ export {
 	AccountCreationRequest,
 	AccountResponse,
 	AccountSearchRequest,
-	AccountStatementRequest,
-	AccountStatementResponse,
-	AccountStatementResponseItem,
-	AccountStatementTransactionType,
+	AccountState,
+	AccountType,
 	AddressInfo,
 	AgentBookingInfo,
 	AmendCardRequest,
+	AmountPair,
 	BeneficiaryRequest,
 	BeneficiaryResponse,
+	BillingTransactionAmountPair,
 	BookedProductInfo,
 	BookingInfo,
 	BookingInfoRequest,
@@ -217,6 +224,13 @@ export {
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	Sorting,
+	StatementReportRequest,
+	StatementReportResponse,
+	StatementReportResponseRow,
+	StatementReportRowActionType,
+	StatementReportRowType,
+	StatementRowIds,
+	SummaryBookingInfoResponse,
 	SupplierBookingInfo,
 	TransactionResponse,
 	TransactionType,
