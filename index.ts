@@ -132,7 +132,6 @@ import {
 	UserSearchRequest,
 	YearMonth,
 } from "./model"
-import { FundingAccountIdentifierType } from "./model/FundingAccountIdentifierType"
 
 export {
 	Client,
