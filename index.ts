@@ -1,9 +1,12 @@
 import { Client } from "./Client"
 import {
+	AccountBankResponse,
 	AccountCreationRequest,
+	AccountIdentifierResponse,
 	AccountResponse,
 	AccountSearchRequest,
 	AccountState,
+	AccountSummary,
 	AccountType,
 	AddressInfo,
 	AgentBookingInfo,
@@ -55,6 +58,7 @@ import {
 	FlightBookingInfoRequest,
 	FlightBookingInfoResponse,
 	FlightInfo,
+	FundingAccountIdentifierType,
 	FundingAccountInboundTransferNotificationConfig,
 	FundingAccountResponseV2,
 	FundingAccountSearchRequest,
@@ -128,13 +132,17 @@ import {
 	UserSearchRequest,
 	YearMonth,
 } from "./model"
+import { FundingAccountIdentifierType } from "./model/FundingAccountIdentifierType"
 
 export {
 	Client,
+	AccountBankResponse,
 	AccountCreationRequest,
+	AccountIdentifierResponse,
 	AccountResponse,
 	AccountSearchRequest,
 	AccountState,
+	AccountSummary,
 	AccountType,
 	AddressInfo,
 	AgentBookingInfo,
@@ -186,6 +194,7 @@ export {
 	FlightBookingInfoRequest,
 	FlightBookingInfoResponse,
 	FlightInfo,
+	FundingAccountIdentifierType,
 	FundingAccountInboundTransferNotificationConfig,
 	FundingAccountResponseV2,
 	FundingAccountSearchRequest,
