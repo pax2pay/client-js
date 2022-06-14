@@ -4,8 +4,10 @@ import { ProviderCode } from "./ProviderCode"
 export interface StatementReportRequest {
 	providerCode: ProviderCode
 	providerAccountId: string
-	period: {
+	dateRange: {
 		start: isoly.DateTime
 		end: isoly.DateTime
 	}
+	balanceType?: "AVAILABLE" | "ACTUAL"
+	type?: "summary" | "full"
 }

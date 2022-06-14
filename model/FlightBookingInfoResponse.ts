@@ -14,3 +14,20 @@ export interface FlightBookingInfoResponse {
 	currency?: isoly.Currency
 	timestamp: isoly.DateTime
 }
+
+export namespace FlightBookingInfoResponse {
+	export function is(value: FlightBookingInfoResponse | any): value is FlightBookingInfoResponse {
+		return (
+			typeof value == "object" &&
+			value.type == "FLIGHT" &&
+			(value.bookingInfoIdentifier == undefined || typeof value.bookingInfoIdentifier == "string") &&
+			(value.trackingId == undefined || typeof value.trackingId == "string") &&
+			Passengers.is(value.passengers) &&
+			FlightInfo.is(value.flight) &&
+			References.is(value.references) &&
+			(value.cost == undefined || typeof value.cost == "number") &&
+			(value.currency == undefined || isoly.Currency.is(value.currency)) &&
+			isoly.DateTime.is(value.timestamp)
+		)
+	}
+}

@@ -10,3 +10,15 @@ export type BookingInfoResponse =
 	| InvoiceBookingInfoResponse
 	| FlightBookingInfoResponse
 	| SummaryBookingInfoResponse
+
+export namespace BookingInfoResponse {
+	export function is(value: BookingInfoResponse | any): value is BookingInfoResponse {
+		return (
+			FiveFieldsBookingInfoResponse.is(value) ||
+			HotelBookingInfoResponse.is(value) ||
+			InvoiceBookingInfoResponse.is(value) ||
+			FlightBookingInfoResponse.is(value) ||
+			SummaryBookingInfoResponse.is(value)
+		)
+	}
+}
