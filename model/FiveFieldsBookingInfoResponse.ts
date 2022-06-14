@@ -8,3 +8,19 @@ export interface FiveFieldsBookingInfoResponse {
 	supplierCode?: string
 	trackingId?: string
 }
+
+export namespace FiveFieldsBookingInfoResponse {
+	export function is(value: FiveFieldsBookingInfoResponse | any): value is FiveFieldsBookingInfoResponse {
+		return (
+			typeof value == "object" &&
+			value.type == "FIVE_FIELDS" &&
+			typeof value.bookingInfoIdentifier == "string" &&
+			(value.agentBookingReference == undefined || typeof value.agentBookingReference) == "string" &&
+			(value.departureDate == undefined || typeof value.departureDate) == "string" &&
+			(value.supplierBookingReference == undefined || typeof value.supplierBookingReference) == "string" &&
+			(value.leadPassengerName == undefined || typeof value.leadPassengerName) == "string" &&
+			(value.supplierCode == undefined || typeof value.supplierCode) == "string" &&
+			(value.trackingId == undefined || typeof value.trackingId) == "string"
+		)
+	}
+}

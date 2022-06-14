@@ -12,6 +12,7 @@ import { AmendCardRequest } from "./AmendCardRequest"
 import { AmountPair } from "./AmountPair"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
+import { BeneficiaryStatus } from "./BeneficiaryStatus"
 import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
 import { BookedProductInfo } from "./BookedProductInfo"
 import { BookingInfo } from "./BookingInfo"
@@ -98,6 +99,7 @@ import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
+import { Segment } from "./Segment"
 import { Sorting } from "./Sorting"
 import { StatementReportRequest } from "./StatementReportRequest"
 import { StatementReportResponse } from "./StatementReportResponse"
@@ -113,6 +115,7 @@ import { TransferDestinationInfo } from "./TransferDestinationInfo"
 import { TransferRequest } from "./TransferRequest"
 import { TransferResponse } from "./TransferResponse"
 import { TransferSearch } from "./TransferSearch"
+import { TransferStatus } from "./TransferStatus"
 import { TravelPartyInfo } from "./TravelPartyInfo"
 import { TwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails"
 import { TwoFactorAuthenticationRegistrationResponse } from "./TwoFactorAuthenticationRegistrationResponse"
@@ -145,6 +148,7 @@ export {
 	AmountPair,
 	BeneficiaryRequest,
 	BeneficiaryResponse,
+	BeneficiaryStatus,
 	BillingTransactionAmountPair,
 	BookedProductInfo,
 	BookingInfo,
@@ -231,6 +235,7 @@ export {
 	Room,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
+	Segment,
 	Sorting,
 	StatementReportRequest,
 	StatementReportResponse,
@@ -246,6 +251,7 @@ export {
 	TransferRequest,
 	TransferResponse,
 	TransferSearch,
+	TransferStatus,
 	TravelPartyInfo,
 	TwoFactorAuthenticationDetails,
 	TwoFactorAuthenticationRegistrationResponse,

@@ -5,3 +5,13 @@ export interface BillingTransactionAmountPair {
 	transaction: AmountPair
 	fxRate: number
 }
+export namespace BillingTransactionAmountPair {
+	export function is(value: BillingTransactionAmountPair | any): value is BillingTransactionAmountPair {
+		return (
+			typeof value == "object" &&
+			AmountPair.is(value.billing) &&
+			AmountPair.is(value.transaction) &&
+			typeof value.fxRate == "number"
+		)
+	}
+}
