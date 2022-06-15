@@ -7,18 +7,12 @@ import { AccountState } from "./AccountState"
 import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
 import { AddressInfo } from "./AddressInfo"
-import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AmendCardRequest } from "./AmendCardRequest"
 import { AmountPair } from "./AmountPair"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
 import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
-import { BookedProductInfo } from "./BookedProductInfo"
-import { BookingInfo } from "./BookingInfo"
-import { BookingInfoRequest } from "./BookingInfoRequest"
-import { BookingInfoResponse } from "./BookingInfoResponse"
-import { BookingInfoType } from "./BookingInfoType"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
@@ -52,11 +46,6 @@ import { Criteria } from "./Criteria"
 import { DateRangeLocalDate } from "./DateRangeLocalDate"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
-import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
-import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
-import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
-import { FlightBookingInfoResponse } from "./FlightBookingInfoResponse"
-import { FlightInfo } from "./FlightInfo"
 import { FundingAccountIdentifierType } from "./FundingAccountIdentifierType"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingAccountResponseV2 } from "./FundingAccountResponseV2"
@@ -64,24 +53,17 @@ import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
 import { FundingAccountSearchResponse } from "./FundingAccountSearchResponse"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
-import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
-import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
-import { HotelInfo } from "./HotelInfo"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
-import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
-import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
 import { Issue } from "./Issue"
-import { LegacyBookingInfoRequest } from "./LegacyBookingInfoRequest"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
-import { MinimalBookingInfo } from "./MinimalBookingInfo"
+import { Meta } from "./Meta"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
-import { Passengers } from "./Passengers"
 import { PasswordChangeRequest } from "./PasswordChangeRequest"
 import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
@@ -91,15 +73,12 @@ import { PaymentOption } from "./PaymentOption"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
-import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
 import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
-import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
-import { Segment } from "./Segment"
 import { Sorting } from "./Sorting"
 import { StatementReportRequest } from "./StatementReportRequest"
 import { StatementReportResponse } from "./StatementReportResponse"
@@ -107,8 +86,6 @@ import { StatementReportResponseRow } from "./StatementReportResponseRow"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementRowIds } from "./StatementRowIds"
-import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
-import { SupplierBookingInfo } from "./SupplierBookingInfo"
 import { TransactionResponse } from "./TransactionResponse"
 import { TransactionType } from "./TransactionType"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
@@ -116,7 +93,6 @@ import { TransferRequest } from "./TransferRequest"
 import { TransferResponse } from "./TransferResponse"
 import { TransferSearch } from "./TransferSearch"
 import { TransferStatus } from "./TransferStatus"
-import { TravelPartyInfo } from "./TravelPartyInfo"
 import { TwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails"
 import { TwoFactorAuthenticationRegistrationResponse } from "./TwoFactorAuthenticationRegistrationResponse"
 import { UpdateAccountRequest } from "./UpdateAccountRequest"
@@ -143,18 +119,12 @@ export {
 	AccountSummary,
 	AccountType,
 	AddressInfo,
-	AgentBookingInfo,
 	AmendCardRequest,
 	AmountPair,
 	BeneficiaryRequest,
 	BeneficiaryResponse,
 	BeneficiaryStatus,
 	BillingTransactionAmountPair,
-	BookedProductInfo,
-	BookingInfo,
-	BookingInfoRequest,
-	BookingInfoResponse,
-	BookingInfoType,
 	CardAmendmentScheduledTaskRequest,
 	CardAmendmentScheduledTaskResponse,
 	CardDeliveryRequest,
@@ -188,11 +158,6 @@ export {
 	DateRangeLocalDate,
 	ErrorMessageDto,
 	ErrorResponse,
-	FiveFieldsBookingInfoRequest,
-	FiveFieldsBookingInfoResponse,
-	FlightBookingInfoRequest,
-	FlightBookingInfoResponse,
-	FlightInfo,
 	FundingAccountIdentifierType,
 	FundingAccountInboundTransferNotificationConfig,
 	FundingAccountResponseV2,
@@ -200,24 +165,17 @@ export {
 	FundingAccountSearchResponse,
 	FundingLimitRequest,
 	FundingLimitResponse,
-	HotelBookingInfoRequest,
-	HotelBookingInfoResponse,
-	HotelInfo,
 	InsertCardOptionRequest,
 	InsertCardRequest,
-	InvoiceBookingInfoRequest,
-	InvoiceBookingInfoResponse,
 	Issue,
-	LegacyBookingInfoRequest,
 	LoginRequest,
 	LoginResponse,
-	MinimalBookingInfo,
+	Meta,
 	NonBeneficiaryTransferDestination,
 	OrganisationBalanceLimitResponse,
 	OrganisationConfig,
 	OrganisationRequest,
 	OrganisationResponse,
-	Passengers,
 	PasswordChangeRequest,
 	PasswordValidateRequest,
 	PasswordValidateResponse,
@@ -227,15 +185,12 @@ export {
 	ProcessedStatement,
 	ProviderCode,
 	ProviderResponse,
-	References,
 	RelogWithNewSessionDetailsRequest,
 	Report,
 	RoleResponse,
 	RolesetResponse,
-	Room,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
-	Segment,
 	Sorting,
 	StatementReportRequest,
 	StatementReportResponse,
@@ -243,8 +198,6 @@ export {
 	StatementReportRowActionType,
 	StatementReportRowType,
 	StatementRowIds,
-	SummaryBookingInfoResponse,
-	SupplierBookingInfo,
 	TransactionResponse,
 	TransactionType,
 	TransferDestinationInfo,
@@ -252,7 +205,6 @@ export {
 	TransferResponse,
 	TransferSearch,
 	TransferStatus,
-	TravelPartyInfo,
 	TwoFactorAuthenticationDetails,
 	TwoFactorAuthenticationRegistrationResponse,
 	UpdateAccountRequest,

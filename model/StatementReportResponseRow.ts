@@ -1,6 +1,6 @@
 import * as isoly from "isoly"
 import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
-import { BookingInfoResponse } from "./BookingInfoResponse"
+import { BookingInfoResponse } from "./Meta/BookingInfoResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"

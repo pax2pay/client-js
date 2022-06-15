@@ -1,4 +1,4 @@
-import { BookingInfo } from "./BookingInfo"
+import { Meta } from "./Meta"
 import { TransactionType } from "./TransactionType"
 
 export interface TransactionResponse {

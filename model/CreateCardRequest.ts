@@ -1,4 +1,4 @@
-import { BookingInfoRequest } from "./BookingInfoRequest"
+import { BookingInfoRequest } from "./Meta/BookingInfoRequest"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"

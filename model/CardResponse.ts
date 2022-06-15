@@ -1,11 +1,10 @@
 import { AccountResponse } from "./AccountResponse"
-import { AccountState } from "./AccountState"
-import { BookingInfo } from "./BookingInfo"
-import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
+import { Meta } from "./Meta"
+import { BookingInfoResponse } from "./Meta/BookingInfoResponse"
 import { ProviderCode } from "./ProviderCode"
 
 export interface CardResponse {
