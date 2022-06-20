@@ -5,5 +5,6 @@ export interface StatementReportResponse {
 	closingAvailableBalance: number
 	openingActualBalance: number
 	closingActualBalance: number
+	totalStatements: number
 	statements: StatementReportResponseRow[]
 }
