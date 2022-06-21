@@ -32,13 +32,30 @@ export class Reports {
 		return await this.connection.post<model.Report.Statement>(`../reports/statement`, request)
 	}
 
-	statementForTable(request: model.StatementReportRequest): Promise<
+	statementForTable(
+		request: model.StatementReportRequest,
+		page?: number,
+		pageSize?: number
+	): Promise<
 		| model.StatementReportResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		return this.connection.post<model.StatementReportResponse>(`statement`, request)
+		let path = `statement`
+		if (page || pageSize)
+			path = this.attachPageable(path, page, pageSize)
+
+		return this.connection.post<model.StatementReportResponse>(path, request)
+	}
+
+	attachPageable(base: string, page?: number, pageSize?: number) {
+		return (
+			base +
+			"?" +
+			(page ? `page=${page}` : "") +
+			(pageSize && page ? `&size=${pageSize}` : pageSize ? `size=${pageSize}` : "")
+		)
 	}
 
 	static create(connection: Connection) {

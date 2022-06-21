@@ -3,7 +3,7 @@ import * as pax2pay from "../../index"
 dotenv.config()
 jest.setTimeout(100000)
 
-describe("pax2pay.reports.reconciliationReport", () => {
+describe("pax2pay.reports", () => {
 	const client = pax2pay.Client.create(process.env.url)
 	beforeAll(
 		async () =>
@@ -31,5 +31,12 @@ describe("pax2pay.reports.reconciliationReport", () => {
 				statements: expect.any(Array),
 			},
 		})
+	})
+
+	it("attachPageable", async () => {
+		const result = await client?.reports.attachPageable("statement", 2, 10)
+		expect(result).toEqual("statement?page=2&size=10")
+		const result2 = await client?.reports.attachPageable("statement", 5, 30)
+		expect(result2).toEqual("statement?page=5&size=30")
 	})
 })
