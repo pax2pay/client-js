@@ -48,7 +48,11 @@ export class Reports {
 
 		return this.connection.post<model.StatementReportResponse>(path, request)
 	}
-
+	async getStatementForTable(rowId: string) {
+		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}
+`)
+		return result
+	}
 	attachPageable(base: string, page?: number, pageSize?: number) {
 		return (
 			base +
