@@ -38,10 +38,11 @@ export namespace CardResponseV2 {
 			typeof value.providerCardId == "string" &&
 			CardUsage.is(value.usage) &&
 			FundingAccountResponseV2.is(value.fundingAccount) &&
-			Array.isArray(value.schedule) &&
-			value.schedule.every((a: any) => {
-				return CardScheduleResponseItem.is(a)
-			}) &&
+			(value.schedule == undefined ||
+				(Array.isArray(value.schedule) &&
+					value.schedule.every((a: any) => {
+						return CardScheduleResponseItem.is(a)
+					}))) &&
 			typeof value.createdBy == "string" &&
 			CardDeliveryResponse.is(value.delivery)
 		)
