@@ -1,4 +1,5 @@
 import { Currency } from "isoly"
+import { AccountState } from "./AccountState"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
@@ -24,7 +25,7 @@ export interface CardResponseV2 {
 	fundingAccount: FundingAccountResponseV2
 	schedule: CardScheduleResponseItem[]
 	createdBy: string
-	state: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
+	state: AccountState
 	delivery?: CardDeliveryResponse
 }
 

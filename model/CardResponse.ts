@@ -1,4 +1,5 @@
 import { AccountResponse } from "./AccountResponse"
+import { AccountState } from "./AccountState"
 import { BookingInfo } from "./BookingInfo"
 import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
@@ -22,7 +23,7 @@ export interface CardResponse {
 	remainingBalance?: number
 	notes?: string
 	usage?: CardUsage
-	state?: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
+	state?: AccountState
 	providerCode?: ProviderCode
 	providerCardId?: string
 	cardAccount?: AccountResponse
