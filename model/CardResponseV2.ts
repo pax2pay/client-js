@@ -1,3 +1,4 @@
+import { Currency } from "isoly"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
@@ -12,7 +13,10 @@ export interface CardResponseV2 {
 	cvv: string
 	expiryDate: YearMonth
 	nameOnCard: string
+	fundingBalance: number
+	fundingDate: string
 	balance: number
+	currency: Currency
 	issueDate: string
 	providerCode: ProviderCode
 	providerCardId: string
@@ -20,6 +24,7 @@ export interface CardResponseV2 {
 	fundingAccount: FundingAccountResponseV2
 	schedule: CardScheduleResponseItem[]
 	createdBy: string
+	state: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
 	delivery?: CardDeliveryResponse
 }
 

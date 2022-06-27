@@ -1,6 +1,7 @@
 export interface FundingAccountResponseV2 {
 	providerAccountId: string
 	balance: number
+	friendlyName: string
 }
 
 export namespace FundingAccountResponseV2 {
