@@ -4,7 +4,7 @@ import { ErrorResponse } from "../../../model"
 import * as model from "../../../model"
 import { Card } from "../../Card"
 
-export async function actionTest(card: Card & model.CardResponse, client: pax2pay.Client) {
+export async function actionTest(card: Card & model.Card.CardResponse, client: pax2pay.Client) {
 	assert(card.providerCardId && card.providerCode)
 	assert(card.fundingAccount)
 

@@ -4,12 +4,14 @@ import { Connection } from "../Connection"
 import { Resource } from "../Resource"
 import { User } from "../User"
 
-export class Users extends Collection<model.UserResponse, model.UserSearchRequest, model.UserRequest> {
+export class Users extends Collection<model.User.UserResponse, model.User.UserSearchRequest, model.User.UserRequest> {
 	protected folder = "users"
 	private constructor(connection: Connection) {
 		super(connection)
 	}
-	protected createResource(response: model.UserResponse): Resource<model.UserResponse, { [key: string]: any }> {
+	protected createResource(
+		response: model.User.UserResponse
+	): Resource<model.User.UserResponse, { [key: string]: any }> {
 		return new User(this.connection, [this.folder, response.username].join("/"), response)
 	}
 	static create(connection: Connection) {

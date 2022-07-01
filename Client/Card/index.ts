@@ -2,52 +2,52 @@ import * as model from "../../model"
 import { Connection } from "../Connection"
 import { Resource } from "../Resource"
 
-export class Card extends Resource<model.CardResponse | model.CardResponseV2, model.CreateCardRequest> {
-	constructor(connection: Connection, folder: string, backend: model.CardResponse | model.CardResponseV2) {
+export class Card extends Resource<model.Card.CardResponse | model.Card.CardResponseV2, model.Card.CreateCardRequest> {
+	constructor(connection: Connection, folder: string, backend: model.Card.CardResponse | model.Card.CardResponseV2) {
 		super(connection, folder, backend)
 	}
-	amend(request: model.AmendCardRequest): Promise<
-		| model.CardResponse
+	amend(request: model.Card.AmendCardRequest): Promise<
+		| model.Card.CardResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		return this.connection.post<model.CardResponse>(`${this.folder}/amend`, request)
+		return this.connection.post<model.Card.CardResponse>(`${this.folder}/amend`, request)
 	}
 	freeze(): Promise<
-		| model.CardResponse
+		| model.Card.CardResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		return this.connection.get<model.CardResponse>(`${this.folder}/freeze`)
+		return this.connection.get<model.Card.CardResponse>(`${this.folder}/freeze`)
 	}
 	thaw(): Promise<
-		| model.CardResponse
+		| model.Card.CardResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		return this.connection.get<model.CardResponse>(`${this.folder}/thaw`)
+		return this.connection.get<model.Card.CardResponse>(`${this.folder}/thaw`)
 	}
 	cancel(): Promise<
-		| model.CardResponse
+		| model.Card.CardResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		return this.connection.get<model.CardResponse>(`${this.folder}/cancel`)
+		return this.connection.get<model.Card.CardResponse>(`${this.folder}/cancel`)
 	}
 	process(): Promise<
-		| model.CardResponse
+		| model.Card.CardResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		return this.connection.get<model.CardResponse>(`${this.folder}/statements/processed`)
+		return this.connection.get<model.Card.CardResponse>(`${this.folder}/statements/processed`)
 	}
 	getTransactions(): Promise<
-		| model.CardResponse
+		| model.Card.CardResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })

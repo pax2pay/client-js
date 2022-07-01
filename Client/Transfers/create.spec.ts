@@ -18,7 +18,7 @@ describe("pax2pay.transfers.create", () => {
 	)
 
 	it("with beneficiary", async () => {
-		const request: model.TransferRequest = factory.getRequestForBeneficiary()
+		const request: model.Transfer.TransferRequest = factory.getRequestForBeneficiary()
 		const expected = factory.getExpectedForBeneficiary(request)
 
 		const transfer = await client?.transfers.create(request)
@@ -30,7 +30,7 @@ describe("pax2pay.transfers.create", () => {
 	})
 
 	it("with destination", async () => {
-		const request: model.TransferRequest = factory.getRequestForDestination()
+		const request: model.Transfer.TransferRequest = factory.getRequestForDestination()
 		const expected = factory.getExpectedForDestination(request)
 
 		const transfer = await client?.transfers.create(request)
@@ -67,7 +67,7 @@ describe("pax2pay.transfers.create", () => {
 	})
 
 	it("with funding account", async () => {
-		const request: model.TransferRequest = factory.getRequestForFundingAccount()
+		const request: model.Transfer.TransferRequest = factory.getRequestForFundingAccount()
 		const expected = factory.getExpectedForFundingAccount(request)
 
 		const transfer = await client?.transfers.create(request)

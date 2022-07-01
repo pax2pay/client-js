@@ -9,14 +9,20 @@ export class Auth {
 		this.connection.token = value
 	}
 	constructor(private connection: Connection) {}
-	async login(request: model.LoginRequest) {
-		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/login", request)
+	async login(request: model.Authentication.LoginRequest) {
+		const result = await this.connection.post<model.Authentication.LoginResponse, 400 | 403 | 404 | 500>(
+			"auth/login",
+			request
+		)
 		if (!isError(result))
 			this.connection.token = result.token
 		return result
 	}
-	async refresh(request: model.RelogWithNewSessionDetailsRequest) {
-		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/relog", request)
+	async refresh(request: model.Authentication.RelogWithNewSessionDetailsRequest) {
+		const result = await this.connection.post<model.Authentication.LoginResponse, 400 | 403 | 404 | 500>(
+			"auth/relog",
+			request
+		)
 		if (!isError(result))
 			this.connection.token = result.token
 		return result

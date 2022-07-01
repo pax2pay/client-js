@@ -2,9 +2,9 @@ import { mathExact } from "math-exact"
 import * as model from "../../../model"
 
 export function factory(
-	card: Partial<model.CreateCardRequest>
+	card: Partial<model.Card.CreateCardRequest>
 ) /*TODO: issue with linter : [model.CreateCardRequest, model.CardResponseV2, model.CardResponse] */ {
-	const request: model.CreateCardRequest = {
+	const request: model.Card.CreateCardRequest = {
 		cardType: {
 			cardTypeId: "VISA_DEBIT_CORPORATE",
 		},
@@ -18,7 +18,7 @@ export function factory(
 	return [
 		request,
 		{
-			cardType: request.cardType.cardTypeId,
+			cardType: typeof request.cardType == "string" ? request.cardType : request.cardType.cardTypeId,
 			cardNumber: expect.stringMatching(/\d{16}/),
 			cvv: expect.stringMatching(/\d{3}/),
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),
@@ -31,7 +31,7 @@ export function factory(
 			createdBy: process.env.username,
 		},
 		{
-			cardType: request.cardType.cardTypeId,
+			cardType: typeof request.cardType == "string" ? request.cardType : request.cardType.cardTypeId,
 			cardNumber: expect.stringMatching(/\d{16}/),
 			cvv: expect.stringMatching(/\d{3}/),
 			expiryDate: expect.stringMatching(/\d{4}-\d{2}/),

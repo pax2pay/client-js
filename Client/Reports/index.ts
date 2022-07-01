@@ -29,15 +29,15 @@ export class Reports {
 			},
 		}
 
-		return await this.connection.post<model.Report.Statement>(`../reports/statement`, request)
+		return await this.connection.post<model.Report.LegacyStatement>(`../reports/statement`, request)
 	}
 
 	statementForTable(
-		request: model.StatementReportRequest,
+		request: model.Report.StatementReportRequest,
 		page?: number,
 		pageSize?: number
 	): Promise<
-		| model.StatementReportResponse
+		| model.Report.StatementReportResponse
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
@@ -46,10 +46,10 @@ export class Reports {
 		if (page || pageSize)
 			path = this.attachPageable(path, page, pageSize)
 
-		return this.connection.post<model.StatementReportResponse>(path, request)
+		return this.connection.post<model.Report.StatementReportResponse>(path, request)
 	}
 	async getStatementForTable(rowId: string) {
-		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}
+		const result = await this.connection.get<model.Report.StatementReportResponseRow>(`statement/${rowId}
 `)
 		return result
 	}

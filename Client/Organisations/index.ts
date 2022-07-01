@@ -5,17 +5,17 @@ import { Organisation } from "../Organisation"
 import { Resource } from "../Resource"
 
 export class Organisations extends Collection<
-	model.OrganisationResponse,
-	Partial<model.OrganisationRequest>,
-	model.OrganisationRequest
+	model.Organisation.OrganisationResponse,
+	Partial<model.Organisation.OrganisationRequest>,
+	model.Organisation.OrganisationRequest
 > {
 	protected readonly folder = "organisations"
 	constructor(connection: Connection) {
 		super(connection)
 	}
 	protected createResource(
-		response: model.OrganisationResponse
-	): Resource<model.OrganisationResponse, { [key: string]: any }> {
+		response: model.Organisation.OrganisationResponse
+	): Resource<model.Organisation.OrganisationResponse, { [key: string]: any }> {
 		return new Organisation(this.connection, [this.folder, response.code].join("/"), response)
 	}
 	static create(connection: Connection) {

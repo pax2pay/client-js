@@ -4,33 +4,33 @@ import { Connection } from "../Connection"
 import { List } from "../List"
 
 export class Cards extends List<
-	model.CardResponseV2 | model.CardResponse,
-	model.CardSearch,
-	model.CreateCardRequest,
+	model.Card.CardResponseV2 | model.Card.CardResponse,
+	model.Card.CardSearch,
+	model.Card.CreateCardRequest,
 	Card
 > {
 	protected folder = "cards/virtual"
 	constructor(connection: Connection) {
 		super(connection)
 	}
-	protected getResourcePath(resource: model.CardResponseV2 | model.CardResponse): string {
+	protected getResourcePath(resource: model.Card.CardResponseV2 | model.Card.CardResponse): string {
 		return [this.folder, resource.providerCode, resource.providerCardId].join("/")
 	}
-	protected createResource(response: model.CardResponseV2): Card {
+	protected createResource(response: model.Card.CardResponseV2): Card {
 		return new Card(this.connection, [this.folder, response.providerCode, response.providerCardId].join("/"), response)
 	}
-	protected map(response: model.CardResponseV2): Card & model.CardResponseV2 {
+	protected map(response: model.Card.CardResponseV2): Card & model.Card.CardResponseV2 {
 		return Object.assign(new Card(this.connection, this.getResourcePath(response), response), response)
 	}
-	protected mapLegacy(response: model.CardResponse): Card & model.CardResponse {
+	protected mapLegacy(response: model.Card.CardResponse): Card & model.Card.CardResponse {
 		return Object.assign(new Card(this.connection, this.getResourcePath(response), response), response)
 	}
-	async create(request: model.CreateCardRequest) {
-		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", request)
+	async create(request: model.Card.CreateCardRequest) {
+		const result = await this.connection.post<model.Card.CardResponseV2>("v2/cards/virtual", request)
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
-	async createLegacy(request: model.CreateCardRequest) {
-		const result = await this.connection.post<model.CardResponse>("cards/virtual", request)
+	async createLegacy(request: model.Card.CreateCardRequest) {
+		const result = await this.connection.post<model.Card.CardResponse>("cards/virtual", request)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
 	static create(connection: Connection): Cards {
@@ -38,28 +38,29 @@ export class Cards extends List<
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection
-			.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}?includeSchedules=true
+			.get<model.Card.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}?includeSchedules=true
 `)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
 	async getCardTypes(providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardTypeResponse[]>(`v2/cards/types/${providerCode}`)
+		const result = await this.connection.get<model.Card.CardTypeResponse[]>(`v2/cards/types/${providerCode}`)
 		return result
 	}
-	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest) {
-		const result = await this.connection.post<model.CardFundingAccountResponse[]>(
+	async getFundingAccounts(searchRequest: model.Account.FundingAccountSearchRequest) {
+		const result = await this.connection.post<model.Account.CardFundingAccountResponse[]>(
 			"funding-accounts/searches",
 			searchRequest
 		)
 		return result
 	}
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponse>(`booking-info/cards/${providerCode}/${providerCardId}
+		const result = await this.connection
+			.get<model.Card.CardResponse>(`booking-info/cards/${providerCode}/${providerCardId}
 `)
 		return result
 	}
 	async editCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
-		const result = await this.connection.put<model.BookingInfoResponse>(
+		const result = await this.connection.put<model.Meta.BookingInfoResponse>(
 			`booking-info/cards/${providerCode}/${providerCardId}`,
 			request
 		)

@@ -7,7 +7,7 @@ dotenv.config()
 const sourceAccount = process.env["accountModulrEur"]
 assert(sourceAccount)
 
-const basicRequest: model.TransferRequest = {
+const basicRequest: model.Transfer.TransferRequest = {
 	providerCode: "modulr" as model.ProviderCode,
 	providerSourceAccountId: sourceAccount,
 	amount: 1,
@@ -51,14 +51,14 @@ const basicExpected = {
 	scheduled: expect.any(Boolean),
 }
 
-export function getRequestForBeneficiary(): model.TransferRequest {
+export function getRequestForBeneficiary(): model.Transfer.TransferRequest {
 	return {
 		...basicRequest,
 		beneficiaryId: process.env.beneficiaryModulr,
 	}
 }
 
-export function getExpectedForBeneficiary(request: model.TransferRequest): model.TransferResponse {
+export function getExpectedForBeneficiary(request: model.Transfer.TransferRequest): model.Transfer.TransferResponse {
 	assert(request.currency)
 
 	return {
@@ -78,7 +78,7 @@ export function getExpectedForBeneficiary(request: model.TransferRequest): model
 	}
 }
 
-export function getRequestForDestination(): model.TransferRequest {
+export function getRequestForDestination(): model.Transfer.TransferRequest {
 	assert(process.env.testIban)
 
 	return {
@@ -90,7 +90,7 @@ export function getRequestForDestination(): model.TransferRequest {
 		reference: "iban transfer test",
 	}
 }
-export function getExpectedForDestination(request: model.TransferRequest): model.TransferResponse {
+export function getExpectedForDestination(request: model.Transfer.TransferRequest): model.Transfer.TransferResponse {
 	assert(request.currency)
 	assert(request.destination)
 	return {
@@ -102,7 +102,7 @@ export function getExpectedForDestination(request: model.TransferRequest): model
 		},
 	}
 }
-export function getRequestForDestinationPlusBeneficiary(): model.TransferRequest {
+export function getRequestForDestinationPlusBeneficiary(): model.Transfer.TransferRequest {
 	const otherAccount = process.env["accountModulrEur2"]
 	assert(otherAccount)
 	assert(process.env.testIban)
@@ -119,7 +119,9 @@ export function getRequestForDestinationPlusBeneficiary(): model.TransferRequest
 	}
 }
 
-export function getExpectedForDestinationPlusBeneficiary(request: model.TransferRequest): model.TransferResponse {
+export function getExpectedForDestinationPlusBeneficiary(
+	request: model.Transfer.TransferRequest
+): model.Transfer.TransferResponse {
 	assert(request.currency)
 	assert(request.destination)
 	return {
@@ -138,7 +140,7 @@ export function getExpectedForDestinationPlusBeneficiary(request: model.Transfer
 	}
 }
 
-export function getRequestForFundingAccount(): model.TransferRequest {
+export function getRequestForFundingAccount(): model.Transfer.TransferRequest {
 	return {
 		...basicRequest,
 		destinationProviderAccountId: process.env.accountModulrEur2,
@@ -146,7 +148,7 @@ export function getRequestForFundingAccount(): model.TransferRequest {
 	}
 }
 
-export function getExpectedForFundingAccount(request: model.TransferRequest) {
+export function getExpectedForFundingAccount(request: model.Transfer.TransferRequest) {
 	return {
 		...basicExpected,
 		destinationAccount: {
@@ -155,7 +157,7 @@ export function getExpectedForFundingAccount(request: model.TransferRequest) {
 	}
 }
 
-export function getExpectedForGeneric(): model.TransferResponse {
+export function getExpectedForGeneric(): model.Transfer.TransferResponse {
 	return {
 		...basicExpected,
 		sourceAccount: {
