@@ -1,3 +1,4 @@
+import * as isoly from "isoly"
 import { AgentBookingInfo } from "./AgentBookingInfo"
 import { BookedProductInfo } from "./BookedProductInfo"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
@@ -16,7 +17,7 @@ export interface BookingInfo {
 	createdOn?: string
 	createdBy?: string
 	bookingRef?: string
-	sellingPriceCurrency?: string
+	sellingPriceCurrency?: isoly.Currency
 	sellingPriceAmount?: number
 	bookedProduct?: BookedProductInfo
 	travelParty?: TravelPartyInfo

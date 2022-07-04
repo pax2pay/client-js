@@ -1,9 +1,11 @@
+import * as isoly from "isoly"
 import { BookingInfoRequest } from "../Meta/BookingInfoRequest"
 import { ProviderCode } from "../Provider/ProviderCode"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
+import { CardUsage } from "./CardUsage"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 
 /**
@@ -15,10 +17,10 @@ export interface CreateCardRequest {
 	providerAccountId?: string
 	providerCode: ProviderCode
 	balance: number
-	currency: string
+	currency: isoly.Currency
 	fundingDate?: string
 	expiryDate?: any
-	usage?: "SINGLE_USE" | "MULTIPLE_USE"
+	usage?: CardUsage
 	schedule?: (CardAmendmentScheduledTaskRequest | CardStateChangeScheduledTaskRequest | ScheduledTaskRequest)[]
 	friendlyName?: string
 	delivery?: CardDeliveryRequest

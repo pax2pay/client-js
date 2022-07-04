@@ -1,3 +1,5 @@
+import * as isoly from "isoly"
+
 export interface UserLimitsDeleteRequest {
-	currency: string
+	currency: isoly.Currency
 }

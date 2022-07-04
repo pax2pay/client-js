@@ -1,3 +1,4 @@
+import * as isoly from "isoly"
 import { BookingInfo } from "./Meta/BookingInfo"
 import { TransactionType } from "./TransactionType"
 
@@ -11,9 +12,9 @@ export interface TransactionResponse {
 	prvTimestamp: string
 	associatedAccount: number
 	issuedAmount: number
-	issuedCurrency: string
+	issuedCurrency: isoly.Currency
 	receivedAmount: number
-	receivedCurrency: string
+	receivedCurrency: isoly.Currency
 	exchangeRate?: number
 	description?: string
 	createdOn: string

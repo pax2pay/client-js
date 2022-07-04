@@ -1,17 +1,8 @@
 import { DateRangeLocalDate } from "./DateRangeLocalDate"
+import { TransferStatus } from "./TransferStatus"
 
 export interface TransferSearch {
-	status?:
-		| "PENDING"
-		| "PENDING_FOR_DATE"
-		| "PENDING_FOR_FUNDS"
-		| "SETTLED"
-		| "CANCELLED"
-		| "ERROR_REJECTED"
-		| "APPROVAL_PENDING"
-		| "DECLINED"
-		| "APPROVED"
-		| "GENERATED"
+	status?: TransferStatus
 	personallyApprovable?: boolean
 	searchString?: string
 	paymentDates?: DateRangeLocalDate

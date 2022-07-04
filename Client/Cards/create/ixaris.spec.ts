@@ -1,3 +1,4 @@
+import * as isoly from "isoly"
 import * as dotenv from "dotenv"
 import * as pax2pay from "../../../index"
 import { factory } from "./factory"
@@ -15,7 +16,7 @@ describe("pax2pay.cards.create ixaris", () => {
 			})
 	)
 
-	for (const currency of ["EUR", "GBP", "USD"])
+	for (const currency of ["EUR", "GBP", "USD"] as isoly.Currency[])
 		for (const cardType of ["VISA_DEBIT", "VISA_CREDIT", "MASTERCARD"])
 			it(`card ${currency} ${cardType}`, async () => {
 				const [request, expectedV2, expectedLegacy] = factory({

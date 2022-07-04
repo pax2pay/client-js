@@ -1,6 +1,7 @@
 import * as isoly from "isoly"
 import { OrganisationResponse } from "../Organisation/OrganisationResponse"
-import { ProviderResponse } from "../ProviderResponse"
+import { ProviderResponse } from "../Provider/ProviderResponse"
+import { AccountState } from "./AccountState"
 
 export interface FundingAccountSearchResponse {
 	id: number
@@ -8,7 +9,7 @@ export interface FundingAccountSearchResponse {
 	provider: ProviderResponse
 	organisation: OrganisationResponse
 	currency: isoly.Currency
-	state: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
+	state: AccountState
 	friendlyName: string
 	balance: number
 	accountType: "FUNDING" | "CARD"

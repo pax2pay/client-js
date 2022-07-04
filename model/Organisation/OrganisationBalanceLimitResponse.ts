@@ -1,9 +1,11 @@
+import * as isoly from "isoly"
+
 /**
  * Represents a balance and currency configured by a superadmin that is used to validate the organisation account balances do not exceed this defined limit.
  */
 export interface OrganisationBalanceLimitResponse {
 	email?: string[]
-	currency?: string
+	currency?: isoly.Currency
 	limit?: number
 }
 

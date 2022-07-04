@@ -1,3 +1,5 @@
+import * as isoly from "isoly"
+
 export interface ProcessedStatement {
 	timestamp: string
 	provider: string
@@ -7,7 +9,7 @@ export interface ProcessedStatement {
 	reference?: string
 	reason?: string
 	transactionAmount?: number
-	transactionCurrency?: string
+	transactionCurrency?: isoly.Currency
 	billingAmount?: number
-	billingCurrency?: string
+	billingCurrency?: isoly.Currency
 }

@@ -1,6 +1,8 @@
+import * as isoly from "isoly"
+
 export interface CardOptionSearch {
 	supplier?: string
 	balance?: number
-	currency: string
+	currency: isoly.Currency
 	fundCheck: boolean
 }

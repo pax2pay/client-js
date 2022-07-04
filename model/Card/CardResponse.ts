@@ -1,4 +1,5 @@
 import { AccountResponse } from "../Account/AccountResponse"
+import { AccountState } from "../Account/AccountState"
 import { BookingInfo } from "../Meta/BookingInfo"
 import { BookingInfoResponse } from "../Meta/BookingInfoResponse"
 import { ProviderCode } from "../Provider/ProviderCode"

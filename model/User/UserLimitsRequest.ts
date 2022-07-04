@@ -1,7 +1,9 @@
+import * as isoly from "isoly"
+
 /**
  * Limits for the user
  */
 export interface UserLimitsRequest {
-	currency: string
+	currency: isoly.Currency
 	limit: number
 }

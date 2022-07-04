@@ -1,16 +1,20 @@
+import * as isoly from "isoly"
 import { ProviderCode } from "../Provider/ProviderCode"
+import { CardScheme } from "./CardScheme"
+import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
+import { FundingType } from "./FundingType"
 
 /**
  * Search request for card types.
  */
 export interface CardTypeSearchRequest {
 	providerCode?: ProviderCode
-	currency?: string
+	currency?: isoly.Currency
 	description?: string
 	descriptionContains?: string
-	scheme?: "VISA" | "MASTERCARD" | "AMERICAN_EXPRESS"
-	fundingType?: "DEBIT" | "CREDIT" | "PREPAID"
-	flags?: ("CORPORATE" | "BUSINESS" | "CONSUMER")[]
+	scheme?: CardScheme
+	fundingType?: FundingType
+	flags?: CardTypeSpecificationFlag[]
 	bin?: string
 	status?: "ACTIVE" | "DEPRECATED" | "PREACTIVE" | "DISCONTINUED"
 }

@@ -1,8 +1,10 @@
+import * as isoly from "isoly"
+
 /**
  * User's limits
  */
 export interface UserLimit {
-	currency: string
+	currency: isoly.Currency
 	limit: number
 	setBy: "USER" | "CATEGORY"
 }

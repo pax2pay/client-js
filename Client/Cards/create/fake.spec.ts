@@ -1,6 +1,8 @@
+import * as isoly from "isoly"
 import * as dotenv from "dotenv"
 import * as pax2pay from "../../../index"
 import { ErrorResponse } from "../../../model"
+import { CreateCardRequest } from "../../../model/Card/CreateCardRequest"
 import { factory } from "./factory"
 
 dotenv.config()
@@ -15,7 +17,7 @@ describe("pax2pay.cards.create fake", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	for (const currency of ["EUR", "GBP", "SEK", "JPY", "BRL"])
+	for (const currency of ["EUR", "GBP", "SEK", "JPY", "BRL"] as isoly.Currency[])
 		for (const cardType of ["VISA_CREDIT", "MASTERCARD"])
 			it(`card ${currency} ${cardType}`, async () => {
 				const [request, expectedV2, expectedLegacy] = factory({
@@ -26,8 +28,8 @@ describe("pax2pay.cards.create fake", () => {
 					providerAccountId: process.env[`accountFake${currency.charAt(0)}${currency.toLowerCase().slice(1)}`],
 					providerCode: "fake",
 				})
-				const cardV2 = await client?.cards.create(request)
-				const cardLegacy = await client?.cards.createLegacy(request)
+				const cardV2 = await client?.cards.create(request as CreateCardRequest)
+				const cardLegacy = await client?.cards.createLegacy(request as CreateCardRequest)
 
 				if (ErrorResponse.is(cardV2))
 					throw Error(cardV2.errors?.[0].message)

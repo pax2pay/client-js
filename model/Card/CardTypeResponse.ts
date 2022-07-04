@@ -1,13 +1,16 @@
 import { ProviderCode } from "../Provider/ProviderCode"
+import { CardScheme } from "./CardScheme"
+import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
+import { FundingType } from "./FundingType"
 
 export interface CardTypeResponse {
 	providerCode?: ProviderCode
 	cardTypeId?: string
 	description?: string
-	scheme?: "VISA" | "MASTERCARD" | "AMERICAN_EXPRESS"
-	funding?: "DEBIT" | "CREDIT" | "PREPAID"
+	scheme?: CardScheme
+	funding?: FundingType
 	currencies?: string[]
-	flags?: ("CORPORATE" | "BUSINESS" | "CONSUMER")[]
+	flags?: CardTypeSpecificationFlag[]
 	bins?: string[]
 	preActive?: boolean
 	discontinued?: boolean

@@ -1,6 +1,6 @@
 import * as isoly from "isoly"
 import { OrganisationResponse } from "../Organisation/OrganisationResponse"
-import { ProviderResponse } from "../ProviderResponse"
+import { ProviderResponse } from "../Provider/ProviderResponse"
 import { AccountState } from "./AccountState"
 import { AccountType } from "./AccountType"
 import { FundingLimitResponse } from "./FundingLimitResponse"

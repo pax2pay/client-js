@@ -1,6 +1,8 @@
+import * as isoly from "isoly"
+
 export interface AmendCardRequest {
 	newBalance?: number
 	balanceDifferential?: number
-	currency: string
+	currency: isoly.Currency
 	fundingDate?: string
 }

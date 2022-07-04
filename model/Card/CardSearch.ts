@@ -1,11 +1,14 @@
+import * as isoly from "isoly"
+import { AccountState } from "../Account/AccountState"
 import { ProviderCode } from "../Provider/ProviderCode"
 import { CardTypeSpecification } from "./CardTypeSpecification"
+import { CardUsage } from "./CardUsage"
 
 export interface CardSearch {
 	cardId?: number
 	providerCode?: ProviderCode
-	state?: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
-	currency?: string
+	state?: AccountState
+	currency?: isoly.Currency
 	friendlyName?: string
 	createdBy?: string
 	nameOnCard?: string
@@ -18,6 +21,6 @@ export interface CardSearch {
 	providerAccountId?: string
 	createdBefore?: string
 	createdAfter?: string
-	usage?: "SINGLE_USE" | "MULTIPLE_USE"
+	usage?: CardUsage
 	expiryDateAfter?: string
 }

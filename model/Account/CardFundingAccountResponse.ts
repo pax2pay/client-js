@@ -1,6 +1,7 @@
 import * as isoly from "isoly"
 import { OrganisationResponse } from "../Organisation/OrganisationResponse"
-import { ProviderResponse } from "../ProviderResponse"
+import { ProviderResponse } from "../Provider/ProviderResponse"
+import { AccountState } from "./AccountState"
 /**
  * Funding account information
  */
@@ -10,7 +11,7 @@ export interface CardFundingAccountResponse {
 	provider: ProviderResponse
 	organisation: OrganisationResponse
 	currency: isoly.Currency
-	state: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
+	state: AccountState
 	friendlyName: string
 	balance: number
 	accountType: "FUNDING" | "CARD"
@@ -27,15 +28,7 @@ export namespace CardFundingAccountResponse {
 			ProviderResponse.is(value.provider) &&
 			OrganisationResponse.is(value.organisation) &&
 			isoly.Currency.is(value.currency) &&
-			(value.state == "ACTIVE" ||
-				value.state == "INACTIVE" ||
-				value.state == "CLOSED" ||
-				value.state == "DELETED" ||
-				value.state == "EXPIRED" ||
-				value.state == "PENDING" ||
-				value.state == "APPROVED" ||
-				value.state == "DECLINED" ||
-				value.state == "GENERATED") &&
+			AccountState.is(value.state) &&
 			typeof value.friendlyName == "string" &&
 			typeof value.balance == "number" &&
 			(value.accountType == "FUNDING" || value.accountType == "CARD") &&

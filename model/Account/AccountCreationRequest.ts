@@ -1,3 +1,4 @@
+import * as isoly from "isoly"
 import { ProviderCode } from "../Provider/ProviderCode"
 
 /**
@@ -7,5 +8,5 @@ export interface AccountCreationRequest {
 	providerAccountId?: string
 	providerCode: ProviderCode
 	friendlyName?: string
-	currency: string
+	currency: isoly.Currency
 }
