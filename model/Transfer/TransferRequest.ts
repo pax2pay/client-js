@@ -1,5 +1,5 @@
 import * as isoly from "isoly"
-import { ProviderCode } from "../ProviderCode"
+import { ProviderCode } from "../Provider/ProviderCode"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 
 export interface TransferRequest {

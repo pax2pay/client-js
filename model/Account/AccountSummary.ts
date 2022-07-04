@@ -1,6 +1,6 @@
 import * as isoly from "isoly"
-import { OrganisationResponse } from "../OrganisationResponse"
-import { ProviderCode } from "../ProviderCode"
+import { OrganisationResponse } from "../Organisation/OrganisationResponse"
+import { ProviderCode } from "../Provider/ProviderCode"
 import { AccountBankResponse } from "./AccountBankResponse"
 import { AccountIdentifierResponse } from "./AccountIdentifierResponse"
 import { AccountState } from "./AccountState"

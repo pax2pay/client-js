@@ -1,5 +1,5 @@
 import * as isoly from "isoly"
-import { ProviderCode } from "../ProviderCode"
+import { ProviderCode } from "../Provider/ProviderCode"
 
 export interface StatementReportRequest {
 	providerCode: ProviderCode

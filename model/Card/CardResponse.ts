@@ -1,6 +1,7 @@
 import { AccountResponse } from "../Account/AccountResponse"
-import { Meta } from "../Meta"
-import { ProviderCode } from "../ProviderCode"
+import { BookingInfo } from "../Meta/BookingInfo"
+import { BookingInfoResponse } from "../Meta/BookingInfoResponse"
+import { ProviderCode } from "../Provider/ProviderCode"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
@@ -38,7 +39,7 @@ export interface CardResponse {
 		| "UNKNOWN"
 		| "UNDEFINED"
 	createdBy?: string
-	bookingInfo?: Meta.BookingInfo | Meta.BookingInfoResponse
+	bookingInfo?: BookingInfo | BookingInfoResponse
 	schedule?: CardScheduleResponseItem[]
 	delivery?: CardDeliveryResponse
 }

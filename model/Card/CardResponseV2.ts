@@ -1,7 +1,7 @@
 import { Currency } from "isoly"
 import { AccountState } from "../Account/AccountState"
 import { FundingAccountResponseV2 } from "../Account/FundingAccountResponseV2"
-import { ProviderCode } from "../ProviderCode"
+import { ProviderCode } from "../Provider/ProviderCode"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"

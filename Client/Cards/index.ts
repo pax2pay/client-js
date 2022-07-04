@@ -36,13 +36,13 @@ export class Cards extends List<
 	static create(connection: Connection): Cards {
 		return new Cards(connection)
 	}
-	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
+	async getCard(providerCardId: string, providerCode: model.Provider.ProviderCode) {
 		const result = await this.connection
 			.get<model.Card.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}?includeSchedules=true
 `)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
-	async getCardTypes(providerCode: model.ProviderCode) {
+	async getCardTypes(providerCode: model.Provider.ProviderCode) {
 		const result = await this.connection.get<model.Card.CardTypeResponse[]>(`v2/cards/types/${providerCode}`)
 		return result
 	}
@@ -53,13 +53,17 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
+	async getCardBookingInfo(providerCardId: string, providerCode: model.Provider.ProviderCode) {
 		const result = await this.connection
 			.get<model.Card.CardResponse>(`booking-info/cards/${providerCode}/${providerCardId}
 `)
 		return result
 	}
-	async editCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
+	async editCardBookingInfo(
+		providerCardId: string,
+		providerCode: model.Provider.ProviderCode,
+		request: Record<string, any>
+	) {
 		const result = await this.connection.put<model.Meta.BookingInfoResponse>(
 			`booking-info/cards/${providerCode}/${providerCardId}`,
 			request

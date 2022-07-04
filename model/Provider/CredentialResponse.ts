@@ -5,5 +5,5 @@ import { ProviderCode } from "./ProviderCode"
  */
 export interface CredentialResponse {
 	providerCode?: ProviderCode
-	credentialProperties?: any
+	credentialProperties?: Map<string, string>
 }

@@ -8,7 +8,7 @@ const sourceAccount = process.env["accountModulrEur"]
 assert(sourceAccount)
 
 const basicRequest: model.Transfer.TransferRequest = {
-	providerCode: "modulr" as model.ProviderCode,
+	providerCode: "modulr" as model.Provider.ProviderCode,
 	providerSourceAccountId: sourceAccount,
 	amount: 1,
 	currency: "EUR",

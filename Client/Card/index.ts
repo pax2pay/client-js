@@ -39,12 +39,12 @@ export class Card extends Resource<model.Card.CardResponse | model.Card.CardResp
 		return this.connection.get<model.Card.CardResponse>(`${this.folder}/cancel`)
 	}
 	process(): Promise<
-		| model.Card.CardResponse
+		| model.Report.ProcessedStatement[]
 		| (model.ErrorResponse & {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		return this.connection.get<model.Card.CardResponse>(`${this.folder}/statements/processed`)
+		return this.connection.get<model.Report.ProcessedStatement[]>(`${this.folder}/statements/processed`)
 	}
 	getTransactions(): Promise<
 		| model.Card.CardResponse

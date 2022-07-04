@@ -1,5 +1,5 @@
 import * as isoly from "isoly"
-import { OrganisationResponse } from "../OrganisationResponse"
+import { OrganisationResponse } from "../Organisation/OrganisationResponse"
 import { ProviderResponse } from "../ProviderResponse"
 
 export interface FundingAccountSearchResponse {

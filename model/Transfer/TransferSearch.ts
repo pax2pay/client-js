@@ -1,4 +1,4 @@
-import { DateRangeLocalDate } from "../DateRangeLocalDate"
+import { DateRangeLocalDate } from "./DateRangeLocalDate"
 
 export interface TransferSearch {
 	status?:

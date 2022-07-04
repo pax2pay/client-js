@@ -1,5 +1,5 @@
 import { TwoFactorAuthenticationDetails } from "../Authentication/TwoFactorAuthenticationDetails"
-import { OrganisationResponse } from "../OrganisationResponse"
+import { OrganisationResponse } from "../Organisation/OrganisationResponse"
 import { UserLimit } from "./UserLimit"
 
 /**

@@ -1,5 +1,5 @@
-import { RoleResponse } from "../Roles/RoleResponse"
-import { RolesetResponse } from "../Roles/RolesetResponse"
+import { RoleResponse } from "../Role/RoleResponse"
+import { RolesetResponse } from "../Role/RolesetResponse"
 
 /**
  * Cut down version of a full user response, contains only role information.

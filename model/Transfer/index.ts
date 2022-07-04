@@ -2,6 +2,7 @@ import { AddressInfo as TransferAddressInfo } from "./AddressInfo"
 import { BeneficiaryRequest as TransferBeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse as TransferBeneficiaryResponse } from "./BeneficiaryResponse"
 import { BeneficiaryStatus as TransferBeneficiaryStatus } from "./BeneficiaryStatus"
+import { DateRangeLocalDate as TransferDateRangeLocalDate } from "./DateRangeLocalDate"
 import { NonBeneficiaryTransferDestination as TransferNonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { TransferDestinationInfo as TransferTransferDestinationInfo } from "./TransferDestinationInfo"
 import { TransferRequest as TransferTransferRequest } from "./TransferRequest"
@@ -15,6 +16,7 @@ export namespace Transfer {
 	export type BeneficiaryRequest = TransferBeneficiaryRequest
 	export type BeneficiaryResponse = TransferBeneficiaryResponse
 	export type BeneficiaryStatus = TransferBeneficiaryStatus
+	export type DateRangeLocalDate = TransferDateRangeLocalDate
 	export type NonBeneficiaryTransferDestination = TransferNonBeneficiaryTransferDestination
 	export type TransferDestinationInfo = TransferTransferDestinationInfo
 	export type TransferRequest = TransferTransferRequest

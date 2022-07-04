@@ -1,5 +1,5 @@
 import { Issue } from "../Issue"
-import { OrganisationResponse } from "../OrganisationResponse"
+import { OrganisationResponse } from "../Organisation/OrganisationResponse"
 import { UserResponse } from "../User/UserResponse"
 
 /**

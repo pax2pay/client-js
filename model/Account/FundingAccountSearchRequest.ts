@@ -1,4 +1,4 @@
-import { ProviderCode } from "../ProviderCode"
+import { ProviderCode } from "../Provider/ProviderCode"
 
 /**
  * Search request for card types.

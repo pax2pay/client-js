@@ -28,7 +28,7 @@ export class Transfers extends List<
 	async getAll() {
 		return await this.connection.get<model.Transfer.TransferResponse[]>(`${this.folder}`)
 	}
-	async getTransfer(provider: model.ProviderCode, transferId: string) {
+	async getTransfer(provider: model.Provider.ProviderCode, transferId: string) {
 		return await this.connection.get<model.Transfer.TransferResponse>([this.folder, provider, transferId].join("/"))
 	}
 	protected map(response: model.Transfer.TransferResponse): Transfer & model.Transfer.TransferResponse {

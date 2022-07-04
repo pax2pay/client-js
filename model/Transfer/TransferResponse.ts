@@ -1,5 +1,5 @@
 import { AccountResponse } from "../Account/AccountResponse"
-import { ProviderCode } from "../ProviderCode"
+import { ProviderCode } from "../Provider/ProviderCode"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
 import { TransferStatus } from "./TransferStatus"

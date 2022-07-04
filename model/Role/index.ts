@@ -4,7 +4,7 @@ import { RolesetResponse as RolesRolesetResponse } from "./RolesetResponse"
 import { SearchRolesetsRequest as RolesSearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { UpdateRolesetRequest as RolesUpdateRolesetRequest } from "./UpdateRolesetRequest"
 
-export namespace Roles {
+export namespace Role {
 	export type CreateRolesetRequest = RolesCreateRolesetRequest
 	export type RoleResponse = RolesRoleResponse
 	export type RolesetResponse = RolesRolesetResponse
