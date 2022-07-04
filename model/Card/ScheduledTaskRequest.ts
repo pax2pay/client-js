@@ -11,3 +11,18 @@ export interface ScheduledTaskRequest {
 	remainingBalance?: number
 	balanceDifferential?: number
 }
+
+export namespace ScheduledTaskRequest {
+	export function is(value: ScheduledTaskRequest | any): value is ScheduledTaskRequest {
+		return (
+			typeof value == "object" &&
+			isoly.DateTime.is(value.dueOn) &&
+			(value.status == undefined || ScheduledTaskStatus.is(value.status)) &&
+			(value.taskId == undefined || typeof value.taskId == "string") &&
+			(value.taskType == undefined || CardScheduleTaskType.is(value.taskType)) &&
+			(value.newBalance == undefined || typeof value.newBalance == "number") &&
+			(value.remainingBalance == undefined || typeof value.remainingBalance == "number") &&
+			(value.balanceDifferential == undefined || typeof value.balanceDifferential == "number")
+		)
+	}
+}

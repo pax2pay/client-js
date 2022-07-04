@@ -3,6 +3,7 @@ import { CardAmendmentScheduledTaskRequest as CardCardAmendmentScheduledTaskRequ
 import { CardAmendmentScheduledTaskResponse as CardCardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardDeliveryRequest as CardCardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardDeliveryResponse as CardCardDeliveryResponse } from "./CardDeliveryResponse"
+import { CardForm as CardCardForm } from "./CardForm"
 import { CardOptionSearch as CardCardOptionSearch } from "./CardOptionSearch"
 import { CardResponse as CardCardResponse } from "./CardResponse"
 import { CardResponseV2 as CardCardResponseV2 } from "./CardResponseV2"
@@ -20,6 +21,7 @@ import { CardTypeSpecification as CardCardTypeSpecification } from "./CardTypeSp
 import { CardTypeSpecificationFlag as CardCardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
 import { CardUsage as CardCardUsage } from "./CardUsage"
 import { CreateCardRequest as CardCreateCardRequest } from "./CreateCardRequest"
+import { CreatingSystem as CardCreatingSystem } from "./CreatingSystem"
 import { Criteria as CardCriteria } from "./Criteria"
 import { FundingType as CardFundingType } from "./FundingType"
 import { InsertCardOptionRequest as CardInsertCardOptionRequest } from "./InsertCardOptionRequest"
@@ -37,6 +39,7 @@ export namespace Card {
 	export type CardAmendmentScheduledTaskResponse = CardCardAmendmentScheduledTaskResponse
 	export type CardDeliveryRequest = CardCardDeliveryRequest
 	export type CardDeliveryResponse = CardCardDeliveryResponse
+	export type CardForm = CardCardForm
 	export type CardOptionSearch = CardCardOptionSearch
 	export type CardResponse = CardCardResponse
 	export type CardResponseV2 = CardCardResponseV2
@@ -54,6 +57,7 @@ export namespace Card {
 	export type CardTypeSpecificationFlag = CardCardTypeSpecificationFlag
 	export type CardUsage = CardCardUsage
 	export type CreateCardRequest = CardCreateCardRequest
+	export type CreatingSystem = CardCreatingSystem
 	export type Criteria = CardCriteria
 	export type FundingType = CardFundingType
 	export type InsertCardOptionRequest = CardInsertCardOptionRequest
