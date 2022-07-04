@@ -14,13 +14,13 @@ export interface CardSearch {
 	nameOnCard?: string
 	fundingBalanceIsLessThan?: number
 	personallyApprovable?: boolean
-	issueDate?: string
-	expiryDate?: string
+	issueDate?: isoly.Date
+	expiryDate?: isoly.Date
 	cardType?: CardTypeSpecification
 	cardNumber?: string
 	providerAccountId?: string
 	createdBefore?: string
 	createdAfter?: string
 	usage?: CardUsage
-	expiryDateAfter?: string
+	expiryDateAfter?: isoly.Date
 }

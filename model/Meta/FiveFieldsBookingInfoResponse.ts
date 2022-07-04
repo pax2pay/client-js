@@ -1,8 +1,9 @@
+import * as isoly from "isoly"
 export interface FiveFieldsBookingInfoResponse {
 	type: "FIVE_FIELDS"
 	bookingInfoIdentifier: string
 	agentBookingReference?: string
-	departureDate?: string
+	departureDate?: isoly.Date
 	supplierBookingReference?: string
 	leadPassengerName?: string
 	supplierCode?: string

@@ -12,9 +12,9 @@ export interface BookingInfo {
 	productType?: string
 	trackingId?: string
 	bookingInfoText?: string
-	bookingDate?: string
+	bookingDate?: isoly.Date
 	supplierBookingInfo?: SupplierBookingInfo
-	createdOn?: string
+	createdOn?: isoly.DateTime
 	createdBy?: string
 	bookingRef?: string
 	sellingPriceCurrency?: isoly.Currency

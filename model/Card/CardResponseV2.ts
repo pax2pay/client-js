@@ -1,4 +1,4 @@
-import { Currency } from "isoly"
+import * as isoly from "isoly"
 import { AccountState } from "../Account/AccountState"
 import { FundingAccountResponseV2 } from "../Account/FundingAccountResponseV2"
 import { ProviderCode } from "../Provider/ProviderCode"
@@ -17,8 +17,8 @@ export interface CardResponseV2 {
 	fundingBalance: number
 	fundingDate: string
 	balance: number
-	currency: Currency
-	issueDate: string
+	currency: isoly.Currency
+	issueDate: isoly.Date
 	providerCode: ProviderCode
 	providerCardId: string
 	usage: CardUsage

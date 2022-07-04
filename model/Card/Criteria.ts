@@ -1,10 +1,11 @@
+import * as isoly from "isoly"
 /**
  * Criteria request - defines which search criteria will be able to return which cards. A criteria matches if the criterion (for example, supplier) either matches the value (ie, the supplier searched for is the same), or if the criteria has an empty value for that field. Positive matches are ordered higher than null matches.
  */
 export interface Criteria {
 	usernames?: string[]
 	categories?: string[]
-	currencies: string[]
+	currencies: isoly.Currency[]
 	maxAmount?: number
 	productTypes?: Array<
 		| "FLIGHT"
@@ -33,8 +34,8 @@ export interface Criteria {
 		| "UNKNOWN"
 		| "UNDEFINED"
 	>
-	ruleStartDate?: string
-	ruleEndDate?: string
+	ruleStartDate?: isoly.Date
+	ruleEndDate?: isoly.Date
 	rank?: number
 	negated?: boolean
 }

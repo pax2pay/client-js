@@ -1,3 +1,4 @@
+import * as isoly from "isoly"
 import { AccountResponse } from "../Account/AccountResponse"
 import { ProviderCode } from "../Provider/ProviderCode"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
@@ -11,8 +12,8 @@ export interface TransferResponse {
 	destination?: TransferDestinationInfo
 	amount?: number
 	status?: TransferStatus
-	createdDate?: string
-	paymentDate?: string
+	createdDate?: isoly.DateTime
+	paymentDate?: isoly.Date
 	reference?: string
 	providerCode?: ProviderCode
 	providerTransferId?: string
@@ -30,8 +31,8 @@ export namespace TransferResponse {
 			(value.destination == undefined || TransferDestinationInfo.is(value.destination)) &&
 			(value.amount == undefined || typeof value.amount == "number") &&
 			(value.status == undefined || TransferStatus.is(value.status)) &&
-			(value.createdDate == undefined || typeof value.createdDate == "string") &&
-			(value.paymentDate == undefined || typeof value.paymentDate == "string") &&
+			(value.createdDate == undefined || isoly.DateTime.is(value.createdDate)) &&
+			(value.paymentDate == undefined || isoly.Date.is(value.paymentDate)) &&
 			(value.reference == undefined || typeof value.reference == "string") &&
 			(value.providerCode == undefined || ProviderCode.is(value.providerCode)) &&
 			(value.providerTransferId == undefined || typeof value.providerTransferId == "string") &&

@@ -1,9 +1,10 @@
+import * as isoly from "isoly"
 /**
  * Information about the flight
  */
 export interface BookedProductInfo {
-	bookedProductStartTime?: string
-	bookedProductEndTime?: string
+	bookedProductStartTime?: isoly.Date
+	bookedProductEndTime?: isoly.Date
 	bookedProductStartLoc?: string
 	bookedProductEndLoc?: string
 	bookedProductMerchantCode?: string

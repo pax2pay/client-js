@@ -1,5 +1,5 @@
 import * as isoly from "isoly"
-import { StatementItem } from "../StatementItem"
+import { StatementItem } from "./StatementItem"
 
 export interface Statement {
 	accountIdentifier: string

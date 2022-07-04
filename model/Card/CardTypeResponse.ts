@@ -1,3 +1,4 @@
+import * as isoly from "isoly"
 import { ProviderCode } from "../Provider/ProviderCode"
 import { CardScheme } from "./CardScheme"
 import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
@@ -9,7 +10,7 @@ export interface CardTypeResponse {
 	description?: string
 	scheme?: CardScheme
 	funding?: FundingType
-	currencies?: string[]
+	currencies?: isoly.Currency[]
 	flags?: CardTypeSpecificationFlag[]
 	bins?: string[]
 	preActive?: boolean

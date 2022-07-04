@@ -1,3 +1,4 @@
+import * as isoly from "isoly"
 import { AccountResponse } from "../Account/AccountResponse"
 import { AccountState } from "../Account/AccountState"
 import { BookingInfo } from "../Meta/BookingInfo"
@@ -14,10 +15,10 @@ export interface CardResponse {
 	nameOnCard?: string
 	cardNumber?: string
 	cvv?: string
-	issueDate?: string
-	expiryDate?: string
+	issueDate?: isoly.Date
+	expiryDate?: isoly.Date
 	cardForm?: "GENERATABLE" | "PHYSICAL" | "VIRTUAL"
-	fundingDate?: string
+	fundingDate?: isoly.Date
 	fundingBalance?: number
 	balance?: number
 	remainingBalance?: number

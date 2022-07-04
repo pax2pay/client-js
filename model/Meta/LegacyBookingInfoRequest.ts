@@ -9,7 +9,7 @@ export interface LegacyBookingInfoRequest {
 	productType?: string
 	trackingId?: string
 	bookingInfoText?: string
-	bookingDate?: string
+	bookingDate?: isoly.Date
 	supplierBookingInfo?: SupplierBookingInfo
 	createdOn?: string
 	createdBy?: string

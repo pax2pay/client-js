@@ -1,4 +1,5 @@
 import * as isoly from "isoly"
+import { AccountState } from "../Account/AccountState"
 import { BookingInfoRequest } from "../Meta/BookingInfoRequest"
 import { ProviderCode } from "../Provider/ProviderCode"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
@@ -24,5 +25,5 @@ export interface CreateCardRequest {
 	schedule?: (CardAmendmentScheduledTaskRequest | CardStateChangeScheduledTaskRequest | ScheduledTaskRequest)[]
 	friendlyName?: string
 	delivery?: CardDeliveryRequest
-	state?: string
+	state?: AccountState
 }

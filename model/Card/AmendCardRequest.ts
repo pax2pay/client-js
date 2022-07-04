@@ -4,5 +4,5 @@ export interface AmendCardRequest {
 	newBalance?: number
 	balanceDifferential?: number
 	currency: isoly.Currency
-	fundingDate?: string
+	fundingDate?: isoly.Date
 }

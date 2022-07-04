@@ -1,4 +1,5 @@
 import * as isoly from "isoly"
+import { BookingInfoRequest } from "../Meta/BookingInfoRequest"
 import { ProviderCode } from "../Provider/ProviderCode"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 
@@ -11,5 +12,6 @@ export interface TransferRequest {
 	amount: number
 	currency?: isoly.Currency
 	reference?: string
-	paymentDate?: string
+	paymentDate?: isoly.Date
+	bookingInfo?: BookingInfoRequest
 }
