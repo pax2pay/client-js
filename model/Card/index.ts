@@ -21,7 +21,6 @@ import { CardTypeSpecification as CardCardTypeSpecification } from "./CardTypeSp
 import { CardTypeSpecificationFlag as CardCardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
 import { CardUsage as CardCardUsage } from "./CardUsage"
 import { CreateCardRequest as CardCreateCardRequest } from "./CreateCardRequest"
-import { CreatingSystem as CardCreatingSystem } from "./CreatingSystem"
 import { Criteria as CardCriteria } from "./Criteria"
 import { FundingType as CardFundingType } from "./FundingType"
 import { InsertCardOptionRequest as CardInsertCardOptionRequest } from "./InsertCardOptionRequest"
@@ -57,7 +56,6 @@ export namespace Card {
 	export type CardTypeSpecificationFlag = CardCardTypeSpecificationFlag
 	export type CardUsage = CardCardUsage
 	export type CreateCardRequest = CardCreateCardRequest
-	export type CreatingSystem = CardCreatingSystem
 	export type Criteria = CardCriteria
 	export type FundingType = CardFundingType
 	export type InsertCardOptionRequest = CardInsertCardOptionRequest

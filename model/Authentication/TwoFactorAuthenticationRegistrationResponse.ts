@@ -6,3 +6,17 @@ export interface TwoFactorAuthenticationRegistrationResponse {
 	backupCodes?: string[]
 	qrCode?: string
 }
+
+export namespace TwoFactorAuthenticationRegistrationResponse {
+	export function is(
+		value: TwoFactorAuthenticationRegistrationResponse | any
+	): value is TwoFactorAuthenticationRegistrationResponse {
+		return (
+			typeof value == "object" &&
+			(value.userId == undefined || typeof value.userId == "string") &&
+			(value.backupCodes == undefined ||
+				(Array.isArray(value.backupCodes) && value.backupCodes.every((item: any) => typeof item == "string"))) &&
+			(value.qrCode == undefined || typeof value.qrCode == "string")
+		)
+	}
+}

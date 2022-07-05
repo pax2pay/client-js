@@ -6,3 +6,14 @@ export interface PaymentMethodOptionResponse {
 	generationChargeCurrency: isoly.Currency
 	generationChargeAmount: number
 }
+
+export namespace PaymentMethodOptionResponse {
+	export function is(value: PaymentMethodOptionResponse | any): value is PaymentMethodOptionResponse {
+		return (
+			typeof value == "object" &&
+			PaymentOption.is(value.option) &&
+			isoly.Currency.is(value.generationChargeCurrency) &&
+			typeof value.generationChargeAmount == "number"
+		)
+	}
+}

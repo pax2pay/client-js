@@ -5,7 +5,6 @@ import { PasswordValidateRequest as AuthenticationPasswordValidateRequest } from
 import { PasswordValidateResponse as AuthenticationPasswordValidateResponse } from "./PasswordValidateResponse"
 import { RelogWithNewSessionDetailsRequest as AuthenticationRelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { TwoFactorAuthenticationDetails as AuthenticationTwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails"
-import { TwoFactorAuthenticationRegistrationRequest as AuthenticationTwoFactorAuthenticationRegistrationRequest } from "./TwoFactorAuthenticationRegistrationRequest"
 import { TwoFactorAuthenticationRegistrationResponse as AuthenticationTwoFactorAuthenticationRegistrationResponse } from "./TwoFactorAuthenticationRegistrationResponse"
 
 export namespace Authentication {
@@ -16,6 +15,5 @@ export namespace Authentication {
 	export type PasswordValidateResponse = AuthenticationPasswordValidateResponse
 	export type RelogWithNewSessionDetailsRequest = AuthenticationRelogWithNewSessionDetailsRequest
 	export type TwoFactorAuthenticationDetails = AuthenticationTwoFactorAuthenticationDetails
-	export type TwoFactorAuthenticationRegistrationRequest = AuthenticationTwoFactorAuthenticationRegistrationRequest
 	export type TwoFactorAuthenticationRegistrationResponse = AuthenticationTwoFactorAuthenticationRegistrationResponse
 }

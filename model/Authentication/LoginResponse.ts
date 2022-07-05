@@ -1,3 +1,4 @@
+import { InvokingSystem } from "../InvokingSystem"
 import { Issue } from "../Issue"
 import { OrganisationResponse } from "../Organisation/OrganisationResponse"
 import { UserResponse } from "../User/UserResponse"
@@ -10,17 +11,7 @@ export interface LoginResponse {
 	status?: "SUCCESS" | "FAILURE"
 	token: string
 	expiry: string
-	invokingSystem:
-		| "PORTAL"
-		| "REST_API"
-		| "FAB"
-		| "REST_API_PORTAL"
-		| "REST_API_EXTERNAL"
-		| "SOAP_API_FAB"
-		| "SOAP_API_EXTERNAL"
-		| "CRON"
-		| "UNKNOWN"
-		| "UNDEFINED"
+	invokingSystem: InvokingSystem
 	trackingId: string
 	user: UserResponse
 	username: string
@@ -36,16 +27,7 @@ export namespace LoginResponse {
 			(value.status == undefined || value.status == "SUCCESS" || value.status == "FAILURE") &&
 			typeof value.token == "string" &&
 			typeof value.expiry == "string" &&
-			(value.invokingSystem == "PORTAL" ||
-				value.invokingSystem == "REST_API" ||
-				value.invokingSystem == "FAB" ||
-				value.invokingSystem == "REST_API_PORTAL" ||
-				value.invokingSystem == "REST_API_EXTERNAL" ||
-				value.invokingSystem == "SOAP_API_FAB" ||
-				value.invokingSystem == "SOAP_API_EXTERNAL" ||
-				value.invokingSystem == "CRON" ||
-				value.invokingSystem == "UNKNOWN" ||
-				value.invokingSystem == "UNDEFINED") &&
+			InvokingSystem.is(value.invokingSystem) &&
 			typeof value.trackingId == "string" &&
 			UserResponse.is(value.user) &&
 			typeof value.username == "string" &&

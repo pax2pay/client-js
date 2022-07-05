@@ -4,6 +4,7 @@ import { Card } from "./Card"
 import { Config } from "./Config"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
+import { InvokingSystem } from "./InvokingSystem"
 import { Issue } from "./Issue"
 import { Meta } from "./Meta"
 import { Organisation } from "./Organisation"
@@ -23,6 +24,7 @@ export {
 	Config,
 	ErrorMessageDto,
 	ErrorResponse,
+	InvokingSystem,
 	Issue,
 	Meta,
 	Organisation,

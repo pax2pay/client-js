@@ -1,6 +1,7 @@
 import * as isoly from "isoly"
 import { AccountResponse } from "../Account/AccountResponse"
 import { AccountState } from "../Account/AccountState"
+import { InvokingSystem } from "../InvokingSystem"
 import { BookingInfo } from "../Meta/BookingInfo"
 import { BookingInfoResponse } from "../Meta/BookingInfoResponse"
 import { ProviderCode } from "../Provider/ProviderCode"
@@ -9,7 +10,6 @@ import { CardForm } from "./CardForm"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
-import { CreatingSystem } from "./CreatingSystem"
 
 export interface CardResponse {
 	cardType: CardTypeSpecification | string
@@ -31,7 +31,7 @@ export interface CardResponse {
 	providerCardId: string
 	cardAccount?: AccountResponse
 	fundingAccount?: AccountResponse
-	creatingSystem?: CreatingSystem
+	creatingSystem?: InvokingSystem
 	createdBy?: string
 	bookingInfo?: BookingInfo | BookingInfoResponse
 	schedule?: CardScheduleResponseItem[]
@@ -61,7 +61,7 @@ export namespace CardResponse {
 			typeof value.providerCardId == "string" &&
 			(value.cardAccount == undefined || AccountResponse.is(value.cardAccount)) &&
 			(value.fundingAccount == undefined || AccountResponse.is(value.fundingAccount)) &&
-			(value.creatingSystem == undefined || CreatingSystem.is(value.creatingSystem)) &&
+			(value.creatingSystem == undefined || InvokingSystem.is(value.creatingSystem)) &&
 			(value.createdBy == undefined || typeof value.createdBy == "string") &&
 			(value.bookingInfo == undefined ||
 				BookingInfo.is(value.bookingInfo) ||
