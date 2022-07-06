@@ -4,6 +4,9 @@ import { OrganisationResponse as OrganisationOrganisationResponse } from "./Orga
 
 export namespace Organisation {
 	export type OrganisationBalanceLimitResponse = OrganisationOrganisationBalanceLimitResponse
+	export const OrganisationBalanceLimitResponse = OrganisationOrganisationBalanceLimitResponse
 	export type OrganisationRequest = OrganisationOrganisationRequest
+	export const OrganisationRequest = OrganisationOrganisationRequest
 	export type OrganisationResponse = OrganisationOrganisationResponse
+	export const OrganisationResponse = OrganisationOrganisationResponse
 }

@@ -14,6 +14,7 @@ export namespace User {
 	export type UserLimitsRequest = UserUserLimitsRequest
 	export type UserRequest = UserUserRequest
 	export type UserResponse = UserUserResponse
+	export const UserResponse = UserUserResponse
 	export type UserRoleResponse = UserUserRoleResponse
 	export type UserSearchRequest = UserUserSearchRequest
 }

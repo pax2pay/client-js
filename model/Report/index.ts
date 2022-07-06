@@ -21,7 +21,9 @@ export interface Report<T> {
 
 export namespace Report {
 	export type AmountPair = ReportAmountPair
+	export const AmountPair = ReportAmountPair
 	export type BillingTransactionAmountPair = ReportBillingTransactionAmountPair
+	export const BillingTransactionAmountPair = ReportBillingTransactionAmountPair
 	export type ChargeBackItem = ReportChargeBackItem
 	export type ProcessedStatement = ReportProcessedStatement
 	export type Reconciliation = Report<ReportReconciliation>
@@ -33,8 +35,13 @@ export namespace Report {
 	export type TransactionType = ReportTransactionType
 	export type StatementReportRequest = ReportStatementReportRequest
 	export type StatementReportResponse = ReportStatementReportResponse
+	export const StatementReportResponse = ReportStatementReportResponse
 	export type StatementReportResponseRow = ReportStatementReportResponseRow
+	export const StatementReportResponseRow = ReportStatementReportResponseRow
 	export type StatementReportRowActionType = ReportStatementReportRowActionType
+	export const StatementReportRowActionType = ReportStatementReportRowActionType
 	export type StatementReportRowType = ReportStatementReportRowType
+	export const StatementReportRowType = ReportStatementReportRowType
 	export type StatementRowIds = ReportStatementRowIds
+	export const StatementRowIds = ReportStatementRowIds
 }

@@ -7,5 +7,7 @@ export namespace Provider {
 	export type CredentialRequest = ProviderCredentialRequest
 	export type CredentialResponse = ProviderCredentialResponse
 	export type ProviderCode = ProviderProviderCode
+	export const ProviderCode = ProviderProviderCode
 	export type ProviderResponse = ProviderProviderResponse
+	export const ProviderResponse = ProviderProviderResponse
 }

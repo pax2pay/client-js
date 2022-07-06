@@ -9,11 +9,19 @@ import { TwoFactorAuthenticationRegistrationResponse as AuthenticationTwoFactorA
 
 export namespace Authentication {
 	export type LoginRequest = AuthenticationLoginRequest
+	export const LoginRequest = AuthenticationLoginRequest
 	export type LoginResponse = AuthenticationLoginResponse
+	export const LoginResponse = AuthenticationLoginResponse
 	export type PasswordChangeRequest = AuthenticationPasswordChangeRequest
+	export const PasswordChangeRequest = AuthenticationPasswordChangeRequest
 	export type PasswordValidateRequest = AuthenticationPasswordValidateRequest
+	export const PasswordValidateRequest = AuthenticationPasswordValidateRequest
 	export type PasswordValidateResponse = AuthenticationPasswordValidateResponse
+	export const PasswordValidateResponse = AuthenticationPasswordValidateResponse
 	export type RelogWithNewSessionDetailsRequest = AuthenticationRelogWithNewSessionDetailsRequest
+	export const RelogWithNewSessionDetailsRequest = AuthenticationRelogWithNewSessionDetailsRequest
 	export type TwoFactorAuthenticationDetails = AuthenticationTwoFactorAuthenticationDetails
+	export const TwoFactorAuthenticationDetails = AuthenticationTwoFactorAuthenticationDetails
 	export type TwoFactorAuthenticationRegistrationResponse = AuthenticationTwoFactorAuthenticationRegistrationResponse
+	export const TwoFactorAuthenticationRegistrationResponse = AuthenticationTwoFactorAuthenticationRegistrationResponse
 }
