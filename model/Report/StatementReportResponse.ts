@@ -1,5 +1,5 @@
 import { Currency } from "isoly"
-import { ProviderCode } from "./ProviderCode"
+import { ProviderCode } from "../Provider/ProviderCode"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
 
 export interface StatementReportResponse {

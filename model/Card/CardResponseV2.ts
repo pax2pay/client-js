@@ -39,7 +39,8 @@ export namespace CardResponseV2 {
 			YearMonth.is(value.expiryDate) &&
 			typeof value.nameOnCard == "string" &&
 			typeof value.balance == "number" &&
-			typeof value.issueDate == "string" &&
+			isoly.Currency.is(value.currency) &&
+			isoly.Date.is(value.issueDate) &&
 			ProviderCode.is(value.providerCode) &&
 			typeof value.providerCardId == "string" &&
 			CardUsage.is(value.usage) &&
