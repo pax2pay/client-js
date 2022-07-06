@@ -1,12 +1,13 @@
 import * as isoly from "isoly"
+import { CardDeliveryStatus } from "./CardDeliveryStatus"
 
 export interface CardDeliveryResponse {
 	type: "EMAIL"
-	to: string | [string, string]
+	to: string | [string, string] //TODO correct type?
 	deliveredMessage: string
 	linkExpiry: isoly.Date
-	sent: string
-	status: "SUCCESS" | "FAILURE" | "TODO"
+	sent: isoly.DateTime
+	status: CardDeliveryStatus
 	statusText?: string
 }
 export namespace CardDeliveryResponse {
@@ -17,9 +18,9 @@ export namespace CardDeliveryResponse {
 			(typeof value.to == "string" || typeof value.to == "object") &&
 			typeof value.deliveredMessage == "string" &&
 			isoly.Date.is(value.linkExpiry) &&
-			typeof value.sent == "string" &&
+			isoly.DateTime.is(value.sent) &&
 			(typeof value.statusText == "string" || value.statusText == undefined) &&
-			(value.status == "SUCCESS" || value.status == "FAILURE" || value.status == "TODO")
+			CardDeliveryStatus.is(value.status)
 		)
 	}
 }

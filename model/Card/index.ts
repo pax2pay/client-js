@@ -3,6 +3,7 @@ import { CardAmendmentScheduledTaskRequest as CardCardAmendmentScheduledTaskRequ
 import { CardAmendmentScheduledTaskResponse as CardCardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
 import { CardDeliveryRequest as CardCardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardDeliveryResponse as CardCardDeliveryResponse } from "./CardDeliveryResponse"
+import { CardDeliveryStatus as CardCardDeliveryStatus } from "./CardDeliveryStatus"
 import { CardForm as CardCardForm } from "./CardForm"
 import { CardOptionSearch as CardCardOptionSearch } from "./CardOptionSearch"
 import { CardResponse as CardCardResponse } from "./CardResponse"
@@ -38,6 +39,7 @@ export namespace Card {
 	export type CardAmendmentScheduledTaskResponse = CardCardAmendmentScheduledTaskResponse
 	export type CardDeliveryRequest = CardCardDeliveryRequest
 	export type CardDeliveryResponse = CardCardDeliveryResponse
+	export type CardDeliveryStatus = CardCardDeliveryStatus
 	export type CardForm = CardCardForm
 	export type CardOptionSearch = CardCardOptionSearch
 	export type CardResponse = CardCardResponse
