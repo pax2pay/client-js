@@ -25,6 +25,7 @@ import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
+import { CardProcessedTransaction } from "./CardProcessedTransaction"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
@@ -34,6 +35,7 @@ import { CardSearch } from "./CardSearch"
 import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduledTaskResponse"
+import { CardTransaction } from "./CardTransaction"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
@@ -170,6 +172,8 @@ export {
 	CardStateChangeDesiredState,
 	CardStateChangeScheduledTaskRequest,
 	CardStateChangeScheduledTaskResponse,
+	CardTransaction,
+	CardProcessedTransaction,
 	CardTypeResponse,
 	CardTypesConfig,
 	CardTypeSearchRequest,

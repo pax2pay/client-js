@@ -1,5 +1,9 @@
 export type TransactionType =
 	| "CREATE_CARD"
+	| "AUTHORISATION"
+	| "SETTLEMENT"
+	| "REVERSAL"
+	| "DEPOSIT"
 	| "FUND_CARD"
 	| "PURCHASE"
 	| "REFUND"

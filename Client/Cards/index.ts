@@ -65,4 +65,14 @@ export class Cards extends List<
 		)
 		return result
 	}
+	async getCardTransaction(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardProcessedTransaction[]>(
+			`cards/virtual/${providerCode}/${providerCardId}/statements`
+		)
+		return result
+	}
+	async searchTransaction(searchRequest: string) {
+		const result = await this.connection.post<model.CardTransaction[]>(`transactions/searches`, searchRequest)
+		return result
+	}
 }

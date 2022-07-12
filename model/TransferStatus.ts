@@ -1,4 +1,9 @@
 const transferStatus = [
+	"CREATED",
+	"DEPOSITED",
+	"EXPIRED",
+	"UNKNOWN",
+	"WITHDRAWN",
 	"PENDING",
 	"PENDING_FOR_DATE",
 	"PENDING_FOR_FUNDS",
