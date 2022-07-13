@@ -71,7 +71,7 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async searchTransaction(searchRequest: string) {
+	async searchTransaction(searchRequest: number) {
 		const result = await this.connection.post<model.CardTransaction[]>(`transactions/searches`, searchRequest)
 		return result
 	}
