@@ -77,7 +77,7 @@ export class Cards extends List<
 		})
 		return result
 	}
-	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduledTaskRequest[]) {
+	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {
 		const result = await this.connection.put<model.CardScheduleResponseItem[]>(
 			`cards/virtual/${providerCode}/${providerCardId}/schedule`,
 			{

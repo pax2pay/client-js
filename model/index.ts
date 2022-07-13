@@ -100,6 +100,7 @@ import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
+import { ScheduleEntry } from "./ScheduleEntry"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { Segment } from "./Segment"
 import { Sorting } from "./Sorting"
@@ -237,6 +238,7 @@ export {
 	RoleResponse,
 	RolesetResponse,
 	Room,
+	ScheduleEntry,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	Segment,
