@@ -77,4 +77,20 @@ export class Cards extends List<
 		})
 		return result
 	}
+	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduledTaskRequest[]) {
+		const result = await this.connection.put<model.CardScheduleResponseItem[]>(
+			`cards/virtual/${providerCode}/${providerCardId}/schedule`,
+			{
+				schedule: request,
+			}
+		)
+		return result
+	}
+	async amendExistingCard(providerCardId: string, providerCode: model.ProviderCode, request: model.AmendCardRequest) {
+		const result = await this.connection.post<model.CardResponse[]>(
+			`cards/virtual/${providerCode}/${providerCardId}/amend`,
+			request
+		)
+		return result
+	}
 }
