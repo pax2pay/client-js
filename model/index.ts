@@ -37,6 +37,7 @@ import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledT
 import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduledTaskResponse"
 import { CardTransaction } from "./CardTransaction"
 import { CardTypeResponse } from "./CardTypeResponse"
+import { CardTypeResponseV2 } from "./CardTypeResponseV2"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
@@ -176,6 +177,7 @@ export {
 	CardTransaction,
 	CardProcessedTransaction,
 	CardTypeResponse,
+	CardTypeResponseV2,
 	CardTypesConfig,
 	CardTypeSearchRequest,
 	CardTypeSpecification,

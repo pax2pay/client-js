@@ -42,8 +42,12 @@ export class Cards extends List<
 `)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
+	async getCardTypesV2(providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardTypeResponseV2[]>(`v2/cards/types/${providerCode}`)
+		return result
+	}
 	async getCardTypes(providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardTypeResponse[]>(`v2/cards/types/${providerCode}`)
+		const result = await this.connection.get<model.CardTypeResponse[]>(`cards/types/${providerCode}`)
 		return result
 	}
 	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest) {
