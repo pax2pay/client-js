@@ -1,4 +1,5 @@
 export interface CardTypeResponse {
-	cardType?: string
-	representAs?: string
+	cardType: string
+	representAs: string
+	cardName?: string
 }
