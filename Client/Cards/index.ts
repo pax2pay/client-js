@@ -42,6 +42,10 @@ export class Cards extends List<
 `)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
+	async createCard(request: model.CreateCardRequest) {
+		const result = await this.connection.post<model.CardResponse>(`cards/virtual`, request)
+		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
+	}
 	async cancelCard(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.remove<model.CardResponse>(
 			`cards/virtual/${providerCode}/${providerCardId}/cancel`
