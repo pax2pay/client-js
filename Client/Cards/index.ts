@@ -53,6 +53,12 @@ export class Cards extends List<
 		)
 		return result
 	}
+	async getAllFundingAccounts(providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardFundingAccountResponse[]>(
+			`funding-accounts?provider=${providerCode}&size=500`
+		)
+		return result
+	}
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardResponse>(`booking-info/cards/${providerCode}/${providerCardId}
 `)
