@@ -47,7 +47,7 @@ export class Cards extends List<
 		return result
 	}
 	async getCardTypes(providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardTypeResponse[]>(`cards/types/${providerCode}`)
+		const result = await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
 		return result
 	}
 	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest) {
