@@ -6,10 +6,11 @@ export interface CardTypeResponse {
 export namespace CardTypeResponse {
 	export function is(value: CardTypeResponse | any): value is CardTypeResponse {
 		return (
-			typeof value == "object" &&
-			typeof value.cardType == "string" &&
-			typeof value.representAs == "string" &&
-			typeof value.cardName == "string"
+			(typeof value == "object" &&
+				typeof value.cardType == "string" &&
+				typeof value.representAs == "string" &&
+				typeof value.cardName == "string") ||
+			value.cardName == undefined
 		)
 	}
 }
