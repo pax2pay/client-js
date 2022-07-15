@@ -15,7 +15,7 @@ export interface CardResponse {
 	cardNumber?: string
 	cvv?: string
 	issueDate?: string
-	expiryDate?: string
+	expiryDate: string
 	cardForm?: "GENERATABLE" | "PHYSICAL" | "VIRTUAL"
 	fundingDate?: string
 	fundingBalance?: number
