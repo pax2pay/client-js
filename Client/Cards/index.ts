@@ -92,9 +92,9 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async searchTransaction(searchRequest: number) {
+	async searchTransaction(accountId: number) {
 		const result = await this.connection.post<model.CardTransaction[]>(`transactions/searches`, {
-			accountId: searchRequest,
+			accountId: accountId,
 		})
 		return result
 	}
