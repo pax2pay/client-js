@@ -2,7 +2,7 @@ import * as isoly from "isoly"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
 
 export interface ScheduledTaskRequest {
-	dueOn: isoly.DateTime
+	dueOn?: isoly.DateTime
 	status?:
 		| "TODO"
 		| "CANCELLED"
@@ -13,6 +13,7 @@ export interface ScheduledTaskRequest {
 		| "HALTED"
 		| "PENDING"
 		| "PENDING_DECLINED"
+	desiredState?: string
 	taskId?: string
 	taskType?: CardScheduleTaskType
 	newBalance?: number

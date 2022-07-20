@@ -25,6 +25,7 @@ import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
+import { CardProcessedTransaction } from "./CardProcessedTransaction"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
@@ -34,7 +35,10 @@ import { CardSearch } from "./CardSearch"
 import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduledTaskResponse"
+import { CardTransaction } from "./CardTransaction"
+import { CardType } from "./CardType"
 import { CardTypeResponse } from "./CardTypeResponse"
+import { CardTypeResponseV2 } from "./CardTypeResponseV2"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
@@ -98,6 +102,7 @@ import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
+import { ScheduleEntry } from "./ScheduleEntry"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { Segment } from "./Segment"
 import { Sorting } from "./Sorting"
@@ -170,7 +175,11 @@ export {
 	CardStateChangeDesiredState,
 	CardStateChangeScheduledTaskRequest,
 	CardStateChangeScheduledTaskResponse,
+	CardTransaction,
+	CardProcessedTransaction,
+	CardType,
 	CardTypeResponse,
+	CardTypeResponseV2,
 	CardTypesConfig,
 	CardTypeSearchRequest,
 	CardTypeSpecification,
@@ -233,6 +242,7 @@ export {
 	RoleResponse,
 	RolesetResponse,
 	Room,
+	ScheduleEntry,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	Segment,

@@ -42,8 +42,22 @@ export class Cards extends List<
 `)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
+	async createCard(request: model.CreateCardRequest) {
+		const result = await this.connection.post<model.CardResponse>(`cards/virtual`, request)
+		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
+	}
+	async cancelCard(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.remove<model.CardResponse>(
+			`cards/virtual/${providerCode}/${providerCardId}/cancel`
+		)
+		return result
+	}
+	async getCardTypesV2(providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardTypeResponseV2[]>(`v2/cards/types/${providerCode}`)
+		return result
+	}
 	async getCardTypes(providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardTypeResponse[]>(`v2/cards/types/${providerCode}`)
+		const result = await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
 		return result
 	}
 	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest) {
@@ -53,14 +67,49 @@ export class Cards extends List<
 		)
 		return result
 	}
+	async getAllFundingAccounts(providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardFundingAccountResponse[]>(
+			`funding-accounts?provider=${providerCode}&size=500`
+		)
+		return result
+	}
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponse>(`booking-info/cards/${providerCode}/${providerCardId}
+		const result = await this.connection
+			.get<model.BookingInfoResponse>(`booking-info/cards/${providerCode}/${providerCardId}
 `)
 		return result
 	}
 	async editCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
 		const result = await this.connection.put<model.BookingInfoResponse>(
 			`booking-info/cards/${providerCode}/${providerCardId}`,
+			request
+		)
+		return result
+	}
+	async getCardTransaction(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardProcessedTransaction[]>(
+			`cards/virtual/${providerCode}/${providerCardId}/statements`
+		)
+		return result
+	}
+	async searchTransaction(accountId: number) {
+		const result = await this.connection.post<model.CardTransaction[]>(`transactions/searches`, {
+			accountId: accountId,
+		})
+		return result
+	}
+	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {
+		const result = await this.connection.put<model.CardResponse>(
+			`cards/virtual/${providerCode}/${providerCardId}/schedule`,
+			{
+				schedule: request,
+			}
+		)
+		return result
+	}
+	async amendExistingCard(providerCardId: string, providerCode: model.ProviderCode, request: model.AmendCardRequest) {
+		const result = await this.connection.post<model.CardResponse>(
+			`cards/virtual/${providerCode}/${providerCardId}/amend`,
 			request
 		)
 		return result
