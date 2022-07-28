@@ -15,10 +15,10 @@ export namespace HotelBookingInfoRequest {
 	export function is(value: HotelBookingInfoRequest | any): value is HotelBookingInfoRequest {
 		return (
 			typeof value == "object" &&
-			HotelInfo.is(value.hotel) &&
-			References.is(value.references) &&
-			Passengers.is(value.passengers) &&
-			isoly.DateTime.is(value.timestamp)
+			(value.hotel == undefined || HotelInfo.is(value.hotel)) &&
+			(value.references == undefined || References.is(value.references)) &&
+			(value.passengers == undefined || Passengers.is(value.passengers)) &&
+			(value.timestamp == undefined || isoly.DateTime.is(value.timestamp))
 		)
 	}
 }
