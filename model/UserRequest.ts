@@ -6,6 +6,7 @@ export interface UserRequest {
 	password: string
 	firstName: string
 	lastName: string
+	status?: "ACTIVE" | "INACTIVE" | "DELETED" | "PASSWORD_EXPIRED"
 	email: string
 	rolesets?: string[]
 	category?: string
