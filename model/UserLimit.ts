@@ -1,8 +1,10 @@
+import { Currency } from "isoly"
+
 /**
  * User's limits
  */
 export interface UserLimit {
-	currency: string
+	currency: Currency
 	limit: number
-	setBy: "USER" | "CATEGORY"
+	setBy?: "USER" | "CATEGORY"
 }
