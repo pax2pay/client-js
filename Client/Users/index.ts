@@ -15,8 +15,8 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	static create(connection: Connection) {
 		return new Users(connection)
 	}
-	async deleteUser(username: string): Promise<model.UserResponse[] | model.ErrorResponse> {
-		const result = await this.connection.remove<model.UserResponse[]>(`users/${username}`)
+	async deleteUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
+		const result = await this.connection.remove<model.UserResponse>(`users/${username}`)
 		return result
 	}
 	async getAllUsers(): Promise<model.UserResponse[] | model.ErrorResponse> {
@@ -31,13 +31,17 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		const result = await this.connection.get<model.RolesetResponse[]>(`rolesets`)
 		return result
 	}
+	async getUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
+		const result = await this.connection.get<model.UserResponse>(`users/${username}`)
+		return result
+	}
 	async getUsersActiveRoles(username: string, token: string): Promise<string[] | model.ErrorResponse> {
 		this.connection.token = token
 		const result = await this.connection.get<string[]>(`users/${username}/roles/minified`)
 		return result
 	}
-	async updateUser(username: string, request: model.UserRequest): Promise<model.UserResponse[] | model.ErrorResponse> {
-		const result = await this.connection.put<model.UserResponse[]>(`users/${username}`, request)
+	async updateUser(username: string, request: model.UserRequest): Promise<model.UserResponse | model.ErrorResponse> {
+		const result = await this.connection.put<model.UserResponse>(`users/${username}`, request)
 		return result
 	}
 }
