@@ -40,6 +40,14 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		const result = await this.connection.get<string[]>(`users/${username}/roles/minified`)
 		return result
 	}
+	async updateRolesetOnUser(
+		username: string,
+		roleset: string,
+		request: model.UserRoleResponse
+	): Promise<model.UserRoleResponse | model.ErrorResponse> {
+		const result = await this.connection.put<model.UserRoleResponse>(`users/${username}/rolesets/${roleset}`, request)
+		return result
+	}
 	async updateUser(username: string, request: model.UserRequest): Promise<model.UserResponse | model.ErrorResponse> {
 		const result = await this.connection.put<model.UserResponse>(`users/${username}`, request)
 		return result
