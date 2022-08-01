@@ -11,7 +11,11 @@ export namespace References {
 		return (
 			typeof value == "object" &&
 			(typeof value.supplierBookingReference == "string" || value.supplierBookingReference == undefined) &&
-			typeof value.agentBookingReference == "string"
+			(typeof value.agentBookingReference == "string" || value.agentBookingReference == undefined) &&
+			(typeof value.supplierCode == "string" || value.supplierCode == undefined) &&
+			(typeof value.supplierName == "string" || value.supplierName == undefined) &&
+			(typeof value.fabBasketReference == "string" || value.fabBasketReference == undefined) &&
+			(typeof value.syndicatorName == "string" || value.syndicatorName == undefined)
 		)
 	}
 }
