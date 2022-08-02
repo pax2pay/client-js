@@ -20,7 +20,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		return result
 	}
 	async getAllUsers(): Promise<model.UserResponse[] | model.ErrorResponse> {
-		const result = await this.connection.get<model.UserResponse[]>(`users`)
+		const result = await this.connection.get<model.UserResponse[]>(`users?size=500`)
 		return result
 	}
 	async getCategory(): Promise<string[] | model.ErrorResponse> {
