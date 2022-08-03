@@ -87,6 +87,7 @@ import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
 import { Passengers } from "./Passengers"
 import { PasswordChangeRequest } from "./PasswordChangeRequest"
+import { PasswordResetResponse } from "./PasswordResetResponse"
 import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
 import { Payload } from "./Payload"
@@ -228,6 +229,7 @@ export {
 	OrganisationResponse,
 	Passengers,
 	PasswordChangeRequest,
+	PasswordResetResponse,
 	PasswordValidateRequest,
 	PasswordValidateResponse,
 	Payload,
