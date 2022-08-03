@@ -1,4 +1,7 @@
+import { Issue } from "./Issue"
+
 export interface PasswordResetResponse {
-	status: string
-	url: string
+	status: "SUCCESS" | "FAILURE"
+	url?: string
+	issues?: Issue[]
 }
