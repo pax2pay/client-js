@@ -35,7 +35,6 @@ export namespace Config {
 	export type InternalOrganisationConfig = ConfigInternalOrganisationConfig
 	export const InternalOrganisationConfig = ConfigInternalOrganisationConfig
 	export type InternalUserConfig = ConfigInternalUserConfig
-	export const InternalUserConfig = ConfigInternalUserConfig
 	export type MCC = ConfigMCC
 	export const MCC = ConfigMCC
 	export type MCCRange = ConfigMCCRange
