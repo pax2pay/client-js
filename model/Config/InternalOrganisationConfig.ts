@@ -18,8 +18,8 @@ export namespace InternalOrganisationConfig {
 				(value.flags instanceof Set && [...value.flags.values()].every((item: any) => OrganisationFlag.is(item)))) &&
 			(value.internalBalanceLimit == undefined || InternalBalanceLimit.is(value.internalBalanceLimit)) &&
 			(value.features == undefined ||
-				(value.features instanceof Set && [...value.features.values()].every((item: any) => PaxpayFeature.is(item)))) &&
-			(value.allowedMccConfig == undefined || AllowedMccConfig.is(value.allowedMccConfig))
+				(value.features instanceof Set && [...value.features.values()].every((item: any) => PaxpayFeature.is(item))))
+			//TODO add in check for AllowedMccConfig when that has a working is function
 		)
 	}
 }

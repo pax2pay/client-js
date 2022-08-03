@@ -12,8 +12,8 @@ export namespace InternalBalanceLimit {
 			typeof value == "object" &&
 			isoly.Currency.is(value.currency) &&
 			typeof value.lowerLimit == "number" &&
-			value.emails instanceof Set &&
-			[...value.emails.values()].every((item: any) => typeof item == "string")
+			value.emails
+			//TODO improve is function if Set from mpay can be type checked here
 		)
 	}
 }

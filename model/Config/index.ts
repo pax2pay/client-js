@@ -24,7 +24,6 @@ import { UserConfig as ConfigUserConfig } from "./UserConfig"
 
 export namespace Config {
 	export type AllowedMccConfig = ConfigAllowedMccConfig
-	export const AllowedMccConfig = ConfigAllowedMccConfig
 	export type CardDeliveryEmailConfig = ConfigCardDeliveryEmailConfig
 	export const CardDeliveryEmailConfig = ConfigCardDeliveryEmailConfig
 	export type ConfigType = ConfigConfigType

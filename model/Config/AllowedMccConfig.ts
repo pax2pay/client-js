@@ -6,15 +6,4 @@ export interface AllowedMccConfig {
 	allowedRanges?: Set<MCCRange>
 }
 
-export namespace AllowedMccConfig {
-	export function is(value: AllowedMccConfig | any): value is AllowedMccConfig {
-		return (
-			typeof value == "object" &&
-			(value.allowedMccs == undefined ||
-				(value.allowedMccs instanceof Set && [...value.allowedMccs.values()].every((item: any) => MCC.is(item)))) &&
-			(value.allowedRanges == undefined ||
-				(value.allowedRanges instanceof Set &&
-					[...value.allowedRanges.values()].every((item: any) => MCCRange.is(item))))
-		)
-	}
-}
+//TODO is function if Set from mpay can be type checked here
