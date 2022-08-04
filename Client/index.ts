@@ -5,6 +5,7 @@ import { Beneficiaries as ClientBeneficiaries } from "./Beneficiaries"
 import { Card as ClientCard } from "./Card"
 import { Cards as ClientCards } from "./Cards"
 import { Collection as ClientCollection } from "./Collection"
+import { Configuration as ClientConfiguration } from "./Configuration"
 import { Connection } from "./Connection"
 import { List as ClientList } from "./List"
 import { Organisation as ClientOrganisation } from "./Organisation"
@@ -25,6 +26,7 @@ export class Client {
 	auth = ClientAuth.create(this.connection)
 	beneficiaries = ClientBeneficiaries.create(this.connection)
 	cards = ClientCards.create(this.connection)
+	configuration = ClientConfiguration.create(this.connection)
 	users = ClientUsers.create(this.connection)
 	organisations = ClientOrganisations.create(this.connection)
 	reports = ClientReports.create(this.connection)
@@ -45,6 +47,7 @@ export namespace Client {
 	export type Beneficiaries = ClientBeneficiaries
 	export type Card = ClientCard
 	export type Cards = ClientCards
+	export type Configuration = ClientConfiguration
 	export type Organisation = ClientOrganisation
 	export type Organisations = ClientOrganisations
 	export type Reports = ClientReports
