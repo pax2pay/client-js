@@ -83,6 +83,8 @@ import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
+import { OrganisationCreateBalanceLimitRequest } from "./OrganisationCreateBalanceLimitRequest"
+import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
 import { Passengers } from "./Passengers"
@@ -138,7 +140,6 @@ import { UserResponse } from "./UserResponse"
 import { UserRoleResponse } from "./UserRoleResponse"
 import { UserSearchRequest } from "./UserSearchRequest"
 import { YearMonth } from "./YearMonth"
-
 export {
 	AccountBankResponse,
 	AccountCreationRequest,
@@ -225,6 +226,8 @@ export {
 	NonBeneficiaryTransferDestination,
 	OrganisationBalanceLimitResponse,
 	OrganisationConfig,
+	OrganisationCreateBalanceLimitRequest,
+	OrganisationCreateRequest,
 	OrganisationRequest,
 	OrganisationResponse,
 	Passengers,
