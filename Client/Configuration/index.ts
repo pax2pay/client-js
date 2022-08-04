@@ -2,7 +2,7 @@ import { Currency } from "isoly"
 import { Connection } from "../Connection"
 
 export class Configuration {
-	protected folder = "users"
+	protected folder = "config"
 	constructor(private readonly connection: Connection) {}
 	static create(connection: Connection) {
 		return new Configuration(connection)
