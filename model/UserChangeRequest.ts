@@ -5,5 +5,6 @@ export interface UserChangeRequest {
 	lastName: string
 	email: string
 	category?: string
+	status?: "ACTIVE" | "INACTIVE" | "DELETED" | "PASSWORD_EXPIRED"
 	userLimits?: UserLimitsRequest[]
 }
