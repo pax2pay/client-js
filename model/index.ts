@@ -130,9 +130,9 @@ import { UpdateBeneficiaryRequest } from "./UpdateBeneficiaryRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
 import { UserChangeRequest } from "./UserChangeRequest"
 import { UserConfig } from "./UserConfig"
-import { UserLimit } from "./UserLimit"
 import { UserLimitsDeleteRequest } from "./UserLimitsDeleteRequest"
 import { UserLimitsRequest } from "./UserLimitsRequest"
+import { UserLimitsResponse } from "./UserLimitsResponse"
 import { UserRequest } from "./UserRequest"
 import { UserResponse } from "./UserResponse"
 import { UserRoleResponse } from "./UserRoleResponse"
@@ -272,9 +272,9 @@ export {
 	UpdateRolesetRequest,
 	UserChangeRequest,
 	UserConfig,
-	UserLimit,
 	UserLimitsDeleteRequest,
 	UserLimitsRequest,
+	UserLimitsResponse,
 	UserRequest,
 	UserResponse,
 	UserRoleResponse,
