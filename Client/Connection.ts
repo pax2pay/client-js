@@ -1,5 +1,4 @@
 import { default as fetch } from "isomorphic-fetch"
-import { URLSearchParams } from "url"
 import * as model from "../model"
 
 type DefaultCodes = 503
@@ -27,11 +26,22 @@ export class Connection {
 		}
 		if (this.token)
 			headers["X-Auth-Token"] = this.token
-		const response = await fetch(this.url + "/" + path + new URLSearchParams(parameters), {
-			method,
-			headers,
-			body: request && JSON.stringify(request),
-		}).catch(_ => undefined)
+		const response = await fetch(
+			this.url +
+				"/" +
+				path +
+				(parameters
+					? "?" +
+					  Object.entries(parameters)
+							.map(param => param.join("="))
+							.join("&")
+					: ""),
+			{
+				method,
+				headers,
+				body: request && JSON.stringify(request),
+			}
+		).catch(_ => undefined)
 		return !response
 			? { status: 503 }
 			: response.status == 401 && (await this.unauthorized(this))
