@@ -24,6 +24,10 @@ export class Organisations extends Collection<
 		return await this.connection.put(`organisations/${code}`, request)
 	}
 
+	async getAllOrganisations() {
+		return await this.connection.get<model.OrganisationResponse[]>(`organisations`)
+	}
+
 	static create(connection: Connection) {
 		return new Organisations(connection)
 	}
