@@ -1,6 +1,6 @@
 import { OrganisationResponse } from "./OrganisationResponse"
 import { TwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails"
-import { UserLimit } from "./UserLimit"
+import { UserLimitsResponse } from "./UserLimitsResponse"
 
 /**
  * The users created
@@ -15,7 +15,7 @@ export interface UserResponse {
 	category?: string
 	organisation?: OrganisationResponse
 	roles?: string[]
-	userLimits?: UserLimit[]
+	userLimits?: UserLimitsResponse[]
 	"2fa"?: TwoFactorAuthenticationDetails
 }
 

@@ -3,5 +3,5 @@
  */
 export interface UserLimitsRequest {
 	currency: string
-	limit: number
+	limit?: number
 }

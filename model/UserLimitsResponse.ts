@@ -3,8 +3,8 @@ import { Currency } from "isoly"
 /**
  * User's limits
  */
-export interface UserLimit {
+export interface UserLimitsResponse {
 	currency: Currency
 	limit: number
-	setBy?: "USER" | "CATEGORY"
+	setBy: "USER" | "CATEGORY"
 }
