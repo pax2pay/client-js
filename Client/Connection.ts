@@ -1,4 +1,5 @@
 import { default as fetch } from "isomorphic-fetch"
+import { URLSearchParams } from "url"
 import * as model from "../model"
 
 type DefaultCodes = 503
@@ -18,14 +19,15 @@ export class Connection {
 	async fetch<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
 		method: string,
-		request?: any
+		request?: any,
+		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const headers: Record<string, string> = {
 			"Content-Type": "application/json; charset=utf-8",
 		}
 		if (this.token)
 			headers["X-Auth-Token"] = this.token
-		const response = await fetch(this.url + "/" + path, {
+		const response = await fetch(this.url + "/" + path + new URLSearchParams(parameters), {
 			method,
 			headers,
 			body: request && JSON.stringify(request),
@@ -47,9 +49,10 @@ export class Connection {
 		return await this.fetch<Response, Codes>(path, "POST", request)
 	}
 	async get<Response, Codes = 400 | 403 | 404 | 500>(
-		path: string
+		path: string,
+		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "GET")
+		return await this.fetch<Response, Codes>(path, "GET", undefined, parameters)
 	}
 	async put<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
