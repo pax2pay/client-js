@@ -45,7 +45,7 @@ export class Connection {
 		return !response
 			? { status: 503 }
 			: response.status == 401 && (await this.unauthorized(this))
-			? await this.fetch<Response, Codes>(path, method, request)
+			? await this.fetch<Response, Codes>(path, method, request, parameters)
 			: response.headers.get("Content-Type")?.startsWith("application/json")
 			? response.ok
 				? await response.json()
