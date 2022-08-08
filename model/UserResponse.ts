@@ -6,10 +6,10 @@ import { UserLimit } from "./UserLimit"
  * The users created
  */
 export interface UserResponse {
-	username?: string
-	firstName?: string
-	lastName?: string
-	email?: string
+	username: string
+	firstName: string
+	lastName: string
+	email: string
 	status?: "ACTIVE" | "INACTIVE" | "DELETED" | "PASSWORD_EXPIRED"
 	passwordUpdatedOn?: string
 	category?: string
