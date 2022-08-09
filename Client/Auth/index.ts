@@ -21,6 +21,9 @@ export class Auth {
 			this.connection.token = result.token
 		return result
 	}
+	protected async assume(code?: string) {
+		return await this.connection.get(`auth/assume/org/${code}`)
+	}
 	static create(connection: Connection) {
 		return new Auth(connection)
 	}
