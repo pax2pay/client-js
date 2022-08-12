@@ -21,10 +21,8 @@ export class Auth {
 			this.connection.token = result.token
 		return result
 	}
-	async assume(code?: string) {
-		return await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>(
-			`auth/assume/org/` + (code ? code : "")
-		)
+	async assume(code: string) {
+		return await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>(`auth/assume/org/${code}`)
 	}
 	static create(connection: Connection) {
 		return new Auth(connection)
