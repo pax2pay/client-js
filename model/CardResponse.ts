@@ -43,4 +43,5 @@ export interface CardResponse {
 	bookingInfo?: BookingInfo | BookingInfoResponse
 	schedule?: CardScheduleResponseItem[]
 	delivery?: CardDeliveryResponse
+	batchId?: string
 }

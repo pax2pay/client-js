@@ -27,6 +27,7 @@ export interface CardResponseV2 {
 	createdBy: string
 	state: AccountState
 	delivery?: CardDeliveryResponse
+	batchId?: string
 }
 
 export namespace CardResponseV2 {
@@ -50,7 +51,8 @@ export namespace CardResponseV2 {
 						return CardScheduleResponseItem.is(a)
 					}))) &&
 			typeof value.createdBy == "string" &&
-			CardDeliveryResponse.is(value.delivery)
+			CardDeliveryResponse.is(value.delivery) &&
+			(value.batchId == undefined || typeof value.batchId == "string")
 		)
 	}
 }
