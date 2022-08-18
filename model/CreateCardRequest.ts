@@ -23,4 +23,5 @@ export interface CreateCardRequest {
 	friendlyName?: string
 	delivery?: CardDeliveryRequest
 	state?: string
+	batchId?: string
 }
