@@ -42,7 +42,7 @@ export class Cards extends List<
 			path = `cards?page=${page ?? 0}&size=${pageSize ?? 20}`
 		else
 			path = `cards`
-		const result = await this.connection.get<model.CardsResponse[]>(path)
+		const result = await this.connection.get<model.CardsResponse>(path)
 		return result
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
