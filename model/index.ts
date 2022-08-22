@@ -32,6 +32,7 @@ import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
 import { CardSearch } from "./CardSearch"
+import { CardsResponse } from "./CardsResponse"
 import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduledTaskResponse"
@@ -169,6 +170,7 @@ export {
 	CardOptionSearch,
 	CardResponse,
 	CardResponseV2,
+	CardsResponse,
 	CardScheduleResponseItem,
 	CardScheduleTaskStatus,
 	CardScheduleTaskType,
