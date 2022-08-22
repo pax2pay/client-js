@@ -36,6 +36,15 @@ export class Cards extends List<
 	static create(connection: Connection): Cards {
 		return new Cards(connection)
 	}
+	async getAllCard(page?: number, pageSize?: number) {
+		let path
+		if (page || pageSize)
+			path = `cards?page=${page ?? 0}&size=${pageSize ?? 20}`
+		else
+			path = `cards`
+		const result = await this.connection.get<model.CardResponse[]>(path)
+		return result
+	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection
 			.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}?includeSchedules=true
