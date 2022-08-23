@@ -24,10 +24,10 @@ export interface CardResponseV2 {
 	providerCardId: string
 	usage: CardUsage
 	fundingAccount: FundingAccountResponseV2
-	schedule: CardScheduleResponseItem[]
-	bookingInfo?: BookingInfoResponse
 	createdBy: string
 	state: AccountState
+	schedule?: CardScheduleResponseItem[]
+	bookingInfo?: BookingInfoResponse
 	delivery?: CardDeliveryResponse
 	batchId?: string
 }
@@ -54,7 +54,8 @@ export namespace CardResponseV2 {
 					}))) &&
 			typeof value.createdBy == "string" &&
 			CardDeliveryResponse.is(value.delivery) &&
-			(value.batchId == undefined || typeof value.batchId == "string")
+			(value.batchId == undefined || typeof value.batchId == "string") &&
+			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo))
 		)
 	}
 }
