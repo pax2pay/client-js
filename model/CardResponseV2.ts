@@ -1,5 +1,6 @@
 import { Currency } from "isoly"
 import { AccountState } from "./AccountState"
+import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
@@ -24,6 +25,7 @@ export interface CardResponseV2 {
 	usage: CardUsage
 	fundingAccount: FundingAccountResponseV2
 	schedule: CardScheduleResponseItem[]
+	bookingInfo?: BookingInfoResponse
 	createdBy: string
 	state: AccountState
 	delivery?: CardDeliveryResponse
