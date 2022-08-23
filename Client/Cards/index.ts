@@ -39,9 +39,9 @@ export class Cards extends List<
 	async getAllCard(page?: number, pageSize?: number) {
 		let path
 		if (page || pageSize)
-			path = `cards?page=${page ?? 0}&size=${pageSize ?? 20}`
+			path = `v2/cards?page=${page ?? 0}&size=${pageSize ?? 20}`
 		else
-			path = `cards`
+			path = `v2/cards`
 		const result = await this.connection.get<model.CardsResponse>(path)
 		return result
 	}
