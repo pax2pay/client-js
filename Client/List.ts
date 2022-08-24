@@ -41,9 +41,9 @@ export abstract class List<
 				: this.connection.post<Response[]>(`${this.folder}/searches${generatePagination(page, size, sort)}`, pattern))
 		)
 	}
-	async getNextPaginated(
-		previous: Paginated<Response> | undefined,
-		callback: (page: number, size: number) => Promise<model.ErrorResponse | (Response[] & { totalCount: number })>
+	async getNextPaginated<R>(
+		previous: Paginated<R> | undefined,
+		callback: (page: number, size: number) => Promise<model.ErrorResponse | (R[] & { totalCount: number })>
 	) {
 		let page, size, result
 		if (previous) {
