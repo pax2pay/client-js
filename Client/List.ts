@@ -1,6 +1,8 @@
 import * as model from "../model"
+import { ErrorResponse } from "../model/ErrorResponse"
 import { Connection } from "./Connection"
 import { generatePagination } from "./generatePagination"
+import { Paginated } from "./Paginated"
 import { Resource } from "./Resource"
 
 export abstract class List<
@@ -9,6 +11,7 @@ export abstract class List<
 	Request extends { [key: string]: any } = { [key: string]: any },
 	T extends Resource<Response, Request> = Resource<Response, Request>
 > {
+	private DEFAULT_PAGE_SIZE = 20
 	#connection: Connection
 	protected get connection() {
 		return this.#connection
@@ -37,5 +40,32 @@ export abstract class List<
 				? this.connection.get<Response[]>(`${this.folder}/searches/${pattern}${generatePagination(page, size, sort)}`)
 				: this.connection.post<Response[]>(`${this.folder}/searches${generatePagination(page, size, sort)}`, pattern))
 		)
+	}
+	async getNextPaginated(
+		previous: Paginated<Response> | undefined,
+		callback: (page: number, size: number) => Promise<model.ErrorResponse | (Response[] & { totalCount: number })>
+	) {
+		let page, size, result
+		if (previous) {
+			if (!previous.hasNextPage()) {
+				return new Paginated([], previous.totalCount, previous.page, previous.size)
+			}
+
+			page = previous.nextPage()
+			size = previous.size
+		} else {
+			page = 0
+			size = this.DEFAULT_PAGE_SIZE
+		}
+
+		const response = await callback(page, size)
+		if (ErrorResponse.is(response)) {
+			result = response
+		} else {
+			const totalCount = response.totalCount
+
+			result = new Paginated(response, totalCount, page, size)
+		}
+		return result
 	}
 }

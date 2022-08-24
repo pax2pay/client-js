@@ -2,6 +2,7 @@ import * as model from "../../model"
 import { Card } from "../Card"
 import { Connection } from "../Connection"
 import { List } from "../List"
+import { Paginated } from "../Paginated"
 
 export class Cards extends List<
 	model.CardResponseV2 | model.CardResponse,
@@ -42,7 +43,22 @@ export class Cards extends List<
 			path = `v2/cards?page=${page ?? 0}&size=${pageSize ?? 20}`
 		else
 			path = `v2/cards`
-		const result = await this.connection.get<model.CardResponseV2[]>(path)
+		const result = await this.connection.get<(model.CardResponse[] | model.CardResponseV2[]) & { totalCount: number }>(
+			path
+		)
+		return result
+	}
+
+	async getAllCardsPaginated(
+		previous?: Paginated<model.CardResponse | model.CardResponseV2>
+	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2 | model.CardResponse>> {
+		let result
+		if (previous) {
+			result = await this.getNextPaginated(previous, this.getAllCard)
+		} else {
+			result = await this.getNextPaginated(undefined, this.getAllCard)
+		}
+
 		return result
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
