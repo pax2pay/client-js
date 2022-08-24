@@ -56,7 +56,7 @@ export abstract class List<
 			size = previous.size
 		} else {
 			page = 0
-			size = this.DEFAULT_PAGE_SIZE
+			size = 20
 		}
 
 		const response = await callback(page, size)

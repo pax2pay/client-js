@@ -52,11 +52,38 @@ export class Cards extends List<
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
 		let result
 		if (previous) {
-			result = await this.getNextPaginated<model.CardResponseV2>(previous, this.getAllCard)
+			result = await this.getNextPaginatedCards<model.CardResponseV2>(previous, this.getAllCard)
 		} else {
-			result = await this.getNextPaginated<model.CardResponseV2>(undefined, this.getAllCard)
+			result = await this.getNextPaginatedCards<model.CardResponseV2>(undefined, this.getAllCard)
 		}
 
+		return result
+	}
+	async getNextPaginatedCards<R>(
+		previous: Paginated<R> | undefined,
+		callback: (page: number, size: number) => Promise<model.ErrorResponse | { list: R[]; totalCount: number }>
+	) {
+		let page, size, result
+		if (previous) {
+			if (!previous.hasNextPage()) {
+				return new Paginated([], previous.totalCount, previous.page, previous.size)
+			}
+
+			page = previous.nextPage()
+			size = previous.size
+		} else {
+			page = 0
+			size = 20
+		}
+
+		const response = await callback(page, size)
+		if (model.ErrorResponse.is(response)) {
+			result = response
+		} else {
+			const totalCount = response.totalCount
+
+			result = new Paginated(response.list, totalCount, page, size)
+		}
 		return result
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
