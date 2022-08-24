@@ -43,7 +43,7 @@ export class Cards extends List<
 			path = `v2/cards?page=${page ?? 0}&size=${pageSize ?? 20}`
 		else
 			path = `v2/cards`
-		const result = await this.connection.get<model.CardResponseV2[] & { totalCount: number }>(path)
+		const result = await this.connection.get<{ list: model.CardResponseV2[]; totalCount: number }>(path)
 		return result
 	}
 

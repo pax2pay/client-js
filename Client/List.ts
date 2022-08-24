@@ -1,4 +1,5 @@
 import * as model from "../model"
+import { CardResponseV2 } from "../model/CardResponseV2"
 import { ErrorResponse } from "../model/ErrorResponse"
 import { Connection } from "./Connection"
 import { generatePagination } from "./generatePagination"
@@ -43,7 +44,7 @@ export abstract class List<
 	}
 	async getNextPaginated<R>(
 		previous: Paginated<R> | undefined,
-		callback: (page: number, size: number) => Promise<model.ErrorResponse | (R[] & { totalCount: number })>
+		callback: (page: number, size: number) => Promise<model.ErrorResponse | { list: R[]; totalCount: number }>
 	) {
 		let page, size, result
 		if (previous) {
@@ -64,7 +65,7 @@ export abstract class List<
 		} else {
 			const totalCount = response.totalCount
 
-			result = new Paginated(response, totalCount, page, size)
+			result = new Paginated(response.list, totalCount, page, size)
 		}
 		return result
 	}

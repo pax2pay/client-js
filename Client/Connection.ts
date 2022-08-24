@@ -37,7 +37,7 @@ export class Connection {
 			: response.headers.get("Content-Type")?.startsWith("application/json")
 			? response.ok
 				? response.headers.get("x-total-count")
-					? { ...(await response.json()), totalCount: response.headers.get("x-total-count") }
+					? { list: await response.json(), totalCount: response.headers.get("x-total-count") }
 					: await response.json()
 				: { status: response.status, ...(await response.json()) }
 			: { status: response.status, value: await response.text() }
