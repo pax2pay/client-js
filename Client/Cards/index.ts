@@ -37,21 +37,31 @@ export class Cards extends List<
 	static create(connection: Connection): Cards {
 		return new Cards(connection)
 	}
-	async getAllCard(page?: number, pageSize?: number) {
+	/* async getAllCard(page?: number, pageSize?: number) {
 		let path
 		if (page || pageSize)
 			path = `v2/cards?page=${page ?? 0}&size=${pageSize ?? 20}`
 		else
 			path = `v2/cards`
-		const result = await this.connection.get<{ list: model.CardResponseV2[]; totalCount: number }>(path)
+		const result = await this.connection.get<
+			{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]
+		>(path)
 		return result
-	}
+	} */
 	async getAllCardsPaginated(
 		previous?: Paginated<model.CardResponseV2>,
 		page?: number,
 		size?: number
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
-		return await this.getNextPaginated<model.CardResponseV2>(previous, this.getAllCard.bind(this), page, size)
+		return await this.getNextPaginated<model.CardResponseV2>(
+			previous,
+			(page, size) =>
+				this.connection.get<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(
+					`v2/cards?page=${page ?? 0}&size=${size ?? 20}`
+				),
+			page,
+			size
+		)
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection

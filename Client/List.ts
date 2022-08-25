@@ -52,8 +52,8 @@ export abstract class List<
 		let size = chosenSize
 		let result
 		if (previous) {
-			if (!previous.hasNextPage()) {
-				return new Paginated([], previous.totalCount, previous.page, previous.size)
+			if (previous.hasNextPage() == false) {
+				return new Paginated([], previous.totalCount, previous.page, previous.size, true)
 			}
 
 			page = previous.nextPage()
@@ -71,9 +71,9 @@ export abstract class List<
 			if (!Array.isArray(response)) {
 				totalCount = response.totalCount
 
-				result = new Paginated(response.list, totalCount, page, size)
+				result = new Paginated(response.list, totalCount, page, size, response.list.length == 0)
 			} else {
-				result = new Paginated(response, totalCount, page, size)
+				result = new Paginated(response, totalCount, page, size, response.length == 0)
 			}
 		}
 		return result
