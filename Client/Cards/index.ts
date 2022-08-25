@@ -50,14 +50,7 @@ export class Cards extends List<
 	async getAllCardsPaginated(
 		previous?: Paginated<model.CardResponseV2>
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
-		let result
-		if (previous) {
-			result = await this.getNextPaginatedCards<model.CardResponseV2>(previous, this.getAllCard)
-		} else {
-			result = await this.getNextPaginatedCards<model.CardResponseV2>(undefined, this.getAllCard)
-		}
-
-		return result
+		return await this.getNextPaginatedCards<model.CardResponseV2>(previous, this.getAllCard.bind(this))
 	}
 	async getNextPaginatedCards<R>(
 		previous: Paginated<R> | undefined,
