@@ -36,6 +36,15 @@ export class Cards extends List<
 	static create(connection: Connection): Cards {
 		return new Cards(connection)
 	}
+	async getAllCard(page?: number, pageSize?: number) {
+		let path
+		if (page || pageSize)
+			path = `v2/cards?page=${page ?? 0}&size=${pageSize ?? 20}`
+		else
+			path = `v2/cards`
+		const result = await this.connection.get<model.CardResponseV2[]>(path)
+		return result
+	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection
 			.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}?includeSchedules=true
@@ -49,6 +58,30 @@ export class Cards extends List<
 	async cancelCard(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.remove<model.CardResponse>(
 			`cards/virtual/${providerCode}/${providerCardId}/cancel`
+		)
+		return result
+	}
+	async approveCard(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.post<model.CardResponse>(
+			`cards/virtual/${providerCode}/${providerCardId}/approve`,
+			undefined
+		)
+		return result
+	}
+	async declineCard(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.post<model.CardResponse>(
+			`cards/virtual/${providerCode}/${providerCardId}/decline`,
+			undefined
+		)
+		return result
+	}
+	async thawCard(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}/thaw`)
+		return result
+	}
+	async freezeCard(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardResponse>(
+			`cards/virtual/${providerCode}/${providerCardId}/freeze`
 		)
 		return result
 	}
