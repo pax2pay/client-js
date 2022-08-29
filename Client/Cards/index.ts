@@ -61,6 +61,30 @@ export class Cards extends List<
 		)
 		return result
 	}
+	async approveCard(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.post<model.CardResponse>(
+			`cards/virtual/${providerCode}/${providerCardId}/approve`,
+			undefined
+		)
+		return result
+	}
+	async declineCard(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.post<model.CardResponse>(
+			`cards/virtual/${providerCode}/${providerCardId}/decline`,
+			undefined
+		)
+		return result
+	}
+	async thawCard(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}/thaw`)
+		return result
+	}
+	async freezeCard(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardResponse>(
+			`cards/virtual/${providerCode}/${providerCardId}/freeze`
+		)
+		return result
+	}
 	async getCardTypesV2(providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardTypeResponseV2[]>(`v2/cards/types/${providerCode}`)
 		return result
