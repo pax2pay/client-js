@@ -43,7 +43,7 @@ export abstract class List<
 	}
 	async getNextPaginated<R>(
 		previous: Paginated<R> | undefined,
-		callback: (page: number, size: number) => Promise<model.ErrorResponse | { data: R[]; totalCount: number } | R[]>,
+		callback: (page: number, size: number) => Promise<model.ErrorResponse | { list: R[]; totalCount: number } | R[]>,
 		chosenPage?: number,
 		chosenSize?: number
 	) {
@@ -70,7 +70,7 @@ export abstract class List<
 			if (!Array.isArray(response)) {
 				totalCount = response.totalCount
 
-				result = new Paginated(response.data, totalCount, page, size, response.data?.length == 0)
+				result = new Paginated(response.list, totalCount, page, size, response.list?.length == 0)
 			} else {
 				result = new Paginated(response, totalCount, page, size, response.length == 0)
 			}

@@ -127,13 +127,15 @@ export class Cards extends List<
 		return result
 	}
 	async getCardTransaction(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<Paginated<model.CardProcessedTransaction>>(
-			`cards/virtual/${providerCode}/${providerCardId}/statements`
-		)
+		const result = await this.connection.get<
+			{ list: model.CardProcessedTransaction[]; totalCount: number } | model.CardProcessedTransaction[]
+		>(`cards/virtual/${providerCode}/${providerCardId}/statements`)
 		return result
 	}
 	async searchTransaction(accountId: number) {
-		const result = await this.connection.post<Paginated<model.CardTransaction>>(`transactions/searches`, {
+		const result = await this.connection.post<
+			{ list: model.CardTransaction[]; totalCount: number } | model.CardTransaction[]
+		>(`transactions/searches`, {
 			accountId: accountId,
 		})
 		return result
