@@ -127,17 +127,18 @@ export class Cards extends List<
 		return result
 	}
 	async getCardTransaction(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<
-			{ list: model.CardProcessedTransaction[]; totalCount: number } | model.CardProcessedTransaction[]
-		>(`cards/virtual/${providerCode}/${providerCardId}/statements`)
+		const result = await this.connection.get<{ list: model.CardProcessedTransaction[]; totalCount: number }>(
+			`cards/virtual/${providerCode}/${providerCardId}/statements`
+		)
 		return result
 	}
 	async searchTransaction(accountId: number) {
-		const result = await this.connection.post<
-			{ list: model.CardTransaction[]; totalCount: number } | model.CardTransaction[]
-		>(`transactions/searches`, {
-			accountId: accountId,
-		})
+		const result = await this.connection.post<{ list: model.CardTransaction[]; totalCount: number }>(
+			`transactions/searches`,
+			{
+				accountId: accountId,
+			}
+		)
 		return result
 	}
 	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {
