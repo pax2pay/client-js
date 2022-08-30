@@ -1,5 +1,4 @@
 import * as model from "../model"
-import { CardResponseV2 } from "../model/CardResponseV2"
 import { ErrorResponse } from "../model/ErrorResponse"
 import { Connection } from "./Connection"
 import { generatePagination } from "./generatePagination"
@@ -71,7 +70,7 @@ export abstract class List<
 			if (!Array.isArray(response)) {
 				totalCount = response.totalCount
 
-				result = new Paginated(response.list, totalCount, page, size, response.list.length == 0)
+				result = new Paginated(response.list, totalCount, page, size, response.list?.length == 0)
 			} else {
 				result = new Paginated(response, totalCount, page, size, response.length == 0)
 			}
