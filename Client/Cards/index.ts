@@ -100,6 +100,10 @@ export class Cards extends List<
 		const result = await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
 		return result
 	}
+	async searchCardTypesV2(searchRequest: model.CardResponse) {
+		const result = await this.connection.post<model.CardTypeResponseV2[]>(`v2/cards/search`, searchRequest)
+		return result
+	}
 	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest) {
 		const result = await this.connection.post<model.CardFundingAccountResponse[]>(
 			"funding-accounts/searches",
