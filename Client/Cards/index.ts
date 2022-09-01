@@ -101,9 +101,10 @@ export class Cards extends List<
 		return result
 	}
 	async searchCardV2(searchRequest: model.CardSearchRequest) {
-		const result = await this.connection.post<
-			model.CardResponseV2[] | { list: model.CardResponseV2[]; totalCount: number }
-		>(`v2/cards/searches`, searchRequest)
+		const result = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
+			`v2/cards/searches`,
+			searchRequest
+		)
 		return result
 	}
 	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest) {
