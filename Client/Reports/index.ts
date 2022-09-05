@@ -53,6 +53,14 @@ export class Reports {
 `)
 		return result
 	}
+	async getStatementReportUrl(format: string, locale: string) {
+		const result = await this.connection.post<model.StatementReportUrlResponse>(
+			`statement/download
+`,
+			{ downloadFileFormat: format, locale: locale }
+		)
+		return result
+	}
 	attachPageable(base: string, page?: number, pageSize?: number) {
 		return (
 			base +

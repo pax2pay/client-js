@@ -114,6 +114,7 @@ import { StatementReportResponse } from "./StatementReportResponse"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
+import { StatementReportUrlResponse } from "./StatementReportUrlResponse"
 import { StatementRowIds } from "./StatementRowIds"
 import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
@@ -258,6 +259,7 @@ export {
 	StatementReportResponseRow,
 	StatementReportRowActionType,
 	StatementReportRowType,
+	StatementReportUrlResponse,
 	StatementRowIds,
 	SummaryBookingInfoResponse,
 	SupplierBookingInfo,
