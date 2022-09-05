@@ -53,11 +53,11 @@ export class Reports {
 `)
 		return result
 	}
-	async getStatementReportUrl(format: string, locale: string) {
+	async getStatementReportUrl(request: model.StatementReportUrlResponse) {
 		const result = await this.connection.post<model.StatementReportUrlResponse>(
 			`statement/download
 `,
-			{ downloadFileFormat: format, locale: locale }
+			request
 		)
 		return result
 	}

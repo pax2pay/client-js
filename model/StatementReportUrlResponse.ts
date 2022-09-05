@@ -1,6 +1,4 @@
-import { StatementReportRequest } from "./StatementReportRequest"
-
-export interface StatementReportUrlResponse extends StatementReportRequest {
+export interface StatementReportUrlResponse {
 	url: string
 	fileSize: number
 }
