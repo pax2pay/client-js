@@ -139,6 +139,7 @@ import { UserRequest } from "./UserRequest"
 import { UserResponse } from "./UserResponse"
 import { UserRoleResponse } from "./UserRoleResponse"
 import { UserSearchRequest } from "./UserSearchRequest"
+import { UserStatus } from "./UserStatus"
 import { YearMonth } from "./YearMonth"
 
 export {
@@ -283,5 +284,6 @@ export {
 	UserResponse,
 	UserRoleResponse,
 	UserSearchRequest,
+	UserStatus,
 	YearMonth,
 }

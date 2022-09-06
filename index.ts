@@ -141,6 +141,7 @@ import {
 	UserResponse,
 	UserRoleResponse,
 	UserSearchRequest,
+	UserStatus,
 	YearMonth,
 } from "./model"
 
@@ -287,5 +288,6 @@ export {
 	UserResponse,
 	UserRoleResponse,
 	UserSearchRequest,
+	UserStatus,
 	YearMonth,
 }
