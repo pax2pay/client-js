@@ -44,6 +44,10 @@ import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
+import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAccessRequest"
+import { CategoryLimitResponse } from "./CategoryLimitResponse"
+import { CategoryResponse } from "./CategoryResponse"
+import { CategoryStatus } from "./CategoryStatus"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigRequest } from "./ConfigRequest"
@@ -189,6 +193,10 @@ export {
 	CardTypeSearchRequest,
 	CardTypeSpecification,
 	CardTypeSpecificationFlag,
+	CategoryFundingAccountAccessRequest,
+	CategoryLimitResponse,
+	CategoryResponse,
+	CategoryStatus,
 	ConfigMatchesRequest,
 	ConfigMatchesResponse,
 	ConfigRequest,
