@@ -15,6 +15,10 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	static create(connection: Connection) {
 		return new Users(connection)
 	}
+	async createUser(request: model.UserRequest): Promise<model.UserResponse | model.ErrorResponse> {
+		const result = await this.connection.post<model.UserResponse>(`users`, request)
+		return result
+	}
 	async deleteUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
 		const result = await this.connection.remove<model.UserResponse>(`users/${username}`)
 		return result
