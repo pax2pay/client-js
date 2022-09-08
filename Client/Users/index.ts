@@ -55,7 +55,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		const result = await this.connection.put<model.UserResponse>(`users/${username}`, request)
 		return result
 	}
-	async createUser(request: model.UserRequest): Promise<model.UserResponse | model.ErrorResponse> {
-		return await this.connection.post<model.UserResponse>(`users`, request)
+	async checkUsernameAvailability(username: string): Promise<model.UsernameAvailabilityResponse | model.ErrorResponse> {
+		return await this.connection.get<model.UsernameAvailabilityResponse>(`${this.folder}/username/${username}`)
 	}
 }
