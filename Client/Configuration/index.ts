@@ -12,7 +12,7 @@ export class Configuration {
 		return result
 	}
 	async validateEmail(email: string) {
-		const result = await this.connection.post<model.EmailValidationResponse>(`email/validate`, { email: email })
+		const result = await this.connection.get<model.EmailValidationResponse>(`email/validate/${email}`)
 		return result
 	}
 }
