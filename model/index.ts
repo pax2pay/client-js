@@ -55,6 +55,7 @@ import { CredentialRequest } from "./CredentialRequest"
 import { CredentialResponse } from "./CredentialResponse"
 import { Criteria } from "./Criteria"
 import { DateRangeLocalDate } from "./DateRangeLocalDate"
+import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
@@ -201,6 +202,7 @@ export {
 	CredentialResponse,
 	Criteria,
 	DateRangeLocalDate,
+	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,
 	FiveFieldsBookingInfoRequest,

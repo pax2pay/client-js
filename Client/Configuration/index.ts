@@ -1,6 +1,6 @@
 import { Currency } from "isoly"
+import * as model from "../../model"
 import { Connection } from "../Connection"
-
 export class Configuration {
 	protected folder = "config"
 	constructor(private readonly connection: Connection) {}
@@ -9,6 +9,10 @@ export class Configuration {
 	}
 	async getAvailableCurrency() {
 		const result = await this.connection.get<Currency[]>(`config/currencies`)
+		return result
+	}
+	async validateEmail(email: string) {
+		const result = await this.connection.post<model.EmailValidationResponse>(`email/validate`, { email: email })
 		return result
 	}
 }
