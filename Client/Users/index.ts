@@ -15,6 +15,10 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	static create(connection: Connection) {
 		return new Users(connection)
 	}
+	async checkUsernameAvailability(username: string): Promise<model.UsernameAvailabilityResponse | model.ErrorResponse> {
+		const result = await this.connection.get<model.UsernameAvailabilityResponse>(`users/username/${username}`)
+		return result
+	}
 	async createUser(request: model.UserRequest): Promise<model.UserResponse | model.ErrorResponse> {
 		const result = await this.connection.post<model.UserResponse>(`users`, request)
 		return result

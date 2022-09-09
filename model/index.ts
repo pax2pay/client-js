@@ -138,6 +138,7 @@ import { UserConfig } from "./UserConfig"
 import { UserLimitsDeleteRequest } from "./UserLimitsDeleteRequest"
 import { UserLimitsRequest } from "./UserLimitsRequest"
 import { UserLimitsResponse } from "./UserLimitsResponse"
+import { UsernameAvailabilityResponse } from "./UsernameAvailabilityResponse"
 import { UserRequest } from "./UserRequest"
 import { UserResponse } from "./UserResponse"
 import { UserRoleResponse } from "./UserRoleResponse"
@@ -285,6 +286,7 @@ export {
 	UserLimitsDeleteRequest,
 	UserLimitsRequest,
 	UserLimitsResponse,
+	UsernameAvailabilityResponse,
 	UserRequest,
 	UserResponse,
 	UserRoleResponse,
