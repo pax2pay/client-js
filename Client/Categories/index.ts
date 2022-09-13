@@ -7,7 +7,7 @@ export class Categories {
 		return new Categories(connection)
 	}
 	async getAllCategories() {
-		const result = await this.connection.get<CategoryResponse[]>(`category`)
+		const result = await this.connection.get<CategoryResponse[]>(`category?size=100`)
 		return result
 	}
 }
