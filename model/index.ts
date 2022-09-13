@@ -44,6 +44,10 @@ import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
+import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAccessRequest"
+import { CategoryLimitResponse } from "./CategoryLimitResponse"
+import { CategoryResponse } from "./CategoryResponse"
+import { CategoryStatus } from "./CategoryStatus"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigRequest } from "./ConfigRequest"
@@ -55,6 +59,7 @@ import { CredentialRequest } from "./CredentialRequest"
 import { CredentialResponse } from "./CredentialResponse"
 import { Criteria } from "./Criteria"
 import { DateRangeLocalDate } from "./DateRangeLocalDate"
+import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
@@ -135,10 +140,12 @@ import { UserConfig } from "./UserConfig"
 import { UserLimitsDeleteRequest } from "./UserLimitsDeleteRequest"
 import { UserLimitsRequest } from "./UserLimitsRequest"
 import { UserLimitsResponse } from "./UserLimitsResponse"
+import { UsernameAvailabilityResponse } from "./UsernameAvailabilityResponse"
 import { UserRequest } from "./UserRequest"
 import { UserResponse } from "./UserResponse"
 import { UserRoleResponse } from "./UserRoleResponse"
 import { UserSearchRequest } from "./UserSearchRequest"
+import { UserStatus } from "./UserStatus"
 import { YearMonth } from "./YearMonth"
 
 export {
@@ -188,6 +195,10 @@ export {
 	CardTypeSearchRequest,
 	CardTypeSpecification,
 	CardTypeSpecificationFlag,
+	CategoryFundingAccountAccessRequest,
+	CategoryLimitResponse,
+	CategoryResponse,
+	CategoryStatus,
 	ConfigMatchesRequest,
 	ConfigMatchesResponse,
 	ConfigRequest,
@@ -199,6 +210,7 @@ export {
 	CredentialResponse,
 	Criteria,
 	DateRangeLocalDate,
+	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,
 	FiveFieldsBookingInfoRequest,
@@ -279,9 +291,11 @@ export {
 	UserLimitsDeleteRequest,
 	UserLimitsRequest,
 	UserLimitsResponse,
+	UsernameAvailabilityResponse,
 	UserRequest,
 	UserResponse,
 	UserRoleResponse,
 	UserSearchRequest,
+	UserStatus,
 	YearMonth,
 }

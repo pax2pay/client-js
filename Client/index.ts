@@ -4,9 +4,11 @@ import { Auth as ClientAuth } from "./Auth"
 import { Beneficiaries as ClientBeneficiaries } from "./Beneficiaries"
 import { Card as ClientCard } from "./Card"
 import { Cards as ClientCards } from "./Cards"
+import { Categories as ClientCategories } from "./Categories"
 import { Collection as ClientCollection } from "./Collection"
 import { Configuration as ClientConfiguration } from "./Configuration"
 import { Connection } from "./Connection"
+import { Email as ClientEmail } from "./Email"
 import { List as ClientList } from "./List"
 import { Organisation as ClientOrganisation } from "./Organisation"
 import { Organisations as ClientOrganisations } from "./Organisations"
@@ -26,7 +28,9 @@ export class Client {
 	auth = ClientAuth.create(this.connection)
 	beneficiaries = ClientBeneficiaries.create(this.connection)
 	cards = ClientCards.create(this.connection)
+	categories = ClientCategories.create(this.connection)
 	configuration = ClientConfiguration.create(this.connection)
+	email = ClientEmail.create(this.connection)
 	users = ClientUsers.create(this.connection)
 	organisations = ClientOrganisations.create(this.connection)
 	reports = ClientReports.create(this.connection)
@@ -47,7 +51,9 @@ export namespace Client {
 	export type Beneficiaries = ClientBeneficiaries
 	export type Card = ClientCard
 	export type Cards = ClientCards
+	export type Categories = ClientCategories
 	export type Configuration = ClientConfiguration
+	export type Email = ClientEmail
 	export type Organisation = ClientOrganisation
 	export type Organisations = ClientOrganisations
 	export type Reports = ClientReports

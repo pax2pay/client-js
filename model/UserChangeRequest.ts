@@ -1,10 +1,11 @@
 import { UserLimitsRequest } from "./UserLimitsRequest"
+import { UserStatus } from "./UserStatus"
 
 export interface UserChangeRequest {
 	firstName: string
 	lastName: string
 	email: string
 	category?: string
-	status?: "ACTIVE" | "INACTIVE" | "DELETED" | "PASSWORD_EXPIRED"
+	status?: UserStatus
 	userLimits?: UserLimitsRequest[]
 }

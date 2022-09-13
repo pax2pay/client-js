@@ -1,6 +1,7 @@
 import { OrganisationResponse } from "./OrganisationResponse"
 import { TwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails"
 import { UserLimitsResponse } from "./UserLimitsResponse"
+import { UserStatus } from "./UserStatus"
 
 /**
  * The users created
@@ -10,7 +11,7 @@ export interface UserResponse {
 	firstName: string
 	lastName: string
 	email: string
-	status?: "ACTIVE" | "INACTIVE" | "DELETED" | "PASSWORD_EXPIRED"
+	status?: UserStatus
 	passwordUpdatedOn?: string
 	category?: string
 	organisation?: OrganisationResponse
@@ -27,11 +28,7 @@ export namespace UserResponse {
 			(value.firstName == undefined || typeof value.firstName == "string") &&
 			(value.lastName == undefined || typeof value.lastName == "string") &&
 			(value.email == undefined || typeof value.email == "string") &&
-			(value.status == undefined ||
-				value.status == "ACTIVE" ||
-				value.status == "INACTIVE" ||
-				value.status == "DELETED" ||
-				value.status == "PASSWORD_EXPIRED") &&
+			(value.status == undefined || UserStatus.is(value.status)) &&
 			(value.passwordUpdatedOn == undefined || typeof value.passwordUpdatedOn == "string") &&
 			(value.category == undefined || typeof value.category == "string")
 		)
