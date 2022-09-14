@@ -61,7 +61,14 @@ export class Reports {
 			(pageSize && page ? `&size=${pageSize}` : pageSize ? `size=${pageSize}` : "")
 		)
 	}
-
+	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
+		const result = await this.connection.post<model.StatementReportUrlResponse>(
+			`statement/download
+`,
+			request
+		)
+		return result
+	}
 	static create(connection: Connection) {
 		return new Reports(connection)
 	}
