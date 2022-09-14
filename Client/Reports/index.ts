@@ -62,11 +62,7 @@ export class Reports {
 		)
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
-		const result = await this.connection.post<model.StatementReportUrlResponse>(
-			`statement/download
-`,
-			request
-		)
+		const result = await this.connection.post<model.StatementReportUrlResponse>(`statement/download`, request)
 		return result
 	}
 	static create(connection: Connection) {
