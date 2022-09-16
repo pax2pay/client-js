@@ -53,7 +53,7 @@ export namespace CardResponseV2 {
 						return CardScheduleResponseItem.is(a)
 					}))) &&
 			typeof value.createdBy == "string" &&
-			CardDeliveryResponse.is(value.delivery) &&
+			(value.delivery == undefined || CardDeliveryResponse.is(value.delivery)) &&
 			(value.batchId == undefined || typeof value.batchId == "string") &&
 			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo))
 		)
