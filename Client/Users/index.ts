@@ -58,4 +58,9 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	async checkUsernameAvailability(username: string): Promise<model.UsernameAvailabilityResponse | model.ErrorResponse> {
 		return await this.connection.get<model.UsernameAvailabilityResponse>(`${this.folder}/username/${username}`)
 	}
+	async checkPassword(
+		request: model.PasswordValidateRequest
+	): Promise<model.PasswordValidateResponse | model.ErrorResponse> {
+		return await this.connection.post<model.PasswordValidateResponse>(`users/password/check`, request)
+	}
 }
