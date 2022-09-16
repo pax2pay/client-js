@@ -1,5 +1,4 @@
 import * as model from "../../model"
-import { PasswordValidateRequest } from "../../model/PasswordValidateRequest"
 import { Collection } from "../Collection"
 import { Connection } from "../Connection"
 import { Resource } from "../Resource"
@@ -59,7 +58,9 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	async checkUsernameAvailability(username: string): Promise<model.UsernameAvailabilityResponse | model.ErrorResponse> {
 		return await this.connection.get<model.UsernameAvailabilityResponse>(`${this.folder}/username/${username}`)
 	}
-	async checkPassword(request: PasswordValidateRequest): Promise<model.PasswordValidateResponse | model.ErrorResponse> {
+	async checkPassword(
+		request: model.PasswordValidateRequest
+	): Promise<model.PasswordValidateResponse | model.ErrorResponse> {
 		return await this.connection.post<model.PasswordValidateResponse>(`users/password/check`, request)
 	}
 }
