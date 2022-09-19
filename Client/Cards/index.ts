@@ -106,11 +106,12 @@ export class Cards extends List<
 		const result = await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
 		return result
 	}
-	async searchCardV2(searchRequest: model.CardSearchRequest, withCount?:boolean) {
+	async searchCardV2(searchRequest: model.CardSearchRequest, parameters?: Record<string, any>, withCount?: boolean) {
 		let result
 		result = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
-			`v2/cards/searches`,
-			searchRequest
+			`v2/cards/searches?order=desc`,
+			searchRequest,
+			parameters
 		)
 		if (!ErrorResponse.is(result) && !withCount)
 			result = result.list

@@ -18,22 +18,34 @@ export class Connection {
 	async fetch<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
 		method: string,
-		request?: any
+		request?: any,
+		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const headers: Record<string, string> = {
 			"Content-Type": "application/json; charset=utf-8",
 		}
 		if (this.token)
 			headers["X-Auth-Token"] = this.token
-		const response = await fetch(this.url + "/" + path, {
-			method,
-			headers,
-			body: request && JSON.stringify(request),
-		}).catch(_ => undefined)
+		const response = await fetch(
+			this.url +
+				"/" +
+				path +
+				(parameters
+					? "?" +
+					  Object.entries(parameters)
+							.map(param => param.join("="))
+							.join("&")
+					: ""),
+			{
+				method,
+				headers,
+				body: request && JSON.stringify(request),
+			}
+		).catch(_ => undefined)
 		return !response
 			? { status: 503 }
 			: response.status == 401 && (await this.unauthorized(this))
-			? await this.fetch<Response, Codes>(path, method, request)
+			? await this.fetch<Response, Codes>(path, method, request, parameters)
 			: response.headers.get("Content-Type")?.startsWith("application/json")
 			? response.ok
 				? response.headers.get("x-total-count")
@@ -44,14 +56,16 @@ export class Connection {
 	}
 	async post<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
-		request: any
+		request: any,
+		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "POST", request)
+		return await this.fetch<Response, Codes>(path, "POST", request, parameters)
 	}
 	async get<Response, Codes = 400 | 403 | 404 | 500>(
-		path: string
+		path: string,
+		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "GET")
+		return await this.fetch<Response, Codes>(path, "GET", undefined, parameters)
 	}
 	async put<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
