@@ -44,15 +44,15 @@ export abstract class List<
 	async getNextPaginated<R>(
 		previous: Paginated<R> | undefined,
 		callback: (
-			sort: "asc" | "desc",
 			page: number,
-			size: number
+			size: number,
+			sort?: string
 		) => Promise<model.ErrorResponse | { list: R[]; totalCount: number } | R[]>,
-		chosenSort?: "asc" | "desc",
+		chosenSort?: string,
 		chosenPage?: number,
 		chosenSize?: number
 	) {
-		const sort = chosenSort ?? "asc"
+		const sort = chosenSort
 		let page = chosenPage
 		let size = chosenSize
 		let result
@@ -68,7 +68,7 @@ export abstract class List<
 			size = size ?? 20
 		}
 
-		const response = await callback(sort, page, size)
+		const response = await callback(page, size, sort)
 		if (ErrorResponse.is(response)) {
 			result = response
 		} else {
