@@ -109,7 +109,7 @@ export class Cards extends List<
 	async searchCardV2(searchRequest: model.CardSearchRequest, parameters?: Record<string, any>, withCount?: boolean) {
 		let result
 		result = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
-			`v2/cards/searches?order=desc`,
+			`v2/cards/searches`,
 			searchRequest,
 			parameters
 		)
