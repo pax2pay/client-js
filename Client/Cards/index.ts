@@ -1,4 +1,5 @@
 import * as model from "../../model"
+import { ErrorResponse } from "../../model/ErrorResponse"
 import { Card } from "../Card"
 import { Connection } from "../Connection"
 import { List } from "../List"
@@ -92,32 +93,46 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async getCardTypesV2(providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardTypeResponseV2[]>(`v2/cards/types/${providerCode}`)
+	async getCardTypesV2(providerCode: model.ProviderCode, withCount?: boolean) {
+		let result
+		result = await this.connection.get<{ list: model.CardTypeResponseV2[]; totalCount: number }>(
+			`v2/cards/types/${providerCode}`
+		)
+		if (!ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
 	async getCardTypes(providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
 		return result
 	}
-	async searchCardV2(searchRequest: model.CardSearchRequest) {
-		const result = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
+	async searchCardV2(searchRequest: model.CardSearchRequest, withCount?:boolean) {
+		let result
+		result = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
 			`v2/cards/searches`,
 			searchRequest
 		)
+		if (!ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
-	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest) {
-		const result = await this.connection.post<model.CardFundingAccountResponse[]>(
+	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest, withCount?: boolean) {
+		let result
+		result = await this.connection.post<{ list: model.CardFundingAccountResponse[]; totalCount: number }>(
 			"funding-accounts/searches",
 			searchRequest
 		)
+		if (!ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
-	async getAllFundingAccounts(providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardFundingAccountResponse[]>(
+	async getAllFundingAccounts(providerCode: model.ProviderCode, withCount?: boolean) {
+		let result
+		result = await this.connection.get<{ list: model.CardFundingAccountResponse[]; totalCount: number }>(
 			`funding-accounts?provider=${providerCode}&size=500`
 		)
+		if (!ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
@@ -133,19 +148,25 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async getCardTransaction(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<{ list: model.CardProcessedTransaction[]; totalCount: number }>(
+	async getCardTransaction(providerCardId: string, providerCode: model.ProviderCode, withCount?: boolean) {
+		let result
+		result = await this.connection.get<{ list: model.CardProcessedTransaction[]; totalCount: number }>(
 			`cards/virtual/${providerCode}/${providerCardId}/statements`
 		)
+		if (!ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
-	async searchTransaction(accountId: number) {
-		const result = await this.connection.post<{ list: model.CardTransaction[]; totalCount: number }>(
+	async searchTransaction(accountId: number, withCount?: boolean) {
+		let result
+		result = await this.connection.post<{ list: model.CardTransaction[]; totalCount: number }>(
 			`transactions/searches`,
 			{
 				accountId: accountId,
 			}
 		)
+		if (!ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
 	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {

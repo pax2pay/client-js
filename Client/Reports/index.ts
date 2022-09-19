@@ -32,7 +32,7 @@ export class Reports {
 		return await this.connection.post<model.Report.Statement>(`../reports/statement`, request)
 	}
 
-	statementForTable(
+	async statementForTable(
 		request: model.StatementReportRequest,
 		page?: number,
 		pageSize?: number
@@ -46,7 +46,11 @@ export class Reports {
 		if (page || pageSize)
 			path = this.attachPageable(path, page, pageSize)
 
-		return this.connection.post<model.StatementReportResponse>(path, request)
+		let result
+		result = await this.connection.post<{ list: model.StatementReportResponse; totalCount: number }>(path, request)
+		if (!model.ErrorResponse.is(result))
+			result = result.list
+		return result
 	}
 	async getStatementForTable(rowId: string) {
 		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}
