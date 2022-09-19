@@ -40,15 +40,19 @@ export class Cards extends List<
 	}
 	async getAllCardsPaginated(
 		previous?: Paginated<model.CardResponseV2>,
+		sort?: "asc" | "desc",
 		page?: number,
 		size?: number
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
 		return await this.getNextPaginated<model.CardResponseV2>(
 			previous,
-			(page, size) =>
-				this.connection.get<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(
-					`v2/cards?page=${page ?? 0}&size=${size ?? 20}`
-				),
+			(sort, page, size) =>
+				this.connection.get<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(`v2/cards`, {
+					page: page,
+					size: size,
+					sort: sort,
+				}),
+			sort,
 			page,
 			size
 		)
