@@ -40,9 +40,9 @@ export class Cards extends List<
 	}
 	async getAllCardsPaginated(
 		previous?: Paginated<model.CardResponseV2>,
-		sort = "issueDate,desc",
 		page?: number,
-		size?: number
+		size?: number,
+		sort = "issueDate,desc"
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
 		return await this.getNextPaginated<model.CardResponseV2>(
 			previous,
@@ -52,9 +52,10 @@ export class Cards extends List<
 					size: size,
 					sort: sort,
 				}),
-			sort,
+			undefined,
 			page,
-			size
+			size,
+			sort
 		)
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
@@ -110,7 +111,7 @@ export class Cards extends List<
 		const result = await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
 		return result
 	}
-	async searchCardV2(searchRequest: model.CardSearchRequest, parameters?: Record<string, any>, withCount?: boolean) {
+	async searchCardsV2(searchRequest: model.CardSearchRequest, parameters?: Record<string, any>, withCount?: boolean) {
 		let result
 		result = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
 			`v2/cards/searches`,
@@ -120,6 +121,31 @@ export class Cards extends List<
 		if (!ErrorResponse.is(result) && !withCount)
 			result = result.list
 		return result
+	}
+	async searchCardsV2Paginated(
+		request: model.CardSearchRequest,
+		previous?: Paginated<model.CardResponseV2>,
+		page?: number,
+		size?: number,
+		sort = "issueDate,desc"
+	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
+		return await this.getNextPaginated<model.CardResponseV2>(
+			previous,
+			(page, size, sort, request) =>
+				this.connection.post<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(
+					`v2/cards/searches`,
+					request,
+					{
+						page: page,
+						size: size,
+						sort: sort,
+					}
+				),
+			request,
+			page,
+			size,
+			sort
+		)
 	}
 	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest, withCount?: boolean) {
 		let result
