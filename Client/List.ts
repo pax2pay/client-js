@@ -1,6 +1,7 @@
 import * as model from "../model"
 import { Connection } from "./Connection"
 import { generatePagination } from "./generatePagination"
+import { Paginated } from "./Paginated"
 import { Resource } from "./Resource"
 
 export abstract class List<
@@ -9,6 +10,7 @@ export abstract class List<
 	Request extends { [key: string]: any } = { [key: string]: any },
 	T extends Resource<Response, Request> = Resource<Response, Request>
 > {
+	private DEFAULT_PAGE_SIZE = 20
 	#connection: Connection
 	protected get connection() {
 		return this.#connection
@@ -37,5 +39,49 @@ export abstract class List<
 				? this.connection.get<Response[]>(`${this.folder}/searches/${pattern}${generatePagination(page, size, sort)}`)
 				: this.connection.post<Response[]>(`${this.folder}/searches${generatePagination(page, size, sort)}`, pattern))
 		)
+	}
+	async getNextPaginated<R>(
+		previous: Paginated<R> | undefined,
+		callback: (
+			page: number,
+			size: number,
+			sort?: string,
+			request?: Record<string, any>
+		) => Promise<model.ErrorResponse | { list: R[]; totalCount: number } | R[]>,
+		request?: Record<string, any>,
+		chosenPage?: number,
+		chosenSize?: number,
+		chosenSort?: string
+	) {
+		const sort = chosenSort
+		let page = chosenPage
+		let size = chosenSize
+		let result
+		if (previous) {
+			if (previous.hasNextPage() == false) {
+				return new Paginated([], previous.totalCount, previous.page, previous.size, true)
+			}
+
+			page = previous.nextPage()
+			size = previous.size
+		} else {
+			page = page ?? 0
+			size = size ?? 20
+		}
+
+		const response = await callback(page, size, sort, request)
+		if (model.ErrorResponse.is(response)) {
+			result = response
+		} else {
+			let totalCount: number | undefined
+			if (!Array.isArray(response)) {
+				totalCount = response.totalCount
+
+				result = new Paginated(response.list, totalCount, page, size, response.list?.length == 0)
+			} else {
+				result = new Paginated(response, totalCount, page, size, response.length == 0)
+			}
+		}
+		return result
 	}
 }

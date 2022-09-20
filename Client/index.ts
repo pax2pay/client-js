@@ -12,6 +12,7 @@ import { Email as ClientEmail } from "./Email"
 import { List as ClientList } from "./List"
 import { Organisation as ClientOrganisation } from "./Organisation"
 import { Organisations as ClientOrganisations } from "./Organisations"
+import { Paginated as ClientPaginated } from "./Paginated"
 import { Reports as ClientReports } from "./Reports"
 import { Resource as ClientResource } from "./Resource"
 import { Transfers as ClientTransfers } from "./Transfers"
@@ -70,4 +71,5 @@ export namespace Client {
 		Request
 	>
 	export type Resource<Response, Request> = ClientResource<Response, Request>
+	export type Paginated<T> = ClientPaginated<T>
 }

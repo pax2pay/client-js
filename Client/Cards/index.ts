@@ -2,6 +2,7 @@ import * as model from "../../model"
 import { Card } from "../Card"
 import { Connection } from "../Connection"
 import { List } from "../List"
+import { Paginated } from "../Paginated"
 
 export class Cards extends List<
 	model.CardResponseV2 | model.CardResponse,
@@ -36,14 +37,25 @@ export class Cards extends List<
 	static create(connection: Connection): Cards {
 		return new Cards(connection)
 	}
-	async getAllCard(page?: number, pageSize?: number) {
-		let path
-		if (page || pageSize)
-			path = `v2/cards?page=${page ?? 0}&size=${pageSize ?? 20}`
-		else
-			path = `v2/cards`
-		const result = await this.connection.get<model.CardResponseV2[]>(path)
-		return result
+	async getAllCardsPaginated(
+		previous?: Paginated<model.CardResponseV2>,
+		page?: number,
+		size?: number,
+		sort = "issueDate,desc"
+	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
+		return await this.getNextPaginated<model.CardResponseV2>(
+			previous,
+			(page, size, sort) =>
+				this.connection.get<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(`v2/cards`, {
+					page: page,
+					size: size,
+					sort: sort,
+				}),
+			undefined,
+			page,
+			size,
+			sort
+		)
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection
@@ -85,25 +97,134 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async getCardTypesV2(providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardTypeResponseV2[]>(`v2/cards/types/${providerCode}`)
+	async getCardTypesV2(providerCode: model.ProviderCode): Promise<model.ErrorResponse | model.CardTypeResponseV2[]>
+	async getCardTypesV2(
+		providerCode: model.ProviderCode,
+		withCount: boolean
+	): Promise<
+		model.ErrorResponse | model.CardTypeResponseV2[] | { list: model.CardTypeResponseV2[]; totalCount: number }
+	>
+	async getCardTypesV2(
+		providerCode: model.ProviderCode,
+		withCount?: boolean
+	): Promise<
+		model.ErrorResponse | model.CardTypeResponseV2[] | { list: model.CardTypeResponseV2[]; totalCount: number }
+	> {
+		let result
+		result = await this.connection.get<{ list: model.CardTypeResponseV2[]; totalCount: number }>(
+			`v2/cards/types/${providerCode}`
+		)
+		if (!model.ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
 	async getCardTypes(providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
 		return result
 	}
-	async getFundingAccounts(searchRequest: model.FundingAccountSearchRequest) {
-		const result = await this.connection.post<model.CardFundingAccountResponse[]>(
+
+	async searchCardsV2(
+		searchRequest: model.CardSearchRequest,
+		parameters?: Record<string, any>
+	): Promise<model.ErrorResponse | model.CardResponseV2[]>
+	async searchCardsV2(
+		searchRequest: model.CardSearchRequest,
+		parameters?: Record<string, any>,
+		withCount?: boolean
+	): Promise<model.ErrorResponse | model.CardResponseV2[] | { list: model.CardResponseV2[]; totalCount: number }>
+	async searchCardsV2(
+		searchRequest: model.CardSearchRequest,
+		parameters?: Record<string, any>,
+		withCount?: boolean
+	): Promise<model.ErrorResponse | model.CardResponseV2[] | { list: model.CardResponseV2[]; totalCount: number }> {
+		let result
+		result = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
+			`v2/cards/searches`,
+			searchRequest,
+			parameters
+		)
+		if (!model.ErrorResponse.is(result) && !withCount)
+			result = result.list
+		return result
+	}
+	async searchCardsV2Paginated(
+		request: model.CardSearchRequest,
+		previous?: Paginated<model.CardResponseV2>,
+		page?: number,
+		size?: number,
+		sort = "issueDate,desc"
+	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
+		return await this.getNextPaginated<model.CardResponseV2>(
+			previous,
+			(page, size, sort, request) =>
+				this.connection.post<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(
+					`v2/cards/searches`,
+					request,
+					{
+						page: page,
+						size: size,
+						sort: sort,
+					}
+				),
+			request,
+			page,
+			size,
+			sort
+		)
+	}
+	async getFundingAccounts(
+		searchRequest: model.FundingAccountSearchRequest
+	): Promise<model.ErrorResponse | model.CardFundingAccountResponse[]>
+	async getFundingAccounts(
+		searchRequest: model.FundingAccountSearchRequest,
+		withCount: boolean
+	): Promise<
+		| model.ErrorResponse
+		| model.CardFundingAccountResponse[]
+		| { list: model.CardFundingAccountResponse[]; totalCount: number }
+	>
+	async getFundingAccounts(
+		searchRequest: model.FundingAccountSearchRequest,
+		withCount?: boolean
+	): Promise<
+		| model.ErrorResponse
+		| model.CardFundingAccountResponse[]
+		| { list: model.CardFundingAccountResponse[]; totalCount: number }
+	> {
+		let result
+		result = await this.connection.post<{ list: model.CardFundingAccountResponse[]; totalCount: number }>(
 			"funding-accounts/searches",
 			searchRequest
 		)
+		if (!model.ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
-	async getAllFundingAccounts(providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardFundingAccountResponse[]>(
+	async getAllFundingAccounts(
+		providerCode: model.ProviderCode
+	): Promise<model.ErrorResponse | model.CardFundingAccountResponse[]>
+	async getAllFundingAccounts(
+		providerCode: model.ProviderCode,
+		withCount: boolean
+	): Promise<
+		| model.ErrorResponse
+		| model.CardFundingAccountResponse[]
+		| { list: model.CardFundingAccountResponse[]; totalCount: number }
+	>
+	async getAllFundingAccounts(
+		providerCode: model.ProviderCode,
+		withCount?: boolean
+	): Promise<
+		| model.ErrorResponse
+		| model.CardFundingAccountResponse[]
+		| { list: model.CardFundingAccountResponse[]; totalCount: number }
+	> {
+		let result
+		result = await this.connection.get<{ list: model.CardFundingAccountResponse[]; totalCount: number }>(
 			`funding-accounts?provider=${providerCode}&size=500`
 		)
+		if (!model.ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
@@ -119,16 +240,54 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async getCardTransaction(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardProcessedTransaction[]>(
+	async getCardTransaction(
+		providerCardId: string,
+		providerCode: model.ProviderCode
+	): Promise<model.ErrorResponse | model.CardProcessedTransaction[]>
+	async getCardTransaction(
+		providerCardId: string,
+		providerCode: model.ProviderCode,
+		withCount: boolean
+	): Promise<
+		| model.ErrorResponse
+		| model.CardProcessedTransaction[]
+		| { list: model.CardProcessedTransaction[]; totalCount: number }
+	>
+	async getCardTransaction(
+		providerCardId: string,
+		providerCode: model.ProviderCode,
+		withCount?: boolean
+	): Promise<
+		| model.ErrorResponse
+		| model.CardProcessedTransaction[]
+		| { list: model.CardProcessedTransaction[]; totalCount: number }
+	> {
+		let result
+		result = await this.connection.get<{ list: model.CardProcessedTransaction[]; totalCount: number }>(
 			`cards/virtual/${providerCode}/${providerCardId}/statements`
 		)
+		if (!model.ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
-	async searchTransaction(accountId: number) {
-		const result = await this.connection.post<model.CardTransaction[]>(`transactions/searches`, {
-			accountId: accountId,
-		})
+	async searchTransaction(accountId: number): Promise<model.ErrorResponse | model.CardTransaction[]>
+	async searchTransaction(
+		accountId: number,
+		withCount: boolean
+	): Promise<model.ErrorResponse | model.CardTransaction[] | { list: model.CardTransaction[]; totalCount: number }>
+	async searchTransaction(
+		accountId: number,
+		withCount?: boolean
+	): Promise<model.ErrorResponse | model.CardTransaction[] | { list: model.CardTransaction[]; totalCount: number }> {
+		let result
+		result = await this.connection.post<{ list: model.CardTransaction[]; totalCount: number }>(
+			`transactions/searches`,
+			{
+				accountId: accountId,
+			}
+		)
+		if (!model.ErrorResponse.is(result) && !withCount)
+			result = result.list
 		return result
 	}
 	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {
