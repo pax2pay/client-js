@@ -21,7 +21,13 @@ export class Transfers extends List<model.TransferResponse, model.TransferSearch
 			response
 		)
 	}
-	async getAll(withCount?: boolean) {
+	async getAll(): Promise<model.ErrorResponse | model.TransferResponse[]>
+	async getAll(
+		withCount: boolean
+	): Promise<model.ErrorResponse | model.TransferResponse[] | { list: model.TransferResponse[]; totalCount: number }>
+	async getAll(
+		withCount?: boolean
+	): Promise<model.ErrorResponse | model.TransferResponse[] | { list: model.TransferResponse[]; totalCount: number }> {
 		let result
 		result = await this.connection.get<{ list: model.TransferResponse[]; totalCount: number }>(`${this.folder}`)
 		if (!model.ErrorResponse.is(result) && !withCount)

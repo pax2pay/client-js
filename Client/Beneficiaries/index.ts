@@ -17,7 +17,16 @@ export class Beneficiaries extends List<model.BeneficiaryResponse, model.Benefic
 	protected createResource(response: model.BeneficiaryResponse): Beneficiary {
 		return new Beneficiary(this.connection, [this.folder, response.beneficiaryId].join("/"), response)
 	}
-	async getAll(withCount?: boolean) {
+
+	async getAll(): Promise<model.ErrorResponse | model.BeneficiaryResponse[]>
+	async getAll(): Promise<
+		model.ErrorResponse | model.BeneficiaryResponse[] | { list: model.BeneficiaryResponse[]; totalCount: number }
+	>
+	async getAll(
+		withCount?: boolean
+	): Promise<
+		model.ErrorResponse | model.BeneficiaryResponse[] | { list: model.BeneficiaryResponse[]; totalCount: number }
+	> {
 		let result
 		result = await this.connection.get<{ list: model.BeneficiaryResponse[]; totalCount: number }>(`${this.folder}`)
 		if (!model.ErrorResponse.is(result) && !withCount)

@@ -19,6 +19,10 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		const result = await this.connection.remove<model.UserResponse>(`users/${username}`)
 		return result
 	}
+	async getAllUsers(): Promise<model.UserResponse[] | model.ErrorResponse>
+	async getAllUsers(
+		withCount: boolean
+	): Promise<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[] | model.ErrorResponse>
 	async getAllUsers(
 		withCount?: boolean
 	): Promise<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[] | model.ErrorResponse> {
@@ -34,6 +38,10 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		const result = await this.connection.get<string[]>(`users/category`)
 		return result
 	}
+	async getRolesets(): Promise<model.RolesetResponse[] | model.ErrorResponse>
+	async getRolesets(
+		withCount: boolean
+	): Promise<{ list: model.RolesetResponse[]; totalCount: number } | model.RolesetResponse[] | model.ErrorResponse>
 	async getRolesets(
 		withCount?: boolean
 	): Promise<{ list: model.RolesetResponse[]; totalCount: number } | model.RolesetResponse[] | model.ErrorResponse> {
@@ -47,6 +55,12 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		const result = await this.connection.get<model.UserResponse>(`users/${username}`)
 		return result
 	}
+	async getUsersActiveRoles(username: string, token: string): Promise<string[] | model.ErrorResponse>
+	async getUsersActiveRoles(
+		username: string,
+		token: string,
+		withCount: boolean
+	): Promise<{ list: string[]; totalCount: number } | string[] | model.ErrorResponse>
 	async getUsersActiveRoles(
 		username: string,
 		token: string,
