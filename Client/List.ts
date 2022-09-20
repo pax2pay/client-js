@@ -1,5 +1,4 @@
 import * as model from "../model"
-import { ErrorResponse } from "../model/ErrorResponse"
 import { Connection } from "./Connection"
 import { generatePagination } from "./generatePagination"
 import { Paginated } from "./Paginated"
@@ -71,7 +70,7 @@ export abstract class List<
 		}
 
 		const response = await callback(page, size, sort, request)
-		if (ErrorResponse.is(response)) {
+		if (model.ErrorResponse.is(response)) {
 			result = response
 		} else {
 			let totalCount: number | undefined

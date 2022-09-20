@@ -1,5 +1,4 @@
 import * as model from "../../model"
-import { ErrorResponse } from "../../model/ErrorResponse"
 import { Card } from "../Card"
 import { Connection } from "../Connection"
 import { List } from "../List"
@@ -115,7 +114,7 @@ export class Cards extends List<
 		result = await this.connection.get<{ list: model.CardTypeResponseV2[]; totalCount: number }>(
 			`v2/cards/types/${providerCode}`
 		)
-		if (!ErrorResponse.is(result) && !withCount)
+		if (!model.ErrorResponse.is(result) && !withCount)
 			result = result.list
 		return result
 	}
@@ -144,7 +143,7 @@ export class Cards extends List<
 			searchRequest,
 			parameters
 		)
-		if (!ErrorResponse.is(result) && !withCount)
+		if (!model.ErrorResponse.is(result) && !withCount)
 			result = result.list
 		return result
 	}
@@ -197,7 +196,7 @@ export class Cards extends List<
 			"funding-accounts/searches",
 			searchRequest
 		)
-		if (!ErrorResponse.is(result) && !withCount)
+		if (!model.ErrorResponse.is(result) && !withCount)
 			result = result.list
 		return result
 	}
@@ -224,7 +223,7 @@ export class Cards extends List<
 		result = await this.connection.get<{ list: model.CardFundingAccountResponse[]; totalCount: number }>(
 			`funding-accounts?provider=${providerCode}&size=500`
 		)
-		if (!ErrorResponse.is(result) && !withCount)
+		if (!model.ErrorResponse.is(result) && !withCount)
 			result = result.list
 		return result
 	}
@@ -267,7 +266,7 @@ export class Cards extends List<
 		result = await this.connection.get<{ list: model.CardProcessedTransaction[]; totalCount: number }>(
 			`cards/virtual/${providerCode}/${providerCardId}/statements`
 		)
-		if (!ErrorResponse.is(result) && !withCount)
+		if (!model.ErrorResponse.is(result) && !withCount)
 			result = result.list
 		return result
 	}
@@ -287,7 +286,7 @@ export class Cards extends List<
 				accountId: accountId,
 			}
 		)
-		if (!ErrorResponse.is(result) && !withCount)
+		if (!model.ErrorResponse.is(result) && !withCount)
 			result = result.list
 		return result
 	}
