@@ -115,4 +115,63 @@ describe("", () => {
 		expect(CardResponseV2.is(card1)).toBeTruthy()
 		expect(CardResponseV2.is(card2)).toBeTruthy()
 	})
+
+	it("card from batch", async () => {
+		const card = {
+			cardType: "VISA_DEBIT",
+			cardNumber: "1234123412341234",
+			cvv: "987",
+			expiryDate: "2022-11",
+			nameOnCard: "test test",
+			balance: 1,
+			currency: "GBP",
+			fundingBalance: 5,
+			fundingDate: "2022-10-26",
+			issueDate: "2022-09-16",
+			providerCode: "modulr",
+			providerCardId: "SomeCardId",
+			usage: "SINGLE_USE",
+			batchId: "7rcvyvgccd",
+			state: "ACTIVE",
+			fundingAccount: {
+				providerAccountId: "SomeAccount",
+				balance: 12345,
+				friendlyName: "Account",
+			},
+			bookingInfo: {
+				type: "FIVE_FIELDS",
+				agentBookingReference: "rrr",
+				departureDate: "2020-01-01",
+				supplierBookingReference: "qwert",
+				leadPassengerName: "chris",
+				supplierCode: "test",
+			},
+			schedule: [
+				{
+					dueOn: "2022-10-26T00:00:00",
+					status: "TODO",
+					taskType: "CARD_AMENDMENT",
+					taskId: "modulr-SomeId-1",
+					newBalance: 5,
+				},
+				{
+					dueOn: "2022-10-26T00:00:00",
+					status: "TODO",
+					taskType: "CARD_STATE_CHANGE",
+					taskId: "modulr-SomeId-2",
+					desiredState: "THAW",
+				},
+			],
+			delivery: {
+				type: "EMAIL",
+				to: "test@paxport.net",
+				deliveredMessage: "test",
+				linkExpiry: "2022-10-22",
+				sent: "2022-09-16T15:50:28.583102",
+				status: "PENDING",
+			},
+			createdBy: "christofferj",
+		}
+		expect(CardResponseV2.is(card)).toBeTruthy()
+	})
 })
