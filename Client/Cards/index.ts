@@ -123,7 +123,21 @@ export class Cards extends List<
 		const result = await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
 		return result
 	}
-	async searchCardsV2(searchRequest: model.CardSearchRequest, parameters?: Record<string, any>, withCount?: boolean) {
+
+	async searchCardsV2(
+		searchRequest: model.CardSearchRequest,
+		parameters?: Record<string, any>
+	): Promise<model.ErrorResponse | model.CardResponseV2[]>
+	async searchCardsV2(
+		searchRequest: model.CardSearchRequest,
+		parameters?: Record<string, any>,
+		withCount?: boolean
+	): Promise<model.ErrorResponse | model.CardResponseV2[] | { list: model.CardResponseV2[]; totalCount: number }>
+	async searchCardsV2(
+		searchRequest: model.CardSearchRequest,
+		parameters?: Record<string, any>,
+		withCount?: boolean
+	): Promise<model.ErrorResponse | model.CardResponseV2[] | { list: model.CardResponseV2[]; totalCount: number }> {
 		let result
 		result = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
 			`v2/cards/searches`,
