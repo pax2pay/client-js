@@ -41,7 +41,7 @@ export class Cards extends List<
 		previous?: Paginated<model.CardResponseV2>,
 		page?: number,
 		size?: number,
-		sort = "issueDate,desc"
+		sort = "createdOn,desc"
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
 		return await this.getNextPaginated<model.CardResponseV2>(
 			previous,
