@@ -23,6 +23,8 @@ export class Connection {
 		const headers: Record<string, string> = {
 			"Content-Type": "application/json; charset=utf-8",
 		}
+		const data = JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
+		this.#token = data.token
 		if (this.token)
 			headers["X-Auth-Token"] = this.token
 		const response = await fetch(this.url + "/" + path, {
