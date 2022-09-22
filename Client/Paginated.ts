@@ -1,3 +1,13 @@
+/**
+ * Class for handling pagination, one instance represents a page of the List/Collection.
+ * Can be used in combination with List#getNextPaginated
+ *
+ * data - list representing current page's data
+ * totalCount - the total amount of rows available in the List/Collection
+ * page - current page
+ * size - current size
+ * endReached - indicator whether there is no more data
+ */
 export class Paginated<T> {
 	constructor(
 		readonly data: T[],
@@ -11,6 +21,6 @@ export class Paginated<T> {
 	}
 
 	hasNextPage(): boolean {
-		return this.endReached || (!this.totalCount ? this.endReached : this.nextPage() * this.size < this.totalCount)
+		return !this.endReached || (this.totalCount ? this.nextPage() * this.size < this.totalCount : false)
 	}
 }
