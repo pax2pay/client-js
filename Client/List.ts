@@ -74,14 +74,23 @@ export abstract class List<
 			result = response
 		} else {
 			let totalCount: number | undefined
+			let list: R[]
 			if (!Array.isArray(response)) {
+				list = response.list
 				totalCount = response.totalCount
-
-				result = new Paginated(response.list, totalCount, page, size, response.list?.length == 0)
 			} else {
-				result = new Paginated(response, totalCount, page, size, response.length == 0)
+				list = response
 			}
+
+			result = new Paginated(list, totalCount, page, size, list.length < size)
 		}
 		return result
+	}
+
+	extractResponse<R>(value: { list: R[]; totalCount: number } | model.ErrorResponse, withCount: boolean | undefined) {
+		if (!model.ErrorResponse.is(value) && !withCount)
+			return value.list
+		else
+			return value
 	}
 }
