@@ -11,7 +11,7 @@
 export class Paginated<T> {
 	constructor(
 		readonly data: T[],
-		readonly totalCount: number | undefined,
+		readonly totalCount: number,
 		readonly page: number,
 		readonly size: number,
 		readonly endReached: boolean
@@ -21,6 +21,10 @@ export class Paginated<T> {
 	}
 
 	hasNextPage(): boolean {
-		return !this.endReached || (this.totalCount ? this.nextPage() * this.size < this.totalCount : false)
+		return !this.endReached
+	}
+
+	isTotalCountKnown(): boolean {
+		return this.totalCount >= 0
 	}
 }

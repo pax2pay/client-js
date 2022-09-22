@@ -73,7 +73,7 @@ export abstract class List<
 		if (model.ErrorResponse.is(response)) {
 			result = response
 		} else {
-			let totalCount: number | undefined
+			let totalCount = -1
 			let list: R[]
 			if (!Array.isArray(response)) {
 				list = response.list
