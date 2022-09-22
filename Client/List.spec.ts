@@ -30,8 +30,7 @@ class TestCards extends Cards {
 
 describe("List", () => {
 	//need a connection to make a new Cards/TestCards
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	const testCards: TestCards = new TestCards(Connection.open("asd", "qwe")!)
+	const testCards: TestCards = new TestCards(Connection.open("asd", "qwe"))
 
 	it("getNextPaginated in order", async () => {
 		const first = await testCards.testGetNextPaginated()

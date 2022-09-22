@@ -78,8 +78,8 @@ export class Connection {
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		return await this.fetch<Response, Codes>(path, "DELETE")
 	}
-	static open(url: string | undefined, token: string | undefined): Connection | undefined {
-		return url ? new Connection(url, token) : undefined
+	static open(url: string, token: string | undefined): Connection {
+		return new Connection(url, token)
 	}
 	static isError(
 		value: (model.ErrorResponse & { status: number }) | any
