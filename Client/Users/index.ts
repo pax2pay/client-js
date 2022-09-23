@@ -19,52 +19,30 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		const result = await this.connection.remove<model.UserResponse>(`users/${username}`)
 		return result
 	}
-	async getAllUsers(): Promise<model.UserResponse[] | model.ErrorResponse>
-	async getAllUsers(
-		withCount: boolean
-	): Promise<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[] | model.ErrorResponse>
-	async getAllUsers(
-		withCount?: boolean
-	): Promise<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[] | model.ErrorResponse> {
+	async getAllUsers(): Promise<model.UserResponse[] | model.ErrorResponse> {
 		const response = await this.connection.get<{ list: model.UserResponse[]; totalCount: number }>(
 			`users?size=500&sort=username`
 		)
-		return this.extractResponse(response, withCount)
+		return this.extractResponse(response)
 	}
 	async getCategory(): Promise<string[] | model.ErrorResponse> {
 		const result = await this.connection.get<string[]>(`users/category`)
 		return result
 	}
-	async getRolesets(): Promise<model.RolesetResponse[] | model.ErrorResponse>
-	async getRolesets(
-		withCount: boolean
-	): Promise<{ list: model.RolesetResponse[]; totalCount: number } | model.RolesetResponse[] | model.ErrorResponse>
-	async getRolesets(
-		withCount?: boolean
-	): Promise<{ list: model.RolesetResponse[]; totalCount: number } | model.RolesetResponse[] | model.ErrorResponse> {
+	async getRolesets(): Promise<model.RolesetResponse[] | model.ErrorResponse> {
 		const response = await this.connection.get<{ list: model.RolesetResponse[]; totalCount: number }>(`rolesets`)
-		return this.extractResponse(response, withCount)
+		return this.extractResponse(response)
 	}
 	async getUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
 		const result = await this.connection.get<model.UserResponse>(`users/${username}`)
 		return result
 	}
-	async getUsersActiveRoles(username: string, token: string): Promise<string[] | model.ErrorResponse>
-	async getUsersActiveRoles(
-		username: string,
-		token: string,
-		withCount: boolean
-	): Promise<{ list: string[]; totalCount: number } | string[] | model.ErrorResponse>
-	async getUsersActiveRoles(
-		username: string,
-		token: string,
-		withCount?: boolean
-	): Promise<{ list: string[]; totalCount: number } | string[] | model.ErrorResponse> {
+	async getUsersActiveRoles(username: string, token: string): Promise<string[] | model.ErrorResponse> {
 		this.connection.token = token
 		const response = await this.connection.get<{ list: string[]; totalCount: number }>(
 			`users/${username}/roles/minified`
 		)
-		return this.extractResponse(response, withCount)
+		return this.extractResponse(response)
 	}
 	async resetPassword(username: string): Promise<model.PasswordResetResponse | model.ErrorResponse> {
 		const result = await this.connection.post<model.PasswordResetResponse>(`auth/passwordreset`, { username: username })

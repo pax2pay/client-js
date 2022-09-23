@@ -21,15 +21,9 @@ export class Transfers extends List<model.TransferResponse, model.TransferSearch
 			response
 		)
 	}
-	async getAll(): Promise<model.ErrorResponse | model.TransferResponse[]>
-	async getAll(
-		withCount: boolean
-	): Promise<model.ErrorResponse | model.TransferResponse[] | { list: model.TransferResponse[]; totalCount: number }>
-	async getAll(
-		withCount?: boolean
-	): Promise<model.ErrorResponse | model.TransferResponse[] | { list: model.TransferResponse[]; totalCount: number }> {
+	async getAll(): Promise<model.ErrorResponse | model.TransferResponse[]> {
 		const response = await this.connection.get<{ list: model.TransferResponse[]; totalCount: number }>(`${this.folder}`)
-		return this.extractResponse(response, withCount)
+		return this.extractResponse(response)
 	}
 	async getTransfer(provider: model.ProviderCode, transferId: string) {
 		return await this.connection.get<model.TransferResponse>([this.folder, provider, transferId].join("/"))

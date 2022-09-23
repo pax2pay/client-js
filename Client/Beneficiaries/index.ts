@@ -18,19 +18,11 @@ export class Beneficiaries extends List<model.BeneficiaryResponse, model.Benefic
 		return new Beneficiary(this.connection, [this.folder, response.beneficiaryId].join("/"), response)
 	}
 
-	async getAll(): Promise<model.ErrorResponse | model.BeneficiaryResponse[]>
-	async getAll(): Promise<
-		model.ErrorResponse | model.BeneficiaryResponse[] | { list: model.BeneficiaryResponse[]; totalCount: number }
-	>
-	async getAll(
-		withCount?: boolean
-	): Promise<
-		model.ErrorResponse | model.BeneficiaryResponse[] | { list: model.BeneficiaryResponse[]; totalCount: number }
-	> {
+	async getAll(): Promise<model.ErrorResponse | model.BeneficiaryResponse[]> {
 		const response = await this.connection.get<{ list: model.BeneficiaryResponse[]; totalCount: number }>(
 			`${this.folder}`
 		)
-		return this.extractResponse(response, withCount)
+		return this.extractResponse(response)
 	}
 	async getBeneficiary(beneficiaryId: string) {
 		return await this.connection.get<model.BeneficiaryResponse>([this.folder, beneficiaryId].join("/"))
