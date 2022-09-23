@@ -20,25 +20,28 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		return result
 	}
 	async getAllUsers(): Promise<model.UserResponse[] | model.ErrorResponse> {
-		const result = await this.connection.get<model.UserResponse[]>(`users?size=500&sort=username`)
-		return result
+		const response = await this.connection.get<{ list: model.UserResponse[]; totalCount: number }>(
+			`users?size=500&sort=username`
+		)
+		return this.extractResponse(response)
 	}
 	async getCategory(): Promise<string[] | model.ErrorResponse> {
 		const result = await this.connection.get<string[]>(`users/category`)
 		return result
 	}
 	async getRolesets(): Promise<model.RolesetResponse[] | model.ErrorResponse> {
-		const result = await this.connection.get<model.RolesetResponse[]>(`rolesets`)
-		return result
+		const response = await this.connection.get<{ list: model.RolesetResponse[]; totalCount: number }>(`rolesets`)
+		return this.extractResponse(response)
 	}
 	async getUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
 		const result = await this.connection.get<model.UserResponse>(`users/${username}`)
 		return result
 	}
-	async getUsersActiveRoles(username: string, token: string): Promise<string[] | model.ErrorResponse> {
-		this.connection.token = token
-		const result = await this.connection.get<string[]>(`users/${username}/roles/minified`)
-		return result
+	async getUsersActiveRoles(username: string): Promise<string[] | model.ErrorResponse> {
+		const response = await this.connection.get<{ list: string[]; totalCount: number }>(
+			`users/${username}/roles/minified`
+		)
+		return this.extractResponse(response)
 	}
 	async resetPassword(username: string): Promise<model.PasswordResetResponse | model.ErrorResponse> {
 		const result = await this.connection.post<model.PasswordResetResponse>(`auth/passwordreset`, { username: username })

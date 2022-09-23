@@ -18,7 +18,8 @@ export class Connection {
 	async fetch<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
 		method: string,
-		request?: any
+		request?: any,
+		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const headers: Record<string, string> = {
 			"Content-Type": "application/json; charset=utf-8",
@@ -32,31 +33,46 @@ export class Connection {
 		}
 		if (this.token)
 			headers["X-Auth-Token"] = this.token
-		const response = await fetch(this.url + "/" + path, {
-			method,
-			headers,
-			body: request && JSON.stringify(request),
-		}).catch(_ => undefined)
+		const response = await fetch(
+			this.url +
+				"/" +
+				path +
+				(parameters
+					? "?" +
+					  Object.entries(parameters)
+							.map(param => param.join("="))
+							.join("&")
+					: ""),
+			{
+				method,
+				headers,
+				body: request && JSON.stringify(request),
+			}
+		).catch(_ => undefined)
 		return !response
 			? { status: 503 }
 			: response.status == 401 && (await this.unauthorized(this))
-			? await this.fetch<Response, Codes>(path, method, request)
+			? await this.fetch<Response, Codes>(path, method, request, parameters)
 			: response.headers.get("Content-Type")?.startsWith("application/json")
 			? response.ok
-				? await response.json()
+				? response.headers.get("x-total-count")
+					? { list: await response.json(), totalCount: response.headers.get("x-total-count") }
+					: await response.json()
 				: { status: response.status, ...(await response.json()) }
 			: { status: response.status, value: await response.text() }
 	}
 	async post<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
-		request: any
+		request: any,
+		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "POST", request)
+		return await this.fetch<Response, Codes>(path, "POST", request, parameters)
 	}
 	async get<Response, Codes = 400 | 403 | 404 | 500>(
-		path: string
+		path: string,
+		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "GET")
+		return await this.fetch<Response, Codes>(path, "GET", undefined, parameters)
 	}
 	async put<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
@@ -69,8 +85,8 @@ export class Connection {
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		return await this.fetch<Response, Codes>(path, "DELETE")
 	}
-	static open(url: string | undefined, token: string | undefined): Connection | undefined {
-		return url ? new Connection(url, token) : undefined
+	static open(url: string, token: string | undefined): Connection {
+		return new Connection(url, token)
 	}
 	static isError(
 		value: (model.ErrorResponse & { status: number }) | any
