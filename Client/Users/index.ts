@@ -37,8 +37,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		const result = await this.connection.get<model.UserResponse>(`users/${username}`)
 		return result
 	}
-	async getUsersActiveRoles(username: string, token: string): Promise<string[] | model.ErrorResponse> {
-		this.connection.token = token
+	async getUsersActiveRoles(username: string): Promise<string[] | model.ErrorResponse> {
 		const response = await this.connection.get<{ list: string[]; totalCount: number }>(
 			`users/${username}/roles/minified`
 		)
