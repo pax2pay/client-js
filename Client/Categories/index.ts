@@ -9,7 +9,7 @@ export class Categories {
 	}
 	async getAllCategories() {
 		const result = await this.connection.get<{ list: CategoryResponse[]; totalCount: number }>(`category?size=100`)
-		if (!model.ErrorResponse.is(result))
+		if (!model.ErrorResponse.is(result) && "list" in result)
 			return result.list
 		else
 			return result

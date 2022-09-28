@@ -48,7 +48,7 @@ export class Reports {
 
 		let result
 		result = await this.connection.post<{ list: model.StatementReportResponse; totalCount: number }>(path, request)
-		if (!model.ErrorResponse.is(result))
+		if (!model.ErrorResponse.is(result) && "list" in result)
 			result = result.list
 		return result
 	}

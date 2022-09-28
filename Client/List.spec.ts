@@ -116,4 +116,16 @@ describe("List", () => {
 			expect(lastPage.endReached).toEqual(true)
 		}
 	})
+
+	it("extractResponse", async () => {
+		expect(testCards.extractResponse({ list: ["a", "b", "c", "d", "e"], totalCount: 5 })).toEqual([
+			"a",
+			"b",
+			"c",
+			"d",
+			"e",
+		])
+
+		expect(testCards.extractResponse([1, 2, 3])).toEqual([1, 2, 3])
+	})
 })
