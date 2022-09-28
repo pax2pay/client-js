@@ -87,8 +87,8 @@ export abstract class List<
 		return result
 	}
 
-	extractResponse<R>(value: { list: R[]; totalCount: number } | model.ErrorResponse) {
-		if (!model.ErrorResponse.is(value))
+	extractResponse<R>(value: R[] | { list: R[]; totalCount: number } | model.ErrorResponse) {
+		if (!model.ErrorResponse.is(value) && "list" in value)
 			return value.list
 		else
 			return value
