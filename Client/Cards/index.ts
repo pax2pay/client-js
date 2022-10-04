@@ -63,6 +63,11 @@ export class Cards extends List<
 `)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
+	async getCardV2(providerCardId: string, providerCode: model.ProviderCode) {
+		const result = await this.connection.get<model.CardResponseV2>(`v2/cards/virtual/${providerCode}/${providerCardId}
+`)
+		return model.ErrorResponse.is(result) ? result : this.map(result)
+	}
 	async createCard(request: model.CreateCardRequest) {
 		const result = await this.connection.post<model.CardResponse>(`cards/virtual`, request)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
@@ -174,12 +179,21 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async getCardTransaction(
+	async getCardProcessedTransactions(
 		providerCardId: string,
 		providerCode: model.ProviderCode
 	): Promise<model.ErrorResponse | model.CardProcessedTransaction[]> {
 		const response = await this.connection.get<{ list: model.CardProcessedTransaction[]; totalCount: number }>(
 			`cards/virtual/${providerCode}/${providerCardId}/statements`
+		)
+		return this.extractResponse(response)
+	}
+	async getCardTransactions(
+		providerCardId: string,
+		providerCode: model.ProviderCode
+	): Promise<model.ErrorResponse | model.CardTransaction[]> {
+		const response = await this.connection.get<{ list: model.CardTransaction[]; totalCount: number }>(
+			`cards/virtual/${providerCode}/${providerCardId}/transactions`
 		)
 		return this.extractResponse(response)
 	}
