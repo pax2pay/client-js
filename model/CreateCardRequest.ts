@@ -18,7 +18,7 @@ export interface CreateCardRequest {
 	currency: string
 	fundingDate?: string
 	expiryDate?: any
-	usage?: "SINGLE_USE" | "MULTIPLE_USE"
+	usage?: "SINGLE_USE" | "MULTIPLE_USE" | "SINGLE_USE_ALLOW_TEST_AUTH"
 	schedule?: (CardAmendmentScheduledTaskRequest | CardStateChangeScheduledTaskRequest | ScheduledTaskRequest)[]
 	friendlyName?: string
 	delivery?: CardDeliveryRequest
