@@ -179,11 +179,11 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async getCardProcessedTransactions(
+	async getCardStatements(
 		providerCardId: string,
 		providerCode: model.ProviderCode
-	): Promise<model.ErrorResponse | model.CardProcessedTransaction[]> {
-		const response = await this.connection.get<{ list: model.CardProcessedTransaction[]; totalCount: number }>(
+	): Promise<model.ErrorResponse | model.CardStatement[]> {
+		const response = await this.connection.get<{ list: model.CardStatement[]; totalCount: number }>(
 			`cards/virtual/${providerCode}/${providerCardId}/statements`
 		)
 		return this.extractResponse(response)
