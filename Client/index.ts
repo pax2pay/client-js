@@ -39,8 +39,8 @@ export class Client {
 	constructor(private connection: Connection, private $authenticate?: Authenticate) {
 		connection.unauthorized = async () => (await this.$authenticate?.(this)) ?? false
 	}
-	static create(url: string | undefined, token?: string | Authenticate) {
-		const connection = url ? Connection.open(url, typeof token == "string" ? token : undefined) : undefined
+	static create(url: string, token?: string | Authenticate) {
+		const connection = Connection.open(url, typeof token == "string" ? token : undefined)
 		return connection && new Client(connection, typeof token == "string" ? undefined : token)
 	}
 }
