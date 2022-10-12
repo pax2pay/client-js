@@ -52,11 +52,8 @@ export class Reports {
 			result = result.list
 		return result
 	}
-	async getStatementForTable(rowId: string, type?: string) {
-		let path = `statement/${rowId}`
-		if (type == "TRANSFER_IN" || type == "TRANSFER_OUT")
-			path = `statement/${rowId}/full`
-		const result = await this.connection.get<model.StatementReportResponseRow>(path)
+	async getStatementForTable(rowId: string) {
+		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 		return result
 	}
 	attachPageable(base: string, page?: number, pageSize?: number) {
