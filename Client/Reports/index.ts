@@ -54,7 +54,7 @@ export class Reports {
 	}
 	async getStatementForTable(rowId: string, type?: string) {
 		let path = `statement/${rowId}`
-		if (type == "transfer")
+		if (type == "TRANSFER_IN" || type == "TRANSFER_OUT")
 			path = `statement/${rowId}/full`
 		const result = await this.connection.get<model.StatementReportResponseRow>(path)
 		return result

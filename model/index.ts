@@ -122,6 +122,7 @@ import { StatementReportResponse } from "./StatementReportResponse"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
+import { StatementReportTransferType } from "./StatementReportTransferType"
 import { StatementReportUrlRequest } from "./StatementReportUrlRequest"
 import { StatementReportUrlResponse } from "./StatementReportUrlResponse"
 import { StatementRowIds } from "./StatementRowIds"
@@ -275,6 +276,7 @@ export {
 	Sorting,
 	StatementReportUrlRequest,
 	StatementReportUrlResponse,
+	StatementReportTransferType,
 	StatementReportRequest,
 	StatementReportResponse,
 	StatementReportResponseRow,

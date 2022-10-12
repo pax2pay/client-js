@@ -1,42 +1,43 @@
-import { AccountResponse } from "./AccountResponse"
-import { BeneficiaryResponse } from "./BeneficiaryResponse"
+import { Currency } from "isoly"
+import { BookingInfoResponse } from "./BookingInfoResponse"
+import { FundingAccountResponseV2 } from "./FundingAccountResponseV2"
 import { ProviderCode } from "./ProviderCode"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
 import { TransferStatus } from "./TransferStatus"
 
 export interface TransferResponse {
-	sourceAccount?: AccountResponse
-	beneficiary?: BeneficiaryResponse
-	destinationAccount?: AccountResponse
-	destination?: TransferDestinationInfo
-	amount?: number
-	status?: TransferStatus
-	createdDate?: string
+	providerCode: ProviderCode
+	providerTransferId: string
+	amount: number
+	currency: Currency
+	status: TransferStatus
+	createdDate: string
 	paymentDate?: string
-	reference?: string
-	providerCode?: ProviderCode
-	providerTransferId?: string
-	scheduled?: boolean
-	errorDescription?: string
+	reference: string
+	source?: FundingAccountResponseV2
+	destination?: TransferDestinationInfo
+	errorMessage?: string
+	bookingInfo?: BookingInfoResponse
+	createdBy: string
 }
 
 export namespace TransferResponse {
 	export function is(value: TransferResponse | any): value is TransferResponse {
 		return (
 			typeof value == "object" &&
-			(value.sourceAccount == undefined || AccountResponse.is(value.sourceAccount)) &&
-			(value.beneficiary == undefined || BeneficiaryResponse.is(value.beneficiary)) &&
-			(value.destinationAccount == undefined || AccountResponse.is(value.destinationAccount)) &&
-			(value.destination == undefined || TransferDestinationInfo.is(value.destination)) &&
-			(value.amount == undefined || typeof value.amount == "number") &&
-			(value.status == undefined || TransferStatus.is(value.status)) &&
-			(value.createdDate == undefined || typeof value.createdDate == "string") &&
+			ProviderCode.is(value.providerCode) &&
+			typeof value.providerTransferId == "string" &&
+			typeof value.amount == "number" &&
+			Currency.is(value.currency) &&
+			TransferStatus.is(value.status) &&
+			typeof value.createdDate == "string" &&
 			(value.paymentDate == undefined || typeof value.paymentDate == "string") &&
-			(value.reference == undefined || typeof value.reference == "string") &&
-			(value.providerCode == undefined || ProviderCode.is(value.providerCode)) &&
-			(value.providerTransferId == undefined || typeof value.providerTransferId == "string") &&
-			(value.scheduled == undefined || typeof value.scheduled == "boolean") &&
-			(value.errorDescription == undefined || typeof value.errorDescription == "string")
+			typeof value.reference == "string" &&
+			(value.source == undefined || value.source == FundingAccountResponseV2.is(value.source)) &&
+			(value.destination == undefined || TransferDestinationInfo.is(value.destination)) &&
+			(value.errorMessage == undefined || typeof value.errorMessage == "string") &&
+			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo)) &&
+			(value.createdBy == undefined || typeof value.createdBy == "string")
 		)
 	}
 }

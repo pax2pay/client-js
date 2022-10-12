@@ -9,8 +9,6 @@ export interface TransferDestinationInfo {
 	sortCode?: string
 	iban?: string
 	bic?: string
-	currency: isoly.Currency
-	address?: AddressInfo
 	fullName?: string
 }
 
@@ -22,8 +20,6 @@ export namespace TransferDestinationInfo {
 			(value.sortCode == undefined || typeof value.sortCode == "string") &&
 			(value.iban == undefined || typeof value.iban == "string") &&
 			(value.bic == undefined || typeof value.bic == "string") &&
-			isoly.Currency.is(value.currency) &&
-			(value.address == undefined || AddressInfo.is(value.address)) &&
 			(value.fullName == undefined || typeof value.fullName == "string")
 		)
 	}
