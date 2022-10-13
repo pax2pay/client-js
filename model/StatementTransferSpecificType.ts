@@ -7,6 +7,7 @@ const statementTransferSpecificType = [
 	"SECT",
 	"PROVIDER_INTERNAL",
 	"SWIFT",
+	"REV",
 ] as const
 export type StatementTransferSpecificType = typeof statementTransferSpecificType[number]
 

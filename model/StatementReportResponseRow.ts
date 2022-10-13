@@ -2,11 +2,13 @@ import * as isoly from "isoly"
 import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
 import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardResponseV2 } from "./CardResponseV2"
+import { CardResponseV2Summary } from "./CardResponseV2Summary"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementRowIds } from "./StatementRowIds"
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
 import { TransferResponseV2 } from "./TransferResponseV2"
+import { TransferResponseV2Summary } from "./TransferResponseV2Summary"
 
 export interface StatementReportResponseRow {
 	actionType: StatementReportRowActionType
@@ -19,8 +21,8 @@ export interface StatementReportResponseRow {
 	rowType: StatementReportRowType
 	transferType?: StatementTransferSpecificType
 	ids: StatementRowIds
-	card?: CardResponseV2
-	transfer?: TransferResponseV2
+	card?: CardResponseV2 | CardResponseV2Summary
+	transfer?: TransferResponseV2 | TransferResponseV2Summary
 }
 
 export namespace StatementReportResponseRow {
@@ -37,8 +39,10 @@ export namespace StatementReportResponseRow {
 			StatementReportRowType.is(value.rowType) &&
 			(value.transferType == undefined || StatementTransferSpecificType.is(value.transferType)) &&
 			StatementRowIds.is(value.ids) &&
-			(value.card == undefined || CardResponseV2.is(value.card)) &&
-			(value.transfer == undefined || TransferResponseV2.is(value.transfer))
+			(value.card == undefined || CardResponseV2.is(value.card) || CardResponseV2Summary.is(value.card)) &&
+			(value.transfer == undefined ||
+				TransferResponseV2.is(value.transfer) ||
+				TransferResponseV2Summary.is(value.transfer))
 		)
 	}
 }
