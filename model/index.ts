@@ -1,5 +1,6 @@
 import { AccountBankResponse } from "./AccountBankResponse"
 import { AccountCreationRequest } from "./AccountCreationRequest"
+import { AccountDetailsTransferDestinationResponse } from "./AccountDetailsTransferDestinationResponse"
 import { AccountIdentifierResponse } from "./AccountIdentifierResponse"
 import { AccountResponse } from "./AccountResponse"
 import { AccountSearchRequest } from "./AccountSearchRequest"
@@ -13,6 +14,7 @@ import { AmountPair } from "./AmountPair"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
+import { BeneficiaryTransferDestinationResponse } from "./BeneficiaryTransferDestinationResponse"
 import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
 import { BookedProductInfo } from "./BookedProductInfo"
 import { BookingInfo } from "./BookingInfo"
@@ -125,13 +127,16 @@ import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementReportUrlRequest } from "./StatementReportUrlRequest"
 import { StatementReportUrlResponse } from "./StatementReportUrlResponse"
 import { StatementRowIds } from "./StatementRowIds"
+import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
 import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
 import { TransactionResponse } from "./TransactionResponse"
 import { TransactionType } from "./TransactionType"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
+import { TransferDestinationResponse } from "./TransferDestinationResponse"
 import { TransferRequest } from "./TransferRequest"
 import { TransferResponse } from "./TransferResponse"
+import { TransferResponseV2 } from "./TransferResponseV2"
 import { TransferSearch } from "./TransferSearch"
 import { TransferStatus } from "./TransferStatus"
 import { TravelPartyInfo } from "./TravelPartyInfo"
@@ -156,6 +161,7 @@ import { YearMonth } from "./YearMonth"
 export {
 	AccountBankResponse,
 	AccountCreationRequest,
+	AccountDetailsTransferDestinationResponse,
 	AccountIdentifierResponse,
 	AccountResponse,
 	AccountSearchRequest,
@@ -169,6 +175,7 @@ export {
 	BeneficiaryRequest,
 	BeneficiaryResponse,
 	BeneficiaryStatus,
+	BeneficiaryTransferDestinationResponse,
 	BillingTransactionAmountPair,
 	BookedProductInfo,
 	BookingInfo,
@@ -281,13 +288,16 @@ export {
 	StatementReportRowActionType,
 	StatementReportRowType,
 	StatementRowIds,
+	StatementTransferSpecificType,
 	SummaryBookingInfoResponse,
 	SupplierBookingInfo,
 	TransactionResponse,
 	TransactionType,
 	TransferDestinationInfo,
+	TransferDestinationResponse,
 	TransferRequest,
 	TransferResponse,
+	TransferResponseV2,
 	TransferSearch,
 	TransferStatus,
 	TravelPartyInfo,

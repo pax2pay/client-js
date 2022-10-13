@@ -5,7 +5,8 @@ import { CardResponseV2 } from "./CardResponseV2"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementRowIds } from "./StatementRowIds"
-import { TransferResponse } from "./TransferResponse"
+import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
+import { TransferResponseV2 } from "./TransferResponseV2"
 
 export interface StatementReportResponseRow {
 	actionType: StatementReportRowActionType
@@ -16,9 +17,10 @@ export interface StatementReportResponseRow {
 	actualBalance: number
 	availableBalance: number
 	rowType: StatementReportRowType
+	transferType?: StatementTransferSpecificType
 	ids: StatementRowIds
 	card?: CardResponseV2
-	transfer?: TransferResponse
+	transfer?: TransferResponseV2
 }
 
 export namespace StatementReportResponseRow {
@@ -33,9 +35,10 @@ export namespace StatementReportResponseRow {
 			typeof value.actualBalance == "number" &&
 			typeof value.availableBalance == "number" &&
 			StatementReportRowType.is(value.rowType) &&
+			(value.transferType == undefined || StatementTransferSpecificType.is(value.transferType)) &&
 			StatementRowIds.is(value.ids) &&
 			(value.card == undefined || CardResponseV2.is(value.card)) &&
-			(value.transfer == undefined || TransferResponse.is(value.transfer))
+			(value.transfer == undefined || TransferResponseV2.is(value.transfer))
 		)
 	}
 }

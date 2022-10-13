@@ -4,6 +4,7 @@ export interface StatementRowIds {
 	rowId: string
 	providerCode: ProviderCode
 	providerCardId?: string
+	orderId?: string
 	providerTransferId?: string
 }
 
@@ -14,6 +15,7 @@ export namespace StatementRowIds {
 			typeof value.rowId == "string" &&
 			ProviderCode.is(value.providerCode) &&
 			(value.providerCardId == undefined || typeof value.providerCardId == "string") &&
+			(value.orderId == undefined || typeof value.orderId == "string") &&
 			(value.providerTransferId == undefined || typeof value.providerTransferId == "string")
 		)
 	}

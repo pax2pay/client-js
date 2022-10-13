@@ -1,5 +1,6 @@
 import { AccountResponse } from "./AccountResponse"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
+import { BookingInfoResponse } from "./BookingInfoResponse"
 import { ProviderCode } from "./ProviderCode"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
 import { TransferStatus } from "./TransferStatus"
@@ -18,6 +19,7 @@ export interface TransferResponse {
 	providerTransferId?: string
 	scheduled?: boolean
 	errorDescription?: string
+	bookingInfo?: BookingInfoResponse
 }
 
 export namespace TransferResponse {
@@ -36,7 +38,8 @@ export namespace TransferResponse {
 			(value.providerCode == undefined || ProviderCode.is(value.providerCode)) &&
 			(value.providerTransferId == undefined || typeof value.providerTransferId == "string") &&
 			(value.scheduled == undefined || typeof value.scheduled == "boolean") &&
-			(value.errorDescription == undefined || typeof value.errorDescription == "string")
+			(value.errorDescription == undefined || typeof value.errorDescription == "string") &&
+			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo))
 		)
 	}
 }
