@@ -3,7 +3,7 @@ export interface AccountDetailsTransferDestinationResponse {
 	accountNumber?: string
 	iban?: string
 	bic?: string
-	fullName: string
+	fullName?: string
 }
 
 export namespace AccountDetailsTransferDestinationResponse {
@@ -16,7 +16,7 @@ export namespace AccountDetailsTransferDestinationResponse {
 			(value.accountNumber == undefined || typeof value.accountNumber == "string") &&
 			(value.iban == undefined || typeof value.iban == "string") &&
 			(value.bic == undefined || typeof value.bic == "string") &&
-			typeof value.fullName == "string"
+			(value.fullName == undefined || typeof value.fullName == "string")
 		)
 	}
 }
