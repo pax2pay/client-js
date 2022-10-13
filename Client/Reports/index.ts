@@ -53,8 +53,7 @@ export class Reports {
 		return result
 	}
 	async getStatementForTable(rowId: string) {
-		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}
-`)
+		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 		return result
 	}
 	attachPageable(base: string, page?: number, pageSize?: number) {
