@@ -42,7 +42,8 @@ export class Cards extends List<
 		page?: number,
 		size?: number,
 		sort = "createdOn,desc",
-		providerCode = "modulr"
+		providerCode: model.ProviderCode = "modulr",
+		includeCount = true
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
 		return await this.getNextPaginated<model.CardResponseV2>(
 			previous,
@@ -52,11 +53,14 @@ export class Cards extends List<
 					size: size,
 					sort: sort,
 					provider: providerCode,
+					includeCount: includeCount,
 				}),
 			undefined,
 			page,
 			size,
-			sort
+			sort,
+			providerCode,
+			includeCount
 		)
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
