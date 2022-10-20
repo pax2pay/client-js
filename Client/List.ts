@@ -46,14 +46,17 @@ export abstract class List<
 			page: number,
 			size: number,
 			sort?: string,
+			providerCode?: model.ProviderCode,
 			request?: Record<string, any>
 		) => Promise<model.ErrorResponse | { list: R[]; totalCount: number } | R[]>,
 		request?: Record<string, any>,
 		chosenPage?: number,
 		chosenSize?: number,
-		chosenSort?: string
+		chosenSort?: string,
+		chosenProvider?: model.ProviderCode
 	) {
 		const sort = chosenSort
+		const provider = chosenProvider
 		let page = chosenPage
 		let size = chosenSize
 		let result
@@ -69,7 +72,7 @@ export abstract class List<
 			size = size ?? 20
 		}
 
-		const response = await callback(page, size, sort, request)
+		const response = await callback(page, size, sort, provider, request)
 		if (model.ErrorResponse.is(response)) {
 			result = response
 		} else {
