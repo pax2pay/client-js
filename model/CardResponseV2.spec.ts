@@ -112,8 +112,8 @@ describe("", () => {
 			createdBy: "lucym",
 		}
 
-		expect(CardResponseV2.is(card1)).toBeTruthy()
-		expect(CardResponseV2.is(card2)).toBeTruthy()
+		expect(CardResponseV2.is(card1)).toBeFalsy()
+		expect(CardResponseV2.is(card2)).toBeFalsy()
 	})
 
 	it("card from batch", async () => {
@@ -126,6 +126,7 @@ describe("", () => {
 			balance: 1,
 			currency: "GBP",
 			fundingBalance: 5,
+			remainingBalance: 5,
 			fundingDate: "2022-10-26",
 			issueDate: "2022-09-16",
 			providerCode: "modulr",
