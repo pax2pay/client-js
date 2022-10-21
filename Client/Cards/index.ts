@@ -58,9 +58,7 @@ export class Cards extends List<
 			undefined,
 			page,
 			size,
-			sort,
-			providerCode,
-			includeCount
+			sort
 		)
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
