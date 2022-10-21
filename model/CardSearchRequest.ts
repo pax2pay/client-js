@@ -1,29 +1,28 @@
-import { Currency, Date } from "isoly"
+import { Currency, Date, DateTime } from "isoly"
 import { AccountState } from "./AccountState"
+import { BookingInfoType } from "./BookingInfoType"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
 import { ProviderCode } from "./ProviderCode"
-import { YearMonth } from "./YearMonth"
+import { Range } from "./Range"
 export interface CardSearchRequest {
-	freeSearch?: string
+	fuzzySearch?: string
 	providerCode?: ProviderCode
-	state?: AccountState
-	states?: AccountState[]
-	currency?: Currency
+	status?: AccountState[]
+	currency?: Currency[]
 	friendlyName?: string
 	createdBy?: string
 	nameOnCard?: string
-	fundingBalanceIsLessThan?: number
+	balance?: Range<number>
+	fundingBalance?: Range<number>
 	personallyApprovable?: boolean
-	issueDate?: string
-	expiryDate?: YearMonth
-	cardType?: CardTypeSpecification | string
+	issueDate?: Range<Date>
+	expiryDate?: Range<Date>
+	cardType?: (CardTypeSpecification | string)[]
 	cardNumber?: string
 	providerAccountId?: string
-	createdBefore?: Date
-	createdAfter?: Date
+	createdOn?: Range<DateTime>
 	usage?: CardUsage
-	expiryDateAfter?: Date
-	supplierBookingReference?: string
-	supplierBookingReferenceContains?: string
+	bookingInfoText?: string
+	bookingInfoType?: BookingInfoType[]
 }

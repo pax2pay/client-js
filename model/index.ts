@@ -108,6 +108,7 @@ import { PaymentOption } from "./PaymentOption"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
+import { Range } from "./Range"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
@@ -269,6 +270,7 @@ export {
 	ProcessedStatement,
 	ProviderCode,
 	ProviderResponse,
+	Range,
 	References,
 	RelogWithNewSessionDetailsRequest,
 	Report,
