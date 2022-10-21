@@ -42,7 +42,7 @@ export class Cards extends List<
 		page?: number,
 		size?: number,
 		sort = "createdOn,desc",
-		providerCode: model.ProviderCode = "modulr",
+		providerCode = "modulr",
 		includeCount = true
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
 		return await this.getNextPaginated<model.CardResponseV2>(
