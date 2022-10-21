@@ -51,7 +51,7 @@ export abstract class List<
 		request?: Record<string, any>,
 		chosenPage?: number,
 		chosenSize?: number,
-		chosenSort?: string,
+		chosenSort?: string
 	) {
 		const sort = chosenSort
 		let page = chosenPage
