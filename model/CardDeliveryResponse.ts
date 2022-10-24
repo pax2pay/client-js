@@ -5,8 +5,8 @@ export interface CardDeliveryResponse {
 	to: string | [string, string]
 	deliveredMessage: string
 	linkExpiry: isoly.Date
-	sent: string
-	status: "SUCCESS" | "FAILURE" | "TODO" | "PENDING"
+	sent?: string
+	status: "SUCCESS" | "FAILURE" | "TODO" | "PENDING" | "CARD_DECLINED"
 	statusText?: string
 }
 export namespace CardDeliveryResponse {
@@ -17,9 +17,13 @@ export namespace CardDeliveryResponse {
 			(typeof value.to == "string" || typeof value.to == "object") &&
 			typeof value.deliveredMessage == "string" &&
 			isoly.Date.is(value.linkExpiry) &&
-			typeof value.sent == "string" &&
+			(typeof value.sent == "string" || value.sent == undefined) &&
 			(typeof value.statusText == "string" || value.statusText == undefined) &&
-			(value.status == "SUCCESS" || value.status == "FAILURE" || value.status == "TODO" || value.status == "PENDING")
+			(value.status == "SUCCESS" ||
+				value.status == "FAILURE" ||
+				value.status == "TODO" ||
+				value.status == "PENDING" ||
+				value.status == "CARD_DECLINED")
 		)
 	}
 }
