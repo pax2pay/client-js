@@ -42,7 +42,8 @@ export class Cards extends List<
 		page?: number,
 		size?: number,
 		sort = "createdOn,desc",
-		providerCode = "modulr"
+		providerCode = "modulr",
+		includeCount = true
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
 		return await this.getNextPaginated<model.CardResponseV2>(
 			previous,
@@ -52,6 +53,7 @@ export class Cards extends List<
 					size: size,
 					sort: sort,
 					provider: providerCode,
+					includeCount: includeCount,
 				}),
 			undefined,
 			page,
@@ -131,7 +133,8 @@ export class Cards extends List<
 		previous?: Paginated<model.CardResponseV2>,
 		page?: number,
 		size?: number,
-		sort = "createdOn,desc"
+		sort = "createdOn,desc",
+		includeCount = true
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
 		return await this.getNextPaginated<model.CardResponseV2>(
 			previous,
@@ -143,6 +146,7 @@ export class Cards extends List<
 						page: page,
 						size: size,
 						sort: sort,
+						includeCount: includeCount,
 					}
 				),
 			request,
