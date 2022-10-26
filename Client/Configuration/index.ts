@@ -1,5 +1,6 @@
 import { Currency } from "isoly"
 import * as model from "../../model"
+import { ProviderCode } from "../../model/ProviderCode"
 import { Connection } from "../Connection"
 export class Configuration {
 	protected folder = "config"
@@ -7,8 +8,8 @@ export class Configuration {
 	static create(connection: Connection) {
 		return new Configuration(connection)
 	}
-	async getAvailableCurrency(): Promise<Currency[] | model.ErrorResponse> {
-		const result = await this.connection.get<Currency[]>(`config/currencies`)
+	async getAvailableCurrency(providerCode: ProviderCode = "modulr"): Promise<Currency[] | model.ErrorResponse> {
+		const result = await this.connection.get<Currency[]>(`config/currencies`, { provider: providerCode })
 		return result
 	}
 	async getOrganisationConfig(): Promise<model.OrganisationConfig | model.ErrorResponse> {
