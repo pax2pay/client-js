@@ -1,4 +1,5 @@
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
+import { ProviderCode } from "./ProviderCode"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
 
 export interface BeneficiaryResponse {
@@ -7,6 +8,8 @@ export interface BeneficiaryResponse {
 	status?: BeneficiaryStatus
 	name?: string
 	fullName?: string
+	providerBeneficiaryId?: string
+	providerCode?: ProviderCode
 	beneficiaryId?: string
 	createdOn?: string
 	history?: BeneficiaryResponse[]
@@ -23,6 +26,8 @@ export namespace BeneficiaryResponse {
 			(value.fullName == undefined || typeof value.fullName == "string") &&
 			(value.beneficiaryId == undefined || typeof value.beneficiaryId == "string") &&
 			(value.createdOn == undefined || typeof value.createdOn == "string") &&
+			(value.providerBeneficiaryId == undefined || typeof value.providerBeneficiaryId == "string") &&
+			(value.providerCode == undefined || ProviderCode.is(value.providerCode)) &&
 			(value.history == undefined || Array.isArray(value.history)) //not checking same type because of risk of being slow
 		)
 	}
