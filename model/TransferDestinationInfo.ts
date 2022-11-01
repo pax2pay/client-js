@@ -12,7 +12,7 @@ export interface TransferDestinationInfo {
 	currency: isoly.Currency
 	address?: AddressInfo
 	fullName?: string
-	type?: string
+	type?: "IBAN" | "SCAN"
 }
 
 export namespace TransferDestinationInfo {
@@ -26,7 +26,7 @@ export namespace TransferDestinationInfo {
 			isoly.Currency.is(value.currency) &&
 			(value.address == undefined || AddressInfo.is(value.address)) &&
 			(value.fullName == undefined || typeof value.fullName == "string") &&
-			(value.type == undefined || typeof value.type == "string")
+			(value.type == undefined || value.type == "IBAN" || value.type == "SCAN")
 		)
 	}
 }
