@@ -35,4 +35,7 @@ export class Transfers extends List<model.TransferResponse, model.TransferSearch
 		const result = await this.connection.post<model.TransferResponse>(`${this.folder}`, request)
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
+	async createV2(request: model.TransferRequest) {
+		return await this.connection.post<model.TransferResponseV2>("v2/transfers", request)
+	}
 }
