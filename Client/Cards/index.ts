@@ -88,12 +88,6 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async generateCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponse>(
-			`cards/virtual/${providerCode}/${providerCardId}/generate`
-		)
-		return result
-	}
 	async generateCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/generate`
