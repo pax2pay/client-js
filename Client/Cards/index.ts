@@ -76,12 +76,6 @@ export class Cards extends List<
 		const result = await this.connection.post<model.CardResponse>(`cards/virtual`, request)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
 	}
-	async cancelCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.remove<model.CardResponse>(
-			`cards/virtual/${providerCode}/${providerCardId}/cancel`
-		)
-		return result
-	}
 	async cancelCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.remove<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/cancel`
@@ -94,23 +88,9 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async approveCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.post<model.CardResponse>(
-			`cards/virtual/${providerCode}/${providerCardId}/approve`,
-			undefined
-		)
-		return result
-	}
 	async approveCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.post<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/approve`,
-			undefined
-		)
-		return result
-	}
-	async declineCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.post<model.CardResponse>(
-			`cards/virtual/${providerCode}/${providerCardId}/decline`,
 			undefined
 		)
 		return result
@@ -122,19 +102,9 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async thawCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}/thaw`)
-		return result
-	}
 	async thawCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/thaw`
-		)
-		return result
-	}
-	async freezeCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponse>(
-			`cards/virtual/${providerCode}/${providerCardId}/freeze`
 		)
 		return result
 	}
