@@ -117,6 +117,7 @@ import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { ScheduleEntry } from "./ScheduleEntry"
+import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { Segment } from "./Segment"
 import { Sorting } from "./Sorting"
@@ -283,6 +284,7 @@ export {
 	SearchRolesetsRequest,
 	Segment,
 	Sorting,
+	SearchBeneficiaryRequest,
 	StatementReportUrlRequest,
 	StatementReportUrlResponse,
 	StatementReportRequest,

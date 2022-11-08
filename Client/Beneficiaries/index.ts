@@ -27,6 +27,13 @@ export class Beneficiaries extends List<model.BeneficiaryResponse, model.Benefic
 	async getBeneficiary(beneficiaryId: string) {
 		return await this.connection.get<model.BeneficiaryResponse>([this.folder, beneficiaryId].join("/"))
 	}
+	async searchBeneficiary(request: model.SearchBeneficiaryRequest) {
+		const response = await this.connection.post<model.ErrorResponse | model.BeneficiaryResponse[]>(
+			`${this.folder}/searches`,
+			request
+		)
+		return this.extractResponse(response)
+	}
 	protected map(response: model.BeneficiaryResponse): Beneficiary & model.BeneficiaryResponse {
 		return Object.assign(new Beneficiary(this.connection, this.getResourcePath(response), response), response)
 	}
