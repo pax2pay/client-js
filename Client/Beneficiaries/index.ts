@@ -20,7 +20,7 @@ export class Beneficiaries extends List<model.BeneficiaryResponse, model.Benefic
 
 	async getAll(sort?: string): Promise<model.ErrorResponse | model.BeneficiaryResponse[]> {
 		const response = await this.connection.get<{ list: model.BeneficiaryResponse[]; totalCount: number }>(
-			`${this.folder}?page=0&size=1500&sort=${sort}`
+			`${this.folder}?page=0&size=1500${sort ? "&sort=" + sort : ""}`
 		)
 		return this.extractResponse(response)
 	}
@@ -29,7 +29,7 @@ export class Beneficiaries extends List<model.BeneficiaryResponse, model.Benefic
 	}
 	async searchBeneficiary(request: model.SearchBeneficiaryRequest, sort?: string) {
 		const response = await this.connection.post<model.ErrorResponse | model.BeneficiaryResponse[]>(
-			`${this.folder}/searches?page=0&size=1500&sort=${sort}`,
+			`${this.folder}/searches?page=0&size=1500${sort ? "&sort=" + sort : ""}`,
 			request
 		)
 		return this.extractResponse(response)
