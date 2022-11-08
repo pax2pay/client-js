@@ -20,7 +20,7 @@ export class Beneficiaries extends List<model.BeneficiaryResponse, model.Benefic
 
 	async getAll(sort?: string): Promise<model.ErrorResponse | model.BeneficiaryResponse[]> {
 		const response = await this.connection.get<{ list: model.BeneficiaryResponse[]; totalCount: number }>(
-			`${this.folder}?page=0&size=1500sort=${sort}`
+			`${this.folder}?page=0&size=1500&sort=${sort}`
 		)
 		return this.extractResponse(response)
 	}
