@@ -29,7 +29,7 @@ export class Beneficiaries extends List<model.BeneficiaryResponse, model.Benefic
 	}
 	async searchBeneficiary(request: model.SearchBeneficiaryRequest) {
 		const response = await this.connection.post<model.ErrorResponse | model.BeneficiaryResponse[]>(
-			`${this.folder}/searches`,
+			`${this.folder}/searches?page=0&size=1500`,
 			request
 		)
 		return this.extractResponse(response)
