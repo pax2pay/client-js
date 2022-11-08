@@ -18,18 +18,18 @@ export class Beneficiaries extends List<model.BeneficiaryResponse, model.Benefic
 		return new Beneficiary(this.connection, [this.folder, response.beneficiaryId].join("/"), response)
 	}
 
-	async getAll(): Promise<model.ErrorResponse | model.BeneficiaryResponse[]> {
+	async getAll(sort?: string): Promise<model.ErrorResponse | model.BeneficiaryResponse[]> {
 		const response = await this.connection.get<{ list: model.BeneficiaryResponse[]; totalCount: number }>(
-			`${this.folder}?page=0&size=1500`
+			`${this.folder}?page=0&size=1500sort=${sort}`
 		)
 		return this.extractResponse(response)
 	}
 	async getBeneficiary(beneficiaryId: string) {
 		return await this.connection.get<model.BeneficiaryResponse>([this.folder, beneficiaryId].join("/"))
 	}
-	async searchBeneficiary(request: model.SearchBeneficiaryRequest) {
+	async searchBeneficiary(request: model.SearchBeneficiaryRequest, sort?: string) {
 		const response = await this.connection.post<model.ErrorResponse | model.BeneficiaryResponse[]>(
-			`${this.folder}/searches?page=0&size=1500`,
+			`${this.folder}/searches?page=0&size=1500sort=${sort}`,
 			request
 		)
 		return this.extractResponse(response)
