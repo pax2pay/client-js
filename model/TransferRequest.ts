@@ -1,3 +1,4 @@
+import { BookingInfoRequest } from "./BookingInfoRequest"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { ProviderCode } from "./ProviderCode"
 
@@ -11,4 +12,5 @@ export interface TransferRequest {
 	currency?: string
 	reference?: string
 	paymentDate?: string
+	bookingInfo?: BookingInfoRequest
 }
