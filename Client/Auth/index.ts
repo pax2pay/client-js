@@ -10,7 +10,16 @@ export class Auth {
 	}
 
 	hasRole(role: string) {
-		return this.#roles && this.#roles.includes(role)
+		if (this.#roles)
+			return this.#roles.includes(role)
+		else {
+			const roles = window.sessionStorage.getItem("roles")
+			if (roles) {
+				this.#roles = roles.split(",")
+				return roles.includes(role)
+			}
+		}
+		return false
 	}
 
 	#features?: PaxpayFeature[]
@@ -20,7 +29,16 @@ export class Auth {
 	}
 
 	hasFeature(feature: PaxpayFeature) {
-		return this.#features && this.#features.includes(feature)
+		if (this.#features)
+			return this.#features.includes(feature)
+		else {
+			const features = window.sessionStorage.getItem("features")
+			if (features) {
+				this.#features = features.split(",") as PaxpayFeature[]
+				return features.includes(feature)
+			}
+		}
+		return false
 	}
 
 	get token(): string | undefined {
