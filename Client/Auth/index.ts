@@ -4,21 +4,23 @@ import { Connection } from "../Connection"
 
 export class Auth {
 	#roles?: string[]
-	get roles(): string[] | undefined {
-		return this.#roles
-	}
 
 	set roles(roles: string[] | undefined) {
 		this.#roles = roles
 	}
 
-	#features?: PaxpayFeature[]
-	get features(): PaxpayFeature[] | undefined {
-		return this.#features
+	hasRole(role: string) {
+		return this.#roles && this.#roles.includes(role)
 	}
+
+	#features?: PaxpayFeature[]
 
 	set features(features: PaxpayFeature[] | undefined) {
 		this.#features = features
+	}
+
+	hasFeature(feature: PaxpayFeature) {
+		return this.#features && this.#features.includes(feature)
 	}
 
 	get token(): string | undefined {
