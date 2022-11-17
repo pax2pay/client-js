@@ -1,13 +1,33 @@
 import * as model from "../../model"
+import { PaxpayFeature } from "../../model/PaxpayFeature"
 import { Connection } from "../Connection"
 
 export class Auth {
+	#roles?: string[]
+	get roles(): string[] | undefined {
+		return this.#roles
+	}
+
+	set roles(roles: string[] | undefined) {
+		this.#roles = roles
+	}
+
+	#features?: PaxpayFeature[]
+	get features(): PaxpayFeature[] | undefined {
+		return this.#features
+	}
+
+	set features(features: PaxpayFeature[] | undefined) {
+		this.#features = features
+	}
+
 	get token(): string | undefined {
 		return this.connection.token
 	}
 	set token(value: string | undefined) {
 		this.connection.token = value
 	}
+
 	constructor(private connection: Connection) {}
 	async login(request: model.LoginRequest) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/login", request)

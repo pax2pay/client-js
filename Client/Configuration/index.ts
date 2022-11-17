@@ -20,7 +20,7 @@ export class Configuration {
 		const result = await this.connection.get<model.UserConfig>(`config/user`)
 		return result
 	}
-	async getPortalFeatures(): Promise<string[] | model.ErrorResponse> {
-		return await this.connection.get<string[]>(`config/portal`)
+	async getPortalFeatures(): Promise<model.PaxpayFeature[] | model.ErrorResponse> {
+		return await this.connection.get<model.PaxpayFeature[]>(`config/portal`)
 	}
 }
