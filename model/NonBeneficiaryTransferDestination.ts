@@ -10,5 +10,7 @@ export interface NonBeneficiaryTransferDestination {
 	bic?: string
 	address?: AddressInfo
 	fullName: string
+	name?: string
+	defaultReference?: string
 	saveAsNewBeneficiary?: boolean
 }
