@@ -9,17 +9,18 @@ export class Auth {
 		this.#roles = roles
 	}
 
-	hasRole(role: string) {
+	private loadRoles() {
 		if (this.#roles)
-			return this.#roles.includes(role)
-		else {
-			const roles = window.sessionStorage.getItem("roles")
-			if (roles) {
-				this.#roles = roles.split(",")
-				return roles.includes(role)
-			}
-		}
-		return false
+			return
+
+		const roles = window.sessionStorage.getItem("roles")
+		this.#roles = roles ? roles.split(",") : []
+	}
+
+	hasRole(role: string) {
+		this.loadRoles()
+
+		return this.#roles ? this.#roles.includes(role) : false
 	}
 
 	#features?: PaxpayFeature[]
@@ -28,17 +29,18 @@ export class Auth {
 		this.#features = features
 	}
 
-	hasFeature(feature: PaxpayFeature) {
+	private loadFeatures() {
 		if (this.#features)
-			return this.#features.includes(feature)
-		else {
-			const features = window.sessionStorage.getItem("features")
-			if (features) {
-				this.#features = features.split(",") as PaxpayFeature[]
-				return features.includes(feature)
-			}
-		}
-		return false
+			return
+
+		const features = window.sessionStorage.getItem("features")
+		this.#features = features ? (features.split(",") as PaxpayFeature[]) : []
+	}
+
+	hasFeature(feature: PaxpayFeature) {
+		this.loadFeatures()
+
+		return this.#features ? this.#features.includes(feature) : false
 	}
 
 	get token(): string | undefined {
