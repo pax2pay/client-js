@@ -102,6 +102,7 @@ import { PasswordChangeRequest } from "./PasswordChangeRequest"
 import { PasswordResetResponse } from "./PasswordResetResponse"
 import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
+import { PaxpayFeature } from "./PaxpayFeature"
 import { Payload } from "./Payload"
 import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
 import { PaymentOption } from "./PaymentOption"
@@ -265,6 +266,7 @@ export {
 	PasswordResetResponse,
 	PasswordValidateRequest,
 	PasswordValidateResponse,
+	PaxpayFeature,
 	Payload,
 	PaymentMethodOptionResponse,
 	PaymentOption,
