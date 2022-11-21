@@ -7,6 +7,10 @@ export class Auth {
 
 	set roles(roles: string[] | undefined) {
 		this.#roles = roles
+		if (roles)
+			window.sessionStorage.setItem("roles", JSON.stringify(roles))
+		else
+			window.sessionStorage.removeItem("roles")
 	}
 
 	private loadRoles() {
@@ -27,6 +31,10 @@ export class Auth {
 
 	set features(features: PaxpayFeature[] | undefined) {
 		this.#features = features
+		if (features)
+			window.sessionStorage.setItem("features", JSON.stringify(features))
+		else
+			window.sessionStorage.removeItem("features")
 	}
 
 	private loadFeatures() {
@@ -53,8 +61,10 @@ export class Auth {
 	constructor(private connection: Connection) {}
 	async login(request: model.LoginRequest) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/login", request)
-		if (!isError(result))
+		if (!isError(result) && result.token) {
 			this.connection.token = result.token
+			window.sessionStorage.setItem("authData", JSON.stringify(result))
+		}
 		return result
 	}
 	async refresh(request: model.RelogWithNewSessionDetailsRequest) {
@@ -65,6 +75,13 @@ export class Auth {
 	}
 	static create(connection: Connection) {
 		return new Auth(connection)
+	}
+
+	async logout() {
+		this.roles = undefined
+		this.features = undefined
+		window.sessionStorage.removeItem("authData")
+		this.connection.token = undefined
 	}
 }
 
