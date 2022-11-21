@@ -61,13 +61,11 @@ export class Auth {
 	constructor(private connection: Connection) {}
 	async login(request: model.LoginRequest) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/login", request)
-		if (!isError(result)) {
+		if (!isError(result) && result.token) {
 			this.connection.token = result.token
 			window.sessionStorage.setItem("authData", JSON.stringify(result))
-			return result
-		} else {
-			this.logout()
 		}
+		return result
 	}
 	async refresh(request: model.RelogWithNewSessionDetailsRequest) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/relog", request)
