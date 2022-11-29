@@ -171,8 +171,8 @@ export class Cards extends List<
 	}
 	async getFundingAccounts(
 		searchRequest: model.FundingAccountSearchRequest
-	): Promise<model.ErrorResponse | model.CardFundingAccountResponse[]> {
-		const response = await this.connection.post<{ list: model.CardFundingAccountResponse[]; totalCount: number }>(
+	): Promise<model.ErrorResponse | model.AccountResponse[]> {
+		const response = await this.connection.post<{ list: model.AccountResponse[]; totalCount: number }>(
 			"funding-accounts/searches",
 			searchRequest
 		)
@@ -180,8 +180,8 @@ export class Cards extends List<
 	}
 	async getAllFundingAccounts(
 		providerCode: model.ProviderCode
-	): Promise<model.ErrorResponse | model.CardFundingAccountResponse[]> {
-		const response = await this.connection.get<{ list: model.CardFundingAccountResponse[]; totalCount: number }>(
+	): Promise<model.ErrorResponse | model.AccountResponse[]> {
+		const response = await this.connection.get<{ list: model.AccountResponse[]; totalCount: number }>(
 			`funding-accounts?provider=${providerCode}&size=500`
 		)
 		return this.extractResponse(response)

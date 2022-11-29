@@ -8,7 +8,7 @@ export class Auth {
 	set roles(roles: string[] | undefined) {
 		this.#roles = roles
 		if (roles)
-			window.sessionStorage.setItem("roles", JSON.stringify(roles))
+			window.sessionStorage.setItem("roles", roles.join(","))
 		else
 			window.sessionStorage.removeItem("roles")
 	}
@@ -32,7 +32,7 @@ export class Auth {
 	set features(features: PaxpayFeature[] | undefined) {
 		this.#features = features
 		if (features)
-			window.sessionStorage.setItem("features", JSON.stringify(features))
+			window.sessionStorage.setItem("features", features.join(","))
 		else
 			window.sessionStorage.removeItem("features")
 	}
@@ -56,6 +56,10 @@ export class Auth {
 	}
 	set token(value: string | undefined) {
 		this.connection.token = value
+	}
+
+	isLoggedIn(): boolean {
+		return !!window.sessionStorage.getItem("authData")
 	}
 
 	constructor(private connection: Connection) {}
