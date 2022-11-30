@@ -71,10 +71,17 @@ export class Auth {
 		}
 		return result
 	}
-	async refresh(request: model.RelogWithNewSessionDetailsRequest) {
-		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/relog", request)
-		if (!isError(result))
+	async refresh(request?: model.RelogWithNewSessionDetailsRequest) {
+		let result
+		if (request) {
+			result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/relog", request)
+		} else {
+			result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>("auth/relog")
+		}
+		if (!isError(result)) {
 			this.connection.token = result.token
+			window.sessionStorage.setItem("authData", JSON.stringify(result))
+		}
 		return result
 	}
 	static create(connection: Connection) {
