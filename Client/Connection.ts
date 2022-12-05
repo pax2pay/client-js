@@ -50,7 +50,7 @@ export class Connection {
 			}
 		).catch(_ => undefined)
 		return !response
-			? { status: 503 }
+			? { code: 503, errors: [{ message: "Service unavailable" }] }
 			: response.status == 401 && (await this.unauthorized(this))
 			? await this.fetch<Response, Codes>(path, method, request, parameters)
 			: response.headers.get("Content-Type")?.startsWith("application/json")
