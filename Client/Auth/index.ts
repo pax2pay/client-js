@@ -58,11 +58,8 @@ export class Auth {
 		this.connection.token = value
 	}
 
-	setTempToken(value: string | undefined) {
-		if (!value)
-			window.sessionStorage.removeItem("authData")
-		else
-			window.sessionStorage.setItem("authData", JSON.stringify({ token: value }))
+	setTempToken(value: string) {
+		window.sessionStorage.setItem("authData", JSON.stringify({ token: value }))
 		this.connection.token = value
 	}
 
