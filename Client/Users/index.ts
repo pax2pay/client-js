@@ -66,4 +66,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	): Promise<model.PasswordValidateResponse | model.ErrorResponse> {
 		return await this.connection.post<model.PasswordValidateResponse>(`users/password/check`, request)
 	}
+	async changePassword(request: model.PasswordChangeRequest): Promise<model.UserResponse | model.ErrorResponse> {
+		return await this.connection.put<model.UserResponse>(`users/password`, request)
+	}
 }

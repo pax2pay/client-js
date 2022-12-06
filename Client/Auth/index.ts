@@ -58,8 +58,17 @@ export class Auth {
 		this.connection.token = value
 	}
 
+	setTempToken(value: string) {
+		window.sessionStorage.setItem("authData", JSON.stringify({ token: value }))
+		this.connection.token = value
+	}
+
 	isLoggedIn(): boolean {
-		return !!window.sessionStorage.getItem("authData")
+		const data = window.sessionStorage.getItem("authData")
+		if (!data)
+			return false
+		else
+			return JSON.parse(data)?.status == "SUCCESS"
 	}
 
 	constructor(private connection: Connection) {}
