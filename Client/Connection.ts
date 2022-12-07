@@ -23,9 +23,11 @@ export class Connection {
 		multipart?: boolean,
 		formData?: FormData
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		const headers: Record<string, string> = {
-			"Content-Type": "application/json; charset=utf-8",
-		}
+		const headers: Record<string, string> = multipart
+			? {}
+			: {
+					"Content-Type": "application/json; charset=utf-8",
+			  }
 		try {
 			const data = JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
 			this.#token = data.token
