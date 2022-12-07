@@ -30,6 +30,10 @@ export class Cards extends List<
 		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", request)
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
+	async createWithMultipart(formData: FormData) {
+		const result = await this.connection.postMultipart<model.CardResponseV2>("v2/cards/virtual", formData)
+		return model.ErrorResponse.is(result) ? result : this.map(result)
+	}
 	async createLegacy(request: model.CreateCardRequest) {
 		const result = await this.connection.post<model.CardResponse>("cards/virtual", request)
 		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)

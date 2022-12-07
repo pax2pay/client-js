@@ -19,7 +19,9 @@ export class Connection {
 		path: string,
 		method: string,
 		request?: any,
-		parameters?: Record<string, any>
+		parameters?: Record<string, any>,
+		multipart?: boolean,
+		formData?: FormData
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const headers: Record<string, string> = {
 			"Content-Type": "application/json; charset=utf-8",
@@ -46,7 +48,7 @@ export class Connection {
 			{
 				method,
 				headers,
-				body: request && JSON.stringify(request),
+				body: !multipart ? request && JSON.stringify(request) : formData,
 			}
 		).catch(_ => undefined)
 		return !response
@@ -67,6 +69,14 @@ export class Connection {
 		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		return await this.fetch<Response, Codes>(path, "POST", request, parameters)
+	}
+	async postMultipart<Response, Codes = 400 | 403 | 404 | 500>(
+		path: string,
+		formData: FormData,
+		request?: any,
+		parameters?: Record<string, any>
+	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
+		return await this.fetch<Response, Codes>(path, "POST", request, parameters, true, formData)
 	}
 	async get<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
