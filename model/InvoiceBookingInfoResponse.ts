@@ -9,6 +9,7 @@ export interface InvoiceBookingInfoResponse {
 	supplierReferenceNumber?: string
 	value?: number
 	taxElement?: string
+	remittanceAdviceFilename?: string
 	timestamp: isoly.DateTime
 }
 
@@ -24,6 +25,7 @@ export namespace InvoiceBookingInfoResponse {
 			(value.supplierReferenceNumber == undefined || typeof value.supplierReferenceNumber == "string") &&
 			(value.value == undefined || typeof value.value == "number") &&
 			(value.taxElement == undefined || typeof value.taxElement == "string") &&
+			(value.remittanceAdviceFilename == undefined || typeof value.remittanceAdviceFilename == "string") &&
 			isoly.DateTime.is(value.timestamp)
 		)
 	}
