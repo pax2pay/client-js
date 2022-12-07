@@ -57,11 +57,8 @@ export class Auth {
 		this.#tokenExpiry = value
 	}
 
-	isTokenExpiryAfter(time: string): boolean {
-		if (!this.#tokenExpiry)
-			return false
-		else
-			return time < this.#tokenExpiry
+	get tokenExpiry() {
+		return this.#tokenExpiry
 	}
 
 	get token(): string | undefined {
@@ -103,6 +100,7 @@ export class Auth {
 		}
 		if (!isError(result)) {
 			this.connection.token = result.token
+			this.tokenExpiry = result.expiry
 			window.sessionStorage.setItem("authData", JSON.stringify(result))
 		}
 		return result
