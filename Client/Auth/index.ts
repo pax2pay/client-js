@@ -51,6 +51,19 @@ export class Auth {
 		return this.#features ? this.#features.includes(feature) : false
 	}
 
+	#tokenExpiry?: string
+
+	set tokenExpiry(value: string | undefined) {
+		this.#tokenExpiry = value
+	}
+
+	isTokenExpiryAfter(time: string): boolean {
+		if (!this.#tokenExpiry)
+			return false
+		else
+			return time < this.#tokenExpiry
+	}
+
 	get token(): string | undefined {
 		return this.connection.token
 	}
@@ -76,6 +89,7 @@ export class Auth {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/login", request)
 		if (!isError(result) && result.token) {
 			this.connection.token = result.token
+			this.tokenExpiry = result.expiry
 			window.sessionStorage.setItem("authData", JSON.stringify(result))
 		}
 		return result
