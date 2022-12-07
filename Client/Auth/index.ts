@@ -51,6 +51,10 @@ export class Auth {
 		return this.#features ? this.#features.includes(feature) : false
 	}
 
+	tokenExpiry(): string | undefined {
+		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").expiry
+	}
+
 	get token(): string | undefined {
 		return this.connection.token
 	}
