@@ -30,7 +30,7 @@ export class Cards extends List<
 		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", request)
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
-	async createCardWithRemittanceAdvice(request: FormData, file: File) {
+	async createCardWithRemittanceAdvice(request: model.CreateCardRequest, file: File) {
 		const formData = new FormData()
 		const reader = new FileReader()
 		reader.readAsArrayBuffer(file)
