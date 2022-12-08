@@ -21,9 +21,12 @@ export class Connection {
 		request?: any,
 		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		const headers: Record<string, string> = {
-			"Content-Type": "application/json; charset=utf-8",
-		}
+		const isMultipart = request && request instanceof FormData
+		let headers: Record<string, string> = {}
+		if (!isMultipart)
+			headers = {
+				"Content-Type": "application/json; charset=utf-8",
+			}
 		try {
 			const data = JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
 			this.#token = data.token
@@ -46,7 +49,7 @@ export class Connection {
 			{
 				method,
 				headers,
-				body: request && JSON.stringify(request),
+				body: !isMultipart ? request && JSON.stringify(request) : request,
 			}
 		).catch(_ => undefined)
 		return !response
