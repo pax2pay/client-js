@@ -34,20 +34,18 @@ export class Cards extends List<
 		const formData = new FormData()
 		const reader = new FileReader()
 		reader.readAsArrayBuffer(file)
-		reader.onload = event => {
-			const blob = new Blob([event.target?.result as string], { type: "application/pdf" })
+		reader.onload = async event => {
+			const blob = await new Blob([event.target?.result as string], { type: "application/pdf" })
 			formData.append("remittanceAdvice", blob, file?.name)
-			console.log("file", formData.get("remittanceAdvice"))
+			formData.append(
+				"request",
+				new Blob([JSON.stringify(request, null, 2)], {
+					type: "application/json",
+				})
+			)
+			const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
+			return model.ErrorResponse.is(result) ? result : this.map(result)
 		}
-		formData.append(
-			"request",
-			new Blob([JSON.stringify(request, null, 2)], {
-				type: "application/json",
-			})
-		)
-		console.log("data", formData.get("remittanceAdvice"))
-		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
-		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
 	async createLegacy(request: model.CreateCardRequest) {
 		const result = await this.connection.post<model.CardResponse>("cards/virtual", request)
