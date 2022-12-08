@@ -39,10 +39,12 @@ export class Cards extends List<
 				type: "application/json",
 			})
 		)
-		Promise.all([addFile, addRequest]).then(async () => {
-			const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
-			return model.ErrorResponse.is(result) ? result : this.map(result)
-		})
+		Promise.all([addFile, addRequest])
+			.then(async () => {
+				const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
+				return model.ErrorResponse.is(result) ? result : this.map(result)
+			})
+			.catch(error => console.error(error.message))
 	}
 	async createLegacy(request: model.CreateCardRequest) {
 		const result = await this.connection.post<model.CardResponse>("cards/virtual", request)
