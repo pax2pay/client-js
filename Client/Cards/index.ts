@@ -32,15 +32,17 @@ export class Cards extends List<
 	}
 	async createCardWithRemittanceAdvice(request: model.CreateCardRequest, file: File) {
 		const formData = new FormData()
-		formData.append("remittanceAdvice", file, file?.name)
-		formData.append(
+		const addFile = formData.append("remittanceAdvice", file, file?.name)
+		const addRequest = formData.append(
 			"request",
 			new Blob([JSON.stringify(request, null, 2)], {
 				type: "application/json",
 			})
 		)
-		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
-		return model.ErrorResponse.is(result) ? result : this.map(result)
+		Promise.all([addFile, addRequest]).then(async () => {
+			const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
+			return model.ErrorResponse.is(result) ? result : this.map(result)
+		})
 	}
 	async createLegacy(request: model.CreateCardRequest) {
 		const result = await this.connection.post<model.CardResponse>("cards/virtual", request)
