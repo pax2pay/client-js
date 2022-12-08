@@ -13,6 +13,7 @@ export interface UserResponse {
 	email: string
 	status?: UserStatus
 	passwordUpdatedOn?: string
+	lastLogin?: string
 	category?: string
 	organisation?: OrganisationResponse
 	roles?: string[]
@@ -30,6 +31,7 @@ export namespace UserResponse {
 			(value.email == undefined || typeof value.email == "string") &&
 			(value.status == undefined || UserStatus.is(value.status)) &&
 			(value.passwordUpdatedOn == undefined || typeof value.passwordUpdatedOn == "string") &&
+			(value.lastLogin == undefined || typeof value.lastLogin == "string") &&
 			(value.category == undefined || typeof value.category == "string")
 		)
 	}
