@@ -1,5 +1,5 @@
 export interface SummaryBookingInfoResponse {
-	leadPassengerName?: string
+	supplierBookingReference?: string
 	agentBookingReference?: string
 	type: "SUMMARY"
 	bookingInfoIdentifier?: string
@@ -11,7 +11,7 @@ export namespace SummaryBookingInfoResponse {
 		return (
 			typeof value == "object" &&
 			value.type == "SUMMARY" &&
-			(value.leadPassengerName == undefined || typeof value.leadPassengerName == "string") &&
+			(value.supplierBookingReference == undefined || typeof value.supplierBookingReference == "string") &&
 			(value.agentBookingReference == undefined || typeof value.agentBookingReference == "string") &&
 			(value.bookingInfoIdentifier == undefined || typeof value.bookingInfoIdentifier == "string") &&
 			(value.trackingId == undefined || typeof value.trackingId == "string")
