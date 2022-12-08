@@ -19,15 +19,14 @@ export class Connection {
 		path: string,
 		method: string,
 		request?: any,
-		parameters?: Record<string, any>,
-		multipart?: boolean,
-		formData?: FormData
+		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		const headers: Record<string, string> = multipart
-			? {}
-			: {
-					"Content-Type": "application/json; charset=utf-8",
-			  }
+		const isMultipart = request && request instanceof FormData
+		let headers: Record<string, string> = {}
+		if (!isMultipart)
+			headers = {
+				"Content-Type": "application/json; charset=utf-8",
+			}
 		try {
 			const data = JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
 			this.#token = data.token
@@ -50,7 +49,7 @@ export class Connection {
 			{
 				method,
 				headers,
-				body: !multipart ? request && JSON.stringify(request) : formData,
+				body: !isMultipart ? request && JSON.stringify(request) : request,
 			}
 		).catch(_ => undefined)
 		return !response
@@ -71,14 +70,6 @@ export class Connection {
 		parameters?: Record<string, any>
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		return await this.fetch<Response, Codes>(path, "POST", request, parameters)
-	}
-	async postMultipart<Response, Codes = 400 | 403 | 404 | 500>(
-		path: string,
-		formData: FormData,
-		request?: any,
-		parameters?: Record<string, any>
-	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "POST", request, parameters, true, formData)
 	}
 	async get<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
