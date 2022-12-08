@@ -32,19 +32,13 @@ export class Cards extends List<
 	}
 	async createCardWithRemittanceAdvice(request: model.CreateCardRequest, file: File) {
 		const formData = new FormData()
-		const reader = new FileReader()
-		reader.readAsArrayBuffer(file)
-		await (reader.onload = async event => {
-			const blob = new Blob([event.target?.result as string], { type: "application/pdf" })
-			formData.append("remittanceAdvice", blob, file?.name)
-			formData.append(
-				"request",
-				new Blob([JSON.stringify(request, null, 2)], {
-					type: "application/json",
-				})
-			)
-		})
-		console.log("?", formData.get("remittanceAdvice"))
+		formData.append("remittanceAdvice", file, file?.name)
+		formData.append(
+			"request",
+			new Blob([JSON.stringify(request, null, 2)], {
+				type: "application/json",
+			})
+		)
 		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
