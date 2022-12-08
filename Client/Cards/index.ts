@@ -34,7 +34,7 @@ export class Cards extends List<
 		const formData = new FormData()
 		const reader = new FileReader()
 		reader.readAsArrayBuffer(file)
-		reader.onload = async event => {
+		reader.onload = event => {
 			const blob = new Blob([event.target?.result as string], { type: "application/pdf" })
 			formData.append("remittanceAdvice", blob, file?.name)
 			console.log("file", formData.get("remittanceAdvice"))
