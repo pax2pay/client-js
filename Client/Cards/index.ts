@@ -37,6 +37,7 @@ export class Cards extends List<
 		reader.onload = async event => {
 			const blob = new Blob([event.target?.result as string], { type: "application/pdf" })
 			formData.append("remittanceAdvice", blob, file?.name)
+			console.log("file", formData.get("remittanceAdvice"))
 		}
 		formData.append(
 			"request",
@@ -44,6 +45,7 @@ export class Cards extends List<
 				type: "application/json",
 			})
 		)
+		console.log("data", formData.get("remittanceAdvice"))
 		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
