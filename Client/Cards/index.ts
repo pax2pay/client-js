@@ -34,8 +34,8 @@ export class Cards extends List<
 		const formData = new FormData()
 		const reader = new FileReader()
 		reader.readAsArrayBuffer(file)
-		reader.onload = async event => {
-			const blob = await new Blob([event.target?.result as string], { type: "application/pdf" })
+		await (reader.onload = async event => {
+			const blob = new Blob([event.target?.result as string], { type: "application/pdf" })
 			formData.append("remittanceAdvice", blob, file?.name)
 			formData.append(
 				"request",
@@ -43,9 +43,10 @@ export class Cards extends List<
 					type: "application/json",
 				})
 			)
-			const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
-			return model.ErrorResponse.is(result) ? result : this.map(result)
-		}
+		})
+		console.log("?", formData.get("remittanceAdvice"))
+		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
+		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
 	async createLegacy(request: model.CreateCardRequest) {
 		const result = await this.connection.post<model.CardResponse>("cards/virtual", request)
