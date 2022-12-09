@@ -54,7 +54,9 @@ export class Auth {
 	tokenExpiry(): string | undefined {
 		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").expiry
 	}
-
+	getOrganisation(): string {
+		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").organisation
+	}
 	get token(): string | undefined {
 		return this.connection.token
 	}
