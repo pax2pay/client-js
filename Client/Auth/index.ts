@@ -54,7 +54,7 @@ export class Auth {
 	tokenExpiry(): string | undefined {
 		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").expiry
 	}
-	getOrgnisation(): string {
+	getOrganisation(): string {
 		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").organisation
 	}
 	get token(): string | undefined {
