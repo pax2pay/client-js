@@ -254,4 +254,7 @@ export class Cards extends List<
 		)
 		return result
 	}
+	async getDisplayableCardTypesForProvider(provider: model.ProviderCode = "modulr") {
+		return await this.connection.get<Record<string, string>>(`v2/cards/types/displayable/${provider}`)
+	}
 }
