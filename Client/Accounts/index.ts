@@ -29,7 +29,7 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 		providerAccountId?: string
 	) {
 		const result = await this.connection
-			.get<model.AccountSummary>(`funding-accounts?refresh=true&providerCodes=${providerCodes}${
+			.get<model.AccountSummary>(`funding-accounts?refresh=true&providerCodes=[${providerCodes}]${
 			accountId ? `&accountId=${accountId}` : ""
 		}${accountStates ? `&accountStates=${accountStates}` : ""}${
 			providerAccountId ? `&providerAccountId=${providerAccountId}` : ""
