@@ -21,4 +21,10 @@ export class Organisations extends Collection<
 	static create(connection: Connection) {
 		return new Organisations(connection)
 	}
+	async getAllOrganisations(includeNonActive = false, includeLimitData = true) {
+		return this.connection.get<model.OrganisationResponse>(`organisations`, {
+			includeNonActive: includeNonActive,
+			includeLimitData: includeLimitData,
+		})
+	}
 }
