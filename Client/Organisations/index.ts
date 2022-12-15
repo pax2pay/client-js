@@ -22,12 +22,16 @@ export class Organisations extends Collection<
 		return new Organisations(connection)
 	}
 	async getAllOrganisations(
+		size = 500,
+		sortBy = "name,desc",
 		includeNonActive = false,
 		includeLimitData = true
 	): Promise<model.ErrorResponse | model.OrganisationResponse[]> {
 		const response = await this.connection.get<{ list: model.OrganisationResponse[]; totalCount: number }>(
 			`organisations`,
 			{
+				size: size,
+				sortBy: sortBy,
 				includeNonActive: includeNonActive,
 				includeLimitData: includeLimitData,
 			}
