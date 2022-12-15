@@ -21,11 +21,17 @@ export class Organisations extends Collection<
 	static create(connection: Connection) {
 		return new Organisations(connection)
 	}
-	async getAllOrganisations(includeNonActive = false, includeLimitData = true) {
-		const response = this.connection.get<{ list: model.OrganisationResponse[]; totalCount: number }>(`organisations`, {
-			includeNonActive: includeNonActive,
-			includeLimitData: includeLimitData,
-		})
+	async getAllOrganisations(
+		includeNonActive = false,
+		includeLimitData = true
+	): Promise<model.ErrorResponse | model.OrganisationResponse[]> {
+		const response = await this.connection.get<{ list: model.OrganisationResponse[]; totalCount: number }>(
+			`organisations`,
+			{
+				includeNonActive: includeNonActive,
+				includeLimitData: includeLimitData,
+			}
+		)
 		return this.extractResponse(response)
 	}
 }
