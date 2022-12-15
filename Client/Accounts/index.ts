@@ -28,12 +28,12 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 		accountStates?: model.AccountState[],
 		providerAccountId?: string
 	) {
-		const response = await this.connection
-			.get<model.AccountSummary>(`account-summaries?refresh=true&providerCodes=${providerCodes}${
-			accountId ? `&accountId=${accountId}` : ""
-		}${accountStates ? `&accountStates=${accountStates}` : ""}${
-			providerAccountId ? `&providerAccountId=${providerAccountId}` : ""
-		}
+		const response = await this.connection.get<{
+			list: model.AccountSummary[]
+			totalCount: number
+		}>(`account-summaries?refresh=true&providerCodes=${providerCodes}${accountId ? `&accountId=${accountId}` : ""}${
+			accountStates ? `&accountStates=${accountStates}` : ""
+		}${providerAccountId ? `&providerAccountId=${providerAccountId}` : ""}
 `)
 		return this.extractResponse(response)
 	}
