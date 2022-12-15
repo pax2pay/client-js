@@ -22,9 +22,10 @@ export class Organisations extends Collection<
 		return new Organisations(connection)
 	}
 	async getAllOrganisations(includeNonActive = false, includeLimitData = true) {
-		return this.connection.get<model.OrganisationResponse[]>(`organisations`, {
+		const response = this.connection.get<{ list: model.OrganisationResponse[]; totalCount: number }>(`organisations`, {
 			includeNonActive: includeNonActive,
 			includeLimitData: includeLimitData,
 		})
+		return this.extractResponse(response)
 	}
 }
