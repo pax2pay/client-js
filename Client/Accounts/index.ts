@@ -22,4 +22,19 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 	static create(connection: Connection) {
 		return new Accounts(connection)
 	}
+	async getAccountSummary(
+		providerCodes: model.ProviderCode,
+		accountId?: string,
+		accountStates?: model.AccountState,
+		providerAccountId?: string
+	) {
+		const result = await this.connection
+			.get<model.AccountSummary>(`funding-accounts?refresh=true&providerCodes=${providerCodes}${
+			accountId ? `&accountId=${accountId}` : ""
+		}${accountStates ? `&accountStates=${accountStates}` : ""}${
+			providerAccountId ? `&providerAccountId=${providerAccountId}` : ""
+		}
+`)
+		return result
+	}
 }
