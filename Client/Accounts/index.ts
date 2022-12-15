@@ -23,9 +23,9 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 		return new Accounts(connection)
 	}
 	async getAccountSummary(
-		providerCodes: model.ProviderCode,
+		providerCodes: model.ProviderCode[],
 		accountId?: number,
-		accountStates?: model.AccountState,
+		accountStates?: model.AccountState[],
 		providerAccountId?: string
 	) {
 		const result = await this.connection
