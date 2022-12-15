@@ -24,7 +24,7 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 	}
 	async getAccountSummary(
 		providerCodes: model.ProviderCode,
-		accountId?: string,
+		accountId?: number,
 		accountStates?: model.AccountState,
 		providerAccountId?: string
 	) {
