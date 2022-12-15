@@ -20,7 +20,9 @@ export class Auth {
 		const roles = window.sessionStorage.getItem("roles")
 		this.#roles = roles ? roles.split(",") : []
 	}
-
+	data() {
+		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
+	}
 	hasRole(role: string) {
 		this.loadRoles()
 
