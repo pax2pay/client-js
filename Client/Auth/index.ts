@@ -1,7 +1,6 @@
 import * as model from "../../model"
 import { PaxpayFeature } from "../../model/PaxpayFeature"
 import { Connection } from "../Connection"
-import { Organisation } from "../index"
 
 export class Auth {
 	#roles?: string[]
