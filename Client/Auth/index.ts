@@ -1,6 +1,7 @@
 import * as model from "../../model"
 import { PaxpayFeature } from "../../model/PaxpayFeature"
 import { Connection } from "../Connection"
+import { Organisation } from "../index"
 
 export class Auth {
 	#roles?: string[]
@@ -20,7 +21,7 @@ export class Auth {
 		const roles = window.sessionStorage.getItem("roles")
 		this.#roles = roles ? roles.split(",") : []
 	}
-	data() {
+	data(): Record<string, any> {
 		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
 	}
 	hasRole(role: string) {
@@ -101,6 +102,32 @@ export class Auth {
 		}
 		return result
 	}
+
+	isAssumed(): boolean {
+		const data = this.data()
+		return data.user?.organisation?.code != data.organisation?.code
+	}
+
+	async assume(code: string) {
+		const result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>(`auth/assume/org/${code}`)
+		if (!isError(result)) {
+			this.connection.token = result.token
+			window.sessionStorage.setItem("authData", JSON.stringify(result))
+		}
+		return result
+	}
+
+	async unassume() {
+		const data = this.data()
+		let result: model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
+		if (data.user?.organisation?.code)
+			result = await this.assume(data.user.organisation.code)
+		else
+			result = undefined
+
+		return result
+	}
+
 	static create(connection: Connection) {
 		return new Auth(connection)
 	}
