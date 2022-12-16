@@ -104,7 +104,7 @@ export class Auth {
 
 	isAssumed(): boolean {
 		const data = this.data()
-		return data.user?.organisation?.code != data.organisation?.code
+		return data.user?.organisation?.code != data.organisation
 	}
 
 	async assume(code: string) {
