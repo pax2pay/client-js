@@ -107,7 +107,9 @@ export class Auth {
 		return data.user?.organisation?.code != data.organisation
 	}
 
-	async assume(code: string) {
+	async assume(
+		code: string
+	): Promise<model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 })> {
 		const result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>(`auth/assume/org/${code}`)
 		if (!isError(result)) {
 			this.connection.token = result.token
@@ -116,7 +118,9 @@ export class Auth {
 		return result
 	}
 
-	async unassume() {
+	async unassume(): Promise<
+		model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
+	> {
 		const data = this.data()
 		let result: model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
 		if (!Object.keys(data).length)
