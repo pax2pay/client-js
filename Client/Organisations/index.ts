@@ -25,8 +25,7 @@ export class Organisations extends Collection<
 		page = 0,
 		size = 500,
 		sort = "name",
-		includeNonActive = false,
-		includeLimitData = true
+		includeNonActive = false
 	): Promise<model.ErrorResponse | model.OrganisationResponse[]> {
 		const response = await this.connection.get<{ list: model.OrganisationResponse[]; totalCount: number }>(
 			`organisations`,
@@ -35,7 +34,6 @@ export class Organisations extends Collection<
 				size: size,
 				sort: sort,
 				includeNonActive: includeNonActive,
-				includeLimitData: includeLimitData,
 			}
 		)
 		return this.extractResponse(response)
