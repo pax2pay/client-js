@@ -119,10 +119,10 @@ export class Auth {
 	async unassume() {
 		const data = this.data()
 		let result: model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
-		if (data.user?.organisation?.code)
-			result = await this.assume(data.user.organisation.code)
-		else
+		if (!Object.keys(data).length)
 			result = undefined
+		else
+			result = await this.assume(data.user.organisation.code)
 
 		return result
 	}
