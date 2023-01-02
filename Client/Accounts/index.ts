@@ -31,7 +31,7 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 		const response = await this.connection.get<{
 			list: model.AccountSummary[]
 			totalCount: number
-		}>(`account-summaries?refresh=true&providerCodes=${providerCodes}${accountId ? `&accountId=${accountId}` : ""}${
+		}>(`account-summaries?refresh=false&providerCodes=${providerCodes}${accountId ? `&accountId=${accountId}` : ""}${
 			accountStates ? `&accountStates=${accountStates}` : ""
 		}${providerAccountId ? `&providerAccountId=${providerAccountId}` : ""}
 `)
