@@ -22,4 +22,39 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 	static create(connection: Connection) {
 		return new Accounts(connection)
 	}
+	async getAccountSummary(
+		providerCodes: model.ProviderCode[],
+		accountId?: number,
+		accountStates?: model.AccountState[],
+		providerAccountId?: string
+	) {
+		const response = await this.connection.get<
+			| {
+					list: model.AccountSummary[]
+					totalCount: number
+			  }
+			| model.ErrorResponse
+		>(`account-summaries?refresh=false&providerCodes=${providerCodes}${accountId ? `&accountId=${accountId}` : ""}${
+			accountStates ? `&accountStates=${accountStates}` : ""
+		}${providerAccountId ? `&providerAccountId=${providerAccountId}` : ""}
+`)
+		return this.extractResponse(response)
+	}
+	async updateFundingAccount(
+		providerCode: model.ProviderCode,
+		providerAccountId: string,
+		request: model.UpdateAccountRequest
+	) {
+		const response = await this.connection.put<Promise<model.ErrorResponse | model.AccountResponse>>(
+			`funding-accounts/${providerCode}/${providerAccountId}`,
+			request
+		)
+		return response
+	}
+	async cancelLimitAlert(providerCode: model.ProviderCode, providerAccountId: string) {
+		const response = await this.connection.remove<Promise<model.ErrorResponse | model.AccountResponse>>(
+			`funding-accounts/${providerCode}/${providerAccountId}/limits`
+		)
+		return response
+	}
 }
