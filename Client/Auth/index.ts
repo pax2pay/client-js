@@ -80,8 +80,13 @@ export class Auth {
 	}
 
 	constructor(private connection: Connection) {}
-	async login(request: model.LoginRequest) {
-		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>("auth/login", request)
+	async login(request: model.LoginRequest, otp?: string) {
+		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>(
+			"auth/login",
+			request,
+			undefined,
+			{ "x-opt": otp }
+		)
 		if (!isError(result) && result.token) {
 			this.connection.token = result.token
 			window.sessionStorage.setItem("authData", JSON.stringify(result))

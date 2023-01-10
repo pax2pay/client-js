@@ -19,12 +19,14 @@ export class Connection {
 		path: string,
 		method: string,
 		request?: any,
-		parameters?: Record<string, any>
+		parameters?: Record<string, any>,
+		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const isMultipart = request && request instanceof FormData
 		let headers: Record<string, string> = {}
 		if (!isMultipart)
 			headers = {
+				...header,
 				"Content-Type": "application/json; charset=utf-8",
 			}
 		try {
@@ -67,9 +69,10 @@ export class Connection {
 	async post<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
 		request: any,
-		parameters?: Record<string, any>
+		parameters?: Record<string, any>,
+		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "POST", request, parameters)
+		return await this.fetch<Response, Codes>(path, "POST", request, parameters, header)
 	}
 	async get<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
