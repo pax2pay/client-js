@@ -85,7 +85,7 @@ export class Auth {
 			"auth/login",
 			request,
 			undefined,
-			{ "x-opt": otp }
+			{ "x-otp": otp }
 		)
 		if (!isError(result) && result.token) {
 			this.connection.token = result.token
