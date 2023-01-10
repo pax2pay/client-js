@@ -80,7 +80,7 @@ export class Auth {
 	}
 
 	constructor(private connection: Connection) {}
-	async login(request: model.LoginRequest, otp?: string) {
+	async login(request: model.LoginRequest, otp?: number) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>(
 			"auth/login",
 			request,
