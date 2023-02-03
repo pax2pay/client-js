@@ -31,9 +31,7 @@ export class Reports {
 
 		return await this.connection.post<model.Report.Statement>(`../reports/statement`, request)
 	}
-	async user(request: model.Report.User) {
-		return await this.connection.post<model.Report.User>(`../reports/user/download`, request)
-	}
+
 	async statementForTable(
 		request: model.StatementReportRequest,
 		page?: number,
@@ -68,6 +66,10 @@ export class Reports {
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
 		const result = await this.connection.post<model.StatementReportUrlResponse>(`statement/download`, request)
+		return result
+	}
+	async getUserReportUrl(request: model.StatementReportRequest) {
+		const result = await this.connection.post<model.StatementReportUrlResponse>(`reports/user/download`, request)
 		return result
 	}
 	async users(request: model.StatementReportUrlRequest) {
