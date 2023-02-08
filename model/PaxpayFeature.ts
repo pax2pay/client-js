@@ -11,6 +11,10 @@ const paxpayFeatures = [
 	"LEGACY_ACCOUNT_TABLE",
 	"LEGACY_USER_TABLE",
 	"LEGACY_CARD_TABLE",
+	"OLD_SITE",
+	"OLD_SITE_ONLY",
+	"NEW_SITE",
+	"NEW_SITE_ONLY",
 ] as const
 
 export type PaxpayFeature = typeof paxpayFeatures[number]
