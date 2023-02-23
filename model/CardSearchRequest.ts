@@ -15,6 +15,8 @@ export interface CardSearchRequest {
 	nameOnCard?: string
 	balance?: Range<number>
 	fundingBalance?: Range<number>
+	remainingBalance?: Range<number>
+	remainingBalancePercent?: Range<number>
 	personallyApprovable?: boolean
 	issueDate?: Range<Date>
 	expiryDate?: Range<Date>
