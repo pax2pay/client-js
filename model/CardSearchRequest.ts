@@ -24,7 +24,7 @@ export interface CardSearchRequest {
 	cardNumber?: string
 	providerAccountId?: string
 	createdOn?: Range<DateTime>
-	usage?: CardUsage
+	usage?: CardUsage[]
 	bookingInfoText?: string
 	bookingInfoType?: (BookingInfoType | "NONE")[]
 }
