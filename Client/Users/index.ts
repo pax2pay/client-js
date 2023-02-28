@@ -25,7 +25,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		)
 		return this.extractResponse(response)
 	}
-	async getCategory(): Promise<string[] | model.ErrorResponse> {
+	async getUserCategory(): Promise<string[] | model.ErrorResponse> {
 		const result = await this.connection.get<string[]>(`users/category`)
 		return result
 	}

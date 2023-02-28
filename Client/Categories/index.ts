@@ -14,4 +14,13 @@ export class Categories {
 		else
 			return result
 	}
+	async setCategoryLimits(
+		category: string,
+		request: model.CategoryLimitRequest
+	): Promise<model.CategoryResponse | model.ErrorResponse> {
+		return await this.connection.put<model.CategoryResponse>(`category/${category}`, request)
+	}
+	async getCategory(category: string): Promise<model.CategoryResponse | model.ErrorResponse> {
+		return await this.connection.get<model.CategoryResponse>(`category/${category}`)
+	}
 }

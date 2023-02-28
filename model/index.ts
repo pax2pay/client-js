@@ -49,6 +49,7 @@ import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
 import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAccessRequest"
+import { CategoryLimitRequest } from "./CategoryLimitRequest"
 import { CategoryLimitResponse } from "./CategoryLimitResponse"
 import { CategoryResponse } from "./CategoryResponse"
 import { CategoryStatus } from "./CategoryStatus"
@@ -213,6 +214,7 @@ export {
 	CardTypeSpecification,
 	CardTypeSpecificationFlag,
 	CategoryFundingAccountAccessRequest,
+	CategoryLimitRequest,
 	CategoryLimitResponse,
 	CategoryResponse,
 	CategoryStatus,
