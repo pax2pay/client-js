@@ -14,9 +14,9 @@ export class Categories {
 		else
 			return result
 	}
-	async setCategoryLimits(
+	async editCategoryLimits(
 		category: string,
-		request: model.CategoryLimitRequest
+		request: model.UpdateCategoryRequest
 	): Promise<model.CategoryResponse | model.ErrorResponse> {
 		return await this.connection.put<model.CategoryResponse>(`category/${category}`, request)
 	}

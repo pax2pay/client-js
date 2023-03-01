@@ -1,8 +1,8 @@
 import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAccessRequest"
 import { UserLimitsRequest } from "./UserLimitsRequest"
 
-export interface CategoryLimitRequest {
-	limits?: UserLimitsRequest[]
+export interface UpdateCategoryRequest {
+	setLimits?: UserLimitsRequest[]
 	addLimits?: UserLimitsRequest[]
 	removeLimits?: UserLimitsRequest[]
 	fundingAccountAccess?: CategoryFundingAccountAccessRequest

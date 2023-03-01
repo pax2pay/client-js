@@ -49,7 +49,6 @@ import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
 import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAccessRequest"
-import { CategoryLimitRequest } from "./CategoryLimitRequest"
 import { CategoryLimitResponse } from "./CategoryLimitResponse"
 import { CategoryResponse } from "./CategoryResponse"
 import { CategoryStatus } from "./CategoryStatus"
@@ -149,6 +148,7 @@ import { TwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails
 import { TwoFactorAuthenticationRegistrationResponse } from "./TwoFactorAuthenticationRegistrationResponse"
 import { UpdateAccountRequest } from "./UpdateAccountRequest"
 import { UpdateBeneficiaryRequest } from "./UpdateBeneficiaryRequest"
+import { UpdateCategoryRequest } from "./UpdateCategoryRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
 import { UserChangeRequest } from "./UserChangeRequest"
 import { UserConfig } from "./UserConfig"
@@ -214,7 +214,7 @@ export {
 	CardTypeSpecification,
 	CardTypeSpecificationFlag,
 	CategoryFundingAccountAccessRequest,
-	CategoryLimitRequest,
+	UpdateCategoryRequest,
 	CategoryLimitResponse,
 	CategoryResponse,
 	CategoryStatus,

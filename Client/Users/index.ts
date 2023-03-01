@@ -25,10 +25,6 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		)
 		return this.extractResponse(response)
 	}
-	async getUserCategory(): Promise<string[] | model.ErrorResponse> {
-		const result = await this.connection.get<string[]>(`users/category`)
-		return result
-	}
 	async getRolesets(): Promise<model.RolesetResponse[] | model.ErrorResponse> {
 		const response = await this.connection.get<{ list: model.RolesetResponse[]; totalCount: number }>(`rolesets`)
 		return this.extractResponse(response)
