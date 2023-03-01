@@ -148,6 +148,7 @@ import { TwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails
 import { TwoFactorAuthenticationRegistrationResponse } from "./TwoFactorAuthenticationRegistrationResponse"
 import { UpdateAccountRequest } from "./UpdateAccountRequest"
 import { UpdateBeneficiaryRequest } from "./UpdateBeneficiaryRequest"
+import { UpdateCategoryRequest } from "./UpdateCategoryRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
 import { UserChangeRequest } from "./UserChangeRequest"
 import { UserConfig } from "./UserConfig"
@@ -213,6 +214,7 @@ export {
 	CardTypeSpecification,
 	CardTypeSpecificationFlag,
 	CategoryFundingAccountAccessRequest,
+	UpdateCategoryRequest,
 	CategoryLimitResponse,
 	CategoryResponse,
 	CategoryStatus,
