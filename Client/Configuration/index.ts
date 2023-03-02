@@ -12,6 +12,12 @@ export class Configuration {
 		const result = await this.connection.get<Currency[]>(`config/currencies`, { provider: providerCode })
 		return result
 	}
+	async updateOrganisationConfig(
+		request: model.OrganisationConfig
+	): Promise<model.OrganisationConfig | model.ErrorResponse> {
+		const result = await this.connection.post<model.OrganisationConfig>(`config/organisation`, request)
+		return result
+	}
 	async getOrganisationConfig(): Promise<model.OrganisationConfig | model.ErrorResponse> {
 		const result = await this.connection.get<model.OrganisationConfig>(`config/organisation`)
 		return result
