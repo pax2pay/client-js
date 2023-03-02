@@ -6,5 +6,5 @@ export interface CardTypesConfig {
 	useLegacyCardTypesInResponse?: boolean
 	hideCardTypes?: any
 	onlyShowCardTypes?: any
-	aliases?: Record<Partial<ProviderCode>, Record<string, string>>
+	aliases?: Partial<Record<ProviderCode, Record<string, string>>>
 }
