@@ -65,4 +65,15 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	async changePassword(request: model.PasswordChangeRequest): Promise<model.UserResponse | model.ErrorResponse> {
 		return await this.connection.put<model.UserResponse>(`users/password`, request)
 	}
+	async setUpTwoFactorAuthentication(
+		username: string
+	): Promise<model.TwoFactorAuthenticationRegistrationResponse | model.ErrorResponse> {
+		return await this.connection.post<model.TwoFactorAuthenticationRegistrationResponse>(
+			`users/${username}/two-factor`,
+			undefined
+		)
+	}
+	async removeTwoFactorAuthentication(username: string): Promise<void | model.ErrorResponse> {
+		return await this.connection.remove(`users/${username}/two-factor`)
+	}
 }
