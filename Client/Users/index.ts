@@ -70,7 +70,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	): Promise<model.TwoFactorAuthenticationRegistrationResponse | model.ErrorResponse> {
 		return await this.connection.post<model.TwoFactorAuthenticationRegistrationResponse>(
 			`users/${username}/two-factor`,
-			undefined
+			{}
 		)
 	}
 	async removeTwoFactorAuthentication(username: string): Promise<void | model.ErrorResponse> {
