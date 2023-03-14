@@ -23,17 +23,11 @@ export class Connection {
 		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const isMultipart = request && request instanceof FormData
-		let headers: Record<string, string> = {}
+		let headers: Record<string, string> = { "x-invoking-system": "portal_2" }
 		if (!isMultipart)
 			headers = {
 				...header,
 				"Content-Type": "application/json; charset=utf-8",
-			}
-		if (path.includes("auth/passwordreset") || path.includes("auth/login"))
-			headers = {
-				...header,
-				"Content-Type": "application/json; charset=utf-8",
-				"x-invoking-system": "portal_2",
 			}
 		try {
 			const data = JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
