@@ -29,10 +29,10 @@ export class Connection {
 				...header,
 				"Content-Type": "application/json; charset=utf-8",
 			}
-		if (path.includes("auth/passwordreset"))
+		if (path.includes("auth/passwordreset") || path.includes("auth/login"))
 			headers = {
 				...header,
-				"x-invoking-system": "PORTAL",
+				"x-invoking-system": "portal",
 			}
 		try {
 			const data = JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
