@@ -29,6 +29,11 @@ export class Connection {
 				...header,
 				"Content-Type": "application/json; charset=utf-8",
 			}
+		if (path.includes("auth/passwordreset"))
+			headers = {
+				...header,
+				"x-invoking-system": "PORTAL",
+			}
 		try {
 			const data = JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
 			this.#token = data.token
