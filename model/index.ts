@@ -29,6 +29,8 @@ import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardForm } from "./CardForm"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
+import { CardReportUrlRequest } from "./CardReportUrlRequest"
+import { CardReportUrlResponse } from "./CardReportUrlResponse"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
@@ -195,6 +197,8 @@ export {
 	CardForm,
 	CardFundingAccountResponse,
 	CardOptionSearch,
+	CardReportUrlRequest,
+	CardReportUrlResponse,
 	CardResponse,
 	CardResponseV2,
 	CardScheduleResponseItem,
