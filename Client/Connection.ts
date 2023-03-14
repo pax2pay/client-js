@@ -89,9 +89,11 @@ export class Connection {
 	}
 	async remove<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
+		request?: any,
+		parameters?: Record<string, any>,
 		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "DELETE", header)
+		return await this.fetch<Response, Codes>(path, "DELETE", request, parameters, header)
 	}
 	static open(url: string, token: string | undefined): Connection {
 		return new Connection(url, token)
