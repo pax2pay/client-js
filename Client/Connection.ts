@@ -23,10 +23,11 @@ export class Connection {
 		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const isMultipart = request && request instanceof FormData
-		let headers: Record<string, string> = {}
+		let requestHeaders: Record<string, string> = { "x-invoking-system": "portal_2" }
 		if (!isMultipart)
-			headers = {
+			requestHeaders = {
 				...header,
+				...requestHeaders,
 				"Content-Type": "application/json; charset=utf-8",
 			}
 		try {
@@ -37,7 +38,7 @@ export class Connection {
 				console.error("Caught exception ", JSON.stringify(e))
 		}
 		if (this.token)
-			headers["X-Auth-Token"] = this.token
+			requestHeaders["X-Auth-Token"] = this.token
 		const response = await fetch(
 			this.url +
 				"/" +
@@ -50,7 +51,7 @@ export class Connection {
 					: ""),
 			{
 				method,
-				headers,
+				headers: requestHeaders,
 				body: !isMultipart ? request && JSON.stringify(request) : request,
 			}
 		).catch(_ => undefined)
