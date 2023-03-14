@@ -32,7 +32,8 @@ export class Connection {
 		if (path.includes("auth/passwordreset") || path.includes("auth/login"))
 			headers = {
 				...header,
-				"x-invoking-system": "portal",
+				"Content-Type": "application/json; charset=utf-8",
+				"x-invoking-system": "portal_2",
 			}
 		try {
 			const data = JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
