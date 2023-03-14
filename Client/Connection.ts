@@ -27,6 +27,7 @@ export class Connection {
 		if (!isMultipart)
 			headers = {
 				...header,
+				...headers,
 				"Content-Type": "application/json; charset=utf-8",
 			}
 		try {
