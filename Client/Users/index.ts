@@ -74,6 +74,6 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		)
 	}
 	async removeTwoFactorAuthentication(username: string, otp: string): Promise<void | model.ErrorResponse> {
-		return await this.connection.remove(`users/${username}/two-factor`, { "x-otp": otp })
+		return await this.connection.remove(`users/${username}/two-factor`, undefined, undefined, { "x-otp": otp })
 	}
 }
