@@ -30,7 +30,6 @@ import { CardForm } from "./CardForm"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardReportUrlRequest } from "./CardReportUrlRequest"
-import { CardReportUrlResponse } from "./CardReportUrlResponse"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
@@ -115,6 +114,7 @@ import { Range } from "./Range"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
+import { ReportUrlResponse } from "./ReportUrlResponse"
 import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
@@ -130,7 +130,6 @@ import { StatementReportResponseRow } from "./StatementReportResponseRow"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementReportUrlRequest } from "./StatementReportUrlRequest"
-import { StatementReportUrlResponse } from "./StatementReportUrlResponse"
 import { StatementRowIds } from "./StatementRowIds"
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
 import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
@@ -198,7 +197,6 @@ export {
 	CardFundingAccountResponse,
 	CardOptionSearch,
 	CardReportUrlRequest,
-	CardReportUrlResponse,
 	CardResponse,
 	CardResponseV2,
 	CardScheduleResponseItem,
@@ -283,6 +281,7 @@ export {
 	References,
 	RelogWithNewSessionDetailsRequest,
 	Report,
+	ReportUrlResponse,
 	RoleResponse,
 	RolesetResponse,
 	Room,
@@ -294,7 +293,6 @@ export {
 	Sorting,
 	SearchBeneficiaryRequest,
 	StatementReportUrlRequest,
-	StatementReportUrlResponse,
 	StatementReportRequest,
 	StatementReportResponse,
 	StatementReportResponseRow,
