@@ -65,11 +65,15 @@ export class Reports {
 		)
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
-		const result = await this.connection.post<model.StatementReportUrlResponse>(`statement/download`, request)
+		const result = await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
 		return result
 	}
 	async getUserReportUrl(request: model.StatementReportUrlRequest) {
-		const result = await this.connection.post<model.StatementReportUrlResponse>(`reports/user/download`, request)
+		const result = await this.connection.post<model.ReportUrlResponse>(`reports/user/download`, request)
+		return result
+	}
+	async getCardReportUrl(request: model.CardReportUrlRequest) {
+		const result = await this.connection.post<model.ReportUrlResponse>(`reports/card/download`, request)
 		return result
 	}
 	static create(connection: Connection) {
