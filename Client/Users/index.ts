@@ -1,7 +1,7 @@
-import { Paginated } from "Client/Paginated"
 import * as model from "../../model"
 import { Collection } from "../Collection"
 import { Connection } from "../Connection"
+import { Paginated } from "../Paginated"
 import { Resource } from "../Resource"
 import { User } from "../User"
 
