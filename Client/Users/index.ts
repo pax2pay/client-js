@@ -1,3 +1,4 @@
+import { Paginated } from "Client/Paginated"
 import * as model from "../../model"
 import { Collection } from "../Collection"
 import { Connection } from "../Connection"
@@ -86,5 +87,56 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 			parameters
 		)
 		return this.extractResponse(result)
+	}
+	async searchUsersPaginated(
+		request: model.UserSearchRequest,
+		previous?: Paginated<model.UserResponse>,
+		page?: number,
+		size?: number,
+		sort = "createdOn,desc",
+		includeCount = true
+	): Promise<model.ErrorResponse | Paginated<model.UserResponse>> {
+		return await this.getNextPaginated<model.UserResponse>(
+			previous,
+			(page, size, sort, request) =>
+				this.connection.post<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[]>(
+					`users/searches`,
+					request,
+					{
+						page: page,
+						size: size,
+						sort: sort,
+						includeCount: includeCount,
+					}
+				),
+			request,
+			page,
+			size,
+			sort
+		)
+	}
+	async getAllUsersPaginated(
+		previous?: Paginated<model.UserResponse>,
+		page?: number,
+		size?: number,
+		sort = "createdOn,desc",
+		providerCode = "modulr",
+		includeCount = true
+	): Promise<model.ErrorResponse | Paginated<model.UserResponse>> {
+		return await this.getNextPaginated<model.UserResponse>(
+			previous,
+			(page, size, sort) =>
+				this.connection.get<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[]>(`users`, {
+					page: page,
+					size: size,
+					sort: sort,
+					provider: providerCode,
+					includeCount: includeCount,
+				}),
+			undefined,
+			page,
+			size,
+			sort
+		)
 	}
 }
