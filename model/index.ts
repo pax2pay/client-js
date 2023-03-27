@@ -74,9 +74,11 @@ import { FlightBookingInfoResponse } from "./FlightBookingInfoResponse"
 import { FlightInfo } from "./FlightInfo"
 import { FundingAccountIdentifierType } from "./FundingAccountIdentifierType"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
-import { FundingAccountResponseV2 } from "./FundingAccountResponseV2"
+import { FundingAccountResponseV2Basic } from "./FundingAccountResponseV2Basic"
+import { FundingAccountResponseV2Full } from "./FundingAccountResponseV2Full"
 import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
 import { FundingAccountSearchResponse } from "./FundingAccountSearchResponse"
+import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { FundingLimitConfig } from "./FundingLimitConfig"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
@@ -241,9 +243,11 @@ export {
 	FlightInfo,
 	FundingAccountIdentifierType,
 	FundingAccountInboundTransferNotificationConfig,
-	FundingAccountResponseV2,
+	FundingAccountResponseV2Basic,
+	FundingAccountResponseV2Full,
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
+	FundingAccountSummaryResponse,
 	FundingLimitConfig,
 	FundingLimitRequest,
 	FundingLimitResponse,

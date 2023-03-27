@@ -5,7 +5,7 @@ import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
-import { FundingAccountResponseV2 } from "./FundingAccountResponseV2"
+import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { ProviderCode } from "./ProviderCode"
 import { YearMonth } from "./YearMonth"
 
@@ -24,7 +24,7 @@ export interface CardResponseV2 {
 	providerCode: ProviderCode
 	providerCardId: string
 	usage: CardUsage
-	fundingAccount: FundingAccountResponseV2
+	fundingAccount: FundingAccountSummaryResponse
 	createdBy: string
 	state: AccountState
 	schedule?: CardScheduleResponseItem[]
@@ -49,7 +49,7 @@ export namespace CardResponseV2 {
 			ProviderCode.is(value.providerCode) &&
 			typeof value.providerCardId == "string" &&
 			CardUsage.is(value.usage) &&
-			FundingAccountResponseV2.is(value.fundingAccount) &&
+			FundingAccountSummaryResponse.is(value.fundingAccount) &&
 			(value.schedule == undefined ||
 				(Array.isArray(value.schedule) &&
 					value.schedule.every((a: any) => {
