@@ -93,8 +93,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		previous?: Paginated<model.UserResponse>,
 		page?: number,
 		size?: number,
-		sort = "createdOn,desc",
-		includeCount = true
+		sort = "createdOn,desc"
 	): Promise<model.ErrorResponse | Paginated<model.UserResponse>> {
 		return await this.getNextPaginated<model.UserResponse>(
 			previous,
@@ -106,7 +105,6 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 						page: page,
 						size: size,
 						sort: sort,
-						includeCount: includeCount,
 					}
 				),
 			request,
@@ -120,8 +118,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		page?: number,
 		size?: number,
 		sort = "createdOn,desc",
-		providerCode = "modulr",
-		includeCount = true
+		providerCode = "modulr"
 	): Promise<model.ErrorResponse | Paginated<model.UserResponse>> {
 		return await this.getNextPaginated<model.UserResponse>(
 			previous,
@@ -131,7 +128,6 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 					size: size,
 					sort: sort,
 					provider: providerCode,
-					includeCount: includeCount,
 				}),
 			undefined,
 			page,

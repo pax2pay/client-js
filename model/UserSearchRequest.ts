@@ -12,7 +12,7 @@ export interface UserSearchRequest {
 	email?: string
 	category?: string
 	status?: UserStatus[]
-	lastLoggedIn?: Range<DateTime>
+	lastLoggedIn?: Range<Date>
 	roleset?: string
 	fuzzySearch?: string
 }
