@@ -1,6 +1,7 @@
 import * as model from "../../model"
 import { Collection } from "../Collection"
 import { Connection } from "../Connection"
+import { Paginated } from "../Paginated"
 import { Resource } from "../Resource"
 import { User } from "../User"
 
@@ -75,5 +76,63 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	}
 	async removeTwoFactorAuthentication(username: string, otp: string): Promise<void | model.ErrorResponse> {
 		return await this.connection.remove(`users/${username}/two-factor`, undefined, undefined, { "x-otp": otp })
+	}
+	async searchUsers(
+		request: model.UserSearchRequest,
+		parameters?: Record<string, any>
+	): Promise<model.UserResponse[] | model.ErrorResponse> {
+		const result = await this.connection.post<{ list: model.UserResponse[]; totalCount: number }>(
+			`users/searches`,
+			request,
+			parameters
+		)
+		return this.extractResponse(result)
+	}
+	async searchUsersPaginated(
+		request: model.UserSearchRequest,
+		previous?: Paginated<model.UserResponse>,
+		page?: number,
+		size?: number,
+		sort = "createdOn,desc"
+	): Promise<model.ErrorResponse | Paginated<model.UserResponse>> {
+		return await this.getNextPaginated<model.UserResponse>(
+			previous,
+			(page, size, sort, request) =>
+				this.connection.post<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[]>(
+					`users/searches`,
+					request,
+					{
+						page: page,
+						size: size,
+						sort: sort,
+					}
+				),
+			request,
+			page,
+			size,
+			sort
+		)
+	}
+	async getAllUsersPaginated(
+		previous?: Paginated<model.UserResponse>,
+		page?: number,
+		size?: number,
+		sort = "createdOn,desc",
+		providerCode = "modulr"
+	): Promise<model.ErrorResponse | Paginated<model.UserResponse>> {
+		return await this.getNextPaginated<model.UserResponse>(
+			previous,
+			(page, size, sort) =>
+				this.connection.get<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[]>(`users`, {
+					page: page,
+					size: size,
+					sort: sort,
+					provider: providerCode,
+				}),
+			undefined,
+			page,
+			size,
+			sort
+		)
 	}
 }
