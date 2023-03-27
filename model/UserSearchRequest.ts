@@ -1,4 +1,4 @@
-import { DateTime } from "isoly"
+import { Date } from "isoly"
 import { Range } from "./Range"
 import { UserStatus } from "./UserStatus"
 
