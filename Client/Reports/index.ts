@@ -76,7 +76,7 @@ export class Reports {
 		const result = await this.connection.post<model.ReportUrlResponse>(`reports/card/download`, request)
 		return result
 	}
-	async getReconciliationReportUrl(request: model.CardReportUrlRequest) {
+	async getReconciliationReportUrl(request: model.StatementReportUrlRequest) {
 		const result = await this.connection.post<model.ReportUrlResponse>(`reports/reconciliation/download`, request)
 		return result
 	}
