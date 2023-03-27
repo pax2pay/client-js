@@ -2,6 +2,7 @@ import * as model from "../../model"
 import { Account } from "../Account"
 import { Connection } from "../Connection"
 import { List } from "../List"
+import { Paginated } from "../Paginated"
 import { Resource } from "../Resource"
 
 export class Accounts extends List<model.AccountResponse, model.AccountSearchRequest> {
@@ -54,6 +55,67 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 	async cancelLimitAlert(providerCode: model.ProviderCode, providerAccountId: string) {
 		const response = await this.connection.remove<Promise<model.ErrorResponse | model.AccountResponse>>(
 			`funding-accounts/${providerCode}/${providerAccountId}/limits`
+		)
+		return response
+	}
+
+	async getAllFundingAccountsV2Paginated(
+		previous?: Paginated<model.FundingAccountResponseV2Basic>,
+		page?: number,
+		size?: number,
+		sort = undefined,
+		provider = "modulr"
+	) {
+		return await this.getNextPaginated<model.FundingAccountResponseV2Basic>(
+			previous,
+			(page, size, sort) =>
+				this.connection.get<
+					{ list: model.FundingAccountResponseV2Basic[]; totalCount: number } | model.FundingAccountResponseV2Basic[]
+				>(`v2/funding-accounts`, {
+					page: page,
+					size: size,
+					sort: sort,
+					provider: provider,
+				}),
+			undefined,
+			page,
+			size,
+			sort
+		)
+	}
+	async getAllFundingAccountsV2FullPaginated(
+		previous?: Paginated<model.FundingAccountResponseV2Full>,
+		page?: number,
+		size?: number,
+		sort = undefined,
+		provider = "modulr"
+	) {
+		return await this.getNextPaginated<model.FundingAccountResponseV2Full>(
+			previous,
+			(page, size, sort) =>
+				this.connection.get<
+					{ list: model.FundingAccountResponseV2Full[]; totalCount: number } | model.FundingAccountResponseV2Full[]
+				>(`v2/funding-accounts/info`, {
+					page: page,
+					size: size,
+					sort: sort,
+					provider: provider,
+				}),
+			undefined,
+			page,
+			size,
+			sort
+		)
+	}
+	async getFundingAccountV2(providerCode: model.ProviderCode, providerCodeId: string) {
+		const response = await this.connection.get<model.FundingAccountResponseV2Basic>(
+			`v2/funding-accounts/${providerCode}/${providerCodeId}`
+		)
+		return response
+	}
+	async getFundingAccountV2Full(providerCode: model.ProviderCode, providerCodeId: string) {
+		const response = await this.connection.get<model.FundingAccountResponseV2Full>(
+			`v2/funding-accounts/${providerCode}/${providerCodeId}/info`
 		)
 		return response
 	}
