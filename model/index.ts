@@ -113,6 +113,7 @@ import { ProcessedStatement } from "./ProcessedStatement"
 import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
 import { Range } from "./Range"
+import { ReconciliationReportUrlRequest } from "./ReconciliationReportUrlRequest"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
@@ -285,6 +286,7 @@ export {
 	References,
 	RelogWithNewSessionDetailsRequest,
 	Report,
+	ReconciliationReportUrlRequest,
 	ReportUrlResponse,
 	RoleResponse,
 	RolesetResponse,
