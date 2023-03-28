@@ -6,7 +6,7 @@ export interface ReconciliationReportUrlRequest {
 	providerCode: ProviderCode
 	providerAccountId: string
 	dateRange: {
-		start: isoly.Date
-		end: isoly.Date
+		start?: isoly.Date
+		end?: isoly.Date
 	}
 }
