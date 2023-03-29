@@ -1,0 +1,7 @@
+export type CardTransactionType =
+	| "CARD_CREATION"
+	| "AUTHORISATION_APPROVED"
+	| "AUTHORISATION_DECLINED"
+	| "SETTLEMENT"
+	| "REVERSAL"
+	| "REFUND"

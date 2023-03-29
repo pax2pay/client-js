@@ -1,6 +1,7 @@
 import { Currency, Date, DateTime } from "isoly"
 import { AccountState } from "./AccountState"
 import { BookingInfoType } from "./BookingInfoType"
+import { CardTransactionType } from "./CardTransactionType"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
 import { ProviderCode } from "./ProviderCode"
@@ -27,4 +28,6 @@ export interface CardSearchRequest {
 	usage?: CardUsage[]
 	bookingInfoText?: string
 	bookingInfoType?: (BookingInfoType | "NONE")[]
+	hasProviderTransaction?: CardTransactionType
+	doesntHaveProviderTransaction?: CardTransactionType
 }
