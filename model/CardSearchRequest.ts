@@ -28,6 +28,6 @@ export interface CardSearchRequest {
 	usage?: CardUsage[]
 	bookingInfoText?: string
 	bookingInfoType?: (BookingInfoType | "NONE")[]
-	hasProviderTransaction?: CardTransactionType
-	doesntHaveProviderTransaction?: CardTransactionType
+	hasProviderTransaction?: CardTransactionType[]
+	doesntHaveProviderTransaction?: CardTransactionType[]
 }
