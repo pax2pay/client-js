@@ -239,8 +239,8 @@ export class Cards extends List<
 		return this.extractResponse(response)
 	}
 	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {
-		const result = await this.connection.put<model.CardResponse>(
-			`cards/virtual/${providerCode}/${providerCardId}/schedule`,
+		const result = await this.connection.put<model.CardResponseV2>(
+			`v2/cards/virtual/${providerCode}/${providerCardId}/schedule`,
 			{
 				schedule: request,
 			}
