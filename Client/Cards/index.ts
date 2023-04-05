@@ -247,9 +247,9 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async amendExistingCard(providerCardId: string, providerCode: model.ProviderCode, request: model.AmendCardRequest) {
-		const result = await this.connection.post<model.CardResponse>(
-			`cards/virtual/${providerCode}/${providerCardId}/amend`,
+	async amendExistingCardV2(providerCardId: string, providerCode: model.ProviderCode, request: model.AmendCardRequest) {
+		const result = await this.connection.put<model.CardResponseV2>(
+			`v2/cards/virtual/${providerCode}/${providerCardId}/amend`,
 			request
 		)
 		return result
