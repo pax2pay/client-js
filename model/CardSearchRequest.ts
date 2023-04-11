@@ -26,6 +26,7 @@ export interface CardSearchRequest {
 	providerAccountId?: string
 	createdOn?: Range<DateTime>
 	usage?: CardUsage[]
+	supplierReference?: string
 	bookingInfoText?: string
 	bookingInfoType?: (BookingInfoType | "NONE")[]
 	hasProviderTransaction?: CardTransactionType[]
