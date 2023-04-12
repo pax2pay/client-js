@@ -4,4 +4,5 @@ export interface AmendCardRequest {
 	balanceDifferential?: number
 	currency: string
 	fundingDate?: string
+	status?: string
 }
