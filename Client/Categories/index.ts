@@ -8,7 +8,10 @@ export class Categories {
 		return new Categories(connection)
 	}
 	async getAllCategories() {
-		const result = await this.connection.get<{ list: CategoryResponse[]; totalCount: number }>(`category?size=100`)
+		const result = await this.connection.get<{ list: CategoryResponse[]; totalCount: number }>(`category`, {
+			size: 100,
+			sort: "name",
+		})
 		if (!model.ErrorResponse.is(result) && "list" in result)
 			return result.list
 		else

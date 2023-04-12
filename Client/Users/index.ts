@@ -21,13 +21,17 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		return result
 	}
 	async getAllUsers(): Promise<model.UserResponse[] | model.ErrorResponse> {
-		const response = await this.connection.get<{ list: model.UserResponse[]; totalCount: number }>(
-			`users?size=500&sort=username`
-		)
+		const response = await this.connection.get<{ list: model.UserResponse[]; totalCount: number }>(`users`, {
+			size: 500,
+			sort: "username",
+		})
 		return this.extractResponse(response)
 	}
 	async getRolesets(): Promise<model.RolesetResponse[] | model.ErrorResponse> {
-		const response = await this.connection.get<{ list: model.RolesetResponse[]; totalCount: number }>(`rolesets`)
+		const response = await this.connection.get<{ list: model.RolesetResponse[]; totalCount: number }>(`rolesets`, {
+			size: 100,
+			sort: "name",
+		})
 		return this.extractResponse(response)
 	}
 	async getUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
