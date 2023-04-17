@@ -10,7 +10,7 @@ export namespace FlightInfo {
 		return (
 			typeof value == "object" &&
 			Segment.is(value.outbound) &&
-			(value.homebound == undefined) == Segment.is(value.homebound)
+			(value.homebound == undefined || Segment.is(value.homebound))
 		)
 	}
 }
