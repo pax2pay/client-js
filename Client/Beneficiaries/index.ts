@@ -41,4 +41,10 @@ export class Beneficiaries extends List<model.BeneficiaryResponse, model.Benefic
 		const result = await this.connection.post<model.BeneficiaryResponse>(`${this.folder}`, request)
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
+	async update(beneficiaryId: string, request: model.UpdateBeneficiaryRequest) {
+		return await this.connection.put<model.BeneficiaryResponse>(`${this.folder}/${beneficiaryId}`, request)
+	}
+	async delete(beneficiaryId: string) {
+		return await this.connection.remove<model.BeneficiaryResponse>(`${this.folder}/${beneficiaryId}`)
+	}
 }
