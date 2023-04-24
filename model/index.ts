@@ -161,6 +161,7 @@ import { UserLimitsDeleteRequest } from "./UserLimitsDeleteRequest"
 import { UserLimitsRequest } from "./UserLimitsRequest"
 import { UserLimitsResponse } from "./UserLimitsResponse"
 import { UsernameAvailabilityResponse } from "./UsernameAvailabilityResponse"
+import { UserReportUrlRequest } from "./UserReportUrlRequest"
 import { UserRequest } from "./UserRequest"
 import { UserResponse } from "./UserResponse"
 import { UserRoleResponse } from "./UserRoleResponse"
@@ -332,6 +333,7 @@ export {
 	UserLimitsRequest,
 	UserLimitsResponse,
 	UsernameAvailabilityResponse,
+	UserReportUrlRequest,
 	UserRequest,
 	UserResponse,
 	UserRoleResponse,
