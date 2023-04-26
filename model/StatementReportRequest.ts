@@ -8,6 +8,6 @@ export interface StatementReportRequest {
 		start: isoly.DateTime
 		end: isoly.DateTime
 	}
-	balanceType?: "AVAILABLE" | "ACTUAL"
+	balanceType?: "AVAILABLE" | "ACTUAL" | "STANDARD"
 	type?: "summary" | "full"
 }
