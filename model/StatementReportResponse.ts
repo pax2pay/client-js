@@ -7,6 +7,8 @@ export interface StatementReportResponse {
 	closingAvailableBalance: number
 	openingActualBalance: number
 	closingActualBalance: number
+	paidIn: number
+	paidOut: number
 	providerCode: ProviderCode
 	providerAccountId: string
 	currency: Currency
