@@ -83,9 +83,11 @@ export class Connection {
 	}
 	async put<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
-		request: any
+		request: any,
+		parameters?: Record<string, any>,
+		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "PUT", request)
+		return await this.fetch<Response, Codes>(path, "PUT", request, parameters, header)
 	}
 	async remove<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
