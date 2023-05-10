@@ -71,7 +71,12 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		request: model.PasswordChangeRequest,
 		otp?: number
 	): Promise<model.UserResponse | model.ErrorResponse> {
-		return await this.connection.put<model.UserResponse>(`users/password`, request, undefined, { "x-otp": otp })
+		return await this.connection.put<model.UserResponse>(
+			`users/password`,
+			request,
+			undefined,
+			otp ? { "x-otp": otp } : {}
+		)
 	}
 	async setUpTwoFactorAuthentication(
 		username: string
