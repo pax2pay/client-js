@@ -1,4 +1,4 @@
-import { Currency } from "isoly"
+import { Currency, Date } from "isoly"
 import { AccountState } from "./AccountState"
 import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
@@ -27,6 +27,8 @@ export interface CardResponseV2 {
 	fundingAccount: FundingAccountSummaryResponse
 	createdBy: string
 	state: AccountState
+	longTermTokenExpiry?: Date
+	activationDate?: Date
 	schedule?: CardScheduleResponseItem[]
 	bookingInfo?: BookingInfoResponse
 	delivery?: CardDeliveryResponse
@@ -58,7 +60,9 @@ export namespace CardResponseV2 {
 			typeof value.createdBy == "string" &&
 			(value.delivery == undefined || CardDeliveryResponse.is(value.delivery)) &&
 			(value.batchId == undefined || typeof value.batchId == "string") &&
-			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo))
+			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo)) &&
+			(value.longTermTokenExpiry == undefined || Date.is(value.longTermTokenExpiry)) &&
+			(value.activationDate == undefined || Date.is(value.activationDate))
 		)
 	}
 }
