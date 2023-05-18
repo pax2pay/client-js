@@ -69,7 +69,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 	}
 	async changePassword(
 		request: model.PasswordChangeRequest,
-		otp?: number
+		otp?: string
 	): Promise<model.UserResponse | model.ErrorResponse> {
 		return await this.connection.put<model.UserResponse>(
 			`users/password`,
