@@ -52,6 +52,13 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		const result = await this.connection.put<model.UserRoleResponse>(`users/${username}/rolesets/${roleset}`, undefined)
 		return result
 	}
+	async addRolesetOnUser(username: string, roleset: string): Promise<model.UserRoleResponse | model.ErrorResponse> {
+		const result = await this.connection.post<model.UserRoleResponse>(
+			`users/${username}/rolesets/${roleset}`,
+			undefined
+		)
+		return result
+	}
 	async updateUser(
 		username: string,
 		request: model.UserChangeRequest
