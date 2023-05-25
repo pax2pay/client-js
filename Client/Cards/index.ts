@@ -100,12 +100,6 @@ export class Cards extends List<
 		)
 		return result
 	}
-	async generateCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/generate`
-		)
-		return result
-	}
 	async generateTokenisedCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/generate/tokenised`
