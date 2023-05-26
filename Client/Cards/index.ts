@@ -27,7 +27,7 @@ export class Cards extends List<
 		return Object.assign(new Card(this.connection, this.getResourcePath(response), response), response)
 	}
 	async create(request: model.CreateCardRequest) {
-		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", request)
+		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual/tokenised", request)
 		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
 	async createCardWithRemittanceAdvice(request: model.CreateCardRequest, file: File) {
@@ -102,7 +102,7 @@ export class Cards extends List<
 	}
 	async generateCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		const result = await this.connection.get<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/generate`
+			`v2/cards/virtual/${providerCode}/${providerCardId}/generate/tokenised`
 		)
 		return result
 	}
