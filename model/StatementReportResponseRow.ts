@@ -16,8 +16,7 @@ export interface StatementReportResponseRow {
 	bookingInfo?: BookingInfoResponse
 	postedDate: isoly.DateTime
 	transactionDate?: isoly.DateTime
-	actualBalance: number
-	availableBalance: number
+	balance: number
 	rowType: StatementReportRowType
 	transferType?: StatementTransferSpecificType
 	ids: StatementRowIds
