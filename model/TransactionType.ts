@@ -12,6 +12,8 @@ const transactionType = [
 	"APPROVAL_PENDING",
 	"EXPIRE",
 	"UNKNOWN",
+	"PENDING_APPROVE",
+	"PENDING_DECLINE",
 ] as const
 
 export type TransactionType = typeof transactionType[number]
