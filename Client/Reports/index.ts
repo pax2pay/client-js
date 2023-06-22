@@ -53,7 +53,7 @@ export class Reports {
 		return result
 	}
 	async statementSummaryForTable(
-		request: model.StatementSummaryReportResponse,
+		request: model.StatementSummaryReportRequest,
 		page?: number,
 		pageSize?: number
 	): Promise<
