@@ -62,7 +62,7 @@ export class Reports {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		let path = `statement/summary`
+		let path = `reports/statement/summary`
 		if (page || pageSize)
 			path = this.attachPageable(path, page, pageSize)
 
