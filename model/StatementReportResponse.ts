@@ -3,10 +3,8 @@ import { ProviderCode } from "./ProviderCode"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
 
 export interface StatementReportResponse {
-	openingAvailableBalance: number
-	closingAvailableBalance: number
-	openingActualBalance: number
-	closingActualBalance: number
+	openingBalance: number
+	closingBalance: number
 	paidIn?: number
 	paidOut?: number
 	providerCode: ProviderCode
