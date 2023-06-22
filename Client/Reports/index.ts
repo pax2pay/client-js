@@ -64,7 +64,7 @@ export class Reports {
 	> {
 		let path = `reports/statement/summary`
 		if (page || pageSize)
-			path = this.attachPageable(path, page, pageSize)
+			path = this.attachPageable(path, page, pageSize, "desc")
 
 		let result
 		result = await this.connection.post<{ list: model.StatementSummaryReportResponse; totalCount: number }>(
@@ -79,12 +79,12 @@ export class Reports {
 		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 		return result
 	}
-	attachPageable(base: string, page?: number, pageSize?: number) {
+	attachPageable(base: string, page?: number, pageSize?: number, sort?: "asc" | "desc") {
 		return (
 			base +
 			"?" +
 			(page ? `page=${page}` : "") +
-			(pageSize && page ? `&size=${pageSize}` : pageSize ? `size=${pageSize}` : "")
+			(pageSize && page ? `&size=${pageSize}` : pageSize ? `size=${pageSize}` : sort ? `sort=${sort}` : "")
 		)
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
