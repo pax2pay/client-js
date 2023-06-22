@@ -55,7 +55,8 @@ export class Reports {
 	async statementSummaryForTable(
 		request: model.StatementSummaryReportRequest,
 		page?: number,
-		pageSize?: number
+		pageSize?: number,
+		sort?: "asc" | "desc"
 	): Promise<
 		| model.StatementSummaryReportResponse
 		| (model.ErrorResponse & {
@@ -63,8 +64,8 @@ export class Reports {
 		  })
 	> {
 		let path = `reports/statement/summary`
-		if (page || pageSize)
-			path = this.attachPageable(path, page, pageSize, "desc")
+		if (page || pageSize || sort)
+			path = this.attachPageable(path, page, pageSize, sort)
 
 		let result
 		result = await this.connection.post<{ list: model.StatementSummaryReportResponse; totalCount: number }>(
