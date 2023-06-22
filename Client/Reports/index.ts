@@ -52,6 +52,29 @@ export class Reports {
 			result = result.list
 		return result
 	}
+	async statementSummaryForTable(
+		request: model.StatementSummaryReportResponse,
+		page?: number,
+		pageSize?: number
+	): Promise<
+		| model.StatementSummaryReportResponse
+		| (model.ErrorResponse & {
+				status: 400 | 403 | 404 | 500 | 503
+		  })
+	> {
+		let path = `statement/summary`
+		if (page || pageSize)
+			path = this.attachPageable(path, page, pageSize)
+
+		let result
+		result = await this.connection.post<{ list: model.StatementSummaryReportResponse; totalCount: number }>(
+			path,
+			request
+		)
+		if (!model.ErrorResponse.is(result) && "list" in result)
+			result = result.list
+		return result
+	}
 	async getStatementForTable(rowId: string) {
 		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 		return result
