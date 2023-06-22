@@ -10,4 +10,5 @@ export interface StatementReportRequest {
 	}
 	balanceType?: "AVAILABLE" | "ACTUAL" | "STANDARD"
 	type?: "summary" | "full"
+	subType?: "SETTLED" | "PENDING"
 }
