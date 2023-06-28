@@ -4,7 +4,7 @@ import { ProviderCode } from "./ProviderCode"
 export interface StatementReportRequest {
 	providerCode: ProviderCode
 	providerAccountId: string
-	dateRange: {
+	dateRange?: {
 		start: isoly.DateTime
 		end: isoly.DateTime
 	}
