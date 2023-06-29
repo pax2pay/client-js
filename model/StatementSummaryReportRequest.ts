@@ -5,8 +5,8 @@ export interface StatementSummaryReportRequest {
 	providerAccountId: string
 	balanceType: "ACTUAL" | "AVAILABLE"
 	dateRange?: {
-		start: isoly.Date
-		end: isoly.Date
+		start?: isoly.Date
+		end?: isoly.Date
 	}
 	period: "DAILY" | "WEEKLY" | "MONTHLY" | "QUARTERLY" | "YEARLY"
 }
