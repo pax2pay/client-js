@@ -78,8 +78,8 @@ export class Reports {
 		return result
 	}
 	attachPageable(base: string, page?: number, pageSize?: number, includeCount?: boolean) {
-		return `${base}?${page ? `page=${page}&` : ""}${pageSize ? `size=${pageSize}&` : ""}${
-			includeCount ? `includeCount=true` : ""
+		return `${base}?${page ? `page=${page}` : ""}${pageSize ? (page ? `&size=${pageSize}` : `size=${pageSize}`) : ""}${
+			includeCount ? (page || pageSize ? `&includeCount=true` : `includeCount=true`) : ""
 		}`
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
