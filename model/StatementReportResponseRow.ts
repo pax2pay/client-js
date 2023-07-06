@@ -16,8 +16,9 @@ export interface StatementReportResponseRow {
 	bookingInfo?: BookingInfoResponse
 	postedDate: isoly.DateTime
 	transactionDate?: isoly.DateTime
-	actualBalance: number
-	availableBalance: number
+	balance?: number
+	actualBalance?: number
+	availableBalance?: number
 	rowType: StatementReportRowType
 	transferType?: StatementTransferSpecificType
 	ids: StatementRowIds
@@ -34,8 +35,9 @@ export namespace StatementReportResponseRow {
 			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo)) &&
 			isoly.DateTime.is(value.postedDate) &&
 			(value.transactionDate == undefined || isoly.DateTime.is(value.transactionDate)) &&
-			typeof value.actualBalance == "number" &&
-			typeof value.availableBalance == "number" &&
+			(typeof value.balance == "number" || value.balance == undefined) &&
+			(typeof value.actualBalance == "number" || value.actualBalance == undefined) &&
+			(typeof value.availableBalance == "number" || value.availableBalance == undefined) &&
 			StatementReportRowType.is(value.rowType) &&
 			(value.transferType == undefined || StatementTransferSpecificType.is(value.transferType)) &&
 			StatementRowIds.is(value.ids) &&

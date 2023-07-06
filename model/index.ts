@@ -135,6 +135,9 @@ import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementReportUrlRequest } from "./StatementReportUrlRequest"
 import { StatementRowIds } from "./StatementRowIds"
+import { StatementSummaryReportRequest } from "./StatementSummaryReportRequest"
+import { StatementSummaryReportResponse } from "./StatementSummaryReportResponse"
+import { StatementSummaryReportResponseRow } from "./StatementSummaryReportResponseRow"
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
 import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
@@ -308,6 +311,9 @@ export {
 	StatementReportRowActionType,
 	StatementReportRowType,
 	StatementRowIds,
+	StatementSummaryReportRequest,
+	StatementSummaryReportResponse,
+	StatementSummaryReportResponseRow,
 	StatementTransferSpecificType,
 	SummaryBookingInfoResponse,
 	SupplierBookingInfo,

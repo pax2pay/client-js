@@ -52,17 +52,40 @@ export class Reports {
 			result = result.list
 		return result
 	}
+	async statementSummaryForTable(
+		request: model.StatementSummaryReportRequest,
+		page?: number,
+		pageSize?: number,
+		totalCount?: boolean
+	): Promise<
+		| { list: model.StatementSummaryReportResponse; totalCount: number }
+		| (model.ErrorResponse & {
+				status: 400 | 403 | 404 | 500 | 503
+		  })
+	> {
+		let path = `reports/statement/summary`
+		if (page || pageSize || totalCount)
+			path = this.attachPageable(path, page, pageSize, totalCount)
+
+		const result = await this.connection.post<{ list: model.StatementSummaryReportResponse; totalCount: number }>(
+			path,
+			request
+		)
+		return result
+	}
 	async getStatementForTable(rowId: string) {
 		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 		return result
 	}
-	attachPageable(base: string, page?: number, pageSize?: number) {
-		return (
-			base +
-			"?" +
-			(page ? `page=${page}` : "") +
-			(pageSize && page ? `&size=${pageSize}` : pageSize ? `size=${pageSize}` : "")
-		)
+	attachPageable(base: string, page?: number, pageSize?: number, includeCount?: boolean) {
+		const params = []
+		if (page)
+			params.push("page=" + page)
+		if (pageSize)
+			params.push("size=" + pageSize)
+		if (includeCount != undefined)
+			params.push("includeCount=" + includeCount)
+		return base + "?" + params.join("&")
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
 		const result = await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
