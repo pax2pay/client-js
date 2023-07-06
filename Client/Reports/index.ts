@@ -82,7 +82,7 @@ export class Reports {
 		if (page)
 			params.push("page=" + page)
 		if (pageSize)
-			params.push("pageSize=" + pageSize)
+			params.push("size=" + pageSize)
 		if (includeCount)
 			params.push("includeCount=" + includeCount)
 		return base + "?" + params.join("&")
