@@ -78,9 +78,14 @@ export class Reports {
 		return result
 	}
 	attachPageable(base: string, page?: number, pageSize?: number, includeCount?: boolean) {
-		return `${base}?${page ? `page=${page}` : ""}${pageSize ? (page ? `&size=${pageSize}` : `size=${pageSize}`) : ""}${
-			includeCount ? (page || pageSize ? `&includeCount=true` : `includeCount=true`) : ""
-		}`
+		const params = []
+		if (page)
+			params.push("page=" + page)
+		if (pageSize)
+			params.push("pageSize=" + pageSize)
+		if (includeCount)
+			params.push("includeCount=" + includeCount)
+		return base + "?" + params.join("&")
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
 		const result = await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)

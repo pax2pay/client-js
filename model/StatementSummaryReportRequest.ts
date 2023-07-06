@@ -3,7 +3,7 @@ import { ProviderCode } from "./ProviderCode"
 export interface StatementSummaryReportRequest {
 	providerCode: ProviderCode
 	providerAccountId: string
-	balanceType: "ACTUAL" | "AVAILABLE"
+	balanceType: "ACTUAL" | "AVAILABLE" | "STANDARD"
 	dateRange?: {
 		start?: isoly.Date
 		end?: isoly.Date

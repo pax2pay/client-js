@@ -17,6 +17,8 @@ export interface StatementReportResponseRow {
 	postedDate: isoly.DateTime
 	transactionDate?: isoly.DateTime
 	balance?: number
+	actualBalance?: number
+	availableBalance?: number
 	rowType: StatementReportRowType
 	transferType?: StatementTransferSpecificType
 	ids: StatementRowIds
@@ -34,6 +36,8 @@ export namespace StatementReportResponseRow {
 			isoly.DateTime.is(value.postedDate) &&
 			(value.transactionDate == undefined || isoly.DateTime.is(value.transactionDate)) &&
 			(typeof value.balance == "number" || value.balance == undefined) &&
+			(typeof value.actualBalance == "number" || value.actualBalance == undefined) &&
+			(typeof value.availableBalance == "number" || value.availableBalance == undefined) &&
 			StatementReportRowType.is(value.rowType) &&
 			(value.transferType == undefined || StatementTransferSpecificType.is(value.transferType)) &&
 			StatementRowIds.is(value.ids) &&
