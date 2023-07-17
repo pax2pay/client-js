@@ -8,7 +8,7 @@ export interface StatementReportRequest {
 		start: isoly.DateTime
 		end: isoly.DateTime
 	}
-	balanceType: BalanceType
+	balanceType?: BalanceType
 	type?: "summary" | "full"
 	subType?: "SETTLED" | "PENDING"
 }

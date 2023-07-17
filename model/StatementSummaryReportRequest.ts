@@ -5,7 +5,7 @@ import { BalanceType } from "./Report/BalanceType"
 export interface StatementSummaryReportRequest {
 	providerCode: ProviderCode
 	providerAccountId: string
-	balanceType: BalanceType
+	balanceType?: BalanceType
 	dateRange?: {
 		start?: isoly.Date
 		end?: isoly.Date
