@@ -1,3 +1,4 @@
+import { BalanceType as ReportBalanceType } from "./BalanceType"
 import { Reconciliation as ReportReconciliation } from "./Reconciliation"
 import { ReconciliationItem as ReportReconciliationItem } from "./ReconciliationItem"
 import { Statement as ReportStatement } from "./Statement"
@@ -17,4 +18,5 @@ export namespace Report {
 	export type StatementType = ReportStatementType
 	export type ItemStatus = ReportItemStatus
 	export type TransactionType = ReportTransactionType
+	export type BalanceType = ReportBalanceType
 }
