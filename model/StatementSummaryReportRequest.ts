@@ -10,5 +10,6 @@ export interface StatementSummaryReportRequest {
 		start?: isoly.Date
 		end?: isoly.Date
 	}
+	subType?: "SETTLED" | "PENDING"
 	period: "DAILY" | "WEEKLY" | "MONTHLY" | "QUARTERLY" | "YEARLY"
 }
