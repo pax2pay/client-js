@@ -192,11 +192,12 @@ export class Cards extends List<
 	}
 	async getAllFundingAccounts(
 		providerCode: model.ProviderCode,
+		size = 500,
 		sort = "friendlyName"
 	): Promise<model.ErrorResponse | model.AccountResponse[]> {
 		const response = await this.connection.get<{ list: model.AccountResponse[]; totalCount: number }>(
-			`funding-accounts?provider=${providerCode}&size=500`,
-			{ sort: sort }
+			`funding-accounts`,
+			{ provider: providerCode, size: size, sort: sort }
 		)
 		return this.extractResponse(response)
 	}
