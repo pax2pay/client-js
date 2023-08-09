@@ -5,7 +5,7 @@ import { ProviderCode } from "./ProviderCode"
  */
 export interface ProviderResponse {
 	id?: number
-	code?: ProviderCode
+	code: ProviderCode
 	name?: string
 	status?: "ACTIVE" | "DELETED" | "INACTIVE"
 }
@@ -15,7 +15,7 @@ export namespace ProviderResponse {
 		return (
 			typeof value == "object" &&
 			(value.id == undefined || typeof value.id == "number") &&
-			(value.code == undefined || ProviderCode.is(value.code)) &&
+			ProviderCode.is(value.code) &&
 			(value.name == undefined || typeof value.name == "string") &&
 			(value.name == undefined || value.status == "ACTIVE" || value.status == "DELETED" || value.status == "INACTIVE")
 		)
