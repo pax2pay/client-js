@@ -8,7 +8,7 @@ import { ProviderCode } from "./ProviderCode"
 import { Range } from "./Range"
 export interface CardSearchRequest {
 	fuzzySearch?: string
-	providerCode?: ProviderCode
+	providerCode?: ProviderCode | ProviderCode[]
 	status?: AccountState[]
 	currency?: Currency[]
 	friendlyName?: string
