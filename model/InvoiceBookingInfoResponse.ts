@@ -10,7 +10,7 @@ export interface InvoiceBookingInfoResponse {
 	value?: number
 	taxElement?: string
 	remittanceAdviceFilename?: string
-	timestamp: isoly.DateTime
+	timestamp?: isoly.DateTime
 }
 
 export namespace InvoiceBookingInfoResponse {
@@ -26,7 +26,7 @@ export namespace InvoiceBookingInfoResponse {
 			(value.value == undefined || typeof value.value == "number") &&
 			(value.taxElement == undefined || typeof value.taxElement == "string") &&
 			(value.remittanceAdviceFilename == undefined || typeof value.remittanceAdviceFilename == "string") &&
-			isoly.DateTime.is(value.timestamp)
+			(value.timestamp == undefined || isoly.DateTime.is(value.timestamp))
 		)
 	}
 }
