@@ -52,11 +52,7 @@ export namespace CardResponseV2 {
 			typeof value.providerCardId == "string" &&
 			CardUsage.is(value.usage) &&
 			FundingAccountSummaryResponse.is(value.fundingAccount) &&
-			(value.schedule == undefined ||
-				(Array.isArray(value.schedule) &&
-					value.schedule.every((a: any) => {
-						return CardScheduleResponseItem.is(a)
-					}))) &&
+			(value.schedule == undefined || Array.isArray(value.schedule)) &&
 			typeof value.createdBy == "string" &&
 			(value.delivery == undefined || CardDeliveryResponse.is(value.delivery)) &&
 			(value.batchId == undefined || typeof value.batchId == "string") &&
