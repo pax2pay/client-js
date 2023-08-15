@@ -47,7 +47,7 @@ export namespace CardResponseV2 {
 			typeof value.fundingBalance == "number" &&
 			typeof value.remainingBalance == "number" &&
 			typeof value.balance == "number" &&
-			typeof value.issueDate == "string" &&
+			Date.is(value.issueDate) &&
 			ProviderCode.is(value.providerCode) &&
 			typeof value.providerCardId == "string" &&
 			CardUsage.is(value.usage) &&
