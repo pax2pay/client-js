@@ -46,7 +46,12 @@ export class Connection {
 				(parameters
 					? "?" +
 					  Object.entries(parameters)
-							.map(param => param.join("="))
+							.map(param => {
+								if (Array.isArray(param[1]))
+									return `${param[0]}=${param[1].join(",")}`
+								else
+									return param.join("=")
+							})
 							.join("&")
 					: ""),
 			{
