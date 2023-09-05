@@ -15,5 +15,6 @@ export interface StatementReportResponse {
 	providerAccountId: string
 	currency: Currency
 	totalStatements: number
+	inaccurateBalance?: boolean
 	statements: StatementReportResponseRow[]
 }
