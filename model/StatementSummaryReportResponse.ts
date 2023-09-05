@@ -7,5 +7,6 @@ export interface StatementSummaryReportResponse {
 	providerAccountId: string
 	currency: isoly.Currency
 	balanceType?: "AVAILABLE" | "ACTUAL" | "STANDARD"
+	inaccurateBalance?: boolean
 	summaries: StatementSummaryReportResponseRow[]
 }
