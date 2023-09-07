@@ -101,6 +101,7 @@ import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResp
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
+import { OrganisationUpdateRequest } from "./OrganisationUpdateRequest"
 import { Passengers } from "./Passengers"
 import { PasswordChangeRequest } from "./PasswordChangeRequest"
 import { PasswordResetResponse } from "./PasswordResetResponse"
@@ -276,6 +277,7 @@ export {
 	OrganisationConfig,
 	OrganisationRequest,
 	OrganisationResponse,
+	OrganisationUpdateRequest,
 	Passengers,
 	PasswordChangeRequest,
 	PasswordResetResponse,

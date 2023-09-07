@@ -21,6 +21,13 @@ export class Organisations extends Collection<
 	static create(connection: Connection) {
 		return new Organisations(connection)
 	}
+	async updateOrganisation(
+		code: string,
+		request: model.OrganisationUpdateRequest
+	): Promise<model.ErrorResponse | model.OrganisationResponse> {
+		return await this.connection.put<model.OrganisationResponse>(`organisations/${code}`, request)
+	}
+
 	async getAllOrganisations(
 		page = 0,
 		size = 500,
