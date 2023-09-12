@@ -8,7 +8,7 @@ export function generatePagination<T extends { [key: string]: any } = { [key: st
 	const result = [
 		...(page ? [`page=${page}`] : []),
 		...(size ? [`size=${size}`] : []),
-		...sort.map(s => `sort=${typeof s == "object" ? s + (s.direction == "descending" ? "desc" : "") : s}`),
+		...sort.map(s => `sort=${String(typeof s == "object" ? s + (s.direction == "descending" ? "desc" : "") : s)}`),
 	].join("&")
 	return result ? "?" + result : ""
 }

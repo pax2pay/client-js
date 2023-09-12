@@ -3,7 +3,7 @@ import { ProviderCode } from "./ProviderCode"
 export interface ReconciliationReportUrlRequest {
 	fileFormat: string
 	locale?: string
-	providerCode: ProviderCode
+	providerCode?: ProviderCode
 	providerAccountId?: string
 	dateRange?: {
 		start: isoly.Date

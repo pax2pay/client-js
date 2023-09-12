@@ -64,7 +64,7 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 		page?: number,
 		size?: number,
 		sort = undefined,
-		provider = "modulr"
+		provider: model.ProviderCode | model.ProviderCode[] = "modulr"
 	) {
 		return await this.getNextPaginated<model.FundingAccountResponseV2Basic>(
 			previous,
@@ -88,7 +88,7 @@ export class Accounts extends List<model.AccountResponse, model.AccountSearchReq
 		page?: number,
 		size?: number,
 		sort = undefined,
-		provider = "modulr"
+		provider: model.ProviderCode | model.ProviderCode[] = "modulr"
 	) {
 		return await this.getNextPaginated<model.FundingAccountResponseV2Full>(
 			previous,
