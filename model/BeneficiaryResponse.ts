@@ -2,13 +2,13 @@ import { BeneficiaryStatus } from "./BeneficiaryStatus"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
 
 export interface BeneficiaryResponse {
-	transferDestination?: TransferDestinationInfo
+	transferDestination: TransferDestinationInfo
+	status: BeneficiaryStatus
+	name: string
+	beneficiaryId: string
+	createdOn: string
 	defaultReference?: string
-	status?: BeneficiaryStatus
-	name?: string
 	fullName?: string
-	beneficiaryId?: string
-	createdOn?: string
 	history?: BeneficiaryResponse[]
 }
 
@@ -16,13 +16,13 @@ export namespace BeneficiaryResponse {
 	export function is(value: BeneficiaryResponse | any): value is BeneficiaryResponse {
 		return (
 			typeof value == "object" &&
-			(value.transferDestination == undefined || TransferDestinationInfo.is(value.transferDestination)) &&
-			(value.defaultReference == undefined || typeof value.defaultReference == "string") &&
-			(value.status == undefined || BeneficiaryStatus.is(value.status)) &&
-			(value.name == undefined || typeof value.name == "string") &&
+			TransferDestinationInfo.is(value.transferDestination) &&
+			BeneficiaryStatus.is(value.status) &&
+			typeof value.name == "string" &&
+			typeof value.beneficiaryId == "string" &&
+			typeof value.createdOn == "string" &&
 			(value.fullName == undefined || typeof value.fullName == "string") &&
-			(value.beneficiaryId == undefined || typeof value.beneficiaryId == "string") &&
-			(value.createdOn == undefined || typeof value.createdOn == "string") &&
+			(value.defaultReference == undefined || typeof value.defaultReference == "string") &&
 			(value.history == undefined || Array.isArray(value.history)) //not checking same type because of risk of being slow
 		)
 	}
