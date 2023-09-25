@@ -6,11 +6,11 @@ import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { UserRequest } from "./UserRequest"
 
 export interface OmnisetupRequest {
-	flags: OmnisetupFlags
+	flags?: OmnisetupFlags
 	organisation: OrganisationCreateRequest
 	users: UserRequest[]
 	providers: OmnisetupProviderRequest
-	organisationConfig: OrganisationConfig
-	internalOrganisationConfig: InternalOrganisationConfig
-	sharedRolesets: string[]
+	organisationConfig?: OrganisationConfig
+	internalOrganisationConfig?: InternalOrganisationConfig
+	sharedRolesets?: string[]
 }
