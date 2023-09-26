@@ -10,6 +10,6 @@ export interface OmnisetupProviderRequest {
 	credentials?: CredentialRequest
 	providerSetupCredentials?: CredentialRequest
 	suppliers?: SupplierRequest[]
-	cardType: CardTypeSpecification[]
+	cardType: CardTypeSpecification
 	useAs?: string
 }
