@@ -4,10 +4,10 @@ import { OrganisationFlag } from "./OrganisationFlag"
 import { PaxpayFeature } from "./PaxpayFeature"
 
 export interface InternalOrganisationConfig {
-	flags: OrganisationFlag
-	internalBalanceLimit: OrganisationBalanceLimitResponse
-	features: PaxpayFeature[]
-	allowedMccConfig: AllowedMccConfig
-	statementAppned: boolean
-	statementRebuild: boolean
+	flags?: OrganisationFlag
+	internalBalanceLimit?: OrganisationBalanceLimitResponse
+	features?: PaxpayFeature[]
+	allowedMccConfig?: AllowedMccConfig
+	statementAppned?: boolean
+	statementRebuild?: boolean
 }
