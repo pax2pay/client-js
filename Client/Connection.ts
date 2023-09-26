@@ -5,6 +5,7 @@ type DefaultCodes = 503
 export class Connection {
 	unauthorized: (connection: Connection) => Promise<boolean>
 	#token?: string
+	#assumedOrg?: string
 	get token() {
 		return this.#token
 	}
@@ -13,6 +14,13 @@ export class Connection {
 	}
 	private constructor(readonly url: string, token?: string) {
 		this.#token = token
+	}
+
+	get assumedOrg() {
+		return this.#assumedOrg
+	}
+	set assumedOrg(value: string | undefined) {
+		this.#assumedOrg = value
 	}
 
 	async fetch<Response, Codes = 400 | 403 | 404 | 500>(
@@ -39,6 +47,8 @@ export class Connection {
 		}
 		if (this.token)
 			requestHeaders["X-Auth-Token"] = this.token
+		if (this.assumedOrg)
+			requestHeaders["x-assume"] = this.assumedOrg
 		const response = await fetch(
 			this.url +
 				"/" +
