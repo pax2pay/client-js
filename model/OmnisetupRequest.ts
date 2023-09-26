@@ -9,7 +9,7 @@ export interface OmnisetupRequest {
 	flags?: OmnisetupFlags
 	organisation: OrganisationCreateRequest
 	users: UserRequest[]
-	providers: OmnisetupProviderRequest
+	providers: OmnisetupProviderRequest[]
 	organisationConfig?: OrganisationConfig
 	internalOrganisationConfig?: InternalOrganisationConfig
 	sharedRolesets?: string[]
