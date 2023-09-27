@@ -15,7 +15,10 @@ export class Omnisetup {
 	static create(connection: Connection) {
 		return new Omnisetup(connection)
 	}
-	async createOrganisation(omnisetupRequest: OmnisetupRequest): Promise<OmnisetupResponse | ErrorResponse> {
-		return this.connection.post<OmnisetupResponse | ErrorResponse>(this.folder, omnisetupRequest)
+	async createOrganisation(
+		omnisetupRequest: OmnisetupRequest,
+		commit = true
+	): Promise<OmnisetupResponse | ErrorResponse> {
+		return this.connection.post<OmnisetupResponse | ErrorResponse>(`${this.folder}?commit=${commit}`, omnisetupRequest)
 	}
 }
