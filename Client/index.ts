@@ -43,12 +43,10 @@ export class Client {
 		const connection = Connection.open(url, typeof token == "string" ? token : undefined)
 		return connection && new Client(connection, typeof token == "string" ? undefined : token)
 	}
-	async runAssumed(orgCode: string, callback: () => Promise<any>) {
-		const previous = this.connection.assumedOrg
-		this.connection.assumedOrg = orgCode
-		const response = await callback()
-		this.connection.assumedOrg = previous
-		return response
+	assumedClient(orgCode: string) {
+		const newClient = Client.create(this.connection.url, this.connection.token)
+		newClient.connection.assumedOrg = orgCode
+		return newClient
 	}
 }
 
