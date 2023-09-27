@@ -43,7 +43,7 @@ export class Client {
 		const connection = Connection.open(url, typeof token == "string" ? token : undefined)
 		return connection && new Client(connection, typeof token == "string" ? undefined : token)
 	}
-	assumedClient(orgCode: string) {
+	getAssumedClient(orgCode: string) {
 		const newClient = Client.create(this.connection.url, this.connection.token)
 		newClient.connection.assumedOrg = orgCode
 		return newClient
