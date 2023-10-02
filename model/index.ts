@@ -68,6 +68,8 @@ import { DateRangeLocalDate } from "./DateRangeLocalDate"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
+import { ExternalDestination } from "./ExternalDestination"
+import { ExternalSource } from "./ExternalSource"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
 import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
@@ -95,6 +97,7 @@ import { Issue } from "./Issue"
 import { LegacyBookingInfoRequest } from "./LegacyBookingInfoRequest"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
+import { MerchantDetails } from "./MerchantDetails"
 import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
@@ -244,6 +247,8 @@ export {
 	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,
+	ExternalDestination,
+	ExternalSource,
 	FiveFieldsBookingInfoRequest,
 	FiveFieldsBookingInfoResponse,
 	FlightBookingInfoRequest,
@@ -271,6 +276,7 @@ export {
 	LegacyBookingInfoRequest,
 	LoginRequest,
 	LoginResponse,
+	MerchantDetails,
 	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
 	OrganisationBalanceLimitResponse,

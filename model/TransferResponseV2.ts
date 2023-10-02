@@ -1,5 +1,6 @@
 import { Currency, Date } from "isoly"
 import { BookingInfoResponse } from "./BookingInfoResponse"
+import { ExternalSource } from "./ExternalSource"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { ProviderCode } from "./ProviderCode"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
@@ -15,7 +16,7 @@ export interface TransferResponseV2 {
 	createdDate: Date
 	paymentDate?: Date
 	reference: string
-	source: FundingAccountSummaryResponse
+	source: FundingAccountSummaryResponse | ExternalSource
 	destination: TransferDestinationResponse
 	bookingInfo?: BookingInfoResponse
 	createdBy: string
