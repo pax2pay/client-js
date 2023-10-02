@@ -6,6 +6,11 @@ export interface StatementRowIds {
 	providerCardId?: string
 	orderId?: string
 	providerTransferId?: string
+	merchantDetails?: {
+		mcc?: string
+		merchantName?: string
+		merchantCountry?: string
+	}
 }
 
 export namespace StatementRowIds {
@@ -16,7 +21,8 @@ export namespace StatementRowIds {
 			ProviderCode.is(value.providerCode) &&
 			(value.providerCardId == undefined || typeof value.providerCardId == "string") &&
 			(value.orderId == undefined || typeof value.orderId == "string") &&
-			(value.providerTransferId == undefined || typeof value.providerTransferId == "string")
+			(value.providerTransferId == undefined || typeof value.providerTransferId == "string") &&
+			(value.merchantDetails == undefined || typeof value.merchantDetails == "object")
 		)
 	}
 }
