@@ -95,6 +95,7 @@ import { Issue } from "./Issue"
 import { LegacyBookingInfoRequest } from "./LegacyBookingInfoRequest"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
+import { MerchantDetails } from "./MerchantDetails"
 import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
@@ -271,6 +272,7 @@ export {
 	LegacyBookingInfoRequest,
 	LoginRequest,
 	LoginResponse,
+	MerchantDetails,
 	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
 	OrganisationBalanceLimitResponse,
