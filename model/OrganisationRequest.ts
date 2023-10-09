@@ -1,7 +1,10 @@
+import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
+
 /**
  * Information for creating organisation
  */
 export interface OrganisationRequest {
-	code: string
 	name: string
+	status: "ACTIVE" | "DELETED"
+	organisationLimitRequest?: OrganisationBalanceLimitResponse
 }

@@ -9,6 +9,7 @@ import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
+import { AllowedMccConfig } from "./AllowedMccConfig"
 import { AmendCardRequest } from "./AmendCardRequest"
 import { AmountPair } from "./AmountPair"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
@@ -44,6 +45,7 @@ import { CardStatement } from "./CardStatement"
 import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardType } from "./CardType"
+import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypeResponseV2 } from "./CardTypeResponseV2"
 import { CardTypesConfig } from "./CardTypesConfig"
@@ -90,6 +92,8 @@ import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
 import { HotelInfo } from "./HotelInfo"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
+import { InternalBalanceLimit } from "./InternalBalanceLimit"
+import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
 import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
 import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
 import { InvokingSystem } from "./InvokingSystem"
@@ -100,8 +104,14 @@ import { LoginResponse } from "./LoginResponse"
 import { MerchantDetails } from "./MerchantDetails"
 import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
+import { OmnisetupFlags } from "./OmnisetupFlags"
+import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
+import { OmnisetupRequest } from "./OmnisetupRequest"
+import { OmnisetupResponse } from "./OmnisetupResponse"
 import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
+import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
+import { OrganisationFlag } from "./OrganisationFlag"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
 import { OrganisationUpdateRequest } from "./OrganisationUpdateRequest"
@@ -115,6 +125,7 @@ import { Payload } from "./Payload"
 import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
 import { PaymentOption } from "./PaymentOption"
 import { ProcessedStatement } from "./ProcessedStatement"
+import { ProductType } from "./ProductType"
 import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
 import { Range } from "./Range"
@@ -145,6 +156,8 @@ import { StatementSummaryReportResponseRow } from "./StatementSummaryReportRespo
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
 import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
+import { SupplierRequest } from "./SupplierRequest"
+import { SupplierResponse } from "./SupplierResponse"
 import { TransactionResponse } from "./TransactionResponse"
 import { TransactionType } from "./TransactionType"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
@@ -188,6 +201,7 @@ export {
 	AccountType,
 	AddressInfo,
 	AgentBookingInfo,
+	AllowedMccConfig,
 	AmendCardRequest,
 	AmountPair,
 	BeneficiaryRequest,
@@ -222,6 +236,7 @@ export {
 	CardTransaction,
 	CardTransactionType,
 	CardType,
+	CardTypeProfileResponse,
 	CardTypeResponse,
 	CardTypeResponseV2,
 	CardTypesConfig,
@@ -269,6 +284,8 @@ export {
 	HotelInfo,
 	InsertCardOptionRequest,
 	InsertCardRequest,
+	InternalBalanceLimit,
+	InternalOrganisationConfig,
 	InvoiceBookingInfoRequest,
 	InvoiceBookingInfoResponse,
 	InvokingSystem,
@@ -279,8 +296,14 @@ export {
 	MerchantDetails,
 	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
+	OmnisetupFlags,
+	OmnisetupProviderRequest,
+	OmnisetupRequest,
+	OmnisetupResponse,
 	OrganisationBalanceLimitResponse,
 	OrganisationConfig,
+	OrganisationCreateRequest,
+	OrganisationFlag,
 	OrganisationRequest,
 	OrganisationResponse,
 	OrganisationUpdateRequest,
@@ -294,6 +317,7 @@ export {
 	PaymentMethodOptionResponse,
 	PaymentOption,
 	ProcessedStatement,
+	ProductType,
 	ProviderCode,
 	ProviderResponse,
 	Range,
@@ -325,6 +349,8 @@ export {
 	StatementTransferSpecificType,
 	SummaryBookingInfoResponse,
 	SupplierBookingInfo,
+	SupplierRequest,
+	SupplierResponse,
 	TransactionResponse,
 	TransactionType,
 	TransferDestinationInfo,

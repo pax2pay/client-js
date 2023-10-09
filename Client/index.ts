@@ -10,6 +10,7 @@ import { Configuration as ClientConfiguration } from "./Configuration"
 import { Connection } from "./Connection"
 import { Email as ClientEmail } from "./Email"
 import { List as ClientList } from "./List"
+import { Omnisetup as ClientOmnisetup } from "./Omnisetup"
 import { Organisation as ClientOrganisation } from "./Organisation"
 import { Organisations as ClientOrganisations } from "./Organisations"
 import { Paginated as ClientPaginated } from "./Paginated"
@@ -33,6 +34,7 @@ export class Client {
 	configuration = ClientConfiguration.create(this.connection)
 	email = ClientEmail.create(this.connection)
 	users = ClientUsers.create(this.connection)
+	omnisetup = ClientOmnisetup.create(this.connection)
 	organisations = ClientOrganisations.create(this.connection)
 	reports = ClientReports.create(this.connection)
 	transfers = ClientTransfers.create(this.connection)
@@ -60,6 +62,7 @@ export namespace Client {
 	export type Categories = ClientCategories
 	export type Configuration = ClientConfiguration
 	export type Email = ClientEmail
+	export type Omnisetup = ClientOmnisetup
 	export type Organisation = ClientOrganisation
 	export type Organisations = ClientOrganisations
 	export type Reports = ClientReports
