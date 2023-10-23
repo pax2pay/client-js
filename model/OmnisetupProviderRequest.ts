@@ -19,7 +19,7 @@ export namespace OmnisetupProviderRequest {
 		return (
 			typeof value == "object" &&
 			ProviderCode.is(value.providerCode) &&
-			(value.cerdentials == undefined || CredentialRequest.is(value.credentials)) &&
+			(value.credentials == undefined || CredentialRequest.is(value.credentials)) &&
 			(value.providerSetupCredentials == undefined || CredentialRequest.is(value.providerSetupCredentials)) &&
 			(value.suppliers == undefined || SupplierRequest.is(value.suppliers)) &&
 			CardTypeSpecification.is(value.cardType) &&
