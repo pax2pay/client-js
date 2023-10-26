@@ -74,7 +74,8 @@ export class Connection {
 			}
 		).catch(_ => undefined)
 		if (response && response.headers.has("x-otp-cookie"))
-			window.sessionStorage.setItem("cookie", requestHeaders["x-otp-cookie"])
+			window.sessionStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
+
 		return !response
 			? { code: 503, errors: [{ message: "Service unavailable" }] }
 			: response.status == 401 && (await this.unauthorized(this))
