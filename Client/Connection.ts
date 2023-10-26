@@ -6,7 +6,6 @@ export class Connection {
 	unauthorized: (connection: Connection) => Promise<boolean>
 	#token?: string
 	#assumedOrg?: string
-	static cookie?: string
 	get token() {
 		return this.#token
 	}
