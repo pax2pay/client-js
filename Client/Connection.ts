@@ -50,8 +50,8 @@ export class Connection {
 			requestHeaders["X-Auth-Token"] = this.token
 		if (this.assumedOrg)
 			requestHeaders["x-assume"] = this.assumedOrg
-		if (Connection.cookie)
-			requestHeaders["x-otp-cookie"] = Connection.cookie
+		if (window.sessionStorage.getItem("cookie"))
+			requestHeaders["x-otp-cookie"] = window.sessionStorage.getItem("cookie") ?? ""
 		const response = await fetch(
 			this.url +
 				"/" +
@@ -74,7 +74,7 @@ export class Connection {
 			}
 		).catch(_ => undefined)
 		if (response && response.headers.has("x-otp-cookie"))
-			Connection.cookie = response.headers.get("x-otp-cookie") ?? undefined
+			window.sessionStorage.setItem("cookie", requestHeaders["x-otp-cookie"])
 		return !response
 			? { code: 503, errors: [{ message: "Service unavailable" }] }
 			: response.status == 401 && (await this.unauthorized(this))
