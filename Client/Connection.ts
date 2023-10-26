@@ -6,7 +6,6 @@ export class Connection {
 	unauthorized: (connection: Connection) => Promise<boolean>
 	#token?: string
 	#assumedOrg?: string
-	cookie?: string
 	get token() {
 		return this.#token
 	}
@@ -32,6 +31,7 @@ export class Connection {
 		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const isMultipart = request && request instanceof FormData
+		const cookie = window.sessionStorage.getItem("cookie")
 		let requestHeaders: Record<string, string> = { "x-invoking-system": "portal_2" }
 		if (!isMultipart)
 			requestHeaders = {
@@ -50,8 +50,8 @@ export class Connection {
 			requestHeaders["X-Auth-Token"] = this.token
 		if (this.assumedOrg)
 			requestHeaders["x-assume"] = this.assumedOrg
-		if (this.cookie)
-			requestHeaders["x-otp-cookie"] = this.cookie
+		if (cookie)
+			requestHeaders["x-otp-cookie"] = cookie
 		const response = await fetch(
 			this.url +
 				"/" +
@@ -74,7 +74,8 @@ export class Connection {
 			}
 		).catch(_ => undefined)
 		if (response && response.headers.has("x-otp-cookie"))
-			this.cookie = response.headers.get("x-otp-cookie") ?? undefined
+			window.sessionStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
+
 		return !response
 			? { code: 503, errors: [{ message: "Service unavailable" }] }
 			: response.status == 401 && (await this.unauthorized(this))
