@@ -31,6 +31,7 @@ export class Connection {
 		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const isMultipart = request && request instanceof FormData
+		const cookie = window.sessionStorage.getItem("cookie")
 		let requestHeaders: Record<string, string> = { "x-invoking-system": "portal_2" }
 		if (!isMultipart)
 			requestHeaders = {
@@ -49,8 +50,8 @@ export class Connection {
 			requestHeaders["X-Auth-Token"] = this.token
 		if (this.assumedOrg)
 			requestHeaders["x-assume"] = this.assumedOrg
-		if (window.sessionStorage.getItem("cookie"))
-			requestHeaders["x-otp-cookie"] = window.sessionStorage.getItem("cookie") ?? ""
+		if (cookie)
+			requestHeaders["x-otp-cookie"] = cookie
 		const response = await fetch(
 			this.url +
 				"/" +
