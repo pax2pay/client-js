@@ -143,6 +143,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 			sort
 		)
 	}
+	// "Deprecated". This was added to the Accounts class so it can be removed from this when switched over wherever it's used
 	async getFundingAccounts(
 		searchRequest: model.FundingAccountSearchRequest
 	): Promise<model.ErrorResponse | model.AccountResponse[]> {
@@ -152,6 +153,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		)
 		return this.extractResponse(response)
 	}
+	// "Deprecated". This was added to the Accounts class so it can be removed from this when switched over wherever it's used
 	async getAllFundingAccounts(
 		providerCode: model.ProviderCode,
 		size = 500,
