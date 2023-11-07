@@ -11,7 +11,7 @@ export class Organisations extends List<model.OrganisationResponse> {
 		return new Organisations(connection)
 	}
 	async remove(code: string) {
-		return await this.connection.remove<Response>(`${this.folder}/${code}`)
+		return await this.connection.remove<model.OrganisationResponse>(`${this.folder}/${code}`)
 	}
 	async updateOrganisation(
 		code: string,
