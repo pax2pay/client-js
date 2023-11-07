@@ -10,6 +10,9 @@ export class Organisations extends List<model.OrganisationResponse> {
 	static create(connection: Connection) {
 		return new Organisations(connection)
 	}
+	async remove(code: string) {
+		return await this.connection.remove<Response>(`${this.folder}/${code}`)
+	}
 	async updateOrganisation(
 		code: string,
 		request: model.OrganisationUpdateRequest

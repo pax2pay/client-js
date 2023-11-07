@@ -14,6 +14,9 @@ export class Users extends List<model.UserResponse> {
 	async deleteUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
 		return await this.connection.remove<model.UserResponse>(`users/${username}`)
 	}
+	async create(request: model.UserRequest) {
+		return await this.connection.post<model.UserResponse>(this.folder, request)
+	}
 	async getAllUsers(): Promise<model.UserResponse[] | model.ErrorResponse> {
 		const response = await this.connection.get<{ list: model.UserResponse[]; totalCount: number }>(`users`, {
 			size: 500,
