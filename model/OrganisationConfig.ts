@@ -18,4 +18,5 @@ export interface OrganisationConfig {
 	inboundTransferConfig?: FundingAccountInboundTransferNotificationConfig
 	fundingLimitConfig?: FundingLimitConfig
 	cardDeliveryEmailConfig?: CardDeliveryEmailConfig
+	portalHideMultipleUseOption?: boolean
 }
