@@ -32,11 +32,4 @@ describe("pax2pay.reports", () => {
 			},
 		})
 	})
-
-	it("attachPageable", async () => {
-		const result = await client?.reports.attachPageable("statement", 2, 10)
-		expect(result).toEqual("statement?page=2&size=10")
-		const result2 = await client?.reports.attachPageable("statement", 5, 30)
-		expect(result2).toEqual("statement?page=5&size=30")
-	})
 })

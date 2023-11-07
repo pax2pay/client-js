@@ -23,10 +23,13 @@ export class Accounts extends List<model.AccountResponse> {
 					totalCount: number
 			  }
 			| model.ErrorResponse
-		>(`account-summaries?refresh=false&providerCodes=${providerCodes}${accountId ? `&accountId=${accountId}` : ""}${
-			accountStates ? `&accountStates=${accountStates}` : ""
-		}${providerAccountId ? `&providerAccountId=${providerAccountId}` : ""}
-`)
+		>(`account-summaries`, {
+			refresh: false,
+			providerCodes: providerCodes,
+			accountId: accountId,
+			accountStates: accountStates,
+			providerAccountId: providerAccountId,
+		})
 		return this.extractResponse(response)
 	}
 	async updateFundingAccount(
