@@ -142,7 +142,6 @@ import { ScheduleEntry } from "./ScheduleEntry"
 import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { Segment } from "./Segment"
-import { Sorting } from "./Sorting"
 import { StatementReportRequest } from "./StatementReportRequest"
 import { StatementReportResponse } from "./StatementReportResponse"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
@@ -334,7 +333,6 @@ export {
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	Segment,
-	Sorting,
 	SearchBeneficiaryRequest,
 	StatementReportUrlRequest,
 	StatementReportRequest,

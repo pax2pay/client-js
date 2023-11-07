@@ -1,3 +1,4 @@
+import { Currency } from "isoly"
 import assert from "assert"
 import * as dotenv from "dotenv"
 import * as model from "../../model"
@@ -66,13 +67,14 @@ export function getExpectedForBeneficiary(request: model.TransferRequest): model
 		amount: request.amount,
 		beneficiary: {
 			transferDestination: {
-				currency: request.currency,
+				currency: request.currency as Currency,
 				fullName: expect.any(String),
 			},
+			name: expect.any(String),
 			defaultReference: expect.any(String),
 			status: expect.stringMatching(/(ACTIVE)|(DELETED)|(OUTDATED)/),
 			fullName: expect.any(String),
-			beneficiaryId: process.env.beneficiaryModulr,
+			beneficiaryId: process.env.beneficiaryModulr ?? "",
 			createdOn: expect.any(String),
 		},
 	}

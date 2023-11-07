@@ -9,22 +9,18 @@ export class Configuration {
 		return new Configuration(connection)
 	}
 	async getAvailableCurrency(providerCode: ProviderCode = "modulr"): Promise<Currency[] | model.ErrorResponse> {
-		const result = await this.connection.get<Currency[]>(`config/currencies`, { provider: providerCode })
-		return result
+		return await this.connection.get<Currency[]>(`config/currencies`, { provider: providerCode })
 	}
 	async updateOrganisationConfig(
 		request: model.OrganisationConfig
 	): Promise<model.OrganisationConfig | model.ErrorResponse> {
-		const result = await this.connection.post<model.OrganisationConfig>(`config/organisation`, request)
-		return result
+		return await this.connection.post<model.OrganisationConfig>(`config/organisation`, request)
 	}
 	async getOrganisationConfig(): Promise<model.OrganisationConfig | model.ErrorResponse> {
-		const result = await this.connection.get<model.OrganisationConfig>(`config/organisation`)
-		return result
+		return await this.connection.get<model.OrganisationConfig>(`config/organisation`)
 	}
 	async getUserConfig(): Promise<model.UserConfig | model.ErrorResponse> {
-		const result = await this.connection.get<model.UserConfig>(`config/user`)
-		return result
+		return await this.connection.get<model.UserConfig>(`config/user`)
 	}
 	async getPortalFeatures(): Promise<model.PaxpayFeature[] | model.ErrorResponse> {
 		return await this.connection.get<model.PaxpayFeature[]>(`config/portal`)

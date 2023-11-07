@@ -1,24 +1,18 @@
 import * as model from "../../model"
-import { Collection } from "../Collection"
 import { Connection } from "../Connection"
+import { List } from "../List"
 import { Paginated } from "../Paginated"
-import { Resource } from "../Resource"
-import { User } from "../User"
 
-export class Users extends Collection<model.UserResponse, model.UserSearchRequest, model.UserRequest> {
+export class Users extends List<model.UserResponse> {
 	protected folder = "users"
 	private constructor(connection: Connection) {
 		super(connection)
-	}
-	protected createResource(response: model.UserResponse): Resource<model.UserResponse, { [key: string]: any }> {
-		return new User(this.connection, [this.folder, response.username].join("/"), response)
 	}
 	static create(connection: Connection) {
 		return new Users(connection)
 	}
 	async deleteUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
-		const result = await this.connection.remove<model.UserResponse>(`users/${username}`)
-		return result
+		return await this.connection.remove<model.UserResponse>(`users/${username}`)
 	}
 	async getAllUsers(): Promise<model.UserResponse[] | model.ErrorResponse> {
 		const response = await this.connection.get<{ list: model.UserResponse[]; totalCount: number }>(`users`, {
@@ -35,8 +29,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		return this.extractResponse(response)
 	}
 	async getUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
-		const result = await this.connection.get<model.UserResponse>(`users/${username}`)
-		return result
+		return await this.connection.get<model.UserResponse>(`users/${username}`)
 	}
 	async getUsersActiveRoles(username: string): Promise<string[] | model.ErrorResponse> {
 		const response = await this.connection.get<{ list: string[]; totalCount: number }>(
@@ -45,26 +38,19 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		return this.extractResponse(response)
 	}
 	async resetPassword(username: string): Promise<model.PasswordResetResponse | model.ErrorResponse> {
-		const result = await this.connection.post<model.PasswordResetResponse>(`auth/passwordreset`, { username: username })
-		return result
+		return await this.connection.post<model.PasswordResetResponse>(`auth/passwordreset`, { username: username })
 	}
 	async updateRolesetOnUser(username: string, roleset: string): Promise<model.UserRoleResponse | model.ErrorResponse> {
-		const result = await this.connection.put<model.UserRoleResponse>(`users/${username}/rolesets/${roleset}`, undefined)
-		return result
+		return await this.connection.put<model.UserRoleResponse>(`users/${username}/rolesets/${roleset}`, undefined)
 	}
 	async addRolesetOnUser(username: string, roleset: string): Promise<model.UserRoleResponse | model.ErrorResponse> {
-		const result = await this.connection.post<model.UserRoleResponse>(
-			`users/${username}/rolesets/${roleset}`,
-			undefined
-		)
-		return result
+		return await this.connection.post<model.UserRoleResponse>(`users/${username}/rolesets/${roleset}`, undefined)
 	}
 	async updateUser(
 		username: string,
 		request: model.UserChangeRequest
 	): Promise<model.UserResponse | model.ErrorResponse> {
-		const result = await this.connection.put<model.UserResponse>(`users/${username}`, request)
-		return result
+		return await this.connection.put<model.UserResponse>(`users/${username}`, request)
 	}
 	async checkUsernameAvailability(username: string): Promise<model.UsernameAvailabilityResponse | model.ErrorResponse> {
 		return await this.connection.get<model.UsernameAvailabilityResponse>(`${this.folder}/username/${username}`)
@@ -114,7 +100,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		size?: number,
 		sort = "username,asc"
 	): Promise<model.ErrorResponse | Paginated<model.UserResponse>> {
-		return await this.getNextPaginated<model.UserResponse>(
+		return await this.getNextPaginated(
 			previous,
 			(page, size, sort, request) =>
 				this.connection.post<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[]>(
@@ -139,7 +125,7 @@ export class Users extends Collection<model.UserResponse, model.UserSearchReques
 		sort = "username,asc",
 		providerCode = "modulr"
 	): Promise<model.ErrorResponse | Paginated<model.UserResponse>> {
-		return await this.getNextPaginated<model.UserResponse>(
+		return await this.getNextPaginated(
 			previous,
 			(page, size, sort) =>
 				this.connection.get<{ list: model.UserResponse[]; totalCount: number } | model.UserResponse[]>(`users`, {

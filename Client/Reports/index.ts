@@ -67,15 +67,10 @@ export class Reports {
 		if (page || pageSize || totalCount)
 			path = this.attachPageable(path, page, pageSize, totalCount)
 
-		const result = await this.connection.post<{ list: model.StatementSummaryReportResponse; totalCount: number }>(
-			path,
-			request
-		)
-		return result
+		return await this.connection.post<{ list: model.StatementSummaryReportResponse; totalCount: number }>(path, request)
 	}
 	async getStatementForTable(rowId: string) {
-		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
-		return result
+		return await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 	}
 	attachPageable(base: string, page?: number, pageSize?: number, includeCount?: boolean) {
 		const params = []
@@ -88,20 +83,16 @@ export class Reports {
 		return base + "?" + params.join("&")
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
-		const result = await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
-		return result
+		return await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
 	}
 	async getUserReportUrl(request: model.UserReportUrlRequest) {
-		const result = await this.connection.post<model.ReportUrlResponse>(`reports/user/download`, request)
-		return result
+		return await this.connection.post<model.ReportUrlResponse>(`reports/user/download`, request)
 	}
 	async getCardReportUrl(request: model.CardReportUrlRequest) {
-		const result = await this.connection.post<model.ReportUrlResponse>(`reports/card/download`, request)
-		return result
+		return await this.connection.post<model.ReportUrlResponse>(`reports/card/download`, request)
 	}
 	async getReconciliationReportUrl(request: model.ReconciliationReportUrlRequest) {
-		const result = await this.connection.post<model.ReportUrlResponse>(`reports/reconciliation/download`, request)
-		return result
+		return await this.connection.post<model.ReportUrlResponse>(`reports/reconciliation/download`, request)
 	}
 	static create(connection: Connection) {
 		return new Reports(connection)

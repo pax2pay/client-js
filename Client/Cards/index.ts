@@ -1,34 +1,15 @@
 import * as model from "../../model"
-import { Card } from "../Card"
 import { Connection } from "../Connection"
 import { List } from "../List"
 import { Paginated } from "../Paginated"
 
-export class Cards extends List<
-	model.CardResponseV2 | model.CardResponse,
-	model.CardSearch,
-	model.CreateCardRequest,
-	Card
-> {
+export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	protected folder = "cards/virtual"
 	constructor(connection: Connection) {
 		super(connection)
 	}
-	protected getResourcePath(resource: model.CardResponseV2 | model.CardResponse): string {
-		return [this.folder, resource.providerCode, resource.providerCardId].join("/")
-	}
-	protected createResource(response: model.CardResponseV2): Card {
-		return new Card(this.connection, [this.folder, response.providerCode, response.providerCardId].join("/"), response)
-	}
-	protected map(response: model.CardResponseV2): Card & model.CardResponseV2 {
-		return Object.assign(new Card(this.connection, this.getResourcePath(response), response), response)
-	}
-	protected mapLegacy(response: model.CardResponse): Card & model.CardResponse {
-		return Object.assign(new Card(this.connection, this.getResourcePath(response), response), response)
-	}
 	async create(request: model.CreateCardRequest) {
-		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual/tokenised", request)
-		return model.ErrorResponse.is(result) ? result : this.map(result)
+		return await this.connection.post<model.CardResponseV2>("v2/cards/virtual/tokenised", request)
 	}
 	async createCardWithRemittanceAdvice(request: model.CreateCardRequest, file: File) {
 		const formData = new FormData()
@@ -39,12 +20,10 @@ export class Cards extends List<
 				type: "application/json",
 			})
 		)
-		const result = await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
-		return model.ErrorResponse.is(result) ? result : this.map(result)
+		return await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
 	}
 	async createLegacy(request: model.CreateCardRequest) {
-		const result = await this.connection.post<model.CardResponse>("cards/virtual", request)
-		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
+		return await this.connection.post<model.CardResponse>("cards/virtual", request)
 	}
 	static create(connection: Connection): Cards {
 		return new Cards(connection)
@@ -74,63 +53,47 @@ export class Cards extends List<
 		)
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection
-			.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}?includeSchedules=true
-`)
-		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
+		return await this.connection.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}`, {
+			includeSchedules: true,
+		})
 	}
 	async getCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponseV2>(`v2/cards/virtual/${providerCode}/${providerCardId}
+		return await this.connection.get<model.CardResponseV2>(`v2/cards/virtual/${providerCode}/${providerCardId}
 `)
-		return model.ErrorResponse.is(result) ? result : this.map(result)
 	}
 	async createCard(request: model.CreateCardRequest) {
-		const result = await this.connection.post<model.CardResponse>(`cards/virtual`, request)
-		return model.ErrorResponse.is(result) ? result : this.mapLegacy(result)
+		return await this.connection.post<model.CardResponse>(`cards/virtual`, request)
 	}
 	async cancelCard(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.remove<model.CardResponse>(
-			`cards/virtual/${providerCode}/${providerCardId}/cancel`
-		)
-		return result
+		return await this.connection.remove<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}/cancel`)
 	}
 	async cancelCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.remove<model.CardResponseV2>(
+		return await this.connection.remove<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/cancel`
 		)
-		return result
 	}
 	async generateCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponseV2>(
+		return await this.connection.get<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/generate/tokenised`
 		)
-		return result
 	}
 	async approveCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.post<model.CardResponseV2>(
+		return await this.connection.post<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/approve`,
 			undefined
 		)
-		return result
 	}
 	async declineCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.post<model.CardResponseV2>(
+		return await this.connection.post<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/decline`,
 			undefined
 		)
-		return result
 	}
 	async thawCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/thaw`
-		)
-		return result
+		return await this.connection.get<model.CardResponseV2>(`v2/cards/virtual/${providerCode}/${providerCardId}/thaw`)
 	}
 	async freezeCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/freeze`
-		)
-		return result
+		return await this.connection.get<model.CardResponseV2>(`v2/cards/virtual/${providerCode}/${providerCardId}/freeze`)
 	}
 	async getCardTypesV2(providerCode: model.ProviderCode): Promise<model.ErrorResponse | model.CardTypeResponseV2[]> {
 		const response = await this.connection.get<{ list: model.CardTypeResponseV2[]; totalCount: number }>(
@@ -139,8 +102,7 @@ export class Cards extends List<
 		return this.extractResponse(response)
 	}
 	async getCardTypes(providerCode: model.ProviderCode) {
-		const result = await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
-		return result
+		return await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
 	}
 
 	async searchCardsV2(
@@ -202,17 +164,14 @@ export class Cards extends List<
 		return this.extractResponse(response)
 	}
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
-		const result = await this.connection
-			.get<model.BookingInfoResponse>(`booking-info/cards/${providerCode}/${providerCardId}
+		return await this.connection.get<model.BookingInfoResponse>(`booking-info/cards/${providerCode}/${providerCardId}
 `)
-		return result
 	}
 	async editCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
-		const result = await this.connection.put<model.BookingInfoResponse>(
+		return await this.connection.put<model.BookingInfoResponse>(
 			`booking-info/cards/${providerCode}/${providerCardId}`,
 			request
 		)
-		return result
 	}
 	async getCardStatements(
 		providerCardId: string,
@@ -242,20 +201,18 @@ export class Cards extends List<
 		return this.extractResponse(response)
 	}
 	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {
-		const result = await this.connection.put<model.CardResponseV2>(
+		return await this.connection.put<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/schedule`,
 			{
 				schedule: request,
 			}
 		)
-		return result
 	}
 	async amendExistingCardV2(providerCardId: string, providerCode: model.ProviderCode, request: model.AmendCardRequest) {
-		const result = await this.connection.put<model.CardResponseV2>(
+		return await this.connection.put<model.CardResponseV2>(
 			`v2/cards/virtual/${providerCode}/${providerCardId}/amend`,
 			request
 		)
-		return result
 	}
 	async getDisplayableCardTypesForProvider(provider: model.ProviderCode = "modulr") {
 		return await this.connection.get<Record<string, string>>(`v2/cards/types/displayable/${provider}`)
