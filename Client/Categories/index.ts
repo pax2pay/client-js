@@ -1,29 +1,29 @@
 import * as model from "../../model"
 import { CategoryResponse } from "../../model/CategoryResponse"
 import { Connection } from "../Connection"
-export class Categories {
+import { List } from "../List"
+export class Categories extends List<model.CategoryResponse> {
 	protected folder = "category"
-	constructor(private readonly connection: Connection) {}
+	private constructor(connection: Connection) {
+		super(connection)
+	}
 	static create(connection: Connection) {
 		return new Categories(connection)
 	}
 	async getAllCategories() {
-		const result = await this.connection.get<{ list: CategoryResponse[]; totalCount: number }>(`category`, {
+		const result = await this.connection.get<{ list: CategoryResponse[]; totalCount: number }>(this.folder, {
 			size: 100,
 			sort: "name",
 		})
-		if (!model.ErrorResponse.is(result) && "list" in result)
-			return result.list
-		else
-			return result
+		return this.extractResponse(result)
 	}
 	async editCategoryLimits(
 		category: string,
 		request: model.UpdateCategoryRequest
 	): Promise<model.CategoryResponse | model.ErrorResponse> {
-		return await this.connection.put<model.CategoryResponse>(`category/${category}`, request)
+		return await this.connection.put<model.CategoryResponse>(`${this.folder}/${category}`, request)
 	}
 	async getCategory(category: string): Promise<model.CategoryResponse | model.ErrorResponse> {
-		return await this.connection.get<model.CategoryResponse>(`category/${category}`)
+		return await this.connection.get<model.CategoryResponse>(`${this.folder}/${category}`)
 	}
 }

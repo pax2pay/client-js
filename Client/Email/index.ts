@@ -8,7 +8,6 @@ export class Email {
 		return new Email(connection)
 	}
 	async validateEmail(email: string) {
-		const result = await this.connection.get<model.EmailValidationResponse>(`email/validate/${email}`)
-		return result
+		return await this.connection.get<model.EmailValidationResponse>(`${this.folder}/validate/${email}`)
 	}
 }

@@ -1,31 +1,23 @@
 import * as model from "../../model"
-import { Collection } from "../Collection"
 import { Connection } from "../Connection"
-import { Organisation } from "../Organisation"
-import { Resource } from "../Resource"
+import { List } from "../List"
 
-export class Organisations extends Collection<
-	model.OrganisationResponse,
-	Partial<model.OrganisationRequest>,
-	model.OrganisationRequest
-> {
+export class Organisations extends List<model.OrganisationResponse> {
 	protected readonly folder = "organisations"
 	constructor(connection: Connection) {
 		super(connection)
 	}
-	protected createResource(
-		response: model.OrganisationResponse
-	): Resource<model.OrganisationResponse, { [key: string]: any }> {
-		return new Organisation(this.connection, [this.folder, response.code].join("/"), response)
-	}
 	static create(connection: Connection) {
 		return new Organisations(connection)
+	}
+	async remove(code: string) {
+		return await this.connection.remove<model.OrganisationResponse>(`${this.folder}/${code}`)
 	}
 	async updateOrganisation(
 		code: string,
 		request: model.OrganisationUpdateRequest
 	): Promise<model.ErrorResponse | model.OrganisationResponse> {
-		return await this.connection.put<model.OrganisationResponse>(`organisations/${code}`, request)
+		return await this.connection.put<model.OrganisationResponse>(`${this.folder}/${code}`, request)
 	}
 
 	async getAllOrganisations(
@@ -35,7 +27,7 @@ export class Organisations extends Collection<
 		includeNonActive = false
 	): Promise<model.ErrorResponse | model.OrganisationResponse[]> {
 		const response = await this.connection.get<{ list: model.OrganisationResponse[]; totalCount: number }>(
-			`organisations`,
+			this.folder,
 			{
 				page: page,
 				size: size,
