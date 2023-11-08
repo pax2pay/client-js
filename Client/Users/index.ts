@@ -29,7 +29,7 @@ export class Users extends List<model.UserResponse> {
 			size: 100,
 			sort: "name",
 		})
-		return this.extractResponse(response)
+		return this.extractResponse<model.RolesetResponse>(response)
 	}
 	async getUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
 		return await this.connection.get<model.UserResponse>(`users/${username}`)
@@ -38,7 +38,7 @@ export class Users extends List<model.UserResponse> {
 		const response = await this.connection.get<{ list: string[]; totalCount: number }>(
 			`users/${username}/roles/minified`
 		)
-		return this.extractResponse(response)
+		return this.extractResponse<string>(response)
 	}
 	async resetPassword(username: string): Promise<model.PasswordResetResponse | model.ErrorResponse> {
 		return await this.connection.post<model.PasswordResetResponse>(`auth/passwordreset`, { username: username })

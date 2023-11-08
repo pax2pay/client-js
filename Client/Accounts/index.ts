@@ -30,7 +30,7 @@ export class Accounts extends List<model.AccountResponse> {
 			accountStates: accountStates,
 			providerAccountId: providerAccountId,
 		})
-		return this.extractResponse(response)
+		return this.extractResponse<model.AccountSummary>(response)
 	}
 	async updateFundingAccount(
 		providerCode: model.ProviderCode,

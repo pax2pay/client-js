@@ -99,7 +99,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		const response = await this.connection.get<{ list: model.CardTypeResponseV2[]; totalCount: number }>(
 			`v2/cards/types/${providerCode}`
 		)
-		return this.extractResponse(response)
+		return this.extractResponse<model.CardTypeResponseV2>(response)
 	}
 	async getCardTypes(providerCode: model.ProviderCode) {
 		return await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
@@ -114,7 +114,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 			searchRequest,
 			parameters
 		)
-		return this.extractResponse(response)
+		return this.extractResponse<model.CardResponseV2>(response)
 	}
 	async searchCardsV2Paginated(
 		request: model.CardSearchRequest,
@@ -151,7 +151,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 			"funding-accounts/searches",
 			searchRequest
 		)
-		return this.extractResponse(response)
+		return this.extractResponse<model.AccountResponse>(response)
 	}
 	// "Deprecated". This was added to the Accounts class so it can be removed from this when switched over wherever it's used
 	async getAllFundingAccounts(
@@ -163,7 +163,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 			`funding-accounts`,
 			{ provider: providerCode, size: size, sort: sort }
 		)
-		return this.extractResponse(response)
+		return this.extractResponse<model.AccountResponse>(response)
 	}
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
 		return await this.connection.get<model.BookingInfoResponse>(`booking-info/cards/${providerCode}/${providerCardId}
@@ -182,7 +182,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		const response = await this.connection.get<{ list: model.CardStatement[]; totalCount: number }>(
 			`cards/virtual/${providerCode}/${providerCardId}/statements`
 		)
-		return this.extractResponse(response)
+		return this.extractResponse<model.CardStatement>(response)
 	}
 	async getCardTransactions(
 		providerCardId: string,
@@ -191,7 +191,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		const response = await this.connection.get<{ list: model.CardTransaction[]; totalCount: number }>(
 			`cards/virtual/${providerCode}/${providerCardId}/transactions`
 		)
-		return this.extractResponse(response)
+		return this.extractResponse<model.CardTransaction>(response)
 	}
 	async searchTransaction(accountId: number): Promise<model.ErrorResponse | model.CardTransaction[]> {
 		const response = await this.connection.post<{ list: model.CardTransaction[]; totalCount: number }>(
@@ -200,7 +200,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 				accountId: accountId,
 			}
 		)
-		return this.extractResponse(response)
+		return this.extractResponse<model.CardTransaction>(response)
 	}
 	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {
 		return await this.connection.put<model.CardResponseV2>(

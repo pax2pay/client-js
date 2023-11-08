@@ -1,9 +1,12 @@
 import * as model from "../../model"
 import { CategoryResponse } from "../../model/CategoryResponse"
 import { Connection } from "../Connection"
-export class Categories {
+import { List } from "../List"
+export class Categories extends List<model.CategoryResponse> {
 	protected folder = "category"
-	constructor(private readonly connection: Connection) {}
+	private constructor(connection: Connection) {
+		super(connection)
+	}
 	static create(connection: Connection) {
 		return new Categories(connection)
 	}
@@ -12,10 +15,7 @@ export class Categories {
 			size: 100,
 			sort: "name",
 		})
-		if (!model.ErrorResponse.is(result) && "list" in result)
-			return result.list
-		else
-			return result
+		return this.extractResponse(result)
 	}
 	async editCategoryLimits(
 		category: string,
