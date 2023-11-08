@@ -4,7 +4,7 @@ import { List } from "../List"
 import { Paginated } from "../Paginated"
 
 export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
-	protected folder = "cards"
+	protected readonly folder = "cards"
 	constructor(connection: Connection) {
 		super(connection)
 	}
