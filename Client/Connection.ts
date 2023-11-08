@@ -52,6 +52,7 @@ export class Connection {
 			requestHeaders["x-assume"] = this.assumedOrg
 		if (cookie)
 			requestHeaders["x-otp-cookie"] = cookie
+		let caughtErrorResponse
 		const response = await fetch(
 			this.url +
 				"/" +
@@ -72,7 +73,14 @@ export class Connection {
 				headers: requestHeaders,
 				body: !isMultipart ? request && JSON.stringify(request) : request,
 			}
-		).catch(_ => undefined)
+		).catch((error: Error) => {
+			caughtErrorResponse = { code: 500, errors: [{ message: error.message }] }
+			console.error(error)
+		})
+
+		if (caughtErrorResponse)
+			return caughtErrorResponse
+
 		if (response && response.headers.has("x-otp-cookie"))
 			window.sessionStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
 
