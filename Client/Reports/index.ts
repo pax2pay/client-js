@@ -3,6 +3,7 @@ import * as model from "../../model"
 import { Connection } from "../Connection"
 
 export class Reports {
+	protected readonly folder = "reports"
 	constructor(private readonly connection: Connection) {}
 
 	async reconciliation(start: isoly.DateTime, end: isoly.DateTime) {
@@ -83,13 +84,13 @@ export class Reports {
 		return await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
 	}
 	async getUserReportUrl(request: model.UserReportUrlRequest) {
-		return await this.connection.post<model.ReportUrlResponse>(`reports/user/download`, request)
+		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/user/download`, request)
 	}
 	async getCardReportUrl(request: model.CardReportUrlRequest) {
-		return await this.connection.post<model.ReportUrlResponse>(`reports/card/download`, request)
+		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/card/download`, request)
 	}
 	async getReconciliationReportUrl(request: model.ReconciliationReportUrlRequest) {
-		return await this.connection.post<model.ReportUrlResponse>(`reports/reconciliation/download`, request)
+		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/reconciliation/download`, request)
 	}
 	static create(connection: Connection) {
 		return new Reports(connection)

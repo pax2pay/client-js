@@ -38,13 +38,13 @@ export class Accounts extends List<model.AccountResponse> {
 		request: model.UpdateAccountRequest
 	) {
 		return await this.connection.put<Promise<model.ErrorResponse | model.AccountResponse>>(
-			`funding-accounts/${providerCode}/${providerAccountId}`,
+			`${this.folder}/${providerCode}/${providerAccountId}`,
 			request
 		)
 	}
 	async cancelLimitAlert(providerCode: model.ProviderCode, providerAccountId: string) {
 		return await this.connection.remove<Promise<model.ErrorResponse | model.AccountResponse>>(
-			`funding-accounts/${providerCode}/${providerAccountId}/limits`
+			`${this.folder}/${providerCode}/${providerAccountId}/limits`
 		)
 	}
 
@@ -60,7 +60,7 @@ export class Accounts extends List<model.AccountResponse> {
 			(page, size, sort) =>
 				this.connection.get<
 					{ list: model.FundingAccountResponseV2Basic[]; totalCount: number } | model.FundingAccountResponseV2Basic[]
-				>(`v2/funding-accounts`, {
+				>(`v2/${this.folder}`, {
 					page: page,
 					size: size,
 					sort: sort,
@@ -84,7 +84,7 @@ export class Accounts extends List<model.AccountResponse> {
 			(page, size, sort) =>
 				this.connection.get<
 					{ list: model.FundingAccountResponseV2Full[]; totalCount: number } | model.FundingAccountResponseV2Full[]
-				>(`v2/funding-accounts/info`, {
+				>(`v2/${this.folder}/info`, {
 					page: page,
 					size: size,
 					sort: sort,
@@ -98,19 +98,19 @@ export class Accounts extends List<model.AccountResponse> {
 	}
 	async getFundingAccountV2(providerCode: model.ProviderCode, providerCodeId: string) {
 		return await this.connection.get<model.FundingAccountResponseV2Basic>(
-			`v2/funding-accounts/${providerCode}/${providerCodeId}`
+			`v2/${this.folder}/${providerCode}/${providerCodeId}`
 		)
 	}
 	async getFundingAccountV2Full(providerCode: model.ProviderCode, providerCodeId: string) {
 		return await this.connection.get<model.FundingAccountResponseV2Full>(
-			`v2/funding-accounts/${providerCode}/${providerCodeId}/info`
+			`v2/${this.folder}/${providerCode}/${providerCodeId}/info`
 		)
 	}
 	async getFundingAccounts(
 		searchRequest: model.FundingAccountSearchRequest
 	): Promise<model.ErrorResponse | model.AccountResponse[]> {
 		const response = await this.connection.post<{ list: model.AccountResponse[]; totalCount: number }>(
-			"funding-accounts/searches",
+			`${this.folder}/searches`,
 			searchRequest
 		)
 		return this.extractResponse(response)
@@ -120,10 +120,11 @@ export class Accounts extends List<model.AccountResponse> {
 		size = 500,
 		sort = "friendlyName"
 	): Promise<model.ErrorResponse | model.AccountResponse[]> {
-		const response = await this.connection.get<{ list: model.AccountResponse[]; totalCount: number }>(
-			`funding-accounts`,
-			{ provider: providerCode, size: size, sort: sort }
-		)
+		const response = await this.connection.get<{ list: model.AccountResponse[]; totalCount: number }>(this.folder, {
+			provider: providerCode,
+			size: size,
+			sort: sort,
+		})
 		return this.extractResponse(response)
 	}
 }

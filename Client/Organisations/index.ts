@@ -17,7 +17,7 @@ export class Organisations extends List<model.OrganisationResponse> {
 		code: string,
 		request: model.OrganisationUpdateRequest
 	): Promise<model.ErrorResponse | model.OrganisationResponse> {
-		return await this.connection.put<model.OrganisationResponse>(`organisations/${code}`, request)
+		return await this.connection.put<model.OrganisationResponse>(`${this.folder}/${code}`, request)
 	}
 
 	async getAllOrganisations(
@@ -27,7 +27,7 @@ export class Organisations extends List<model.OrganisationResponse> {
 		includeNonActive = false
 	): Promise<model.ErrorResponse | model.OrganisationResponse[]> {
 		const response = await this.connection.get<{ list: model.OrganisationResponse[]; totalCount: number }>(
-			`organisations`,
+			this.folder,
 			{
 				page: page,
 				size: size,

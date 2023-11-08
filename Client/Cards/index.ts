@@ -4,12 +4,12 @@ import { List } from "../List"
 import { Paginated } from "../Paginated"
 
 export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
-	protected folder = "cards/virtual"
+	protected folder = "cards"
 	constructor(connection: Connection) {
 		super(connection)
 	}
 	async create(request: model.CreateCardRequest) {
-		return await this.connection.post<model.CardResponseV2>("v2/cards/virtual/tokenised", request)
+		return await this.connection.post<model.CardResponseV2>(`v2/${this.folder}/virtual/tokenised`, request)
 	}
 	async createCardWithRemittanceAdvice(request: model.CreateCardRequest, file: File) {
 		const formData = new FormData()
@@ -20,10 +20,10 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 				type: "application/json",
 			})
 		)
-		return await this.connection.post<model.CardResponseV2>("v2/cards/virtual", formData)
+		return await this.connection.post<model.CardResponseV2>(`v2/${this.folder}/virtual`, formData)
 	}
 	async createLegacy(request: model.CreateCardRequest) {
-		return await this.connection.post<model.CardResponse>("cards/virtual", request)
+		return await this.connection.post<model.CardResponse>(`${this.folder}/virtual`, request)
 	}
 	static create(connection: Connection): Cards {
 		return new Cards(connection)
@@ -39,13 +39,16 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		return await this.getNextPaginated<model.CardResponseV2>(
 			previous,
 			(page, size, sort) =>
-				this.connection.get<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(`v2/cards`, {
-					page: page,
-					size: size,
-					sort: sort,
-					provider: providerCode,
-					includeCount: includeCount,
-				}),
+				this.connection.get<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(
+					`v2/${this.folder}`,
+					{
+						page: page,
+						size: size,
+						sort: sort,
+						provider: providerCode,
+						includeCount: includeCount,
+					}
+				),
 			undefined,
 			page,
 			size,
@@ -53,56 +56,64 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		)
 	}
 	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.get<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}`, {
+		return await this.connection.get<model.CardResponse>(`${this.folder}/virtual/${providerCode}/${providerCardId}`, {
 			includeSchedules: true,
 		})
 	}
 	async getCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.get<model.CardResponseV2>(`v2/cards/virtual/${providerCode}/${providerCardId}
+		return await this.connection.get<model.CardResponseV2>(`v2/${this.folder}/virtual/${providerCode}/${providerCardId}
 `)
 	}
 	async createCard(request: model.CreateCardRequest) {
-		return await this.connection.post<model.CardResponse>(`cards/virtual`, request)
+		return await this.connection.post<model.CardResponse>(`${this.folder}/virtual`, request)
 	}
 	async cancelCard(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.remove<model.CardResponse>(`cards/virtual/${providerCode}/${providerCardId}/cancel`)
+		return await this.connection.remove<model.CardResponse>(
+			`${this.folder}/virtual/${providerCode}/${providerCardId}/cancel`
+		)
 	}
 	async cancelCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		return await this.connection.remove<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/cancel`
+			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/cancel`
 		)
 	}
 	async generateCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		return await this.connection.get<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/generate/tokenised`
+			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/generate/tokenised`
 		)
 	}
 	async approveCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		return await this.connection.post<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/approve`,
+			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/approve`,
 			undefined
 		)
 	}
 	async declineCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		return await this.connection.post<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/decline`,
+			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/decline`,
 			undefined
 		)
 	}
 	async thawCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.get<model.CardResponseV2>(`v2/cards/virtual/${providerCode}/${providerCardId}/thaw`)
+		return await this.connection.get<model.CardResponseV2>(
+			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/thaw`
+		)
 	}
 	async freezeCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.get<model.CardResponseV2>(`v2/cards/virtual/${providerCode}/${providerCardId}/freeze`)
+		return await this.connection.get<model.CardResponseV2>(
+			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/freeze`
+		)
 	}
+	//Possibly should be moved to its own class
 	async getCardTypesV2(providerCode: model.ProviderCode): Promise<model.ErrorResponse | model.CardTypeResponseV2[]> {
 		const response = await this.connection.get<{ list: model.CardTypeResponseV2[]; totalCount: number }>(
-			`v2/cards/types/${providerCode}`
+			`v2/${this.folder}/types/${providerCode}`
 		)
 		return this.extractResponse<model.CardTypeResponseV2>(response)
 	}
+	//Possibly should be moved to its own class
 	async getCardTypes(providerCode: model.ProviderCode) {
-		return await this.connection.get<model.CardTypeResponse>(`cards/types/${providerCode}`)
+		return await this.connection.get<model.CardTypeResponse>(`${this.folder}/types/${providerCode}`)
 	}
 
 	async searchCardsV2(
@@ -110,7 +121,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		parameters?: Record<string, any>
 	): Promise<model.ErrorResponse | model.CardResponseV2[]> {
 		const response = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
-			`v2/cards/searches`,
+			`v2/${this.folder}/searches`,
 			searchRequest,
 			parameters
 		)
@@ -128,7 +139,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 			previous,
 			(page, size, sort, request) =>
 				this.connection.post<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(
-					`v2/cards/searches`,
+					`v2/${this.folder}/searches`,
 					request,
 					{
 						page: page,
@@ -165,10 +176,12 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		)
 		return this.extractResponse<model.AccountResponse>(response)
 	}
+	//Possibly should be moved to its own class
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
 		return await this.connection.get<model.BookingInfoResponse>(`booking-info/cards/${providerCode}/${providerCardId}
 `)
 	}
+	//Possibly should be moved to its own class
 	async editCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
 		return await this.connection.put<model.BookingInfoResponse>(
 			`booking-info/cards/${providerCode}/${providerCardId}`,
@@ -180,7 +193,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		providerCode: model.ProviderCode
 	): Promise<model.ErrorResponse | model.CardStatement[]> {
 		const response = await this.connection.get<{ list: model.CardStatement[]; totalCount: number }>(
-			`cards/virtual/${providerCode}/${providerCardId}/statements`
+			`${this.folder}/virtual/${providerCode}/${providerCardId}/statements`
 		)
 		return this.extractResponse<model.CardStatement>(response)
 	}
@@ -189,10 +202,11 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		providerCode: model.ProviderCode
 	): Promise<model.ErrorResponse | model.CardTransaction[]> {
 		const response = await this.connection.get<{ list: model.CardTransaction[]; totalCount: number }>(
-			`cards/virtual/${providerCode}/${providerCardId}/transactions`
+			`${this.folder}/virtual/${providerCode}/${providerCardId}/transactions`
 		)
 		return this.extractResponse<model.CardTransaction>(response)
 	}
+	//Possibly should be moved to its own class
 	async searchTransaction(accountId: number): Promise<model.ErrorResponse | model.CardTransaction[]> {
 		const response = await this.connection.post<{ list: model.CardTransaction[]; totalCount: number }>(
 			`transactions/searches`,
@@ -204,7 +218,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	}
 	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {
 		return await this.connection.put<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/schedule`,
+			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/schedule`,
 			{
 				schedule: request,
 			}
@@ -212,11 +226,12 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	}
 	async amendExistingCardV2(providerCardId: string, providerCode: model.ProviderCode, request: model.AmendCardRequest) {
 		return await this.connection.put<model.CardResponseV2>(
-			`v2/cards/virtual/${providerCode}/${providerCardId}/amend`,
+			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/amend`,
 			request
 		)
 	}
+	//Possibly should be moved to its own class
 	async getDisplayableCardTypesForProvider(provider: model.ProviderCode = "modulr") {
-		return await this.connection.get<Record<string, string>>(`v2/cards/types/displayable/${provider}`)
+		return await this.connection.get<Record<string, string>>(`v2/${this.folder}/types/displayable/${provider}`)
 	}
 }

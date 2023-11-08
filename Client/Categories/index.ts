@@ -11,7 +11,7 @@ export class Categories extends List<model.CategoryResponse> {
 		return new Categories(connection)
 	}
 	async getAllCategories() {
-		const result = await this.connection.get<{ list: CategoryResponse[]; totalCount: number }>(`category`, {
+		const result = await this.connection.get<{ list: CategoryResponse[]; totalCount: number }>(this.folder, {
 			size: 100,
 			sort: "name",
 		})
@@ -21,9 +21,9 @@ export class Categories extends List<model.CategoryResponse> {
 		category: string,
 		request: model.UpdateCategoryRequest
 	): Promise<model.CategoryResponse | model.ErrorResponse> {
-		return await this.connection.put<model.CategoryResponse>(`category/${category}`, request)
+		return await this.connection.put<model.CategoryResponse>(`${this.folder}/${category}`, request)
 	}
 	async getCategory(category: string): Promise<model.CategoryResponse | model.ErrorResponse> {
-		return await this.connection.get<model.CategoryResponse>(`category/${category}`)
+		return await this.connection.get<model.CategoryResponse>(`${this.folder}/${category}`)
 	}
 }
