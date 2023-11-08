@@ -3,6 +3,7 @@ import * as model from "../../model"
 import { Connection } from "../Connection"
 
 export class Reports {
+	protected readonly folder = "reports"
 	constructor(private readonly connection: Connection) {}
 
 	async reconciliation(start: isoly.DateTime, end: isoly.DateTime) {
@@ -42,12 +43,15 @@ export class Reports {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		let path = `statement`
-		if (page || pageSize)
-			path = this.attachPageable(path, page, pageSize)
-
 		let result
-		result = await this.connection.post<{ list: model.StatementReportResponse; totalCount: number }>(path, request)
+		result = await this.connection.post<{ list: model.StatementReportResponse; totalCount: number }>(
+			`statement`,
+			request,
+			{
+				page: page,
+				size: pageSize,
+			}
+		)
 		if (!model.ErrorResponse.is(result) && "list" in result)
 			result = result.list
 		return result
@@ -63,45 +67,30 @@ export class Reports {
 				status: 400 | 403 | 404 | 500 | 503
 		  })
 	> {
-		let path = `reports/statement/summary`
-		if (page || pageSize || totalCount)
-			path = this.attachPageable(path, page, pageSize, totalCount)
-
-		const result = await this.connection.post<{ list: model.StatementSummaryReportResponse; totalCount: number }>(
-			path,
-			request
+		return await this.connection.post<{ list: model.StatementSummaryReportResponse; totalCount: number }>(
+			`reports/statement/summary`,
+			request,
+			{
+				page: page,
+				size: pageSize,
+				includeCount: totalCount,
+			}
 		)
-		return result
 	}
 	async getStatementForTable(rowId: string) {
-		const result = await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
-		return result
-	}
-	attachPageable(base: string, page?: number, pageSize?: number, includeCount?: boolean) {
-		const params = []
-		if (page)
-			params.push("page=" + page)
-		if (pageSize)
-			params.push("size=" + pageSize)
-		if (includeCount != undefined)
-			params.push("includeCount=" + includeCount)
-		return base + "?" + params.join("&")
+		return await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
-		const result = await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
-		return result
+		return await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
 	}
 	async getUserReportUrl(request: model.UserReportUrlRequest) {
-		const result = await this.connection.post<model.ReportUrlResponse>(`reports/user/download`, request)
-		return result
+		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/user/download`, request)
 	}
 	async getCardReportUrl(request: model.CardReportUrlRequest) {
-		const result = await this.connection.post<model.ReportUrlResponse>(`reports/card/download`, request)
-		return result
+		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/card/download`, request)
 	}
 	async getReconciliationReportUrl(request: model.ReconciliationReportUrlRequest) {
-		const result = await this.connection.post<model.ReportUrlResponse>(`reports/reconciliation/download`, request)
-		return result
+		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/reconciliation/download`, request)
 	}
 	static create(connection: Connection) {
 		return new Reports(connection)

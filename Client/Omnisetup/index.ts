@@ -19,6 +19,8 @@ export class Omnisetup {
 		omnisetupRequest: OmnisetupRequest,
 		commit = true
 	): Promise<OmnisetupResponse | ErrorResponse> {
-		return this.connection.post<OmnisetupResponse | ErrorResponse>(`${this.folder}?commit=${commit}`, omnisetupRequest)
+		return this.connection.post<OmnisetupResponse | ErrorResponse>(`${this.folder}`, omnisetupRequest, {
+			commit: commit,
+		})
 	}
 }
