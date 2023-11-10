@@ -52,6 +52,7 @@ import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
+import { CardUsage } from "./CardUsage"
 import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAccessRequest"
 import { CategoryLimitResponse } from "./CategoryLimitResponse"
 import { CategoryResponse } from "./CategoryResponse"
@@ -259,6 +260,7 @@ export {
 	CardTypeSearchRequest,
 	CardTypeSpecification,
 	CardTypeSpecificationFlag,
+	CardUsage,
 	CategoryFundingAccountAccessRequest,
 	UpdateCategoryRequest,
 	CategoryLimitResponse,
