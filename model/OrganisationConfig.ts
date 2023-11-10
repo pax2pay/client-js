@@ -19,3 +19,16 @@ export interface OrganisationConfig {
 	fundingLimitConfig?: FundingLimitConfig
 	cardDeliveryEmailConfig?: CardDeliveryEmailConfig
 }
+
+export namespace OrganisationConfig {
+	export function is(value: OrganisationConfig | any): value is OrganisationConfig {
+		return (
+			value == undefined ||
+			(typeof value == "object" &&
+				(value.defaultModulrUsage == undefined ||
+					value.defaultModulrUsage == "SINGLE_USE" ||
+					value.defaultModulrUsage == "SINGLE_USE_ALLOW_TEST_AUTH" ||
+					value.defaultModulrUsage == "MULTIPLE_USE"))
+		)
+	}
+}

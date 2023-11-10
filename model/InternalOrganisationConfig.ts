@@ -11,3 +11,13 @@ export interface InternalOrganisationConfig {
 	statementAppned?: boolean
 	statementRebuild?: boolean
 }
+
+export namespace InternalOrganisationConfig {
+	export function is(value: InternalOrganisationConfig | any): value is InternalOrganisationConfig {
+		return (
+			typeof value == "object" &&
+			(value.flags == undefined ||
+				(Array.isArray(value.flags) && value.flags.every((item: any) => OrganisationFlag.is(item))))
+		)
+	}
+}
