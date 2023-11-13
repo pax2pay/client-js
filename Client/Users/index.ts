@@ -83,13 +83,13 @@ export class Users extends List<model.UserResponse> {
 	}
 	async setUpTwoFactorAuthentication(
 		username: string,
-		otp: string
+		otp?: string
 	): Promise<model.TwoFactorAuthenticationRegistrationResponse | model.ErrorResponse> {
 		return await this.connection.post<model.TwoFactorAuthenticationRegistrationResponse>(
 			`${this.folder}/${username}/two-factor`,
 			{},
 			undefined,
-			{ "x-otp": otp }
+			otp ? { "x-otp": otp } : {}
 		)
 	}
 	async removeTwoFactorAuthentication(username: string, otp: string): Promise<void | model.ErrorResponse> {
