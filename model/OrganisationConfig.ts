@@ -20,5 +20,5 @@ export interface OrganisationConfig {
 	fundingLimitConfig?: FundingLimitConfig
 	cardDeliveryEmailConfig?: CardDeliveryEmailConfig
 	portalHideMultipleUseOption?: boolean
-	securityConfig: SecurityConfig
+	securityConfig?: SecurityConfig
 }
