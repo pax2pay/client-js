@@ -4,6 +4,7 @@ import { CardTypesConfig } from "./CardTypesConfig"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingLimitConfig } from "./FundingLimitConfig"
 import { ProviderCode } from "./ProviderCode"
+import { SecurityConfig } from "./SecurityConfig"
 /**
  * Organisation config, optional
  */
@@ -19,4 +20,5 @@ export interface OrganisationConfig {
 	fundingLimitConfig?: FundingLimitConfig
 	cardDeliveryEmailConfig?: CardDeliveryEmailConfig
 	portalHideMultipleUseOption?: boolean
+	securityConfig: SecurityConfig
 }

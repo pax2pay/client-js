@@ -141,6 +141,7 @@ import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { ScheduleEntry } from "./ScheduleEntry"
 import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
+import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
 import { StatementReportRequest } from "./StatementReportRequest"
 import { StatementReportResponse } from "./StatementReportResponse"
@@ -345,6 +346,7 @@ export {
 	StatementSummaryReportResponse,
 	StatementSummaryReportResponseRow,
 	StatementTransferSpecificType,
+	SecurityConfig,
 	SummaryBookingInfoResponse,
 	SupplierBookingInfo,
 	SupplierRequest,
