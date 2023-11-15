@@ -22,6 +22,9 @@ export class Configuration {
 	async getUserConfig(): Promise<model.UserConfig | model.ErrorResponse> {
 		return await this.connection.get<model.UserConfig>(`${this.folder}/user`)
 	}
+	async updateUserConfig(request: model.UserConfig): Promise<model.UserConfig | model.ErrorResponse> {
+		return await this.connection.post<model.UserConfig>(`${this.folder}/user`, request)
+	}
 	async getPortalFeatures(): Promise<model.PaxpayFeature[] | model.ErrorResponse> {
 		return await this.connection.get<model.PaxpayFeature[]>(`${this.folder}/portal`)
 	}
