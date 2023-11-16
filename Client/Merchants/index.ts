@@ -10,7 +10,7 @@ export class Merchants extends List<model.MerchantResponse> {
 	static create(connection: Connection): Merchants {
 		return new Merchants(connection)
 	}
-	async searchMerchantsByName(searchString: string) {
+	async searchByName(searchString: string) {
 		const response = await this.connection.get<model.ErrorResponse | model.MerchantResponse[]>(
 			`${this.folder}/searches/${searchString}`,
 			{
@@ -18,6 +18,13 @@ export class Merchants extends List<model.MerchantResponse> {
 				size: 1500,
 			}
 		)
+		return this.extractResponse(response)
+	}
+	async getAll() {
+		const response = await this.connection.get<model.ErrorResponse | model.MerchantResponse[]>(this.folder, {
+			page: 0,
+			size: 5000,
+		})
 		return this.extractResponse(response)
 	}
 }
