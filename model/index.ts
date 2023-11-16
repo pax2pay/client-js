@@ -124,6 +124,7 @@ import { PasswordValidateResponse } from "./PasswordValidateResponse"
 import { PaxpayFeature } from "./PaxpayFeature"
 import { Payload } from "./Payload"
 import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
+import { PaymentMethodType } from "./PaymentMethodType"
 import { PaymentOption } from "./PaymentOption"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProductType } from "./ProductType"
@@ -155,6 +156,18 @@ import { StatementSummaryReportRequest } from "./StatementSummaryReportRequest"
 import { StatementSummaryReportResponse } from "./StatementSummaryReportResponse"
 import { StatementSummaryReportResponseRow } from "./StatementSummaryReportResponseRow"
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
+import { SuggestedCardPaymentMethodResponse } from "./SuggestedCardPaymentMethodResponse"
+import { SuggestedCardTypeOptions } from "./SuggestedCardTypeOptions"
+import { SuggestedFundingAccountOptions } from "./SuggestedFundingAccountOptions"
+import { SuggestedOptions } from "./SuggestedOptions"
+import { SuggestedPaymentMethodResponse } from "./SuggestedPaymentMethodResponse"
+import { SuggestedPaymentMethodResponses } from "./SuggestedPaymentMethodResponses"
+import { SuggestedUsageOptions } from "./SuggestedUsageOptions"
+import { SuggestionCardPaymentMethodRequest } from "./SuggestionCardPaymentMethodRequest"
+import { SuggestionMerchantRequest } from "./SuggestionMerchantRequest"
+import { SuggestionPaymentMethodRequest } from "./SuggestionPaymentMethodRequest"
+import { SuggestionRequest } from "./SuggestionRequest"
+import { SuggestionResponse } from "./SuggestionResponse"
 import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
 import { SupplierRequest } from "./SupplierRequest"
@@ -317,6 +330,7 @@ export {
 	PaxpayFeature,
 	Payload,
 	PaymentMethodOptionResponse,
+	PaymentMethodType,
 	PaymentOption,
 	ProcessedStatement,
 	ProductType,
@@ -335,6 +349,7 @@ export {
 	CardSearchRequest,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
+	SecurityConfig,
 	Segment,
 	SearchBeneficiaryRequest,
 	StatementReportUrlRequest,
@@ -348,7 +363,18 @@ export {
 	StatementSummaryReportResponse,
 	StatementSummaryReportResponseRow,
 	StatementTransferSpecificType,
-	SecurityConfig,
+	SuggestedCardPaymentMethodResponse,
+	SuggestedCardTypeOptions,
+	SuggestedFundingAccountOptions,
+	SuggestedOptions,
+	SuggestedPaymentMethodResponse,
+	SuggestedPaymentMethodResponses,
+	SuggestedUsageOptions,
+	SuggestionCardPaymentMethodRequest,
+	SuggestionMerchantRequest,
+	SuggestionPaymentMethodRequest,
+	SuggestionRequest,
+	SuggestionResponse,
 	SummaryBookingInfoResponse,
 	SupplierBookingInfo,
 	SupplierRequest,

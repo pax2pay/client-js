@@ -11,6 +11,7 @@ import { Merchants as ClientMerchants } from "./Merchants"
 import { Omnisetup as ClientOmnisetup } from "./Omnisetup"
 import { Organisations as ClientOrganisations } from "./Organisations"
 import { Paginated as ClientPaginated } from "./Paginated"
+import { Payments as ClientPayments } from "./Payments"
 import { Reports as ClientReports } from "./Reports"
 import { Transfers as ClientTransfers } from "./Transfers"
 import { Users as ClientUsers } from "./Users"
@@ -31,6 +32,7 @@ export class Client {
 	merchants = ClientMerchants.create(this.connection)
 	omnisetup = ClientOmnisetup.create(this.connection)
 	organisations = ClientOrganisations.create(this.connection)
+	payments = ClientPayments.create(this.connection)
 	reports = ClientReports.create(this.connection)
 	transfers = ClientTransfers.create(this.connection)
 	users = ClientUsers.create(this.connection)
@@ -59,6 +61,7 @@ export namespace Client {
 	export type Merchants = ClientMerchants
 	export type Omnisetup = ClientOmnisetup
 	export type Organisations = ClientOrganisations
+	export type Payments = ClientPayments
 	export type Reports = ClientReports
 	export type Transfers = ClientTransfers
 	export type Users = ClientUsers
