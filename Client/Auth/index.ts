@@ -91,6 +91,9 @@ export class Auth {
 			this.connection.token = result.token
 			window.sessionStorage.setItem("authData", JSON.stringify(result))
 		}
+		if (isError(result) && result.code == 691 && this.connection.token) {
+			this.setTempToken(this.connection.token)
+		}
 		return result
 	}
 	async refresh(request?: model.RelogWithNewSessionDetailsRequest) {
