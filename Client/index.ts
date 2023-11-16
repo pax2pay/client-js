@@ -7,6 +7,7 @@ import { Configuration as ClientConfiguration } from "./Configuration"
 import { Connection } from "./Connection"
 import { Email as ClientEmail } from "./Email"
 import { List as ClientList } from "./List"
+import { Merchants as ClientMerchants } from "./Merchants"
 import { Omnisetup as ClientOmnisetup } from "./Omnisetup"
 import { Organisations as ClientOrganisations } from "./Organisations"
 import { Paginated as ClientPaginated } from "./Paginated"
@@ -27,11 +28,12 @@ export class Client {
 	categories = ClientCategories.create(this.connection)
 	configuration = ClientConfiguration.create(this.connection)
 	email = ClientEmail.create(this.connection)
-	users = ClientUsers.create(this.connection)
+	merchants = ClientMerchants.create(this.connection)
 	omnisetup = ClientOmnisetup.create(this.connection)
 	organisations = ClientOrganisations.create(this.connection)
 	reports = ClientReports.create(this.connection)
 	transfers = ClientTransfers.create(this.connection)
+	users = ClientUsers.create(this.connection)
 	constructor(private connection: Connection, private $authenticate?: Authenticate) {
 		connection.unauthorized = async () => (await this.$authenticate?.(this)) ?? false
 	}
@@ -54,6 +56,7 @@ export namespace Client {
 	export type Categories = ClientCategories
 	export type Configuration = ClientConfiguration
 	export type Email = ClientEmail
+	export type Merchants = ClientMerchants
 	export type Omnisetup = ClientOmnisetup
 	export type Organisations = ClientOrganisations
 	export type Reports = ClientReports

@@ -102,6 +102,7 @@ import { LegacyBookingInfoRequest } from "./LegacyBookingInfoRequest"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
 import { MerchantDetails } from "./MerchantDetails"
+import { MerchantResponse } from "./MerchantResponse"
 import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { OmnisetupFlags } from "./OmnisetupFlags"
@@ -294,6 +295,7 @@ export {
 	LoginRequest,
 	LoginResponse,
 	MerchantDetails,
+	MerchantResponse,
 	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
 	OmnisetupFlags,
