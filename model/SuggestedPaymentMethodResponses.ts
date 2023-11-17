@@ -1,9 +1,9 @@
 import { PaymentMethodType } from "./PaymentMethodType"
-import { SuggestedPaymentMethodResponse } from "./SuggestedPaymentMethodResponse"
+import { SuggestedCardPaymentMethodResponse } from "./SuggestedCardPaymentMethodResponse"
 
 export interface SuggestedPaymentMethodResponses {
 	suggested?: PaymentMethodType
-	chosen?: SuggestedPaymentMethodResponse
+	chosen?: SuggestedCardPaymentMethodResponse //add transfer when available
 	required?: PaymentMethodType
-	options: SuggestedPaymentMethodResponse[]
+	options: SuggestedCardPaymentMethodResponse[] //add transfer when available
 }
