@@ -1,4 +1,4 @@
-const paymentMethodTypes = ["CARD", "TRANSFER"] as const
+const paymentMethodTypes = ["card", "transfer"] as const
 export type PaymentMethodType = typeof paymentMethodTypes[number]
 
 export namespace PaymentMethodType {
