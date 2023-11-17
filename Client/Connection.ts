@@ -77,19 +77,14 @@ export class Connection {
 			caughtErrorResponse = { code: 500, errors: [{ message: error.message }] }
 			console.error(error)
 		})
-
+		console.log("response", response, response?.headers, await response?.json(), await response?.text())
 		if (caughtErrorResponse)
 			return caughtErrorResponse
-
 		if (response && response.headers.has("x-otp-cookie"))
 			window.sessionStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
-		if (
-			response &&
-			response.status == 401 &&
-			response.url.includes("two-factor") &&
-			response.headers.has("X-Auth-Token")
-		)
+		if (response && response.status == 403 && response.url.includes("login") && response.headers.has("X-Auth-Token"))
 			window.sessionStorage.setItem("authData", JSON.stringify({ token: response.headers.get("X-Auth-Token") }))
+
 		return !response
 			? { code: 503, errors: [{ message: "Service unavailable" }] }
 			: response.status == 401 && (await this.unauthorized(this))
