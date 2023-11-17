@@ -83,7 +83,13 @@ export class Connection {
 
 		if (response && response.headers.has("x-otp-cookie"))
 			window.sessionStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
-
+		if (
+			response &&
+			response.status == 401 &&
+			response.url.includes("two-factor") &&
+			response.headers.has("X-Auth-Token")
+		)
+			window.sessionStorage.setItem("authData", JSON.stringify({ token: response.headers.get("X-Auth-Token") }))
 		return !response
 			? { code: 503, errors: [{ message: "Service unavailable" }] }
 			: response.status == 401 && (await this.unauthorized(this))
