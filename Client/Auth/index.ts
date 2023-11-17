@@ -81,6 +81,7 @@ export class Auth {
 
 	constructor(private connection: Connection) {}
 	async login(request: model.LoginRequest, otp?: string) {
+		window.sessionStorage.removeItem("authData")
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>(
 			"auth/login",
 			request,
@@ -144,6 +145,7 @@ export class Auth {
 		this.roles = undefined
 		this.features = undefined
 		window.sessionStorage.removeItem("authData")
+		window.sessionStorage.removeItem("cookie")
 		this.connection.token = undefined
 	}
 }

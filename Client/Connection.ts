@@ -77,7 +77,6 @@ export class Connection {
 			caughtErrorResponse = { code: 500, errors: [{ message: error.message }] }
 			console.error(error)
 		})
-		console.log("response", response, response?.headers, await response?.json())
 		if (caughtErrorResponse)
 			return caughtErrorResponse
 		if (response && response.headers.has("x-otp-cookie"))
