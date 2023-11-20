@@ -83,13 +83,19 @@ export class Users extends List<model.UserResponse> {
 	}
 	async setUpTwoFactorAuthentication(
 		username: string,
-		otp?: string
+		otp?: string,
+		tempToken?: string
 	): Promise<model.TwoFactorAuthenticationRegistrationResponse | model.ErrorResponse> {
+		let header = {}
+		if (otp)
+			header = { ...header, "x-otp": otp }
+		if (tempToken)
+			header = { ...header, "X-Auth-Token": tempToken }
 		return await this.connection.post<model.TwoFactorAuthenticationRegistrationResponse>(
 			`${this.folder}/${username}/two-factor`,
 			{},
 			undefined,
-			otp ? { "x-otp": otp } : {}
+			header
 		)
 	}
 	async removeTwoFactorAuthentication(username: string, otp: string): Promise<void | model.ErrorResponse> {
