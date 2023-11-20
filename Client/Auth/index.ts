@@ -144,7 +144,6 @@ export class Auth {
 		this.roles = undefined
 		this.features = undefined
 		window.sessionStorage.removeItem("authData")
-		window.sessionStorage.removeItem("cookie")
 		this.connection.token = undefined
 	}
 }
