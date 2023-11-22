@@ -1,4 +1,4 @@
-const merchantTypes = ["flight"] as const
+const merchantTypes = ["flight", "hotel"] as const
 export type MerchantType = typeof merchantTypes[number]
 
 export namespace MerchantType {
