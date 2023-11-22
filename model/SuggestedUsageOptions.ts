@@ -1,3 +1,4 @@
+import { CardUsage } from "./CardUsage"
 import { SuggestedOptions } from "./SuggestedOptions"
 
-export interface SuggestedUsageOptions extends SuggestedOptions<string> {}
+export interface SuggestedUsageOptions extends SuggestedOptions<CardUsage> {}
