@@ -1,8 +1,8 @@
 import { MerchantType } from "./MerchantType"
 
 export interface MerchantResponse {
-	id: string
-	name: string
+	id?: string
+	name?: string
 	mcc?: string
 	type: MerchantType
 }
