@@ -10,6 +10,9 @@ export class Merchants extends List<model.MerchantResponse> {
 	static create(connection: Connection): Merchants {
 		return new Merchants(connection)
 	}
+	async create(request: model.MerchantRequest) {
+		return await this.connection.post<model.MerchantResponse>(this.folder, request)
+	}
 	async searchByName(searchString: string) {
 		const response = await this.connection.get<model.ErrorResponse | model.MerchantResponse[]>(
 			`${this.folder}/searches/${searchString}`,
