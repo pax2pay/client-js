@@ -1,3 +1,4 @@
+import { Currency } from "isoly"
 import { ProviderCode } from "./ProviderCode"
 
 export interface CardType {
@@ -5,7 +6,7 @@ export interface CardType {
 	cardType: string
 	representAs: string
 	cardName?: string
-	currencies?: string[]
+	currencies?: Currency[]
 }
 export namespace CardType {
 	export function is(value: CardType | any): value is CardType {
