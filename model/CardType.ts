@@ -5,6 +5,7 @@ export interface CardType {
 	cardType: string
 	representAs: string
 	cardName?: string
+	currencies?: string[]
 }
 export namespace CardType {
 	export function is(value: CardType | any): value is CardType {
