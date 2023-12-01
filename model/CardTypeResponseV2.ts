@@ -1,3 +1,4 @@
+import { Currency } from "isoly"
 import { ProviderCode } from "./ProviderCode"
 
 export interface CardTypeResponseV2 {
@@ -7,7 +8,7 @@ export interface CardTypeResponseV2 {
 	originalDescription?: string
 	scheme: "VISA" | "MASTERCARD" | "AMERICAN_EXPRESS"
 	funding?: "DEBIT" | "CREDIT" | "PREPAID"
-	currencies?: string[]
+	currencies?: Currency[]
 	flags?: ("CORPORATE" | "BUSINESS" | "CONSUMER")[]
 	bins?: string[]
 	preActive?: boolean
