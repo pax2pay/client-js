@@ -1,8 +1,7 @@
 import { Currency } from "isoly"
+import { BookingInfoRequest } from "./BookingInfoRequest"
 import { SuggestionCardPaymentMethodRequest } from "./SuggestionCardPaymentMethodRequest"
 import { SuggestionMerchantRequest } from "./SuggestionMerchantRequest"
-import { SuggestionPaymentMethodRequest } from "./SuggestionPaymentMethodRequest"
-import { BookingInfoRequest } from "./BookingInfoRequest"
 
 export interface SuggestionRequest {
 	merchant?: SuggestionMerchantRequest
@@ -17,6 +16,7 @@ export namespace SuggestionRequest {
 		return (
 			typeof value == "object" &&
 			(SuggestionMerchantRequest.is(value.merchant) || value.merchant == undefined) &&
+			(BookingInfoRequest.is(value.meta) || value.meta == undefined) &&
 			typeof value.amount == "number" &&
 			Currency.is(value.currency) &&
 			(value.paymentMethod == undefined || SuggestionCardPaymentMethodRequest.is(value.paymentMethod))
