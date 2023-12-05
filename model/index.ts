@@ -162,10 +162,12 @@ import { StatementSummaryReportResponseRow } from "./StatementSummaryReportRespo
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
 import { SuggestedCardPaymentMethodResponse } from "./SuggestedCardPaymentMethodResponse"
 import { SuggestedCardTypeOptions } from "./SuggestedCardTypeOptions"
+import { SuggestedDelivery } from "./SuggestedDelivery"
 import { SuggestedFundingAccountOptions } from "./SuggestedFundingAccountOptions"
 import { SuggestedOptions } from "./SuggestedOptions"
 import { SuggestedPaymentMethodResponse } from "./SuggestedPaymentMethodResponse"
 import { SuggestedPaymentMethodResponses } from "./SuggestedPaymentMethodResponses"
+import { SuggestedSchedules } from "./SuggestedSchedules"
 import { SuggestedUsageOptions } from "./SuggestedUsageOptions"
 import { SuggestionCardPaymentMethodRequest } from "./SuggestionCardPaymentMethodRequest"
 import { SuggestionMerchantRequest } from "./SuggestionMerchantRequest"
@@ -376,6 +378,8 @@ export {
 	SuggestedFundingAccountOptions,
 	SuggestedOptions,
 	SuggestedPaymentMethodResponse,
+	SuggestedDelivery,
+	SuggestedSchedules,
 	SuggestedPaymentMethodResponses,
 	SuggestedUsageOptions,
 	SuggestionCardPaymentMethodRequest,
