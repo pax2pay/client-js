@@ -160,14 +160,14 @@ import { StatementSummaryReportRequest } from "./StatementSummaryReportRequest"
 import { StatementSummaryReportResponse } from "./StatementSummaryReportResponse"
 import { StatementSummaryReportResponseRow } from "./StatementSummaryReportResponseRow"
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
+import { SuggestedCardDeliveryOptions } from "./SuggestedCardDeliveryOptions"
 import { SuggestedCardPaymentMethodResponse } from "./SuggestedCardPaymentMethodResponse"
 import { SuggestedCardTypeOptions } from "./SuggestedCardTypeOptions"
-import { SuggestedDelivery } from "./SuggestedDelivery"
 import { SuggestedFundingAccountOptions } from "./SuggestedFundingAccountOptions"
 import { SuggestedOptions } from "./SuggestedOptions"
 import { SuggestedPaymentMethodResponse } from "./SuggestedPaymentMethodResponse"
 import { SuggestedPaymentMethodResponses } from "./SuggestedPaymentMethodResponses"
-import { SuggestedSchedules } from "./SuggestedSchedules"
+import { SuggestedSchedulesOptions } from "./SuggestedSchedulesOptions"
 import { SuggestedUsageOptions } from "./SuggestedUsageOptions"
 import { SuggestionCardPaymentMethodRequest } from "./SuggestionCardPaymentMethodRequest"
 import { SuggestionMerchantRequest } from "./SuggestionMerchantRequest"
@@ -378,8 +378,8 @@ export {
 	SuggestedFundingAccountOptions,
 	SuggestedOptions,
 	SuggestedPaymentMethodResponse,
-	SuggestedDelivery,
-	SuggestedSchedules,
+	SuggestedCardDeliveryOptions,
+	SuggestedSchedulesOptions,
 	SuggestedPaymentMethodResponses,
 	SuggestedUsageOptions,
 	SuggestionCardPaymentMethodRequest,

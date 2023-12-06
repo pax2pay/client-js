@@ -1,12 +1,12 @@
+import { SuggestedCardDeliveryOptions } from "./SuggestedCardDeliveryOptions"
 import { SuggestedCardTypeOptions } from "./SuggestedCardTypeOptions"
-import { SuggestedDelivery } from "./SuggestedDelivery"
 import { SuggestedPaymentMethodResponse } from "./SuggestedPaymentMethodResponse"
-import { SuggestedSchedules } from "./SuggestedSchedules"
+import { SuggestedSchedulesOptions } from "./SuggestedSchedulesOptions"
 import { SuggestedUsageOptions } from "./SuggestedUsageOptions"
 
 export interface SuggestedCardPaymentMethodResponse extends SuggestedPaymentMethodResponse {
 	cardType: SuggestedCardTypeOptions
 	usage: SuggestedUsageOptions
-	delivery?: SuggestedDelivery
-	schedules?: SuggestedSchedules
+	delivery?: SuggestedCardDeliveryOptions
+	schedules?: SuggestedSchedulesOptions
 }

@@ -1,3 +1,3 @@
-export interface SuggestedSchedules {
+export interface SuggestedSchedulesOptions {
 	requirement: "suggested" | "required" | "none"
 }
