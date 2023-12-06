@@ -275,6 +275,7 @@ export {
 	CategoryResponse,
 	CategoryStatus,
 	ConfigMatchesRequest,
+	CardUsage,
 	ConfigMatchesResponse,
 	ConfigRequest,
 	ConfigResponse,

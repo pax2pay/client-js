@@ -357,6 +357,7 @@ export {
 	Room,
 	ScheduleEntry,
 	CardSearchRequest,
+	CardUsage,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	SecurityConfig,
