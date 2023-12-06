@@ -1,21 +1,25 @@
-import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardUsage } from "./CardUsage"
-import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
+import { ScheduleEntry } from "./ScheduleEntry"
+import { SuggestionCardDeliveryRequest } from "./SuggestionCardDeliveryRequest"
 import { SuggestionPaymentMethodRequest } from "./SuggestionPaymentMethodRequest"
 
 export interface SuggestionCardPaymentMethodRequest extends SuggestionPaymentMethodRequest {
 	cardType?: string
 	usage?: CardUsage
-	delivery?: CardDeliveryRequest
-	schedules?: ScheduledTaskRequest[]
+	delivery?: SuggestionCardDeliveryRequest
+	schedules?: ScheduleEntry[]
 }
 
 export namespace SuggestionCardPaymentMethodRequest {
 	export function is(value: SuggestionCardPaymentMethodRequest | any): value is SuggestionCardPaymentMethodRequest {
 		return (
 			typeof value == "object" &&
-			(value.cardType == undefined || typeof value.cardType == "string") &&
+			typeof value.accountId == "string" &&
+			typeof value.cardType == "string" &&
 			(value.usage == undefined || CardUsage.is(value.usage)) &&
+			(value.delivery == undefined || SuggestionCardDeliveryRequest.is(value.delivery)) &&
+			(value.schedules == undefined ||
+				(Array.isArray(value.schedules) && value.schedules.every((entry: any) => ScheduleEntry.is(entry)))) &&
 			SuggestionPaymentMethodRequest.is({ ...value })
 		)
 	}

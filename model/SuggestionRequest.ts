@@ -16,7 +16,6 @@ export namespace SuggestionRequest {
 		return (
 			typeof value == "object" &&
 			(value.merchant == undefined || SuggestionMerchantRequest.is(value.merchant)) &&
-			(value.meta == undefined || BookingInfoRequest.is(value.meta)) &&
 			typeof value.amount == "number" &&
 			Currency.is(value.currency) &&
 			(value.paymentMethod == undefined || SuggestionCardPaymentMethodRequest.is(value.paymentMethod))
