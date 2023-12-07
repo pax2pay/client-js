@@ -26,7 +26,7 @@ export namespace OmnisetupRequest {
 			(value.organisationConfig == undefined || OrganisationConfig.is(value.organisationConfig)) &&
 			(value.internalOrganisationConfig == undefined ||
 				InternalOrganisationConfig.is(value.internalOrganisationConfig)) &&
-			(typeof value.sharedRolesets == undefined ||
+			(value.sharedRolesets == undefined ||
 				(Array.isArray(value.sharedRolesets) && value.sharedRolesets.every((item: any) => typeof item == "string")))
 		)
 	}
