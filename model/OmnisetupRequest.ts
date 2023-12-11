@@ -21,6 +21,8 @@ export namespace OmnisetupRequest {
 			typeof value == "object" &&
 			(value.flags == undefined || OmnisetupFlags.is(value.flags)) &&
 			OrganisationCreateRequest.is(value.organisation) &&
+			Array.isArray(value.users) &&
+			value.users.every((user: any) => UserRequest.is(user)) &&
 			Array.isArray(value.providers) &&
 			value.providers.every((item: any) => OmnisetupProviderRequest.is(item)) &&
 			(value.organisationConfig == undefined || OrganisationConfig.is(value.organisationConfig)) &&

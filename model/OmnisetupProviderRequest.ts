@@ -19,6 +19,8 @@ export namespace OmnisetupProviderRequest {
 		return (
 			typeof value == "object" &&
 			ProviderCode.is(value.providerCode) &&
+			Array.isArray(value.fundingAccounts) &&
+			value.fundingAccounts.every((fundingAccount: any) => AccountCreationRequest.is(fundingAccount)) &&
 			(value.credentials == undefined || CredentialRequest.is(value.credentials)) &&
 			(value.providerSetupCredentials == undefined || CredentialRequest.is(value.providerSetupCredentials)) &&
 			(value.suppliers == undefined || SupplierRequest.is(value.suppliers)) &&

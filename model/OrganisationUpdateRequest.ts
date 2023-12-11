@@ -9,7 +9,6 @@ export namespace OrganisationUpdateRequest {
 	export function is(value: OrganisationUpdateRequest | any): value is OrganisationUpdateRequest {
 		return (
 			typeof value == "object" &&
-			typeof value.mcc == "string" &&
 			(value.status == "ACTIVE" || value.status == "DELETED") &&
 			(value.organisationLimitRequest == undefined ||
 				OrganisationBalanceLimitResponse.is(value.organisationLimitRequest))

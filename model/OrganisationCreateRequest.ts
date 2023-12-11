@@ -6,6 +6,6 @@ export interface OrganisationCreateRequest extends OrganisationUpdateRequest {
 
 export namespace OrganisationCreateRequest {
 	export function is(value: OrganisationCreateRequest | any): value is OrganisationCreateRequest {
-		return typeof value == "object" && typeof value.code == "string" && OrganisationUpdateRequest.is(value)
+		return typeof value == "object" && typeof value.code == "string" && OrganisationUpdateRequest.is({ ...value })
 	}
 }
