@@ -9,3 +9,14 @@ export interface AccountCreationRequest {
 	friendlyName?: string
 	currency: string
 }
+export namespace AccountCreationRequest {
+	export function is(value: AccountCreationRequest | any): value is AccountCreationRequest {
+		return (
+			typeof value == "object" &&
+			(value.providerAccountId == undefined || typeof value.providerAccountId == "string") &&
+			ProviderCode.is(value.providerCode) &&
+			(value.friendlyName == undefined || typeof value.friendlyName == "string") &&
+			typeof value.currency == "string"
+		)
+	}
+}
