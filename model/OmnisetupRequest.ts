@@ -14,3 +14,20 @@ export interface OmnisetupRequest {
 	internalOrganisationConfig?: InternalOrganisationConfig
 	sharedRolesets?: string[]
 }
+
+export namespace OmnisetupRequest {
+	export function is(value: OmnisetupRequest | any): value is OmnisetupRequest {
+		return (
+			typeof value == "object" &&
+			(value.flags == undefined || OmnisetupFlags.is(value.flags)) &&
+			OrganisationCreateRequest.is(value.organisation) &&
+			Array.isArray(value.providers) &&
+			value.providers.every((item: any) => OmnisetupProviderRequest.is(item)) &&
+			(value.organisationConfig == undefined || OrganisationConfig.is(value.organisationConfig)) &&
+			(value.internalOrganisationConfig == undefined ||
+				InternalOrganisationConfig.is(value.internalOrganisationConfig)) &&
+			(value.sharedRolesets == undefined ||
+				(Array.isArray(value.sharedRolesets) && value.sharedRolesets.every((item: any) => typeof item == "string")))
+		)
+	}
+}

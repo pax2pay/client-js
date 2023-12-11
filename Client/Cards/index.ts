@@ -111,7 +111,15 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		)
 		return this.extractResponse<model.CardTypeResponseV2>(response)
 	}
-	//Possibly should be moved to its own class
+
+	async setCardTypesV2(cardTypeProfileRequest: model.CardTypeProfileRequest) {
+		const response = await this.connection.post<model.CardTypeProfileResponse>(
+			"v2/card/types/profiles",
+			cardTypeProfileRequest
+		)
+		return response
+	}
+
 	async getCardTypes(providerCode: model.ProviderCode) {
 		return await this.connection.get<model.CardTypeResponse>(`${this.folder}/types/${providerCode}`)
 	}
