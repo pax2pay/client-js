@@ -14,7 +14,7 @@ export interface CardResponseV2 {
 	cardNumber: string
 	cvv?: string
 	expiryDate: YearMonth
-	nameOnCard: string
+	nameOnCard?: string
 	fundingBalance: number
 	remainingBalance: number
 	fundingDate: string
@@ -43,7 +43,7 @@ export namespace CardResponseV2 {
 			typeof value.cardNumber == "string" &&
 			(value.cvv == undefined || typeof value.cvv == "string") &&
 			YearMonth.is(value.expiryDate) &&
-			typeof value.nameOnCard == "string" &&
+			(value.nameOnCard == undefined || typeof value.nameOnCard == "string") &&
 			typeof value.fundingBalance == "number" &&
 			typeof value.remainingBalance == "number" &&
 			typeof value.balance == "number" &&
