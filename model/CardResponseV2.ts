@@ -12,7 +12,7 @@ import { YearMonth } from "./YearMonth"
 export interface CardResponseV2 {
 	cardType: CardTypeSpecification | string
 	cardNumber: string
-	cvv: string
+	cvv?: string
 	expiryDate: YearMonth
 	nameOnCard: string
 	fundingBalance: number
@@ -41,7 +41,7 @@ export namespace CardResponseV2 {
 			typeof value == "object" &&
 			(typeof value.cardType == "string" || CardTypeSpecification.is(value.cardType)) &&
 			typeof value.cardNumber == "string" &&
-			typeof value.cvv == "string" &&
+			(value.cvv == undefined || typeof value.cvv == "string") &&
 			YearMonth.is(value.expiryDate) &&
 			typeof value.nameOnCard == "string" &&
 			typeof value.fundingBalance == "number" &&
@@ -58,6 +58,7 @@ export namespace CardResponseV2 {
 						return CardScheduleResponseItem.is(a)
 					}))) &&
 			typeof value.createdBy == "string" &&
+			AccountState.is(value.state) &&
 			(value.delivery == undefined || CardDeliveryResponse.is(value.delivery)) &&
 			(value.batchId == undefined || typeof value.batchId == "string") &&
 			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo)) &&
