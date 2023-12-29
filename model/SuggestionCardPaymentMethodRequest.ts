@@ -1,12 +1,13 @@
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardUsage } from "./CardUsage"
 import { ScheduleEntry } from "./ScheduleEntry"
+import { SuggestionCardDeliveryRequest } from "./SuggestionCardDeliveryRequest"
 import { SuggestionPaymentMethodRequest } from "./SuggestionPaymentMethodRequest"
 
 export interface SuggestionCardPaymentMethodRequest extends SuggestionPaymentMethodRequest {
 	cardType?: string
 	usage?: CardUsage
-	delivery?: CardDeliveryRequest
+	delivery?: SuggestionCardDeliveryRequest
 	schedules?: ScheduleEntry[]
 }
 
