@@ -2,8 +2,8 @@ import * as isoly from "isoly"
 
 export interface CardDeliveryRequest {
 	to: string | [string, string]
-	message?: string
-	linkExpiry?: isoly.Date
+	message: string
+	linkExpiry: isoly.Date
 }
 export namespace CardDeliveryRequest {
 	export function is(value: CardDeliveryRequest | any): value is CardDeliveryRequest {

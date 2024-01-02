@@ -10,3 +10,15 @@ export type BookingInfoRequest =
 	| HotelBookingInfoRequest
 	| FlightBookingInfoRequest
 	| InvoiceBookingInfoRequest
+
+export namespace BookingInfoRequest {
+	export function is(value: BookingInfoRequest | any): value is BookingInfoRequest {
+		return (
+			FiveFieldsBookingInfoRequest.is(value) ||
+			HotelBookingInfoRequest.is(value) ||
+			InvoiceBookingInfoRequest.is(value) ||
+			FlightBookingInfoRequest.is(value) ||
+			LegacyBookingInfoRequest.is(value)
+		)
+	}
+}
