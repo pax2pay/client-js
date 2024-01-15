@@ -8,6 +8,7 @@ export interface TransferRequest {
 	beneficiaryId?: string
 	destination?: NonBeneficiaryTransferDestination
 	destinationProviderAccountId?: string
+	destinationProviderCode?: ProviderCode
 	amount: number
 	currency?: string
 	reference?: string
