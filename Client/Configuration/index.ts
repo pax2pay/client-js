@@ -36,7 +36,7 @@ export class Configuration {
 	): Promise<model.CredentialResponse | model.ErrorResponse> {
 		const header = { "x-assume": organisationCode }
 		return await this.connection.post<model.CredentialRequest>(
-			`${this.folder}/credentials/${providerCode}/setup`,
+			`credentials/${providerCode}/setup`,
 			request,
 			undefined,
 			header
@@ -44,7 +44,7 @@ export class Configuration {
 	}
 	async getAllCredentials(organisationCode: string): Promise<model.CredentialResponse[] | model.ErrorResponse> {
 		const header = { "x-assume": organisationCode }
-		return await this.connection.get<model.CredentialResponse[]>(`${this.folder}/credentials`, undefined, header)
+		return await this.connection.get<model.CredentialResponse[]>(`credentials`, undefined, header)
 	}
 	async updateCredentials(
 		organisationCode: string,
@@ -53,7 +53,7 @@ export class Configuration {
 	): Promise<model.CredentialResponse | model.ErrorResponse> {
 		const header = { "x-assume": organisationCode }
 		return await this.connection.put<model.CredentialResponse>(
-			`${this.folder}/credentials/${providerCode}`,
+			`credentials/${providerCode}`,
 			request,
 			undefined,
 			header
@@ -66,7 +66,7 @@ export class Configuration {
 	): Promise<model.CredentialResponse | model.ErrorResponse> {
 		const header = { "x-assume": organisationCode }
 		return await this.connection.post<model.CredentialResponse>(
-			`${this.folder}/credentials/${providerCode}`,
+			`credentials/${providerCode}`,
 			request,
 			undefined,
 			header
