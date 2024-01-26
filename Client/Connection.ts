@@ -107,9 +107,10 @@ export class Connection {
 	}
 	async get<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
-		parameters?: Record<string, any>
+		parameters?: Record<string, any>,
+		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
-		return await this.fetch<Response, Codes>(path, "GET", undefined, parameters)
+		return await this.fetch<Response, Codes>(path, "GET", undefined, parameters, header)
 	}
 	async put<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
