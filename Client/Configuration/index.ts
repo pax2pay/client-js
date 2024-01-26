@@ -44,7 +44,7 @@ export class Configuration {
 	}
 	async getAllCredentials(organisationCode: string): Promise<model.CredentialResponse[] | model.ErrorResponse> {
 		const header = { "x-assume": organisationCode }
-		return await this.connection.get<model.CredentialResponse[]>(`${this.folder}/credentials`, header)
+		return await this.connection.get<model.CredentialResponse[]>(`${this.folder}/credentials`, undefined, header)
 	}
 	async updateCredentials(
 		organisationCode: string,
