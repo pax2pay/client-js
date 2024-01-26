@@ -28,4 +28,29 @@ export class Configuration {
 	async getPortalFeatures(): Promise<model.PaxpayFeature[] | model.ErrorResponse> {
 		return await this.connection.get<model.PaxpayFeature[]>(`${this.folder}/portal`)
 	}
+
+	async setupCredentials(
+		providerCode: ProviderCode,
+		request: model.CredentialRequest
+	): Promise<model.CredentialResponse | model.ErrorResponse> {
+		return await this.connection.post<model.CredentialRequest>(
+			`${this.folder}/credentials/${providerCode}/setup`,
+			request
+		)
+	}
+	async getAllCredentials(): Promise<model.CredentialResponse[] | model.ErrorResponse> {
+		return await this.connection.get<model.CredentialResponse[]>(`${this.folder}/credentials`)
+	}
+	async updateCredentials(
+		providerCode: ProviderCode,
+		request: model.CredentialRequest
+	): Promise<model.CredentialResponse | model.ErrorResponse> {
+		return await this.connection.put<model.CredentialResponse>(`${this.folder}/credentials/${providerCode}`, request)
+	}
+	async saveCredentials(
+		providerCode: ProviderCode,
+		request: model.CredentialRequest
+	): Promise<model.CredentialResponse | model.ErrorResponse> {
+		return await this.connection.post<model.CredentialResponse>(`${this.folder}/credentials/${providerCode}`, request)
+	}
 }
