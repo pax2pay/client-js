@@ -45,7 +45,15 @@ export class Configuration {
 	async getAllCredentials(organisationCode: string): Promise<model.CredentialResponse[] | model.ErrorResponse> {
 		const header = { "x-assume": organisationCode }
 		const parameters = { totalCount: false }
-		return await this.connection.get<model.CredentialResponse[]>(`credentials`, parameters, header)
+		const response = await this.connection.get<{ list: model.CredentialResponse[]; totalCount: number }>(
+			`credentials`,
+			parameters,
+			header
+		)
+		if (model.ErrorResponse.is(response))
+			return response
+		else
+			return response.list
 	}
 
 	async updateCredentials(
