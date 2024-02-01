@@ -31,7 +31,7 @@ export class Connection {
 		header?: any
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const isMultipart = request && request instanceof FormData
-		const cookie = window.sessionStorage.getItem("cookie")
+		const cookie = window.localStorage.getItem("cookie")
 		const publicKey = window.sessionStorage.getItem("public-key")
 		let requestHeaders: Record<string, string> = { "x-invoking-system": "portal_2" }
 		if (!isMultipart)
@@ -83,7 +83,7 @@ export class Connection {
 		if (caughtErrorResponse)
 			return caughtErrorResponse
 		if (response && response.headers.has("x-otp-cookie"))
-			window.sessionStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
+			window.localStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
 		//get temp token to set up 2fa before login
 		if (response && response.status == 403 && response.url.includes("login") && response.headers.has("X-Auth-Token"))
 			window.sessionStorage.setItem("authData", JSON.stringify({ token: response.headers.get("X-Auth-Token") }))
