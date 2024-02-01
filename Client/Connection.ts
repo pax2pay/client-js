@@ -83,7 +83,7 @@ export class Connection {
 		if (caughtErrorResponse)
 			return caughtErrorResponse
 		if (response && response.headers.has("x-otp-cookie"))
-			window.sessionStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
+			window.localStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
 		//get temp token to set up 2fa before login
 		if (response && response.status == 403 && response.url.includes("login") && response.headers.has("X-Auth-Token"))
 			window.sessionStorage.setItem("authData", JSON.stringify({ token: response.headers.get("X-Auth-Token") }))
