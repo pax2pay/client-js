@@ -29,6 +29,8 @@ export class Transfers extends List<model.TransferResponse> {
 		)
 	}
 	async search(request: model.TransferSearch, page?: number) {
-		return await this.connection.post<model.TransferResponse[]>(`${this.folder}/searches`, request, { page })
+		return this.extractResponse(
+			await this.connection.post<model.TransferResponse[]>(`${this.folder}/searches`, request, page ? { page } : {})
+		)
 	}
 }
