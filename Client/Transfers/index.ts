@@ -28,9 +28,13 @@ export class Transfers extends List<model.TransferResponse> {
 			otp ? { "x-otp": otp } : {}
 		)
 	}
-	async search(request: model.TransferSearch, page?: number) {
+	async searchV2(request: model.TransferSearch, page?: number) {
 		return this.extractResponse(
-			await this.connection.post<model.TransferResponse[]>(`${this.folder}/searches`, request, page ? { page } : {})
+			await this.connection.post<model.TransferResponseV2[]>(
+				`v2/${this.folder}/searches`,
+				request,
+				page ? { page } : {}
+			)
 		)
 	}
 }
