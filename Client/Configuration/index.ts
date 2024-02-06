@@ -28,4 +28,58 @@ export class Configuration {
 	async getPortalFeatures(): Promise<model.PaxpayFeature[] | model.ErrorResponse> {
 		return await this.connection.get<model.PaxpayFeature[]>(`${this.folder}/portal`)
 	}
+
+	async setupCredentials(
+		organisationCode: string,
+		providerCode: ProviderCode,
+		request: model.CredentialRequest
+	): Promise<model.CredentialResponse | model.ErrorResponse> {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.post<model.CredentialRequest>(
+			`credentials/${providerCode}/setup`,
+			request,
+			undefined,
+			header
+		)
+	}
+	async getAllCredentials(organisationCode: string): Promise<model.CredentialResponse[] | model.ErrorResponse> {
+		const header = { "x-assume": organisationCode }
+		const parameters = { totalCount: false }
+		const response = await this.connection.get<{ list: model.CredentialResponse[]; totalCount: number }>(
+			`credentials`,
+			parameters,
+			header
+		)
+		if (model.ErrorResponse.is(response))
+			return response
+		else
+			return response.list
+	}
+
+	async updateCredentials(
+		organisationCode: string,
+		providerCode: ProviderCode,
+		request: model.CredentialRequest
+	): Promise<model.CredentialResponse | model.ErrorResponse> {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.put<model.CredentialResponse>(
+			`credentials/${providerCode}`,
+			request,
+			undefined,
+			header
+		)
+	}
+	async saveCredentials(
+		organisationCode: string,
+		providerCode: ProviderCode,
+		request: model.CredentialRequest
+	): Promise<model.CredentialResponse | model.ErrorResponse> {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.post<model.CredentialResponse>(
+			`credentials/${providerCode}`,
+			request,
+			undefined,
+			header
+		)
+	}
 }
