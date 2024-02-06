@@ -35,7 +35,7 @@ export class Configuration {
 		request: model.CredentialRequest
 	): Promise<model.CredentialResponse | model.ErrorResponse> {
 		const header = { "x-assume": organisationCode }
-		return await this.connection.post<model.CredentialRequest>(
+		return await this.connection.post<model.CredentialResponse>(
 			`credentials/${providerCode}/setup`,
 			request,
 			undefined,
