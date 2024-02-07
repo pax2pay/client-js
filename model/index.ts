@@ -184,6 +184,7 @@ import { TransactionResponse } from "./TransactionResponse"
 import { TransactionType } from "./TransactionType"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
+import { TransferDirection } from "./TransferDirection"
 import { TransferRequest } from "./TransferRequest"
 import { TransferResponse } from "./TransferResponse"
 import { TransferResponseV2 } from "./TransferResponseV2"
@@ -399,6 +400,7 @@ export {
 	TransactionType,
 	TransferDestinationInfo,
 	TransferDestinationResponse,
+	TransferDirection,
 	TransferRequest,
 	TransferResponse,
 	TransferResponseV2,

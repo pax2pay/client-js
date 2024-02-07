@@ -20,6 +20,7 @@ describe("TransferResponseV2 is", () => {
 				fullName: "TESTBCN",
 				beneficiaryId: "B291",
 			},
+			direction: "OUT",
 			createdBy: "lucym",
 		}
 		expect(TransferResponseV2.is(json)).toBeTruthy()

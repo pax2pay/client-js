@@ -4,6 +4,7 @@ describe("TransferResponseV2Summary is", () => {
 		const json = {
 			reference: "fdfg dafgdfg",
 			createdBy: "lucym",
+			direction: "IN",
 		}
 		expect(TransferResponseV2Summary.is(json)).toBeTruthy()
 	})
