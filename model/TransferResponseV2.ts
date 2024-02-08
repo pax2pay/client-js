@@ -4,6 +4,7 @@ import { ExternalSource } from "./ExternalSource"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { ProviderCode } from "./ProviderCode"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
+import { TransferDirection } from "./TransferDirection"
 import { TransferStatus } from "./TransferStatus"
 
 export interface TransferResponseV2 {
@@ -19,6 +20,7 @@ export interface TransferResponseV2 {
 	source: FundingAccountSummaryResponse | ExternalSource
 	destination: TransferDestinationResponse
 	bookingInfo?: BookingInfoResponse
+	direction: TransferDirection
 	createdBy: string
 }
 
@@ -38,6 +40,7 @@ export namespace TransferResponseV2 {
 			FundingAccountSummaryResponse.is(value.source) &&
 			TransferDestinationResponse.is(value.destination) &&
 			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo)) &&
+			TransferDirection.is(value.direction) &&
 			typeof value.createdBy == "string"
 		)
 	}

@@ -33,6 +33,7 @@ describe("StatementReportResponseRow is", () => {
 			transfer: {
 				reference: "fdfg dafgdfg",
 				createdBy: "lucym",
+				direction: "OUT",
 			},
 		}
 
@@ -83,6 +84,7 @@ describe("StatementReportResponseRow is", () => {
 					fullName: "TESTBCN",
 					beneficiaryId: "B291",
 				},
+				direction: "OUT",
 				createdBy: "lucym",
 			},
 		}
@@ -128,6 +130,7 @@ const noAmount = {
 			fullName: "TESTBCN",
 			beneficiaryId: "B291",
 		},
+		direction: "OUT",
 		createdBy: "lucym",
 	},
 }
@@ -170,6 +173,7 @@ const noIds = {
 			fullName: "TESTBCN",
 			beneficiaryId: "B291",
 		},
+		direction: "OUT",
 		createdBy: "lucym",
 	},
 }
@@ -202,6 +206,7 @@ const data1 = [
 		transfer: {
 			reference: "fdfg dafgdfg",
 			createdBy: "lucym",
+			direction: "OUT",
 		},
 	},
 	{
@@ -231,6 +236,7 @@ const data1 = [
 		transfer: {
 			reference: "fdfg dafgdfg",
 			createdBy: "lucym",
+			direction: "OUT",
 		},
 	},
 	{
