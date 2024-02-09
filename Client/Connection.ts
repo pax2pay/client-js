@@ -68,7 +68,9 @@ export class Connection {
 									return `${param[0]}=${param[1].join(",")}`
 								else if (param[1] != undefined)
 									return param.join("=")
+								return undefined
 							})
+							.filter(param => param != undefined)
 							.join("&")
 					: ""),
 			{
