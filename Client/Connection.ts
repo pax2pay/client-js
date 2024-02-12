@@ -66,9 +66,11 @@ export class Connection {
 							.map(param => {
 								if (Array.isArray(param[1]))
 									return `${param[0]}=${param[1].join(",")}`
-								else
+								else if (param[1] != undefined)
 									return param.join("=")
+								return undefined
 							})
+							.filter(param => param != undefined)
 							.join("&")
 					: ""),
 			{
