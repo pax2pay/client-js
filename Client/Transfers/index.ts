@@ -1,4 +1,5 @@
 import * as model from "../../model"
+import { ProviderCode } from "../../model/ProviderCode"
 import { Connection } from "../Connection"
 import { List } from "../List"
 
@@ -36,5 +37,11 @@ export class Transfers extends List<model.TransferResponse> {
 				sort,
 			})
 		)
+	}
+	async approveV2(providerCode: ProviderCode, transferId: string) {
+		this.connection.post<model.TransferResponseV2>(`v2/transfers/${providerCode}/${transferId}/approve`, {})
+	}
+	async declineV2(providerCode: ProviderCode, transferId: string) {
+		this.connection.post<model.TransferResponseV2>(`v2/transfers/${providerCode}/${transferId}/decline`, {})
 	}
 }
