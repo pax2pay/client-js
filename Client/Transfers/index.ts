@@ -39,9 +39,15 @@ export class Transfers extends List<model.TransferResponse> {
 		)
 	}
 	async approveV2(providerCode: ProviderCode, transferId: string) {
-		this.connection.post<model.TransferResponseV2>(`v2/${this.folder}/${providerCode}/${transferId}/approve`, {})
+		return await this.connection.post<model.TransferResponseV2>(
+			`v2/${this.folder}/${providerCode}/${transferId}/approve`,
+			undefined
+		)
 	}
 	async declineV2(providerCode: ProviderCode, transferId: string) {
-		this.connection.post<model.TransferResponseV2>(`v2/${this.folder}/${providerCode}/${transferId}/decline`, {})
+		return await this.connection.post<model.TransferResponseV2>(
+			`v2/${this.folder}/${providerCode}/${transferId}/decline`,
+			undefined
+		)
 	}
 }
