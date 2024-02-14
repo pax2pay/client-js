@@ -6,6 +6,8 @@ describe("AccountDetailsTransferDestinationResponse is", () => {
 			sortCode: "000000",
 			accountNumber: "12255555",
 			fullName: "TESTBCN",
+			type: "SCAN",
+			currency: "GBP",
 		}
 		expect(AccountDetailsTransferDestinationResponse.is(json)).toBeTruthy()
 	})
@@ -14,6 +16,8 @@ describe("AccountDetailsTransferDestinationResponse is", () => {
 			iban: "IB1231238918923",
 			bic: "12255555",
 			fullName: "TESTBCN",
+			type: "IBAN",
+			currency: "EUR",
 		}
 		expect(AccountDetailsTransferDestinationResponse.is(json)).toBeTruthy()
 	})
@@ -22,6 +26,8 @@ describe("AccountDetailsTransferDestinationResponse is", () => {
 		const json = {
 			iban: "IB1231238918923",
 			fullName: "TESTBCN",
+			type: "IBAN",
+			currency: "EUR",
 		}
 		expect(AccountDetailsTransferDestinationResponse.is(json)).toBeTruthy()
 	})

@@ -7,6 +7,8 @@ describe("BeneficiaryTransferDestinationResponse is", () => {
 			accountNumber: "12255555",
 			fullName: "TESTBCN",
 			beneficiaryId: "B291",
+			currency: "GBP",
+			type: "SCAN",
 		}
 		expect(BeneficiaryTransferDestinationResponse.is(json)).toBeTruthy()
 	}),
@@ -16,6 +18,8 @@ describe("BeneficiaryTransferDestinationResponse is", () => {
 				bic: "12255555",
 				fullName: "TESTBCN",
 				beneficiaryId: "B291",
+				type: "IBAN",
+				currency: "EUR",
 			}
 			expect(BeneficiaryTransferDestinationResponse.is(json)).toBeTruthy()
 		})
