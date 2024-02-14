@@ -63,11 +63,14 @@ import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigRequest } from "./ConfigRequest"
 import { ConfigResponse } from "./ConfigResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
+import { ConversionRateSource } from "./ConversionRateSource"
 import { CreateCardRequest } from "./CreateCardRequest"
 import { CreateRolesetRequest } from "./CreateRolesetRequest"
 import { CredentialRequest } from "./CredentialRequest"
 import { CredentialResponse } from "./CredentialResponse"
 import { Criteria } from "./Criteria"
+import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
+import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
 import { DateRangeLocalDate } from "./DateRangeLocalDate"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
@@ -278,11 +281,14 @@ export {
 	ConfigRequest,
 	ConfigResponse,
 	ConfigTypesResponse,
+	ConversionRateSource,
 	CreateCardRequest,
 	CreateRolesetRequest,
 	CredentialRequest,
 	CredentialResponse,
 	Criteria,
+	CurrencyConversionRequest,
+	CurrencyConversionResponse,
 	DateRangeLocalDate,
 	EmailValidationResponse,
 	ErrorMessageDto,
