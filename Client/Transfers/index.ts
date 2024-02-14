@@ -1,4 +1,5 @@
 import * as model from "../../model"
+import { ProviderCode } from "../../model/ProviderCode"
 import { Connection } from "../Connection"
 import { List } from "../List"
 
@@ -35,6 +36,22 @@ export class Transfers extends List<model.TransferResponse> {
 				size,
 				sort,
 			})
+		)
+	}
+	async approveV2(providerCode: ProviderCode, transferId: string, otp?: string) {
+		return await this.connection.post<model.TransferResponseV2>(
+			`v2/${this.folder}/${providerCode}/${transferId}/approve`,
+			undefined,
+			undefined,
+			otp ? { "x-otp": otp } : {}
+		)
+	}
+	async declineV2(providerCode: ProviderCode, transferId: string, otp?: string) {
+		return await this.connection.post<model.TransferResponseV2>(
+			`v2/${this.folder}/${providerCode}/${transferId}/decline`,
+			undefined,
+			undefined,
+			otp ? { "x-otp": otp } : {}
 		)
 	}
 }
