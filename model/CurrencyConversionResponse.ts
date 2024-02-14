@@ -1,5 +1,4 @@
 import * as isoly from "isoly"
-import { ConversionRateSource } from "./ConversionRateSource"
 
 export interface CurrencyConversionResponse {
 	from: isoly.Currency
@@ -7,7 +6,7 @@ export interface CurrencyConversionResponse {
 	fxRate: number
 	original: number
 	converted: number
-	rateSource: ConversionRateSource
+	rateSource: string
 }
 
 export namespace CurrencyConversionResponse {
@@ -19,7 +18,7 @@ export namespace CurrencyConversionResponse {
 			typeof value.fxRate == "number" &&
 			typeof value.original == "number" &&
 			typeof value.converted == "number" &&
-			ConversionRateSource.is(value.rateSource)
+			typeof value.rateSource == "string"
 		)
 	}
 }

@@ -63,7 +63,6 @@ import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigRequest } from "./ConfigRequest"
 import { ConfigResponse } from "./ConfigResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
-import { ConversionRateSource } from "./ConversionRateSource"
 import { CreateCardRequest } from "./CreateCardRequest"
 import { CreateRolesetRequest } from "./CreateRolesetRequest"
 import { CredentialRequest } from "./CredentialRequest"
@@ -281,7 +280,6 @@ export {
 	ConfigRequest,
 	ConfigResponse,
 	ConfigTypesResponse,
-	ConversionRateSource,
 	CreateCardRequest,
 	CreateRolesetRequest,
 	CredentialRequest,
