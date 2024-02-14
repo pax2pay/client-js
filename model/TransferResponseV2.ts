@@ -22,6 +22,7 @@ export interface TransferResponseV2 {
 	bookingInfo?: BookingInfoResponse
 	direction: TransferDirection
 	createdBy: string
+	personallyApprovable?: boolean
 }
 
 export namespace TransferResponseV2 {
@@ -41,7 +42,8 @@ export namespace TransferResponseV2 {
 			TransferDestinationResponse.is(value.destination) &&
 			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo)) &&
 			TransferDirection.is(value.direction) &&
-			typeof value.createdBy == "string"
+			typeof value.createdBy == "string" &&
+			(value.personallyApprovable == undefined || typeof value.personallyApprovable == "boolean")
 		)
 	}
 }
