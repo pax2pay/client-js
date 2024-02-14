@@ -38,16 +38,20 @@ export class Transfers extends List<model.TransferResponse> {
 			})
 		)
 	}
-	async approveV2(providerCode: ProviderCode, transferId: string) {
+	async approveV2(providerCode: ProviderCode, transferId: string, otp?: string) {
 		return await this.connection.post<model.TransferResponseV2>(
 			`v2/${this.folder}/${providerCode}/${transferId}/approve`,
-			undefined
+			undefined,
+			undefined,
+			otp ? { "x-otp": otp } : {}
 		)
 	}
-	async declineV2(providerCode: ProviderCode, transferId: string) {
+	async declineV2(providerCode: ProviderCode, transferId: string, otp?: string) {
 		return await this.connection.post<model.TransferResponseV2>(
 			`v2/${this.folder}/${providerCode}/${transferId}/decline`,
-			undefined
+			undefined,
+			undefined,
+			otp ? { "x-otp": otp } : {}
 		)
 	}
 }
