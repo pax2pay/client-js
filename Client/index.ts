@@ -5,6 +5,7 @@ import { Cards as ClientCards } from "./Cards"
 import { Categories as ClientCategories } from "./Categories"
 import { Configuration as ClientConfiguration } from "./Configuration"
 import { Connection } from "./Connection"
+import { Currency as ClientCurrency } from "./Currency"
 import { Email as ClientEmail } from "./Email"
 import { List as ClientList } from "./List"
 import { Merchants as ClientMerchants } from "./Merchants"
@@ -28,6 +29,7 @@ export class Client {
 	cards = ClientCards.create(this.connection)
 	categories = ClientCategories.create(this.connection)
 	configuration = ClientConfiguration.create(this.connection)
+	currency = ClientCurrency.create(this.connection)
 	email = ClientEmail.create(this.connection)
 	merchants = ClientMerchants.create(this.connection)
 	omnisetup = ClientOmnisetup.create(this.connection)
@@ -57,6 +59,7 @@ export namespace Client {
 	export type Cards = ClientCards
 	export type Categories = ClientCategories
 	export type Configuration = ClientConfiguration
+	export type Currency = ClientCurrency
 	export type Email = ClientEmail
 	export type Merchants = ClientMerchants
 	export type Omnisetup = ClientOmnisetup
