@@ -28,6 +28,9 @@ export class Configuration {
 	async getPortalFeatures(): Promise<model.PaxpayFeature[] | model.ErrorResponse> {
 		return await this.connection.get<model.PaxpayFeature[]>(`${this.folder}/portal`)
 	}
+	async getConfigValueFromKey(category: string, key: string): Promise<any | model.ErrorResponse> {
+		return await this.connection.get<any>(`${this.folder}/key/${category}/${key}`)
+	}
 
 	async setupCredentials(
 		organisationCode: string,

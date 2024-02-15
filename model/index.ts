@@ -68,6 +68,8 @@ import { CreateRolesetRequest } from "./CreateRolesetRequest"
 import { CredentialRequest } from "./CredentialRequest"
 import { CredentialResponse } from "./CredentialResponse"
 import { Criteria } from "./Criteria"
+import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
+import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
 import { DateRangeLocalDate } from "./DateRangeLocalDate"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
@@ -283,6 +285,8 @@ export {
 	CredentialRequest,
 	CredentialResponse,
 	Criteria,
+	CurrencyConversionRequest,
+	CurrencyConversionResponse,
 	DateRangeLocalDate,
 	EmailValidationResponse,
 	ErrorMessageDto,
