@@ -9,6 +9,8 @@ export interface NonBeneficiaryTransferDestination {
 	iban?: string
 	bic?: string
 	address?: AddressInfo
+	bankCountry?: string
+	bankName?: string
 	fullName: string
 	name?: string
 	defaultReference?: string
