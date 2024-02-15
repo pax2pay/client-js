@@ -11,6 +11,8 @@ export interface TransferDestinationInfo {
 	bic?: string
 	currency: isoly.Currency
 	address?: AddressInfo
+	bankCountry?: string
+	bankName?: string
 	fullName?: string
 	type?: "IBAN" | "SCAN"
 }
