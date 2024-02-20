@@ -1,6 +1,7 @@
 import * as isoly from "isoly"
 import { ProviderCode } from "./ProviderCode"
 import { BalanceType } from "./Report/BalanceType"
+import { StatementReportSubType } from "./StatementReportSubType"
 export interface StatementReportRequest {
 	providerCode: ProviderCode
 	providerAccountId: string
@@ -10,5 +11,5 @@ export interface StatementReportRequest {
 	}
 	balanceType?: BalanceType
 	type?: "summary" | "full"
-	subType?: "SETTLED" | "PENDING"
+	subType?: StatementReportSubType
 }

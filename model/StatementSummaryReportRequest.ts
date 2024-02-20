@@ -1,6 +1,7 @@
 import * as isoly from "isoly"
 import { ProviderCode } from "./ProviderCode"
 import { BalanceType } from "./Report/BalanceType"
+import { StatementReportSubType } from "./StatementReportSubType"
 
 export interface StatementSummaryReportRequest {
 	providerCode: ProviderCode
@@ -10,6 +11,6 @@ export interface StatementSummaryReportRequest {
 		start?: isoly.Date
 		end?: isoly.Date
 	}
-	subType?: "SETTLED" | "PENDING"
+	subType?: StatementReportSubType
 	period: "DAILY" | "WEEKLY" | "MONTHLY" | "QUARTERLY" | "YEARLY" | "ENTIRE"
 }

@@ -156,6 +156,7 @@ import { StatementReportResponse } from "./StatementReportResponse"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
+import { StatementReportSubType } from "./StatementReportSubType"
 import { StatementReportUrlRequest } from "./StatementReportUrlRequest"
 import { StatementRowIds } from "./StatementRowIds"
 import { StatementSummaryReportRequest } from "./StatementSummaryReportRequest"
@@ -375,6 +376,7 @@ export {
 	StatementReportResponseRow,
 	StatementReportRowActionType,
 	StatementReportRowType,
+	StatementReportSubType,
 	StatementRowIds,
 	StatementSummaryReportRequest,
 	StatementSummaryReportResponse,
