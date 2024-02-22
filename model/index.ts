@@ -91,6 +91,7 @@ import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { FundingLimitConfig } from "./FundingLimitConfig"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
+import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognosisAmountPair"
 import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
 import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
 import { HotelInfo } from "./HotelInfo"
@@ -309,6 +310,7 @@ export {
 	FundingLimitConfig,
 	FundingLimitRequest,
 	FundingLimitResponse,
+	FutureTransactionPrognosisAmountPair,
 	HotelBookingInfoRequest,
 	HotelBookingInfoResponse,
 	HotelInfo,
