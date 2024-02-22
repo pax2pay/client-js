@@ -405,7 +405,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 		},
 		postedDate: "2022-06-14T08:26:18.234421",
 		transactionDate: "2022-06-17T04:00:18.234421",
@@ -439,7 +439,7 @@ const data1 = [
 			rebateRate: 0.5,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -473,7 +473,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -506,7 +506,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -539,7 +539,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -574,7 +574,7 @@ const data1 = [
 			rebateRate: 0.5,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -608,7 +608,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -641,7 +641,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -674,7 +674,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -707,7 +707,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -740,7 +740,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -773,7 +773,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -806,7 +806,7 @@ const data1 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -842,7 +842,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -875,7 +875,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -908,7 +908,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -941,7 +941,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -974,7 +974,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1007,7 +1007,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1040,7 +1040,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1073,7 +1073,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1106,7 +1106,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1139,7 +1139,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1172,7 +1172,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1205,7 +1205,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1238,7 +1238,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1271,7 +1271,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1304,7 +1304,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1337,7 +1337,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1370,7 +1370,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1403,7 +1403,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1436,7 +1436,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1469,7 +1469,7 @@ const data2 = [
 			fxRate: 1,
 		},
 		bookingInfo: {
-			type: "summary",
+			type: "SUMMARY",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
