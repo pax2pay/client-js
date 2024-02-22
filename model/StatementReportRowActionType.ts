@@ -7,6 +7,9 @@ const statementReportRowActionType = [
 	"REFUND",
 	"TRANSFER_IN",
 	"TRANSFER_OUT",
+	"SCHEDULED_CARD_AMENDMENT",
+	"USABLE_CARD",
+	"FUTURE_TRANSFER",
 ] as const
 export type StatementReportRowActionType = typeof statementReportRowActionType[number]
 

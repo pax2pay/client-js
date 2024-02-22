@@ -91,6 +91,7 @@ import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { FundingLimitConfig } from "./FundingLimitConfig"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
+import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognosisAmountPair"
 import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
 import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
 import { HotelInfo } from "./HotelInfo"
@@ -156,6 +157,7 @@ import { StatementReportResponse } from "./StatementReportResponse"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
+import { StatementReportSubType } from "./StatementReportSubType"
 import { StatementReportUrlRequest } from "./StatementReportUrlRequest"
 import { StatementRowIds } from "./StatementRowIds"
 import { StatementSummaryReportRequest } from "./StatementSummaryReportRequest"
@@ -308,6 +310,7 @@ export {
 	FundingLimitConfig,
 	FundingLimitRequest,
 	FundingLimitResponse,
+	FutureTransactionPrognosisAmountPair,
 	HotelBookingInfoRequest,
 	HotelBookingInfoResponse,
 	HotelInfo,
@@ -375,6 +378,7 @@ export {
 	StatementReportResponseRow,
 	StatementReportRowActionType,
 	StatementReportRowType,
+	StatementReportSubType,
 	StatementRowIds,
 	StatementSummaryReportRequest,
 	StatementSummaryReportResponse,
