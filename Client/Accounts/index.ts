@@ -49,7 +49,7 @@ export class Accounts extends List<model.AccountResponse> {
 	}
 
 	async getAllFundingAccountsV2Full(providerCode: model.ProviderCode[], size = 500, sort = "friendlyName") {
-		return await this.connection.get<{ list: model.FundingAccountResponseV2Full[]; totalCount: number }>(
+		const response = await this.connection.get<{ list: model.FundingAccountResponseV2Full[]; totalCount: number }>(
 			`v2/${this.folder}/info`,
 			{
 				providerCode: providerCode,
@@ -57,6 +57,7 @@ export class Accounts extends List<model.AccountResponse> {
 				sort: sort,
 			}
 		)
+		return this.extractResponse(response)
 	}
 	async getFundingAccountV2(providerCode: model.ProviderCode, providerAccountId: string) {
 		return await this.connection.get<model.FundingAccountResponseV2Basic>(
