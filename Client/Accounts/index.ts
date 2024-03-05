@@ -52,7 +52,7 @@ export class Accounts extends List<model.AccountResponse> {
 		const response = await this.connection.get<{ list: model.FundingAccountResponseV2Full[]; totalCount: number }>(
 			`v2/${this.folder}/info`,
 			{
-				providerCode: providerCode,
+				provider: providerCode,
 				size: size,
 				sort: sort,
 			}
