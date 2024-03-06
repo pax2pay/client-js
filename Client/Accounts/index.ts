@@ -1,7 +1,6 @@
 import * as model from "../../model"
 import { Connection } from "../Connection"
 import { List } from "../List"
-import { Paginated } from "../Paginated"
 
 export class Accounts extends List<model.AccountResponse> {
 	protected folder = "funding-accounts"
@@ -47,63 +46,36 @@ export class Accounts extends List<model.AccountResponse> {
 			`${this.folder}/${providerCode}/${providerAccountId}/limits`
 		)
 	}
-
-	async getAllFundingAccountsV2Paginated(
-		previous?: Paginated<model.FundingAccountResponseV2Basic>,
-		page?: number,
-		size?: number,
-		sort = undefined,
-		provider: model.ProviderCode | model.ProviderCode[] = "modulr"
-	) {
-		return await this.getNextPaginated<model.FundingAccountResponseV2Basic>(
-			previous,
-			(page, size, sort) =>
-				this.connection.get<
-					{ list: model.FundingAccountResponseV2Basic[]; totalCount: number } | model.FundingAccountResponseV2Basic[]
-				>(`v2/${this.folder}`, {
-					page: page,
-					size: size,
-					sort: sort,
-					provider: provider,
-				}),
-			undefined,
-			page,
-			size,
-			sort
-		)
+	async getAllFundingAccountsV2(providerCode: model.ProviderCode[], size = 500, sort = "friendlyName") {
+		const response = await this.connection.get<{
+			list: model.FundingAccountResponseV2Basic[]
+			totalCount: number
+		}>(`v2/${this.folder}`, {
+			provider: providerCode,
+			size: size,
+			sort: sort,
+		})
+		return this.extractResponse(response)
 	}
-	async getAllFundingAccountsV2FullPaginated(
-		previous?: Paginated<model.FundingAccountResponseV2Full>,
-		page?: number,
-		size?: number,
-		sort = undefined,
-		provider: model.ProviderCode | model.ProviderCode[] = "modulr"
-	) {
-		return await this.getNextPaginated<model.FundingAccountResponseV2Full>(
-			previous,
-			(page, size, sort) =>
-				this.connection.get<
-					{ list: model.FundingAccountResponseV2Full[]; totalCount: number } | model.FundingAccountResponseV2Full[]
-				>(`v2/${this.folder}/info`, {
-					page: page,
-					size: size,
-					sort: sort,
-					provider: provider,
-				}),
-			undefined,
-			page,
-			size,
-			sort
+	async getAllFundingAccountsV2Full(providerCode: model.ProviderCode[], size = 500, sort = "friendlyName") {
+		const response = await this.connection.get<{ list: model.FundingAccountResponseV2Full[]; totalCount: number }>(
+			`v2/${this.folder}/info`,
+			{
+				provider: providerCode,
+				size: size,
+				sort: sort,
+			}
 		)
+		return this.extractResponse(response)
 	}
-	async getFundingAccountV2(providerCode: model.ProviderCode, providerCodeId: string) {
+	async getFundingAccountV2(providerCode: model.ProviderCode, providerAccountId: string) {
 		return await this.connection.get<model.FundingAccountResponseV2Basic>(
-			`v2/${this.folder}/${providerCode}/${providerCodeId}`
+			`v2/${this.folder}/${providerCode}/${providerAccountId}`
 		)
 	}
-	async getFundingAccountV2Full(providerCode: model.ProviderCode, providerCodeId: string) {
+	async getFundingAccountV2Full(providerCode: model.ProviderCode, providerAccountId: string) {
 		return await this.connection.get<model.FundingAccountResponseV2Full>(
-			`v2/${this.folder}/${providerCode}/${providerCodeId}/info`
+			`v2/${this.folder}/${providerCode}/${providerAccountId}/info`
 		)
 	}
 	async getFundingAccounts(
