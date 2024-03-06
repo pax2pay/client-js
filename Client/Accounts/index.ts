@@ -1,7 +1,6 @@
 import * as model from "../../model"
 import { Connection } from "../Connection"
 import { List } from "../List"
-import { Paginated } from "../Paginated"
 
 export class Accounts extends List<model.AccountResponse> {
 	protected folder = "funding-accounts"
