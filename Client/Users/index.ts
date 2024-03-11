@@ -24,14 +24,6 @@ export class Users extends List<model.UserResponse> {
 		})
 		return this.extractResponse(response)
 	}
-	//Possibly should be moved to its own class
-	async getRolesets(): Promise<model.RolesetResponse[] | model.ErrorResponse> {
-		const response = await this.connection.get<{ list: model.RolesetResponse[]; totalCount: number }>(`rolesets`, {
-			size: 100,
-			sort: "name",
-		})
-		return this.extractResponse<model.RolesetResponse>(response)
-	}
 	async getUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
 		return await this.connection.get<model.UserResponse>(`${this.folder}/${username}`)
 	}
