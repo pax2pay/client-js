@@ -128,24 +128,6 @@ export class Auth {
 
 		return result
 	}
-	async createApiKeys(
-		request: model.ApiKeyCreateRequest
-	): Promise<model.ApiKeyCreateResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined> {
-		const result = await this.connection.post<model.ApiKeyCreateResponse, 400 | 403 | 404 | 500>(`api-keys`, request)
-		return result
-	}
-	async getApiKey(
-		identifier: string
-	): Promise<model.ApiKeyResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined> {
-		const result = await this.connection.get<model.ApiKeyResponse, 400 | 403 | 404 | 500>(`api-keys/${identifier}`)
-		return result
-	}
-	async getAllApiKeys(): Promise<
-		model.ApiKeyResponse[] | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
-	> {
-		const result = await this.connection.get<model.ApiKeyResponse[], 400 | 403 | 404 | 500>(`api-keys`)
-		return result
-	}
 }
 
 function isError(value: model.ErrorResponse | any): value is model.ErrorResponse {

@@ -1,4 +1,5 @@
 import { Accounts as ClientAccounts } from "./Accounts"
+import { ApiKeys as ClientApiKeys } from "./Api-keys"
 import { Auth as ClientAuth } from "./Auth"
 import { Beneficiaries as ClientBeneficiaries } from "./Beneficiaries"
 import { Cards as ClientCards } from "./Cards"
@@ -40,6 +41,7 @@ export class Client {
 	transfers = ClientTransfers.create(this.connection)
 	users = ClientUsers.create(this.connection)
 	rolesets = ClientRolesets.create(this.connection)
+	apiKeys = ClientApiKeys.create(this.connection)
 
 	constructor(private connection: Connection, private $authenticate?: Authenticate) {
 		connection.unauthorized = async () => (await this.$authenticate?.(this)) ?? false
@@ -71,7 +73,8 @@ export namespace Client {
 	export type Reports = ClientReports
 	export type Transfers = ClientTransfers
 	export type Users = ClientUsers
-	export type rolesets = ClientRolesets
+	export type Rolesets = ClientRolesets
+	export type ApiKeys = ClientApiKeys
 	export type List<Response extends { [key: string]: any }> = ClientList<Response>
 	export type Paginated<T> = ClientPaginated<T>
 }
