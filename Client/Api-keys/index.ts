@@ -9,7 +9,7 @@ export class ApiKeys extends List<model.ApiKeyResponse> {
 	static create(connection: Connection) {
 		return new ApiKeys(connection)
 	}
-	async createApiKeys(
+	async create(
 		request: model.ApiKeyCreateRequest
 	): Promise<model.ApiKeyCreateResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined> {
 		const result = await this.connection.post<model.ApiKeyCreateResponse, 400 | 403 | 404 | 500>(this.folder, request)
