@@ -6,6 +6,6 @@ export interface ApiKeyResponse {
 	rolesets?: string[]
 	roles?: string[]
 	lastKeyUsage: DateTime
-	active?: boolean
+	active: boolean
 	createdBy: string
 }

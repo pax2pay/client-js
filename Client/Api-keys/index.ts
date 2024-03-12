@@ -26,7 +26,10 @@ export class ApiKeys extends List<model.ApiKeyResponse> {
 	async getAllApiKeys(): Promise<
 		model.ApiKeyResponse[] | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
 	> {
-		const result = await this.connection.get<model.ApiKeyResponse[], 400 | 403 | 404 | 500>(this.folder)
+		const result = await this.connection.get<model.ApiKeyResponse[], 400 | 403 | 404 | 500>(this.folder, {
+			size: 500,
+			sort: "displayName",
+		})
 		return result
 	}
 	async deleteApiKey(
