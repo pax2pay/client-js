@@ -6,12 +6,11 @@ export class Auth {
 	#roles?: string[]
 	#features?: PaxpayFeature[]
 	constructor(private connection: Connection) {}
-	set roles(roles: string[] | undefined) {
-		this.#roles = roles
-		if (roles)
-			window.sessionStorage.setItem("roles", roles.join(","))
-		else
-			window.sessionStorage.removeItem("roles")
+	get token(): string | undefined {
+		return this.connection.token
+	}
+	set token(value: string | undefined) {
+		this.connection.token = value
 	}
 	set features(features: PaxpayFeature[] | undefined) {
 		this.#features = features
@@ -20,11 +19,12 @@ export class Auth {
 		else
 			window.sessionStorage.removeItem("features")
 	}
-	get token(): string | undefined {
-		return this.connection.token
-	}
-	set token(value: string | undefined) {
-		this.connection.token = value
+	set roles(roles: string[] | undefined) {
+		this.#roles = roles
+		if (roles)
+			window.sessionStorage.setItem("roles", roles.join(","))
+		else
+			window.sessionStorage.removeItem("roles")
 	}
 	static create(connection: Connection) {
 		return new Auth(connection)
@@ -44,6 +44,9 @@ export class Auth {
 	data(): Record<string, any> {
 		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
 	}
+	getOrganisation(): string {
+		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").organisation
+	}
 	hasRole(role: string) {
 		this.loadRoles()
 		return this.#roles ? this.#roles.includes(role) : false
@@ -51,16 +54,6 @@ export class Auth {
 	hasFeature(feature: PaxpayFeature) {
 		this.loadFeatures()
 		return this.#features ? this.#features.includes(feature) : false
-	}
-	tokenExpiry(): string | undefined {
-		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").expiry
-	}
-	getOrganisation(): string {
-		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").organisation
-	}
-	setTempToken(value: string) {
-		window.sessionStorage.setItem("authData", JSON.stringify({ token: value }))
-		this.connection.token = value
 	}
 	isLoggedIn(): boolean {
 		const data = window.sessionStorage.getItem("authData")
@@ -72,6 +65,23 @@ export class Auth {
 	isAssumed(): boolean {
 		const data = this.data()
 		return data.user?.organisation?.code != data.organisation
+	}
+	setTempToken(value: string) {
+		window.sessionStorage.setItem("authData", JSON.stringify({ token: value }))
+		this.connection.token = value
+	}
+	tokenExpiry(): string | undefined {
+		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").expiry
+	}
+	async assume(
+		code: string
+	): Promise<model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 })> {
+		const result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>(`auth/assume/org/${code}`)
+		if (!isError(result)) {
+			this.connection.token = result.token
+			window.sessionStorage.setItem("authData", JSON.stringify(result))
+		}
+		return result
 	}
 	async login(request: model.LoginRequest, otp?: string) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>(
@@ -99,16 +109,6 @@ export class Auth {
 		} else {
 			result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>("auth/relog")
 		}
-		if (!isError(result)) {
-			this.connection.token = result.token
-			window.sessionStorage.setItem("authData", JSON.stringify(result))
-		}
-		return result
-	}
-	async assume(
-		code: string
-	): Promise<model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 })> {
-		const result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>(`auth/assume/org/${code}`)
 		if (!isError(result)) {
 			this.connection.token = result.token
 			window.sessionStorage.setItem("authData", JSON.stringify(result))
