@@ -12,6 +12,9 @@ import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AllowedMccConfig } from "./AllowedMccConfig"
 import { AmendCardRequest } from "./AmendCardRequest"
 import { AmountPair } from "./AmountPair"
+import { ApiKeyCreateRequest } from "./ApiKeyCreateRequest"
+import { ApiKeyCreateResponse } from "./ApiKeyCreateResponse"
+import { ApiKeyResponse } from "./ApiKeyResponse"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
@@ -231,6 +234,9 @@ export {
 	AllowedMccConfig,
 	AmendCardRequest,
 	AmountPair,
+	ApiKeyCreateRequest,
+	ApiKeyCreateResponse,
+	ApiKeyResponse,
 	BeneficiaryRequest,
 	BeneficiaryResponse,
 	BeneficiaryStatus,

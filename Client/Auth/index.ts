@@ -4,7 +4,11 @@ import { Connection } from "../Connection"
 
 export class Auth {
 	#roles?: string[]
-
+	#features?: PaxpayFeature[]
+	constructor(private connection: Connection) {}
+	static create(connection: Connection) {
+		return new Auth(connection)
+	}
 	set roles(roles: string[] | undefined) {
 		this.#roles = roles
 		if (roles)
@@ -12,11 +16,9 @@ export class Auth {
 		else
 			window.sessionStorage.removeItem("roles")
 	}
-
 	private loadRoles() {
 		if (this.#roles)
 			return
-
 		const roles = window.sessionStorage.getItem("roles")
 		this.#roles = roles ? roles.split(",") : []
 	}
@@ -25,12 +27,8 @@ export class Auth {
 	}
 	hasRole(role: string) {
 		this.loadRoles()
-
 		return this.#roles ? this.#roles.includes(role) : false
 	}
-
-	#features?: PaxpayFeature[]
-
 	set features(features: PaxpayFeature[] | undefined) {
 		this.#features = features
 		if (features)
@@ -38,21 +36,16 @@ export class Auth {
 		else
 			window.sessionStorage.removeItem("features")
 	}
-
 	private loadFeatures() {
 		if (this.#features)
 			return
-
 		const features = window.sessionStorage.getItem("features")
 		this.#features = features ? (features.split(",") as PaxpayFeature[]) : []
 	}
-
 	hasFeature(feature: PaxpayFeature) {
 		this.loadFeatures()
-
 		return this.#features ? this.#features.includes(feature) : false
 	}
-
 	tokenExpiry(): string | undefined {
 		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").expiry
 	}
@@ -65,12 +58,10 @@ export class Auth {
 	set token(value: string | undefined) {
 		this.connection.token = value
 	}
-
 	setTempToken(value: string) {
 		window.sessionStorage.setItem("authData", JSON.stringify({ token: value }))
 		this.connection.token = value
 	}
-
 	isLoggedIn(): boolean {
 		const data = window.sessionStorage.getItem("authData")
 		if (!data)
@@ -78,8 +69,6 @@ export class Auth {
 		else
 			return JSON.parse(data)?.status == "SUCCESS"
 	}
-
-	constructor(private connection: Connection) {}
 	async login(request: model.LoginRequest, otp?: string) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>(
 			"auth/login",
@@ -106,12 +95,10 @@ export class Auth {
 		}
 		return result
 	}
-
 	isAssumed(): boolean {
 		const data = this.data()
 		return data.user?.organisation?.code != data.organisation
 	}
-
 	async assume(
 		code: string
 	): Promise<model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 })> {
@@ -122,7 +109,6 @@ export class Auth {
 		}
 		return result
 	}
-
 	async unassume(): Promise<
 		model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
 	> {
@@ -132,12 +118,7 @@ export class Auth {
 			result = undefined
 		else
 			result = await this.assume(data.user.organisation.code)
-
 		return result
-	}
-
-	static create(connection: Connection) {
-		return new Auth(connection)
 	}
 
 	async logout() {

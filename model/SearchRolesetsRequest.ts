@@ -5,4 +5,6 @@ export interface SearchRolesetsRequest {
 	containsRoles?: string[]
 	doesNotContainRoles?: string[]
 	includeInternal: "INCLUDE" | "EXCLUDE" | "ONLY"
+	includeShared: "INCLUDE" | "EXCLUDE" | "ONLY"
+	appliesTo?: "USER" | "API_KEY"
 }

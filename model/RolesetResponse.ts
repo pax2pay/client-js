@@ -9,4 +9,5 @@ export interface RolesetResponse {
 	isDefault?: boolean
 	internal?: boolean
 	containedRoles?: RoleResponse[]
+	appliesTo?: "USER" | "API_KEY"
 }
