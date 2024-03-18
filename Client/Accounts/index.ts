@@ -11,10 +11,10 @@ export class Accounts extends List<model.AccountResponse> {
 		return new Accounts(connection)
 	}
 	async addFundingAccount(request: model.AccountCreationRequest) {
-		return await this.connection.post<Promise<model.ErrorResponse | model.AccountResponse[]>>(`${this.folder}`, request)
+		return await this.connection.post<Promise<model.ErrorResponse | model.AccountResponse>>(`${this.folder}`, request)
 	}
 	async createFundingAccount(request: model.AccountCreationRequest) {
-		return await this.connection.post<Promise<model.ErrorResponse | model.AccountResponse[]>>(
+		return await this.connection.post<Promise<model.ErrorResponse | model.AccountResponse>>(
 			`${this.folder}/create-new`,
 			request
 		)
