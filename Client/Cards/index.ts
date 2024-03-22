@@ -114,7 +114,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 
 	async createCardTypeProfileV2(cardTypeProfileRequest: model.CardTypeProfileRequest) {
 		const response = await this.connection.post<model.CardTypeProfileResponse>(
-			"v2/card/types/profiles",
+			`v2/${this.folder}/types/profiles`,
 			cardTypeProfileRequest
 		)
 		return response
