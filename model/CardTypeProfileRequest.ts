@@ -9,6 +9,6 @@ export interface CardTypeProfileRequest {
 	copyFrom?: string
 	addCardTypes?: CardTypeSpecification[]
 	removeCardTypes?: CardTypeSpecification[]
-	organisatons?: string[]
+	organisations?: string[]
 	createDefault?: boolean
 }
