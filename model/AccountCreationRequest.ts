@@ -9,6 +9,7 @@ export interface AccountCreationRequest {
 	friendlyName?: string
 	currency: string
 	specificCustomerId?: string
+	realm?: string
 }
 export namespace AccountCreationRequest {
 	export function is(value: AccountCreationRequest | any): value is AccountCreationRequest {
@@ -17,6 +18,7 @@ export namespace AccountCreationRequest {
 			(value.providerAccountId == undefined || typeof value.providerAccountId == "string") &&
 			ProviderCode.is(value.providerCode) &&
 			(value.friendlyName == undefined || typeof value.friendlyName == "string") &&
+			(value.realm == undefined || typeof value.realm == "string") &&
 			(value.specificCustomerId == undefined || typeof value.specificCustomerId == "string") &&
 			typeof value.currency == "string"
 		)
