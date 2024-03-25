@@ -10,6 +10,18 @@ export class Accounts extends List<model.AccountResponse> {
 	static create(connection: Connection) {
 		return new Accounts(connection)
 	}
+	async addFundingAccount(request: model.AccountCreationRequest) {
+		return await this.connection.post<Promise<model.ErrorResponse | model.FundingAccountResponseV2Full>>(
+			`${this.folder}`,
+			request
+		)
+	}
+	async createFundingAccount(request: model.AccountCreationRequest) {
+		return await this.connection.post<Promise<model.ErrorResponse | model.FundingAccountResponseV2Full>>(
+			`${this.folder}/create-new`,
+			request
+		)
+	}
 	async getAccountSummary(
 		providerCodes: model.ProviderCode[],
 		accountId?: number,
