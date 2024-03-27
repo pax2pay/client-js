@@ -1,3 +1,4 @@
+import { Currency } from "isoly"
 import { ProviderCode } from "./ProviderCode"
 
 /**
@@ -7,7 +8,7 @@ export interface AccountCreationRequest {
 	providerAccountId?: string
 	providerCode: ProviderCode
 	friendlyName?: string
-	currency: string
+	currency: Currency
 	specificCustomerId?: string
 	realm?: string
 }
@@ -20,7 +21,7 @@ export namespace AccountCreationRequest {
 			(value.friendlyName == undefined || typeof value.friendlyName == "string") &&
 			(value.realm == undefined || typeof value.realm == "string") &&
 			(value.specificCustomerId == undefined || typeof value.specificCustomerId == "string") &&
-			typeof value.currency == "string"
+			Currency.is(value.currency)
 		)
 	}
 }
