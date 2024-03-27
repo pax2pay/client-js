@@ -7,7 +7,7 @@ export interface FundingAccountResponseV2Full extends FundingAccountResponseV2Ba
 	actualBalance?: number
 	fundingLimit?: FundingLimitResponse
 	accountIdentifier?: AccountIdentifierResponse
-	totalCardAvailableBalance: number
+	totalCardAvailableBalance?: number
 	updatedOn: DateTime
 	createdOn: DateTime
 	realm?: string
@@ -21,7 +21,7 @@ export namespace FundingAccountResponseV2Full {
 			(value.realm == undefined || typeof value.realm == "string") &&
 			(value.fundingLimit == undefined || FundingLimitResponse.is(value.fundingLimit)) &&
 			(value.accountIdentifier == undefined || AccountIdentifierResponse.is(value.accountIdentifier)) &&
-			typeof value.totalCardAvailableBalance == "number" &&
+			(value.totalCardAvailableBalance == undefined || typeof value.totalCardAvailableBalance == "number") &&
 			DateTime.is(value.updatedOn) &&
 			DateTime.is(value.createdOn) &&
 			FundingAccountResponseV2Basic.is(value)
