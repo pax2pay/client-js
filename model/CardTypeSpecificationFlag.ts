@@ -1,8 +1,9 @@
-const cardTypeSpecificationFlags = ["CORPORATE", "BUSINESS", "CONSUMER"] as const
-export type CardTypeSpecificationFlag = typeof cardTypeSpecificationFlags[number]
+import { isly } from "isly"
+
+export type CardTypeSpecificationFlag = typeof CardTypeSpecificationFlag.types[number]
 
 export namespace CardTypeSpecificationFlag {
-	export function is(value: unknown): value is CardTypeSpecificationFlag {
-		return value == "string" && cardTypeSpecificationFlags.includes(value as CardTypeSpecificationFlag)
-	}
+	export const types = ["CORPORATE", "BUSINESS", "CONSUMER"] as const
+	export const type = isly.string(types)
+	export const is = type.is
 }
