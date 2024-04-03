@@ -1,4 +1,4 @@
-import { Currency, Date } from "isoly"
+import { Currency, Date, DateTime } from "isoly"
 import { BookingInfoResponse } from "./BookingInfoResponse"
 import { ExternalSource } from "./ExternalSource"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
@@ -23,6 +23,8 @@ export interface TransferResponseV2 {
 	direction: TransferDirection
 	createdBy: string
 	personallyApprovable?: boolean
+	approvedBy?: string
+	approvedOn?: DateTime
 }
 
 export namespace TransferResponseV2 {
@@ -43,7 +45,9 @@ export namespace TransferResponseV2 {
 			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo)) &&
 			TransferDirection.is(value.direction) &&
 			typeof value.createdBy == "string" &&
-			(value.personallyApprovable == undefined || typeof value.personallyApprovable == "boolean")
+			(value.personallyApprovable == undefined || typeof value.personallyApprovable == "boolean") &&
+			(value.approvedBy == undefined || typeof value.approvedBy == "string") &&
+			(value.approvedOn == undefined || DateTime.is(value.approvedOn))
 		)
 	}
 }
