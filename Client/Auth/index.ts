@@ -22,7 +22,7 @@ export class Auth {
 		const roles = window.sessionStorage.getItem("roles")
 		this.#roles = roles ? roles.split(",") : []
 	}
-	data(): Record<string, any> {
+	data(): Partial<model.LoginResponse> {
 		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
 	}
 	hasRole(role: string) {
@@ -47,10 +47,10 @@ export class Auth {
 		return this.#features ? this.#features.includes(feature) : false
 	}
 	tokenExpiry(): string | undefined {
-		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").expiry
+		return this.data().expiry
 	}
-	getOrganisation(): string {
-		return JSON.parse(window.sessionStorage.getItem("authData") ?? "{}").organisation
+	getOrganisation(): string | undefined {
+		return this.data().organisation
 	}
 	get token(): string | undefined {
 		return this.connection.token
@@ -64,10 +64,7 @@ export class Auth {
 	}
 	isLoggedIn(): boolean {
 		const data = window.sessionStorage.getItem("authData")
-		if (!data)
-			return false
-		else
-			return JSON.parse(data)?.status == "SUCCESS"
+		return data ? JSON.parse(data)?.status == "SUCCESS" : false
 	}
 	async login(request: model.LoginRequest, otp?: string) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>(
@@ -113,12 +110,7 @@ export class Auth {
 		model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
 	> {
 		const data = this.data()
-		let result: model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
-		if (!Object.keys(data).length)
-			result = undefined
-		else
-			result = await this.assume(data.user.organisation.code)
-		return result
+		return data.user?.organisation?.code ? await this.assume(data?.user?.organisation?.code) : undefined
 	}
 
 	async logout() {
