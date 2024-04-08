@@ -14,4 +14,18 @@ export namespace ErrorResponse {
 			(value.code != undefined || value.errors != undefined)
 		)
 	}
+	export const roleMissingCode = 9
+	export function isRoleMissing(error?: ErrorResponse): boolean {
+		return error?.code == roleMissingCode
+	}
+	export namespace TwoFa {
+		export const incorrectCode = 13
+		export function isIncorrect(error?: ErrorResponse): boolean {
+			return error?.code == incorrectCode
+		}
+		export const requiredCode = 14
+		export function isRequired(error?: ErrorResponse): boolean {
+			return error?.code == requiredCode
+		}
+	}
 }
