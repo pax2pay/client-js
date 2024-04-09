@@ -1,4 +1,10 @@
-export const statementReportSubType = ["SETTLED", "PENDING", "PROGNOSIS_CARDS", "PROGNOSIS_FUTURE"] as const
+export const statementReportSubType = [
+	"SETTLED",
+	"PENDING",
+	"PROGNOSIS",
+	"FUTURE_PROGNOSIS",
+	"UNUSED_CARDS_PROGNOSIS",
+] as const
 
 export type StatementReportSubType = typeof statementReportSubType[number]
 
