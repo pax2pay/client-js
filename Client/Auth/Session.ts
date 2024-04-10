@@ -1,6 +1,9 @@
 import { isly } from "isly"
 import * as model from "../../model"
 
+// TODO: split Roles, features, AuthData into separate static classes??
+// TODO: change authData to something better
+
 export namespace Session {
 	export const keys = ["roles", "features", "authData"] as const
 	export type Key = typeof keys[number]
