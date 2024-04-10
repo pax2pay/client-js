@@ -1,5 +1,5 @@
 import { isly } from "isly"
-import * as model from "../../model"
+import * as model from "../../../model"
 
 // TODO: split Roles, features, AuthData into separate static classes??
 // TODO: change authData to something better
