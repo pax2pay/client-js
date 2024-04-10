@@ -6,6 +6,23 @@ export namespace Session {
 	export type Key = typeof keys[number]
 	export const keyType = isly.string<Key>(keys)
 	export const is = keyType.is
+	const sessionStorage =
+		typeof window == "undefined"
+			? (() => {
+					const storage: Record<string, string> = {}
+					return {
+						removeItem: (key: string) => {
+							delete storage[key]
+						},
+						setItem: (key: string, value: string) => {
+							storage[key] = value
+						},
+						getItem: (key: string): string | null => {
+							return storage[key] ?? null
+						},
+					}
+			  })()
+			: window.sessionStorage
 
 	type Convert = {
 		roles: string[]
@@ -24,14 +41,36 @@ export namespace Session {
 		features: v => v.join(","),
 		authData: v => JSON.stringify(v),
 	}
+
+	const listeners: { [key in Key]: ((value: Convert[key] | undefined) => void)[] } = {
+		roles: [],
+		features: [],
+		authData: [],
+	}
+
+	export function listen<K extends Key>(key: K, callback: (value: Convert[K] | undefined) => void) {
+		callback(getItem(key))
+		return lazyListen(key, callback)
+	}
+	export function lazyListen<K extends Key>(key: K, callback: (value: Convert[K] | undefined) => void) {
+		listeners[key].push(callback)
+		return callback
+	}
+	export function unlisten<K extends Key>(key: K, callback: (value: Convert[K] | undefined) => void) {
+		const index = listeners[key].indexOf(callback)
+		if (index > 0)
+			listeners[key].splice(index, 1)
+	}
+
 	export function setItem<K extends Key>(key: K, value: Convert[K] | undefined) {
 		if (value)
-			window.sessionStorage.setItem(key, toString[key](value))
+			sessionStorage.setItem(key, toString[key](value))
 		else
-			window.sessionStorage.removeItem(key)
+			sessionStorage.removeItem(key)
+		listeners[key].forEach(callback => callback(value))
 		return value
 	}
 	export function getItem<K extends Key>(key: K): Convert[K] | undefined {
-		return fromString[key](window.sessionStorage.getItem(key) ?? undefined)
+		return fromString[key](sessionStorage.getItem(key) ?? undefined)
 	}
 }
