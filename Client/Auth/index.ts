@@ -1,50 +1,40 @@
 import * as model from "../../model"
-import { PaxpayFeature } from "../../model/PaxpayFeature"
 import { Connection } from "../Connection"
+import { Session } from "./Session"
 
 export class Auth {
 	#roles?: string[]
-	#features?: PaxpayFeature[]
+	#features?: model.PaxpayFeature[]
 	#data: Partial<model.LoginResponse>
+	// #rolesListener
 	constructor(private connection: Connection) {}
 	static create(connection: Connection) {
 		return new Auth(connection)
 	}
+
 	get roles(): string[] | undefined {
-		return (this.#roles ??= window.sessionStorage.getItem("roles")?.split(","))
+		return (this.#roles ??= Session.getItem("roles"))
 	}
 	set roles(roles: string[] | undefined) {
-		this.#roles = roles
-		if (roles)
-			window.sessionStorage.setItem("roles", roles.join(","))
-		else
-			window.sessionStorage.removeItem("roles")
+		this.#roles = Session.setItem("roles", roles)
 	}
 	hasRole(role: string): boolean {
 		return this.roles?.includes(role) ?? false
 	}
-	get features(): PaxpayFeature[] | undefined {
-		return (this.#features ??= window.sessionStorage.getItem("features")?.split(",") as PaxpayFeature[])
+	get features(): model.PaxpayFeature[] | undefined {
+		return (this.#features ??= Session.getItem("features"))
 	}
-	set features(features: PaxpayFeature[] | undefined) {
-		this.#features = features
-		if (features)
-			window.sessionStorage.setItem("features", features.join(","))
-		else
-			window.sessionStorage.removeItem("features")
+	set features(features: model.PaxpayFeature[] | undefined) {
+		this.#features = Session.setItem("features", features)
 	}
-	hasFeature(feature: PaxpayFeature) {
+	hasFeature(feature: model.PaxpayFeature) {
 		return this.features?.includes(feature) ?? false
 	}
 	get data(): Partial<model.LoginResponse> {
-		return (this.#data ??= JSON.parse(window.sessionStorage.getItem("authData") ?? "{}"))
+		return (this.#data ??= Session.getItem("authData") ?? {})
 	}
 	set data(value: Partial<model.LoginResponse> | undefined) {
-		this.#data = value ?? {}
-		if (value)
-			window.sessionStorage.setItem("authData", JSON.stringify(value))
-		else
-			window.sessionStorage.removeItem("authData")
+		this.#data = Session.setItem("authData", value) ?? {}
 	}
 	get token(): string | undefined {
 		return this.connection.token
