@@ -1,5 +1,6 @@
 import { default as fetch } from "isomorphic-fetch"
 import * as model from "../model"
+import { Session } from "./Auth/Session"
 
 type DefaultCodes = 503
 export class Connection {
@@ -41,8 +42,8 @@ export class Connection {
 				"Content-Type": "application/json; charset=utf-8",
 			}
 		try {
-			const data = JSON.parse(window.sessionStorage.getItem("authData") ?? "{}")
-			this.#token = data.token
+			const data = Session.getItem("authData")
+			this.#token = data?.token
 		} catch (e) {
 			if (this.token)
 				console.error("Caught exception ", JSON.stringify(e))
@@ -88,7 +89,7 @@ export class Connection {
 			window.localStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
 		//get temp token to set up 2fa before login
 		if (response && response.status == 403 && response.url.includes("login") && response.headers.has("X-Auth-Token"))
-			window.sessionStorage.setItem("authData", JSON.stringify({ token: response.headers.get("X-Auth-Token") }))
+			Session.setItem("authData", { token: response.headers.get("X-Auth-Token") ?? undefined })
 
 		return !response
 			? { code: 503, errors: [{ message: "Service unavailable" }] }
