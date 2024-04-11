@@ -1,48 +1,47 @@
 import { Session } from "."
 
-// const sessionStorage =
-
 describe("Session", () => {
 	it("roles set/get", () => {
-		expect(Session.getItem("roles")).toEqual(undefined)
+		expect(Session.roles.getItem()).toEqual(undefined)
 
 		const roles = ["api-key.create", "api-key.edit", "card.cancel", "card.create"]
-		Session.setItem("roles", roles)
-		expect(Session.getItem("roles")).toEqual(roles)
+		Session.roles.setItem(roles)
+		expect(Session.roles.getItem()).toEqual(roles)
 
-		Session.setItem("roles", undefined)
-		expect(Session.getItem("roles")).toEqual(undefined)
+		Session.roles.setItem(undefined)
+		expect(Session.roles.getItem()).toEqual(undefined)
 	})
 	it("authData set/get", () => {
-		expect(Session.getItem("authData")).toEqual(undefined)
+		expect(Session.authentication.getItem()).toEqual(undefined)
 
 		const data = { token: "ey" }
-		Session.setItem("authData", data)
-		expect(Session.getItem("authData")).toEqual(data)
+		Session.authentication.setItem(data)
+		expect(Session.authentication.getItem()).toEqual(data)
 
-		Session.setItem("authData", undefined)
-		expect(Session.getItem("authData")).toEqual(undefined)
+		Session.authentication.setItem(undefined)
+		expect(Session.authentication.getItem()).toEqual(undefined)
 	})
 	it("listen", () => {
-		Session.setItem("roles", ["a", "b", "c"])
+		Session.roles.setItem(["a", "b", "c"])
 		let roles: string[] | undefined
 		let lazyRoles: string[] | undefined
-		const listener = Session.listen("roles", value => (roles = value))
-		const lazyListener = Session.lazyListen("roles", value => (lazyRoles = value))
+		const listener = Session.roles.listen(value => (roles = value))
+		const lazyListener = Session.roles.lazyListen(value => (lazyRoles = value))
 		expect(roles).toEqual(["a", "b", "c"])
 		expect(lazyRoles).toEqual(undefined)
 
-		Session.setItem("roles", ["d"])
+		Session.roles.setItem(["d"])
 		expect(roles).toEqual(["d"])
 		expect(lazyRoles).toEqual(["d"])
 
-		Session.unlisten("roles", listener)
-		Session.setItem("roles", ["f"])
-		expect(roles).toEqual(["d"])
-		expect(lazyRoles).toEqual(["f"])
+		Session.roles.unlisten(lazyListener)
+		Session.roles.setItem(["f"])
+		expect(roles).toEqual(["f"])
+		expect(lazyRoles).toEqual(["d"])
 
-		Session.unlisten("roles", lazyListener)
-		Session.setItem("roles", ["h"])
-		expect(lazyRoles).toEqual(["f"])
+		Session.roles.unlisten(lazyListener)
+		Session.roles.setItem(["h"])
+		expect(lazyRoles).toEqual(["d"])
+		expect(lazyRoles).toEqual(["d"])
 	})
 })
