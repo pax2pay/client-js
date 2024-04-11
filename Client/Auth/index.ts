@@ -54,7 +54,7 @@ export class Auth {
 	}
 	setTempToken(value: string) {
 		this.data = { token: value }
-		this.connection.token = value
+		this.token = value
 	}
 	isLoggedIn(): boolean {
 		return this.data.status == "SUCCESS" ?? false
