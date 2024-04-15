@@ -42,7 +42,7 @@ export class Connection {
 				"Content-Type": "application/json; charset=utf-8",
 			}
 		try {
-			const data = Session.authentication.getItem()
+			const data = Session.login.get()
 			this.#token = data?.token
 		} catch (e) {
 			if (this.token)
@@ -64,11 +64,11 @@ export class Connection {
 				(parameters
 					? "?" +
 					  Object.entries(parameters)
-							.map(param => {
-								if (Array.isArray(param[1]))
-									return `${param[0]}=${param[1].join(",")}`
-								else if (param[1] != undefined)
-									return param.join("=")
+							.map((key, value) => {
+								if (Array.isArray(value))
+									return `${key}=${value.join(",")}`
+								else if (value != undefined)
+									return `${key}=${value}`
 								return undefined
 							})
 							.filter(param => param != undefined)
@@ -89,7 +89,7 @@ export class Connection {
 			window.localStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
 		//get temp token to set up 2fa before login
 		if (response && response.status == 403 && response.url.includes("login") && response.headers.has("X-Auth-Token"))
-			Session.authentication.setItem({ token: response.headers.get("X-Auth-Token") ?? undefined })
+			Session.login.set({ token: response.headers.get("X-Auth-Token") ?? undefined })
 
 		return !response
 			? { code: 503, errors: [{ message: "Service unavailable" }] }

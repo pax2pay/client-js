@@ -4,7 +4,7 @@ import { List } from "../List"
 import { Paginated } from "../Paginated"
 
 export class Users extends List<model.UserResponse> {
-	protected folder = "users"
+	protected folder = "users" as const
 	private constructor(connection: Connection) {
 		super(connection)
 	}

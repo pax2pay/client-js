@@ -2,27 +2,27 @@ import { Session } from "."
 
 describe("Session", () => {
 	it("roles set/get", () => {
-		expect(Session.roles.getItem()).toEqual(undefined)
+		expect(Session.roles.get()).toEqual(undefined)
 
 		const roles = ["api-key.create", "api-key.edit", "card.cancel", "card.create"]
-		Session.roles.setItem(roles)
-		expect(Session.roles.getItem()).toEqual(roles)
+		Session.roles.set(roles)
+		expect(Session.roles.get()).toEqual(roles)
 
-		Session.roles.setItem(undefined)
-		expect(Session.roles.getItem()).toEqual(undefined)
+		Session.roles.set(undefined)
+		expect(Session.roles.get()).toEqual(undefined)
 	})
 	it("authData set/get", () => {
-		expect(Session.authentication.getItem()).toEqual(undefined)
+		expect(Session.login.get()).toEqual(undefined)
 
 		const data = { token: "ey" }
-		Session.authentication.setItem(data)
-		expect(Session.authentication.getItem()).toEqual(data)
+		Session.login.set(data)
+		expect(Session.login.get()).toEqual(data)
 
-		Session.authentication.setItem(undefined)
-		expect(Session.authentication.getItem()).toEqual(undefined)
+		Session.login.set(undefined)
+		expect(Session.login.get()).toEqual(undefined)
 	})
 	it("listen", () => {
-		Session.roles.setItem(["a", "b", "c"])
+		Session.roles.set(["a", "b", "c"])
 		let roles: string[] | undefined
 		let lazyRoles: string[] | undefined
 		const listener = Session.roles.listen(value => (roles = value))
@@ -30,18 +30,18 @@ describe("Session", () => {
 		expect(roles).toEqual(["a", "b", "c"])
 		expect(lazyRoles).toEqual(undefined)
 
-		Session.roles.setItem(["d"])
+		Session.roles.set(["d"])
 		expect(roles).toEqual(["d"])
 		expect(lazyRoles).toEqual(["d"])
 
 		Session.roles.unlisten(lazyListener)
-		Session.roles.setItem(["f"])
-		expect(roles).toEqual(["f"])
+		Session.roles.set(["e"])
+		expect(roles).toEqual(["e"])
 		expect(lazyRoles).toEqual(["d"])
 
-		Session.roles.unlisten(lazyListener)
-		Session.roles.setItem(["h"])
-		expect(lazyRoles).toEqual(["d"])
+		Session.roles.unlisten(listener)
+		Session.roles.set(["f"])
+		expect(roles).toEqual(["e"])
 		expect(lazyRoles).toEqual(["d"])
 	})
 })

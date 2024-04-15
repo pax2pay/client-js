@@ -8,7 +8,7 @@ export class Entry<K extends string, V> {
 
 	private listeners: ((value: V | undefined) => void)[] = []
 	listen(callback: (value: V | undefined) => void) {
-		callback(this.getItem())
+		callback(this.get())
 		return this.lazyListen(callback)
 	}
 	lazyListen(callback: (value: V | undefined) => void) {
@@ -17,18 +17,15 @@ export class Entry<K extends string, V> {
 	}
 	unlisten(callback: (value: V | undefined) => void) {
 		const index = this.listeners.indexOf(callback)
-		console.log("unlisten", index)
-		console.log("before unliustened ", this.listeners)
-		if (index > 0)
+		if (index >= 0)
 			this.listeners.splice(index, 1)
-		console.log("after unliustened ", this.listeners)
 	}
 
-	getItem(): V | undefined {
+	get(): V | undefined {
 		return this.fromString(this.storage.getItem(this.key) ?? undefined)
 	}
-	setItem(value: V | undefined): V | undefined {
-		if (value)
+	set(value: V | undefined): V | undefined {
+		if (value != undefined && value != null)
 			this.storage.setItem(this.key, this.toString(value))
 		else
 			this.storage.removeItem(this.key)

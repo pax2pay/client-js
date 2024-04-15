@@ -1,9 +1,6 @@
 import * as model from "../../../model"
 import { Entry } from "./Entry"
 
-// TODO: split Roles, features, AuthData into separate static classes??
-// TODO: change authData to something better
-
 export namespace Session {
 	const storage =
 		typeof window == "undefined"
@@ -33,7 +30,7 @@ export namespace Session {
 		toString: (v: model.PaxpayFeature[]) => v.join(","),
 		storage,
 	})
-	export const authentication = Entry.create("authentication", {
+	export const login = Entry.create("login", {
 		fromString: (v: string | undefined) => (v ? (JSON.parse(v) as Partial<model.LoginResponse>) : undefined),
 		toString: (v: Partial<model.LoginResponse>) => JSON.stringify(v),
 		storage,
