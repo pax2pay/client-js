@@ -33,6 +33,9 @@ export class Users extends List<model.UserResponse> {
 		)
 		return this.extractResponse<string>(response)
 	}
+	async getUsersRoles(username: string): Promise<model.UserRoleResponse | model.ErrorResponse> {
+		return await this.connection.get<model.UserRoleResponse>(`${this.folder}/${username}/roles`)
+	}
 	async resetPassword(username: string): Promise<model.PasswordResetResponse | model.ErrorResponse> {
 		return await this.connection.post<model.PasswordResetResponse>(`auth/passwordreset`, { username: username })
 	}
