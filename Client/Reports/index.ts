@@ -33,7 +33,7 @@ export class Reports {
 		return await this.connection.post<model.Report.Statement>(`../reports/statement`, request)
 	}
 
-	async statementForTable(
+	async getStatementReport(
 		request: model.StatementReportRequest,
 		page?: number,
 		pageSize?: number
@@ -56,7 +56,7 @@ export class Reports {
 			result = result.list
 		return result
 	}
-	async statementSummaryForTable(
+	async getStatementSummaryReport(
 		request: model.StatementSummaryReportRequest,
 		page?: number,
 		pageSize?: number,
@@ -77,7 +77,7 @@ export class Reports {
 			}
 		)
 	}
-	async getStatementForTable(rowId: string) {
+	async getStatementReportRow(rowId: string) {
 		return await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 	}
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
