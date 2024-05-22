@@ -19,13 +19,21 @@ export class Configuration {
 	): Promise<model.OrganisationConfig | model.ErrorResponse> {
 		return await this.connection.post<model.OrganisationConfig>(`${this.folder}/organisation`, request)
 	}
-	async getInternalOrganisationConfig(): Promise<model.InternalOrganisationConfig | model.ErrorResponse> {
-		return await this.connection.get<model.InternalOrganisationConfig>(`${this.folder}/organisation_internal`)
+	async getInternalOrganisationConfig(
+		organisation: string
+	): Promise<model.InternalOrganisationConfig | model.ErrorResponse> {
+		return await this.connection.get<model.InternalOrganisationConfig>(
+			`${this.folder}/organisation_internal/${organisation}`
+		)
 	}
 	async updateInternalOrganisationConfig(
+		organisation: string,
 		request: model.InternalOrganisationConfig
 	): Promise<model.InternalOrganisationConfig | model.ErrorResponse> {
-		return await this.connection.post<model.InternalOrganisationConfig>(`${this.folder}/organisation_internal`, request)
+		return await this.connection.post<model.InternalOrganisationConfig>(
+			`${this.folder}/organisation_internal/${organisation}`,
+			request
+		)
 	}
 	async getUserConfig(): Promise<model.UserConfig | model.ErrorResponse> {
 		return await this.connection.get<model.UserConfig>(`${this.folder}/user`)
