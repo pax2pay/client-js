@@ -74,6 +74,7 @@ import { Criteria } from "./Criteria"
 import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
 import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
 import { DateRangeLocalDate } from "./DateRangeLocalDate"
+import { DeliveryStatus } from "./DeliveryStatus"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
@@ -296,6 +297,7 @@ export {
 	CurrencyConversionRequest,
 	CurrencyConversionResponse,
 	DateRangeLocalDate,
+	DeliveryStatus,
 	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,

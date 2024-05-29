@@ -4,6 +4,7 @@ import { BookingInfoType } from "./BookingInfoType"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
+import { DeliveryStatus } from "./DeliveryStatus"
 import { ProviderCode } from "./ProviderCode"
 import { Range } from "./Range"
 export interface CardSearchRequest {
@@ -27,6 +28,7 @@ export interface CardSearchRequest {
 	createdOn?: Range<DateTime>
 	usage?: CardUsage[]
 	supplierReference?: string
+	deliveryStatus?: DeliveryStatus[]
 	bookingInfoText?: string
 	bookingInfoType?: (BookingInfoType | "NONE")[]
 	hasProviderTransaction?: CardTransactionType[]
