@@ -24,4 +24,5 @@ export interface CreateCardRequest {
 	delivery?: CardDeliveryRequest
 	state?: string
 	batchId?: string
+	merchantRestrictionId?: string
 }

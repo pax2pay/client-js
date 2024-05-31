@@ -113,6 +113,7 @@ import { LoginResponse } from "./LoginResponse"
 import { MerchantDetails } from "./MerchantDetails"
 import { MerchantRequest } from "./MerchantRequest"
 import { MerchantResponse } from "./MerchantResponse"
+import { MerchantSearchRequest } from "./MerchantSearchRequest"
 import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { OmnisetupFlags } from "./OmnisetupFlags"
@@ -336,6 +337,7 @@ export {
 	MerchantDetails,
 	MerchantRequest,
 	MerchantResponse,
+	MerchantSearchRequest,
 	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
 	OmnisetupFlags,

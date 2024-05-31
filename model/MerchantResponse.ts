@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { MerchantType } from "./MerchantType"
 
 export interface MerchantResponse {
@@ -5,16 +6,16 @@ export interface MerchantResponse {
 	name?: string
 	mcc?: string
 	type?: MerchantType
+	isSuitableForCardMerchantRestriction?: true
 }
 
 export namespace MerchantResponse {
-	export function is(value: MerchantResponse | any): value is MerchantResponse {
-		return (
-			typeof value == "object" &&
-			(typeof value.id == "string" || value.id == undefined) &&
-			(typeof value.name == "string" || value.name == undefined) &&
-			(typeof value.mcc == "string" || value.mcc == undefined) &&
-			(MerchantType.is(value.type) || value.type == undefined)
-		)
-	}
+	export const type = isly.object<MerchantResponse>({
+		id: isly.string().optional(),
+		name: isly.string().optional(),
+		mcc: isly.string().optional(),
+		type: MerchantType.type.optional(),
+		isSuitableForCardMerchantRestriction: isly.boolean(true).optional(),
+	})
+	export const is = type.is
 }
