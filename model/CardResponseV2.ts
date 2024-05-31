@@ -55,7 +55,7 @@ export namespace CardResponseV2 {
 		providerCardId: isly.string(),
 		usage: isly.fromIs("CardUsage", CardUsage.is),
 		fundingAccount: isly.fromIs("FundingAccountSummaryResponse", FundingAccountSummaryResponse.is),
-		createdBy: isly.fromIs("Date", Date.is),
+		createdBy: isly.string(),
 		state: isly.fromIs("AccountState", AccountState.is),
 		longTermTokenExpiry: isly.fromIs("Date", Date.is).optional(),
 		activationDate: isly.fromIs("Date", Date.is).optional(),
