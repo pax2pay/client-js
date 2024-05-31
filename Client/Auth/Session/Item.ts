@@ -1,26 +1,10 @@
-export class Entry<K extends string, V> {
+export class Item<K extends string, V> {
 	private constructor(
 		private key: K,
 		private fromString: (v: string | undefined) => V | undefined,
 		private toString: (v: V) => string,
 		private storage: Pick<Storage, "getItem" | "setItem" | "removeItem">
 	) {}
-
-	private listeners: ((value: V | undefined) => void)[] = []
-	listen(callback: (value: V | undefined) => void) {
-		callback(this.get())
-		return this.lazyListen(callback)
-	}
-	lazyListen(callback: (value: V | undefined) => void) {
-		this.listeners.push(callback)
-		return callback
-	}
-	unlisten(callback: (value: V | undefined) => void) {
-		const index = this.listeners.indexOf(callback)
-		if (index >= 0)
-			this.listeners.splice(index, 1)
-	}
-
 	get(): V | undefined {
 		return this.fromString(this.storage.getItem(this.key) ?? undefined)
 	}
@@ -29,7 +13,6 @@ export class Entry<K extends string, V> {
 			this.storage.setItem(this.key, this.toString(value))
 		else
 			this.storage.removeItem(this.key)
-		this.listeners.forEach(callback => callback(value))
 		return value
 	}
 
@@ -41,6 +24,6 @@ export class Entry<K extends string, V> {
 			storage: Pick<Storage, "getItem" | "setItem" | "removeItem">
 		}
 	) {
-		return new Entry(key, setup.fromString, setup.toString, setup.storage)
+		return new Item(key, setup.fromString, setup.toString, setup.storage)
 	}
 }

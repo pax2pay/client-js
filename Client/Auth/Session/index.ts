@@ -1,5 +1,5 @@
 import * as model from "../../../model"
-import { Entry } from "./Entry"
+import { Item } from "./Item"
 
 export namespace Session {
 	const storage =
@@ -20,17 +20,17 @@ export namespace Session {
 			  })()
 			: window.sessionStorage
 
-	export const roles = Entry.create("roles", {
+	export const roles = Item.create("roles", {
 		fromString: (v: string | undefined) => v?.split(","),
 		toString: v => v.join(","),
 		storage,
 	})
-	export const features = Entry.create<"features", model.PaxpayFeature[]>("features", {
+	export const features = Item.create<"features", model.PaxpayFeature[]>("features", {
 		fromString: (v: string | undefined) => v?.split(",") as model.PaxpayFeature[],
 		toString: (v: model.PaxpayFeature[]) => v.join(","),
 		storage,
 	})
-	export const login = Entry.create("login", {
+	export const login = Item.create("login", {
 		fromString: (v: string | undefined) => (v ? (JSON.parse(v) as Partial<model.LoginResponse>) : undefined),
 		toString: (v: Partial<model.LoginResponse>) => JSON.stringify(v),
 		storage,

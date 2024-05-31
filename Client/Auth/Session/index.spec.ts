@@ -21,27 +21,4 @@ describe("Session", () => {
 		Session.login.set(undefined)
 		expect(Session.login.get()).toEqual(undefined)
 	})
-	it("listen", () => {
-		Session.roles.set(["a", "b", "c"])
-		let roles: string[] | undefined
-		let lazyRoles: string[] | undefined
-		const listener = Session.roles.listen(value => (roles = value))
-		const lazyListener = Session.roles.lazyListen(value => (lazyRoles = value))
-		expect(roles).toEqual(["a", "b", "c"])
-		expect(lazyRoles).toEqual(undefined)
-
-		Session.roles.set(["d"])
-		expect(roles).toEqual(["d"])
-		expect(lazyRoles).toEqual(["d"])
-
-		Session.roles.unlisten(lazyListener)
-		Session.roles.set(["e"])
-		expect(roles).toEqual(["e"])
-		expect(lazyRoles).toEqual(["d"])
-
-		Session.roles.unlisten(listener)
-		Session.roles.set(["f"])
-		expect(roles).toEqual(["e"])
-		expect(lazyRoles).toEqual(["d"])
-	})
 })
