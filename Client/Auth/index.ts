@@ -43,7 +43,7 @@ export class Auth {
 	}
 	setTempToken(value: string) {
 		this.data = { token: value }
-		this.connection.token = value
+		this.token = value
 	}
 	isLoggedIn(): boolean {
 		return this.data.status == "SUCCESS" ?? false
@@ -56,7 +56,7 @@ export class Auth {
 			otp ? { "x-otp": otp } : {}
 		)
 		if (!isError(result) && result.token) {
-			this.connection.token = result.token
+			this.token = result.token
 			this.data = result
 		}
 		return result
@@ -69,7 +69,7 @@ export class Auth {
 			result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>("auth/relog")
 		}
 		if (!isError(result)) {
-			this.connection.token = result.token
+			this.token = result.token
 			this.data = result
 		}
 		return result
@@ -82,7 +82,7 @@ export class Auth {
 	): Promise<model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 })> {
 		const result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>(`auth/assume/org/${code}`)
 		if (!isError(result)) {
-			this.connection.token = result.token
+			this.token = result.token
 			this.data = result
 		}
 		return result
@@ -97,7 +97,7 @@ export class Auth {
 		this.roles = undefined
 		this.features = undefined
 		this.data = undefined
-		this.connection.token = undefined
+		this.token = undefined
 	}
 }
 
