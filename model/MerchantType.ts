@@ -1,8 +1,9 @@
-const merchantTypes = ["flight", "hotel"] as const
-export type MerchantType = typeof merchantTypes[number]
+import { isly } from "isly"
+
+export type MerchantType = typeof MerchantType.types[number]
 
 export namespace MerchantType {
-	export function is(value: unknown): value is MerchantType {
-		return typeof value == "string" && merchantTypes.includes(value as MerchantType)
-	}
+	export const types = ["flight", "hotel"] as const
+	export const type = isly.string(types)
+	export const is = type.is
 }
