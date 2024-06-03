@@ -12,13 +12,13 @@ describe("Session", () => {
 		expect(Session.roles.get()).toEqual(undefined)
 	})
 	it("authData set/get", () => {
-		expect(Session.login.get()).toEqual(undefined)
+		expect(Session.authentication.get()).toEqual(undefined)
 
 		const data = { token: "ey" }
-		Session.login.set(data)
-		expect(Session.login.get()).toEqual(data)
+		Session.authentication.set(data)
+		expect(Session.authentication.get()).toEqual(data)
 
-		Session.login.set(undefined)
-		expect(Session.login.get()).toEqual(undefined)
+		Session.authentication.set(undefined)
+		expect(Session.authentication.get()).toEqual(undefined)
 	})
 })

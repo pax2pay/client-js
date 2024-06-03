@@ -30,7 +30,7 @@ export namespace Session {
 		toString: (v: model.PaxpayFeature[]) => v.join(","),
 		storage,
 	})
-	export const login = Item.create("login", {
+	export const authentication = Item.create("authentication", {
 		fromString: (v: string | undefined) => (v ? (JSON.parse(v) as Partial<model.LoginResponse>) : undefined),
 		toString: (v: Partial<model.LoginResponse>) => JSON.stringify(v),
 		storage,
