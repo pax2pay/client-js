@@ -3,37 +3,34 @@ import { Connection } from "../Connection"
 import { Session } from "./Session"
 
 export class Auth {
-	#roles?: string[]
-	#features?: model.PaxpayFeature[]
-	#data: Partial<model.LoginResponse>
 	constructor(private connection: Connection) {}
 	static create(connection: Connection) {
 		return new Auth(connection)
 	}
 
 	get roles(): string[] | undefined {
-		return (this.#roles ??= Session.roles.get())
+		return Session.roles.get()
 	}
 	set roles(roles: string[] | undefined) {
-		this.#roles = Session.roles.set(roles)
+		Session.roles.set(roles)
 	}
 	hasRole(role: string): boolean {
 		return this.roles?.includes(role) ?? false
 	}
 	get features(): model.PaxpayFeature[] | undefined {
-		return (this.#features ??= Session.features.get())
+		return Session.features.get()
 	}
 	set features(features: model.PaxpayFeature[] | undefined) {
-		this.#features = Session.features.set(features)
+		Session.features.set(features)
 	}
 	hasFeature(feature: model.PaxpayFeature) {
 		return this.features?.includes(feature) ?? false
 	}
 	get data(): Partial<model.LoginResponse> {
-		return (this.#data ??= Session.authentication.get() ?? {})
+		return Session.authentication.get() ?? {}
 	}
 	set data(value: Partial<model.LoginResponse> | undefined) {
-		this.#data = Session.authentication.set(value) ?? {}
+		Session.authentication.set(value) ?? {}
 	}
 	get token(): string | undefined {
 		return this.connection.token
