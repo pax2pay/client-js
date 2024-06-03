@@ -1,50 +1,36 @@
 import * as model from "../../model"
-import { PaxpayFeature } from "../../model/PaxpayFeature"
 import { Connection } from "../Connection"
+import { Session } from "./Session"
 
 export class Auth {
-	#roles?: string[]
-	#features?: PaxpayFeature[]
-	#data: Partial<model.LoginResponse>
 	constructor(private connection: Connection) {}
 	static create(connection: Connection) {
 		return new Auth(connection)
 	}
+
 	get roles(): string[] | undefined {
-		return (this.#roles ??= window.sessionStorage.getItem("roles")?.split(","))
+		return Session.roles.get()
 	}
 	set roles(roles: string[] | undefined) {
-		this.#roles = roles
-		if (roles)
-			window.sessionStorage.setItem("roles", roles.join(","))
-		else
-			window.sessionStorage.removeItem("roles")
+		Session.roles.set(roles)
 	}
 	hasRole(role: string): boolean {
 		return this.roles?.includes(role) ?? false
 	}
-	get features(): PaxpayFeature[] | undefined {
-		return (this.#features ??= window.sessionStorage.getItem("features")?.split(",") as PaxpayFeature[])
+	get features(): model.PaxpayFeature[] | undefined {
+		return Session.features.get()
 	}
-	set features(features: PaxpayFeature[] | undefined) {
-		this.#features = features
-		if (features)
-			window.sessionStorage.setItem("features", features.join(","))
-		else
-			window.sessionStorage.removeItem("features")
+	set features(features: model.PaxpayFeature[] | undefined) {
+		Session.features.set(features)
 	}
-	hasFeature(feature: PaxpayFeature) {
+	hasFeature(feature: model.PaxpayFeature) {
 		return this.features?.includes(feature) ?? false
 	}
 	get data(): Partial<model.LoginResponse> {
-		return (this.#data ??= JSON.parse(window.sessionStorage.getItem("authData") ?? "{}"))
+		return Session.authentication.get() ?? {}
 	}
 	set data(value: Partial<model.LoginResponse> | undefined) {
-		this.#data = value ?? {}
-		if (value)
-			window.sessionStorage.setItem("authData", JSON.stringify(value))
-		else
-			window.sessionStorage.removeItem("authData")
+		Session.authentication.set(value) ?? {}
 	}
 	get token(): string | undefined {
 		return this.connection.token
@@ -54,7 +40,7 @@ export class Auth {
 	}
 	setTempToken(value: string) {
 		this.data = { token: value }
-		this.connection.token = value
+		this.token = value
 	}
 	isLoggedIn(): boolean {
 		return this.data.status == "SUCCESS" ?? false
@@ -67,7 +53,7 @@ export class Auth {
 			otp ? { "x-otp": otp } : {}
 		)
 		if (!isError(result) && result.token) {
-			this.connection.token = result.token
+			this.token = result.token
 			this.data = result
 		}
 		return result
@@ -80,7 +66,7 @@ export class Auth {
 			result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>("auth/relog")
 		}
 		if (!isError(result)) {
-			this.connection.token = result.token
+			this.token = result.token
 			this.data = result
 		}
 		return result
@@ -93,7 +79,7 @@ export class Auth {
 	): Promise<model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 })> {
 		const result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>(`auth/assume/org/${code}`)
 		if (!isError(result)) {
-			this.connection.token = result.token
+			this.token = result.token
 			this.data = result
 		}
 		return result
@@ -108,7 +94,7 @@ export class Auth {
 		this.roles = undefined
 		this.features = undefined
 		this.data = undefined
-		this.connection.token = undefined
+		this.token = undefined
 	}
 }
 
