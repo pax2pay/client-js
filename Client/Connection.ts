@@ -64,13 +64,9 @@ export class Connection {
 				(parameters
 					? "?" +
 					  Object.entries(parameters)
-							.map(([key, value]) => {
-								if (Array.isArray(value))
-									return `${key}=${value.join(",")}`
-								else if (value != undefined)
-									return `${key}=${value}`
-								return undefined
-							})
+							.map(([key, value]) =>
+								Array.isArray(value) ? `${key}=${value.join(",")}` : value != undefined ? `${key}=${value}` : undefined
+							)
 							.filter(param => param != undefined)
 							.join("&")
 					: ""),
