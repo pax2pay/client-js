@@ -25,6 +25,7 @@ export interface CardResponseV2 {
 	issueDate: string
 	providerCode: ProviderCode
 	providerCardId: string
+	cardId: string
 	usage: CardUsage
 	fundingAccount: FundingAccountSummaryResponse
 	createdBy: string
@@ -53,6 +54,7 @@ export namespace CardResponseV2 {
 		issueDate: isly.string(),
 		providerCode: isly.fromIs("ProviderCode", ProviderCode.is),
 		providerCardId: isly.string(),
+		cardId: isly.string(),
 		usage: isly.fromIs("CardUsage", CardUsage.is),
 		fundingAccount: isly.fromIs("FundingAccountSummaryResponse", FundingAccountSummaryResponse.is),
 		createdBy: isly.string(),
