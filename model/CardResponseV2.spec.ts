@@ -12,6 +12,7 @@ describe("", () => {
 			issueDate: "2022-03-22",
 			providerCode: "modulr",
 			providerCardId: "V12000PUJS",
+			cardId: "C000000003SPP",
 			usage: "SINGLE_USE",
 			fundingAccount: {
 				providerAccountId: "A120ABTA",
@@ -46,6 +47,7 @@ describe("", () => {
 			issueDate: "2022-03-22",
 			providerCode: "modulr",
 			providerCardId: "V12000PUJW",
+			cardId: "C000000003SPK",
 			usage: "SINGLE_USE",
 			fundingAccount: {
 				providerAccountId: "A120ABTA",
@@ -131,6 +133,7 @@ describe("", () => {
 			issueDate: "2022-09-16",
 			providerCode: "modulr",
 			providerCardId: "SomeCardId",
+			cardId: "C000000003SKK",
 			usage: "SINGLE_USE",
 			batchId: "7rcvyvgccd",
 			state: "ACTIVE",
