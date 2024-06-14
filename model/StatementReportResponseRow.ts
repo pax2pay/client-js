@@ -24,7 +24,7 @@ export interface StatementReportResponseRow {
 	rowType: StatementReportRowType
 	transferType?: StatementTransferSpecificType
 	ids: StatementRowIds
-	card?: CardResponseV2 
+	card?: CardResponseV2
 	scheduledTask?: CardScheduleResponseItem
 	transfer?: TransferResponseV2 | TransferResponseV2Summary
 }
@@ -44,7 +44,7 @@ export namespace StatementReportResponseRow {
 			StatementReportRowType.is(value.rowType) &&
 			(value.transferType == undefined || StatementTransferSpecificType.is(value.transferType)) &&
 			StatementRowIds.is(value.ids) &&
-			(value.card == undefined || CardResponseV2.is(value.card) &&
+			(value.card == undefined || CardResponseV2.is(value.card)) &&
 			(value.transfer == undefined ||
 				TransferResponseV2.is(value.transfer) ||
 				TransferResponseV2Summary.is(value.transfer))
