@@ -119,13 +119,12 @@ import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
 import { OmnisetupRequest } from "./OmnisetupRequest"
 import { OmnisetupResponse } from "./OmnisetupResponse"
-import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationFlag } from "./OrganisationFlag"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
-import { OrganisationUpdateRequest } from "./OrganisationUpdateRequest"
+import { OrganisationStatus } from "./OrganisationStatus"
 import { Passengers } from "./Passengers"
 import { PasswordChangeRequest } from "./PasswordChangeRequest"
 import { PasswordResetResponse } from "./PasswordResetResponse"
@@ -342,13 +341,12 @@ export {
 	OmnisetupProviderRequest,
 	OmnisetupRequest,
 	OmnisetupResponse,
-	OrganisationBalanceLimitResponse,
 	OrganisationConfig,
 	OrganisationCreateRequest,
 	OrganisationFlag,
 	OrganisationRequest,
 	OrganisationResponse,
-	OrganisationUpdateRequest,
+	OrganisationStatus,
 	Passengers,
 	PasswordChangeRequest,
 	PasswordResetResponse,
