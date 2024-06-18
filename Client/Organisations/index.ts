@@ -3,7 +3,7 @@ import { Connection } from "../Connection"
 import { List } from "../List"
 
 export class Organisations extends List<model.OrganisationResponse> {
-	protected readonly folder = "organisations"
+	protected readonly folder = "organisations" as const
 	constructor(connection: Connection) {
 		super(connection)
 	}
@@ -15,7 +15,7 @@ export class Organisations extends List<model.OrganisationResponse> {
 	}
 	async updateOrganisation(
 		code: string,
-		request: model.OrganisationUpdateRequest
+		request: model.OrganisationRequest
 	): Promise<model.ErrorResponse | model.OrganisationResponse> {
 		return await this.connection.put<model.OrganisationResponse>(`${this.folder}/${code}`, request)
 	}

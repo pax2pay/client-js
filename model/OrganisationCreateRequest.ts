@@ -1,11 +1,11 @@
-import { OrganisationUpdateRequest } from "./OrganisationUpdateRequest"
+import { isly } from "isly"
+import { OrganisationRequest } from "./OrganisationRequest"
 
-export interface OrganisationCreateRequest extends OrganisationUpdateRequest {
+export interface OrganisationCreateRequest extends OrganisationRequest {
 	code: string
 }
 
 export namespace OrganisationCreateRequest {
-	export function is(value: OrganisationCreateRequest | any): value is OrganisationCreateRequest {
-		return typeof value == "object" && typeof value.code == "string" && OrganisationUpdateRequest.is({ ...value })
-	}
+	export const type = OrganisationRequest.type.extend<OrganisationCreateRequest>({ code: isly.string() })
+	export const is = type.is
 }
