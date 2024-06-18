@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResponse"
 
 /**
@@ -6,18 +7,16 @@ import { OrganisationBalanceLimitResponse } from "./OrganisationBalanceLimitResp
 export interface OrganisationResponse {
 	code: string
 	name: string
-	status: "ACTIVE" | "DELETED"
+	status: "ACTIVE" | "INACTIVE" | "DELETED"
 	limitResponse?: OrganisationBalanceLimitResponse
 }
 
 export namespace OrganisationResponse {
-	export function is(value: OrganisationResponse | any): value is OrganisationResponse {
-		return (
-			typeof value == "object" &&
-			typeof value.code == "string" &&
-			typeof value.name == "string" &&
-			(value.status == "ACTIVE" || value.status == "DELETED") &&
-			(value.limitResponse == undefined || OrganisationBalanceLimitResponse.is(value.limitResponse))
-		)
-	}
+	export const type = isly.object<OrganisationResponse>({
+		code: isly.string(),
+		name: isly.string(),
+		status: isly.string(["ACTIVE", "INACTIVE", "DELETED"]),
+		limitResponse: isly.fromIs("OrganisationBalanceLimitResponse", OrganisationBalanceLimitResponse.is).optional(),
+	})
+	export const is = type.is
 }
