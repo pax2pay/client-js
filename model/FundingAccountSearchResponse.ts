@@ -1,5 +1,5 @@
 import * as isoly from "isoly"
-import { ProviderResponse } from "."
+import { AccountState, ProviderResponse } from "."
 import { OrganisationResponse } from "./OrganisationResponse"
 
 export interface FundingAccountSearchResponse {
@@ -8,7 +8,7 @@ export interface FundingAccountSearchResponse {
 	provider: ProviderResponse
 	organisation: OrganisationResponse
 	currency: isoly.Currency
-	state: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
+	state: AccountState
 	friendlyName: string
 	balance: number
 	accountType: "FUNDING" | "CARD"
