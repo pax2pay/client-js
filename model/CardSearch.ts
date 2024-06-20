@@ -1,10 +1,11 @@
+import { AccountState } from "./AccountState"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { ProviderCode } from "./ProviderCode"
 
 export interface CardSearch {
 	cardId?: number
 	providerCode?: ProviderCode
-	state?: "ACTIVE" | "INACTIVE" | "CLOSED" | "DELETED" | "EXPIRED" | "PENDING" | "APPROVED" | "DECLINED" | "GENERATED"
+	state?: AccountState
 	currency?: string
 	friendlyName?: string
 	createdBy?: string
