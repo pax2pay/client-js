@@ -7,3 +7,13 @@ export interface UpdateAccountRequest {
 	friendlyName?: string
 	fundingLimit?: FundingLimitRequest
 }
+export namespace UpdateAccountRequest {
+	export function is(value: UpdateAccountRequest | any): value is UpdateAccountRequest {
+		return (
+			typeof value == "object" &&
+			typeof value.state == "string" &&
+			(value.friendlyName == undefined || typeof value.friendlyName == "string") &&
+			(value.fundingLimit == undefined || FundingLimitRequest.is(value.fundingLimit))
+		)
+	}
+}
