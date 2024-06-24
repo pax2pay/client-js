@@ -12,7 +12,8 @@ export namespace CardDeliveryRequest {
 			(typeof value.to == "string" || typeof value.to == "object") &&
 			typeof value.message == "string" &&
 			/^.+@.+\..+$/.test(value.to) &&
-			isoly.Date.is(value.linkExpiry)
+			isoly.Date.is(value.linkExpiry) &&
+			value.linkExpiry > isoly.Date.now()
 		)
 	}
 }
