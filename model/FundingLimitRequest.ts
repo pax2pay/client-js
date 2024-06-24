@@ -6,7 +6,7 @@ export interface FundingLimitRequest {
 }
 export namespace FundingLimitRequest {
 	export const type = isly.object<FundingLimitRequest>({
-		email: isly.array(isly.string()),
+		email: isly.string().array({ criteria: "minLength", value: 1 }),
 		limit: isly.number(),
 	})
 	export const is = type.is
