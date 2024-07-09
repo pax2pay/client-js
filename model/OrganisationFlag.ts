@@ -12,6 +12,7 @@ const organisationFlag = [
 	"TTS",
 	"SOFTCONEX",
 	"PANASOFT",
+	"TRAVEL_CENTRES",
 ] as const
 export type OrganisationFlag = typeof organisationFlag[number]
 
