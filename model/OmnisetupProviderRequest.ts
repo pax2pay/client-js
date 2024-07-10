@@ -22,8 +22,7 @@ export namespace OmnisetupProviderRequest {
 			(value.providerSetupCredentials == undefined || CredentialRequest.is(value.providerSetupCredentials)) &&
 			(value.cardTypes == undefined ||
 				(Array.isArray(value.cardTypes) &&
-					value.cardTypes.every((cardType: any) => CardTypeSpecification.is(cardType)))) &&
-			(value.useAs == undefined || typeof value.useAs == "string")
+					value.cardTypes.every((cardType: any) => CardTypeSpecification.is(cardType))))
 		)
 	}
 }
