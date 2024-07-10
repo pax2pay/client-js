@@ -11,6 +11,8 @@ const organisationFlag = [
 	"SABRE_REFERRAL",
 	"TTS",
 	"SOFTCONEX",
+	"PANASOFT",
+	"TRAVEL_CENTRES",
 ] as const
 export type OrganisationFlag = typeof organisationFlag[number]
 

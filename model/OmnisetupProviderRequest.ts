@@ -2,16 +2,13 @@ import { AccountCreationRequest } from "./AccountCreationRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CredentialRequest } from "./CredentialRequest"
 import { ProviderCode } from "./ProviderCode"
-import { SupplierRequest } from "./SupplierRequest"
 
 export interface OmnisetupProviderRequest {
 	providerCode: ProviderCode
 	fundingAccounts: AccountCreationRequest[]
 	credentials?: CredentialRequest
 	providerSetupCredentials?: CredentialRequest
-	suppliers?: SupplierRequest[]
-	cardType: CardTypeSpecification
-	useAs?: string
+	cardTypes?: CardTypeSpecification[]
 }
 
 export namespace OmnisetupProviderRequest {
@@ -23,9 +20,9 @@ export namespace OmnisetupProviderRequest {
 			value.fundingAccounts.every((fundingAccount: any) => AccountCreationRequest.is(fundingAccount)) &&
 			(value.credentials == undefined || CredentialRequest.is(value.credentials)) &&
 			(value.providerSetupCredentials == undefined || CredentialRequest.is(value.providerSetupCredentials)) &&
-			(value.suppliers == undefined || SupplierRequest.is(value.suppliers)) &&
-			CardTypeSpecification.is(value.cardType) &&
-			(value.useAs == undefined || typeof value.useAs == "string")
+			(value.cardTypes == undefined ||
+				(Array.isArray(value.cardTypes) &&
+					value.cardTypes.every((cardType: any) => CardTypeSpecification.is(cardType))))
 		)
 	}
 }
