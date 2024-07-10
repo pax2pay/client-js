@@ -8,8 +8,7 @@ export interface OmnisetupProviderRequest {
 	fundingAccounts: AccountCreationRequest[]
 	credentials?: CredentialRequest
 	providerSetupCredentials?: CredentialRequest
-	cardTypes: CardTypeSpecification[]
-	useAs?: string
+	cardTypes?: CardTypeSpecification[]
 }
 
 export namespace OmnisetupProviderRequest {
@@ -21,8 +20,9 @@ export namespace OmnisetupProviderRequest {
 			value.fundingAccounts.every((fundingAccount: any) => AccountCreationRequest.is(fundingAccount)) &&
 			(value.credentials == undefined || CredentialRequest.is(value.credentials)) &&
 			(value.providerSetupCredentials == undefined || CredentialRequest.is(value.providerSetupCredentials)) &&
-			Array.isArray(value.cardTypes) &&
-			value.cardTypes.every((cardType: any) => CardTypeSpecification.is(cardType)) &&
+			(value.cardTypes == undefined ||
+				(Array.isArray(value.cardTypes) &&
+					value.cardTypes.every((cardType: any) => CardTypeSpecification.is(cardType)))) &&
 			(value.useAs == undefined || typeof value.useAs == "string")
 		)
 	}
