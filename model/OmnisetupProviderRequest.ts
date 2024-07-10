@@ -10,7 +10,7 @@ export interface OmnisetupProviderRequest {
 	credentials?: CredentialRequest
 	providerSetupCredentials?: CredentialRequest
 	suppliers?: SupplierRequest[]
-	cardType: CardTypeSpecification
+	cardTypes: CardTypeSpecification
 	useAs?: string
 }
 
@@ -24,7 +24,7 @@ export namespace OmnisetupProviderRequest {
 			(value.credentials == undefined || CredentialRequest.is(value.credentials)) &&
 			(value.providerSetupCredentials == undefined || CredentialRequest.is(value.providerSetupCredentials)) &&
 			(value.suppliers == undefined || SupplierRequest.is(value.suppliers)) &&
-			CardTypeSpecification.is(value.cardType) &&
+			CardTypeSpecification.is(value.cardTypes) &&
 			(value.useAs == undefined || typeof value.useAs == "string")
 		)
 	}
