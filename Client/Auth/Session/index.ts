@@ -35,4 +35,9 @@ export namespace Session {
 		toString: (v: Partial<model.LoginResponse>) => JSON.stringify(v),
 		storage,
 	})
+	export const publicKey = Item.create("public-key", {
+		fromString: (v: string | undefined) => v,
+		toString: (v: string | undefined) => JSON.stringify(v),
+		storage,
+	})
 }

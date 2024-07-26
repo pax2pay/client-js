@@ -38,6 +38,12 @@ export class Auth {
 	set token(value: string | undefined) {
 		this.connection.token = value
 	}
+	get key(): string | undefined {
+		return Session.publicKey.get()
+	}
+	set key(value: string | undefined) {
+		Session.publicKey.set(value)
+	}
 	setTempToken(value: string) {
 		this.data = { token: value }
 		this.token = value
@@ -95,6 +101,7 @@ export class Auth {
 		this.features = undefined
 		this.data = undefined
 		this.token = undefined
+		this.key = undefined
 	}
 }
 
