@@ -37,7 +37,7 @@ export namespace Session {
 	})
 	export const publicKey = Item.create("public-key", {
 		fromString: (v: string | undefined) => v,
-		toString: (v: string | undefined) => JSON.stringify(v),
+		toString: (v: string | undefined) => v ?? "",
 		storage,
 	})
 }
