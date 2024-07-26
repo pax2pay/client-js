@@ -33,7 +33,7 @@ export class Connection {
 	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
 		const isMultipart = request && request instanceof FormData
 		const cookie = window.localStorage.getItem("cookie")
-		const publicKey = window.sessionStorage.getItem("public-key")
+		const publicKey = Session.publicKey.get()
 		let requestHeaders: Record<string, string> = { "x-invoking-system": "portal_2" }
 		if (!isMultipart)
 			requestHeaders = {
