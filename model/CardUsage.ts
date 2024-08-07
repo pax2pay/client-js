@@ -1,7 +1,9 @@
-export type CardUsage = "SINGLE_USE" | "MULTIPLE_USE" | "SINGLE_USE_ALLOW_TEST_AUTH"
+import { isly } from "isly"
+
+export type CardUsage = typeof CardUsage.types[number]
 
 export namespace CardUsage {
-	export function is(value: CardUsage | any): value is CardUsage {
-		return value == "SINGLE_USE" || value == "MULTIPLE_USE" || value == "SINGLE_USE_ALLOW_TEST_AUTH"
-	}
+	export const types = ["SINGLE_USE", "MULTIPLE_USE", "SINGLE_USE_ALLOW_TEST_AUTH"] as const
+	export const type = isly.string<CardUsage>(types)
+	export const is = type.is
 }
