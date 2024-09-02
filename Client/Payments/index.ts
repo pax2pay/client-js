@@ -19,4 +19,21 @@ export class Payments {
 	async create(request: model.SuggestionRequest) {
 		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(this.folder, request)
 	}
+	async search(
+		searchRequest: model.PaymentSearchRequest,
+		parameters?: model.PaymentSearchRequest.Parameters
+	): Promise<model.ErrorResponse | model.CardResponseV2[]> {
+		const response = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
+			`v2/${this.folder}/searches`,
+			searchRequest,
+			parameters
+		)
+		return this.extractResponse<model.CardResponseV2>(response)
+	}
+	extractResponse<R = Response>(value: R[] | { list: R[]; totalCount: number } | model.ErrorResponse) {
+		if (!model.ErrorResponse.is(value) && "list" in value)
+			return value.list
+		else
+			return value
+	}
 }

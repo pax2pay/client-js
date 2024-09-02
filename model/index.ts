@@ -136,6 +136,7 @@ import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
 import { PaymentMethodType } from "./PaymentMethodType"
 import { PaymentOption } from "./PaymentOption"
 import { PaymentResponse } from "./PaymentResponse"
+import { PaymentSearchRequest } from "./PaymentSearchRequest"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProductType } from "./ProductType"
 import { ProviderCode } from "./ProviderCode"
@@ -358,6 +359,7 @@ export {
 	PaymentMethodType,
 	PaymentOption,
 	PaymentResponse,
+	PaymentSearchRequest,
 	ProcessedStatement,
 	ProductType,
 	ProviderCode,
