@@ -133,7 +133,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	}
 	async searchCardTypeProfileV2(request: model.SearchCardTypeProfileRequest, organisationCode?: string) {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
-		return await this.connection.post<model.CardTypeProfileResponse>(
+		return await this.connection.post<model.CardTypeProfileResponse[]>(
 			`v2/cards/types/profiles/searches`,
 			request,
 			undefined,
