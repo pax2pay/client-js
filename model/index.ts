@@ -98,6 +98,7 @@ import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognos
 import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
 import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
 import { HotelInfo } from "./HotelInfo"
+import { Inclusion } from "./Inclusion"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
 import { InternalBalanceLimit } from "./InternalBalanceLimit"
@@ -320,6 +321,7 @@ export {
 	HotelBookingInfoRequest,
 	HotelBookingInfoResponse,
 	HotelInfo,
+	Inclusion,
 	InsertCardOptionRequest,
 	InsertCardRequest,
 	InternalBalanceLimit,
