@@ -48,7 +48,6 @@ import { CardStatement } from "./CardStatement"
 import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardType } from "./CardType"
-import { CardTypeProfileRequest } from "./CardTypeProfileRequest"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypeResponseV2 } from "./CardTypeResponseV2"
@@ -67,6 +66,7 @@ import { ConfigRequest } from "./ConfigRequest"
 import { ConfigResponse } from "./ConfigResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
 import { CreateCardRequest } from "./CreateCardRequest"
+import { CreateCardTypeProfileRequest } from "./CreateCardTypeProfileRequest"
 import { CreateRolesetRequest } from "./CreateRolesetRequest"
 import { CredentialRequest } from "./CredentialRequest"
 import { CredentialResponse } from "./CredentialResponse"
@@ -270,7 +270,7 @@ export {
 	CardTransaction,
 	CardTransactionType,
 	CardType,
-	CardTypeProfileRequest,
+	CreateCardTypeProfileRequest,
 	CardTypeProfileResponse,
 	CardTypeResponse,
 	CardTypeResponseV2,
