@@ -7,7 +7,7 @@ export interface CardTypeProfileResponse {
 	description: string
 	providerCode: ProviderCode
 	status: CardTypeProfileStatus
-	cardTypes: CardTypeSpecification
+	cardTypes: CardTypeSpecification[]
 	sharedBetween: string[]
 	isDefault: boolean
 }
