@@ -120,6 +120,7 @@ import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
 import { OmnisetupRequest } from "./OmnisetupRequest"
 import { OmnisetupResponse } from "./OmnisetupResponse"
+import { OrganisationCardTypeProfileResponse } from "./OrganisationCardTypeProfileResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationFlag } from "./OrganisationFlag"
@@ -153,6 +154,7 @@ import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { ScheduleEntry } from "./ScheduleEntry"
 import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
+import { SearchCardTypeProfileRequest } from "./SearchCardTypeProfileRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
@@ -343,6 +345,7 @@ export {
 	OmnisetupProviderRequest,
 	OmnisetupRequest,
 	OmnisetupResponse,
+	OrganisationCardTypeProfileResponse,
 	OrganisationConfig,
 	OrganisationCreateRequest,
 	OrganisationFlag,
@@ -380,6 +383,7 @@ export {
 	SecurityConfig,
 	Segment,
 	SearchBeneficiaryRequest,
+	SearchCardTypeProfileRequest,
 	StatementReportUrlRequest,
 	StatementReportRequest,
 	StatementReportResponse,
