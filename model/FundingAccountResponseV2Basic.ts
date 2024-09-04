@@ -1,9 +1,11 @@
 import { Currency } from "isoly"
+import { isly } from "isly"
 import { AccountState } from "./AccountState"
 import { ProviderCode } from "./ProviderCode"
 
 export interface FundingAccountResponseV2Basic {
 	friendlyName?: string
+	id: string
 	providerAccountId: string
 	providerCode: ProviderCode
 	status: AccountState
@@ -11,15 +13,14 @@ export interface FundingAccountResponseV2Basic {
 	balance: number
 }
 export namespace FundingAccountResponseV2Basic {
-	export function is(value: FundingAccountResponseV2Basic | any): value is FundingAccountResponseV2Basic {
-		return (
-			typeof value == "object" &&
-			(value.friendlyName == undefined || typeof value.friendlyName == "string") &&
-			typeof value.providerAccountId == "string" &&
-			ProviderCode.is(value.providerCode) &&
-			AccountState.is(value.status) &&
-			Currency.is(value.currency) &&
-			typeof value.balance == "number"
-		)
-	}
+	export const type = isly.object<FundingAccountResponseV2Basic>({
+		friendlyName: isly.string().optional(),
+		id: isly.string(),
+		providerAccountId: isly.string(),
+		providerCode: isly.fromIs("ProviderCode", ProviderCode.is),
+		status: isly.fromIs("AccountState", AccountState.is),
+		currency: isly.fromIs("Currency", Currency.is),
+		balance: isly.number(),
+	})
+	export const is = type.is
 }
