@@ -142,7 +142,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	}
 	async assignCardTypeProfileV2(organisationCode: string, cardTypeProfileId: string) {
 		const header = { "x-assume": organisationCode }
-		await this.connection.put<model.OrganisationCardTypeProfileResponse>(
+		return await this.connection.put<model.OrganisationCardTypeProfileResponse>(
 			`v2/${this.folder}/types/profiles/current/${cardTypeProfileId}`,
 			undefined,
 			undefined,
@@ -151,7 +151,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	}
 	async unassignCardTypeProfileV2(organisationCode: string, cardTypeProfileId: string) {
 		const header = { "x-assume": organisationCode }
-		await this.connection.remove<model.OrganisationCardTypeProfileResponse>(
+		return await this.connection.remove<model.OrganisationCardTypeProfileResponse>(
 			`v2/${this.folder}/types/profiles/current/${cardTypeProfileId}`,
 			undefined,
 			undefined,
