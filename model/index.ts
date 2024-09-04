@@ -132,10 +132,12 @@ import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
 import { PaxpayFeature } from "./PaxpayFeature"
 import { Payload } from "./Payload"
+import { PaymentCardCreateRequest } from "./PaymentCardCreateRequest"
 import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
 import { PaymentMethodType } from "./PaymentMethodType"
 import { PaymentOption } from "./PaymentOption"
 import { PaymentResponse } from "./PaymentResponse"
+import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProductType } from "./ProductType"
 import { ProviderCode } from "./ProviderCode"
@@ -196,6 +198,7 @@ import { TransferRequest } from "./TransferRequest"
 import { TransferResponse } from "./TransferResponse"
 import { TransferResponseV2 } from "./TransferResponseV2"
 import { TransferResponseV2Summary } from "./TransferResponseV2Summary"
+import { TransferResponseV3 } from "./TransferResponseV3"
 import { TransferSearch } from "./TransferSearch"
 import { TransferStatus } from "./TransferStatus"
 import { TravelPartyInfo } from "./TravelPartyInfo"
@@ -354,10 +357,12 @@ export {
 	PasswordValidateResponse,
 	PaxpayFeature,
 	Payload,
+	PaymentCardCreateRequest,
 	PaymentMethodOptionResponse,
 	PaymentMethodType,
 	PaymentOption,
 	PaymentResponse,
+	PaymentTransferCreateRequest,
 	ProcessedStatement,
 	ProductType,
 	ProviderCode,
@@ -419,6 +424,7 @@ export {
 	TransferResponse,
 	TransferResponseV2,
 	TransferResponseV2Summary,
+	TransferResponseV3,
 	TransferSearch,
 	TransferStatus,
 	TravelPartyInfo,
