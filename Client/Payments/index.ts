@@ -16,7 +16,10 @@ export class Payments {
 	async plan(request: model.SuggestionRequest) {
 		return await this.connection.post<model.ErrorResponse | model.SuggestionResponse>(`${this.folder}/plan`, request)
 	}
-	async create(request: model.SuggestionRequest) {
+	async createSuggestion(request: model.SuggestionRequest) {
+		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(`${this.folder}/suggestion`, request)
+	}
+	async create(request: model.PaymentRequest) {
 		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(this.folder, request)
 	}
 }
