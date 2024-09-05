@@ -13,6 +13,7 @@ export interface CreateCardRequest {
 	cardType: CardTypeSpecification | string
 	bookingInfo?: BookingInfoRequest
 	providerAccountId?: string
+	accountId?: string
 	providerCode: ProviderCode
 	balance: number
 	currency: string
