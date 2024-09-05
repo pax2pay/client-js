@@ -366,7 +366,7 @@ export {
 	PaymentMethodOptionResponse,
 	PaymentMethodType,
 	PaymentOption,
-	PaymentRequest.
+	PaymentRequest,
 	PaymentResponse,
 	PaymentTransferCreateRequest,
 	ProcessedStatement,
