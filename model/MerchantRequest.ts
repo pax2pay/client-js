@@ -1,18 +1,19 @@
+import { isly } from "isly"
 import { MerchantType } from "./MerchantType"
 
 export interface MerchantRequest {
+	id?: string
 	name?: string
 	mcc?: string
 	type?: MerchantType
 }
 
 export namespace MerchantRequest {
-	export function is(value: MerchantRequest | any): value is MerchantRequest {
-		return (
-			typeof value == "object" &&
-			(typeof value.name == "string" || value.name == undefined) &&
-			(typeof value.mcc == "string" || value.mcc == undefined) &&
-			(MerchantType.is(value.type) || value.type == undefined)
-		)
-	}
+	export const type = isly.object<MerchantRequest>({
+		id: isly.string().optional(),
+		name: isly.string().optional(),
+		mcc: isly.string().optional(),
+		type: MerchantType.type.optional(),
+	})
+	export const is = type.is
 }

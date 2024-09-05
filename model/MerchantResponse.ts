@@ -7,6 +7,7 @@ export interface MerchantResponse {
 	mcc?: string
 	type?: MerchantType
 	isSuitableForCardMerchantRestriction?: true
+	// beneficiaries?: Record<Currency, BeneficiaryResponse>
 }
 
 export namespace MerchantResponse {

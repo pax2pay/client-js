@@ -24,6 +24,9 @@ export class Merchants extends List<model.MerchantResponse> {
 		)
 		return this.extractResponse(response)
 	}
+	async getMerchant(value: string) {
+		return await this.connection.get<model.ErrorResponse | model.MerchantResponse>(`${this.folder}/${value}`)
+	}
 	async searchPaginated(
 		request: model.MerchantSearchRequest,
 		previous?: Paginated<model.MerchantResponse>,
