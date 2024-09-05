@@ -136,6 +136,7 @@ import { PaymentCardCreateRequest } from "./PaymentCardCreateRequest"
 import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
 import { PaymentMethodType } from "./PaymentMethodType"
 import { PaymentOption } from "./PaymentOption"
+import { PaymentRequest } from "./PaymentRequest"
 import { PaymentResponse } from "./PaymentResponse"
 import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
 import { ProcessedStatement } from "./ProcessedStatement"
@@ -361,6 +362,7 @@ export {
 	PaymentMethodOptionResponse,
 	PaymentMethodType,
 	PaymentOption,
+	PaymentRequest,
 	PaymentResponse,
 	PaymentTransferCreateRequest,
 	ProcessedStatement,

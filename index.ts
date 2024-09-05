@@ -138,6 +138,7 @@ import {
 	PaymentMethodOptionResponse,
 	PaymentMethodType,
 	PaymentOption,
+	PaymentRequest,
 	PaymentResponse,
 	PaymentTransferCreateRequest,
 	ProcessedStatement,
@@ -365,6 +366,7 @@ export {
 	PaymentMethodOptionResponse,
 	PaymentMethodType,
 	PaymentOption,
+	PaymentRequest.
 	PaymentResponse,
 	PaymentTransferCreateRequest,
 	ProcessedStatement,
