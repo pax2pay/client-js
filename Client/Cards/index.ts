@@ -129,7 +129,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		organisationCode?: string
 	) {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
-		const response = await this.connection.post<model.CardTypeProfileResponse>(
+		const response = await this.connection.put<model.CardTypeProfileResponse>(
 			`v2/${this.folder}/types/profiles/${cardTypeProfileId}`,
 			cardTypeProfileRequest,
 			undefined,
