@@ -10,7 +10,7 @@ import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
 
 export interface PaymentRequest {
 	account: string
-	amount: number
+	amount?: number
 	currency: Currency
 	method?: "card" | "transfer"
 	merchant?: MerchantRequest
@@ -23,7 +23,7 @@ export interface PaymentRequest {
 export namespace PaymentRequest {
 	export const type = isly.object<PaymentRequest>({
 		account: isly.string(),
-		amount: isly.number(),
+		amount: isly.number().optional(),
 		currency: isly.fromIs("Currency", Currency.is),
 		method: isly.string(["card", "transfer"]).optional(),
 		merchant: isly.fromIs("MerchantRequest", MerchantRequest.is).optional(),
