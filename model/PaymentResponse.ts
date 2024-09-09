@@ -20,7 +20,7 @@ export interface PaymentResponse {
 	card?: CardResponseV2
 	transfer?: TransferResponseV3
 	delivery?: PaymentDeliveryResponse
-	schedule?: PaymentAmountScheduleResponse
+	schedule?: PaymentAmountScheduleResponse[]
 }
 export namespace PaymentResponse {
 	export const type = isly.object<PaymentResponse>({
@@ -36,7 +36,7 @@ export namespace PaymentResponse {
 		card: isly.fromIs("CardResponseV2", CardResponseV2.is).optional(),
 		transfer: isly.fromIs("TransferResponseV3", TransferResponseV3.is).optional(),
 		delivery: isly.fromIs("PaymentDeliveryResponse", PaymentDeliveryResponse.is).optional(),
-		schedule: isly.fromIs("PaymentAmountScheduleResponse", PaymentAmountScheduleResponse.is).optional(),
+		schedule: isly.array(isly.fromIs("PaymentAmountScheduleResponse", PaymentAmountScheduleResponse.is)).optional(),
 	})
 	export const is = type.is
 }
