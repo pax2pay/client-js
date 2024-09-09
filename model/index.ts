@@ -48,7 +48,6 @@ import { CardStatement } from "./CardStatement"
 import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardType } from "./CardType"
-import { CardTypeProfileRequest } from "./CardTypeProfileRequest"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypeResponseV2 } from "./CardTypeResponseV2"
@@ -67,6 +66,7 @@ import { ConfigRequest } from "./ConfigRequest"
 import { ConfigResponse } from "./ConfigResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
 import { CreateCardRequest } from "./CreateCardRequest"
+import { CreateCardTypeProfileRequest } from "./CreateCardTypeProfileRequest"
 import { CreateRolesetRequest } from "./CreateRolesetRequest"
 import { CredentialRequest } from "./CredentialRequest"
 import { CredentialResponse } from "./CredentialResponse"
@@ -98,6 +98,7 @@ import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognos
 import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
 import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
 import { HotelInfo } from "./HotelInfo"
+import { Inclusion } from "./Inclusion"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
 import { InternalBalanceLimit } from "./InternalBalanceLimit"
@@ -119,6 +120,7 @@ import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
 import { OmnisetupRequest } from "./OmnisetupRequest"
 import { OmnisetupResponse } from "./OmnisetupResponse"
+import { OrganisationCardTypeProfileResponse } from "./OrganisationCardTypeProfileResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationFlag } from "./OrganisationFlag"
@@ -152,6 +154,7 @@ import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { ScheduleEntry } from "./ScheduleEntry"
 import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
+import { SearchCardTypeProfileRequest } from "./SearchCardTypeProfileRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
@@ -203,6 +206,7 @@ import { TwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails
 import { TwoFactorAuthenticationRegistrationResponse } from "./TwoFactorAuthenticationRegistrationResponse"
 import { UpdateAccountRequest } from "./UpdateAccountRequest"
 import { UpdateBeneficiaryRequest } from "./UpdateBeneficiaryRequest"
+import { UpdateCardTypeProfileRequest } from "./UpdateCardTypeProfileRequest"
 import { UpdateCategoryRequest } from "./UpdateCategoryRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
 import { UserChangeRequest } from "./UserChangeRequest"
@@ -269,7 +273,7 @@ export {
 	CardTransaction,
 	CardTransactionType,
 	CardType,
-	CardTypeProfileRequest,
+	CreateCardTypeProfileRequest,
 	CardTypeProfileResponse,
 	CardTypeResponse,
 	CardTypeResponseV2,
@@ -320,6 +324,7 @@ export {
 	HotelBookingInfoRequest,
 	HotelBookingInfoResponse,
 	HotelInfo,
+	Inclusion,
 	InsertCardOptionRequest,
 	InsertCardRequest,
 	InternalBalanceLimit,
@@ -341,6 +346,7 @@ export {
 	OmnisetupProviderRequest,
 	OmnisetupRequest,
 	OmnisetupResponse,
+	OrganisationCardTypeProfileResponse,
 	OrganisationConfig,
 	OrganisationCreateRequest,
 	OrganisationFlag,
@@ -378,6 +384,7 @@ export {
 	SecurityConfig,
 	Segment,
 	SearchBeneficiaryRequest,
+	SearchCardTypeProfileRequest,
 	StatementReportUrlRequest,
 	StatementReportRequest,
 	StatementReportResponse,
@@ -426,6 +433,7 @@ export {
 	TwoFactorAuthenticationRegistrationResponse,
 	UpdateAccountRequest,
 	UpdateBeneficiaryRequest,
+	UpdateCardTypeProfileRequest,
 	UpdateRolesetRequest,
 	UserChangeRequest,
 	UserConfig,

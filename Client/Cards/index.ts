@@ -112,12 +112,75 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		return this.extractResponse<model.CardTypeResponseV2>(response)
 	}
 
-	async createCardTypeProfileV2(cardTypeProfileRequest: model.CardTypeProfileRequest) {
+	async createCardTypeProfileV2(cardTypeProfileRequest: model.CreateCardTypeProfileRequest, organisationCode?: string) {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		const response = await this.connection.post<model.CardTypeProfileResponse>(
 			`v2/${this.folder}/types/profiles`,
-			cardTypeProfileRequest
+			cardTypeProfileRequest,
+			undefined,
+			header
 		)
 		return response
+	}
+
+	async updateCardTypeProfileV2(
+		cardTypeProfileId: string,
+		cardTypeProfileRequest: model.UpdateCardTypeProfileRequest,
+		organisationCode?: string
+	) {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
+		const response = await this.connection.put<model.CardTypeProfileResponse>(
+			`v2/${this.folder}/types/profiles/${cardTypeProfileId}`,
+			cardTypeProfileRequest,
+			undefined,
+			header
+		)
+		return response
+	}
+
+	async getActiveCardTypeProfileV2(organisationCode: string) {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.get<model.OrganisationCardTypeProfileResponse>(
+			`v2/${this.folder}/types/profiles/current`,
+			undefined,
+			header
+		)
+	}
+	async searchCardTypeProfileV2(request: model.SearchCardTypeProfileRequest, organisationCode?: string) {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
+		return await this.connection.post<model.CardTypeProfileResponse[]>(
+			`v2/cards/types/profiles/searches`,
+			request,
+			undefined,
+			header
+		)
+	}
+	async setCardTypeProfileV2(organisationCode: string, cardTypeProfileId: string) {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.post<model.OrganisationCardTypeProfileResponse>(
+			`v2/${this.folder}/types/profiles/current/${cardTypeProfileId}`,
+			undefined,
+			undefined,
+			header
+		)
+	}
+	async assignCardTypeProfileV2(organisationCode: string, cardTypeProfileId: string) {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.put<model.OrganisationCardTypeProfileResponse>(
+			`v2/${this.folder}/types/profiles/current/${cardTypeProfileId}`,
+			undefined,
+			undefined,
+			header
+		)
+	}
+	async unassignCardTypeProfileV2(organisationCode: string, cardTypeProfileId: string) {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.remove<model.OrganisationCardTypeProfileResponse>(
+			`v2/${this.folder}/types/profiles/current/${cardTypeProfileId}`,
+			undefined,
+			undefined,
+			header
+		)
 	}
 
 	async getCardTypes(providerCode: model.ProviderCode) {

@@ -1,7 +1,7 @@
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { ProviderCode } from "./ProviderCode"
 
-export interface CardTypeProfileRequest {
+export interface CreateCardTypeProfileRequest {
 	cardTypeProfileId: string
 	description: string
 	providerCode: ProviderCode

@@ -1,10 +1,12 @@
+import { Inclusion } from "./Inclusion"
+
 export interface SearchRolesetsRequest {
 	name?: string
 	description?: string
-	includeDefaults?: "INCLUDE" | "EXCLUDE" | "ONLY"
+	includeDefaults?: Inclusion
 	containsRoles?: string[]
 	doesNotContainRoles?: string[]
-	includeInternal?: "INCLUDE" | "EXCLUDE" | "ONLY"
-	includeShared?: "INCLUDE" | "EXCLUDE" | "ONLY"
+	includeInternal?: Inclusion
+	includeShared?: Inclusion
 	appliesTo?: "USER" | "API_KEY"
 }
