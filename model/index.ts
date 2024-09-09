@@ -206,6 +206,7 @@ import { TwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails
 import { TwoFactorAuthenticationRegistrationResponse } from "./TwoFactorAuthenticationRegistrationResponse"
 import { UpdateAccountRequest } from "./UpdateAccountRequest"
 import { UpdateBeneficiaryRequest } from "./UpdateBeneficiaryRequest"
+import { UpdateCardTypeProfileRequest } from "./UpdateCardTypeProfileRequest"
 import { UpdateCategoryRequest } from "./UpdateCategoryRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
 import { UserChangeRequest } from "./UserChangeRequest"
@@ -432,6 +433,7 @@ export {
 	TwoFactorAuthenticationRegistrationResponse,
 	UpdateAccountRequest,
 	UpdateBeneficiaryRequest,
+	UpdateCardTypeProfileRequest,
 	UpdateRolesetRequest,
 	UserChangeRequest,
 	UserConfig,

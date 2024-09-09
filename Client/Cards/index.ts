@@ -123,6 +123,21 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		return response
 	}
 
+	async updateCardTypeProfileV2(
+		cardTypeProfileId: string,
+		cardTypeProfileRequest: model.UpdateCardTypeProfileRequest,
+		organisationCode?: string
+	) {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
+		const response = await this.connection.post<model.CardTypeProfileResponse>(
+			`v2/${this.folder}/types/profiles/${cardTypeProfileId}`,
+			cardTypeProfileRequest,
+			undefined,
+			header
+		)
+		return response
+	}
+
 	async getActiveCardTypeProfileV2(organisationCode: string) {
 		const header = { "x-assume": organisationCode }
 		return await this.connection.get<model.OrganisationCardTypeProfileResponse>(
@@ -136,6 +151,15 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		return await this.connection.post<model.CardTypeProfileResponse[]>(
 			`v2/cards/types/profiles/searches`,
 			request,
+			undefined,
+			header
+		)
+	}
+	async setCardTypeProfileV2(organisationCode: string, cardTypeProfileId: string) {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.post<model.OrganisationCardTypeProfileResponse>(
+			`v2/${this.folder}/types/profiles/current/${cardTypeProfileId}`,
+			undefined,
 			undefined,
 			header
 		)
