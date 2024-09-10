@@ -7,7 +7,7 @@ export interface PaymentDeliveryResponse {
 	to: string
 	message: string
 	lapses: Date
-	sent: DateTime
+	sent?: DateTime
 	state: DeliveryStatus
 	reason?: string
 }
@@ -17,7 +17,7 @@ export namespace PaymentDeliveryResponse {
 		to: isly.string(),
 		message: isly.string(),
 		lapses: isly.fromIs("Date", Date.is),
-		sent: isly.fromIs("DateTime", DateTime.is),
+		sent: isly.fromIs("DateTime", DateTime.is).optional(),
 		state: isly.fromIs("DeliveryStatus", DeliveryStatus.is),
 		reason: isly.string().optional(),
 	})
