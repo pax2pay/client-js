@@ -1,7 +1,7 @@
 import { Currency, DateTime } from "isoly"
 import { isly } from "isly"
 import { BookingInfoResponse } from "./BookingInfoResponse"
-import { CardResponseV2 } from "./CardResponseV2"
+import { CardResponseV3 } from "./CardResponseV3"
 import { MerchantResponse } from "./MerchantResponse"
 import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
 import { PaymentDeliveryResponse } from "./PaymentDeliveryResponse"
@@ -17,7 +17,7 @@ export interface PaymentResponse {
 	meta?: BookingInfoResponse
 	createdBy: string
 	createdOn: DateTime
-	card?: CardResponseV2
+	card?: CardResponseV3
 	transfer?: TransferResponseV3
 	delivery?: PaymentDeliveryResponse
 	schedule?: PaymentAmountScheduleResponse[]
@@ -33,7 +33,7 @@ export namespace PaymentResponse {
 		meta: isly.fromIs("BookingInfoResponse", BookingInfoResponse.is).optional(),
 		createdBy: isly.string(),
 		createdOn: isly.string(),
-		card: isly.fromIs("CardResponseV2", CardResponseV2.is).optional(),
+		card: isly.fromIs("CardResponseV3", CardResponseV3.is).optional(),
 		transfer: isly.fromIs("TransferResponseV3", TransferResponseV3.is).optional(),
 		delivery: isly.fromIs("PaymentDeliveryResponse", PaymentDeliveryResponse.is).optional(),
 		schedule: isly.array(isly.fromIs("PaymentAmountScheduleResponse", PaymentAmountScheduleResponse.is)).optional(),

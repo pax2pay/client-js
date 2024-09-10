@@ -32,6 +32,7 @@ import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardForm } from "./CardForm"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
+import { CardOperation } from "./CardOperation"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardReportUrlRequest } from "./CardReportUrlRequest"
 import { CardResponse } from "./CardResponse"
@@ -262,6 +263,7 @@ export {
 	CardDeliveryResponse,
 	CardForm,
 	CardFundingAccountResponse,
+	CardOperation,
 	CardOptionSearch,
 	CardReportUrlRequest,
 	CardResponse,
