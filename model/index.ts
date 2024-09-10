@@ -32,10 +32,12 @@ import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardForm } from "./CardForm"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
+import { CardOperation } from "./CardOperation"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardReportUrlRequest } from "./CardReportUrlRequest"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
+import { CardResponseV3 } from "./CardResponseV3"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
@@ -134,10 +136,17 @@ import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
 import { PaxpayFeature } from "./PaxpayFeature"
 import { Payload } from "./Payload"
+import { PaymentAmountScheduleRequest } from "./PaymentAmountScheduleRequest"
+import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
+import { PaymentCardCreateRequest } from "./PaymentCardCreateRequest"
+import { PaymentDeliveryRequest } from "./PaymentDeliveryRequest"
+import { PaymentDeliveryResponse } from "./PaymentDeliveryResponse"
 import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
 import { PaymentMethodType } from "./PaymentMethodType"
 import { PaymentOption } from "./PaymentOption"
+import { PaymentRequest } from "./PaymentRequest"
 import { PaymentResponse } from "./PaymentResponse"
+import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProductType } from "./ProductType"
 import { ProviderCode } from "./ProviderCode"
@@ -199,6 +208,7 @@ import { TransferRequest } from "./TransferRequest"
 import { TransferResponse } from "./TransferResponse"
 import { TransferResponseV2 } from "./TransferResponseV2"
 import { TransferResponseV2Summary } from "./TransferResponseV2Summary"
+import { TransferResponseV3 } from "./TransferResponseV3"
 import { TransferSearch } from "./TransferSearch"
 import { TransferStatus } from "./TransferStatus"
 import { TravelPartyInfo } from "./TravelPartyInfo"
@@ -258,10 +268,12 @@ export {
 	CardDeliveryResponse,
 	CardForm,
 	CardFundingAccountResponse,
+	CardOperation,
 	CardOptionSearch,
 	CardReportUrlRequest,
 	CardResponse,
 	CardResponseV2,
+	CardResponseV3,
 	CardScheduleResponseItem,
 	CardScheduleTaskStatus,
 	CardScheduleTaskType,
@@ -360,10 +372,17 @@ export {
 	PasswordValidateResponse,
 	PaxpayFeature,
 	Payload,
+	PaymentAmountScheduleRequest,
+	PaymentAmountScheduleResponse,
+	PaymentCardCreateRequest,
+	PaymentDeliveryRequest,
+	PaymentDeliveryResponse,
 	PaymentMethodOptionResponse,
 	PaymentMethodType,
 	PaymentOption,
+	PaymentRequest,
 	PaymentResponse,
+	PaymentTransferCreateRequest,
 	ProcessedStatement,
 	ProductType,
 	ProviderCode,
@@ -426,6 +445,7 @@ export {
 	TransferResponse,
 	TransferResponseV2,
 	TransferResponseV2Summary,
+	TransferResponseV3,
 	TransferSearch,
 	TransferStatus,
 	TravelPartyInfo,
