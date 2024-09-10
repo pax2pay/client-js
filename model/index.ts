@@ -37,6 +37,7 @@ import { CardOptionSearch } from "./CardOptionSearch"
 import { CardReportUrlRequest } from "./CardReportUrlRequest"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
+import { CardResponseV3 } from "./CardResponseV3"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
@@ -268,6 +269,7 @@ export {
 	CardReportUrlRequest,
 	CardResponse,
 	CardResponseV2,
+	CardResponseV3,
 	CardScheduleResponseItem,
 	CardScheduleTaskStatus,
 	CardScheduleTaskType,
