@@ -1,8 +1,7 @@
 const accountState = [
 	"ACTIVE",
 	"INACTIVE",
-	"CLOSED",
-	"DELETED",
+	"CANCELLED",
 	"EXPIRED",
 	"PENDING",
 	"APPROVED",
