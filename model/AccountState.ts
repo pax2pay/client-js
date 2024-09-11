@@ -1,13 +1,4 @@
-const accountState = [
-	"ACTIVE",
-	"INACTIVE",
-	"DELETED",
-	"EXPIRED",
-	"PENDING",
-	"APPROVED",
-	"DECLINED",
-	"GENERATED",
-] as const
+const accountState = ["ACTIVE", "INACTIVE", "DELETED", "EXPIRED", "PENDING", "APPROVED", "DECLINED"] as const
 
 export type AccountState = typeof accountState[number]
 
