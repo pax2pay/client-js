@@ -1,8 +1,8 @@
 import { Date } from "isoly"
 import { isly } from "isly"
-import { AccountState } from "./AccountState"
 import { CardOperation } from "./CardOperation"
-import { CardUsage } from "./CardUsage"
+import { PaymentAccountState } from "./PaymentAccountState"
+import { PaymentCardUsage } from "./PaymentCardUsage"
 import { ProviderCode } from "./ProviderCode"
 import { YearMonth } from "./YearMonth"
 
@@ -12,8 +12,8 @@ export interface CardResponseV3 {
 	providerCardId: string
 	cardType: string
 	expires: YearMonth
-	usage: CardUsage
-	state: AccountState
+	usage: PaymentCardUsage
+	state: PaymentAccountState
 	token?: string
 	pan: string
 	cvv?: string
@@ -31,8 +31,8 @@ export namespace CardResponseV3 {
 		providerCardId: isly.string(),
 		cardType: isly.string(),
 		expires: isly.fromIs("YearMonth", YearMonth.is),
-		usage: isly.fromIs("CardUsage", CardUsage.is),
-		state: isly.fromIs("AccountState", AccountState.is),
+		usage: isly.fromIs("PaymentCardUsage", PaymentCardUsage.is),
+		state: isly.fromIs("PaymentAccountState", PaymentAccountState.is),
 		token: isly.string().optional(),
 		pan: isly.string(),
 		cvv: isly.string().optional(),
