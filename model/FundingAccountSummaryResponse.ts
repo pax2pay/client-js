@@ -1,5 +1,6 @@
 export interface FundingAccountSummaryResponse {
 	providerAccountId: string
+	accountId: string
 	balance: number
 	friendlyName: string
 }
@@ -9,6 +10,7 @@ export namespace FundingAccountSummaryResponse {
 		return (
 			typeof value == "object" &&
 			typeof value.providerAccountId == "string" &&
+			typeof value.accountId == "string" &&
 			typeof value.balance == "number" &&
 			typeof value.friendlyName == "string"
 		)

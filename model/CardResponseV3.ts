@@ -3,10 +3,13 @@ import { isly } from "isly"
 import { AccountState } from "./AccountState"
 import { CardOperation } from "./CardOperation"
 import { CardUsage } from "./CardUsage"
+import { ProviderCode } from "./ProviderCode"
 import { YearMonth } from "./YearMonth"
 
 export interface CardResponseV3 {
 	id: string
+	providerCode: ProviderCode
+	providerCardId: string
 	cardType: string
 	expires: YearMonth
 	usage: CardUsage
@@ -24,6 +27,8 @@ export interface CardResponseV3 {
 export namespace CardResponseV3 {
 	export const type = isly.object<CardResponseV3>({
 		id: isly.string(),
+		providerCode: isly.fromIs("ProviderCode", ProviderCode.is),
+		providerCardId: isly.string(),
 		cardType: isly.string(),
 		expires: isly.fromIs("YearMonth", YearMonth.is),
 		usage: isly.fromIs("CardUsage", CardUsage.is),
