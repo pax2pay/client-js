@@ -1,4 +1,5 @@
 import { CardResponseV2 } from "./CardResponseV2"
+import { PaymentResponse } from "./PaymentResponse"
 
 describe("", () => {
 	it("", () => {
@@ -140,6 +141,7 @@ describe("", () => {
 			fundingAccount: {
 				providerAccountId: "SomeAccount",
 				balance: 12345,
+				accountId: "test",
 				friendlyName: "Account",
 			},
 			bookingInfo: {

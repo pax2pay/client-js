@@ -11,6 +11,7 @@ describe("TransferResponseV2 is", () => {
 			reference: "fdfg dafgdfg",
 			source: {
 				providerAccountId: "A120CX1Z",
+				accountId: "testest",
 				balance: 3861,
 				friendlyName: "Flights GBP 2",
 			},
