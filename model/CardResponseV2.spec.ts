@@ -140,6 +140,7 @@ describe("", () => {
 			fundingAccount: {
 				providerAccountId: "SomeAccount",
 				balance: 12345,
+				accountId: "test",
 				friendlyName: "Account",
 			},
 			bookingInfo: {

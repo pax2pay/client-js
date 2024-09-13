@@ -136,11 +136,14 @@ import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
 import { PaxpayFeature } from "./PaxpayFeature"
 import { Payload } from "./Payload"
+import { PaymentAccountState } from "./PaymentAccountState"
 import { PaymentAmountScheduleRequest } from "./PaymentAmountScheduleRequest"
 import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
 import { PaymentCardCreateRequest } from "./PaymentCardCreateRequest"
+import { PaymentCardUsage } from "./PaymentCardUsage"
 import { PaymentDeliveryRequest } from "./PaymentDeliveryRequest"
 import { PaymentDeliveryResponse } from "./PaymentDeliveryResponse"
+import { PaymentDeliveryState } from "./PaymentDeliveryState"
 import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
 import { PaymentMethodType } from "./PaymentMethodType"
 import { PaymentOption } from "./PaymentOption"
@@ -372,11 +375,14 @@ export {
 	PasswordValidateResponse,
 	PaxpayFeature,
 	Payload,
+	PaymentAccountState,
 	PaymentAmountScheduleRequest,
 	PaymentAmountScheduleResponse,
 	PaymentCardCreateRequest,
+	PaymentCardUsage,
 	PaymentDeliveryRequest,
 	PaymentDeliveryResponse,
+	PaymentDeliveryState,
 	PaymentMethodOptionResponse,
 	PaymentMethodType,
 	PaymentOption,
