@@ -1,5 +1,4 @@
 import { CardResponseV2 } from "./CardResponseV2"
-import { PaymentResponse } from "./PaymentResponse"
 
 describe("", () => {
 	it("", () => {
