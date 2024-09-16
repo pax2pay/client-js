@@ -150,6 +150,7 @@ import { PaymentOption } from "./PaymentOption"
 import { PaymentRequest } from "./PaymentRequest"
 import { PaymentResponse } from "./PaymentResponse"
 import { PaymentSearch } from "./PaymentSearch"
+import { PaymentStatus } from "./PaymentStatus"
 import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProductType } from "./ProductType"
@@ -200,6 +201,7 @@ import { SuggestionPaymentMethodRequest } from "./SuggestionPaymentMethodRequest
 import { SuggestionRequest } from "./SuggestionRequest"
 import { SuggestionResponse } from "./SuggestionResponse"
 import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
+import { SummaryPaymentResponse } from "./SummaryPaymentResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
 import { SupplierRequest } from "./SupplierRequest"
 import { SupplierResponse } from "./SupplierResponse"
@@ -390,6 +392,7 @@ export {
 	PaymentRequest,
 	PaymentResponse,
 	PaymentSearch,
+	PaymentStatus,
 	PaymentTransferCreateRequest,
 	ProcessedStatement,
 	ProductType,
@@ -441,6 +444,7 @@ export {
 	SuggestionRequest,
 	SuggestionResponse,
 	SummaryBookingInfoResponse,
+	SummaryPaymentResponse,
 	SupplierBookingInfo,
 	SupplierRequest,
 	SupplierResponse,

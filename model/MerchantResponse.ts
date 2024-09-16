@@ -5,7 +5,7 @@ import { MerchantType } from "./MerchantType"
 
 export interface MerchantResponse {
 	id?: string
-	name?: string
+	name: string
 	mcc?: string
 	type?: MerchantType
 	isSuitableForCardMerchantRestriction?: true
@@ -15,7 +15,7 @@ export interface MerchantResponse {
 export namespace MerchantResponse {
 	export const type = isly.object<MerchantResponse>({
 		id: isly.string().optional(),
-		name: isly.string().optional(),
+		name: isly.string(),
 		mcc: isly.string().optional(),
 		type: MerchantType.type.optional(),
 		isSuitableForCardMerchantRestriction: isly.boolean(true).optional(),

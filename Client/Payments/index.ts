@@ -20,9 +20,12 @@ export class Payments extends List<model.PaymentResponse> {
 	async create(request: model.PaymentRequest) {
 		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(this.folder, request)
 	}
+	async get(id: string) {
+		return await this.connection.get<model.PaymentResponse>(`${this.folder}/${id}`)
+	}
 	async search(
 		request: model.PaymentSearch,
-		previous?: Paginated<model.PaymentResponse>,
+		previous?: Paginated<model.SummaryPaymentResponse>,
 		page?: number,
 		size?: number,
 		sort = "createdOn,desc",
@@ -31,11 +34,9 @@ export class Payments extends List<model.PaymentResponse> {
 		return await this.getNextPaginated(
 			previous,
 			(page, size, sort, request) =>
-				this.connection.post<{ list: model.PaymentResponse[]; totalCount: number } | model.PaymentResponse[]>(
-					`${this.folder}/searches`,
-					request,
-					{ page, size, sort, includeCount }
-				),
+				this.connection.post<
+					{ list: model.SummaryPaymentResponse[]; totalCount: number } | model.SummaryPaymentResponse[]
+				>(`${this.folder}/searches`, request, { page, size, sort, includeCount }),
 			request,
 			page,
 			size,
