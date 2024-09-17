@@ -49,7 +49,7 @@ export class Auth {
 		this.token = value
 	}
 	isLoggedIn(): boolean {
-		return this.data.status == "SUCCESS" ?? false
+		return this.data.status == "SUCCESS"
 	}
 	async login(request: model.LoginRequest, otp?: string) {
 		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>(
