@@ -1,5 +1,4 @@
 import { isly } from "isly"
-import { PaymentStatus } from "./PaymentStatus"
 import { ProviderCode } from "./ProviderCode"
 
 export interface SummaryCardResponseV3 {
@@ -8,7 +7,6 @@ export interface SummaryCardResponseV3 {
 	providerCardId: string
 	cardType: string
 	pan: string
-	state: PaymentStatus
 }
 
 export namespace SummaryCardResponseV3 {
@@ -18,7 +16,6 @@ export namespace SummaryCardResponseV3 {
 		providerCardId: isly.string(),
 		cardType: isly.string(),
 		pan: isly.string(),
-		state: PaymentStatus.type,
 	})
 	export const is = type.is
 }
