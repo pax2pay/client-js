@@ -1,8 +1,13 @@
+import { isly } from "isly"
+
 export interface SecurityConfig {
 	enforce2fa?: boolean
+	passwordExpirationDays?: number
 }
 export namespace SecurityConfig {
-	export function is(value: SecurityConfig | any): value is SecurityConfig {
-		return typeof value == "object" && (typeof value.enforce2fa == "boolean" || value.enforce2fa == undefined)
-	}
+	export const type = isly.object<SecurityConfig>({
+		enforce2fa: isly.boolean().optional(),
+		passwordExpirationDays: isly.number().optional(),
+	})
+	export const is = type.is
 }
