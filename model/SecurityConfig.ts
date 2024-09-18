@@ -9,4 +9,5 @@ export namespace SecurityConfig {
 		enforce2fa: isly.boolean().optional(),
 		passwordExpirationDays: isly.number().optional(),
 	})
+	export const is = type.is
 }
