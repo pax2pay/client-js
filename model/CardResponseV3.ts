@@ -18,7 +18,7 @@ export interface CardResponseV3 extends SummaryCardResponseV3 {
 export namespace CardResponseV3 {
 	export const type = SummaryCardResponseV3.type.extend<CardResponseV3>({
 		expires: isly.fromIs("YearMonth", YearMonth.is),
-		usage: isly.fromIs("CardUsage", PaymentCardUsage.is),
+		usage: isly.fromIs("PaymentCardUsage", PaymentCardUsage.is),
 		token: isly.string().optional(),
 		cvv: isly.string().optional(),
 		cardHolderName: isly.string(),
