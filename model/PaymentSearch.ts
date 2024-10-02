@@ -2,6 +2,7 @@ import { isly } from "isly"
 import { ProviderCode } from "./ProviderCode"
 
 export interface PaymentSearch {
+	fuzzySearch?: string
 	paymentId?: string[]
 	cardId?: string[]
 	merchantId?: string[]
@@ -9,6 +10,7 @@ export interface PaymentSearch {
 }
 export namespace PaymentSearch {
 	export const type = isly.object<PaymentSearch>({
+		fuzzySearch: isly.string().optional(),
 		paymentId: isly.string().array().optional(),
 		cardId: isly.string().array().optional(),
 		merchantId: isly.string().array().optional(),
