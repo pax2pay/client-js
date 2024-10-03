@@ -1,29 +1,25 @@
-import * as isoly from "isoly"
+import { Date, DateTime } from "isoly"
+import { isly } from "isly"
+import { DeliveryStatus } from "./DeliveryStatus"
 
 export interface CardDeliveryResponse {
 	type: "EMAIL"
-	to: string | [string, string]
+	to: string
 	deliveredMessage: string
-	linkExpiry: isoly.Date
-	sent?: string
-	status: "SUCCESS" | "FAILURE" | "TODO" | "PENDING" | "CARD_DECLINED"
+	linkExpiry: Date
+	sent?: DateTime
+	status: DeliveryStatus
 	statusText?: string
 }
 export namespace CardDeliveryResponse {
-	export function is(value: CardDeliveryResponse | any): value is CardDeliveryResponse {
-		return (
-			typeof value == "object" &&
-			value.type == "EMAIL" &&
-			(typeof value.to == "string" || typeof value.to == "object") &&
-			typeof value.deliveredMessage == "string" &&
-			isoly.Date.is(value.linkExpiry) &&
-			(typeof value.sent == "string" || value.sent == undefined) &&
-			(typeof value.statusText == "string" || value.statusText == undefined) &&
-			(value.status == "SUCCESS" ||
-				value.status == "FAILURE" ||
-				value.status == "TODO" ||
-				value.status == "PENDING" ||
-				value.status == "CARD_DECLINED")
-		)
-	}
+	export const type = isly.object<CardDeliveryResponse>({
+		type: isly.string("EMAIL"),
+		to: isly.string(),
+		deliveredMessage: isly.string(),
+		linkExpiry: isly.fromIs("Date", Date.is),
+		sent: isly.fromIs("DateTime", DateTime.is).optional(),
+		status: isly.fromIs("DeliveryStatus", DeliveryStatus.is),
+		statusText: isly.string().optional(),
+	})
+	export const is = type.is
 }

@@ -1,10 +1,10 @@
 import { PaymentResponse } from "./PaymentResponse"
 
 describe("PaymentResponse", () => {
-	it("is", () => {
+	it("is false", () => {
 		expect(PaymentResponse.is({ status: "INACTIVE", code: "somecode" })).toBeFalsy()
 	})
-	it("is", () => {
+	it("is true", () => {
 		const res = {
 			id: "Y000000DQ",
 			account: "A00003O",
@@ -57,6 +57,7 @@ describe("PaymentResponse", () => {
 				issued: "2024-09-23",
 				remaining: 1,
 				maxAmount: 301,
+				activationDate: "2024-12-12",
 			},
 		}
 		expect(PaymentResponse.is(res)).toBeTruthy()

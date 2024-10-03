@@ -1,19 +1,19 @@
 import * as isoly from "isoly"
+import { isly } from "isly"
 
 export interface CardDeliveryRequest {
-	to: string | [string, string]
+	to: string
 	message: string
 	linkExpiry: isoly.Date
 }
 export namespace CardDeliveryRequest {
-	export function is(value: CardDeliveryRequest | any): value is CardDeliveryRequest {
-		return (
-			typeof value == "object" &&
-			(typeof value.to == "string" || typeof value.to == "object") &&
-			typeof value.message == "string" &&
-			/^.+@.+\..+$/.test(value.to) &&
-			isoly.Date.is(value.linkExpiry) &&
-			value.linkExpiry > isoly.Date.now()
-		)
+	export const type = isly.object<CardDeliveryRequest>({
+		to: isly.string(/\S+@\S+\.\S+/),
+		message: isly.string(),
+		linkExpiry: isly.fromIs("isExpiry", isExpiry),
+	})
+	function isExpiry(value: any): value is isoly.Date {
+		return isoly.Date.is(value) && value > isoly.Date.now()
 	}
+	export const is = type.is
 }

@@ -13,6 +13,7 @@ export interface CardResponseV3 extends SummaryCardResponseV3 {
 	issued?: Date
 	remaining: number
 	maxAmount: number
+	activationDate: Date
 }
 
 export namespace CardResponseV3 {
@@ -25,6 +26,7 @@ export namespace CardResponseV3 {
 		issued: isly.fromIs("Date", Date.is).optional(),
 		remaining: isly.number(),
 		maxAmount: isly.number(),
+		activationDate: isly.fromIs("Date", Date.is),
 	})
 	export const is = type.is
 }
