@@ -1,19 +1,16 @@
-import * as isoly from "isoly"
+import { Date } from "isoly"
+import { isly } from "isly"
 
 export interface CardDeliveryRequest {
-	to: string | [string, string]
+	to: string
 	message: string
-	linkExpiry: isoly.Date
+	linkExpiry: Date
 }
 export namespace CardDeliveryRequest {
-	export function is(value: CardDeliveryRequest | any): value is CardDeliveryRequest {
-		return (
-			typeof value == "object" &&
-			(typeof value.to == "string" || typeof value.to == "object") &&
-			typeof value.message == "string" &&
-			/^.+@.+\..+$/.test(value.to) &&
-			isoly.Date.is(value.linkExpiry) &&
-			value.linkExpiry > isoly.Date.now()
-		)
-	}
+	export const type = isly.object<CardDeliveryRequest>({
+		to: isly.string(),
+		message: isly.string(),
+		linkExpiry: isly.fromIs("Date", Date.is),
+	})
+	export const is = type.is
 }

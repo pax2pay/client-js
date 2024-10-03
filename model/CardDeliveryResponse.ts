@@ -1,26 +1,25 @@
-import * as isoly from "isoly"
+import { Date, DateTime } from "isoly"
+import { isly } from "isly"
 import { DeliveryStatus } from "./DeliveryStatus"
 
 export interface CardDeliveryResponse {
 	type: "EMAIL"
-	to: string | [string, string]
+	to: string
 	deliveredMessage: string
-	linkExpiry: isoly.Date
-	sent?: isoly.DateTime
+	linkExpiry: Date
+	sent?: DateTime
 	status: DeliveryStatus
 	statusText?: string
 }
 export namespace CardDeliveryResponse {
-	export function is(value: CardDeliveryResponse | any): value is CardDeliveryResponse {
-		return (
-			typeof value == "object" &&
-			value.type == "EMAIL" &&
-			(typeof value.to == "string" || typeof value.to == "object") &&
-			typeof value.deliveredMessage == "string" &&
-			isoly.Date.is(value.linkExpiry) &&
-			(value.sent == undefined || isoly.DateTime.is(value.sent)) &&
-			(value.statusText == undefined || typeof value.statusText == "string") &&
-			DeliveryStatus.is(value.status)
-		)
-	}
+	export const type = isly.object<CardDeliveryResponse>({
+		type: isly.string("EMAIL"),
+		to: isly.string(),
+		deliveredMessage: isly.string(),
+		linkExpiry: isly.fromIs("Date", Date.is),
+		sent: isly.fromIs("DateTime", DateTime.is).optional(),
+		status: isly.fromIs("DeliveryStatus", DeliveryStatus.is),
+		statusText: isly.string().optional(),
+	})
+	export const is = type.is
 }
