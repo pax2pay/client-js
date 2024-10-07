@@ -8,7 +8,7 @@ export namespace PaymentStatus {
 		"completed",
 		"rejected",
 		"frozen",
-		"cancelled",
+		"closed",
 		"expired",
 		"pending",
 		"approved",
