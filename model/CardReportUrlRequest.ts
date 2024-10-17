@@ -1,6 +1,6 @@
-import { CardSearchRequest } from "./CardSearchRequest"
+import { CardSearch } from "./CardSearch"
 
-export interface CardReportUrlRequest extends CardSearchRequest {
+export interface CardReportUrlRequest extends CardSearch {
 	fileFormat: string
 	locale?: string
 }

@@ -42,7 +42,6 @@ import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
 import { CardSearch } from "./CardSearch"
-import { CardSearchRequest } from "./CardSearchRequest"
 import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduledTaskResponse"
@@ -283,7 +282,6 @@ export {
 	CardScheduleResponseItem,
 	CardScheduleTaskStatus,
 	CardScheduleTaskType,
-	CardSearch,
 	CardStateChangeDesiredState,
 	CardStateChangeScheduledTaskRequest,
 	CardStateChangeScheduledTaskResponse,
@@ -408,7 +406,7 @@ export {
 	RolesetResponse,
 	Room,
 	ScheduleEntry,
-	CardSearchRequest,
+	CardSearch,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	SecurityConfig,

@@ -188,7 +188,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	}
 
 	async searchCardsV2(
-		searchRequest: model.CardSearchRequest,
+		searchRequest: model.CardSearch,
 		parameters?: Record<string, any>
 	): Promise<model.ErrorResponse | model.CardResponseV2[]> {
 		const response = await this.connection.post<{ list: model.CardResponseV2[]; totalCount: number }>(
@@ -199,7 +199,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		return this.extractResponse<model.CardResponseV2>(response)
 	}
 	async searchCardsV2Paginated(
-		request: model.CardSearchRequest,
+		request: model.CardSearch,
 		previous?: Paginated<model.CardResponseV2>,
 		page?: number,
 		size?: number,
