@@ -25,12 +25,15 @@ export interface CardSearchRequest {
 	cardType?: (CardTypeSpecification | string)[]
 	cardNumber?: string
 	providerAccountId?: string
+	providerCardId?: string
 	createdOn?: Range<DateTime>
 	usage?: CardUsage[]
 	supplierReference?: string
 	deliveryStatus?: DeliveryStatus[]
 	bookingInfoText?: string
 	bookingInfoType?: (BookingInfoType | "NONE")[]
+	unchecked?: boolean
+	alwaysCount?: boolean
 	hasProviderTransaction?: CardTransactionType[]
 	doesntHaveProviderTransaction?: CardTransactionType[]
 }
