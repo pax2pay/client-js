@@ -7,7 +7,7 @@ import { CardUsage } from "./CardUsage"
 import { DeliveryStatus } from "./DeliveryStatus"
 import { ProviderCode } from "./ProviderCode"
 import { Range } from "./Range"
-export interface CardSearchRequest {
+export interface CardSearch {
 	fuzzySearch?: string
 	providerCode?: ProviderCode | ProviderCode[]
 	status?: AccountState[]
