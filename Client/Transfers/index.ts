@@ -41,7 +41,7 @@ export class Transfers extends List<model.TransferResponse> {
 			previous,
 			(page, size, sort, request) =>
 				this.connection.post<{ list: model.TransferResponseV2[]; totalCount: number } | model.TransferResponseV2[]>(
-					`${this.folder}/searches`,
+					`v2/${this.folder}/searches`,
 					request,
 					{ page, size, sort }
 				),
