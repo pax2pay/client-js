@@ -30,12 +30,14 @@ export class Transfers extends List<model.TransferResponse> {
 		)
 	}
 	async searchV2(request: model.TransferSearch, page?: number, size?: number, sort?: string) {
-		return this.extractResponse(
-			await this.connection.post<model.TransferResponseV2[]>(`v2/${this.folder}/searches`, request, {
+		return await this.connection.post<{ list: model.TransferResponseV2[]; totalCount: number }>(
+			`v2/${this.folder}/searches`,
+			request,
+			{
 				page,
 				size,
 				sort,
-			})
+			}
 		)
 	}
 	async approveV2(providerCode: ProviderCode, transferId: string, otp?: string) {
