@@ -10,7 +10,7 @@ export interface UserRequest {
 	firstName: string
 	lastName: string
 	status?: UserStatus
-	email: string
+	email?: string
 	userLimits?: UserLimitsRequest[]
 	rolesets?: string[]
 	category?: string
@@ -25,7 +25,7 @@ export namespace UserRequest {
 			typeof value.firstName == "string" &&
 			typeof value.lastName == "string" &&
 			(value.status == undefined || UserStatus.is(value.status)) &&
-			typeof value.email == "string" &&
+			(value.email == undefined || typeof value.email == "string") &&
 			(value.userLimits == undefined ||
 				(Array.isArray(value.userLimits) && value.userLimits.every((item: any) => UserLimitsRequest.is(item)))) &&
 			(value.rolesets == undefined ||
