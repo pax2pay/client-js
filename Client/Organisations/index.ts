@@ -44,7 +44,7 @@ export class Organisations extends List<model.OrganisationResponse> {
 		sort = "name",
 		includeNonActive = false
 	) {
-		return await this.connection.post<model.OrganisationSearchResponse>(`${this.folder}/searches`, request, {
+		return await this.connection.post<model.OrganisationSearchResponse[]>(`${this.folder}/searches`, request, {
 			page: page,
 			size: size,
 			sort: sort,
