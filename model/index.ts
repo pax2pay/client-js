@@ -127,6 +127,8 @@ import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationFlag } from "./OrganisationFlag"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
+import { OrganisationSearchRequest } from "./OrganisationSearchRequest"
+import { OrganisationSearchResponse } from "./OrganisationSearchResponse"
 import { OrganisationStatus } from "./OrganisationStatus"
 import { Passengers } from "./Passengers"
 import { PasswordChangeRequest } from "./PasswordChangeRequest"
@@ -368,6 +370,8 @@ export {
 	OrganisationFlag,
 	OrganisationRequest,
 	OrganisationResponse,
+	OrganisationSearchRequest,
+	OrganisationSearchResponse,
 	OrganisationStatus,
 	Passengers,
 	PasswordChangeRequest,
