@@ -7,6 +7,7 @@ import { AccountSearchRequest } from "./AccountSearchRequest"
 import { AccountState } from "./AccountState"
 import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
+import { ActiveCardType } from "./ActiveCardType"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AllowedMccConfig } from "./AllowedMccConfig"
@@ -251,6 +252,7 @@ export {
 	AccountState,
 	AccountSummary,
 	AccountType,
+	ActiveCardType,
 	AddressInfo,
 	AgentBookingInfo,
 	AllowedMccConfig,
