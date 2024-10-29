@@ -125,6 +125,7 @@ import { OrganisationCardTypeProfileResponse } from "./OrganisationCardTypeProfi
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationFlag } from "./OrganisationFlag"
+import { OrganisationRealm } from "./OrganisationRealm"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
 import { OrganisationSearchRequest } from "./OrganisationSearchRequest"
@@ -368,6 +369,7 @@ export {
 	OrganisationConfig,
 	OrganisationCreateRequest,
 	OrganisationFlag,
+	OrganisationRealm,
 	OrganisationRequest,
 	OrganisationResponse,
 	OrganisationSearchRequest,
