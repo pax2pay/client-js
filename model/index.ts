@@ -7,7 +7,6 @@ import { AccountSearchRequest } from "./AccountSearchRequest"
 import { AccountState } from "./AccountState"
 import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
-import { ActiveCardType } from "./ActiveCardType"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AllowedMccConfig } from "./AllowedMccConfig"
@@ -50,6 +49,7 @@ import { CardStatement } from "./CardStatement"
 import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardType } from "./CardType"
+import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypeResponseV2 } from "./CardTypeResponseV2"
@@ -252,7 +252,6 @@ export {
 	AccountState,
 	AccountSummary,
 	AccountType,
-	ActiveCardType,
 	AddressInfo,
 	AgentBookingInfo,
 	AllowedMccConfig,
@@ -294,6 +293,7 @@ export {
 	CardTransaction,
 	CardTransactionType,
 	CardType,
+	CardTypeInformation,
 	CreateCardTypeProfileRequest,
 	CardTypeProfileResponse,
 	CardTypeResponse,

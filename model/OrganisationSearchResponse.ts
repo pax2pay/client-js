@@ -1,6 +1,5 @@
 import { isly } from "isly"
-import { AccountType } from "./AccountType"
-import { ActiveCardType } from "./ActiveCardType"
+import { CardTypeInformation } from "./CardTypeInformation"
 import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationRealm } from "./OrganisationRealm"
@@ -12,7 +11,7 @@ export interface OrganisationSearchResponse extends OrganisationResponse {
 	credentials?: Partial<Record<ProviderCode, Record<string, any>>>
 	organisationConfig?: OrganisationConfig
 	internalOrganisationConfig?: InternalOrganisationConfig
-	cardTypes?: Partial<Record<ProviderCode, ActiveCardType>>
+	cardTypes?: Partial<Record<ProviderCode, CardTypeInformation>>
 }
 
 export namespace OrganisationSearchResponse {
@@ -22,7 +21,7 @@ export namespace OrganisationSearchResponse {
 		organisationConfig: isly.fromIs("OrganisationConfig", OrganisationConfig.is).optional(),
 		internalOrganisationConfig: isly.fromIs("InternalOrganisationConfig", InternalOrganisationConfig.is).optional(),
 		cardTypes: isly
-			.record(isly.fromIs("ProviderCode", ProviderCode.is), isly.fromIs("ActiveCardType", AccountType.is))
+			.record(isly.fromIs("ProviderCode", ProviderCode.is), isly.fromIs("CardTypeInformation", CardTypeInformation.is))
 			.optional(),
 	})
 	export const is = type.is

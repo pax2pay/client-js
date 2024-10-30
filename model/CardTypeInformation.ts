@@ -1,12 +1,12 @@
 import { isly } from "isly"
 
-export interface ActiveCardType {
+export interface CardTypeInformation {
 	activeCardTypeProfiles?: string[]
 	activeCardTypes?: string[]
 }
 
-export namespace ActiveCardType {
-	export const type = isly.object<ActiveCardType>({
+export namespace CardTypeInformation {
+	export const type = isly.object<CardTypeInformation>({
 		activeCardTypeProfiles: isly.string().array().optional(),
 		activeCardTypes: isly.string().array().optional(),
 	})
