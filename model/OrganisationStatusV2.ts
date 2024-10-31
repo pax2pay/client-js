@@ -7,7 +7,7 @@ export namespace OrganisationStatusV2 {
 	export const values = ["active", "inactive", "deleted"] as const
 	export const type = isly.string<OrganisationStatusV2>(values)
 	export const is = type.is
-	export function toUpperCase(value: OrganisationStatusV2): OrganisationStatus {
+	export function toOrganisationStatus(value: OrganisationStatusV2): OrganisationStatus {
 		return value.toUpperCase() as OrganisationStatus
 	}
 }
