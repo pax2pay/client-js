@@ -132,7 +132,6 @@ import { OrganisationResponse } from "./OrganisationResponse"
 import { OrganisationSearchRequest } from "./OrganisationSearchRequest"
 import { OrganisationSearchResponse } from "./OrganisationSearchResponse"
 import { OrganisationStatus } from "./OrganisationStatus"
-import { OrganisationStatusV2 } from "./OrganisationStatusV2"
 import { Passengers } from "./Passengers"
 import { PasswordChangeRequest } from "./PasswordChangeRequest"
 import { PasswordResetResponse } from "./PasswordResetResponse"
@@ -378,7 +377,6 @@ export {
 	OrganisationSearchRequest,
 	OrganisationSearchResponse,
 	OrganisationStatus,
-	OrganisationStatusV2,
 	Passengers,
 	PasswordChangeRequest,
 	PasswordResetResponse,
