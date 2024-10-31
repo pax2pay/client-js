@@ -49,6 +49,7 @@ import { CardStatement } from "./CardStatement"
 import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardType } from "./CardType"
+import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypeResponseV2 } from "./CardTypeResponseV2"
@@ -125,8 +126,11 @@ import { OrganisationCardTypeProfileResponse } from "./OrganisationCardTypeProfi
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationFlag } from "./OrganisationFlag"
+import { OrganisationRealm } from "./OrganisationRealm"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
+import { OrganisationSearchRequest } from "./OrganisationSearchRequest"
+import { OrganisationSearchResponse } from "./OrganisationSearchResponse"
 import { OrganisationStatus } from "./OrganisationStatus"
 import { Passengers } from "./Passengers"
 import { PasswordChangeRequest } from "./PasswordChangeRequest"
@@ -289,6 +293,7 @@ export {
 	CardTransaction,
 	CardTransactionType,
 	CardType,
+	CardTypeInformation,
 	CreateCardTypeProfileRequest,
 	CardTypeProfileResponse,
 	CardTypeResponse,
@@ -366,8 +371,11 @@ export {
 	OrganisationConfig,
 	OrganisationCreateRequest,
 	OrganisationFlag,
+	OrganisationRealm,
 	OrganisationRequest,
 	OrganisationResponse,
+	OrganisationSearchRequest,
+	OrganisationSearchResponse,
 	OrganisationStatus,
 	Passengers,
 	PasswordChangeRequest,

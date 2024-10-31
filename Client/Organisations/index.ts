@@ -19,22 +19,11 @@ export class Organisations extends List<model.OrganisationResponse> {
 	): Promise<model.ErrorResponse | model.OrganisationResponse> {
 		return await this.connection.put<model.OrganisationResponse>(`${this.folder}/${code}`, request)
 	}
-
-	async getAllOrganisations(
-		page = 0,
-		size = 500,
-		sort = "name",
-		includeNonActive = false
-	): Promise<model.ErrorResponse | model.OrganisationResponse[]> {
-		const response = await this.connection.get<{ list: model.OrganisationResponse[]; totalCount: number }>(
-			this.folder,
-			{
-				page: page,
-				size: size,
-				sort: sort,
-				includeNonActive: includeNonActive,
-			}
-		)
-		return this.extractResponse(response)
+	async search(request: model.OrganisationSearchRequest, page = 0, size = 500, sort = "name") {
+		return await this.connection.post<model.OrganisationSearchResponse[]>(`v2/${this.folder}/searches`, request, {
+			page: page,
+			size: size,
+			sort: sort,
+		})
 	}
 }
