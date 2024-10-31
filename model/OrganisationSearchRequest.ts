@@ -1,11 +1,11 @@
 import { isly } from "isly"
-import { OrganisationStatus } from "./OrganisationStatus"
+import { OrganisationStatusV2 } from "./OrganisationStatusV2"
 import { ProviderCode } from "./ProviderCode"
 
 export interface OrganisationSearchRequest {
 	codes?: string[]
 	activeProviders?: ProviderCode[]
-	statuses?: OrganisationStatus[]
+	statuses?: OrganisationStatusV2[]
 	includeConfig?: boolean
 	includeCredentials?: boolean
 	includeCardTypes?: boolean
@@ -15,7 +15,7 @@ export namespace OrganisationSearchRequest {
 	export const type = isly.object<OrganisationSearchRequest>({
 		codes: isly.string().array().optional(),
 		activeProviders: ProviderCode.type.array().optional(),
-		statuses: OrganisationStatus.type.array().optional(),
+		statuses: OrganisationStatusV2.type.array().optional(),
 		includeConfig: isly.boolean().optional(),
 		includeCredentials: isly.boolean().optional(),
 		includeCardTypes: isly.boolean().optional(),
