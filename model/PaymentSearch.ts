@@ -1,4 +1,4 @@
-import { isoly } from "isoly"
+import * as isoly from "isoly"
 import { isly } from "isly"
 import { PaymentStatus } from "./PaymentStatus"
 import { ProviderCode } from "./ProviderCode"
@@ -26,7 +26,7 @@ export namespace PaymentSearch {
 		cardId: isly.string().array().optional(),
 		merchantId: isly.string().array().optional(),
 		providerCode: ProviderCode.type.array().optional(),
-		currency: isoly.Currency.type.array().optional(),
+		currency: isly.array(isly.fromIs("Currency", isoly.Currency.is)).optional(),
 		includeCount: isly.boolean().optional(),
 		onlyCount: isly.boolean().optional(),
 	})
