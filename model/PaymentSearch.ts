@@ -1,3 +1,4 @@
+import { isoly } from "isoly"
 import { isly } from "isly"
 import { PaymentStatus } from "./PaymentStatus"
 import { ProviderCode } from "./ProviderCode"
@@ -11,6 +12,9 @@ export interface PaymentSearch {
 	cardId?: string[]
 	merchantId?: string[]
 	providerCode?: ProviderCode[]
+	currency?: isoly.Currency[]
+	includeCount?: boolean
+	onlyCount?: boolean
 }
 export namespace PaymentSearch {
 	export const type = isly.object<PaymentSearch>({
@@ -22,6 +26,9 @@ export namespace PaymentSearch {
 		cardId: isly.string().array().optional(),
 		merchantId: isly.string().array().optional(),
 		providerCode: ProviderCode.type.array().optional(),
+		currency: isoly.Currency.type.array().optional(),
+		includeCount: isly.boolean().optional(),
+		onlyCount: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
