@@ -1,6 +1,6 @@
 import { isly } from "isly"
 import { Field as RField } from "./Field"
-import { SubFormatType } from "./SubFormatType"
+import { SubFormatType as RSubFormatType } from "./SubFormatType"
 
 export interface Request {
 	name: string
@@ -8,7 +8,10 @@ export interface Request {
 	createDefault?: boolean
 	organisations?: string[]
 	fields: RField[]
-	subFormats?: Partial<Record<SubFormatType, string[][]>>
+	subFormats?: {
+		top2: string[] | string[][]
+		top5?: string[] | string[][]
+	}
 }
 
 export namespace Request {
@@ -19,17 +22,17 @@ export namespace Request {
 		organisations: isly.string().array().optional(),
 		fields: isly.array(isly.fromIs("Field", Field.is)),
 		subFormats: isly
-			.object<Partial<Record<SubFormatType, string[][]>>>(
-				Object.fromEntries(
-					Object.values(SubFormatType).map(subFormatType => [
-						subFormatType,
-						isly.array(isly.string().array()).optional(),
-					])
-				)
-			)
+			.object<{
+				top2: string[] | string[][]
+				top5?: string[] | string[][]
+			}>({
+				top2: isly.union(isly.string().array(), isly.string().array().array()),
+				top5: isly.union(isly.string().array(), isly.string().array().array()).optional(),
+			})
 			.optional(),
 	})
 	export const is = type.is
 
 	export import Field = RField
+	export import SubFormatType = RSubFormatType
 }
