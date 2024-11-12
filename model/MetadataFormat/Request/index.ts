@@ -1,13 +1,13 @@
 import { isly } from "isly"
-import { Field as RField } from "./Field"
-import { SubFormatType as RSubFormatType } from "./SubFormatType"
+import { Field } from "../Field"
+import { SubFormatType as RSubFormatType } from "../SubFormatType"
 
 export interface Request {
 	name: string
 	description?: string
 	createDefault?: boolean
 	organisations?: string[]
-	fields: RField[]
+	fields: Field[]
 	subFormats?: {
 		top2: string[] | string[][]
 		top5?: string[] | string[][]
@@ -33,6 +33,5 @@ export namespace Request {
 	})
 	export const is = type.is
 
-	export import Field = RField
 	export import SubFormatType = RSubFormatType
 }
