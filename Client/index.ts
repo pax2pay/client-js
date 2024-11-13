@@ -10,6 +10,7 @@ import { Currency as ClientCurrency } from "./Currency"
 import { Email as ClientEmail } from "./Email"
 import { List as ClientList } from "./List"
 import { Merchants as ClientMerchants } from "./Merchants"
+import { Metadata as ClientMetadata } from "./Metadata"
 import { Omnisetup as ClientOmnisetup } from "./Omnisetup"
 import { Organisations as ClientOrganisations } from "./Organisations"
 import { Paginated as ClientPaginated } from "./Paginated"
@@ -34,6 +35,7 @@ export class Client {
 	currency = ClientCurrency.create(this.connection)
 	email = ClientEmail.create(this.connection)
 	merchants = ClientMerchants.create(this.connection)
+	metadata = ClientMetadata.create(this.connection)
 	omnisetup = ClientOmnisetup.create(this.connection)
 	organisations = ClientOrganisations.create(this.connection)
 	payments = ClientPayments.create(this.connection)
@@ -67,6 +69,7 @@ export namespace Client {
 	export type Currency = ClientCurrency
 	export type Email = ClientEmail
 	export type Merchants = ClientMerchants
+	export type Metadata = ClientMetadata
 	export type Omnisetup = ClientOmnisetup
 	export type Organisations = ClientOrganisations
 	export type Payments = ClientPayments
