@@ -1,11 +1,15 @@
 import { isly } from "isly"
-import { MetadataFieldValidationRequest } from "./MetadataFieldValidationRequest"
-import { MetadataValueFieldCategory } from "./MetadataValueFieldCategory"
-import { MetadataValueFieldType } from "./MetadataValueFieldType"
+import { Validation as FValidation } from "./Validation"
+import { ValueCategory as FValueCategory } from "./ValueCategory"
+import { ValueType as FValueType } from "./ValueType"
 
 export type Field = Field.Base & (Field.Base.Value | Field.Base.Object | Field.Base.List)
 
 export namespace Field {
+	export import Validation = FValidation
+	export import ValueCategory = FValueCategory
+	export import ValueType = FValueType
+
 	export const type = isly.fromIs(
 		"MetadataFieldRequest",
 		(value: any): value is Field =>
@@ -41,24 +45,24 @@ export namespace Field {
 	export interface Base {
 		name: string
 		description?: string
-		validation?: MetadataFieldValidationRequest
+		validation?: FValidation
 	}
 	export namespace Base {
 		export const type = isly.object<Base>({
 			name: isly.string(),
 			description: isly.string().optional(),
-			validation: MetadataFieldValidationRequest.type.optional(),
+			validation: FValidation.type.optional(),
 		})
 		export const is = type.is
 
 		export interface Value {
-			type: MetadataValueFieldType
-			category?: MetadataValueFieldCategory
+			type: FValueType
+			category?: FValueCategory
 		}
 		export namespace Value {
 			export const type = isly.object<Value>({
-				type: MetadataValueFieldType.type,
-				category: MetadataValueFieldCategory.type.optional(),
+				type: FValueType.type,
+				category: FValueCategory.type.optional(),
 			})
 			export const is = type.is
 		}

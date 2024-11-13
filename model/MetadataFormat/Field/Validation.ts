@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export interface MetadataFieldValidationRequest {
+export interface Validation {
 	optional?: boolean
 	length?: { min?: number; max?: number }
 	enumerated?: { caseSensitive?: boolean; allowedValues: string[] }
@@ -8,8 +8,8 @@ export interface MetadataFieldValidationRequest {
 	numeric?: { min?: number; max?: number }
 }
 
-export namespace MetadataFieldValidationRequest {
-	export const type = isly.object<MetadataFieldValidationRequest>({
+export namespace Validation {
+	export const type = isly.object<Validation>({
 		optional: isly.boolean().optional(),
 		length: isly
 			.object({

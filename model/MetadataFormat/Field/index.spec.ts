@@ -1,8 +1,7 @@
-// TODO import from root
-import { Field } from "."
+import { MetadataFormat } from "../../../index"
 
 describe("MetadataFieldRequest", () => {
-	const valueFields: Field.Value[] = [
+	const valueFields: MetadataFormat.Field.Value[] = [
 		{
 			name: "field",
 			type: "string",
@@ -89,7 +88,7 @@ describe("MetadataFieldRequest", () => {
 			},
 		},
 	]
-	const objectFields: Field.Object[] = [
+	const objectFields: MetadataFormat.Field.Object[] = [
 		{
 			name: "room",
 			fields: [
@@ -116,7 +115,7 @@ describe("MetadataFieldRequest", () => {
 			],
 		},
 	]
-	const listFields: Field.List[] = [
+	const listFields: MetadataFormat.Field.List[] = [
 		{
 			name: "flightNumbers",
 			description: "Flight numbers for this leg",
@@ -151,23 +150,23 @@ describe("MetadataFieldRequest", () => {
 		},
 	]
 	it("Value.is", () => {
-		expect(valueFields.every(Field.Value.is)).toBeTruthy()
-		expect(objectFields.every(Field.Value.is)).toBeFalsy()
-		expect(listFields.every(Field.Value.is)).toBeFalsy()
+		expect(valueFields.every(MetadataFormat.Field.Value.is)).toBeTruthy()
+		expect(objectFields.every(MetadataFormat.Field.Value.is)).toBeFalsy()
+		expect(listFields.every(MetadataFormat.Field.Value.is)).toBeFalsy()
 	})
 	it("Object.is", () => {
-		expect(valueFields.every(Field.Object.is)).toBeFalsy()
-		expect(objectFields.every(Field.Object.is)).toBeTruthy()
-		expect(listFields.every(Field.Object.is)).toBeFalsy()
+		expect(valueFields.every(MetadataFormat.Field.Object.is)).toBeFalsy()
+		expect(objectFields.every(MetadataFormat.Field.Object.is)).toBeTruthy()
+		expect(listFields.every(MetadataFormat.Field.Object.is)).toBeFalsy()
 	})
 	it("List.is", () => {
-		expect(valueFields.every(Field.List.is)).toBeFalsy()
-		expect(objectFields.every(Field.List.is)).toBeFalsy()
-		expect(listFields.every(Field.List.is)).toBeTruthy()
+		expect(valueFields.every(MetadataFormat.Field.List.is)).toBeFalsy()
+		expect(objectFields.every(MetadataFormat.Field.List.is)).toBeFalsy()
+		expect(listFields.every(MetadataFormat.Field.List.is)).toBeTruthy()
 	})
 	it("is", () => {
-		expect(valueFields.every(Field.is)).toBeTruthy()
-		expect(objectFields.every(Field.is)).toBeTruthy()
-		expect(listFields.every(Field.is)).toBeTruthy()
+		expect(valueFields.every(MetadataFormat.Field.is)).toBeTruthy()
+		expect(objectFields.every(MetadataFormat.Field.is)).toBeTruthy()
+		expect(listFields.every(MetadataFormat.Field.is)).toBeTruthy()
 	})
 })
