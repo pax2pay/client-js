@@ -11,29 +11,36 @@ export class Metadata extends List<MetadataFormat.Response> {
 	static create(connection: Connection): Metadata {
 		return new Metadata(connection)
 	}
-	async getFormats(): Promise<MetadataFormat.Response[] | ErrorResponse> {
-		return await this.connection.get<MetadataFormat.Response[]>(`${this.folder}/format`)
+	async getFormats(organisationCode?: string): Promise<MetadataFormat.Response[] | ErrorResponse> {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
+		return await this.connection.get<MetadataFormat.Response[]>(`${this.folder}/format`, undefined, header)
 	}
-	async saveFormat(request: MetadataFormat.Request): Promise<MetadataFormat.Response | ErrorResponse> {
-		return await this.connection.post<MetadataFormat.Response>(`${this.folder}/format`, request)
+	async saveFormat(
+		request: MetadataFormat.Request,
+		organisationCode?: string
+	): Promise<MetadataFormat.Response | ErrorResponse> {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
+		return await this.connection.post<MetadataFormat.Response>(`${this.folder}/format`, request, undefined, header)
 	}
-	async searchFormat(
+	async searchFormats(
 		request: MetadataFormat.Search,
 		previous?: Paginated<MetadataFormat.Response>,
 		page?: number,
 		size?: number,
 		sort?: string,
-		includeCount = true
+		includeCount = true,
+		organisationCode?: string
 	): Promise<ErrorResponse | Paginated<MetadataFormat.Response>> {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.getNextPaginated<MetadataFormat.Response>(
 			previous,
 			(page, size, sort, request) =>
-				this.connection.post<MetadataFormat.Response[]>(`${this.folder}/format/searches`, request, {
-					page,
-					size,
-					sort,
-					includeCount,
-				}),
+				this.connection.post<MetadataFormat.Response[]>(
+					`${this.folder}/format/searches`,
+					request,
+					{ page, size, sort, includeCount },
+					header
+				),
 			request,
 			page,
 			size,
@@ -41,9 +48,16 @@ export class Metadata extends List<MetadataFormat.Response> {
 		)
 	}
 
-	async getFormat(name: string, version?: number): Promise<MetadataFormat.Response | ErrorResponse> {
+	async getFormat(
+		name: string,
+		version?: number,
+		organisationCode?: string
+	): Promise<MetadataFormat.Response | ErrorResponse> {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.get<MetadataFormat.Response>(
-			`${this.folder}/format/${name}${typeof version == "number" ? `/${version}` : ""}`
+			`${this.folder}/format/${name}${typeof version == "number" ? `/${version}` : ""}`,
+			undefined,
+			header
 		)
 	}
 }
