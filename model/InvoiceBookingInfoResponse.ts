@@ -1,6 +1,7 @@
 import * as isoly from "isoly"
 
 export interface InvoiceBookingInfoResponse {
+	type: "INVOICE"
 	format: "invoice"
 	bookingInfoIdentifier?: string
 	trackingId?: string
@@ -17,7 +18,8 @@ export namespace InvoiceBookingInfoResponse {
 	export function is(value: InvoiceBookingInfoResponse | any): value is InvoiceBookingInfoResponse {
 		return (
 			typeof value == "object" &&
-			value.type == "invoice" &&
+			value.type == "INVOICE" &&
+			value.format == "invoice" &&
 			(value.bookingInfoIdentifier == undefined || typeof value.bookingInfoIdentifier == "string") &&
 			(value.trackingId == undefined || typeof value.trackingId == "string") &&
 			(value.supplierName == undefined || typeof value.supplierName == "string") &&
