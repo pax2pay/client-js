@@ -5,6 +5,7 @@ import { References } from "./References"
 
 export interface HotelBookingInfoResponse {
 	type: "HOTEL"
+	format: "hotel"
 	bookingInfoIdentifier?: string
 	trackingId?: string
 	passengers?: Passengers
@@ -20,6 +21,7 @@ export namespace HotelBookingInfoResponse {
 		return (
 			typeof value == "object" &&
 			value.type == "HOTEL" &&
+			value.format == "hotel" &&
 			(value.bookingInfoIdentifier == undefined || typeof value.bookingInfoIdentifier == "string") &&
 			(value.trackingId == undefined || typeof value.trackingId == "string") &&
 			(value.passengers == undefined || Passengers.is(value.passengers)) &&

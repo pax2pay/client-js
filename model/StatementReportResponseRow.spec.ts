@@ -406,6 +406,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 		},
 		postedDate: "2022-06-14T08:26:18.234421",
 		transactionDate: "2022-06-17T04:00:18.234421",
@@ -440,6 +441,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -474,6 +476,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -507,6 +510,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -540,6 +544,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -575,6 +580,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -609,6 +615,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -642,6 +649,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -675,6 +683,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -708,6 +717,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -741,6 +751,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -774,6 +785,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -807,6 +819,7 @@ const data1 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -843,6 +856,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -876,6 +890,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -909,6 +924,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -942,6 +958,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -975,6 +992,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1008,6 +1026,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1041,6 +1060,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1074,6 +1094,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1107,6 +1128,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1140,6 +1162,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1173,6 +1196,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1206,6 +1230,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1239,6 +1264,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1272,6 +1298,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1305,6 +1332,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1338,6 +1366,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1371,6 +1400,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1404,6 +1434,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1437,6 +1468,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},
@@ -1470,6 +1502,7 @@ const data2 = [
 		},
 		bookingInfo: {
 			type: "SUMMARY",
+			format: "summary",
 			leadPassengerName: "PassengerName",
 			agentBookingReference: "BookingReference",
 		},

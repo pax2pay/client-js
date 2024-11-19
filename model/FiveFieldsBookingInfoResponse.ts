@@ -1,5 +1,6 @@
 export interface FiveFieldsBookingInfoResponse {
 	type: "FIVE_FIELDS"
+	format: "five fields"
 	bookingInfoIdentifier?: string
 	agentBookingReference?: string
 	departureDate?: string
@@ -14,6 +15,7 @@ export namespace FiveFieldsBookingInfoResponse {
 		return (
 			typeof value == "object" &&
 			value.type == "FIVE_FIELDS" &&
+			value.format == "five fields" &&
 			(value.bookingInfoIdentifier == undefined || typeof value.bookingInfoIdentifier == "string") &&
 			(value.agentBookingReference == undefined || typeof value.agentBookingReference == "string") &&
 			(value.departureDate == undefined || typeof value.departureDate == "string") &&
