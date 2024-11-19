@@ -4,7 +4,7 @@ import { Passengers } from "./Passengers"
 import { References } from "./References"
 
 export interface FlightBookingInfoRequest {
-	format: "flight"
+	type?: "FLIGHT"
 	passengers: Passengers
 	flight: FlightInfo
 	references: References
@@ -16,7 +16,7 @@ export namespace FlightBookingInfoRequest {
 	export function is(value: FlightBookingInfoRequest | any): value is FlightBookingInfoRequest {
 		return (
 			typeof value == "object" &&
-			value.type == "filght" &&
+			(value.type == undefined || value.type == "FLIGHT") &&
 			Passengers.is(value.passengers) &&
 			FlightInfo.is(value.flight) &&
 			References.is(value.references) &&
