@@ -109,7 +109,6 @@ import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
 import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
 import { InvokingSystem } from "./InvokingSystem"
 import { Issue } from "./Issue"
-import { LegacyBookingInfoRequest } from "./LegacyBookingInfoRequest"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
 import { MerchantDetails } from "./MerchantDetails"
@@ -356,7 +355,6 @@ export {
 	InvoiceBookingInfoResponse,
 	InvokingSystem,
 	Issue,
-	LegacyBookingInfoRequest,
 	LoginRequest,
 	LoginResponse,
 	MerchantDetails,
