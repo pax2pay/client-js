@@ -1,7 +1,7 @@
 import { Currency } from "isoly"
 import { ProviderCode } from "./ProviderCode"
 
-export interface CardTypeResponseV2 {
+export interface CardTypeResponse {
 	providerCode: ProviderCode
 	cardTypeId: string
 	description: string

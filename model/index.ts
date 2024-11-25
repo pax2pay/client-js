@@ -51,7 +51,7 @@ import { CardTransactionType } from "./CardTransactionType"
 import { CardType } from "./CardType"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
-import { CardTypeResponseV2 } from "./CardTypeResponseV2"
+import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
@@ -298,7 +298,7 @@ export {
 	CreateCardTypeProfileRequest,
 	CardTypeProfileResponse,
 	CardTypesResponse,
-	CardTypeResponseV2,
+	CardTypeResponse,
 	CardTypesConfig,
 	CardTypeSearchRequest,
 	CardTypeSpecification,
