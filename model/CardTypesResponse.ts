@@ -1,4 +1,4 @@
 import { CardType } from "./CardType"
-export interface CardTypeResponse {
+export interface CardTypesResponse {
 	cardTypes: CardType[]
 }

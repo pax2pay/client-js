@@ -184,7 +184,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	}
 
 	async getCardTypes(providerCode: model.ProviderCode) {
-		return await this.connection.get<model.CardTypeResponse>(`${this.folder}/types/${providerCode}`)
+		return await this.connection.get<model.CardTypesResponse>(`${this.folder}/types/${providerCode}`)
 	}
 
 	async searchCardsV2(

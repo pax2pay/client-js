@@ -51,12 +51,12 @@ import { CardTransactionType } from "./CardTransactionType"
 import { CardType } from "./CardType"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
-import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypeResponseV2 } from "./CardTypeResponseV2"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
+import { CardTypesResponse } from "./CardTypesResponse"
 import { CardUsage } from "./CardUsage"
 import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAccessRequest"
 import { CategoryLimitResponse } from "./CategoryLimitResponse"
@@ -297,7 +297,7 @@ export {
 	CardTypeInformation,
 	CreateCardTypeProfileRequest,
 	CardTypeProfileResponse,
-	CardTypeResponse,
+	CardTypesResponse,
 	CardTypeResponseV2,
 	CardTypesConfig,
 	CardTypeSearchRequest,
