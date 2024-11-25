@@ -1,3 +1,5 @@
+import { CardTypeFlag } from "./CardTypeSpecificationFlag"
+import { FundingType } from "./FundingType"
 import { ProviderCode } from "./ProviderCode"
 import { Scheme } from "./Scheme"
 
@@ -10,8 +12,8 @@ export interface CardTypeSearchRequest {
 	description?: string
 	descriptionContains?: string
 	scheme?: Scheme
-	fundingType?: "DEBIT" | "CREDIT" | "PREPAID"
-	flags?: ("CORPORATE" | "BUSINESS" | "CONSUMER")[]
+	fundingType?: FundingType
+	flags?: CardTypeFlag[]
 	bin?: string
 	status?: "ACTIVE" | "DEPRECATED" | "PREACTIVE" | "DISCONTINUED"
 }
