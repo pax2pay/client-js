@@ -171,6 +171,7 @@ import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { ScheduleEntry } from "./ScheduleEntry"
+import { Scheme } from "./Scheme"
 import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
 import { SearchCardTypeProfileRequest } from "./SearchCardTypeProfileRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
@@ -416,6 +417,7 @@ export {
 	RolesetResponse,
 	Room,
 	ScheduleEntry,
+	Scheme,
 	CardSearch,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,

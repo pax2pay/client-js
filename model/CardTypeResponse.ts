@@ -1,12 +1,13 @@
 import { Currency } from "isoly"
 import { ProviderCode } from "./ProviderCode"
+import { Scheme } from "./Scheme"
 
 export interface CardTypeResponse {
 	providerCode: ProviderCode
 	cardTypeId: string
 	description: string
 	originalDescription?: string
-	scheme: "VISA" | "MASTERCARD" | "AMERICAN_EXPRESS"
+	scheme: Scheme
 	funding?: "DEBIT" | "CREDIT" | "PREPAID"
 	currencies?: Currency[]
 	flags?: ("CORPORATE" | "BUSINESS" | "CONSUMER")[]
