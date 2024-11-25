@@ -49,6 +49,7 @@ import { CardStatement } from "./CardStatement"
 import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardType } from "./CardType"
+import { CardTypeDefinition } from "./CardTypeDefinition"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
 import { CardTypeResponse } from "./CardTypeResponse"
@@ -295,6 +296,7 @@ export {
 	CardTransaction,
 	CardTransactionType,
 	CardType,
+	CardTypeDefinition,
 	CardTypeInformation,
 	CreateCardTypeProfileRequest,
 	CardTypeProfileResponse,

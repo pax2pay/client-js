@@ -1,4 +1,4 @@
-import { CardType } from "./CardType"
+import { CardTypeDefinition } from "./CardTypeDefinition"
 export interface CardTypesResponse {
-	cardTypes: CardType[]
+	cardTypes: CardTypeDefinition[]
 }
