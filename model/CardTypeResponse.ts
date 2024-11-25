@@ -1,4 +1,6 @@
 import { Currency } from "isoly"
+import { CardTypeFlag } from "./CardTypeSpecificationFlag"
+import { FundingType } from "./FundingType"
 import { ProviderCode } from "./ProviderCode"
 import { Scheme } from "./Scheme"
 
@@ -8,9 +10,9 @@ export interface CardTypeResponse {
 	description: string
 	originalDescription?: string
 	scheme: Scheme
-	funding?: "DEBIT" | "CREDIT" | "PREPAID"
+	funding?: FundingType
 	currencies?: Currency[]
-	flags?: ("CORPORATE" | "BUSINESS" | "CONSUMER")[]
+	flags?: CardTypeFlag[]
 	bins?: string[]
 	preActive?: boolean
 	discontinued?: boolean

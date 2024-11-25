@@ -1,5 +1,6 @@
 import { isly } from "isly"
-import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
+import { CardTypeFlag } from "./CardTypeSpecificationFlag"
+import { FundingType } from "./FundingType"
 import { ProviderCode } from "./ProviderCode"
 import { Scheme } from "./Scheme"
 
@@ -10,8 +11,8 @@ export interface CardTypeSpecification {
 	cardTypeId?: string
 	description?: string
 	scheme?: Scheme
-	funding?: "DEBIT" | "CREDIT" | "PREPAID"
-	flags?: CardTypeSpecificationFlag[]
+	funding?: FundingType
+	flags?: CardTypeFlag[]
 	bin?: string
 	providerCode?: ProviderCode
 }
@@ -21,8 +22,8 @@ export namespace CardTypeSpecification {
 		cardTypeId: isly.string().optional(),
 		description: isly.string().optional(),
 		scheme: Scheme.type.optional(),
-		funding: isly.string(["DEBIT", "CREDIT", "PREPAID"]).optional(),
-		flags: isly.array(CardTypeSpecificationFlag.type).optional(),
+		funding: FundingType.type.optional(),
+		flags: isly.array(CardTypeFlag.type).optional(),
 		bin: isly.string().optional(),
 		providerCode: ProviderCode.type.optional(),
 	})
