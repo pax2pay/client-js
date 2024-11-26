@@ -49,14 +49,15 @@ import { CardStatement } from "./CardStatement"
 import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardType } from "./CardType"
+import { CardTypeDefinition } from "./CardTypeDefinition"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
 import { CardTypeResponse } from "./CardTypeResponse"
-import { CardTypeResponseV2 } from "./CardTypeResponseV2"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
-import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
+import { CardTypeFlag } from "./CardTypeSpecificationFlag"
+import { CardTypesResponse } from "./CardTypesResponse"
 import { CardUsage } from "./CardUsage"
 import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAccessRequest"
 import { CategoryLimitResponse } from "./CategoryLimitResponse"
@@ -171,6 +172,7 @@ import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { ScheduleEntry } from "./ScheduleEntry"
+import { Scheme } from "./Scheme"
 import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
 import { SearchCardTypeProfileRequest } from "./SearchCardTypeProfileRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
@@ -294,15 +296,16 @@ export {
 	CardTransaction,
 	CardTransactionType,
 	CardType,
+	CardTypeDefinition,
 	CardTypeInformation,
 	CreateCardTypeProfileRequest,
 	CardTypeProfileResponse,
+	CardTypesResponse,
 	CardTypeResponse,
-	CardTypeResponseV2,
 	CardTypesConfig,
 	CardTypeSearchRequest,
 	CardTypeSpecification,
-	CardTypeSpecificationFlag,
+	CardTypeFlag,
 	CardUsage,
 	CategoryFundingAccountAccessRequest,
 	UpdateCategoryRequest,
@@ -416,6 +419,7 @@ export {
 	RolesetResponse,
 	Room,
 	ScheduleEntry,
+	Scheme,
 	CardSearch,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,

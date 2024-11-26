@@ -1,4 +1,7 @@
+import { CardTypeFlag } from "./CardTypeSpecificationFlag"
+import { FundingType } from "./FundingType"
 import { ProviderCode } from "./ProviderCode"
+import { Scheme } from "./Scheme"
 
 /**
  * Search request for card types.
@@ -8,9 +11,9 @@ export interface CardTypeSearchRequest {
 	currency?: string
 	description?: string
 	descriptionContains?: string
-	scheme?: "VISA" | "MASTERCARD" | "AMERICAN_EXPRESS"
-	fundingType?: "DEBIT" | "CREDIT" | "PREPAID"
-	flags?: ("CORPORATE" | "BUSINESS" | "CONSUMER")[]
+	scheme?: Scheme
+	fundingType?: FundingType
+	flags?: CardTypeFlag[]
 	bin?: string
 	status?: "ACTIVE" | "DEPRECATED" | "PREACTIVE" | "DISCONTINUED"
 }

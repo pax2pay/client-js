@@ -1,6 +1,8 @@
 import { isly } from "isly"
-import { CardTypeSpecificationFlag } from "./CardTypeSpecificationFlag"
+import { CardTypeFlag } from "./CardTypeSpecificationFlag"
+import { FundingType } from "./FundingType"
 import { ProviderCode } from "./ProviderCode"
+import { Scheme } from "./Scheme"
 
 /**
  * The card type to use in the card options requests.
@@ -8,9 +10,9 @@ import { ProviderCode } from "./ProviderCode"
 export interface CardTypeSpecification {
 	cardTypeId?: string
 	description?: string
-	scheme?: "VISA" | "MASTERCARD" | "AMERICAN_EXPRESS"
-	funding?: "DEBIT" | "CREDIT" | "PREPAID"
-	flags?: CardTypeSpecificationFlag[]
+	scheme?: Scheme
+	funding?: FundingType
+	flags?: CardTypeFlag[]
 	bin?: string
 	providerCode?: ProviderCode
 }
@@ -19,9 +21,9 @@ export namespace CardTypeSpecification {
 	export const type = isly.object<CardTypeSpecification>({
 		cardTypeId: isly.string().optional(),
 		description: isly.string().optional(),
-		scheme: isly.string(["VISA", "MASTERCARD", "AMERICAN_EXPRESS"]).optional(),
-		funding: isly.string(["DEBIT", "CREDIT", "PREPAID"]).optional(),
-		flags: isly.array(CardTypeSpecificationFlag.type).optional(),
+		scheme: Scheme.type.optional(),
+		funding: FundingType.type.optional(),
+		flags: isly.array(CardTypeFlag.type).optional(),
 		bin: isly.string().optional(),
 		providerCode: ProviderCode.type.optional(),
 	})

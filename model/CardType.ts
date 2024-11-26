@@ -2,6 +2,12 @@ import { Currency } from "isoly"
 import { isly } from "isly"
 import { ProviderCode } from "./ProviderCode"
 
+/**
+ * TODO: Remove this type.
+ * It does not exist as a type in the API.
+ * However it's extensively used in the UI, and always created from other types.
+ * Should be replaced by CardTypeResponse.
+ */
 export interface CardType {
 	providerCode: ProviderCode
 	cardType: string
