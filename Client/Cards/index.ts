@@ -111,7 +111,12 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		)
 		return this.extractResponse<model.CardTypeResponse>(response)
 	}
-
+	async getAllCardTypesV2(providerCode: model.ProviderCode) {
+		const response = await this.connection.get<{ list: model.CardTypeResponse[]; totalCount: number }>(
+			`v2/${this.folder}/types/${providerCode}/all`
+		)
+		return this.extractResponse<model.CardTypeResponse>(response)
+	}
 	async createCardTypeProfileV2(cardTypeProfileRequest: model.CreateCardTypeProfileRequest, organisationCode?: string) {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		const response = await this.connection.post<model.CardTypeProfileResponse>(
