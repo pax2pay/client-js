@@ -2,7 +2,7 @@ import * as model from "../../model"
 import { Connection } from "../Connection"
 import { List } from "../List"
 export class ApiKeys extends List<model.ApiKeyResponse> {
-	protected folder = "api-keys"
+	protected readonly folder = "api-keys"
 	private constructor(connection: Connection) {
 		super(connection)
 	}

@@ -3,7 +3,7 @@ import { CategoryResponse } from "../../model/CategoryResponse"
 import { Connection } from "../Connection"
 import { List } from "../List"
 export class Categories extends List<model.CategoryResponse> {
-	protected folder = "category"
+	protected readonly folder = "category"
 	private constructor(connection: Connection) {
 		super(connection)
 	}

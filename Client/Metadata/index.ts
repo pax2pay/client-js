@@ -4,7 +4,7 @@ import { List } from "../List"
 import { Paginated } from "../Paginated"
 
 export class Metadata extends List<MetadataFormat.Response> {
-	protected folder = "metadata" as const
+	protected readonly folder = "metadata"
 	constructor(connection: Connection) {
 		super(connection)
 	}
