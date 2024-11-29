@@ -3,6 +3,7 @@ import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskR
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
+import { CardUsage } from "./CardUsage"
 import { ProviderCode } from "./ProviderCode"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 
@@ -18,7 +19,7 @@ export interface CreateCardRequest {
 	currency: string
 	fundingDate?: string
 	expiryDate?: any
-	usage?: "SINGLE_USE" | "MULTIPLE_USE" | "SINGLE_USE_ALLOW_TEST_AUTH"
+	usage?: CardUsage
 	schedule?: (CardAmendmentScheduledTaskRequest | CardStateChangeScheduledTaskRequest | ScheduledTaskRequest)[]
 	friendlyName?: string
 	delivery?: CardDeliveryRequest
