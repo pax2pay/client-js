@@ -5,7 +5,7 @@ import { CurrencyConversionResponse } from "../../model/CurrencyConversionRespon
 import { Connection } from "../Connection"
 
 export class Currency {
-	protected folder = "currency"
+	protected readonly folder = "currency"
 	#connection: Connection
 	protected get connection() {
 		return this.#connection

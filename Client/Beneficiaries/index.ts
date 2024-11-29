@@ -3,7 +3,7 @@ import { Connection } from "../Connection"
 import { List } from "../List"
 
 export class Beneficiaries extends List<model.BeneficiaryResponse> {
-	protected folder = "beneficiaries"
+	protected readonly folder = "beneficiaries"
 	constructor(connection: Connection) {
 		super(connection)
 	}

@@ -4,7 +4,7 @@ import { List } from "../List"
 import { Paginated } from "../Paginated"
 
 export class Merchants extends List<model.MerchantResponse> {
-	protected folder = "merchants" as const
+	protected readonly folder = "merchants"
 	constructor(connection: Connection) {
 		super(connection)
 	}

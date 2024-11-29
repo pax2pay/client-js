@@ -2,7 +2,7 @@ import * as model from "../../model"
 import { Connection } from "../Connection"
 
 export class Email {
-	protected folder = "email"
+	protected readonly folder = "email"
 	constructor(private readonly connection: Connection) {}
 	static create(connection: Connection) {
 		return new Email(connection)

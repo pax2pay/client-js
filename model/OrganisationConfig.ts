@@ -1,4 +1,6 @@
 import { Currency } from "isoly"
+import { isly } from "isly"
+import { ApprovalNotificationConfig } from "./ApprovalNotificationConfig"
 import { CardDeliveryEmailConfig } from "./CardDeliveryEmailConfig"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardUsage } from "./CardUsage"
@@ -11,13 +13,14 @@ import { SecurityConfig } from "./SecurityConfig"
  */
 export interface OrganisationConfig {
 	showDefaultRolesets?: boolean
-	defaultModulrUsage?: "SINGLE_USE" | "SINGLE_USE_ALLOW_TEST_AUTH" | "MULTIPLE_USE"
+	defaultModulrUsage?: CardUsage
 	defaultExpiryMonthDelta?: number
 	defaultExpiryMonthDeltaPerCurrency?: Partial<Record<Currency, number>>
 	defaultPortalCardType?: Partial<Record<ProviderCode, string>>
 	defaultPortalFundingAccount?: Partial<Record<ProviderCode, string>>
 	cardTypes?: CardTypesConfig
 	inboundTransferConfig?: FundingAccountInboundTransferNotificationConfig
+	approvalNotificationConfig?: ApprovalNotificationConfig
 	fundingLimitConfig?: FundingLimitConfig
 	cardDeliveryEmailConfig?: CardDeliveryEmailConfig
 	portalHideMultipleUseOption?: boolean
@@ -25,10 +28,21 @@ export interface OrganisationConfig {
 }
 
 export namespace OrganisationConfig {
-	export function is(value: OrganisationConfig | any): value is OrganisationConfig {
-		return (
-			value == undefined ||
-			(typeof value == "object" && (value.defaultModulrUsage == undefined || CardUsage.is(value.defaultModulrUsage)))
-		)
-	}
+	const currencyType = isly.fromIs<Currency>("Currency", Currency.is)
+	export const type = isly.object<OrganisationConfig>({
+		showDefaultRolesets: isly.boolean().optional(),
+		defaultModulrUsage: CardUsage.type.optional(),
+		defaultExpiryMonthDelta: isly.number().optional(),
+		defaultExpiryMonthDeltaPerCurrency: isly.record(currencyType, isly.number()).optional(),
+		defaultPortalCardType: isly.record(ProviderCode.type, isly.string()).optional(),
+		defaultPortalFundingAccount: isly.record(ProviderCode.type, isly.string()).optional(),
+		cardTypes: CardTypesConfig.type.optional(),
+		inboundTransferConfig: FundingAccountInboundTransferNotificationConfig.type.optional(),
+		approvalNotificationConfig: ApprovalNotificationConfig.type.optional(),
+		fundingLimitConfig: FundingLimitConfig.type.optional(),
+		cardDeliveryEmailConfig: CardDeliveryEmailConfig.type.optional(),
+		portalHideMultipleUseOption: isly.boolean().optional(),
+		securityConfig: SecurityConfig.type.optional(),
+	})
+	export const is = type.is
 }

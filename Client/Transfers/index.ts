@@ -5,7 +5,7 @@ import { List } from "../List"
 import { Paginated } from "../Paginated"
 
 export class Transfers extends List<model.TransferResponse> {
-	protected folder = "transfers"
+	protected readonly folder = "transfers"
 	constructor(connection: Connection) {
 		super(connection)
 	}

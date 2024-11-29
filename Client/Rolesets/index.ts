@@ -2,7 +2,7 @@ import * as model from "../../model"
 import { Connection } from "../Connection"
 import { List } from "../List"
 export class Rolesets extends List<model.RolesetResponse> {
-	protected folder = "rolesets"
+	protected readonly folder = "rolesets"
 	private constructor(connection: Connection) {
 		super(connection)
 	}

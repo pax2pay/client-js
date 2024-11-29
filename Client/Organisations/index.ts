@@ -3,7 +3,7 @@ import { Connection } from "../Connection"
 import { List } from "../List"
 
 export class Organisations extends List<model.OrganisationResponse> {
-	protected readonly folder = "organisations" as const
+	protected readonly folder = "organisations"
 	constructor(connection: Connection) {
 		super(connection)
 	}
