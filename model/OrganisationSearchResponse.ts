@@ -1,3 +1,4 @@
+import { DateTime } from "isoly"
 import { isly } from "isly"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
@@ -15,6 +16,7 @@ export interface OrganisationSearchResponse {
 	organisationConfig?: OrganisationConfig
 	internalOrganisationConfig?: InternalOrganisationConfig
 	cardTypes?: Partial<Record<ProviderCode, CardTypeInformation>>
+	createdOn: DateTime
 }
 
 export namespace OrganisationSearchResponse {
@@ -27,6 +29,7 @@ export namespace OrganisationSearchResponse {
 		organisationConfig: isly.fromIs("OrganisationConfig", OrganisationConfig.is).optional(),
 		internalOrganisationConfig: isly.fromIs("InternalOrganisationConfig", InternalOrganisationConfig.is).optional(),
 		cardTypes: isly.record(ProviderCode.type, isly.fromIs("CardTypeInformation", CardTypeInformation.is)).optional(),
+		createdOn: isly.fromIs("DateTime", DateTime.is),
 	})
 	export const is = type.is
 }
