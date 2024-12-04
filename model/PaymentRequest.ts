@@ -1,11 +1,11 @@
 import { Currency } from "isoly"
 import { isly } from "isly"
 import { BookingInfoRequest } from "./BookingInfoRequest"
-import { MerchantRequest } from "./MerchantRequest"
 import { PaymentAmountScheduleRequest } from "./PaymentAmountScheduleRequest"
 import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
 import { PaymentCardCreateRequest } from "./PaymentCardCreateRequest"
 import { PaymentDeliveryRequest } from "./PaymentDeliveryRequest"
+import { PaymentMerchantRequest } from "./PaymentMerchantRequest"
 import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
 
 export interface PaymentRequest {
@@ -13,7 +13,7 @@ export interface PaymentRequest {
 	amount?: number
 	currency: Currency
 	method?: "card" | "transfer"
-	merchant?: MerchantRequest
+	merchant?: PaymentMerchantRequest
 	meta?: BookingInfoRequest
 	card?: PaymentCardCreateRequest
 	transfer?: PaymentTransferCreateRequest
@@ -26,7 +26,7 @@ export namespace PaymentRequest {
 		amount: isly.number().optional(),
 		currency: isly.fromIs("Currency", Currency.is),
 		method: isly.string(["card", "transfer"]).optional(),
-		merchant: isly.fromIs("MerchantRequest", MerchantRequest.is).optional(),
+		merchant: isly.fromIs("PaymentMerchantRequest", PaymentMerchantRequest.is).optional(),
 		meta: isly.fromIs("BookingInfoRequest", BookingInfoRequest.is).optional(),
 		card: isly.fromIs("PaymentCardCreateRequest", PaymentCardCreateRequest.is).optional(),
 		transfer: isly.fromIs("PaymentTransferCreateRequest", PaymentTransferCreateRequest.is).optional(),
