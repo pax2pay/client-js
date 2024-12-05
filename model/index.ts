@@ -149,6 +149,7 @@ import { PaymentCardUsage } from "./PaymentCardUsage"
 import { PaymentDeliveryRequest } from "./PaymentDeliveryRequest"
 import { PaymentDeliveryResponse } from "./PaymentDeliveryResponse"
 import { PaymentDeliveryState } from "./PaymentDeliveryState"
+import { PaymentMerchantRequest } from "./PaymentMerchantRequest"
 import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
 import { PaymentMethodType } from "./PaymentMethodType"
 import { PaymentOption } from "./PaymentOption"
@@ -397,6 +398,7 @@ export {
 	PaymentDeliveryRequest,
 	PaymentDeliveryResponse,
 	PaymentDeliveryState,
+	PaymentMerchantRequest,
 	PaymentMethodOptionResponse,
 	PaymentMethodType,
 	PaymentOption,
