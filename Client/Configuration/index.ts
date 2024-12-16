@@ -25,7 +25,7 @@ export class Configuration {
 	}
 	async getInternalOrganisation(code?: string): Promise<model.InternalOrganisationConfig | model.ErrorResponse> {
 		return await this.connection.get<model.InternalOrganisationConfig>(
-			`${this.folder}/organisation_internal/${code ? `/${code}` : ""}`
+			`${this.folder}/organisation_internal${code ? `/${code}` : ""}`
 		)
 	}
 	async updateInternalOrganisation(
@@ -33,7 +33,7 @@ export class Configuration {
 		code?: string
 	): Promise<model.InternalOrganisationConfig | model.ErrorResponse> {
 		return await this.connection.post<model.InternalOrganisationConfig>(
-			`${this.folder}/organisation_internal/${code ? `/${code}` : ""}`,
+			`${this.folder}/organisation_internal${code ? `/${code}` : ""}`,
 			request
 		)
 	}
