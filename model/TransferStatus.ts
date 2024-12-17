@@ -1,20 +1,20 @@
-const transferStatus = [
-	"PENDING",
-	"PENDING_FOR_DATE",
-	"PENDING_FOR_FUNDS",
-	"SETTLED",
-	"CANCELLED",
-	"ERROR_REJECTED",
-	"APPROVAL_PENDING",
-	"DECLINED",
-	"APPROVED",
-	"GENERATED",
-] as const
+import { isly } from "isly"
 
-export type TransferStatus = typeof transferStatus[number]
+export type TransferStatus = typeof TransferStatus.values[number]
 
 export namespace TransferStatus {
-	export function is(value: unknown): value is TransferStatus {
-		return typeof value == "string" && transferStatus.includes(value as TransferStatus)
-	}
+	export const values = [
+		"PENDING",
+		"PENDING_FOR_DATE",
+		"PENDING_FOR_FUNDS",
+		"SETTLED",
+		"CANCELLED",
+		"ERROR_REJECTED",
+		"APPROVAL_PENDING",
+		"DECLINED",
+		"APPROVED",
+		"GENERATED",
+	] as const
+	export const type = isly.string(values)
+	export const is = type.is
 }
