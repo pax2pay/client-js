@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { AmountPair } from "./AmountPair"
 
 export interface BillingTransactionAmountPair {
@@ -6,12 +7,10 @@ export interface BillingTransactionAmountPair {
 	fxRate?: number
 }
 export namespace BillingTransactionAmountPair {
-	export function is(value: BillingTransactionAmountPair | any): value is BillingTransactionAmountPair {
-		return (
-			typeof value == "object" &&
-			AmountPair.is(value.billing) &&
-			AmountPair.is(value.transaction) &&
-			(value.fxRate == undefined || typeof value.fxRate == "number")
-		)
-	}
+	export const type = isly.object<BillingTransactionAmountPair>({
+		billing: isly.fromIs("AmountPair", AmountPair.is),
+		transaction: isly.fromIs("AmountPair", AmountPair.is),
+		fxRate: isly.number().optional(),
+	})
+	export const is = type.is
 }
