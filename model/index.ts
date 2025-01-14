@@ -65,8 +65,6 @@ import { CategoryResponse } from "./CategoryResponse"
 import { CategoryStatus } from "./CategoryStatus"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
-import { ConfigRequest } from "./ConfigRequest"
-import { ConfigResponse } from "./ConfigResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
 import { CreateCardRequest } from "./CreateCardRequest"
 import { CreateCardTypeProfileRequest } from "./CreateCardTypeProfileRequest"
@@ -150,9 +148,7 @@ import { PaymentDeliveryRequest } from "./PaymentDeliveryRequest"
 import { PaymentDeliveryResponse } from "./PaymentDeliveryResponse"
 import { PaymentDeliveryState } from "./PaymentDeliveryState"
 import { PaymentMerchantRequest } from "./PaymentMerchantRequest"
-import { PaymentMethodOptionResponse } from "./PaymentMethodOptionResponse"
 import { PaymentMethodType } from "./PaymentMethodType"
-import { PaymentOption } from "./PaymentOption"
 import { PaymentRequest } from "./PaymentRequest"
 import { PaymentResponse } from "./PaymentResponse"
 import { PaymentSearch } from "./PaymentSearch"
@@ -191,22 +187,6 @@ import { StatementSummaryReportRequest } from "./StatementSummaryReportRequest"
 import { StatementSummaryReportResponse } from "./StatementSummaryReportResponse"
 import { StatementSummaryReportResponseRow } from "./StatementSummaryReportResponseRow"
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
-import { SuggestedCardDeliveryOptions } from "./SuggestedCardDeliveryOptions"
-import { SuggestedCardMetaOptions } from "./SuggestedCardMetaOptions"
-import { SuggestedCardPaymentMethodResponse } from "./SuggestedCardPaymentMethodResponse"
-import { SuggestedCardTypeOptions } from "./SuggestedCardTypeOptions"
-import { SuggestedFundingAccountOptions } from "./SuggestedFundingAccountOptions"
-import { SuggestedOptions } from "./SuggestedOptions"
-import { SuggestedPaymentMethodResponse } from "./SuggestedPaymentMethodResponse"
-import { SuggestedPaymentMethodResponses } from "./SuggestedPaymentMethodResponses"
-import { SuggestedSchedulesOptions } from "./SuggestedSchedulesOptions"
-import { SuggestedUsageOptions } from "./SuggestedUsageOptions"
-import { SuggestionCardDeliveryRequest } from "./SuggestionCardDeliveryRequest"
-import { SuggestionCardPaymentMethodRequest } from "./SuggestionCardPaymentMethodRequest"
-import { SuggestionMerchantRequest } from "./SuggestionMerchantRequest"
-import { SuggestionPaymentMethodRequest } from "./SuggestionPaymentMethodRequest"
-import { SuggestionRequest } from "./SuggestionRequest"
-import { SuggestionResponse } from "./SuggestionResponse"
 import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
 import { SummaryPaymentResponse } from "./SummaryPaymentResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
@@ -315,8 +295,6 @@ export {
 	CategoryStatus,
 	ConfigMatchesRequest,
 	ConfigMatchesResponse,
-	ConfigRequest,
-	ConfigResponse,
 	ConfigTypesResponse,
 	CreateCardRequest,
 	CreateRolesetRequest,
@@ -399,9 +377,7 @@ export {
 	PaymentDeliveryResponse,
 	PaymentDeliveryState,
 	PaymentMerchantRequest,
-	PaymentMethodOptionResponse,
 	PaymentMethodType,
-	PaymentOption,
 	PaymentRequest,
 	PaymentResponse,
 	PaymentSearch,
@@ -441,22 +417,6 @@ export {
 	StatementSummaryReportResponse,
 	StatementSummaryReportResponseRow,
 	StatementTransferSpecificType,
-	SuggestedCardMetaOptions,
-	SuggestedCardPaymentMethodResponse,
-	SuggestedCardTypeOptions,
-	SuggestedFundingAccountOptions,
-	SuggestedOptions,
-	SuggestedPaymentMethodResponse,
-	SuggestedCardDeliveryOptions,
-	SuggestedSchedulesOptions,
-	SuggestedPaymentMethodResponses,
-	SuggestedUsageOptions,
-	SuggestionCardDeliveryRequest,
-	SuggestionCardPaymentMethodRequest,
-	SuggestionMerchantRequest,
-	SuggestionPaymentMethodRequest,
-	SuggestionRequest,
-	SuggestionResponse,
 	SummaryBookingInfoResponse,
 	SummaryPaymentResponse,
 	SupplierBookingInfo,

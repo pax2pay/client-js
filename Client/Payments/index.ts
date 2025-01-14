@@ -11,12 +11,6 @@ export class Payments extends List<model.PaymentResponse> {
 	static create(connection: Connection): Payments {
 		return new Payments(connection)
 	}
-	async plan(request: model.SuggestionRequest) {
-		return await this.connection.post<model.ErrorResponse | model.SuggestionResponse>(`${this.folder}/plan`, request)
-	}
-	async createSuggestion(request: model.SuggestionRequest) {
-		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(`${this.folder}/suggestion`, request)
-	}
 	async create(request: model.PaymentRequest) {
 		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(this.folder, request)
 	}
