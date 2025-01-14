@@ -119,6 +119,7 @@ import { MerchantSearchRequest } from "./MerchantSearchRequest"
 import { MetadataFormat } from "./MetadataFormat"
 import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
+import { Notification } from "./Notification"
 import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
 import { OmnisetupRequest } from "./OmnisetupRequest"
@@ -368,6 +369,7 @@ export {
 	MetadataFormat,
 	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
+	Notification,
 	OmnisetupFlags,
 	OmnisetupProviderRequest,
 	OmnisetupRequest,
