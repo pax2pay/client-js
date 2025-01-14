@@ -4,6 +4,7 @@ import { AccountDetailsTransferDestinationResponse } from "./AccountDetailsTrans
 import { AccountIdentifierResponse } from "./AccountIdentifierResponse"
 import { AccountResponse } from "./AccountResponse"
 import { AccountSearchRequest } from "./AccountSearchRequest"
+import { AccountState } from "./AccountState"
 import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
 import { AddressInfo } from "./AddressInfo"
@@ -233,7 +234,7 @@ export {
 	AccountIdentifierResponse,
 	AccountResponse,
 	AccountSearchRequest,
-	CardState,
+	AccountState,
 	AccountSummary,
 	AccountType,
 	AddressInfo,
@@ -270,6 +271,7 @@ export {
 	CardScheduleResponseItem,
 	CardScheduleTaskStatus,
 	CardScheduleTaskType,
+	CardState,
 	CardStateChangeDesiredState,
 	CardStateChangeScheduledTaskRequest,
 	CardStateChangeScheduledTaskResponse,
