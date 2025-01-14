@@ -1,9 +1,9 @@
 import { Currency, Date } from "isoly"
 import { isly } from "isly"
-import { AccountState } from "./AccountState"
 import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
+import { CardState } from "./CardState"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
@@ -29,7 +29,7 @@ export interface CardResponseV2 {
 	usage: CardUsage
 	fundingAccount: FundingAccountSummaryResponse
 	createdBy: string
-	state: AccountState
+	state: CardState
 	longTermTokenExpiry?: Date
 	activationDate?: Date
 	schedule?: CardScheduleResponseItem[]
@@ -58,7 +58,7 @@ export namespace CardResponseV2 {
 		usage: isly.fromIs("CardUsage", CardUsage.is),
 		fundingAccount: isly.fromIs("FundingAccountSummaryResponse", FundingAccountSummaryResponse.is),
 		createdBy: isly.string(),
-		state: isly.fromIs("AccountState", AccountState.is),
+		state: CardState.type,
 		longTermTokenExpiry: isly.fromIs("Date", Date.is).optional(),
 		activationDate: isly.fromIs("Date", Date.is).optional(),
 		schedule: isly.array(isly.fromIs("CardScheduleResponseItem", CardScheduleResponseItem.is)).optional(),

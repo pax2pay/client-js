@@ -1,8 +1,8 @@
 import * as isoly from "isoly"
 import { AccountBankResponse } from "./AccountBankResponse"
 import { AccountIdentifierResponse } from "./AccountIdentifierResponse"
-import { AccountState } from "./AccountState"
 import { AccountType } from "./AccountType"
+import { CardState } from "./CardState"
 import { FundingLimitResponse } from "./FundingLimitResponse"
 import { OrganisationResponse } from "./OrganisationResponse"
 import { ProviderCode } from "./ProviderCode"
@@ -13,7 +13,7 @@ export interface AccountSummary {
 	accountType: AccountType
 	createdOn: isoly.DateTime
 	createdBy: string
-	state: AccountState
+	state: CardState
 	friendlyName: string
 	accountBankDetails?: AccountBankResponse
 	organisation: OrganisationResponse
@@ -35,7 +35,7 @@ export namespace AccountSummary {
 			AccountType.is(value.accountType) &&
 			isoly.DateTime.is(value.createdOn) &&
 			typeof value.createdBy == "string" &&
-			AccountState.is(value.state) &&
+			CardState.is(value.state) &&
 			typeof value.friendlyName == "string" &&
 			(value.accountBankDetails == undefined || AccountBankResponse.is(value.accountBankDetails)) &&
 			OrganisationResponse.is(value.organisation) &&

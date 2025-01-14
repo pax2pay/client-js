@@ -1,6 +1,6 @@
 import * as isoly from "isoly"
-import { AccountState } from "./AccountState"
 import { AccountType } from "./AccountType"
+import { CardState } from "./CardState"
 import { FundingLimitResponse } from "./FundingLimitResponse"
 import { OrganisationResponse } from "./OrganisationResponse"
 import { ProviderResponse } from "./ProviderResponse"
@@ -13,7 +13,7 @@ export interface AccountResponse {
 	provider: ProviderResponse
 	organisation: OrganisationResponse
 	currency: isoly.Currency
-	state: AccountState
+	state: CardState
 	friendlyName: string
 	balance: number
 	actualBalance?: number
@@ -32,7 +32,7 @@ export namespace AccountResponse {
 			ProviderResponse.is(value.provider) &&
 			OrganisationResponse.is(value.organisation) &&
 			isoly.Currency.is(value.currency) &&
-			AccountState.is(value.state) &&
+			CardState.is(value.state) &&
 			typeof value.friendlyName == "string" &&
 			typeof value.balance == "number" &&
 			(value.actualBalance == undefined || typeof value.actualBalance == "number") &&

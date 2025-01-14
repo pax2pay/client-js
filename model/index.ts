@@ -4,7 +4,6 @@ import { AccountDetailsTransferDestinationResponse } from "./AccountDetailsTrans
 import { AccountIdentifierResponse } from "./AccountIdentifierResponse"
 import { AccountResponse } from "./AccountResponse"
 import { AccountSearchRequest } from "./AccountSearchRequest"
-import { AccountState } from "./AccountState"
 import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
 import { AddressInfo } from "./AddressInfo"
@@ -42,6 +41,7 @@ import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
 import { CardSearch } from "./CardSearch"
+import { CardState } from "./CardState"
 import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduledTaskResponse"
@@ -233,7 +233,7 @@ export {
 	AccountIdentifierResponse,
 	AccountResponse,
 	AccountSearchRequest,
-	AccountState,
+	CardState,
 	AccountSummary,
 	AccountType,
 	AddressInfo,

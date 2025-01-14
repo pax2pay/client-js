@@ -1,6 +1,6 @@
 import { Currency } from "isoly"
 import { isly } from "isly"
-import { AccountState } from "./AccountState"
+import { CardState } from "./CardState"
 import { ProviderCode } from "./ProviderCode"
 
 export interface FundingAccountResponseV2Basic {
@@ -8,7 +8,7 @@ export interface FundingAccountResponseV2Basic {
 	id: string
 	providerAccountId: string
 	providerCode: ProviderCode
-	status: AccountState
+	status: CardState
 	currency: Currency
 	balance: number
 }
@@ -18,7 +18,7 @@ export namespace FundingAccountResponseV2Basic {
 		id: isly.string(),
 		providerAccountId: isly.string(),
 		providerCode: isly.fromIs("ProviderCode", ProviderCode.is),
-		status: isly.fromIs("AccountState", AccountState.is),
+		status: CardState.type,
 		currency: isly.fromIs("Currency", Currency.is),
 		balance: isly.number(),
 	})
