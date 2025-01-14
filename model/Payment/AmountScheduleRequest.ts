@@ -1,12 +1,12 @@
 import { Date } from "isoly"
 import { isly } from "isly"
 
-export interface PaymentAmountScheduleResponse {
+export interface AmountScheduleRequest {
 	amount: number
 	date: Date
 }
-export namespace PaymentAmountScheduleResponse {
-	export const type = isly.object<PaymentAmountScheduleResponse>({
+export namespace AmountScheduleRequest {
+	export const type = isly.object<AmountScheduleRequest>({
 		amount: isly.number(),
 		date: isly.fromIs("Date", Date.is),
 	})

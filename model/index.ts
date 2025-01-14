@@ -139,21 +139,8 @@ import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
 import { PaxpayFeature } from "./PaxpayFeature"
 import { Payload } from "./Payload"
-import { PaymentAccountState } from "./PaymentAccountState"
-import { PaymentAmountScheduleRequest } from "./PaymentAmountScheduleRequest"
-import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
-import { PaymentCardCreateRequest } from "./PaymentCardCreateRequest"
+import { Payment } from "./Payment"
 import { PaymentCardUsage } from "./PaymentCardUsage"
-import { PaymentDeliveryRequest } from "./PaymentDeliveryRequest"
-import { PaymentDeliveryResponse } from "./PaymentDeliveryResponse"
-import { PaymentDeliveryState } from "./PaymentDeliveryState"
-import { PaymentMerchantRequest } from "./PaymentMerchantRequest"
-import { PaymentMethodType } from "./PaymentMethodType"
-import { PaymentRequest } from "./PaymentRequest"
-import { PaymentResponse } from "./PaymentResponse"
-import { PaymentSearch } from "./PaymentSearch"
-import { PaymentStatus } from "./PaymentStatus"
-import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProductType } from "./ProductType"
 import { ProviderCode } from "./ProviderCode"
@@ -188,7 +175,6 @@ import { StatementSummaryReportResponse } from "./StatementSummaryReportResponse
 import { StatementSummaryReportResponseRow } from "./StatementSummaryReportResponseRow"
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
 import { SummaryBookingInfoResponse } from "./SummaryBookingInfoResponse"
-import { SummaryPaymentResponse } from "./SummaryPaymentResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
 import { SupplierRequest } from "./SupplierRequest"
 import { SupplierResponse } from "./SupplierResponse"
@@ -368,21 +354,8 @@ export {
 	PasswordValidateResponse,
 	PaxpayFeature,
 	Payload,
-	PaymentAccountState,
-	PaymentAmountScheduleRequest,
-	PaymentAmountScheduleResponse,
-	PaymentCardCreateRequest,
+	Payment,
 	PaymentCardUsage,
-	PaymentDeliveryRequest,
-	PaymentDeliveryResponse,
-	PaymentDeliveryState,
-	PaymentMerchantRequest,
-	PaymentMethodType,
-	PaymentRequest,
-	PaymentResponse,
-	PaymentSearch,
-	PaymentStatus,
-	PaymentTransferCreateRequest,
 	ProcessedStatement,
 	ProductType,
 	ProviderCode,
@@ -418,7 +391,6 @@ export {
 	StatementSummaryReportResponseRow,
 	StatementTransferSpecificType,
 	SummaryBookingInfoResponse,
-	SummaryPaymentResponse,
 	SupplierBookingInfo,
 	SupplierRequest,
 	SupplierResponse,

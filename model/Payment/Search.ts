@@ -1,11 +1,11 @@
 import * as isoly from "isoly"
 import { isly } from "isly"
-import { PaymentStatus } from "./PaymentStatus"
-import { ProviderCode } from "./ProviderCode"
+import { ProviderCode } from "../ProviderCode"
+import { Status } from "./Status"
 
-export interface PaymentSearch {
+export interface Search {
 	fuzzySearch?: string
-	status?: PaymentStatus[]
+	status?: Status[]
 	createdBy?: string[]
 	personallyApprovable?: boolean
 	paymentId?: string[]
@@ -16,10 +16,10 @@ export interface PaymentSearch {
 	includeCount?: boolean
 	onlyCount?: boolean
 }
-export namespace PaymentSearch {
-	export const type = isly.object<PaymentSearch>({
+export namespace Search {
+	export const type = isly.object<Search>({
 		fuzzySearch: isly.string().optional(),
-		status: PaymentStatus.type.array().optional(),
+		status: Status.type.array().optional(),
 		createdBy: isly.string().array().optional(),
 		personallyApprovable: isly.boolean().optional(),
 		paymentId: isly.string().array().optional(),

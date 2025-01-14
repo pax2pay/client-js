@@ -25,7 +25,7 @@ export class Accounts extends List<model.AccountResponse> {
 	async getAccountSummary(
 		providerCodes: model.ProviderCode[],
 		accountId?: number,
-		accountStates?: model.AccountState[],
+		accountStates?: model.CardState[],
 		providerAccountId?: string
 	) {
 		const response = await this.connection.get<

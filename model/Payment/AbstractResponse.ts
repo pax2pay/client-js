@@ -1,35 +1,35 @@
 import { Currency, DateTime } from "isoly"
 import { isly } from "isly"
-import { BookingInfoResponse } from "./BookingInfoResponse"
-import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
-import { PaymentStatus } from "./PaymentStatus"
-import { SummaryMerchantResponse } from "./SummaryMerchantResponse"
+import { BookingInfoResponse } from "../BookingInfoResponse"
+import { SummaryMerchantResponse } from "../SummaryMerchantResponse"
+import { AmountScheduleResponse } from "./AmountScheduleResponse"
+import { Status } from "./Status"
 
-export interface AbstractPaymentResponse {
+export interface AbstractResponse {
 	id: string
 	account: string
 	amount: number
 	remaining: number
 	total: number
-	schedule?: PaymentAmountScheduleResponse[]
+	schedule?: AmountScheduleResponse[]
 	currency: Currency
-	state: PaymentStatus
+	state: Status
 	merchant?: SummaryMerchantResponse
 	method: "card" | "transfer"
 	meta?: BookingInfoResponse
 	createdBy: string
 	createdOn: DateTime
 }
-export namespace AbstractPaymentResponse {
-	export const type = isly.object<AbstractPaymentResponse>({
+export namespace AbstractResponse {
+	export const type = isly.object<AbstractResponse>({
 		id: isly.string(),
 		account: isly.string(),
 		amount: isly.number(),
 		remaining: isly.number(),
 		total: isly.number(),
-		schedule: PaymentAmountScheduleResponse.type.array().optional(),
+		schedule: AmountScheduleResponse.type.array().optional(),
 		currency: isly.fromIs("Currency", Currency.is),
-		state: PaymentStatus.type,
+		state: Status.type,
 		merchant: SummaryMerchantResponse.type.optional(),
 		method: isly.string(["card", "transfer"]),
 		meta: isly.fromIs("BookingInfoResponse", BookingInfoResponse.is).optional(),

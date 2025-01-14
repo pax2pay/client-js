@@ -1,11 +1,11 @@
 import { isly } from "isly"
 
-export interface PaymentTransferCreateRequest {
+export interface Transfer {
 	beneficiary?: string
 	reference?: string
 }
-export namespace PaymentTransferCreateRequest {
-	export const type = isly.object<PaymentTransferCreateRequest>({
+export namespace Transfer {
+	export const type = isly.object<Transfer>({
 		beneficiary: isly.string().optional(),
 		reference: isly.string().optional(),
 	})

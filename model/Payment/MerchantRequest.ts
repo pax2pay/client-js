@@ -1,15 +1,15 @@
 import { isly } from "isly"
-import { MerchantType } from "./MerchantType"
+import { MerchantType } from "../MerchantType"
 
-export interface PaymentMerchantRequest {
+export interface MerchantRequest {
 	id?: string
 	name?: string
 	mcc?: string
 	type?: MerchantType
 }
 
-export namespace PaymentMerchantRequest {
-	export const type = isly.object<PaymentMerchantRequest>({
+export namespace MerchantRequest {
+	export const type = isly.object<MerchantRequest>({
 		id: isly.string().optional(),
 		name: isly.string().optional(),
 		mcc: isly.string().optional(),

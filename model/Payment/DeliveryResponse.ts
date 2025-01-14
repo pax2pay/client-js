@@ -1,24 +1,24 @@
 import { Date, DateTime } from "isoly"
 import { isly } from "isly"
-import { PaymentDeliveryState } from "./PaymentDeliveryState"
+import { DeliveryState } from "./DeliveryState"
 
-export interface PaymentDeliveryResponse {
+export interface DeliveryResponse {
 	type: string
 	to: string
 	message: string
 	lapses: Date
 	sent?: DateTime
-	state: PaymentDeliveryState
+	state: DeliveryState
 	reason?: string
 }
-export namespace PaymentDeliveryResponse {
-	export const type = isly.object<PaymentDeliveryResponse>({
+export namespace DeliveryResponse {
+	export const type = isly.object<DeliveryResponse>({
 		type: isly.string(),
 		to: isly.string(),
 		message: isly.string(),
 		lapses: isly.fromIs("Date", Date.is),
 		sent: isly.fromIs("DateTime", DateTime.is).optional(),
-		state: isly.fromIs("PaymentDeliveryState", PaymentDeliveryState.is),
+		state: DeliveryState.type,
 		reason: isly.string().optional(),
 	})
 	export const is = type.is

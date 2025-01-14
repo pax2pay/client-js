@@ -1,8 +1,8 @@
-import { PaymentResponse } from "./PaymentResponse"
+import { Payment } from "./index"
 
 describe("PaymentResponse", () => {
 	it("is false", () => {
-		expect(PaymentResponse.is({ status: "INACTIVE", code: "somecode" })).toBeFalsy()
+		expect(Payment.Response.is({ status: "INACTIVE", code: "somecode" })).toBeFalsy()
 	})
 	it("is true", () => {
 		const res = {
@@ -61,6 +61,6 @@ describe("PaymentResponse", () => {
 				activationDate: "2024-12-12",
 			},
 		}
-		expect(PaymentResponse.is(res)).toBeTruthy()
+		expect(Payment.Response.is(res)).toBeTruthy()
 	})
 })

@@ -1,14 +1,14 @@
 import { Date } from "isoly"
 import { isly } from "isly"
 
-export interface PaymentDeliveryRequest {
+export interface DeliveryRequest {
 	type?: string
 	to: string
 	message: string
 	lapses?: Date
 }
-export namespace PaymentDeliveryRequest {
-	export const type = isly.object<PaymentDeliveryRequest>({
+export namespace DeliveryRequest {
+	export const type = isly.object<DeliveryRequest>({
 		type: isly.string().optional(),
 		to: isly.string(),
 		message: isly.string(),

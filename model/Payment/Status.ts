@@ -1,8 +1,8 @@
 import { isly } from "isly"
 
-export type PaymentStatus = typeof PaymentStatus.values[number]
+export type Status = typeof Status.values[number]
 
-export namespace PaymentStatus {
+export namespace Status {
 	export const values = [
 		"active",
 		"completed",
