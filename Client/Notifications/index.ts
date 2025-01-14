@@ -1,29 +1,45 @@
-import { ErrorResponse, Notification } from "../../model"
+import * as model from "../../model"
 import { Connection } from "../Connection"
+import { List } from "../List"
+import { Paginated } from "../Paginated"
 
-export class Notifications {
+export class Notifications extends List<model.Notification.Response> {
 	protected readonly folder = "notifications"
-	#connection: Connection
-	protected get connection() {
-		return this.#connection
-	}
 	constructor(connection: Connection) {
-		this.#connection = connection
+		super(connection)
 	}
 	static create(connection: Connection): Notifications {
 		return new Notifications(connection)
 	}
-	async save(request: Notification.InsertRequest): Promise<Notification.Response | ErrorResponse> {
-		return await this.connection.post<Notification.Response>(`${this.folder}`, request)
+	async save(request: model.Notification.InsertRequest): Promise<model.Notification.Response | model.ErrorResponse> {
+		return await this.connection.post<model.Notification.Response>(`${this.folder}`, request)
 	}
-	async getAllNotifications(): Promise<Notification.Response[] | ErrorResponse> {
-		return await this.connection.get<Notification.Response[]>(`${this.folder}`)
+	async markAsRead(id: string): Promise<model.Notification.Response | model.ErrorResponse> {
+		return await this.connection.put<model.Notification.Response>(`${this.folder}/${id}/read`, undefined)
 	}
-	async getAllUnreadNotifications(): Promise<number | ErrorResponse> {
+	async get(id: string): Promise<model.Notification.Response | model.ErrorResponse> {
+		return await this.connection.get<model.Notification.Response>(`${this.folder}/${id}`)
+	}
+	async delete(id: string): Promise<model.Notification.Response | model.ErrorResponse> {
+		return await this.connection.remove<model.Notification.Response>(`${this.folder}/${id}`)
+	}
+	async getAll(
+		previous?: Paginated<model.Notification.Response>,
+		page?: number,
+		size?: number
+	): Promise<Paginated<model.Notification.Response> | model.ErrorResponse> {
+		return await this.getNextPaginated(
+			previous,
+			(page, size) =>
+				this.connection.get<
+					{ list: model.Notification.Response[]; totalCount: number } | model.Notification.Response[]
+				>(`${this.folder}`, { page, size }),
+			undefined,
+			page,
+			size
+		)
+	}
+	async getUnread(): Promise<number | model.ErrorResponse> {
 		return await this.connection.get<number>(`${this.folder}/unread`)
-	}
-
-	async getNotification(id: string): Promise<Notification.Response | ErrorResponse> {
-		return await this.connection.get<Notification.Response>(`${this.folder}/${id}`)
 	}
 }

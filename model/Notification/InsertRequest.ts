@@ -1,14 +1,15 @@
 import { isly } from "isly"
 import { Format } from "./Format"
+import { Tag } from "./Tag"
 import { Type } from "./Type"
 
 export interface InsertRequest {
 	title: string
 	body: string
 	format: Format
-	// tag?: Tag; // TODO: add later
+	tag?: Tag
 	type: Type
-	createDefault: boolean
+	createDefault?: boolean
 }
 
 export namespace InsertRequest {
@@ -16,9 +17,9 @@ export namespace InsertRequest {
 		title: isly.string(),
 		body: isly.string(),
 		format: Format.type,
-		// tag: isly.optional(Tag.type),
+		tag: Tag.type.optional(),
 		type: Type.type,
-		createDefault: isly.boolean(),
+		createDefault: isly.boolean().optional(),
 	})
 	export const is = type.is
 }

@@ -9,7 +9,7 @@ export interface Response {
 	format: Format
 	// tag?: NotificationTagType // TODO: add later
 	type: Type
-	unread: boolean
+	unread?: boolean
 }
 
 export namespace Response {
@@ -20,7 +20,7 @@ export namespace Response {
 		format: Format.type,
 		// tag: isly.optional(NotificationTagType.type),
 		type: Type.type,
-		unread: isly.boolean(),
+		unread: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
