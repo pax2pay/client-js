@@ -12,6 +12,7 @@ import { Email as ClientEmail } from "./Email"
 import { List as ClientList } from "./List"
 import { Merchants as ClientMerchants } from "./Merchants"
 import { Metadata as ClientMetadata } from "./Metadata"
+import { Notifications as ClientNotifications } from "./Notifications"
 import { Omnisetup as ClientOmnisetup } from "./Omnisetup"
 import { Organisations as ClientOrganisations } from "./Organisations"
 import { Paginated as ClientPaginated } from "./Paginated"
@@ -38,6 +39,7 @@ export class Client {
 	email = ClientEmail.create(this.connection)
 	merchants = ClientMerchants.create(this.connection)
 	metadata = ClientMetadata.create(this.connection)
+	notifications = ClientNotifications.create(this.connection)
 	omnisetup = ClientOmnisetup.create(this.connection)
 	organisations = ClientOrganisations.create(this.connection)
 	payments = ClientPayments.create(this.connection)
@@ -73,6 +75,7 @@ export namespace Client {
 	export type Email = ClientEmail
 	export type Merchants = ClientMerchants
 	export type Metadata = ClientMetadata
+	export type Notifications = ClientNotifications
 	export type Omnisetup = ClientOmnisetup
 	export type Organisations = ClientOrganisations
 	export type Payments = ClientPayments
