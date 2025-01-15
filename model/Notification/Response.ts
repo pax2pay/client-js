@@ -1,5 +1,6 @@
 import { isly } from "isly"
 import { Format } from "./Format"
+import { Tag } from "./Tag"
 import { Type } from "./Type"
 
 export interface Response {
@@ -7,7 +8,7 @@ export interface Response {
 	title: string
 	body: string
 	format: Format
-	// tag?: NotificationTagType // TODO: add later
+	tag?: Tag
 	type: Type
 	unread?: boolean
 }
@@ -18,7 +19,7 @@ export namespace Response {
 		title: isly.string(),
 		body: isly.string(),
 		format: Format.type,
-		// tag: isly.optional(NotificationTagType.type),
+		tag: Tag.type.optional(),
 		type: Type.type,
 		unread: isly.boolean().optional(),
 	})
