@@ -10,7 +10,7 @@ export interface Response {
 	format: Format
 	tag?: Tag
 	type: Type
-	unread?: boolean
+	unread: boolean
 }
 
 export namespace Response {
@@ -21,7 +21,7 @@ export namespace Response {
 		format: Format.type,
 		tag: Tag.type.optional(),
 		type: Type.type,
-		unread: isly.boolean().optional(),
+		unread: isly.boolean(),
 	})
 	export const is = type.is
 }
