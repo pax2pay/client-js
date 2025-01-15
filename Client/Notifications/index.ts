@@ -26,20 +26,22 @@ export class Notifications extends List<model.Notification.Response> {
 	async getAll(
 		previous?: Paginated<model.Notification.Response>,
 		page?: number,
-		size?: number
+		size?: number,
+		sort: string = "createdOn,desc"
 	): Promise<Paginated<model.Notification.Response> | model.ErrorResponse> {
 		return await this.getNextPaginated(
 			previous,
 			(page, size) =>
 				this.connection.get<
 					{ list: model.Notification.Response[]; totalCount: number } | model.Notification.Response[]
-				>(`${this.folder}`, { page, size }),
+				>(`${this.folder}`, { page, size, sort }),
 			undefined,
 			page,
-			size
+			size,
+			sort
 		)
 	}
-	async getUnread(): Promise<number | model.ErrorResponse> {
+	async getNumberOfUnread(): Promise<number | model.ErrorResponse> {
 		return await this.connection.get<number>(`${this.folder}/unread`)
 	}
 }
