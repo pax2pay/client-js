@@ -1,16 +1,16 @@
 import { isly } from "isly"
-import { PaymentCardUsage } from "./PaymentCardUsage"
+import { CardUsage } from "./CardUsage"
 
 export interface PaymentCardCreateRequest {
 	cardType: string
 	expires?: string
-	usage?: PaymentCardUsage
+	usage?: CardUsage
 }
 export namespace PaymentCardCreateRequest {
 	export const type = isly.object<PaymentCardCreateRequest>({
 		cardType: isly.string(),
 		expires: isly.string().optional(),
-		usage: isly.fromIs("CardUsage", PaymentCardUsage.is).optional(),
+		usage: CardUsage.type.optional(),
 	})
 	export const is = type.is
 }

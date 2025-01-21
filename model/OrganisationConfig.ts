@@ -3,17 +3,17 @@ import { isly } from "isly"
 import { ApprovalNotificationConfig } from "./ApprovalNotificationConfig"
 import { CardDeliveryEmailConfig } from "./CardDeliveryEmailConfig"
 import { CardTypesConfig } from "./CardTypesConfig"
-import { CardUsage } from "./CardUsage"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingLimitConfig } from "./FundingLimitConfig"
 import { ProviderCode } from "./ProviderCode"
 import { SecurityConfig } from "./SecurityConfig"
+import { Usage } from "./Usage"
 /**
  * Organisation config, optional
  */
 export interface OrganisationConfig {
 	showDefaultRolesets?: boolean
-	defaultModulrUsage?: CardUsage
+	defaultModulrUsage?: Usage
 	defaultExpiryMonthDelta?: number
 	defaultExpiryMonthDeltaPerCurrency?: Partial<Record<Currency, number>>
 	defaultPortalCardType?: Partial<Record<ProviderCode, string>>
@@ -31,7 +31,7 @@ export namespace OrganisationConfig {
 	const currencyType = isly.fromIs<Currency>("Currency", Currency.is)
 	export const type = isly.object<OrganisationConfig>({
 		showDefaultRolesets: isly.boolean().optional(),
-		defaultModulrUsage: CardUsage.type.optional(),
+		defaultModulrUsage: Usage.type.optional(),
 		defaultExpiryMonthDelta: isly.number().optional(),
 		defaultExpiryMonthDeltaPerCurrency: isly.record(currencyType, isly.number()).optional(),
 		defaultPortalCardType: isly.record(ProviderCode.type, isly.string()).optional(),

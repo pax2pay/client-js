@@ -1,8 +1,9 @@
-const paymentMethodTypes = ["card", "transfer"] as const
-export type PaymentMethodType = typeof paymentMethodTypes[number]
+import { isly } from "isly"
+
+export type PaymentMethodType = typeof PaymentMethodType.values[number]
 
 export namespace PaymentMethodType {
-	export function is(value: unknown): value is PaymentMethodType {
-		return typeof value == "string" && paymentMethodTypes.includes(value as PaymentMethodType)
-	}
+	export const values = ["card", "transfer"] as const
+	export const type = isly.string<PaymentMethodType>(values)
+	export const is = type.is
 }

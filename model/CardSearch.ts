@@ -3,10 +3,10 @@ import { AccountState } from "./AccountState"
 import { BookingInfoType } from "./BookingInfoType"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardTypeSpecification } from "./CardTypeSpecification"
-import { CardUsage } from "./CardUsage"
 import { DeliveryStatus } from "./DeliveryStatus"
 import { ProviderCode } from "./ProviderCode"
 import { Range } from "./Range"
+import { Usage } from "./Usage"
 export interface CardSearch {
 	fuzzySearch?: string
 	providerCode?: ProviderCode | ProviderCode[]
@@ -27,7 +27,7 @@ export interface CardSearch {
 	providerAccountId?: string
 	providerCardId?: string
 	createdOn?: Range<DateTime>
-	usage?: CardUsage[]
+	usage?: Usage[]
 	supplierReference?: string
 	deliveryStatus?: DeliveryStatus[]
 	bookingInfoText?: string

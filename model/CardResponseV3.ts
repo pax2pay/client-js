@@ -1,12 +1,12 @@
 import { Date } from "isoly"
 import { isly } from "isly"
-import { PaymentCardUsage } from "./PaymentCardUsage"
+import { CardUsage } from "./CardUsage"
 import { SummaryCardResponseV3 } from "./SummaryCardResponseV3"
 import { YearMonth } from "./YearMonth"
 
 export interface CardResponseV3 extends SummaryCardResponseV3 {
 	expires: YearMonth
-	usage: PaymentCardUsage
+	usage: CardUsage
 	token?: string
 	cvv?: string
 	cardHolderName: string
@@ -19,7 +19,7 @@ export interface CardResponseV3 extends SummaryCardResponseV3 {
 export namespace CardResponseV3 {
 	export const type = SummaryCardResponseV3.type.extend<CardResponseV3>({
 		expires: isly.fromIs("YearMonth", YearMonth.is),
-		usage: isly.fromIs("PaymentCardUsage", PaymentCardUsage.is),
+		usage: CardUsage.type,
 		token: isly.string().optional(),
 		cvv: isly.string().optional(),
 		cardHolderName: isly.string(),
