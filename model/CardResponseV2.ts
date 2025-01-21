@@ -37,6 +37,7 @@ export interface CardResponseV2 {
 	delivery?: CardDeliveryResponse
 	batchId?: string
 	merchantRestriction?: MerchantResponse
+	closeDate?: Date
 }
 
 export namespace CardResponseV2 {
@@ -60,12 +61,13 @@ export namespace CardResponseV2 {
 		createdBy: isly.string(),
 		state: isly.fromIs("AccountState", AccountState.is),
 		longTermTokenExpiry: isly.fromIs("Date", Date.is).optional(),
-		activationDate: isly.fromIs("Date", Date.is).optional(),
+		activationDate: isly.fromIs(".Date", Date.is).optional(),
 		schedule: isly.array(isly.fromIs("CardScheduleResponseItem", CardScheduleResponseItem.is)).optional(),
 		bookingInfo: isly.fromIs("BookingInfoResponse", BookingInfoResponse.is).optional(),
 		delivery: isly.fromIs("CardDeliveryResponse", CardDeliveryResponse.is).optional(),
 		batchId: isly.string().optional(),
 		merchantRestriction: isly.fromIs("MerchantResponse", MerchantResponse.is).optional(),
+		closeDate: isly.fromIs("isoly.Date", Date.is).optional(),
 	})
 	export const is = type.is
 }
