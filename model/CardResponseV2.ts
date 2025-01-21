@@ -5,10 +5,10 @@ import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
-import { CardUsage } from "./CardUsage"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { MerchantResponse } from "./MerchantResponse"
 import { ProviderCode } from "./ProviderCode"
+import { Usage } from "./Usage"
 import { YearMonth } from "./YearMonth"
 
 export interface CardResponseV2 {
@@ -26,7 +26,7 @@ export interface CardResponseV2 {
 	providerCode: ProviderCode
 	providerCardId: string
 	cardId: string
-	usage: CardUsage
+	usage: Usage
 	fundingAccount: FundingAccountSummaryResponse
 	createdBy: string
 	state: AccountState
@@ -55,7 +55,7 @@ export namespace CardResponseV2 {
 		providerCode: isly.fromIs("ProviderCode", ProviderCode.is),
 		providerCardId: isly.string(),
 		cardId: isly.string(),
-		usage: isly.fromIs("CardUsage", CardUsage.is),
+		usage: Usage.type,
 		fundingAccount: isly.fromIs("FundingAccountSummaryResponse", FundingAccountSummaryResponse.is),
 		createdBy: isly.string(),
 		state: isly.fromIs("AccountState", AccountState.is),

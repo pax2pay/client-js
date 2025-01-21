@@ -1,6 +1,6 @@
 import { Date, DateTime } from "isoly"
 import { isly } from "isly"
-import { PaymentDeliveryState } from "./PaymentDeliveryState"
+import { PaymentDeliveryStatus } from "./PaymentDeliveryStatus"
 
 export interface PaymentDeliveryResponse {
 	type: string
@@ -8,7 +8,7 @@ export interface PaymentDeliveryResponse {
 	message: string
 	lapses: Date
 	sent?: DateTime
-	state: PaymentDeliveryState
+	state: PaymentDeliveryStatus
 	reason?: string
 }
 export namespace PaymentDeliveryResponse {
@@ -18,7 +18,7 @@ export namespace PaymentDeliveryResponse {
 		message: isly.string(),
 		lapses: isly.fromIs("Date", Date.is),
 		sent: isly.fromIs("DateTime", DateTime.is).optional(),
-		state: isly.fromIs("PaymentDeliveryState", PaymentDeliveryState.is),
+		state: PaymentDeliveryStatus.type,
 		reason: isly.string().optional(),
 	})
 	export const is = type.is

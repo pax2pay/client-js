@@ -144,10 +144,9 @@ import { PaymentAccountState } from "./PaymentAccountState"
 import { PaymentAmountScheduleRequest } from "./PaymentAmountScheduleRequest"
 import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
 import { PaymentCardCreateRequest } from "./PaymentCardCreateRequest"
-import { PaymentCardUsage } from "./PaymentCardUsage"
 import { PaymentDeliveryRequest } from "./PaymentDeliveryRequest"
 import { PaymentDeliveryResponse } from "./PaymentDeliveryResponse"
-import { PaymentDeliveryState } from "./PaymentDeliveryState"
+import { PaymentDeliveryStatus } from "./PaymentDeliveryStatus"
 import { PaymentMerchantRequest } from "./PaymentMerchantRequest"
 import { PaymentMethodType } from "./PaymentMethodType"
 import { PaymentRequest } from "./PaymentRequest"
@@ -213,6 +212,7 @@ import { UpdateBeneficiaryRequest } from "./UpdateBeneficiaryRequest"
 import { UpdateCardTypeProfileRequest } from "./UpdateCardTypeProfileRequest"
 import { UpdateCategoryRequest } from "./UpdateCategoryRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
+import { Usage } from "./Usage"
 import { UserChangeRequest } from "./UserChangeRequest"
 import { UserConfig } from "./UserConfig"
 import { UserLimitsDeleteRequest } from "./UserLimitsDeleteRequest"
@@ -374,10 +374,9 @@ export {
 	PaymentAmountScheduleRequest,
 	PaymentAmountScheduleResponse,
 	PaymentCardCreateRequest,
-	PaymentCardUsage,
 	PaymentDeliveryRequest,
 	PaymentDeliveryResponse,
-	PaymentDeliveryState,
+	PaymentDeliveryStatus,
 	PaymentMerchantRequest,
 	PaymentMethodType,
 	PaymentRequest,
@@ -443,6 +442,7 @@ export {
 	UpdateBeneficiaryRequest,
 	UpdateCardTypeProfileRequest,
 	UpdateRolesetRequest,
+	Usage,
 	UserChangeRequest,
 	UserConfig,
 	UserLimitsDeleteRequest,
