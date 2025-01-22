@@ -264,10 +264,15 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 			request
 		)
 	}
-	async editCloseDate(request: model.EditCloseDateRequest, providerCode: model.ProviderCode, providerCardId: string) {
+	async editCloseDate(providerCardId: string, providerCode: model.ProviderCode, request: model.EditCloseDateRequest) {
 		return await this.connection.put<model.CardResponseV2>(
 			`${this.folder}/virtual/${providerCode}/${providerCardId}/closeDate`,
 			request
+		)
+	}
+	async deleteCloseDate(providerCardId: string, providerCode: model.ProviderCode) {
+		return await this.connection.remove<model.CardResponseV2>(
+			`${this.folder}/virtual/${providerCode}/${providerCardId}/closeDate`
 		)
 	}
 	async getCardStatements(
