@@ -75,6 +75,7 @@ import { Criteria } from "./Criteria"
 import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
 import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
 import { DeliveryStatus } from "./DeliveryStatus"
+import { EditCloseDateRequest } from "./EditCloseDateRequest"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
@@ -305,6 +306,7 @@ export {
 	CurrencyConversionRequest,
 	CurrencyConversionResponse,
 	DeliveryStatus,
+	EditCloseDateRequest,
 	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,

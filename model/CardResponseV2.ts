@@ -37,6 +37,7 @@ export interface CardResponseV2 {
 	delivery?: CardDeliveryResponse
 	batchId?: string
 	merchantRestriction?: MerchantResponse
+	closeDate?: Date
 }
 
 export namespace CardResponseV2 {
@@ -66,6 +67,7 @@ export namespace CardResponseV2 {
 		delivery: isly.fromIs("CardDeliveryResponse", CardDeliveryResponse.is).optional(),
 		batchId: isly.string().optional(),
 		merchantRestriction: isly.fromIs("MerchantResponse", MerchantResponse.is).optional(),
+		closeDate: isly.fromIs("Date", Date.is).optional(),
 	})
 	export const is = type.is
 }
