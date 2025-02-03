@@ -30,6 +30,7 @@ export interface PaymentSearch {
 	cardType?: CardTypeSpecification | CardTypeSpecification[]
 	cardNumber?: string
 	cardUsage?: CardUsage
+	transferReference?: string
 	includeCount?: boolean
 	onlyCount?: boolean
 }
@@ -56,6 +57,7 @@ export namespace PaymentSearch {
 		cardType: isly.union(CardTypeSpecification.type, CardTypeSpecification.type.array()).optional(),
 		cardNumber: isly.string().optional(),
 		cardUsage: CardUsage.type.optional(),
+		transferReference: isly.string().optional(),
 		includeCount: isly.boolean().optional(),
 		onlyCount: isly.boolean().optional(),
 	})
