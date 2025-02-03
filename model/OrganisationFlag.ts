@@ -1,24 +1,27 @@
-const organisationFlag = [
-	"SABRE",
-	"EEA_CUSTOMER",
-	"PAX2PAY_DIRECT",
-	"VOXEL",
-	"HITCHHIKER",
-	"YPSILON",
-	"CONFERMA",
-	"NET_STORMING",
-	"AGENDAS_GROUP",
-	"SABRE_REFERRAL",
-	"TTS",
-	"SOFTCONEX",
-	"PANASOFT",
-	"TRAVEL_CENTRES",
-	"THE_CRUISE_LINE",
-] as const
-export type OrganisationFlag = typeof organisationFlag[number]
+import { isly } from "isly"
+
+export type OrganisationFlag = typeof OrganisationFlag.types[number]
 
 export namespace OrganisationFlag {
-	export function is(value: unknown): value is OrganisationFlag {
-		return typeof value == "string" && organisationFlag.includes(value as OrganisationFlag)
-	}
+	export const types = [
+		"PAXFAB",
+		"SABRE",
+		"EEA_CUSTOMER",
+		"PAX2PAY_DIRECT",
+		"VOXEL",
+		"HITCHHIKER",
+		"YPSILON",
+		"CONFERMA",
+		"NET_STORMING",
+		"AGENDAS_GROUP",
+		"SABRE_REFERRAL",
+		"TTS",
+		"SOFTCONEX",
+		"PANASOFT",
+		"TRAVEL_CENTRE",
+		"THE_CRUISE_LINE",
+		"EHOTEL",
+	] as const
+	export const type = isly.string(types)
+	export const is = type.is
 }
