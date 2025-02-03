@@ -17,6 +17,7 @@ export interface OrganisationSearchResponse {
 	internalOrganisationConfig?: InternalOrganisationConfig
 	cardTypes?: Partial<Record<ProviderCode, CardTypeInformation>>
 	createdOn: DateTime
+	channelPartners?: string[]
 }
 
 export namespace OrganisationSearchResponse {
@@ -30,6 +31,7 @@ export namespace OrganisationSearchResponse {
 		internalOrganisationConfig: isly.fromIs("InternalOrganisationConfig", InternalOrganisationConfig.is).optional(),
 		cardTypes: isly.record(ProviderCode.type, isly.fromIs("CardTypeInformation", CardTypeInformation.is)).optional(),
 		createdOn: isly.fromIs("DateTime", DateTime.is),
+		channelPartners: isly.string().array().optional(),
 	})
 	export const is = type.is
 }
