@@ -3,6 +3,7 @@ import { isly } from "isly"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
 import { OrganisationConfig } from "./OrganisationConfig"
+import { OrganisationFlag } from "./OrganisationFlag"
 import { OrganisationRealm } from "./OrganisationRealm"
 import { OrganisationStatusV2 } from "./OrganisationStatusV2"
 import { ProviderCode } from "./ProviderCode"
@@ -17,7 +18,7 @@ export interface OrganisationSearchResponse {
 	internalOrganisationConfig?: InternalOrganisationConfig
 	cardTypes?: Partial<Record<ProviderCode, CardTypeInformation>>
 	createdOn: DateTime
-	channelPartners?: string[]
+	channelPartners?: OrganisationFlag[]
 }
 
 export namespace OrganisationSearchResponse {
@@ -31,7 +32,7 @@ export namespace OrganisationSearchResponse {
 		internalOrganisationConfig: isly.fromIs("InternalOrganisationConfig", InternalOrganisationConfig.is).optional(),
 		cardTypes: isly.record(ProviderCode.type, isly.fromIs("CardTypeInformation", CardTypeInformation.is)).optional(),
 		createdOn: isly.fromIs("DateTime", DateTime.is),
-		channelPartners: isly.string().array().optional(),
+		channelPartners: isly.array(OrganisationFlag.type).optional(),
 	})
 	export const is = type.is
 }
