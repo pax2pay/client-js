@@ -4,6 +4,7 @@ export type OrganisationFlag = typeof OrganisationFlag.types[number]
 
 export namespace OrganisationFlag {
 	export const types = [
+		"PAXFAB",
 		"SABRE",
 		"EEA_CUSTOMER",
 		"PAX2PAY_DIRECT",
@@ -17,8 +18,9 @@ export namespace OrganisationFlag {
 		"TTS",
 		"SOFTCONEX",
 		"PANASOFT",
-		"TRAVEL_CENTRES",
+		"TRAVEL_CENTRE",
 		"THE_CRUISE_LINE",
+		"EHOTEL",
 	] as const
 	export const type = isly.string(types)
 	export const is = type.is
