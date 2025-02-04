@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { Criteria } from "./Criteria"
 import { InsertCardRequest } from "./InsertCardRequest"
 /**
@@ -6,4 +7,12 @@ import { InsertCardRequest } from "./InsertCardRequest"
 export interface InsertCardOptionRequest {
 	criteria: Criteria[]
 	card: InsertCardRequest
+}
+
+export namespace InsertCardOptionRequest {
+	export const type = isly.object<InsertCardOptionRequest>({
+		criteria: Criteria.type.array(),
+		card: InsertCardRequest.type,
+	})
+	export const is = type.is
 }

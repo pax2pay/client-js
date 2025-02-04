@@ -2,6 +2,7 @@ import { Accounts as ClientAccounts } from "./Accounts"
 import { ApiKeys as ClientApiKeys } from "./Api-keys"
 import { Auth as ClientAuth } from "./Auth"
 import { Beneficiaries as ClientBeneficiaries } from "./Beneficiaries"
+import { CardOptions as ClientCardOptions } from "./CardOptions"
 import { Cards as ClientCards } from "./Cards"
 import { Categories as ClientCategories } from "./Categories"
 import { Configuration as ClientConfiguration } from "./Configuration"
@@ -31,6 +32,7 @@ export class Client {
 	accounts = ClientAccounts.create(this.connection)
 	auth = ClientAuth.create(this.connection)
 	beneficiaries = ClientBeneficiaries.create(this.connection)
+	cardOptions = ClientCardOptions.create(this.connection)
 	cards = ClientCards.create(this.connection)
 	categories = ClientCategories.create(this.connection)
 	configuration = ClientConfiguration.create(this.connection)
@@ -67,6 +69,7 @@ export namespace Client {
 	export type Accounts = ClientAccounts
 	export type Auth = ClientAuth
 	export type Beneficiaries = ClientBeneficiaries
+	export type CardOptions = ClientCardOptions
 	export type Cards = ClientCards
 	export type Categories = ClientCategories
 	export type Configuration = ClientConfiguration
