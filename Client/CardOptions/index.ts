@@ -9,8 +9,7 @@ export class CardOptions extends List<model.InsertCardOptionRequest> {
 	}
 	async getCardOptions() {
 		const response = await this.connection.get<{ list: model.InsertCardOptionRequest[]; totalCount: number }>(
-			this.folder,
-			{ size: 500 }
+			this.folder
 		)
 		return this.extractResponse(response)
 	}
