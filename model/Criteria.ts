@@ -27,7 +27,7 @@ export namespace Criteria {
 		maxAmount: isly.number().optional(),
 		productTypes: isly.fromIs("ProductType", ProductType.is).array().optional(),
 		suppliers: isly.string().array().optional(),
-		bookingSources: isly.fromIs("InvokingSystem", InvokingSystem.is).array().optional(),
+		bookingSources: InvokingSystem.type.array().optional(),
 		ruleStartDate: isly.fromIs("Date", Date.is).optional(),
 		ruleEndDate: isly.fromIs("Date", Date.is).optional(),
 		rank: isly.number().optional(),

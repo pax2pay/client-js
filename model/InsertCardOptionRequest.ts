@@ -11,8 +11,8 @@ export interface InsertCardOptionRequest {
 
 export namespace InsertCardOptionRequest {
 	export const type = isly.object<InsertCardOptionRequest>({
-		criteria: isly.fromIs("Criteria", Criteria.is).array(),
-		card: isly.fromIs("InsertCardRequest", InsertCardRequest.is),
+		criteria: Criteria.type.array(),
+		card: InsertCardRequest.type,
 	})
 	export const is = type.is
 }
