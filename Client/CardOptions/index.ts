@@ -7,17 +7,22 @@ export class CardOptions extends List<model.InsertCardOptionRequest> {
 	private constructor(connection: Connection) {
 		super(connection)
 	}
-	async getCardOptions() {
+	async getCardOptions(organisationCode: string) {
+		const header = { "x-assume": organisationCode }
 		const response = await this.connection.get<{ list: model.InsertCardOptionRequest[]; totalCount: number }>(
-			this.folder
+			this.folder,
+			undefined,
+			header
 		)
 		return this.extractResponse(response)
 	}
-	async insertCardOptions(request: model.InsertCardOptionRequest[]) {
-		return await this.connection.post<model.InsertCardOptionRequest[]>(this.folder, request)
+	async insertCardOptions(organisationCode: string, request: model.InsertCardOptionRequest[]) {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.post<model.InsertCardOptionRequest[]>(this.folder, request, undefined, header)
 	}
-	async deleteCardOptions(request: model.InsertCardOptionRequest[]) {
-		return await this.connection.remove<model.InsertCardOptionRequest[]>(this.folder, request)
+	async deleteCardOptions(organisationCode: string, request: model.InsertCardOptionRequest[]) {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.remove<model.InsertCardOptionRequest[]>(this.folder, request, undefined, header)
 	}
 	static create(connection: Connection): CardOptions {
 		return new CardOptions(connection)
