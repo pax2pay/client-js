@@ -32,6 +32,7 @@ export class Client {
 	accounts = ClientAccounts.create(this.connection)
 	auth = ClientAuth.create(this.connection)
 	beneficiaries = ClientBeneficiaries.create(this.connection)
+	cardOptions = ClientCardOptions.create(this.connection)
 	cards = ClientCards.create(this.connection)
 	categories = ClientCategories.create(this.connection)
 	configuration = ClientConfiguration.create(this.connection)
