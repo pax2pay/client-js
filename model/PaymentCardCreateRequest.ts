@@ -8,6 +8,7 @@ export interface PaymentCardCreateRequest {
 	expires?: string
 	usage?: CardUsage
 	closeDate?: isoly.Date
+	restrictToMerchant?: boolean
 }
 export namespace PaymentCardCreateRequest {
 	export const type = isly.object<PaymentCardCreateRequest>({
@@ -15,6 +16,7 @@ export namespace PaymentCardCreateRequest {
 		expires: isly.string().optional(),
 		usage: CardUsage.type.optional(),
 		closeDate: isly.fromIs("Date", isoly.Date.is).optional(),
+		restrictToMerchant: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
