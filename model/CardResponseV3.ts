@@ -11,9 +11,9 @@ export interface CardResponseV3 extends SummaryCardResponseV3 {
 	cvv?: string
 	cardHolderName: string
 	issued?: Date
-	remaining: number
-	maxAmount: number
 	activationDate: Date
+	closeDate?: Date
+	restrictedToMerchant?: boolean
 }
 
 export namespace CardResponseV3 {
@@ -24,9 +24,9 @@ export namespace CardResponseV3 {
 		cvv: isly.string().optional(),
 		cardHolderName: isly.string(),
 		issued: isly.fromIs("Date", Date.is).optional(),
-		remaining: isly.number(),
-		maxAmount: isly.number(),
 		activationDate: isly.fromIs("Date", Date.is),
+		closeDate: isly.fromIs("Date", Date.is).optional(),
+		restrictedToMerchant: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
