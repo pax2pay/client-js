@@ -58,15 +58,26 @@ export class Accounts extends List<model.AccountResponse> {
 			`${this.folder}/${providerCode}/${providerAccountId}/limits`
 		)
 	}
-	async getAllFundingAccountsV2(providerCode: model.ProviderCode[], size = 500, sort = "friendlyName") {
+
+	async getAllFundingAccountsV2(
+		providerCode: model.ProviderCode[],
+		size = 500,
+		sort = "friendlyName",
+		organisationCode?: string
+	) {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		const response = await this.connection.get<{
 			list: model.FundingAccountResponseV2Basic[]
 			totalCount: number
-		}>(`v2/${this.folder}`, {
-			provider: providerCode,
-			size: size,
-			sort: sort,
-		})
+		}>(
+			`v2/${this.folder}`,
+			{
+				provider: providerCode,
+				size: size,
+				sort: sort,
+			},
+			header
+		)
 		return this.extractResponse(response)
 	}
 	async getAllFundingAccountsV2Full(providerCode: model.ProviderCode[], size = 500, sort = "friendlyName") {
