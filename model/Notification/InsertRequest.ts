@@ -1,6 +1,7 @@
 import { isly } from "isly"
 import { Format } from "./Format"
 import { Tag } from "./Tag"
+import { TargetRequest } from "./TargetRequest"
 import { Type } from "./Type"
 
 export interface InsertRequest {
@@ -9,6 +10,7 @@ export interface InsertRequest {
 	format: Format
 	tag?: Tag
 	type: Type
+	target?: TargetRequest[]
 	createDefault?: boolean
 }
 
@@ -19,6 +21,7 @@ export namespace InsertRequest {
 		format: Format.type,
 		tag: Tag.type.optional(),
 		type: Type.type,
+		target: TargetRequest.type.array().optional(),
 		createDefault: isly.boolean().optional(),
 	})
 	export const is = type.is

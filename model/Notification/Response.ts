@@ -11,6 +11,9 @@ export interface Response {
 	tag?: Tag
 	type: Type
 	unread: boolean
+	organisations?: string[]
+	users?: string[]
+	rolesets?: string[]
 }
 
 export namespace Response {
@@ -22,6 +25,9 @@ export namespace Response {
 		tag: Tag.type.optional(),
 		type: Type.type,
 		unread: isly.boolean(),
+		organisations: isly.string().array().optional(),
+		users: isly.string().array().optional(),
+		rolesets: isly.string().array().optional(),
 	})
 	export const is = type.is
 }
