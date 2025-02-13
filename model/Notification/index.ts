@@ -5,9 +5,9 @@ import { Tag as NotificationTag } from "./Tag"
 import { Type as NotificationType } from "./Type"
 
 export namespace Notification {
-	export type Format = NotificationFormat
-	export type InsertRequest = NotificationInsertRequest
-	export type Response = NotificationResponse
-	export type Tag = NotificationTag
-	export type Type = NotificationType
+	export import Format = NotificationFormat
+	export import InsertRequest = NotificationInsertRequest
+	export import Response = NotificationResponse
+	export import Tag = NotificationTag
+	export import Type = NotificationType
 }
