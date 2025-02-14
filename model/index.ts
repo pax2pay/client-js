@@ -115,6 +115,7 @@ import { MerchantDetails } from "./MerchantDetails"
 import { MerchantRequest } from "./MerchantRequest"
 import { MerchantResponse } from "./MerchantResponse"
 import { MerchantSearchRequest } from "./MerchantSearchRequest"
+import { MerchantType } from "./MerchantType"
 import { MetadataFormat } from "./MetadataFormat"
 import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
@@ -346,6 +347,7 @@ export {
 	MerchantRequest,
 	MerchantResponse,
 	MerchantSearchRequest,
+	MerchantType,
 	MetadataFormat,
 	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
