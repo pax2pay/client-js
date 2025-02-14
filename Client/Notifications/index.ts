@@ -20,8 +20,8 @@ export class Notifications extends List<model.Notification.Response> {
 	async get(id: string): Promise<model.Notification.Response | model.ErrorResponse> {
 		return await this.connection.get<model.Notification.Response>(`${this.folder}/${id}`)
 	}
-	async delete(id: string): Promise<model.Notification.Response | model.ErrorResponse> {
-		return await this.connection.remove<model.Notification.Response>(`${this.folder}/${id}`)
+	async delete(id: string): Promise<undefined | model.ErrorResponse> {
+		return await this.connection.remove<undefined>(`${this.folder}/${id}`)
 	}
 	async getAll(
 		previous?: Paginated<model.Notification.Response>,
