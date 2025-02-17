@@ -16,13 +16,15 @@ export class CardOptions extends List<model.InsertCardOptionRequest> {
 		)
 		return this.extractResponse(response)
 	}
-	async insertCardOptions(request: model.InsertCardOptionRequest[], organisationCode?: string) {
+	async insertCardOptions(request: model.InsertCardOptionRequest[], organisationCode?: string, commit?: boolean) {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
-		return await this.connection.post<model.InsertCardOptionRequest[]>(this.folder, request, undefined, header)
+		const param = commit ? { commit: true } : undefined
+		return await this.connection.post<model.InsertCardOptionRequest[]>(this.folder, request, param, header)
 	}
-	async deleteCardOptions(request: model.InsertCardOptionRequest[], organisationCode?: string) {
+	async deleteCardOptions(request: model.InsertCardOptionRequest[], organisationCode?: string, commit?: boolean) {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
-		return await this.connection.remove<model.InsertCardOptionRequest[]>(this.folder, request, undefined, header)
+		const param = commit ? { commit: true } : undefined
+		return await this.connection.remove<model.InsertCardOptionRequest[]>(this.folder, request, param, header)
 	}
 	static create(connection: Connection): CardOptions {
 		return new CardOptions(connection)
