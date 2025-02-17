@@ -1,3 +1,5 @@
+import { AbstractPaymentOperation } from "./AbstractPaymentOperation"
+import { AbstractProviderTransactionOperation } from "./AbstractProviderTransactionOperation"
 import { AccountBankResponse } from "./AccountBankResponse"
 import { AccountCreationRequest } from "./AccountCreationRequest"
 import { AccountDetailsTransferDestinationResponse } from "./AccountDetailsTransferDestinationResponse"
@@ -97,6 +99,7 @@ import { FundingLimitConfig } from "./FundingLimitConfig"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
 import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognosisAmountPair"
+import { GenericPaymentOperation } from "./GenericPaymentOperation"
 import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
 import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
 import { HotelInfo } from "./HotelInfo"
@@ -112,6 +115,7 @@ import { Issue } from "./Issue"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
 import { MerchantDetails } from "./MerchantDetails"
+import { MerchantDetailsV2 } from "./MerchantDetailsV2"
 import { MerchantRequest } from "./MerchantRequest"
 import { MerchantResponse } from "./MerchantResponse"
 import { MerchantSearchRequest } from "./MerchantSearchRequest"
@@ -151,6 +155,7 @@ import { PaymentDeliveryResponse } from "./PaymentDeliveryResponse"
 import { PaymentDeliveryStatus } from "./PaymentDeliveryStatus"
 import { PaymentMerchantRequest } from "./PaymentMerchantRequest"
 import { PaymentMethodType } from "./PaymentMethodType"
+import { PaymentOperation } from "./PaymentOperation"
 import { PaymentRequest } from "./PaymentRequest"
 import { PaymentResponse } from "./PaymentResponse"
 import { PaymentSearch } from "./PaymentSearch"
@@ -158,8 +163,10 @@ import { PaymentStatus } from "./PaymentStatus"
 import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
 import { ProcessedStatement } from "./ProcessedStatement"
 import { ProductType } from "./ProductType"
+import { ProviderCardTransactionOperation } from "./ProviderCardTransactionOperation"
 import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
+import { ProviderTransferTransactionOperation } from "./ProviderTransferTransactionOperation"
 import { Range } from "./Range"
 import { ReconciliationReportUrlRequest } from "./ReconciliationReportUrlRequest"
 import { References } from "./References"
@@ -230,6 +237,8 @@ import { UserStatus } from "./UserStatus"
 import { YearMonth } from "./YearMonth"
 
 export {
+	AbstractPaymentOperation,
+	AbstractProviderTransactionOperation,
 	AccountBankResponse,
 	AccountCreationRequest,
 	AccountDetailsTransferDestinationResponse,
@@ -329,6 +338,7 @@ export {
 	FundingLimitRequest,
 	FundingLimitResponse,
 	FutureTransactionPrognosisAmountPair,
+	GenericPaymentOperation,
 	HotelBookingInfoRequest,
 	HotelBookingInfoResponse,
 	HotelInfo,
@@ -344,6 +354,7 @@ export {
 	LoginRequest,
 	LoginResponse,
 	MerchantDetails,
+	MerchantDetailsV2,
 	MerchantRequest,
 	MerchantResponse,
 	MerchantSearchRequest,
@@ -383,6 +394,7 @@ export {
 	PaymentDeliveryStatus,
 	PaymentMerchantRequest,
 	PaymentMethodType,
+	PaymentOperation,
 	PaymentRequest,
 	PaymentResponse,
 	PaymentSearch,
@@ -390,8 +402,10 @@ export {
 	PaymentTransferCreateRequest,
 	ProcessedStatement,
 	ProductType,
+	ProviderCardTransactionOperation,
 	ProviderCode,
 	ProviderResponse,
+	ProviderTransferTransactionOperation,
 	Range,
 	References,
 	RelogWithNewSessionDetailsRequest,
