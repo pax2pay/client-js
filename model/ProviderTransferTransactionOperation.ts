@@ -10,4 +10,5 @@ export namespace ProviderTransferTransactionOperation {
 		reference: isly.string().optional(),
 		payee: isly.string().optional(),
 	})
+	export const is = type.is
 }

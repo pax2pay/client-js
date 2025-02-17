@@ -14,4 +14,5 @@ export namespace PaymentOperation {
 		ProviderTransferTransactionOperation.type,
 		ProviderCardTransactionOperation.type
 	)
+	export const is = type.is
 }

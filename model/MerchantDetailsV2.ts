@@ -11,4 +11,5 @@ export namespace MerchantDetailsV2 {
 		name: isly.string().optional(),
 		country: isly.string().optional(),
 	})
+	export const is = type.is
 }
