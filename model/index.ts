@@ -77,6 +77,7 @@ import { DeliveryStatus } from "./DeliveryStatus"
 import { DownloadCardReportUrlRequest } from "./DownloadCardReportUrlRequest"
 import { DownloadFileFormat } from "./DownloadFileFormat"
 import { DownloadOrganisationSearchRequest } from "./DownloadOrganisationSearchRequest"
+import { DownloadReconciliationReportRequest } from "./DownloadReconciliationReportRequest"
 import { EditCloseDateRequest } from "./EditCloseDateRequest"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
@@ -163,7 +164,6 @@ import { ProductType } from "./ProductType"
 import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
 import { Range } from "./Range"
-import { ReconciliationReportUrlRequest } from "./ReconciliationReportUrlRequest"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
@@ -311,6 +311,7 @@ export {
 	DownloadCardReportUrlRequest,
 	DownloadFileFormat,
 	DownloadOrganisationSearchRequest,
+	DownloadReconciliationReportRequest,
 	EditCloseDateRequest,
 	EmailValidationResponse,
 	ErrorMessageDto,
@@ -400,7 +401,6 @@ export {
 	References,
 	RelogWithNewSessionDetailsRequest,
 	Report,
-	ReconciliationReportUrlRequest,
 	ReportUrlResponse,
 	RoleResponse,
 	RolesetResponse,
