@@ -161,6 +161,7 @@ import { PaymentDeliveryStatus } from "./PaymentDeliveryStatus"
 import { PaymentMerchantRequest } from "./PaymentMerchantRequest"
 import { PaymentMethodType } from "./PaymentMethodType"
 import { PaymentOperation } from "./PaymentOperation"
+import { PaymentOperationType } from "./PaymentOperationType"
 import { PaymentRequest } from "./PaymentRequest"
 import { PaymentResponse } from "./PaymentResponse"
 import { PaymentSearch } from "./PaymentSearch"
@@ -402,6 +403,7 @@ export {
 	PaymentMerchantRequest,
 	PaymentMethodType,
 	PaymentOperation,
+	PaymentOperationType,
 	PaymentRequest,
 	PaymentResponse,
 	PaymentSearch,
