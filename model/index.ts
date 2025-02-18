@@ -36,7 +36,6 @@ import { CardForm } from "./CardForm"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOperation } from "./CardOperation"
 import { CardOptionSearch } from "./CardOptionSearch"
-import { CardReportUrlRequest } from "./CardReportUrlRequest"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardResponseV3 } from "./CardResponseV3"
@@ -77,6 +76,12 @@ import { Criteria } from "./Criteria"
 import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
 import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
 import { DeliveryStatus } from "./DeliveryStatus"
+import { DownloadCardReportRequest } from "./DownloadCardReportRequest"
+import { DownloadFileFormat } from "./DownloadFileFormat"
+import { DownloadOrganisationSearchRequest } from "./DownloadOrganisationSearchRequest"
+import { DownloadReconciliationReportRequest } from "./DownloadReconciliationReportRequest"
+import { DownloadStatementReportRequest } from "./DownloadStatementReportRequest"
+import { DownloadUserReportRequest } from "./DownloadUserReportRequest"
 import { EditCloseDateRequest } from "./EditCloseDateRequest"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
@@ -168,7 +173,6 @@ import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
 import { ProviderTransferTransactionOperation } from "./ProviderTransferTransactionOperation"
 import { Range } from "./Range"
-import { ReconciliationReportUrlRequest } from "./ReconciliationReportUrlRequest"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
@@ -190,7 +194,6 @@ import { StatementReportResponseRow } from "./StatementReportResponseRow"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementReportSubType } from "./StatementReportSubType"
-import { StatementReportUrlRequest } from "./StatementReportUrlRequest"
 import { StatementRowIds } from "./StatementRowIds"
 import { StatementSummaryReportRequest } from "./StatementSummaryReportRequest"
 import { StatementSummaryReportResponse } from "./StatementSummaryReportResponse"
@@ -228,7 +231,6 @@ import { UserLimitsDeleteRequest } from "./UserLimitsDeleteRequest"
 import { UserLimitsRequest } from "./UserLimitsRequest"
 import { UserLimitsResponse } from "./UserLimitsResponse"
 import { UsernameAvailabilityResponse } from "./UsernameAvailabilityResponse"
-import { UserReportUrlRequest } from "./UserReportUrlRequest"
 import { UserRequest } from "./UserRequest"
 import { UserResponse } from "./UserResponse"
 import { UserRoleResponse } from "./UserRoleResponse"
@@ -275,7 +277,6 @@ export {
 	CardFundingAccountResponse,
 	CardOperation,
 	CardOptionSearch,
-	CardReportUrlRequest,
 	CardResponse,
 	CardResponseV2,
 	CardResponseV3,
@@ -316,6 +317,12 @@ export {
 	CurrencyConversionRequest,
 	CurrencyConversionResponse,
 	DeliveryStatus,
+	DownloadCardReportRequest,
+	DownloadFileFormat,
+	DownloadOrganisationSearchRequest,
+	DownloadReconciliationReportRequest,
+	DownloadStatementReportRequest,
+	DownloadUserReportRequest,
 	EditCloseDateRequest,
 	EmailValidationResponse,
 	ErrorMessageDto,
@@ -410,7 +417,6 @@ export {
 	References,
 	RelogWithNewSessionDetailsRequest,
 	Report,
-	ReconciliationReportUrlRequest,
 	ReportUrlResponse,
 	RoleResponse,
 	RolesetResponse,
@@ -424,7 +430,6 @@ export {
 	Segment,
 	SearchBeneficiaryRequest,
 	SearchCardTypeProfileRequest,
-	StatementReportUrlRequest,
 	StatementReportRequest,
 	StatementReportResponse,
 	StatementReportResponseRow,
@@ -467,7 +472,6 @@ export {
 	UserLimitsRequest,
 	UserLimitsResponse,
 	UsernameAvailabilityResponse,
-	UserReportUrlRequest,
 	UserRequest,
 	UserResponse,
 	UserRoleResponse,
