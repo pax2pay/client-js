@@ -34,7 +34,6 @@ import { CardForm } from "./CardForm"
 import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOperation } from "./CardOperation"
 import { CardOptionSearch } from "./CardOptionSearch"
-import { CardReportUrlRequest } from "./CardReportUrlRequest"
 import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardResponseV3 } from "./CardResponseV3"
@@ -75,6 +74,7 @@ import { Criteria } from "./Criteria"
 import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
 import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
 import { DeliveryStatus } from "./DeliveryStatus"
+import { DownloadCardReportUrlRequest } from "./DownloadCardReportUrlRequest"
 import { DownloadFileFormat } from "./DownloadFileFormat"
 import { DownloadOrganisationSearchRequest } from "./DownloadOrganisationSearchRequest"
 import { EditCloseDateRequest } from "./EditCloseDateRequest"
@@ -268,7 +268,6 @@ export {
 	CardFundingAccountResponse,
 	CardOperation,
 	CardOptionSearch,
-	CardReportUrlRequest,
 	CardResponse,
 	CardResponseV2,
 	CardResponseV3,
@@ -309,6 +308,7 @@ export {
 	CurrencyConversionRequest,
 	CurrencyConversionResponse,
 	DeliveryStatus,
+	DownloadCardReportUrlRequest,
 	DownloadFileFormat,
 	DownloadOrganisationSearchRequest,
 	EditCloseDateRequest,

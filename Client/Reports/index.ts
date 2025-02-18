@@ -86,7 +86,7 @@ export class Reports {
 	async getUserReportUrl(request: model.UserReportUrlRequest) {
 		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/user/download`, request)
 	}
-	async getCardReportUrl(request: model.CardReportUrlRequest) {
+	async getCardReportUrl(request: model.DownloadCardReportUrlRequest) {
 		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/card/download`, request)
 	}
 	async getReconciliationReportUrl(request: model.ReconciliationReportUrlRequest) {
