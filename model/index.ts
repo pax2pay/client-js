@@ -74,10 +74,11 @@ import { Criteria } from "./Criteria"
 import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
 import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
 import { DeliveryStatus } from "./DeliveryStatus"
-import { DownloadCardReportUrlRequest } from "./DownloadCardReportUrlRequest"
+import { DownloadCardReportRequest } from "./DownloadCardReportRequest"
 import { DownloadFileFormat } from "./DownloadFileFormat"
 import { DownloadOrganisationSearchRequest } from "./DownloadOrganisationSearchRequest"
 import { DownloadReconciliationReportRequest } from "./DownloadReconciliationReportRequest"
+import { DownloadUserReportRequest } from "./DownloadUserReportRequest"
 import { EditCloseDateRequest } from "./EditCloseDateRequest"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
@@ -223,7 +224,6 @@ import { UserLimitsDeleteRequest } from "./UserLimitsDeleteRequest"
 import { UserLimitsRequest } from "./UserLimitsRequest"
 import { UserLimitsResponse } from "./UserLimitsResponse"
 import { UsernameAvailabilityResponse } from "./UsernameAvailabilityResponse"
-import { UserReportUrlRequest } from "./UserReportUrlRequest"
 import { UserRequest } from "./UserRequest"
 import { UserResponse } from "./UserResponse"
 import { UserRoleResponse } from "./UserRoleResponse"
@@ -308,10 +308,11 @@ export {
 	CurrencyConversionRequest,
 	CurrencyConversionResponse,
 	DeliveryStatus,
-	DownloadCardReportUrlRequest,
+	DownloadCardReportRequest,
 	DownloadFileFormat,
 	DownloadOrganisationSearchRequest,
 	DownloadReconciliationReportRequest,
+	DownloadUserReportRequest,
 	EditCloseDateRequest,
 	EmailValidationResponse,
 	ErrorMessageDto,
@@ -457,7 +458,6 @@ export {
 	UserLimitsRequest,
 	UserLimitsResponse,
 	UsernameAvailabilityResponse,
-	UserReportUrlRequest,
 	UserRequest,
 	UserResponse,
 	UserRoleResponse,

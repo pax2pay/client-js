@@ -83,10 +83,10 @@ export class Reports {
 	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
 		return await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
 	}
-	async getUserReportUrl(request: model.UserReportUrlRequest) {
+	async getUserReportUrl(request: model.DownloadUserReportRequest) {
 		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/user/download`, request)
 	}
-	async getCardReportUrl(request: model.DownloadCardReportUrlRequest) {
+	async getCardReportUrl(request: model.DownloadCardReportRequest) {
 		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/card/download`, request)
 	}
 	async getReconciliationReportUrl(request: model.DownloadReconciliationReportRequest) {

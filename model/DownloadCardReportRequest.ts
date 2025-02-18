@@ -1,7 +1,7 @@
 import { CardSearch } from "./CardSearch"
 import { DownloadFileFormat } from "./DownloadFileFormat"
 
-export interface DownloadCardReportUrlRequest extends CardSearch {
+export interface DownloadCardReportRequest extends CardSearch {
 	fileFormat: DownloadFileFormat
 	locale?: string
 }
