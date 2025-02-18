@@ -78,6 +78,7 @@ import { DownloadCardReportRequest } from "./DownloadCardReportRequest"
 import { DownloadFileFormat } from "./DownloadFileFormat"
 import { DownloadOrganisationSearchRequest } from "./DownloadOrganisationSearchRequest"
 import { DownloadReconciliationReportRequest } from "./DownloadReconciliationReportRequest"
+import { DownloadStatementReportRequest } from "./DownloadStatementReportRequest"
 import { DownloadUserReportRequest } from "./DownloadUserReportRequest"
 import { EditCloseDateRequest } from "./EditCloseDateRequest"
 import { EmailValidationResponse } from "./EmailValidationResponse"
@@ -186,7 +187,6 @@ import { StatementReportResponseRow } from "./StatementReportResponseRow"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementReportSubType } from "./StatementReportSubType"
-import { StatementReportUrlRequest } from "./StatementReportUrlRequest"
 import { StatementRowIds } from "./StatementRowIds"
 import { StatementSummaryReportRequest } from "./StatementSummaryReportRequest"
 import { StatementSummaryReportResponse } from "./StatementSummaryReportResponse"
@@ -312,6 +312,7 @@ export {
 	DownloadFileFormat,
 	DownloadOrganisationSearchRequest,
 	DownloadReconciliationReportRequest,
+	DownloadStatementReportRequest,
 	DownloadUserReportRequest,
 	EditCloseDateRequest,
 	EmailValidationResponse,
@@ -415,7 +416,6 @@ export {
 	Segment,
 	SearchBeneficiaryRequest,
 	SearchCardTypeProfileRequest,
-	StatementReportUrlRequest,
 	StatementReportRequest,
 	StatementReportResponse,
 	StatementReportResponseRow,

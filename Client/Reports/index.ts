@@ -80,7 +80,7 @@ export class Reports {
 	async getStatementReportRow(rowId: string) {
 		return await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 	}
-	async getStatementReportUrl(request: model.StatementReportUrlRequest) {
+	async getStatementReportUrl(request: model.DownloadStatementReportRequest) {
 		return await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
 	}
 	async getUserReportUrl(request: model.DownloadUserReportRequest) {
