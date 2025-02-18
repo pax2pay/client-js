@@ -92,6 +92,9 @@ export class Reports {
 	async getReconciliationReportUrl(request: model.ReconciliationReportUrlRequest) {
 		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/reconciliation/download`, request)
 	}
+	async getOrganisationReportUrl(request: model.DownloadOrganisationSearchRequest) {
+		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/organisation/download`, request)
+	}
 	static create(connection: Connection) {
 		return new Reports(connection)
 	}

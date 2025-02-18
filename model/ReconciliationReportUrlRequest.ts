@@ -1,7 +1,8 @@
 import * as isoly from "isoly"
+import { DownloadFileFormat } from "./DownloadFileFormat"
 import { ProviderCode } from "./ProviderCode"
 export interface ReconciliationReportUrlRequest {
-	fileFormat: string
+	fileFormat: DownloadFileFormat
 	locale?: string
 	providerCode?: ProviderCode
 	providerAccountId?: string

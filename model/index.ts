@@ -75,6 +75,8 @@ import { Criteria } from "./Criteria"
 import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
 import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
 import { DeliveryStatus } from "./DeliveryStatus"
+import { DownloadFileFormat } from "./DownloadFileFormat"
+import { DownloadOrganisationSearchRequest } from "./DownloadOrganisationSearchRequest"
 import { EditCloseDateRequest } from "./EditCloseDateRequest"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
@@ -307,6 +309,8 @@ export {
 	CurrencyConversionRequest,
 	CurrencyConversionResponse,
 	DeliveryStatus,
+	DownloadFileFormat,
+	DownloadOrganisationSearchRequest,
 	EditCloseDateRequest,
 	EmailValidationResponse,
 	ErrorMessageDto,
