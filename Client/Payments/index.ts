@@ -14,6 +14,9 @@ export class Payments extends List<model.PaymentResponse> {
 	async create(request: model.PaymentRequest) {
 		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(this.folder, request)
 	}
+	async createTokenised(request: model.PaymentRequest) {
+		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(`${this.folder}/tokenised`, request)
+	}
 	async get(id: string) {
 		return await this.connection.get<model.PaymentResponse>(`${this.folder}/${id}`)
 	}
