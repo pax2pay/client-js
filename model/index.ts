@@ -205,6 +205,9 @@ import { SummaryPaymentResponse } from "./SummaryPaymentResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
 import { SupplierRequest } from "./SupplierRequest"
 import { SupplierResponse } from "./SupplierResponse"
+import { TierFeatureResponse } from "./TierFeatureResponse"
+import { TierLimitResponse } from "./TierLimitResponse"
+import { TierResponse } from "./TierResponse"
 import { TransactionResponse } from "./TransactionResponse"
 import { TransactionType } from "./TransactionType"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
@@ -448,6 +451,9 @@ export {
 	SupplierBookingInfo,
 	SupplierRequest,
 	SupplierResponse,
+	TierFeatureResponse,
+	TierLimitResponse,
+	TierResponse,
 	TransactionResponse,
 	TransactionType,
 	TransferDestinationInfo,
