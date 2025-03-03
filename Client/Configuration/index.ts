@@ -49,4 +49,10 @@ export class Configuration {
 	async getConfigValueFromKey(category: string, key: string): Promise<any | model.ErrorResponse> {
 		return await this.connection.get<any>(`${this.folder}/key/${category}/${key}`)
 	}
+	async getAllTiers(): Promise<model.TierResponse[] | model.ErrorResponse> {
+		return await this.connection.get<model.TierResponse[]>(`${this.folder}/tiers`)
+	}
+	async getTierById(id: string): Promise<model.TierResponse | model.ErrorResponse> {
+		return await this.connection.get<model.TierResponse>(`${this.folder}/tiers/${id}`)
+	}
 }
