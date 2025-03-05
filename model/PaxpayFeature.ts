@@ -1,3 +1,5 @@
+import { isly } from "isly"
+
 export type PaxpayFeature = typeof PaxpayFeature.values[number]
 
 export namespace PaxpayFeature {
@@ -7,7 +9,6 @@ export namespace PaxpayFeature {
 		"BANK_TRANSFERS",
 		"SHOW_EMPTY_STATEMENTS",
 	] as const
-	export function is(value: unknown): value is PaxpayFeature {
-		return typeof value == "string" && values.includes(value as PaxpayFeature)
-	}
+	export const type = isly.string(values)
+	export const is = type.is
 }
