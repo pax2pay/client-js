@@ -206,6 +206,7 @@ import { SupplierBookingInfo } from "./SupplierBookingInfo"
 import { SupplierRequest } from "./SupplierRequest"
 import { SupplierResponse } from "./SupplierResponse"
 import { TierFeatureResponse } from "./TierFeatureResponse"
+import { TierID } from "./TierID"
 import { TierLimitResponse } from "./TierLimitResponse"
 import { TierResponse } from "./TierResponse"
 import { TransactionResponse } from "./TransactionResponse"
@@ -452,6 +453,7 @@ export {
 	SupplierRequest,
 	SupplierResponse,
 	TierFeatureResponse,
+	TierID,
 	TierLimitResponse,
 	TierResponse,
 	TransactionResponse,
