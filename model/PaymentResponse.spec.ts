@@ -4,7 +4,7 @@ describe("PaymentResponse", () => {
 	it("is false", () => {
 		expect(PaymentResponse.is({ status: "INACTIVE", code: "somecode" })).toBeFalsy()
 	})
-	it("is true", () => {
+	it("card is valid", () => {
 		const res = {
 			id: "Y000000DQ",
 			account: "A00003O",
@@ -60,6 +60,61 @@ describe("PaymentResponse", () => {
 				maxAmount: 301,
 				activationDate: "2024-12-12",
 			},
+		}
+		expect(PaymentResponse.is(res)).toBeTruthy()
+	})
+
+	it("transfer is valid", () => {
+		const res = {
+			id: "Y000001CL",
+			account: "A0000RP",
+			amount: 100,
+			remaining: 100,
+			total: 100,
+			schedule: [
+				{
+					amount: 100,
+					date: "2025-04-11",
+				},
+			],
+			currency: "EUR",
+			state: "active",
+			merchant: {
+				name: "test",
+				id: "M00000F",
+			},
+			method: "transfer",
+			meta: {
+				format: "five fields",
+				version: 1,
+				supplierBookingReference: "test",
+				supplierCode: "test",
+				departureDate: "2025-04-11",
+				type: "FIVE_FIELDS",
+				agentBookingReference: "test",
+				leadPassengerName: "test",
+			},
+			createdBy: "qijiey",
+			createdOn: "2025-03-12T10:43:17.288652939",
+			transfer: {
+				providerCode: "modulr",
+				providerTransferId: "SCH100EUR20250411A2100CJ6PYhTnHSrTV",
+				beneficiary: "B2926",
+				destination: {
+					iban: "FR1420041010050500013M02606",
+					type: "IBAN",
+					fullName: "Test Beneficiary tx",
+					currency: "EUR",
+					name: "Testotherx",
+				},
+				reference: "your payment ref",
+			},
+			operations: [
+				{
+					type: "transfer",
+					timestamp: "2025-03-12T10:43:17.078077",
+				},
+			],
 		}
 		expect(PaymentResponse.is(res)).toBeTruthy()
 	})
