@@ -40,4 +40,13 @@ export class Payments extends List<model.PaymentResponse> {
 			sort
 		)
 	}
+	async freeze(id: string) {
+		return await this.connection.get<model.PaymentResponse>(`${this.folder}/${id}/freeze`)
+	}
+	async thaw(id: string) {
+		return await this.connection.get<model.PaymentResponse>(`${this.folder}/${id}/thaw`)
+	}
+	async cancel(id: string) {
+		return await this.connection.remove<model.PaymentResponse>(`${this.folder}/${id}`)
+	}
 }
