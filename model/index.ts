@@ -83,6 +83,8 @@ import { DownloadReconciliationReportRequest } from "./DownloadReconciliationRep
 import { DownloadStatementReportRequest } from "./DownloadStatementReportRequest"
 import { DownloadUserReportRequest } from "./DownloadUserReportRequest"
 import { EditCloseDateRequest } from "./EditCloseDateRequest"
+import { EditPaymentAmountRequest } from "./EditPaymentAmountRequest"
+import { EditPaymentCloseDateRequest } from "./EditPaymentCloseDateRequest"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
@@ -329,6 +331,8 @@ export {
 	DownloadStatementReportRequest,
 	DownloadUserReportRequest,
 	EditCloseDateRequest,
+	EditPaymentAmountRequest,
+	EditPaymentCloseDateRequest,
 	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,
