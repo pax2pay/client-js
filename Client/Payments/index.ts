@@ -58,4 +58,7 @@ export class Payments extends List<model.PaymentResponse> {
 	async deleteCloseDate(id: string) {
 		return await this.connection.remove<model.PaymentResponse>(`${this.folder}/${id}/close-date`)
 	}
+	async editSchedule(id: string, request: model.EditPaymentScheduleRequest) {
+		return await this.connection.put<model.PaymentResponse>(`${this.folder}/${id}/schedule`, request)
+	}
 }
