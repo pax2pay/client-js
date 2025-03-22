@@ -4,7 +4,7 @@ import { SummaryMerchantResponse } from "./SummaryMerchantResponse"
 import { TransferResponseV3 } from "./TransferResponseV3"
 
 export interface SummaryPaymentResponse extends AbstractPaymentResponse {
-	merchant: SummaryMerchantResponse
+	merchant?: SummaryMerchantResponse
 	card?: SummaryCardResponseV3
 	transfer?: TransferResponseV3
 }
