@@ -130,6 +130,8 @@ import { MerchantResponse } from "./MerchantResponse"
 import { MerchantSearchRequest } from "./MerchantSearchRequest"
 import { MerchantType } from "./MerchantType"
 import { MetadataFormat } from "./MetadataFormat"
+import { MetadataRequest } from "./MetadataRequest"
+import { MetadataResponse } from "./MetadataResponse"
 import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { Notification } from "./Notification"
@@ -380,6 +382,8 @@ export {
 	MerchantSearchRequest,
 	MerchantType,
 	MetadataFormat,
+	MetadataRequest,
+	MetadataResponse,
 	MinimalBookingInfo,
 	NonBeneficiaryTransferDestination,
 	Notification,

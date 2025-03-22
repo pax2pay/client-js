@@ -26,6 +26,7 @@ describe("PaymentResponse", () => {
 			method: "card",
 			meta: {
 				format: "five fields",
+				version: 1,
 				type: "FIVE_FIELDS",
 				trackingId: "xxxxxxxxxxxxxxxxxxxxxxxxx",
 				agentBookingReference: "test",

@@ -1,6 +1,6 @@
 import { Currency, DateTime } from "isoly"
 import { isly } from "isly"
-import { BookingInfoResponse } from "./BookingInfoResponse"
+import { MetadataResponse } from "./MetadataResponse"
 import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
 import { PaymentStatus } from "./PaymentStatus"
 import { SummaryMerchantResponse } from "./SummaryMerchantResponse"
@@ -16,7 +16,7 @@ export interface AbstractPaymentResponse {
 	state: PaymentStatus
 	merchant?: SummaryMerchantResponse
 	method: "card" | "transfer"
-	meta?: BookingInfoResponse
+	meta?: MetadataResponse
 	createdBy: string
 	createdOn: DateTime
 }
@@ -32,7 +32,7 @@ export namespace AbstractPaymentResponse {
 		state: PaymentStatus.type,
 		merchant: SummaryMerchantResponse.type.optional(),
 		method: isly.string(["card", "transfer"]),
-		meta: isly.fromIs("BookingInfoResponse", BookingInfoResponse.is).optional(),
+		meta: MetadataResponse.type.optional(),
 		createdBy: isly.string(),
 		createdOn: isly.string(),
 	})
