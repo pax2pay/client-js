@@ -11,7 +11,7 @@ export class Metadata extends List<MetadataFormat.Response> {
 	static create(connection: Connection): Metadata {
 		return new Metadata(connection)
 	}
-	async getFormats(organisationCode?: string): Promise<MetadataFormat.Response[] | ErrorResponse> {
+	async getLatestFormats(organisationCode?: string): Promise<MetadataFormat.Response[] | ErrorResponse> {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.get<MetadataFormat.Response[]>(`${this.folder}/format`, undefined, header)
 	}
