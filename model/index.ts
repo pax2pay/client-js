@@ -1,3 +1,4 @@
+import { AbstractLoginRequest } from "./AbstractLoginRequest"
 import { AbstractPaymentOperation } from "./AbstractPaymentOperation"
 import { AbstractProviderTransactionOperation } from "./AbstractProviderTransactionOperation"
 import { AccountBankResponse } from "./AccountBankResponse"
@@ -195,6 +196,7 @@ import { SearchCardTypeProfileRequest } from "./SearchCardTypeProfileRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
+import { SsoLoginRequest } from "./SsoLoginRequest"
 import { StatementReportRequest } from "./StatementReportRequest"
 import { StatementReportResponse } from "./StatementReportResponse"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
@@ -250,6 +252,7 @@ import { UserStatus } from "./UserStatus"
 import { YearMonth } from "./YearMonth"
 
 export {
+	AbstractLoginRequest,
 	AbstractPaymentOperation,
 	AbstractProviderTransactionOperation,
 	AccountBankResponse,
@@ -446,6 +449,7 @@ export {
 	SearchRolesetsRequest,
 	SecurityConfig,
 	Segment,
+	SsoLoginRequest,
 	SearchBeneficiaryRequest,
 	SearchCardTypeProfileRequest,
 	StatementReportRequest,

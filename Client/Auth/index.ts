@@ -64,6 +64,10 @@ export class Auth {
 		}
 		return result
 	}
+	async loginWithGoogle(request: model.SsoLoginRequest) {
+		const result = await this.connection.post<model.SsoLoginRequest, 400 | 403 | 404 | 500>("auth/sso/google", request)
+		return result
+	}
 	async refresh(request?: model.RelogWithNewSessionDetailsRequest) {
 		let result
 		if (request) {
