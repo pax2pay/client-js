@@ -1,5 +1,6 @@
 import { Client } from "./Client"
 import {
+	AbstractLoginRequest,
 	AbstractPaymentOperation,
 	AbstractProviderTransactionOperation,
 	AccountBankResponse,
@@ -194,6 +195,7 @@ import {
 	SearchRolesetsRequest,
 	SecurityConfig,
 	Segment,
+	SsoLoginRequest,
 	StatementReportRequest,
 	StatementReportResponse,
 	StatementReportResponseRow,
@@ -251,6 +253,7 @@ import {
 
 export {
 	Client,
+	AbstractLoginRequest,
 	AbstractPaymentOperation,
 	AbstractProviderTransactionOperation,
 	AccountBankResponse,
@@ -310,7 +313,6 @@ export {
 	CardTypeSearchRequest,
 	CardTypeSpecification,
 	CardTypeFlag,
-	Usage,
 	CardUsage,
 	CategoryFundingAccountAccessRequest,
 	CategoryLimitResponse,
@@ -443,6 +445,7 @@ export {
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	Segment,
+	SsoLoginRequest,
 	SecurityConfig,
 	SearchBeneficiaryRequest,
 	SearchCardTypeProfileRequest,
@@ -486,6 +489,7 @@ export {
 	UpdateCardTypeProfileRequest,
 	UpdateCategoryRequest,
 	UpdateRolesetRequest,
+	Usage,
 	UserChangeRequest,
 	UserConfig,
 	UserLimitsDeleteRequest,

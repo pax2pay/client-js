@@ -64,6 +64,19 @@ export class Auth {
 		}
 		return result
 	}
+	async loginWithGoogle(request: model.SsoLoginRequest, otp?: string) {
+		const result = await this.connection.post<model.LoginResponse, 400 | 403 | 404 | 500>(
+			"auth/sso/google",
+			request,
+			undefined,
+			otp ? { "x-otp": otp } : {}
+		)
+		if (!isError(result) && result.token) {
+			this.token = result.token
+			this.data = result
+		}
+		return result
+	}
 	async refresh(request?: model.RelogWithNewSessionDetailsRequest) {
 		let result
 		if (request) {
