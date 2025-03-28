@@ -84,7 +84,12 @@ export class Connection {
 		if (response && response.headers.has("x-otp-cookie"))
 			window.localStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
 		//get temp token to set up 2fa before login
-		if (response && response.status == 403 && response.url.includes("login") && response.headers.has("X-Auth-Token"))
+		if (
+			response &&
+			response.status == 403 &&
+			(response.url.includes("login") || response.url.includes("sso/google")) &&
+			response.headers.has("X-Auth-Token")
+		)
 			Session.authentication.set({ token: response.headers.get("X-Auth-Token") ?? undefined })
 
 		return !response
