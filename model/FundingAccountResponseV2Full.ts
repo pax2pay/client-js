@@ -11,6 +11,7 @@ export interface FundingAccountResponseV2Full extends FundingAccountResponseV2Ba
 	updatedOn: DateTime
 	createdOn: DateTime
 	realm?: string
+	legalEntityName?: string
 }
 
 export namespace FundingAccountResponseV2Full {
@@ -19,6 +20,7 @@ export namespace FundingAccountResponseV2Full {
 			typeof value == "object" &&
 			(value.actualBalance == undefined || typeof value.actualBalance == "number") &&
 			(value.realm == undefined || typeof value.realm == "string") &&
+			(value.legalEntityName == undefined || typeof value.legalEntityName == "string") &&
 			(value.fundingLimit == undefined || FundingLimitResponse.is(value.fundingLimit)) &&
 			(value.accountIdentifier == undefined || AccountIdentifierResponse.is(value.accountIdentifier)) &&
 			(value.totalCardAvailableBalance == undefined || typeof value.totalCardAvailableBalance == "number") &&
