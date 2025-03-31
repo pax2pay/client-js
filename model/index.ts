@@ -98,6 +98,7 @@ import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
 import { FlightBookingInfoResponse } from "./FlightBookingInfoResponse"
 import { FlightInfo } from "./FlightInfo"
+import { FraudEmailConfig } from "./FraudEmailConfig"
 import { FundingAccountIdentifierType } from "./FundingAccountIdentifierType"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingAccountResponseV2Basic } from "./FundingAccountResponseV2Basic"
@@ -197,6 +198,8 @@ import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
 import { SsoLoginRequest } from "./SsoLoginRequest"
+import { SsoProviderConfig } from "./SsoProviderConfig"
+import { SsoProviderType } from "./SsoProviderType"
 import { StatementReportRequest } from "./StatementReportRequest"
 import { StatementReportResponse } from "./StatementReportResponse"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
@@ -352,6 +355,7 @@ export {
 	FlightBookingInfoRequest,
 	FlightBookingInfoResponse,
 	FlightInfo,
+	FraudEmailConfig,
 	FundingAccountIdentifierType,
 	FundingAccountInboundTransferNotificationConfig,
 	FundingAccountResponseV2Basic,
@@ -450,6 +454,8 @@ export {
 	SecurityConfig,
 	Segment,
 	SsoLoginRequest,
+	SsoProviderConfig,
+	SsoProviderType,
 	SearchBeneficiaryRequest,
 	SearchCardTypeProfileRequest,
 	StatementReportRequest,
