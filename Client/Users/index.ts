@@ -39,7 +39,7 @@ export class Users extends List<model.UserResponse> {
 	async resetPassword(username: string): Promise<model.PasswordResetResponse | model.ErrorResponse> {
 		return await this.connection.post<model.PasswordResetResponse>(`auth/passwordreset`, { username: username })
 	}
-	async updateRolesetOnUser(username: string, roleset: string): Promise<model.UserRoleResponse | model.ErrorResponse> {
+	async setRolesetOnUser(username: string, roleset: string): Promise<model.UserRoleResponse | model.ErrorResponse> {
 		return await this.connection.put<model.UserRoleResponse>(
 			`${this.folder}/${username}/rolesets/${roleset}`,
 			undefined
@@ -47,6 +47,12 @@ export class Users extends List<model.UserResponse> {
 	}
 	async addRolesetOnUser(username: string, roleset: string): Promise<model.UserRoleResponse | model.ErrorResponse> {
 		return await this.connection.post<model.UserRoleResponse>(
+			`${this.folder}/${username}/rolesets/${roleset}`,
+			undefined
+		)
+	}
+	async removeRolesetOnUser(username: string, roleset: string): Promise<model.UserRoleResponse | model.ErrorResponse> {
+		return await this.connection.remove<model.UserRoleResponse>(
 			`${this.folder}/${username}/rolesets/${roleset}`,
 			undefined
 		)
