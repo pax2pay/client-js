@@ -3,10 +3,13 @@ import { isly } from "isly"
 import { ApprovalNotificationConfig } from "./ApprovalNotificationConfig"
 import { CardDeliveryEmailConfig } from "./CardDeliveryEmailConfig"
 import { CardTypesConfig } from "./CardTypesConfig"
+import { FraudEmailConfig } from "./FraudEmailConfig"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingLimitConfig } from "./FundingLimitConfig"
 import { ProviderCode } from "./ProviderCode"
 import { SecurityConfig } from "./SecurityConfig"
+import { SsoProviderConfig } from "./SsoProviderConfig"
+import { SsoProviderType } from "./SsoProviderType"
 import { Usage } from "./Usage"
 /**
  * Organisation config, optional
@@ -25,6 +28,8 @@ export interface OrganisationConfig {
 	cardDeliveryEmailConfig?: CardDeliveryEmailConfig
 	portalHideMultipleUseOption?: boolean
 	securityConfig?: SecurityConfig
+	fraudEmailConfig?: FraudEmailConfig
+	sso?: Partial<Record<SsoProviderType, SsoProviderConfig>>
 }
 
 export namespace OrganisationConfig {
@@ -43,6 +48,8 @@ export namespace OrganisationConfig {
 		cardDeliveryEmailConfig: CardDeliveryEmailConfig.type.optional(),
 		portalHideMultipleUseOption: isly.boolean().optional(),
 		securityConfig: SecurityConfig.type.optional(),
+		fraudEmailConfig: FraudEmailConfig.type.optional(),
+		sso: isly.record(SsoProviderType.type, SsoProviderConfig.type).optional(),
 	})
 	export const is = type.is
 }
