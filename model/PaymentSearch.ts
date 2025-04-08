@@ -26,6 +26,7 @@ export interface PaymentSearch {
 	total?: Range<number>
 	remainingLimitPercent?: Range<number>
 	deliveryStatus?: PaymentDeliveryStatus[]
+	cardIssueDate?: Range<isoly.Date>
 	cardExpiry?: Range<isoly.Date>
 	cardType?: CardTypeSpecification | CardTypeSpecification[]
 	cardNumber?: string
@@ -53,6 +54,7 @@ export namespace PaymentSearch {
 		total: Range.type.optional(),
 		remainingLimitPercent: Range.type.optional(),
 		deliveryStatus: PaymentDeliveryStatus.type.array().optional(),
+		cardIssueDate: Range.type.optional(),
 		cardExpiry: Range.type.optional(),
 		cardType: isly.union(CardTypeSpecification.type, CardTypeSpecification.type.array()).optional(),
 		cardNumber: isly.string().optional(),
