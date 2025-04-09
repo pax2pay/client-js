@@ -5,7 +5,10 @@ export type PaymentStatus = typeof PaymentStatus.values[number]
 export namespace PaymentStatus {
 	export const values = [
 		"active",
-		"completed",
+		"sent",
+		"upcoming",
+		"settled",
+		"completed", //deprecated
 		"rejected",
 		"frozen",
 		"closed",
