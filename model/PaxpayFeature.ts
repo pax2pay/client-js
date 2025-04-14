@@ -8,6 +8,7 @@ export namespace PaxpayFeature {
 		"FUZZY_SEARCH_COLLECTION_TRAVERSAL",
 		"BANK_TRANSFERS",
 		"SHOW_EMPTY_STATEMENTS",
+		"BETA_PAYMENTS",
 	] as const
 	export const type = isly.string(values)
 	export const is = type.is
