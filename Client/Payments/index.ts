@@ -46,6 +46,18 @@ export class Payments extends List<model.PaymentResponse> {
 	async thaw(id: string) {
 		return await this.connection.get<model.PaymentResponse>(`${this.folder}/${id}/thaw`)
 	}
+	async approve(id: string) {
+		return await this.connection.get<model.PaymentResponse>(`${this.folder}/${id}/approve`)
+	}
+	async decline(id: string) {
+		return await this.connection.get<model.PaymentResponse>(`${this.folder}/${id}/decline`)
+	}
+	async generate(id: string) {
+		return await this.connection.get<model.PaymentResponse>(`${this.folder}/${id}/generate`)
+	}
+	async generateTokenised(id: string) {
+		return await this.connection.get<model.PaymentResponse>(`${this.folder}/${id}/generate/tokenised`)
+	}
 	async cancel(id: string) {
 		return await this.connection.remove<model.PaymentResponse>(`${this.folder}/${id}`)
 	}
