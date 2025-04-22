@@ -15,7 +15,7 @@ import { TransferResponseV2Summary } from "./TransferResponseV2Summary"
 export interface StatementReportResponseRow {
 	actionType: StatementReportRowActionType
 	amount: BillingTransactionAmountPair | FutureTransactionPrognosisAmountPair
-	bookingInfo?: BookingInfoResponse
+	bookingInfo?: BookingInfoResponse // TODO: Replace here for metadata
 	postedDate?: isoly.DateTime
 	transactionDate?: isoly.DateTime
 	balance?: number

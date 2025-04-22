@@ -33,7 +33,7 @@ export interface CardResponseV2 {
 	longTermTokenExpiry?: Date
 	activationDate?: Date
 	schedule?: CardScheduleResponseItem[]
-	bookingInfo?: BookingInfoResponse
+	bookingInfo?: BookingInfoResponse // TODO: replace with Metadata
 	delivery?: CardDeliveryResponse
 	batchId?: string
 	merchantRestriction?: MerchantResponse

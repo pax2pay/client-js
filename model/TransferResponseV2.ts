@@ -19,7 +19,7 @@ export interface TransferResponseV2 {
 	reference: string
 	source: FundingAccountSummaryResponse | ExternalSource
 	destination: TransferDestinationResponse
-	bookingInfo?: BookingInfoResponse
+	bookingInfo?: BookingInfoResponse // TODO: replace with Metadata
 	direction: TransferDirection
 	createdBy: string
 	personallyApprovable?: boolean
