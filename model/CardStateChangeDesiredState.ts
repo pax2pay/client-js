@@ -1,8 +1,9 @@
-const cardStateChangeDesiredState = ["CANCEL", "FREEZE", "THAW"] as const
-export type CardStateChangeDesiredState = typeof cardStateChangeDesiredState[number]
+import { isly } from "isly"
+
+export type CardStateChangeDesiredState = typeof CardStateChangeDesiredState.values[number]
 
 export namespace CardStateChangeDesiredState {
-	export function is(value: unknown): value is CardStateChangeDesiredState {
-		return typeof value == "string" && cardStateChangeDesiredState.includes(value as CardStateChangeDesiredState)
-	}
+	export const values = ["CANCEL", "FREEZE", "THAW"] as const
+	export const type = isly.string<CardStateChangeDesiredState>(values)
+	export const is = type.is
 }

@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { AccountDetailsTransferDestinationResponse } from "./AccountDetailsTransferDestinationResponse"
 export interface BeneficiaryTransferDestinationResponse extends AccountDetailsTransferDestinationResponse {
 	beneficiaryId: string
@@ -5,14 +6,9 @@ export interface BeneficiaryTransferDestinationResponse extends AccountDetailsTr
 }
 
 export namespace BeneficiaryTransferDestinationResponse {
-	export function is(
-		value: BeneficiaryTransferDestinationResponse | any
-	): value is BeneficiaryTransferDestinationResponse {
-		return (
-			typeof value == "object" &&
-			typeof value.beneficiaryId == "string" &&
-			(value.name == undefined || typeof value.name == "string") &&
-			AccountDetailsTransferDestinationResponse.is(value)
-		)
-	}
+	export const type = AccountDetailsTransferDestinationResponse.type.extend<BeneficiaryTransferDestinationResponse>({
+		beneficiaryId: isly.string(),
+		name: isly.string().optional(),
+	})
+	export const is = type.is
 }

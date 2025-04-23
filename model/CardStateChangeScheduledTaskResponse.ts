@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { CardStateChangeDesiredState } from "./CardStateChangeDesiredState"
 import { ScheduledTaskResponse } from "./ScheduledTaskResponse"
 
@@ -7,11 +8,9 @@ export interface CardStateChangeScheduledTaskResponse extends ScheduledTaskRespo
 }
 
 export namespace CardStateChangeScheduledTaskResponse {
-	export function is(value: CardStateChangeScheduledTaskResponse | any): value is CardStateChangeScheduledTaskResponse {
-		return (
-			typeof value == "object" &&
-			value.taskType == "CARD_STATE_CHANGE" &&
-			CardStateChangeDesiredState.is(value.desiredState)
-		)
-	}
+	export const type = ScheduledTaskResponse.type.extend<CardStateChangeScheduledTaskResponse>({
+		taskType: isly.string("CARD_STATE_CHANGE"),
+		desiredState: CardStateChangeDesiredState.type,
+	})
+	export const is = type.is
 }

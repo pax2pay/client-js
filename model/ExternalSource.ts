@@ -1,8 +1,11 @@
+import { isly } from "isly"
+
 export interface ExternalSource {
 	payer?: string
 }
 export namespace ExternalSource {
-	export function is(value: ExternalSource | any): value is ExternalSource {
-		return typeof value == "object" && (value.payer == undefined || typeof value.payer == "string")
-	}
+	export const type = isly.object<ExternalSource>({
+		payer: isly.string().optional(),
+	})
+	export const is = type.is
 }

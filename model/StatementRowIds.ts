@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { MerchantDetails } from "./MerchantDetails"
 import { ProviderCode } from "./ProviderCode"
 
@@ -11,15 +12,13 @@ export interface StatementRowIds {
 }
 
 export namespace StatementRowIds {
-	export function is(value: StatementRowIds | any): value is StatementRowIds {
-		return (
-			typeof value == "object" &&
-			typeof value.rowId == "string" &&
-			ProviderCode.is(value.providerCode) &&
-			(value.providerCardId == undefined || typeof value.providerCardId == "string") &&
-			(value.orderId == undefined || typeof value.orderId == "string") &&
-			(value.providerTransferId == undefined || typeof value.providerTransferId == "string") &&
-			(value.merchantDetails == undefined || MerchantDetails.is(value.merchantDetails))
-		)
-	}
+	export const type = isly.object<StatementRowIds>({
+		rowId: isly.string(),
+		providerCode: ProviderCode.type,
+		providerCardId: isly.string().optional(),
+		orderId: isly.string().optional(),
+		providerTransferId: isly.string().optional(),
+		merchantDetails: MerchantDetails.type.optional(),
+	})
+	export const is = type.is
 }
