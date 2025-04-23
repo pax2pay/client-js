@@ -1,4 +1,5 @@
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
+import { ConfirmationOfPayeeResponse } from "./ConfirmationOfPayeeResponse"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
 
 export interface BeneficiaryResponse {
@@ -10,6 +11,7 @@ export interface BeneficiaryResponse {
 	defaultReference?: string
 	fullName?: string
 	history?: BeneficiaryResponse[]
+	confirmationOfPayee?: ConfirmationOfPayeeResponse
 }
 
 export namespace BeneficiaryResponse {
@@ -23,7 +25,8 @@ export namespace BeneficiaryResponse {
 			typeof value.createdOn == "string" &&
 			(value.fullName == undefined || typeof value.fullName == "string") &&
 			(value.defaultReference == undefined || typeof value.defaultReference == "string") &&
-			(value.history == undefined || Array.isArray(value.history)) //not checking same type because of risk of being slow
+			(value.history == undefined || Array.isArray(value.history)) && //not checking same type because of risk of being slow
+			(value.confirmationOfPayee == undefined || ConfirmationOfPayeeResponse.is(value.confirmationOfPayee))
 		)
 	}
 }
