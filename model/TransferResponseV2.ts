@@ -28,8 +28,6 @@ export interface TransferResponseV2 {
 	personallyApprovable?: boolean
 	approvedBy?: string
 	approvedOn?: DateTime
-	// TODO add delivery: DeliveryResponse
-	// TODO add batchId: string
 }
 
 export namespace TransferResponseV2 {
