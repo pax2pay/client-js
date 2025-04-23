@@ -144,8 +144,8 @@ describe("", () => {
 				friendlyName: "Account",
 			},
 			bookingInfo: {
-				type: "FIVE_FIELDS",
 				format: "five fields",
+				version: 5,
 				agentBookingReference: "rrr",
 				departureDate: "2020-01-01",
 				supplierBookingReference: "qwert",
