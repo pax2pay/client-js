@@ -68,6 +68,9 @@ import { CategoryStatus } from "./CategoryStatus"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
+import { ConfirmationOfPayeeRequest } from "./ConfirmationOfPayeeRequest"
+import { ConfirmationOfPayeeResponse } from "./ConfirmationOfPayeeResponse"
+import { ConfirmationOfPayeeResponseStatus } from "./ConfirmationOfPayeeResponseStatus"
 import { CreateCardRequest } from "./CreateCardRequest"
 import { CreateCardTypeProfileRequest } from "./CreateCardTypeProfileRequest"
 import { CreateRolesetRequest } from "./CreateRolesetRequest"
@@ -326,6 +329,9 @@ export {
 	ConfigMatchesRequest,
 	ConfigMatchesResponse,
 	ConfigTypesResponse,
+	ConfirmationOfPayeeRequest,
+	ConfirmationOfPayeeResponse,
+	ConfirmationOfPayeeResponseStatus,
 	CreateCardRequest,
 	CreateRolesetRequest,
 	CredentialRequest,
