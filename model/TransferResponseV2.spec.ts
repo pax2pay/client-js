@@ -21,6 +21,15 @@ describe("TransferResponseV2 is", () => {
 				fullName: "TESTBCN",
 				beneficiaryId: "B291",
 			},
+			bookingInfo: {
+				format: "five fields",
+				version: 2,
+				hotel: {
+					checkIn: "2022-10-11",
+					checkOut: "2022-10-12",
+					hotelName: "The Grand Budapest Hotel",
+				},
+			},
 			direction: "OUT",
 			createdBy: "lucym",
 		}
