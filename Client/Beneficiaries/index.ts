@@ -36,9 +36,6 @@ export class Beneficiaries extends List<model.BeneficiaryResponse> {
 		)
 		return this.extractResponse(response)
 	}
-	async confirmPayee(request: model.ConfirmationOfPayeeRequest) {
-		return await this.connection.post<model.ConfirmationOfPayeeResponse>(`confirmation-of-payee`, request)
-	}
 	async create(request: model.BeneficiaryRequest) {
 		return await this.connection.post<model.BeneficiaryResponse>(`${this.folder}`, request)
 	}
