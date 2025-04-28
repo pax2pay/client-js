@@ -1,5 +1,6 @@
 import * as isoly from "isoly"
 import { AddressInfo } from "./AddressInfo"
+import { ConfirmationOfPayeeResponse } from "./ConfirmationOfPayeeResponse"
 
 /**
  * Destination information
@@ -15,6 +16,7 @@ export interface TransferDestinationInfo {
 	bankName?: string
 	fullName?: string
 	type?: "IBAN" | "SCAN"
+	confirmationOfPayee?: ConfirmationOfPayeeResponse
 }
 
 export namespace TransferDestinationInfo {
@@ -28,7 +30,8 @@ export namespace TransferDestinationInfo {
 			isoly.Currency.is(value.currency) &&
 			(value.address == undefined || AddressInfo.is(value.address)) &&
 			(value.fullName == undefined || typeof value.fullName == "string") &&
-			(value.type == undefined || value.type == "IBAN" || value.type == "SCAN")
+			(value.type == undefined || value.type == "IBAN" || value.type == "SCAN") &&
+			(value.confirmationOfPayee == undefined || ConfirmationOfPayeeResponse.is(value.confirmationOfPayee))
 		)
 	}
 }
