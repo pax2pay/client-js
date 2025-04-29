@@ -17,5 +17,5 @@ export interface CardTypeResponse {
 	bins?: string[]
 	preActive?: boolean
 	discontinued?: boolean
-	usages?: Usage
+	usages?: Usage[]
 }

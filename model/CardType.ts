@@ -15,7 +15,7 @@ export interface CardType {
 	cardName?: string
 	representAs?: string
 	currencies?: Currency[]
-	usages?: Usage
+	usages?: Usage[]
 }
 export namespace CardType {
 	export const type = isly.object<CardType>({
@@ -24,7 +24,7 @@ export namespace CardType {
 		cardName: isly.string().optional(),
 		representAs: isly.string().optional(),
 		currencies: isly.array(isly.fromIs("Currency", Currency.is)).optional(),
-		usages: Usage.type.optional(),
+		usages: Usage.type.array().optional(),
 	})
 	export const is = type.is
 }
