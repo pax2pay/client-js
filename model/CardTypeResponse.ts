@@ -3,6 +3,7 @@ import { CardTypeFlag } from "./CardTypeSpecificationFlag"
 import { FundingType } from "./FundingType"
 import { ProviderCode } from "./ProviderCode"
 import { Scheme } from "./Scheme"
+import { Usage } from "./Usage"
 
 export interface CardTypeResponse {
 	providerCode: ProviderCode
@@ -16,4 +17,5 @@ export interface CardTypeResponse {
 	bins?: string[]
 	preActive?: boolean
 	discontinued?: boolean
+	usages?: Usage[]
 }
