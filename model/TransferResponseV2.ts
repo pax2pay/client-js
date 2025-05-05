@@ -1,5 +1,4 @@
 import { Currency, Date, DateTime } from "isoly"
-import { BookingInfoResponse } from "./BookingInfoResponse"
 import { ExternalSource } from "./ExternalSource"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { MetadataResponse } from "./MetadataResponse"

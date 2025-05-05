@@ -1,6 +1,5 @@
 import * as isoly from "isoly"
 import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
-import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardResponseV2Summary } from "./CardResponseV2Summary"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
