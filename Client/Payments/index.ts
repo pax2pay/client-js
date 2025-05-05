@@ -73,4 +73,7 @@ export class Payments extends List<model.PaymentResponse> {
 	async editSchedule(id: string, request: model.EditPaymentScheduleRequest) {
 		return await this.connection.put<model.PaymentResponse>(`${this.folder}/${id}/schedule`, request)
 	}
+	async editMetadata(id: string, request: model.EditPaymentMetadataRequest) {
+		return await this.connection.put<model.PaymentResponse>(`${this.folder}/${id}/meta`, request)
+	}
 }

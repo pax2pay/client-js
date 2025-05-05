@@ -90,6 +90,7 @@ import { EditCloseDateRequest } from "./EditCloseDateRequest"
 import { EditPaymentAmountRequest } from "./EditPaymentAmountRequest"
 import { EditPaymentAmountScheduleRequest } from "./EditPaymentAmountScheduleRequest"
 import { EditPaymentCloseDateRequest } from "./EditPaymentCloseDateRequest"
+import { EditPaymentMetadataRequest } from "./EditPaymentMetadataRequest"
 import { EditPaymentScheduleRequest } from "./EditPaymentScheduleRequest"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
@@ -350,6 +351,7 @@ export {
 	EditPaymentAmountRequest,
 	EditPaymentAmountScheduleRequest,
 	EditPaymentCloseDateRequest,
+	EditPaymentMetadataRequest,
 	EditPaymentScheduleRequest,
 	EmailValidationResponse,
 	ErrorMessageDto,
