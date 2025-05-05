@@ -1,10 +1,10 @@
 import * as isoly from "isoly"
 import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
-import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardResponseV2Summary } from "./CardResponseV2Summary"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognosisAmountPair"
+import { MetadataResponse } from "./MetadataResponse"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementRowIds } from "./StatementRowIds"
@@ -15,7 +15,7 @@ import { TransferResponseV2Summary } from "./TransferResponseV2Summary"
 export interface StatementReportResponseRow {
 	actionType: StatementReportRowActionType
 	amount: BillingTransactionAmountPair | FutureTransactionPrognosisAmountPair
-	bookingInfo?: BookingInfoResponse
+	bookingInfo?: MetadataResponse
 	postedDate?: isoly.DateTime
 	transactionDate?: isoly.DateTime
 	balance?: number
@@ -35,7 +35,7 @@ export namespace StatementReportResponseRow {
 			typeof value == "object" &&
 			StatementReportRowActionType.is(value.actionType) &&
 			BillingTransactionAmountPair.is(value.amount) &&
-			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo)) &&
+			(value.bookingInfo == undefined || MetadataResponse.is(value.bookingInfo)) &&
 			(value.postedDate == undefined || isoly.DateTime.is(value.postedDate)) &&
 			(value.transactionDate == undefined || isoly.DateTime.is(value.transactionDate)) &&
 			(typeof value.balance == "number" || value.balance == undefined) &&

@@ -1,9 +1,9 @@
 import { Currency, Date } from "isoly"
-import { BookingInfoRequest } from "./BookingInfoRequest"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
+import { MetadataRequest } from "./MetadataRequest"
 import { ProviderCode } from "./ProviderCode"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { Usage } from "./Usage"
@@ -14,7 +14,7 @@ import { YearMonth } from "./YearMonth"
  */
 export interface CreateCardRequest {
 	cardType: CardTypeSpecification | string
-	bookingInfo?: BookingInfoRequest
+	bookingInfo?: MetadataRequest
 	providerAccountId?: string
 	providerCode: ProviderCode
 	balance: number
