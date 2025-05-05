@@ -7,6 +7,7 @@ import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { MerchantResponse } from "./MerchantResponse"
+import { MetadataResponse } from "./MetadataResponse"
 import { ProviderCode } from "./ProviderCode"
 import { Usage } from "./Usage"
 import { YearMonth } from "./YearMonth"
@@ -33,7 +34,7 @@ export interface CardResponseV2 {
 	longTermTokenExpiry?: Date
 	activationDate?: Date
 	schedule?: CardScheduleResponseItem[]
-	bookingInfo?: BookingInfoResponse
+	bookingInfo?: MetadataResponse
 	delivery?: CardDeliveryResponse
 	batchId?: string
 	merchantRestriction?: MerchantResponse
@@ -63,7 +64,7 @@ export namespace CardResponseV2 {
 		longTermTokenExpiry: isly.fromIs("Date", Date.is).optional(),
 		activationDate: isly.fromIs("Date", Date.is).optional(),
 		schedule: isly.array(isly.fromIs("CardScheduleResponseItem", CardScheduleResponseItem.is)).optional(),
-		bookingInfo: isly.fromIs("BookingInfoResponse", BookingInfoResponse.is).optional(),
+		bookingInfo: isly.fromIs("MetadataResponse", MetadataResponse.is).optional(),
 		delivery: isly.fromIs("CardDeliveryResponse", CardDeliveryResponse.is).optional(),
 		batchId: isly.string().optional(),
 		merchantRestriction: isly.fromIs("MerchantResponse", MerchantResponse.is).optional(),
