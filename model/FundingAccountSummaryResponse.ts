@@ -1,3 +1,5 @@
+import { isly } from "isly"
+
 export interface FundingAccountSummaryResponse {
 	providerAccountId: string
 	accountId: string
@@ -6,13 +8,11 @@ export interface FundingAccountSummaryResponse {
 }
 
 export namespace FundingAccountSummaryResponse {
-	export function is(value: FundingAccountSummaryResponse | any): value is FundingAccountSummaryResponse {
-		return (
-			typeof value == "object" &&
-			typeof value.providerAccountId == "string" &&
-			typeof value.accountId == "string" &&
-			typeof value.balance == "number" &&
-			typeof value.friendlyName == "string"
-		)
-	}
+	export const type = isly.object<FundingAccountSummaryResponse>({
+		providerAccountId: isly.string(),
+		accountId: isly.string(),
+		balance: isly.number(),
+		friendlyName: isly.string(),
+	})
+	export const is = type.is
 }

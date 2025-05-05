@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { TransferDirection } from "./TransferDirection"
 
 export interface TransferResponseV2Summary {
@@ -7,12 +8,10 @@ export interface TransferResponseV2Summary {
 }
 
 export namespace TransferResponseV2Summary {
-	export function is(value: TransferResponseV2Summary | any): value is TransferResponseV2Summary {
-		return (
-			typeof value == "object" &&
-			typeof value.reference == "string" &&
-			typeof value.createdBy == "string" &&
-			TransferDirection.is(value.direction)
-		)
-	}
+	export const type = isly.object<TransferResponseV2Summary>({
+		reference: isly.string(),
+		createdBy: isly.string(),
+		direction: TransferDirection.type,
+	})
+	export const is = type.is
 }

@@ -1,4 +1,5 @@
 import { Currency } from "isoly"
+import { isly } from "isly"
 import { AddressInfo } from "./AddressInfo"
 
 export interface AccountDetailsTransferDestinationResponse {
@@ -15,21 +16,17 @@ export interface AccountDetailsTransferDestinationResponse {
 }
 
 export namespace AccountDetailsTransferDestinationResponse {
-	export function is(
-		value: AccountDetailsTransferDestinationResponse | any
-	): value is AccountDetailsTransferDestinationResponse {
-		return (
-			typeof value == "object" &&
-			(value.sortCode == undefined || typeof value.sortCode == "string") &&
-			(value.accountNumber == undefined || typeof value.accountNumber == "string") &&
-			(value.iban == undefined || typeof value.iban == "string") &&
-			(value.bic == undefined || typeof value.bic == "string") &&
-			(value.type == "IBAN" || value.type == "SCAN") &&
-			(value.fullName == undefined || typeof value.fullName == "string") &&
-			(value.address == undefined || AddressInfo.is(value.address)) &&
-			Currency.is(value.currency) &&
-			(value.bankCountry == undefined || typeof value.bankCountry == "string") &&
-			(value.bankName == undefined || typeof value.bankName == "string")
-		)
-	}
+	export const type = isly.object<AccountDetailsTransferDestinationResponse>({
+		sortCode: isly.string().optional(),
+		accountNumber: isly.string().optional(),
+		iban: isly.string().optional(),
+		bic: isly.string().optional(),
+		type: isly.string(["SCAN", "IBAN"]),
+		address: AddressInfo.type.optional(),
+		fullName: isly.string().optional(),
+		currency: isly.fromIs("Currency", Currency.is),
+		bankCountry: isly.string().optional(),
+		bankName: isly.string().optional(),
+	})
+	export const is = type.is
 }

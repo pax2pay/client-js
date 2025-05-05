@@ -1,9 +1,9 @@
-const transferDirections = ["IN", "OUT"] as const
+import { isly } from "isly"
 
-export type TransferDirection = typeof transferDirections[number]
+export type TransferDirection = typeof TransferDirection.values[number]
 
 export namespace TransferDirection {
-	export function is(value: unknown): value is TransferDirection {
-		return typeof value == "string" && transferDirections.includes(value as TransferDirection)
-	}
+	export const values = ["IN", "OUT"] as const
+	export const type = isly.string<TransferDirection>(values)
+	export const is = type.is
 }

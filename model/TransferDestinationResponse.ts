@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { AccountDetailsTransferDestinationResponse } from "./AccountDetailsTransferDestinationResponse"
 import { BeneficiaryTransferDestinationResponse } from "./BeneficiaryTransferDestinationResponse"
 import { ExternalDestination } from "./ExternalDestination"
@@ -9,12 +10,11 @@ export type TransferDestinationResponse =
 	| FundingAccountSummaryResponse
 	| ExternalDestination
 export namespace TransferDestinationResponse {
-	export function is(value: TransferDestinationResponse | any): value is TransferDestinationResponse {
-		return (
-			BeneficiaryTransferDestinationResponse.is(value) ||
-			AccountDetailsTransferDestinationResponse.is(value) ||
-			FundingAccountSummaryResponse.is(value) ||
-			ExternalDestination.is(value)
-		)
-	}
+	export const type = isly.union<TransferDestinationResponse>(
+		BeneficiaryTransferDestinationResponse.type,
+		AccountDetailsTransferDestinationResponse.type,
+		FundingAccountSummaryResponse.type,
+		ExternalDestination.type
+	)
+	export const is = type.is
 }
