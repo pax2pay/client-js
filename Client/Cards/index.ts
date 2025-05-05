@@ -254,12 +254,12 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	}
 	//Possibly should be moved to its own class
 	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.get<model.BookingInfoResponse>(`booking-info/cards/${providerCode}/${providerCardId}
+		return await this.connection.get<model.MetadataResponse>(`booking-info/cards/${providerCode}/${providerCardId}
 `)
 	}
 	//Possibly should be moved to its own class
 	async editCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
-		return await this.connection.put<model.BookingInfoResponse>(
+		return await this.connection.put<model.MetadataResponse>(
 			`booking-info/cards/${providerCode}/${providerCardId}`,
 			request
 		)
