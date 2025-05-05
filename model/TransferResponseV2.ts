@@ -2,6 +2,7 @@ import { Currency, Date, DateTime } from "isoly"
 import { BookingInfoResponse } from "./BookingInfoResponse"
 import { ExternalSource } from "./ExternalSource"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
+import { MetadataResponse } from "./MetadataResponse"
 import { ProviderCode } from "./ProviderCode"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
 import { TransferDirection } from "./TransferDirection"
@@ -19,7 +20,7 @@ export interface TransferResponseV2 {
 	reference: string
 	source: FundingAccountSummaryResponse | ExternalSource
 	destination: TransferDestinationResponse
-	bookingInfo?: BookingInfoResponse
+	bookingInfo?: MetadataResponse
 	direction: TransferDirection
 	createdBy: string
 	personallyApprovable?: boolean
@@ -42,7 +43,7 @@ export namespace TransferResponseV2 {
 			typeof value.reference == "string" &&
 			FundingAccountSummaryResponse.is(value.source) &&
 			TransferDestinationResponse.is(value.destination) &&
-			(value.bookingInfo == undefined || BookingInfoResponse.is(value.bookingInfo)) &&
+			(value.bookingInfo == undefined || MetadataResponse.is(value.bookingInfo)) &&
 			TransferDirection.is(value.direction) &&
 			typeof value.createdBy == "string" &&
 			(value.personallyApprovable == undefined || typeof value.personallyApprovable == "boolean") &&
