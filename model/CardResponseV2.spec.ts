@@ -145,7 +145,8 @@ describe("", () => {
 			},
 			bookingInfo: {
 				type: "FIVE_FIELDS",
-				format: "five fields",
+				format: "default",
+				version: 0,
 				agentBookingReference: "rrr",
 				departureDate: "2020-01-01",
 				supplierBookingReference: "qwert",
