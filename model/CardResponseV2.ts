@@ -1,7 +1,6 @@
 import { Currency, Date } from "isoly"
 import { isly } from "isly"
 import { AccountState } from "./AccountState"
-import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { CardTypeSpecification } from "./CardTypeSpecification"

@@ -1,5 +1,4 @@
 import { Currency, Date } from "isoly"
-import { BookingInfoRequest } from "./BookingInfoRequest"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardStateChangeScheduledTaskRequest } from "./CardStateChangeScheduledTaskRequest"
