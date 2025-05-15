@@ -1,15 +1,17 @@
 const statementReportRowActionType = [
 	"AUTHORISATION",
-	"AUTHORISATION_DECLINED",
 	"SETTLEMENT",
-	"AUTHORISATION_AND_SETTLEMENT",
 	"REVERSAL",
 	"REFUND",
+	"AUTHORISATION_FEE",
+	"SETTLEMENT_FEE",
+	"REVERSAL_FEE",
+	"REFUND_FEE",
 	"TRANSFER_IN",
 	"TRANSFER_OUT",
-	"SCHEDULED_CARD_AMENDMENT",
 	"USABLE_CARD",
 	"FUTURE_TRANSFER",
+	"SCHEDULED_CARD_AMENDMENT",
 ] as const
 export type StatementReportRowActionType = typeof statementReportRowActionType[number]
 
