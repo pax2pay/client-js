@@ -1,3 +1,4 @@
+import { CreatableType as NotificationCreatableType } from "./CreatableType"
 import { Format as NotificationFormat } from "./Format"
 import { InsertRequest as NotificationInsertRequest } from "./InsertRequest"
 import { Response as NotificationResponse } from "./Response"
@@ -12,4 +13,5 @@ export namespace Notification {
 	export import Tag = NotificationTag
 	export import TargetRequest = NotificationTargetRequest
 	export import Type = NotificationType
+	export import CreatableType = NotificationCreatableType
 }
