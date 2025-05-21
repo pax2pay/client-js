@@ -111,7 +111,7 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 	): Promise<model.ErrorResponse | model.CardTypeResponse[]> {
 		const header = assumedOrg ? { "x-assume": assumedOrg } : undefined
 		const response = await this.connection.get<{ list: model.CardTypeResponse[]; totalCount: number }>(
-			`v2/${this.folder}/types/${providerCode ?? ""}`,
+			`v2/${this.folder}/types${providerCode ? `/${providerCode}` : ""}`,
 			undefined,
 			header
 		)
