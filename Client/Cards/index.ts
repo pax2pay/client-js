@@ -105,9 +105,15 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 		)
 	}
 	//Possibly should be moved to its own class
-	async getCardTypesV2(providerCode?: model.ProviderCode): Promise<model.ErrorResponse | model.CardTypeResponse[]> {
+	async getCardTypesV2(
+		providerCode?: model.ProviderCode,
+		assumedOrg?: string
+	): Promise<model.ErrorResponse | model.CardTypeResponse[]> {
+		const header = assumedOrg ? { "x-assume": assumedOrg } : undefined
 		const response = await this.connection.get<{ list: model.CardTypeResponse[]; totalCount: number }>(
-			`v2/${this.folder}/types/${providerCode ?? ""}`
+			`v2/${this.folder}/types${providerCode ? `/${providerCode}` : ""}`,
+			undefined,
+			header
 		)
 		return this.extractResponse<model.CardTypeResponse>(response)
 	}
