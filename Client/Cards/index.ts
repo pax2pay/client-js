@@ -104,6 +104,11 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/freeze`
 		)
 	}
+	async reverseAuthorisationV2(providerCode: model.ProviderCode, providerCardId: string, transactionId: string) {
+		return await this.connection.remove<model.CardResponseV2>(
+			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/reverse/${transactionId}`
+		)
+	}
 	//Possibly should be moved to its own class
 	async getCardTypesV2(
 		providerCode?: model.ProviderCode,
