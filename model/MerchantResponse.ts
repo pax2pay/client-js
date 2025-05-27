@@ -4,20 +4,20 @@ import { BeneficiaryResponse } from "./BeneficiaryResponse"
 import { MerchantType } from "./MerchantType"
 
 export interface MerchantResponse {
-	id?: string
+	id: string
 	name: string
 	mcc?: string
-	type?: MerchantType
+	type: MerchantType
 	isSuitableForCardMerchantRestriction?: true
 	beneficiaries?: Partial<Record<Currency, BeneficiaryResponse>>
 }
 
 export namespace MerchantResponse {
 	export const type = isly.object<MerchantResponse>({
-		id: isly.string().optional(),
+		id: isly.string(),
 		name: isly.string(),
 		mcc: isly.string().optional(),
-		type: MerchantType.type.optional(),
+		type: MerchantType.type,
 		isSuitableForCardMerchantRestriction: isly.boolean(true).optional(),
 		beneficiaries: isly
 			.record(isly.fromIs("Currency", Currency.is), isly.fromIs("BeneficiaryResponse", BeneficiaryResponse.is))
