@@ -82,6 +82,7 @@ describe("PaymentResponse", () => {
 			state: "active",
 			merchant: {
 				name: "test",
+				type: "hotel",
 				id: "M00000F",
 			},
 			method: "transfer",
