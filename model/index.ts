@@ -243,6 +243,7 @@ import { UpdateAccountRequest } from "./UpdateAccountRequest"
 import { UpdateBeneficiaryRequest } from "./UpdateBeneficiaryRequest"
 import { UpdateCardTypeProfileRequest } from "./UpdateCardTypeProfileRequest"
 import { UpdateCategoryRequest } from "./UpdateCategoryRequest"
+import { UpdateMerchantRequest } from "./UpdateMerchantRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
 import { Usage } from "./Usage"
 import { UserChangeRequest } from "./UserChangeRequest"
@@ -504,6 +505,7 @@ export {
 	UpdateAccountRequest,
 	UpdateBeneficiaryRequest,
 	UpdateCardTypeProfileRequest,
+	UpdateMerchantRequest,
 	UpdateRolesetRequest,
 	Usage,
 	UserChangeRequest,
