@@ -1,3 +1,4 @@
+import { AbstractBeneficiaryRequest } from "./AbstractBeneficiaryRequest"
 import { AbstractLoginRequest } from "./AbstractLoginRequest"
 import { AbstractPaymentOperation } from "./AbstractPaymentOperation"
 import { AbstractProviderTransactionOperation } from "./AbstractProviderTransactionOperation"
@@ -95,6 +96,7 @@ import { EditPaymentScheduleRequest } from "./EditPaymentScheduleRequest"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
+import { ExistingBeneficiaryRequest } from "./ExistingBeneficiaryRequest"
 import { ExternalDestination } from "./ExternalDestination"
 import { ExternalSource } from "./ExternalSource"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
@@ -260,6 +262,7 @@ import { UserStatus } from "./UserStatus"
 import { YearMonth } from "./YearMonth"
 
 export {
+	AbstractBeneficiaryRequest,
 	AbstractLoginRequest,
 	AbstractPaymentOperation,
 	AbstractProviderTransactionOperation,
@@ -357,6 +360,7 @@ export {
 	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,
+	ExistingBeneficiaryRequest,
 	ExternalDestination,
 	ExternalSource,
 	FiveFieldsBookingInfoRequest,

@@ -1,5 +1,6 @@
 import { Client } from "./Client"
 import {
+	AbstractBeneficiaryRequest,
 	AbstractLoginRequest,
 	AbstractPaymentOperation,
 	AbstractProviderTransactionOperation,
@@ -96,6 +97,7 @@ import {
 	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,
+	ExistingBeneficiaryRequest,
 	ExternalDestination,
 	ExternalSource,
 	FiveFieldsBookingInfoRequest,
@@ -260,7 +262,7 @@ import {
 } from "./model"
 
 export {
-	Client,
+	AbstractBeneficiaryRequest,
 	AbstractLoginRequest,
 	AbstractPaymentOperation,
 	AbstractProviderTransactionOperation,
@@ -326,6 +328,7 @@ export {
 	CategoryLimitResponse,
 	CategoryResponse,
 	CategoryStatus,
+	Client,
 	ConfigMatchesRequest,
 	ConfigMatchesResponse,
 	ConfigTypesResponse,
@@ -356,6 +359,7 @@ export {
 	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,
+	ExistingBeneficiaryRequest,
 	ExternalDestination,
 	ExternalSource,
 	FiveFieldsBookingInfoRequest,
