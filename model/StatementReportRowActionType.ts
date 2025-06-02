@@ -19,4 +19,11 @@ export namespace StatementReportRowActionType {
 	export function is(value: unknown): value is StatementReportRowActionType {
 		return typeof value == "string" && statementReportRowActionType.includes(value as StatementReportRowActionType)
 	}
+	export function toDisplay(value: StatementReportRowActionType): string {
+		if (value == "REFUND_FEE")
+			return "FEE_REFUND"
+		if (value == "REVERSAL_FEE")
+			return "FEE_REVERSAL"
+		return value
+	}
 }
