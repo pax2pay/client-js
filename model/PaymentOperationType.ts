@@ -37,4 +37,11 @@ export namespace PaymentOperationType {
 	] as const
 	export const type = isly.string(types)
 	export const is = type.is
+	export function toDisplay(value: PaymentOperationType): string {
+		if (value == "reversal fee")
+			return "fee reversal"
+		if (value == "refund fee")
+			return "fee refund"
+		return value
+	}
 }
