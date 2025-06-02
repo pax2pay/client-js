@@ -24,6 +24,8 @@ export namespace StatementReportRowActionType {
 			return "FEE_REFUND"
 		if (value == "REVERSAL_FEE")
 			return "FEE_REVERSAL"
+		if (value == "SCHEDULED_CARD_AMENDMENT")
+			return "SCHEDULED_CARD"
 		return value
 	}
 }
