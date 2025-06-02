@@ -42,6 +42,8 @@ export namespace PaymentOperationType {
 			return "fee reversal"
 		if (value == "refund fee")
 			return "fee refund"
+		if (value == "thawed")
+			return "unfrozen"
 		return value
 	}
 }
