@@ -17,6 +17,9 @@ export class Merchants extends List<model.MerchantResponse> {
 	async delete(merchantId: string) {
 		return await this.connection.remove<model.MerchantResponse>(`${this.folder}/${merchantId}`)
 	}
+	async update(merchantId: string, request: model.UpdateMerchantRequest) {
+		return await this.connection.put<model.MerchantResponse>(`${this.folder}/${merchantId}`, request)
+	}
 	async searchByName(searchString: string) {
 		const response = await this.connection.get<model.ErrorResponse | model.MerchantResponse[]>(
 			`${this.folder}/searches/${searchString}`,
