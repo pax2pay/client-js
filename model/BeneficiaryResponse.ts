@@ -1,3 +1,4 @@
+import { isly } from "isly"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
 
@@ -13,17 +14,15 @@ export interface BeneficiaryResponse {
 }
 
 export namespace BeneficiaryResponse {
-	export function is(value: BeneficiaryResponse | any): value is BeneficiaryResponse {
-		return (
-			typeof value == "object" &&
-			TransferDestinationInfo.is(value.transferDestination) &&
-			BeneficiaryStatus.is(value.status) &&
-			typeof value.name == "string" &&
-			typeof value.beneficiaryId == "string" &&
-			typeof value.createdOn == "string" &&
-			(value.fullName == undefined || typeof value.fullName == "string") &&
-			(value.defaultReference == undefined || typeof value.defaultReference == "string") &&
-			(value.history == undefined || Array.isArray(value.history)) //not checking same type because of risk of being slow
-		)
-	}
+	export const type = isly.object<BeneficiaryResponse>({
+		transferDestination: isly.fromIs("TransferDestinationInfo", TransferDestinationInfo.is),
+		status: isly.fromIs("BeneficiaryStatus", BeneficiaryStatus.is),
+		name: isly.string(),
+		beneficiaryId: isly.string(),
+		createdOn: isly.string(),
+		defaultReference: isly.string().optional(),
+		fullName: isly.string().optional(),
+		history: isly.fromIs("BeneficiaryResponse[]", Array.isArray).optional(), // Not checking same type because of risk of being slow
+	})
+	export const is = type.is
 }
