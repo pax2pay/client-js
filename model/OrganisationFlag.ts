@@ -21,6 +21,8 @@ export namespace OrganisationFlag {
 		"TRAVEL_CENTRE",
 		"THE_CRUISE_LINE",
 		"EHOTEL",
+		"DAVID_PETROVIC",
+		"MICHAEL_KOVAS",
 	] as const
 	export const type = isly.string(types)
 	export const is = type.is
