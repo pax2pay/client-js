@@ -7,6 +7,7 @@ export interface SummaryCardResponseV3 {
 	providerCardId: string
 	cardType: string
 	pan: string
+	hasDeclines?: boolean
 }
 
 export namespace SummaryCardResponseV3 {
@@ -16,6 +17,7 @@ export namespace SummaryCardResponseV3 {
 		providerCardId: isly.string(),
 		cardType: isly.string(),
 		pan: isly.string(),
+		hasDeclines: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
