@@ -83,6 +83,7 @@ describe("PaymentResponse", () => {
 			merchant: {
 				name: "test",
 				id: "M00000F",
+				status: "active",
 			},
 			method: "transfer",
 			meta: {

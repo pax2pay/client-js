@@ -135,6 +135,7 @@ import { MerchantDetails } from "./MerchantDetails"
 import { MerchantDetailsV2 } from "./MerchantDetailsV2"
 import { MerchantRequest } from "./MerchantRequest"
 import { MerchantResponse } from "./MerchantResponse"
+import { MerchantResponseStatus } from "./MerchantResponseStatus"
 import { MerchantSearchRequest } from "./MerchantSearchRequest"
 import { MerchantType } from "./MerchantType"
 import { MetadataFormat } from "./MetadataFormat"
@@ -399,6 +400,7 @@ export {
 	MerchantDetailsV2,
 	MerchantRequest,
 	MerchantResponse,
+	MerchantResponseStatus,
 	MerchantSearchRequest,
 	MerchantType,
 	MetadataFormat,
