@@ -1,6 +1,7 @@
 import { Currency } from "isoly"
 import { isly } from "isly"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
+import { MerchantResponseStatus } from "./MerchantResponseStatus"
 import { MerchantType } from "./MerchantType"
 
 export interface MerchantResponse {
@@ -10,6 +11,7 @@ export interface MerchantResponse {
 	type?: MerchantType
 	isSuitableForCardMerchantRestriction?: true
 	beneficiaries?: Partial<Record<Currency, BeneficiaryResponse>>
+	status: MerchantResponseStatus
 }
 
 export namespace MerchantResponse {
@@ -19,6 +21,7 @@ export namespace MerchantResponse {
 		mcc: isly.string().optional(),
 		type: MerchantType.type.optional(),
 		isSuitableForCardMerchantRestriction: isly.boolean(true).optional(),
+		status: MerchantResponseStatus.type,
 		beneficiaries: isly
 			.record(isly.fromIs("Currency", Currency.is), isly.fromIs("BeneficiaryResponse", BeneficiaryResponse.is))
 			.optional(),
