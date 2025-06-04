@@ -1,9 +1,9 @@
 import { isly } from "isly"
 
-export type MerchantResponseStatus = typeof MerchantResponseStatus.types[number]
+export type MerchantResponseStatus = typeof MerchantResponseStatus.values[number]
 
 export namespace MerchantResponseStatus {
-	export const types = ["active", "deleted"] as const
-	export const type = isly.string(types)
+	export const values = ["active", "deleted"] as const
+	export const type = isly.string(values)
 	export const is = type.is
 }
