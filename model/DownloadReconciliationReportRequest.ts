@@ -6,6 +6,7 @@ export interface DownloadReconciliationReportRequest {
 	locale?: string
 	providerCode?: ProviderCode
 	providerAccountId?: string
+	version?: "LEGACY" | "V2"
 	dateRange?: {
 		start: isoly.Date
 		end: isoly.Date
