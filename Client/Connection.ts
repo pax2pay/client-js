@@ -73,7 +73,9 @@ export class Connection {
 			{
 				method,
 				headers: requestHeaders,
-				body: !isMultipart ? request && JSON.stringify(request) : request,
+				body: !isMultipart
+					? request && JSON.stringify(request, (_, value) => (typeof value == "string" ? value.trim() : value))
+					: request,
 			}
 		).catch((error: Error) => {
 			caughtErrorResponse = { code: 500, errors: [{ message: error.message }] }
