@@ -1,4 +1,5 @@
-import * as isoly from "isoly"
+import { Currency } from "isoly"
+import { isly } from "isly"
 import { AddressInfo } from "./AddressInfo"
 import { ConfirmationOfPayeeResponse } from "./ConfirmationOfPayeeResponse"
 
@@ -10,28 +11,30 @@ export interface TransferDestinationInfo {
 	sortCode?: string
 	iban?: string
 	bic?: string
-	currency: isoly.Currency
+	abaRoutingNumber?: string
+	currency: Currency
 	address?: AddressInfo
 	bankCountry?: string
 	bankName?: string
 	fullName?: string
-	type?: "IBAN" | "SCAN"
+	type?: "IBAN" | "SCAN" | "ABA"
 	confirmationOfPayee?: ConfirmationOfPayeeResponse
 }
 
 export namespace TransferDestinationInfo {
-	export function is(value: TransferDestinationInfo | any): value is TransferDestinationInfo {
-		return (
-			typeof value == "object" &&
-			(value.accountNumber == undefined || typeof value.accountNumber == "string") &&
-			(value.sortCode == undefined || typeof value.sortCode == "string") &&
-			(value.iban == undefined || typeof value.iban == "string") &&
-			(value.bic == undefined || typeof value.bic == "string") &&
-			isoly.Currency.is(value.currency) &&
-			(value.address == undefined || AddressInfo.is(value.address)) &&
-			(value.fullName == undefined || typeof value.fullName == "string") &&
-			(value.type == undefined || value.type == "IBAN" || value.type == "SCAN") &&
-			(value.confirmationOfPayee == undefined || ConfirmationOfPayeeResponse.is(value.confirmationOfPayee))
-		)
-	}
+	export const type = isly.object<TransferDestinationInfo>({
+		accountNumber: isly.string().optional(),
+		sortCode: isly.string().optional(),
+		iban: isly.string().optional(),
+		bic: isly.string().optional(),
+		abaRoutingNumber: isly.string().optional(),
+		currency: isly.fromIs("Currency", Currency.is),
+		address: AddressInfo.type.optional(),
+		bankCountry: isly.string().optional(),
+		bankName: isly.string().optional(),
+		fullName: isly.string().optional(),
+		type: isly.string(["IBAN", "SCAN", "ABA"]).optional(),
+		confirmationOfPayee: ConfirmationOfPayeeResponse.type.optional(),
+	})
+	export const is = type.is
 }
