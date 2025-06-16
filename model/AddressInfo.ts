@@ -1,3 +1,5 @@
+import { isly } from "isly"
+
 /**
  * Address of destination
  */
@@ -7,17 +9,17 @@ export interface AddressInfo {
 	country: string
 	postCode: string
 	postTown: string
+	state?: string
 }
 
 export namespace AddressInfo {
-	export function is(value: AddressInfo | any): value is AddressInfo {
-		return (
-			typeof value == "object" &&
-			typeof value.addressLine1 == "string" &&
-			(value.addressLine2 == undefined || typeof value.addressLine2 == "string") &&
-			typeof value.country == "string" &&
-			typeof value.postCode == "string" &&
-			typeof value.postTown == "string"
-		)
-	}
+	export const type = isly.object<AddressInfo>({
+		addressLine1: isly.string(),
+		addressLine2: isly.string().optional(),
+		country: isly.string(),
+		postCode: isly.string(),
+		postTown: isly.string(),
+		state: isly.string().optional(),
+	})
+	export const is = type.is
 }
