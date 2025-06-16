@@ -1,14 +1,14 @@
 import { isly } from "isly"
-import { TransferDestinationInfo } from "./TransferDestinationInfo"
+import { TransferDestinationRequest } from "./TransferDestinationRequest"
 
 export interface BeneficiaryRequest {
-	transferDestination: TransferDestinationInfo
+	transferDestination: TransferDestinationRequest
 	defaultReference?: string
 	name?: string
 }
 export namespace BeneficiaryRequest {
 	export const type = isly.object<BeneficiaryRequest>({
-		transferDestination: isly.fromIs("TransferDestinationInfo", TransferDestinationInfo.is),
+		transferDestination: TransferDestinationRequest.type,
 		defaultReference: isly.string().optional(),
 		name: isly.string().optional(),
 	})

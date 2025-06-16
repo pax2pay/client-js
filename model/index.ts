@@ -228,12 +228,10 @@ import { TierLimitResponse } from "./TierLimitResponse"
 import { TierResponse } from "./TierResponse"
 import { TransactionResponse } from "./TransactionResponse"
 import { TransactionType } from "./TransactionType"
-import { TransferDestinationInfo } from "./TransferDestinationInfo"
 import { TransferDestinationRequest } from "./TransferDestinationRequest"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
 import { TransferDirection } from "./TransferDirection"
 import { TransferRequest } from "./TransferRequest"
-import { TransferResponse } from "./TransferResponse"
 import { TransferResponseV2 } from "./TransferResponseV2"
 import { TransferResponseV2Summary } from "./TransferResponseV2Summary"
 import { TransferResponseV3 } from "./TransferResponseV3"
@@ -495,11 +493,9 @@ export {
 	TierResponse,
 	TransactionResponse,
 	TransactionType,
-	TransferDestinationInfo,
 	TransferDestinationResponse,
 	TransferDirection,
 	TransferRequest,
-	TransferResponse,
 	TransferResponseV2,
 	TransferResponseV2Summary,
 	TransferResponseV3,

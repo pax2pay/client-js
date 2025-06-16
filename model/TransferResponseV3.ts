@@ -1,13 +1,13 @@
 import { isly } from "isly"
 import { ProviderCode } from "./ProviderCode"
-import { TransferDestinationInfo } from "./TransferDestinationInfo"
+import { TransferDestinationResponse } from "./TransferDestinationResponse"
 
 export interface TransferResponseV3 {
 	beneficiary?: string
 	reference: string
 	providerTransferId: string
 	providerCode: ProviderCode
-	destination: TransferDestinationInfo
+	destination: TransferDestinationResponse
 }
 export namespace TransferResponseV3 {
 	export const type = isly.object<TransferResponseV3>({
@@ -15,7 +15,7 @@ export namespace TransferResponseV3 {
 		reference: isly.string(),
 		providerTransferId: isly.string(),
 		providerCode: ProviderCode.type,
-		destination: isly.fromIs("TransferDestinationInfo", TransferDestinationInfo.is),
+		destination: isly.fromIs("TransferDestinationResponse", TransferDestinationResponse.is),
 	})
 	export const is = type.is
 }
