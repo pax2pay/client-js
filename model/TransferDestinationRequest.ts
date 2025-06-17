@@ -1,11 +1,13 @@
 import { Currency } from "isoly"
 import { isly } from "isly"
 import { AddressInfo } from "./AddressInfo"
+import { TransferDestinationAddressType } from "./TransferDestinationAddressType"
 
 export interface TransferDestinationRequest {
+	type: TransferDestinationAddressType
 	address?: AddressInfo
-	fullName: string
 	currency?: Currency
+	fullName?: string
 	saveAsNewBeneficiary?: boolean
 	name?: string
 	defaultReference?: string
@@ -20,9 +22,10 @@ export interface TransferDestinationRequest {
 
 export namespace TransferDestinationRequest {
 	export const type = isly.object<TransferDestinationRequest>({
+		type: TransferDestinationAddressType.type,
 		address: AddressInfo.type.optional(),
-		fullName: isly.string(),
 		currency: isly.fromIs("Currency", Currency.is).optional(),
+		fullName: isly.string().optional(),
 		saveAsNewBeneficiary: isly.boolean().optional(),
 		name: isly.string().optional(),
 		defaultReference: isly.string().optional(),

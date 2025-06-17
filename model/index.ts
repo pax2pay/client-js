@@ -229,7 +229,6 @@ import { TierResponse } from "./TierResponse"
 import { TransactionResponse } from "./TransactionResponse"
 import { TransactionType } from "./TransactionType"
 import { TransferDestinationAddressType } from "./TransferDestinationAddressType"
-import { TransferDestinationInfo } from "./TransferDestinationInfo"
 import { TransferDestinationRequest } from "./TransferDestinationRequest"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
 import { TransferDirection } from "./TransferDirection"
@@ -495,7 +494,6 @@ export {
 	TransactionResponse,
 	TransactionType,
 	TransferDestinationAddressType,
-	TransferDestinationInfo,
 	TransferDestinationRequest,
 	TransferDestinationResponse,
 	TransferDirection,
