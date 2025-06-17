@@ -233,7 +233,6 @@ import { TransferDestinationInfo } from "./TransferDestinationInfo"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
 import { TransferDirection } from "./TransferDirection"
 import { TransferRequest } from "./TransferRequest"
-import { TransferResponse } from "./TransferResponse"
 import { TransferResponseV2 } from "./TransferResponseV2"
 import { TransferResponseV2Summary } from "./TransferResponseV2Summary"
 import { TransferResponseV3 } from "./TransferResponseV3"
@@ -499,7 +498,6 @@ export {
 	TransferDestinationResponse,
 	TransferDirection,
 	TransferRequest,
-	TransferResponse,
 	TransferResponseV2,
 	TransferResponseV2Summary,
 	TransferResponseV3,
