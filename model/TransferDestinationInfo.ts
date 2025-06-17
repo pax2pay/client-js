@@ -2,6 +2,7 @@ import { Currency } from "isoly"
 import { isly } from "isly"
 import { AddressInfo } from "./AddressInfo"
 import { ConfirmationOfPayeeResponse } from "./ConfirmationOfPayeeResponse"
+import { TransferDestinationAddressType } from "./TransferDestinationAddressType"
 
 /**
  * Destination information
@@ -17,7 +18,7 @@ export interface TransferDestinationInfo {
 	bankCountry?: string
 	bankName?: string
 	fullName?: string
-	type?: "IBAN" | "SCAN" | "ABA"
+	type: TransferDestinationAddressType
 	confirmationOfPayee?: ConfirmationOfPayeeResponse
 }
 
@@ -33,7 +34,7 @@ export namespace TransferDestinationInfo {
 		bankCountry: isly.string().optional(),
 		bankName: isly.string().optional(),
 		fullName: isly.string().optional(),
-		type: isly.string(["IBAN", "SCAN", "ABA"]).optional(),
+		type: TransferDestinationAddressType.type,
 		confirmationOfPayee: ConfirmationOfPayeeResponse.type.optional(),
 	})
 	export const is = type.is
