@@ -1,12 +1,12 @@
 import { BookingInfoRequest } from "./BookingInfoRequest"
-import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { ProviderCode } from "./ProviderCode"
+import { TransferDestinationRequest } from "./TransferDestinationRequest"
 
 export interface TransferRequest {
 	providerCode: ProviderCode
 	providerSourceAccountId: string
 	beneficiaryId?: string
-	destination?: NonBeneficiaryTransferDestination
+	destination?: TransferDestinationRequest
 	destinationProviderAccountId?: string
 	destinationProviderCode?: ProviderCode
 	amount: number

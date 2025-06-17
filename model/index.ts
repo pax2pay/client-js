@@ -142,7 +142,6 @@ import { MetadataFormat } from "./MetadataFormat"
 import { MetadataRequest } from "./MetadataRequest"
 import { MetadataResponse } from "./MetadataResponse"
 import { MinimalBookingInfo } from "./MinimalBookingInfo"
-import { NonBeneficiaryTransferDestination } from "./NonBeneficiaryTransferDestination"
 import { Notification } from "./Notification"
 import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
@@ -229,7 +228,9 @@ import { TierLimitResponse } from "./TierLimitResponse"
 import { TierResponse } from "./TierResponse"
 import { TransactionResponse } from "./TransactionResponse"
 import { TransactionType } from "./TransactionType"
+import { TransferDestinationAddressType } from "./TransferDestinationAddressType"
 import { TransferDestinationInfo } from "./TransferDestinationInfo"
+import { TransferDestinationRequest } from "./TransferDestinationRequest"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
 import { TransferDirection } from "./TransferDirection"
 import { TransferRequest } from "./TransferRequest"
@@ -406,7 +407,6 @@ export {
 	MetadataRequest,
 	MetadataResponse,
 	MinimalBookingInfo,
-	NonBeneficiaryTransferDestination,
 	Notification,
 	OmnisetupFlags,
 	OmnisetupProviderRequest,
@@ -494,7 +494,9 @@ export {
 	TierResponse,
 	TransactionResponse,
 	TransactionType,
+	TransferDestinationAddressType,
 	TransferDestinationInfo,
+	TransferDestinationRequest,
 	TransferDestinationResponse,
 	TransferDirection,
 	TransferRequest,
