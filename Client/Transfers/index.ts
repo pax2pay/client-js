@@ -57,7 +57,7 @@ export class Transfers extends List<model.TransferResponseV2> {
 			otp ? { "x-otp": otp } : {}
 		)
 	}
-	async donloadReceipt(transferId: string, providerCode: ProviderCode) {
+	async donloadReceipt(transferId: string, providerCode?: ProviderCode) {
 		if (providerCode)
 			return await this.connection.get<model.DownloadableResponse>(
 				`v2/${this.folder}/${providerCode}/${transferId}/download`
