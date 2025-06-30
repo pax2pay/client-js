@@ -76,7 +76,7 @@ export class Payments extends List<model.PaymentResponse> {
 	async editMetadata(id: string, request: model.EditPaymentMetadataRequest) {
 		return await this.connection.put<model.PaymentResponse>(`${this.folder}/${id}/meta`, request)
 	}
-	async download(id: string) {
+	async downloadReceipt(id: string) {
 		return await this.connection.get<model.DownloadableResponse>(`${this.folder}/${id}/download`)
 	}
 }
