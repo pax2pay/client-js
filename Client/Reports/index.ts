@@ -81,19 +81,19 @@ export class Reports {
 		return await this.connection.get<model.StatementReportResponseRow>(`statement/${rowId}`)
 	}
 	async getStatementReportUrl(request: model.DownloadStatementReportRequest) {
-		return await this.connection.post<model.ReportUrlResponse>(`statement/download`, request)
+		return await this.connection.post<model.DownloadableResponse>(`statement/download`, request)
 	}
 	async getUserReportUrl(request: model.DownloadUserReportRequest) {
-		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/user/download`, request)
+		return await this.connection.post<model.DownloadableResponse>(`${this.folder}/user/download`, request)
 	}
 	async getCardReportUrl(request: model.DownloadCardReportRequest) {
-		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/card/download`, request)
+		return await this.connection.post<model.DownloadableResponse>(`${this.folder}/card/download`, request)
 	}
 	async getReconciliationReportUrl(request: model.DownloadReconciliationReportRequest) {
-		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/reconciliation/download`, request)
+		return await this.connection.post<model.DownloadableResponse>(`${this.folder}/reconciliation/download`, request)
 	}
 	async getOrganisationReportUrl(request: model.DownloadOrganisationSearchRequest) {
-		return await this.connection.post<model.ReportUrlResponse>(`${this.folder}/organisation/download`, request)
+		return await this.connection.post<model.DownloadableResponse>(`${this.folder}/organisation/download`, request)
 	}
 	static create(connection: Connection) {
 		return new Reports(connection)

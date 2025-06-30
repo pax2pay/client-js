@@ -81,6 +81,7 @@ import { Criteria } from "./Criteria"
 import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
 import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
 import { DeliveryStatus } from "./DeliveryStatus"
+import { DownloadableResponse } from "./DownloadableResponse"
 import { DownloadCardReportRequest } from "./DownloadCardReportRequest"
 import { DownloadFileFormat } from "./DownloadFileFormat"
 import { DownloadOrganisationSearchRequest } from "./DownloadOrganisationSearchRequest"
@@ -191,7 +192,6 @@ import { Range } from "./Range"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
-import { ReportUrlResponse } from "./ReportUrlResponse"
 import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
@@ -455,7 +455,7 @@ export {
 	References,
 	RelogWithNewSessionDetailsRequest,
 	Report,
-	ReportUrlResponse,
+	DownloadableResponse,
 	RoleResponse,
 	RolesetResponse,
 	Room,
