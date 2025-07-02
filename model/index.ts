@@ -51,7 +51,6 @@ import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduled
 import { CardStatement } from "./CardStatement"
 import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
-import { CardType } from "./CardType"
 import { CardTypeDefinition } from "./CardTypeDefinition"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
@@ -314,7 +313,6 @@ export {
 	CardStatement,
 	CardTransaction,
 	CardTransactionType,
-	CardType,
 	CardTypeDefinition,
 	CardTypeInformation,
 	CreateCardTypeProfileRequest,
