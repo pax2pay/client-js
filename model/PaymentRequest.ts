@@ -9,6 +9,7 @@ import { PaymentMerchantRequest } from "./PaymentMerchantRequest"
 import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
 
 export interface PaymentRequest {
+	batchId?: string
 	account: string
 	amount?: number
 	currency: Currency
@@ -22,6 +23,7 @@ export interface PaymentRequest {
 }
 export namespace PaymentRequest {
 	export const type = isly.object<PaymentRequest>({
+		batchId: isly.string().optional(),
 		account: isly.string(),
 		amount: isly.number().optional(),
 		currency: isly.fromIs("Currency", Currency.is),
