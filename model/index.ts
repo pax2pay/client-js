@@ -129,6 +129,7 @@ import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
 import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
 import { InvokingSystem } from "./InvokingSystem"
 import { Issue } from "./Issue"
+import { Limit } from "./Limit"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
 import { MerchantDetails } from "./MerchantDetails"
@@ -391,6 +392,7 @@ export {
 	InvoiceBookingInfoResponse,
 	InvokingSystem,
 	Issue,
+	Limit,
 	LoginRequest,
 	LoginResponse,
 	MerchantDetails,
