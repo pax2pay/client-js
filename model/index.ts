@@ -68,6 +68,7 @@ import { CategoryStatus } from "./CategoryStatus"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
+import { ConfirmationOfPayeeAccountType } from "./ConfirmationOfPayeeAccountType"
 import { ConfirmationOfPayeeRequest } from "./ConfirmationOfPayeeRequest"
 import { ConfirmationOfPayeeResponse } from "./ConfirmationOfPayeeResponse"
 import { ConfirmationOfPayeeResponseStatus } from "./ConfirmationOfPayeeResponseStatus"
@@ -333,6 +334,7 @@ export {
 	ConfigMatchesRequest,
 	ConfigMatchesResponse,
 	ConfigTypesResponse,
+	ConfirmationOfPayeeAccountType,
 	ConfirmationOfPayeeRequest,
 	ConfirmationOfPayeeResponse,
 	ConfirmationOfPayeeResponseStatus,
