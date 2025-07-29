@@ -22,27 +22,6 @@ export class Accounts extends List<model.AccountResponse> {
 			request
 		)
 	}
-	async getAccountSummary(
-		providerCodes: model.ProviderCode[],
-		accountId?: number,
-		accountStates?: model.AccountState[],
-		providerAccountId?: string
-	) {
-		const response = await this.connection.get<
-			| {
-					list: model.AccountSummary[]
-					totalCount: number
-			  }
-			| model.ErrorResponse
-		>(`account-summaries`, {
-			refresh: false,
-			providerCodes: providerCodes,
-			accountId: accountId,
-			accountStates: accountStates,
-			providerAccountId: providerAccountId,
-		})
-		return this.extractResponse<model.AccountSummary>(response)
-	}
 	async updateFundingAccount(
 		providerCode: model.ProviderCode,
 		providerAccountId: string,
