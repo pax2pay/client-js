@@ -1,7 +1,6 @@
 import * as isoly from "isoly"
 import { AccountState } from "./AccountState"
 import { AccountType } from "./AccountType"
-import { FundingLimitResponse } from "./FundingLimitResponse"
 import { OrganisationResponse } from "./OrganisationResponse"
 import { ProviderResponse } from "./ProviderResponse"
 /**
@@ -18,7 +17,6 @@ export interface AccountResponse {
 	balance: number
 	actualBalance?: number
 	accountType: AccountType
-	fundingLimit?: FundingLimitResponse
 	updatedOn: string
 	createdOn?: string
 }
@@ -37,7 +35,6 @@ export namespace AccountResponse {
 			typeof value.balance == "number" &&
 			(value.actualBalance == undefined || typeof value.actualBalance == "number") &&
 			AccountType.is(value.accountType) &&
-			(value.fundingLimit == undefined || FundingLimitResponse.is(value.fundingLimit)) &&
 			typeof value.updatedOn == "string" &&
 			(value.createdOn == undefined || typeof value.createdOn == "string")
 		)
