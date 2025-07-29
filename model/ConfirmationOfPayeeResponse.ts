@@ -1,4 +1,5 @@
 import { isly } from "isly"
+import { ConfirmationOfPayeeAccountType } from "./ConfirmationOfPayeeAccountType"
 import { ConfirmationOfPayeeResponseStatus } from "./ConfirmationOfPayeeResponseStatus"
 
 export interface ConfirmationOfPayeeResponse {
@@ -8,6 +9,9 @@ export interface ConfirmationOfPayeeResponse {
 	description?: string
 	acceptedStatus?: ConfirmationOfPayeeResponseStatus
 	acceptedByUser?: string
+	accountType: ConfirmationOfPayeeAccountType
+	secondaryAccountId: string
+	sourceAccountId?: string
 }
 export namespace ConfirmationOfPayeeResponse {
 	export const type = isly.object<ConfirmationOfPayeeResponse>({
@@ -17,6 +21,9 @@ export namespace ConfirmationOfPayeeResponse {
 		description: isly.string().optional(),
 		acceptedStatus: ConfirmationOfPayeeResponseStatus.type.optional(),
 		acceptedByUser: isly.string().optional(),
+		accountType: ConfirmationOfPayeeAccountType.type,
+		secondaryAccountId: isly.string(),
+		sourceAccountId: isly.string().optional(),
 	})
 	export const is = type.is
 }
