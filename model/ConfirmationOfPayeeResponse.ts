@@ -9,8 +9,8 @@ export interface ConfirmationOfPayeeResponse {
 	description?: string
 	acceptedStatus?: ConfirmationOfPayeeResponseStatus
 	acceptedByUser?: string
-	accountType: ConfirmationOfPayeeAccountType
-	secondaryAccountId: string
+	accountType?: ConfirmationOfPayeeAccountType
+	secondaryAccountId?: string
 	sourceAccountId?: string
 }
 export namespace ConfirmationOfPayeeResponse {
@@ -21,8 +21,8 @@ export namespace ConfirmationOfPayeeResponse {
 		description: isly.string().optional(),
 		acceptedStatus: ConfirmationOfPayeeResponseStatus.type.optional(),
 		acceptedByUser: isly.string().optional(),
-		accountType: ConfirmationOfPayeeAccountType.type,
-		secondaryAccountId: isly.string(),
+		accountType: ConfirmationOfPayeeAccountType.type.optional(),
+		secondaryAccountId: isly.string().optional(),
 		sourceAccountId: isly.string().optional(),
 	})
 	export const is = type.is
