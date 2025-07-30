@@ -6,7 +6,7 @@ export interface ConfirmationOfPayeeRequest {
 	sortCode: string
 	payeeName: string
 	accountType: ConfirmationOfPayeeAccountType
-	secondaryAccountId: string
+	secondaryAccountId?: string
 	sourceAccountId?: string
 }
 export namespace ConfirmationOfPayeeRequest {
@@ -14,7 +14,7 @@ export namespace ConfirmationOfPayeeRequest {
 		accountNumber: isly.string(),
 		sortCode: isly.string(),
 		payeeName: isly.string(),
-		secondaryAccountId: isly.string(),
+		secondaryAccountId: isly.string().optional(),
 		accountType: ConfirmationOfPayeeAccountType.type,
 		sourceAccountId: isly.string().optional(),
 	})
