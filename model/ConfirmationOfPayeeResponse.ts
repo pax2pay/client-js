@@ -12,6 +12,7 @@ export interface ConfirmationOfPayeeResponse {
 	accountType?: ConfirmationOfPayeeAccountType
 	secondaryAccountId?: string
 	sourceAccountId?: string
+	acceptId?: string
 }
 export namespace ConfirmationOfPayeeResponse {
 	export const type = isly.object<ConfirmationOfPayeeResponse>({
@@ -24,6 +25,7 @@ export namespace ConfirmationOfPayeeResponse {
 		accountType: ConfirmationOfPayeeAccountType.type.optional(),
 		secondaryAccountId: isly.string().optional(),
 		sourceAccountId: isly.string().optional(),
+		acceptId: isly.string().optional(),
 	})
 	export const is = type.is
 }
