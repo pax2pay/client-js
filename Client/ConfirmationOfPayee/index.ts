@@ -10,4 +10,7 @@ export class ConfirmationOfPayee {
 	async confirm(request: model.ConfirmationOfPayeeRequest) {
 		return await this.connection.post<model.ConfirmationOfPayeeResponse>(`${this.folder}`, request)
 	}
+	async accept(id: string) {
+		return await this.connection.get<model.ConfirmationOfPayeeResponse>(`${this.folder}/accept/${id}`)
+	}
 }
