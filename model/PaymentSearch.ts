@@ -35,8 +35,8 @@ export interface PaymentSearch {
 	transferReference?: string
 	includeCount?: boolean
 	onlyCount?: boolean
-	hasOperations?: PaymentOperationType
-	doesntHaveOperations?: PaymentOperationType
+	hasOperations?: PaymentOperationType[]
+	doesntHaveOperations?: PaymentOperationType[]
 }
 export namespace PaymentSearch {
 	export const type = isly.object<PaymentSearch>({
@@ -65,8 +65,8 @@ export namespace PaymentSearch {
 		transferReference: isly.string().optional(),
 		includeCount: isly.boolean().optional(),
 		onlyCount: isly.boolean().optional(),
-		hasOperations: PaymentOperationType.type.optional(),
-		doesntHaveOperations: PaymentOperationType.type.optional(),
+		hasOperations: PaymentOperationType.type.array().optional(),
+		doesntHaveOperations: PaymentOperationType.type.array().optional(),
 	})
 	export const is = type.is
 }
