@@ -4,6 +4,7 @@ import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardUsage } from "./CardUsage"
 import { PaymentDeliveryStatus } from "./PaymentDeliveryStatus"
 import { PaymentMethodType } from "./PaymentMethodType"
+import { PaymentOperationType } from "./PaymentOperationType"
 import { PaymentStatus } from "./PaymentStatus"
 import { ProviderCode } from "./ProviderCode"
 import { Range } from "./Range"
@@ -34,6 +35,8 @@ export interface PaymentSearch {
 	transferReference?: string
 	includeCount?: boolean
 	onlyCount?: boolean
+	hasOperations?: PaymentOperationType[]
+	doesntHaveOperations?: PaymentOperationType[]
 }
 export namespace PaymentSearch {
 	export const type = isly.object<PaymentSearch>({
@@ -62,6 +65,8 @@ export namespace PaymentSearch {
 		transferReference: isly.string().optional(),
 		includeCount: isly.boolean().optional(),
 		onlyCount: isly.boolean().optional(),
+		hasOperations: PaymentOperationType.type.array().optional(),
+		doesntHaveOperations: PaymentOperationType.type.array().optional(),
 	})
 	export const is = type.is
 }

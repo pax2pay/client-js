@@ -44,6 +44,16 @@ export namespace PaymentOperationType {
 			return "fee refund"
 		if (value == "thawed")
 			return "unfrozen"
+		if (value == "direct debit")
+			return "Direct Debit"
+		if (value == "faster payments")
+			return "Faster Payments"
+		if (value == "SEPA instant")
+			return "SEPA Instant"
+		if (value == "provider internal")
+			return "Provider Internal"
+		if (value == "chargeback")
+			return "Chargeback"
 		return value
 	}
 }
