@@ -38,15 +38,18 @@ export class Merchants extends List<model.MerchantResponse> {
 		previous?: Paginated<model.MerchantResponse>,
 		page?: number,
 		size?: number,
-		sort = "name"
+		sort = "name",
+		organisationCode?: string
 	): Promise<model.ErrorResponse | Paginated<model.MerchantResponse>> {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.getNextPaginated(
 			previous,
 			(page, size, sort, request) =>
 				this.connection.post<{ list: model.MerchantResponse[]; totalCount: number }>(
 					`${this.folder}/searches`,
 					request,
-					{ page, size, sort }
+					{ page, size, sort },
+					header
 				),
 			request,
 			page,
@@ -54,11 +57,16 @@ export class Merchants extends List<model.MerchantResponse> {
 			sort
 		)
 	}
-	async getAll() {
-		const response = await this.connection.get<model.ErrorResponse | model.MerchantResponse[]>(this.folder, {
-			page: 0,
-			size: 5000,
-		})
+	async getAll(organisationCode?: string) {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
+		const response = await this.connection.get<model.ErrorResponse | model.MerchantResponse[]>(
+			this.folder,
+			{
+				page: 0,
+				size: 5000,
+			},
+			header
+		)
 		return this.extractResponse(response)
 	}
 }
