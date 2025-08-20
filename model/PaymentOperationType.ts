@@ -35,6 +35,17 @@ export namespace PaymentOperationType {
 		"declined",
 		"transfer",
 	] as const
+	export const transferSpecificType = [
+		"BACS",
+		"CHAPS",
+		"direct debit",
+		"faster payments",
+		"SEPA",
+		"SEPA instant",
+		"provider internal",
+		"SWIFT",
+		"chargeback",
+	]
 	export const type = isly.string(types)
 	export const is = type.is
 	export function toDisplay(value: PaymentOperationType): string {
