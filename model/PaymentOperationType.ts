@@ -35,6 +35,50 @@ export namespace PaymentOperationType {
 		"declined",
 		"transfer",
 	] as const
+	export namespace TransferTransaction {
+		export const type = [
+			"BACS",
+			"CHAPS",
+			"direct debit",
+			"faster payments",
+			"SEPA",
+			"SEPA instant",
+			"provider internal",
+			"SWIFT",
+			"chargeback",
+		]
+	}
+	export namespace CardTransaction {
+		export const type = [
+			"approved authorisation",
+			"declined authorisation",
+			"reversal",
+			"reversal declined",
+			"settlement",
+			"refund",
+			"authorisation fee",
+			"settlement fee",
+			"reversal fee",
+			"refund fee",
+		]
+	}
+	export namespace Transfer {
+		export const type = ["transfer"]
+	}
+	export namespace Card {
+		export const type = [
+			"created",
+			"limit change",
+			"purchase",
+			"closed",
+			"frozen",
+			"thawed",
+			"approval pending",
+			"expired",
+			"approved",
+			"declined",
+		]
+	}
 	export const type = isly.string(types)
 	export const is = type.is
 	export function toDisplay(value: PaymentOperationType): string {
