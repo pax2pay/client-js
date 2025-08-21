@@ -4,6 +4,7 @@ import { AbstractBeneficiaryRequest } from "./AbstractBeneficiaryRequest"
 
 export interface UpdateMerchantRequest {
 	beneficiaries?: Partial<Record<Currency, AbstractBeneficiaryRequest>>
+	organisations?: string[]
 }
 
 export namespace UpdateMerchantRequest {
@@ -14,6 +15,7 @@ export namespace UpdateMerchantRequest {
 				isly.fromIs("AbstractBeneficiaryRequest", AbstractBeneficiaryRequest.is)
 			)
 			.optional(),
+		organisations: isly.string().array().optional(),
 	})
 	export const is = type.is
 }
