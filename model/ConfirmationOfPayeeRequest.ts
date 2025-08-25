@@ -6,7 +6,7 @@ export interface ConfirmationOfPayeeRequest {
 	sortCode?: string
 	iban?: string
 	payeeName: string
-	accountType: ConfirmationOfPayeeAccountType
+	accountType?: ConfirmationOfPayeeAccountType
 	secondaryAccountId?: string
 	sourceAccountId?: string
 }
@@ -17,7 +17,7 @@ export namespace ConfirmationOfPayeeRequest {
 		iban: isly.string().optional(),
 		payeeName: isly.string(),
 		secondaryAccountId: isly.string().optional(),
-		accountType: ConfirmationOfPayeeAccountType.type,
+		accountType: ConfirmationOfPayeeAccountType.type.optional(),
 		sourceAccountId: isly.string().optional(),
 	})
 	export const is = type.is
