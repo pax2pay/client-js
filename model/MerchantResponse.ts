@@ -12,6 +12,7 @@ export interface MerchantResponse {
 	isSuitableForCardMerchantRestriction?: true
 	beneficiaries?: Partial<Record<Currency, BeneficiaryResponse>>
 	status: MerchantResponseStatus
+	organisations?: string[]
 }
 
 export namespace MerchantResponse {
@@ -25,6 +26,7 @@ export namespace MerchantResponse {
 		beneficiaries: isly
 			.record(isly.fromIs("Currency", Currency.is), isly.fromIs("BeneficiaryResponse", BeneficiaryResponse.is))
 			.optional(),
+		organisations: isly.string().array().optional(),
 	})
 	export const is = type.is
 }
