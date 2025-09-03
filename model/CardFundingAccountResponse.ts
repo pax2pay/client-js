@@ -1,5 +1,5 @@
 import * as isoly from "isoly"
-import { AccountState, ProviderResponse } from "."
+import { CardState, ProviderResponse } from "."
 import { OrganisationResponse } from "./OrganisationResponse"
 /**
  * Funding account information
@@ -10,7 +10,7 @@ export interface CardFundingAccountResponse {
 	provider: ProviderResponse
 	organisation: OrganisationResponse
 	currency: isoly.Currency
-	state: AccountState
+	state: CardState
 	friendlyName: string
 	balance: number
 	accountType: "FUNDING" | "CARD"

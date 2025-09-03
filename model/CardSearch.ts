@@ -1,6 +1,6 @@
 import { Currency, Date, DateTime } from "isoly"
-import { AccountState } from "./AccountState"
 import { BookingInfoType } from "./BookingInfoType"
+import { CardState } from "./CardState"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { DeliveryStatus } from "./DeliveryStatus"
@@ -10,7 +10,7 @@ import { Usage } from "./Usage"
 export interface CardSearch {
 	fuzzySearch?: string
 	providerCode?: ProviderCode | ProviderCode[]
-	status?: AccountState[]
+	status?: CardState[]
 	currency?: Currency[]
 	friendlyName?: string
 	createdBy?: string

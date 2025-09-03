@@ -1,10 +1,10 @@
 import { AccountResponse } from "./AccountResponse"
-import { AccountState } from "./AccountState"
 import { BookingInfo } from "./BookingInfo"
 import { BookingInfoResponse } from "./BookingInfoResponse"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardForm } from "./CardForm"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
+import { CardState } from "./CardState"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { InvokingSystem } from "./InvokingSystem"
 import { ProviderCode } from "./ProviderCode"
@@ -25,7 +25,7 @@ export interface CardResponse {
 	remainingBalance?: number
 	notes?: string
 	usage?: Usage
-	state?: AccountState
+	state?: CardState
 	providerCode?: ProviderCode
 	providerCardId?: string
 	cardAccount?: AccountResponse
@@ -56,7 +56,7 @@ export namespace CardResponse {
 			(value.remainingBalance == undefined || typeof value.remainingBalance == "number") &&
 			(value.notes == undefined || typeof value.notes == "string") &&
 			(value.usage == undefined || Usage.is(value.usage)) &&
-			(value.state == undefined || AccountState.is(value.state)) &&
+			(value.state == undefined || CardState.is(value.state)) &&
 			(value.providerCode == undefined || ProviderCode.is(value.providerCode)) &&
 			(value.providerCardId == undefined || typeof value.providerCardId == "string") &&
 			(value.cardAccount == undefined || AccountResponse.is(value.cardAccount)) &&
