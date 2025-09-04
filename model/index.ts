@@ -35,7 +35,6 @@ import { CardDeliveryEmailConfig } from "./CardDeliveryEmailConfig"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardForm } from "./CardForm"
-import { CardFundingAccountResponse } from "./CardFundingAccountResponse"
 import { CardOperation } from "./CardOperation"
 import { CardOptionSearch } from "./CardOptionSearch"
 import { CardResponse } from "./CardResponse"
@@ -301,7 +300,6 @@ export {
 	CardDeliveryRequest,
 	CardDeliveryResponse,
 	CardForm,
-	CardFundingAccountResponse,
 	CardOperation,
 	CardOptionSearch,
 	CardResponse,
