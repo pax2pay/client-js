@@ -37,7 +37,6 @@ import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardForm } from "./CardForm"
 import { CardOperation } from "./CardOperation"
 import { CardOptionSearch } from "./CardOptionSearch"
-import { CardResponse } from "./CardResponse"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardResponseV3 } from "./CardResponseV3"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
@@ -302,7 +301,6 @@ export {
 	CardForm,
 	CardOperation,
 	CardOptionSearch,
-	CardResponse,
 	CardResponseV2,
 	CardResponseV3,
 	CardScheduleResponseItem,
