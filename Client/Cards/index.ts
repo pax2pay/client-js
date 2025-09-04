@@ -3,7 +3,7 @@ import { Connection } from "../Connection"
 import { List } from "../List"
 import { Paginated } from "../Paginated"
 
-export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
+export class Cards extends List<model.CardResponseV2> {
 	protected readonly folder = "cards"
 	constructor(connection: Connection) {
 		super(connection)
@@ -21,9 +21,6 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 			})
 		)
 		return await this.connection.post<model.CardResponseV2>(`v2/${this.folder}/virtual`, formData)
-	}
-	async createLegacy(request: model.CreateCardRequest) {
-		return await this.connection.post<model.CardResponse>(`${this.folder}/virtual`, request)
 	}
 	static create(connection: Connection): Cards {
 		return new Cards(connection)
@@ -55,22 +52,10 @@ export class Cards extends List<model.CardResponseV2 | model.CardResponse> {
 			sort
 		)
 	}
-	async getCard(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.get<model.CardResponse>(`${this.folder}/virtual/${providerCode}/${providerCardId}`, {
-			includeSchedules: true,
-		})
-	}
+
 	async getCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		return await this.connection.get<model.CardResponseV2>(`v2/${this.folder}/virtual/${providerCode}/${providerCardId}
 `)
-	}
-	async createCard(request: model.CreateCardRequest) {
-		return await this.connection.post<model.CardResponse>(`${this.folder}/virtual`, request)
-	}
-	async cancelCard(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.remove<model.CardResponse>(
-			`${this.folder}/virtual/${providerCode}/${providerCardId}/cancel`
-		)
 	}
 	async cancelCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		return await this.connection.remove<model.CardResponseV2>(
