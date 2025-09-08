@@ -1,7 +1,8 @@
 import * as isoly from "isoly"
 import { ProviderCode } from "./ProviderCode"
-import { BalanceType } from "./Report/BalanceType"
+import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportSubType } from "./StatementReportSubType"
+
 export interface StatementReportRequest {
 	providerCode: ProviderCode
 	providerAccountId: string
@@ -9,7 +10,7 @@ export interface StatementReportRequest {
 		start: isoly.DateTime
 		end: isoly.DateTime
 	}
-	balanceType?: BalanceType
+	actionTypes?: StatementReportRowActionType
 	type?: "summary" | "full"
 	subType?: StatementReportSubType
 }
