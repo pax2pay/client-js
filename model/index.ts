@@ -104,6 +104,7 @@ import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
 import { FlightBookingInfoResponse } from "./FlightBookingInfoResponse"
 import { FlightInfo } from "./FlightInfo"
+import { ForcedSettlementNotificationConfig } from "./ForcedSettlementNotificationConfig"
 import { FraudEmailConfig } from "./FraudEmailConfig"
 import { FundingAccountIdentifierType } from "./FundingAccountIdentifierType"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
@@ -368,6 +369,7 @@ export {
 	FlightBookingInfoRequest,
 	FlightBookingInfoResponse,
 	FlightInfo,
+	ForcedSettlementNotificationConfig,
 	FraudEmailConfig,
 	FundingAccountIdentifierType,
 	FundingAccountInboundTransferNotificationConfig,

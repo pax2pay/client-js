@@ -3,6 +3,7 @@ import { isly } from "isly"
 import { ApprovalNotificationConfig } from "./ApprovalNotificationConfig"
 import { CardDeliveryEmailConfig } from "./CardDeliveryEmailConfig"
 import { CardTypesConfig } from "./CardTypesConfig"
+import { ForcedSettlementNotificationConfig } from "./ForcedSettlementNotificationConfig"
 import { FraudEmailConfig } from "./FraudEmailConfig"
 import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingLimitConfig } from "./FundingLimitConfig"
@@ -30,6 +31,7 @@ export interface OrganisationConfig {
 	securityConfig?: SecurityConfig
 	fraudEmailConfig?: FraudEmailConfig
 	sso?: Partial<Record<SsoProviderType, SsoProviderConfig>>
+	forcedSettlementNotificationConfig?: ForcedSettlementNotificationConfig
 }
 
 export namespace OrganisationConfig {
@@ -50,6 +52,7 @@ export namespace OrganisationConfig {
 		securityConfig: SecurityConfig.type.optional(),
 		fraudEmailConfig: FraudEmailConfig.type.optional(),
 		sso: isly.record(SsoProviderType.type, SsoProviderConfig.type).optional(),
+		forcedSettlementNotificationConfig: ForcedSettlementNotificationConfig.type.optional(),
 	})
 	export const is = type.is
 }
