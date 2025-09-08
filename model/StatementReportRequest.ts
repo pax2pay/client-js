@@ -10,7 +10,7 @@ export interface StatementReportRequest {
 		start: isoly.DateTime
 		end: isoly.DateTime
 	}
-	actionTypes?: StatementReportRowActionType
+	actionTypes?: StatementReportRowActionType[]
 	type?: "summary" | "full"
 	subType?: StatementReportSubType
 }
