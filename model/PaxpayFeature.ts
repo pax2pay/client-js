@@ -10,6 +10,7 @@ export namespace PaxpayFeature {
 		"SHOW_EMPTY_STATEMENTS",
 		"BETA_PAYMENTS",
 		"RECONCILIATION_REPORT_V2",
+		"INSIGHTS_ROOM",
 	] as const
 	export const type = isly.string(values)
 	export const is = type.is
