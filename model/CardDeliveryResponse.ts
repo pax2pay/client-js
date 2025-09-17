@@ -10,6 +10,7 @@ export interface CardDeliveryResponse {
 	sent?: DateTime
 	status: DeliveryStatus
 	statusText?: string
+	remittanceAdviceFilename?: string
 }
 export namespace CardDeliveryResponse {
 	export const type = isly.object<CardDeliveryResponse>({
@@ -20,6 +21,7 @@ export namespace CardDeliveryResponse {
 		sent: isly.fromIs("DateTime", DateTime.is).optional(),
 		status: isly.fromIs("DeliveryStatus", DeliveryStatus.is),
 		statusText: isly.string().optional(),
+		remittanceAdviceFilename: isly.string().optional(),
 	})
 	export const is = type.is
 }
