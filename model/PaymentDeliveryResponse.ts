@@ -10,6 +10,7 @@ export interface PaymentDeliveryResponse {
 	sent?: DateTime
 	state: PaymentDeliveryStatus
 	reason?: string
+	attachmentFilename?: string
 }
 export namespace PaymentDeliveryResponse {
 	export const type = isly.object<PaymentDeliveryResponse>({
@@ -20,6 +21,7 @@ export namespace PaymentDeliveryResponse {
 		sent: isly.fromIs("DateTime", DateTime.is).optional(),
 		state: PaymentDeliveryStatus.type,
 		reason: isly.string().optional(),
+		attachmentFilename: isly.string().optional(),
 	})
 	export const is = type.is
 }
