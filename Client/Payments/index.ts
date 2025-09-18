@@ -16,7 +16,7 @@ export class Payments extends List<model.PaymentResponse> {
 	}
 	async createWithRemittanceAdvice(request: model.PaymentRequest, file: File) {
 		const formData = new FormData()
-		formData.append("remittanceAdvice", file, file?.name)
+		formData.append("attachment", file, file?.name)
 		formData.append(
 			"request",
 			new Blob([JSON.stringify(request, null, 2)], {
