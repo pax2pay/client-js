@@ -206,6 +206,7 @@ import { SearchCardTypeProfileRequest } from "./SearchCardTypeProfileRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
+import { SetAvailableCardTypesRequest } from "./SetAvailableCardTypesRequest"
 import { SsoLoginRequest } from "./SsoLoginRequest"
 import { SsoProviderConfig } from "./SsoProviderConfig"
 import { SsoProviderType } from "./SsoProviderType"
@@ -471,6 +472,7 @@ export {
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	SecurityConfig,
+	SetAvailableCardTypesRequest,
 	Segment,
 	SsoLoginRequest,
 	SsoProviderConfig,

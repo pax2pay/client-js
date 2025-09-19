@@ -196,14 +196,9 @@ export class Cards extends List<model.CardResponseV2> {
 		)
 	}
 
+	// TODO move to CardTypes class
 	async getCardTypes(providerCode: model.ProviderCode) {
 		return await this.connection.get<model.CardTypesResponse>(`${this.folder}/types/${providerCode}`)
-	}
-
-	async getAvailableCardTypes(type?: { availabilityType: model.CardTypeAvailabilityType; name: string }) {
-		return await this.connection.get<model.AvailableCardTypesResponse>(
-			`v2/${this.folder}/types/available${type ? `/${type.availabilityType}/${type.name}` : ""}`
-		)
 	}
 
 	async searchCardsV2(
@@ -331,7 +326,7 @@ export class Cards extends List<model.CardResponseV2> {
 			request
 		)
 	}
-	//Possibly should be moved to its own class
+	// TODO move to CardTypes class
 	async getDisplayableCardTypesForProvider(provider: model.ProviderCode = "modulr") {
 		return await this.connection.get<Record<string, string>>(`v2/${this.folder}/types/displayable/${provider}`)
 	}
