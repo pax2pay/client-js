@@ -94,7 +94,7 @@ export class Cards extends List<model.CardResponseV2> {
 			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/reverse/${transactionId}`
 		)
 	}
-	//Possibly should be moved to its own class
+	// TODO: move CardTypes to its own class
 	async getCardTypesV2(
 		providerCode?: model.ProviderCode,
 		assumedOrg?: string
@@ -113,6 +113,8 @@ export class Cards extends List<model.CardResponseV2> {
 		)
 		return this.extractResponse<model.CardTypeResponse>(response)
 	}
+
+	// TODO: Deprecate
 	async createCardTypeProfileV2(cardTypeProfileRequest: model.CreateCardTypeProfileRequest, organisationCode?: string) {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		const response = await this.connection.post<model.CardTypeProfileResponse>(
@@ -124,6 +126,7 @@ export class Cards extends List<model.CardResponseV2> {
 		return response
 	}
 
+	// TODO: Deprecate
 	async updateCardTypeProfileV2(
 		cardTypeProfileId: string,
 		cardTypeProfileRequest: model.UpdateCardTypeProfileRequest,
@@ -139,6 +142,7 @@ export class Cards extends List<model.CardResponseV2> {
 		return response
 	}
 
+	// TODO: Deprecate
 	async getActiveCardTypeProfileV2(organisationCode: string) {
 		const header = { "x-assume": organisationCode }
 		return await this.connection.get<model.OrganisationCardTypeProfileResponse>(
@@ -147,6 +151,8 @@ export class Cards extends List<model.CardResponseV2> {
 			header
 		)
 	}
+
+	// TODO: Deprecate
 	async searchCardTypeProfileV2(request: model.SearchCardTypeProfileRequest, organisationCode?: string) {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.post<model.CardTypeProfileResponse[]>(
@@ -156,6 +162,8 @@ export class Cards extends List<model.CardResponseV2> {
 			header
 		)
 	}
+
+	// TODO: Deprecate
 	async setCardTypeProfileV2(organisationCode: string, cardTypeProfileId: string) {
 		const header = { "x-assume": organisationCode }
 		return await this.connection.post<model.OrganisationCardTypeProfileResponse>(
@@ -165,6 +173,8 @@ export class Cards extends List<model.CardResponseV2> {
 			header
 		)
 	}
+
+	// TODO: Deprecate
 	async assignCardTypeProfileV2(organisationCode: string, cardTypeProfileId: string) {
 		const header = { "x-assume": organisationCode }
 		return await this.connection.put<model.OrganisationCardTypeProfileResponse>(
@@ -174,6 +184,8 @@ export class Cards extends List<model.CardResponseV2> {
 			header
 		)
 	}
+
+	// TODO: Deprecate
 	async unassignCardTypeProfileV2(organisationCode: string, cardTypeProfileId: string) {
 		const header = { "x-assume": organisationCode }
 		return await this.connection.remove<model.OrganisationCardTypeProfileResponse>(
