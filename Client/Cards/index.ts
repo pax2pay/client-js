@@ -188,6 +188,12 @@ export class Cards extends List<model.CardResponseV2> {
 		return await this.connection.get<model.CardTypesResponse>(`${this.folder}/types/${providerCode}`)
 	}
 
+	async getAvailableCardTypes(type?: { availabilityType: model.CardTypeAvailabilityType; name: string }) {
+		return await this.connection.get<model.AvailableCardTypesResponse>(
+			`v2/${this.folder}/types/available${type ? `/${type.availabilityType}/${type.name}` : ""}`
+		)
+	}
+
 	async searchCardsV2(
 		searchRequest: model.CardSearch,
 		parameters?: Record<string, any>
