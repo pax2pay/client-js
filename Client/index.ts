@@ -4,6 +4,7 @@ import { Auth as ClientAuth } from "./Auth"
 import { Beneficiaries as ClientBeneficiaries } from "./Beneficiaries"
 import { CardOptions as ClientCardOptions } from "./CardOptions"
 import { Cards as ClientCards } from "./Cards"
+import { CardTypes as ClientCardTypes } from "./CardTypes"
 import { Categories as ClientCategories } from "./Categories"
 import { Configuration as ClientConfiguration } from "./Configuration"
 import { ConfirmationOfPayee as ClientConfirmationOfPayee } from "./ConfirmationOfPayee"
@@ -35,6 +36,7 @@ export class Client {
 	beneficiaries = ClientBeneficiaries.create(this.connection)
 	cardOptions = ClientCardOptions.create(this.connection)
 	cards = ClientCards.create(this.connection)
+	cardTypes = ClientCardTypes.create(this.connection)
 	categories = ClientCategories.create(this.connection)
 	configuration = ClientConfiguration.create(this.connection)
 	confirmationOfPayee = ClientConfirmationOfPayee.create(this.connection)
@@ -73,6 +75,7 @@ export namespace Client {
 	export type Beneficiaries = ClientBeneficiaries
 	export type CardOptions = ClientCardOptions
 	export type Cards = ClientCards
+	export type CardTypes = ClientCardTypes
 	export type Categories = ClientCategories
 	export type Configuration = ClientConfiguration
 	export type ConfirmationOfPayee = ClientConfirmationOfPayee
