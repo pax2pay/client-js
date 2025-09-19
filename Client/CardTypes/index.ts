@@ -10,7 +10,7 @@ export class CardTypes {
 	}
 
 	async getAvailableCardTypes() {
-		return await this.connection.get<model.AvailableCardTypesResponse>(`v2/${this.folder}/types/available`)
+		return await this.connection.get<model.AvailableCardTypesResponse>(`v2/${this.folder}/available`)
 	}
 
 	async setAvailableCardTypes(
@@ -19,8 +19,14 @@ export class CardTypes {
 		name: string
 	) {
 		return await this.connection.post<model.AvailableCardTypesResponse>(
-			`v2/${this.folder}/types/available/${availabilityType}/${name}`,
+			`v2/${this.folder}/available/${availabilityType}/${name}`,
 			request
+		)
+	}
+
+	async deleteAvailableCardTypes(availabilityType: model.CardTypeAvailabilityType, name?: string) {
+		return await this.connection.remove<model.AvailableCardTypesResponse>(
+			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`
 		)
 	}
 }
