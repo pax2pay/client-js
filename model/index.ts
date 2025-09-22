@@ -51,10 +51,10 @@ import { CardStateChangeScheduledTaskResponse } from "./CardStateChangeScheduled
 import { CardStatement } from "./CardStatement"
 import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
-import { CardTypeAvailabilityType } from "./CardTypeAvailabilityType"
 import { CardTypeDefinition } from "./CardTypeDefinition"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
+import { CardTypeRequestAvailabilityType } from "./CardTypeRequestAvailabilityType"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
@@ -319,7 +319,7 @@ export {
 	CardStatement,
 	CardTransaction,
 	CardTransactionType,
-	CardTypeAvailabilityType,
+	CardTypeRequestAvailabilityType,
 	CardTypeDefinition,
 	CardTypeInformation,
 	CreateCardTypeProfileRequest,
