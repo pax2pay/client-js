@@ -19,6 +19,7 @@ import { AmountPair } from "./AmountPair"
 import { ApiKeyCreateRequest } from "./ApiKeyCreateRequest"
 import { ApiKeyCreateResponse } from "./ApiKeyCreateResponse"
 import { ApiKeyResponse } from "./ApiKeyResponse"
+import { AvailableCardTypesResponse } from "./AvailableCardTypesResponse"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
@@ -53,6 +54,7 @@ import { CardTransactionType } from "./CardTransactionType"
 import { CardTypeDefinition } from "./CardTypeDefinition"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
+import { CardTypeRequestAvailabilityType } from "./CardTypeRequestAvailabilityType"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
@@ -204,6 +206,7 @@ import { SearchCardTypeProfileRequest } from "./SearchCardTypeProfileRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
+import { SetAvailableCardTypesRequest } from "./SetAvailableCardTypesRequest"
 import { SsoLoginRequest } from "./SsoLoginRequest"
 import { SsoProviderConfig } from "./SsoProviderConfig"
 import { SsoProviderType } from "./SsoProviderType"
@@ -284,6 +287,7 @@ export {
 	ApiKeyCreateRequest,
 	ApiKeyCreateResponse,
 	ApiKeyResponse,
+	AvailableCardTypesResponse,
 	BeneficiaryRequest,
 	BeneficiaryResponse,
 	BeneficiaryStatus,
@@ -315,6 +319,7 @@ export {
 	CardStatement,
 	CardTransaction,
 	CardTransactionType,
+	CardTypeRequestAvailabilityType,
 	CardTypeDefinition,
 	CardTypeInformation,
 	CreateCardTypeProfileRequest,
@@ -467,6 +472,7 @@ export {
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
 	SecurityConfig,
+	SetAvailableCardTypesRequest,
 	Segment,
 	SsoLoginRequest,
 	SsoProviderConfig,
