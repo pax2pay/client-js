@@ -1,13 +1,13 @@
 import { isly } from "isly"
-import { CardTypeSpecification } from "./CardTypeSpecification"
+import { CardTypeResponse } from "./CardTypeResponse"
 
 export interface AvailableCardTypesResponse {
-	cardTypes: CardTypeSpecification[]
+	cardTypes: CardTypeResponse[]
 }
 
 export namespace AvailableCardTypesResponse {
 	export const type = isly.object<AvailableCardTypesResponse>({
-		cardTypes: isly.array(CardTypeSpecification.type),
+		cardTypes: isly.array(CardTypeResponse.type),
 	})
 	export const is = type.is
 }
