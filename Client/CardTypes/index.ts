@@ -10,10 +10,11 @@ export class CardTypes {
 	}
 
 	async getAvailableCardTypes(availabilityType?: model.CardTypeRequestAvailabilityType, name?: string) {
+		const header = availabilityType == "organisation" ? { "x-assume": name } : undefined
 		return await this.connection.get<model.AvailableCardTypesResponse>(
 			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
 			undefined,
-			{ "x-assume": availabilityType == "organisation" ? name : undefined }
+			header
 		)
 	}
 
@@ -22,20 +23,22 @@ export class CardTypes {
 		availabilityType: model.CardTypeRequestAvailabilityType,
 		name?: string
 	) {
+		const header = availabilityType == "organisation" ? { "x-assume": name } : undefined
 		return await this.connection.post<model.AvailableCardTypesResponse>(
 			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
 			request,
 			undefined,
-			{ "x-assume": availabilityType == "organisation" ? name : undefined }
+			header
 		)
 	}
 
 	async deleteAvailableCardTypes(availabilityType: model.CardTypeRequestAvailabilityType, name?: string) {
+		const header = availabilityType == "organisation" ? { "x-assume": name } : undefined
 		return await this.connection.remove<model.AvailableCardTypesResponse>(
 			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
 			undefined,
 			undefined,
-			{ "x-assume": availabilityType == "organisation" ? name : undefined }
+			header
 		)
 	}
 }
