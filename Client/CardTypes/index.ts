@@ -12,7 +12,7 @@ export class CardTypes extends List<model.CardTypeResponse> {
 		return new CardTypes(connection)
 	}
 
-	async getCardTypes(
+	async get(
 		providerCode?: model.ProviderCode,
 		assumedOrg?: string
 	): Promise<model.ErrorResponse | model.CardTypeResponse[]> {
@@ -25,7 +25,7 @@ export class CardTypes extends List<model.CardTypeResponse> {
 		return this.extractResponse<model.CardTypeResponse>(response)
 	}
 
-	async getAllCardTypes(providerCode: model.ProviderCode) {
+	async getAll(providerCode: model.ProviderCode) {
 		const response = await this.connection.get<{ list: model.CardTypeResponse[]; totalCount: number }>(
 			`v2/${this.folder}/${providerCode}/all`
 		)
