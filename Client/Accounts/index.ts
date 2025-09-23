@@ -32,11 +32,6 @@ export class Accounts extends List<model.AccountResponse> {
 			request
 		)
 	}
-	async cancelLimitAlert(providerCode: model.ProviderCode, providerAccountId: string) {
-		return await this.connection.remove<Promise<model.ErrorResponse | model.AccountResponse>>(
-			`${this.folder}/${providerCode}/${providerAccountId}/limits`
-		)
-	}
 
 	async getAllFundingAccountsV2(
 		providerCode: model.ProviderCode[],
