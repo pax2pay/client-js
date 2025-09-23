@@ -9,26 +9,45 @@ export class CardTypes {
 		return new CardTypes(connection)
 	}
 
-	async getAvailableCardTypes(availabilityType?: model.CardTypeRequestAvailabilityType, name?: string) {
+	async getAvailable(
+		availabilityType?: model.CardTypeRequestAvailabilityType,
+		name?: string,
+		organisationCode?: string
+	) {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.get<model.AvailableCardTypesResponse>(
-			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`
+			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
+			undefined,
+			header
 		)
 	}
 
-	async setAvailableCardTypes(
+	async setAvailable(
 		request: model.SetAvailableCardTypesRequest,
 		availabilityType: model.CardTypeRequestAvailabilityType,
-		name?: string
+		name?: string,
+		organisationCode?: string
 	) {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.post<model.AvailableCardTypesResponse>(
 			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
-			request
+			request,
+			undefined,
+			header
 		)
 	}
 
-	async deleteAvailableCardTypes(availabilityType: model.CardTypeRequestAvailabilityType, name?: string) {
+	async deleteAvailable(
+		availabilityType: model.CardTypeRequestAvailabilityType,
+		name?: string,
+		organisationCode?: string
+	) {
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.remove<model.AvailableCardTypesResponse>(
-			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`
+			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
+			undefined,
+			undefined,
+			header
 		)
 	}
 }
