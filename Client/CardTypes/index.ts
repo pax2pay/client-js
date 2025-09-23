@@ -1,12 +1,35 @@
 import * as model from "../../model"
 import { Connection } from "../Connection"
+import { List } from "../List"
 
-export class CardTypes {
+export class CardTypes extends List<model.CardTypeResponse> {
 	protected readonly folder = "cards/types"
-	constructor(private connection: Connection) {}
+	constructor(connection: Connection) {
+		super(connection)
+	}
 
 	static create(connection: Connection): CardTypes {
 		return new CardTypes(connection)
+	}
+
+	async getCardTypes(
+		providerCode?: model.ProviderCode,
+		assumedOrg?: string
+	): Promise<model.ErrorResponse | model.CardTypeResponse[]> {
+		const header = assumedOrg ? { "x-assume": assumedOrg } : undefined
+		const response = await this.connection.get<{ list: model.CardTypeResponse[]; totalCount: number }>(
+			`v2/${this.folder}/types${providerCode ? `/${providerCode}` : ""}`,
+			undefined,
+			header
+		)
+		return this.extractResponse<model.CardTypeResponse>(response)
+	}
+
+	async getAllCardTypes(providerCode: model.ProviderCode) {
+		const response = await this.connection.get<{ list: model.CardTypeResponse[]; totalCount: number }>(
+			`v2/${this.folder}/types/${providerCode}/all`
+		)
+		return this.extractResponse<model.CardTypeResponse>(response)
 	}
 
 	async getAvailable(

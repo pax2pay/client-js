@@ -25,38 +25,7 @@ export class Cards extends List<model.CardResponseV2> {
 	static create(connection: Connection): Cards {
 		return new Cards(connection)
 	}
-	async getAllCardsPaginated(
-		previous?: Paginated<model.CardResponseV2>,
-		page?: number,
-		size?: number,
-		sort = "account.id,desc",
-		providerCode = "modulr",
-		includeCount = true
-	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
-		return await this.getNextPaginated<model.CardResponseV2>(
-			previous,
-			(page, size, sort) =>
-				this.connection.get<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(
-					`v2/${this.folder}`,
-					{
-						page: page,
-						size: size,
-						sort: sort,
-						provider: providerCode,
-						includeCount: includeCount,
-					}
-				),
-			undefined,
-			page,
-			size,
-			sort
-		)
-	}
 
-	async getCardV2(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.get<model.CardResponseV2>(`v2/${this.folder}/virtual/${providerCode}/${providerCardId}
-`)
-	}
 	async cancelCardV2(providerCardId: string, providerCode: model.ProviderCode) {
 		return await this.connection.remove<model.CardResponseV2>(
 			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/cancel`
@@ -93,30 +62,6 @@ export class Cards extends List<model.CardResponseV2> {
 		return await this.connection.remove<model.CardResponseV2>(
 			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/reverse/${transactionId}`
 		)
-	}
-	// TODO: move CardTypes to its own class
-	async getCardTypesV2(
-		providerCode?: model.ProviderCode,
-		assumedOrg?: string
-	): Promise<model.ErrorResponse | model.CardTypeResponse[]> {
-		const header = assumedOrg ? { "x-assume": assumedOrg } : undefined
-		const response = await this.connection.get<{ list: model.CardTypeResponse[]; totalCount: number }>(
-			`v2/${this.folder}/types${providerCode ? `/${providerCode}` : ""}`,
-			undefined,
-			header
-		)
-		return this.extractResponse<model.CardTypeResponse>(response)
-	}
-	async getAllCardTypesV2(providerCode: model.ProviderCode) {
-		const response = await this.connection.get<{ list: model.CardTypeResponse[]; totalCount: number }>(
-			`v2/${this.folder}/types/${providerCode}/all`
-		)
-		return this.extractResponse<model.CardTypeResponse>(response)
-	}
-
-	// TODO move to CardTypes class
-	async getCardTypes(providerCode: model.ProviderCode) {
-		return await this.connection.get<model.CardTypesResponse>(`${this.folder}/types/${providerCode}`)
 	}
 
 	async searchCardsV2(
@@ -157,33 +102,6 @@ export class Cards extends List<model.CardResponseV2> {
 			sort
 		)
 	}
-	// "Deprecated". This was added to the Accounts class so it can be removed from this when switched over wherever it's used
-	async getFundingAccounts(
-		searchRequest: model.FundingAccountSearchRequest
-	): Promise<model.ErrorResponse | model.AccountResponse[]> {
-		const response = await this.connection.post<{ list: model.AccountResponse[]; totalCount: number }>(
-			"funding-accounts/searches",
-			searchRequest
-		)
-		return this.extractResponse<model.AccountResponse>(response)
-	}
-	// "Deprecated". This was added to the Accounts class so it can be removed from this when switched over wherever it's used
-	async getAllFundingAccounts(
-		providerCode: model.ProviderCode,
-		size = 500,
-		sort = "friendlyName"
-	): Promise<model.ErrorResponse | model.AccountResponse[]> {
-		const response = await this.connection.get<{ list: model.AccountResponse[]; totalCount: number }>(
-			`funding-accounts`,
-			{ provider: providerCode, size: size, sort: sort }
-		)
-		return this.extractResponse<model.AccountResponse>(response)
-	}
-	//Possibly should be moved to its own class
-	async getCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode) {
-		return await this.connection.get<model.MetadataResponse>(`booking-info/cards/${providerCode}/${providerCardId}
-`)
-	}
 	//Possibly should be moved to its own class
 	async editCardBookingInfo(providerCardId: string, providerCode: model.ProviderCode, request: Record<string, any>) {
 		return await this.connection.put<model.MetadataResponse>(
@@ -220,16 +138,6 @@ export class Cards extends List<model.CardResponseV2> {
 		)
 		return this.extractResponse<model.CardTransaction>(response)
 	}
-	//Possibly should be moved to its own class
-	async searchTransaction(accountId: number): Promise<model.ErrorResponse | model.CardTransaction[]> {
-		const response = await this.connection.post<{ list: model.CardTransaction[]; totalCount: number }>(
-			`transactions/searches`,
-			{
-				accountId: accountId,
-			}
-		)
-		return this.extractResponse<model.CardTransaction>(response)
-	}
 	async editSchedule(providerCardId: string, providerCode: model.ProviderCode, request: model.ScheduleEntry[]) {
 		return await this.connection.put<model.CardResponseV2>(
 			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/schedule`,
@@ -243,9 +151,5 @@ export class Cards extends List<model.CardResponseV2> {
 			`v2/${this.folder}/virtual/${providerCode}/${providerCardId}/amend`,
 			request
 		)
-	}
-	// TODO move to CardTypes class
-	async getDisplayableCardTypesForProvider(provider: model.ProviderCode = "modulr") {
-		return await this.connection.get<Record<string, string>>(`v2/${this.folder}/types/displayable/${provider}`)
 	}
 }
