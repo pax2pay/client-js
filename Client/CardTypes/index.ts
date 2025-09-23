@@ -14,7 +14,7 @@ export class CardTypes {
 		name?: string,
 		organisationCode?: string
 	) {
-		const header = organisationCode ? { "x-assume": name } : undefined
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.get<model.AvailableCardTypesResponse>(
 			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
 			undefined,
@@ -28,7 +28,7 @@ export class CardTypes {
 		name?: string,
 		organisationCode?: string
 	) {
-		const header = organisationCode ? { "x-assume": name } : undefined
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.post<model.AvailableCardTypesResponse>(
 			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
 			request,
@@ -42,7 +42,7 @@ export class CardTypes {
 		name?: string,
 		organisationCode?: string
 	) {
-		const header = organisationCode ? { "x-assume": name } : undefined
+		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.remove<model.AvailableCardTypesResponse>(
 			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
 			undefined,
