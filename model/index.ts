@@ -53,7 +53,6 @@ import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardTypeDefinition } from "./CardTypeDefinition"
 import { CardTypeInformation } from "./CardTypeInformation"
-import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
 import { CardTypeRequestAvailabilityType } from "./CardTypeRequestAvailabilityType"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypesConfig } from "./CardTypesConfig"
@@ -318,7 +317,6 @@ export {
 	CardTypeRequestAvailabilityType,
 	CardTypeDefinition,
 	CardTypeInformation,
-	CardTypeProfileResponse,
 	CardTypesResponse,
 	CardTypeResponse,
 	CardTypesConfig,

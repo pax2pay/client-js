@@ -1,5 +1,5 @@
 import { AccountResponse } from "./AccountResponse"
-import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
+import { CardTypeResponse } from "./CardTypeResponse"
 import { CredentialResponse } from "./CredentialResponse"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
@@ -18,5 +18,5 @@ export interface OmnisetupResponse {
 	credentials: CredentialResponse[]
 	accounts: AccountResponse[]
 	cardOptions: InsertCardOptionRequest
-	cardTypeProfiles: CardTypeProfileResponse
+	cardTypes: CardTypeResponse[]
 }
