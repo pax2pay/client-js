@@ -53,7 +53,6 @@ import { CardTransaction } from "./CardTransaction"
 import { CardTransactionType } from "./CardTransactionType"
 import { CardTypeDefinition } from "./CardTypeDefinition"
 import { CardTypeInformation } from "./CardTypeInformation"
-import { CardTypeProfileResponse } from "./CardTypeProfileResponse"
 import { CardTypeRequestAvailabilityType } from "./CardTypeRequestAvailabilityType"
 import { CardTypeResponse } from "./CardTypeResponse"
 import { CardTypesConfig } from "./CardTypesConfig"
@@ -74,7 +73,6 @@ import { ConfirmationOfPayeeRequest } from "./ConfirmationOfPayeeRequest"
 import { ConfirmationOfPayeeResponse } from "./ConfirmationOfPayeeResponse"
 import { ConfirmationOfPayeeResponseStatus } from "./ConfirmationOfPayeeResponseStatus"
 import { CreateCardRequest } from "./CreateCardRequest"
-import { CreateCardTypeProfileRequest } from "./CreateCardTypeProfileRequest"
 import { CreateRolesetRequest } from "./CreateRolesetRequest"
 import { CredentialRequest } from "./CredentialRequest"
 import { CredentialResponse } from "./CredentialResponse"
@@ -151,7 +149,6 @@ import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
 import { OmnisetupRequest } from "./OmnisetupRequest"
 import { OmnisetupResponse } from "./OmnisetupResponse"
-import { OrganisationCardTypeProfileResponse } from "./OrganisationCardTypeProfileResponse"
 import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationFlag } from "./OrganisationFlag"
@@ -202,7 +199,6 @@ import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { ScheduleEntry } from "./ScheduleEntry"
 import { Scheme } from "./Scheme"
 import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
-import { SearchCardTypeProfileRequest } from "./SearchCardTypeProfileRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
@@ -247,7 +243,6 @@ import { TwoFactorAuthenticationDetails } from "./TwoFactorAuthenticationDetails
 import { TwoFactorAuthenticationRegistrationResponse } from "./TwoFactorAuthenticationRegistrationResponse"
 import { UpdateAccountRequest } from "./UpdateAccountRequest"
 import { UpdateBeneficiaryRequest } from "./UpdateBeneficiaryRequest"
-import { UpdateCardTypeProfileRequest } from "./UpdateCardTypeProfileRequest"
 import { UpdateCategoryRequest } from "./UpdateCategoryRequest"
 import { UpdateMerchantRequest } from "./UpdateMerchantRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
@@ -322,8 +317,6 @@ export {
 	CardTypeRequestAvailabilityType,
 	CardTypeDefinition,
 	CardTypeInformation,
-	CreateCardTypeProfileRequest,
-	CardTypeProfileResponse,
 	CardTypesResponse,
 	CardTypeResponse,
 	CardTypesConfig,
@@ -419,7 +412,6 @@ export {
 	OmnisetupProviderRequest,
 	OmnisetupRequest,
 	OmnisetupResponse,
-	OrganisationCardTypeProfileResponse,
 	OrganisationConfig,
 	OrganisationCreateRequest,
 	OrganisationFlag,
@@ -478,7 +470,6 @@ export {
 	SsoProviderConfig,
 	SsoProviderType,
 	SearchBeneficiaryRequest,
-	SearchCardTypeProfileRequest,
 	StatementReportRequest,
 	StatementReportResponse,
 	StatementReportResponseRow,
@@ -516,7 +507,6 @@ export {
 	TwoFactorAuthenticationRegistrationResponse,
 	UpdateAccountRequest,
 	UpdateBeneficiaryRequest,
-	UpdateCardTypeProfileRequest,
 	UpdateMerchantRequest,
 	UpdateRolesetRequest,
 	Usage,
