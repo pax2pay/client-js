@@ -11,7 +11,9 @@ export class CardTypes {
 
 	async getAvailableCardTypes(availabilityType?: model.CardTypeRequestAvailabilityType, name?: string) {
 		return await this.connection.get<model.AvailableCardTypesResponse>(
-			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`
+			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
+			undefined,
+			{ "x-assume": availabilityType == "organisation" ? name : undefined }
 		)
 	}
 
@@ -22,13 +24,18 @@ export class CardTypes {
 	) {
 		return await this.connection.post<model.AvailableCardTypesResponse>(
 			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
-			request
+			request,
+			undefined,
+			{ "x-assume": availabilityType == "organisation" ? name : undefined }
 		)
 	}
 
 	async deleteAvailableCardTypes(availabilityType: model.CardTypeRequestAvailabilityType, name?: string) {
 		return await this.connection.remove<model.AvailableCardTypesResponse>(
-			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`
+			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
+			undefined,
+			undefined,
+			{ "x-assume": availabilityType == "organisation" ? name : undefined }
 		)
 	}
 }
