@@ -64,7 +64,7 @@ export class Merchants extends List<model.MerchantResponse> {
 			{
 				page: 0,
 				size: 5000,
-				sort
+				sort,
 			},
 			header
 		)
