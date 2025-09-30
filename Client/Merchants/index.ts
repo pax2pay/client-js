@@ -57,13 +57,14 @@ export class Merchants extends List<model.MerchantResponse> {
 			sort
 		)
 	}
-	async getAll(organisationCode?: string) {
+	async getAll(organisationCode?: string, sort = "name") {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		const response = await this.connection.get<model.ErrorResponse | model.MerchantResponse[]>(
 			this.folder,
 			{
 				page: 0,
 				size: 5000,
+				sort
 			},
 			header
 		)
