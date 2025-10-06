@@ -39,7 +39,7 @@ export class CardTypes extends List<model.CardTypeResponse> {
 	) {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		return await this.connection.get<model.AvailableCardTypesResponse>(
-			`v2/${this.folder}/available/${availabilityType}${name ? `/${name}` : ""}`,
+			`v2/${this.folder}/available/${availabilityType ?? ""}${availabilityType && name ? `/${name}` : ""}`,
 			undefined,
 			header
 		)
