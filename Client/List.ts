@@ -35,10 +35,10 @@ export abstract class List<Response extends { [key: string]: any }> {
 			}
 
 			page = previous.nextPage()
-			size = previous.size
+			size = chosenSize ?? previous.size
 		} else {
 			page = page ?? 0
-			size = size ?? this.DEFAULT_PAGE_SIZE
+			size = chosenSize ?? this.DEFAULT_PAGE_SIZE
 		}
 
 		const response = await callback(page, size, sort, request)
