@@ -1,4 +1,4 @@
-const beneficiaryStatus = ["ACTIVE", "DELETED", "OUTDATED"] as const
+const beneficiaryStatus = ["ACTIVE", "DELETED", "OUTDATED", "ACTIVE_MERCHANT", "ACTIVE_REBATE"] as const
 
 export type BeneficiaryStatus = typeof beneficiaryStatus[number]
 
