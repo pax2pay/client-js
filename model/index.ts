@@ -19,6 +19,7 @@ import { AmountPair } from "./AmountPair"
 import { ApiKeyCreateRequest } from "./ApiKeyCreateRequest"
 import { ApiKeyCreateResponse } from "./ApiKeyCreateResponse"
 import { ApiKeyResponse } from "./ApiKeyResponse"
+import { AvailableCardTypesHasResponse } from "./AvailableCardTypesHasResponse"
 import { AvailableCardTypesResponse } from "./AvailableCardTypesResponse"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
@@ -282,6 +283,7 @@ export {
 	ApiKeyCreateRequest,
 	ApiKeyCreateResponse,
 	ApiKeyResponse,
+	AvailableCardTypesHasResponse,
 	AvailableCardTypesResponse,
 	BeneficiaryRequest,
 	BeneficiaryResponse,
