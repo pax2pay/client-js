@@ -1,6 +1,7 @@
 import * as model from "../../model"
 import { Connection } from "../Connection"
 import { List } from "../List"
+import { Paginated } from "../Paginated"
 
 export class CardTypes extends List<model.CardTypeResponse> {
 	protected readonly folder = "cards/types"
@@ -17,6 +18,25 @@ export class CardTypes extends List<model.CardTypeResponse> {
 			`v2/${this.folder}/${providerCode}/all`
 		)
 		return this.extractResponse<model.CardTypeResponse>(response)
+	}
+
+	async listAvailability(
+		availabilityType: model.CardTypeRequestAvailabilityType,
+		previous?: Paginated<model.AvailableCardTypesHasResponse>,
+		page?: number,
+		size?: number
+	) {
+		return await this.getNextPaginated(
+			previous,
+			(page, size, sort) =>
+				this.connection.get<{ list: model.AvailableCardTypesHasResponse[]; totalCount: number }>(
+					`v2/${this.folder}/available/${availabilityType}/has`,
+					{ page, size, sort, includeCount: true }
+				),
+			undefined,
+			page,
+			size
+		)
 	}
 
 	async getAvailable(
