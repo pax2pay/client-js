@@ -36,11 +36,21 @@ export class Beneficiaries extends List<model.BeneficiaryResponse> {
 		)
 		return this.extractResponse(response)
 	}
-	async create(request: model.BeneficiaryRequest) {
-		return await this.connection.post<model.BeneficiaryResponse>(`${this.folder}`, request)
+	async create(request: model.BeneficiaryRequest, otp?: string) {
+		return await this.connection.post<model.BeneficiaryResponse>(
+			`${this.folder}`,
+			request,
+			undefined,
+			otp ? { "x-otp": otp } : {}
+		)
 	}
-	async update(beneficiaryId: string, request: model.UpdateBeneficiaryRequest) {
-		return await this.connection.put<model.BeneficiaryResponse>(`${this.folder}/${beneficiaryId}`, request)
+	async update(beneficiaryId: string, request: model.UpdateBeneficiaryRequest, otp?: string) {
+		return await this.connection.put<model.BeneficiaryResponse>(
+			`${this.folder}/${beneficiaryId}`,
+			request,
+			undefined,
+			otp ? { "x-otp": otp } : {}
+		)
 	}
 	async delete(beneficiaryId: string) {
 		return await this.connection.remove<model.BeneficiaryResponse>(`${this.folder}/${beneficiaryId}`)
