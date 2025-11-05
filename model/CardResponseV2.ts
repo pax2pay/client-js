@@ -27,6 +27,7 @@ export interface CardResponseV2 {
 	providerCardId: string
 	cardId: string
 	usage: Usage
+	usagesRemaining?: number
 	fundingAccount: FundingAccountSummaryResponse
 	createdBy: string
 	state: CardState
@@ -57,6 +58,7 @@ export namespace CardResponseV2 {
 		providerCardId: isly.string(),
 		cardId: isly.string(),
 		usage: Usage.type,
+		usagesRemaining: isly.number().optional(),
 		fundingAccount: isly.fromIs("FundingAccountSummaryResponse", FundingAccountSummaryResponse.is),
 		createdBy: isly.string(),
 		state: isly.fromIs("CardState", CardState.is),
