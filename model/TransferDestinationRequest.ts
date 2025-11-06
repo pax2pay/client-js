@@ -4,7 +4,7 @@ import { AddressInfo } from "./AddressInfo"
 import { TransferDestinationAddressType } from "./TransferDestinationAddressType"
 
 export interface TransferDestinationRequest {
-	type: TransferDestinationAddressType
+	type?: TransferDestinationAddressType
 	address?: AddressInfo
 	currency?: Currency
 	fullName?: string
@@ -18,11 +18,12 @@ export interface TransferDestinationRequest {
 	abaRoutingNumber?: string // ABA
 	bankCountry?: string // IBAN, ABA
 	bankName?: string // IBAN, ABA
+	fundingAccountId?: string // Funding Account
 }
 
 export namespace TransferDestinationRequest {
 	export const type = isly.object<TransferDestinationRequest>({
-		type: TransferDestinationAddressType.type,
+		type: TransferDestinationAddressType.type.optional(),
 		address: AddressInfo.type.optional(),
 		currency: isly.fromIs("Currency", Currency.is).optional(),
 		fullName: isly.string().optional(),
@@ -36,6 +37,7 @@ export namespace TransferDestinationRequest {
 		abaRoutingNumber: isly.string().optional(),
 		bankCountry: isly.string().optional(),
 		bankName: isly.string().optional(),
+		fundingAccountId: isly.string().optional(),
 	})
 	export const is = type.is
 }
