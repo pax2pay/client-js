@@ -144,7 +144,6 @@ import { MerchantType } from "./MerchantType"
 import { MetadataFormat } from "./MetadataFormat"
 import { MetadataRequest } from "./MetadataRequest"
 import { MetadataResponse } from "./MetadataResponse"
-import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { Notification } from "./Notification"
 import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
@@ -408,7 +407,6 @@ export {
 	MetadataFormat,
 	MetadataRequest,
 	MetadataResponse,
-	MinimalBookingInfo,
 	Notification,
 	OmnisetupFlags,
 	OmnisetupProviderRequest,
