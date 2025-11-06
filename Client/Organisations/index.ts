@@ -20,7 +20,7 @@ export class Organisations extends List<model.OrganisationResponse> {
 		return await this.connection.put<model.OrganisationResponse>(`${this.folder}/${code}`, request)
 	}
 	async search(request: model.OrganisationSearchRequest, page = 0, size = 500, sort = "name") {
-		return await this.connection.post<model.OrganisationSearchResponse[]>(`v2/${this.folder}/searches`, request, {
+		return await this.connection.post<model.OrganisationResponseV2[]>(`v2/${this.folder}/searches`, request, {
 			page: page,
 			size: size,
 			sort: sort,

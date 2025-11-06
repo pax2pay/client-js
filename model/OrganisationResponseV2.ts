@@ -8,7 +8,7 @@ import { OrganisationRealm } from "./OrganisationRealm"
 import { OrganisationStatusV2 } from "./OrganisationStatusV2"
 import { ProviderCode } from "./ProviderCode"
 
-export interface OrganisationSearchResponse {
+export interface OrganisationResponseV2 {
 	code: string
 	name: string
 	status: OrganisationStatusV2
@@ -21,8 +21,8 @@ export interface OrganisationSearchResponse {
 	channelPartners?: OrganisationFlag[]
 }
 
-export namespace OrganisationSearchResponse {
-	export const type = isly.object<OrganisationSearchResponse>({
+export namespace OrganisationResponseV2 {
+	export const type = isly.object<OrganisationResponseV2>({
 		code: isly.string(),
 		name: isly.string(),
 		status: OrganisationStatusV2.type,

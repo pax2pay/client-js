@@ -156,8 +156,8 @@ import { OrganisationFlag } from "./OrganisationFlag"
 import { OrganisationRealm } from "./OrganisationRealm"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
+import { OrganisationResponseV2 } from "./OrganisationResponseV2"
 import { OrganisationSearchRequest } from "./OrganisationSearchRequest"
-import { OrganisationSearchResponse } from "./OrganisationSearchResponse"
 import { OrganisationStatus } from "./OrganisationStatus"
 import { OrganisationStatusV2 } from "./OrganisationStatusV2"
 import { Passengers } from "./Passengers"
@@ -421,7 +421,7 @@ export {
 	OrganisationRequest,
 	OrganisationResponse,
 	OrganisationSearchRequest,
-	OrganisationSearchResponse,
+	OrganisationResponseV2,
 	OrganisationStatus,
 	OrganisationStatusV2,
 	Passengers,
