@@ -144,7 +144,6 @@ import { MerchantType } from "./MerchantType"
 import { MetadataFormat } from "./MetadataFormat"
 import { MetadataRequest } from "./MetadataRequest"
 import { MetadataResponse } from "./MetadataResponse"
-import { MinimalBookingInfo } from "./MinimalBookingInfo"
 import { Notification } from "./Notification"
 import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
@@ -156,8 +155,8 @@ import { OrganisationFlag } from "./OrganisationFlag"
 import { OrganisationRealm } from "./OrganisationRealm"
 import { OrganisationRequest } from "./OrganisationRequest"
 import { OrganisationResponse } from "./OrganisationResponse"
+import { OrganisationResponseV2 } from "./OrganisationResponseV2"
 import { OrganisationSearchRequest } from "./OrganisationSearchRequest"
-import { OrganisationSearchResponse } from "./OrganisationSearchResponse"
 import { OrganisationStatus } from "./OrganisationStatus"
 import { OrganisationStatusV2 } from "./OrganisationStatusV2"
 import { Passengers } from "./Passengers"
@@ -408,7 +407,6 @@ export {
 	MetadataFormat,
 	MetadataRequest,
 	MetadataResponse,
-	MinimalBookingInfo,
 	Notification,
 	OmnisetupFlags,
 	OmnisetupProviderRequest,
@@ -420,8 +418,8 @@ export {
 	OrganisationRealm,
 	OrganisationRequest,
 	OrganisationResponse,
+	OrganisationResponseV2,
 	OrganisationSearchRequest,
-	OrganisationSearchResponse,
 	OrganisationStatus,
 	OrganisationStatusV2,
 	Passengers,
