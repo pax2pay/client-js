@@ -1,19 +1,19 @@
 import { AccountDetailsTransferDestinationResponse } from "./AccountDetailsTransferDestinationResponse"
 import { BeneficiaryTransferDestinationResponse } from "./BeneficiaryTransferDestinationResponse"
 import { ExternalDestination } from "./ExternalDestination"
-import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
+import { FundingAccountTransferDestinationResponse } from "./FundingAccountTransferDestinationResponse"
 
 export type TransferDestinationResponse =
 	| BeneficiaryTransferDestinationResponse
 	| AccountDetailsTransferDestinationResponse
-	| FundingAccountSummaryResponse
+	| FundingAccountTransferDestinationResponse
 	| ExternalDestination
 export namespace TransferDestinationResponse {
 	export function is(value: TransferDestinationResponse | any): value is TransferDestinationResponse {
 		return (
 			BeneficiaryTransferDestinationResponse.is(value) ||
 			AccountDetailsTransferDestinationResponse.is(value) ||
-			FundingAccountSummaryResponse.is(value) ||
+			FundingAccountTransferDestinationResponse.is(value) ||
 			ExternalDestination.is(value)
 		)
 	}

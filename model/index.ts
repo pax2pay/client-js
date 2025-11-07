@@ -114,6 +114,7 @@ import { FundingAccountResponseV2Full } from "./FundingAccountResponseV2Full"
 import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
 import { FundingAccountSearchResponse } from "./FundingAccountSearchResponse"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
+import { FundingAccountTransferDestinationResponse } from "./FundingAccountTransferDestinationResponse"
 import { FundingLimitConfig } from "./FundingLimitConfig"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
@@ -377,6 +378,7 @@ export {
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
 	FundingAccountSummaryResponse,
+	FundingAccountTransferDestinationResponse,
 	FundingLimitConfig,
 	FundingLimitRequest,
 	FundingLimitResponse,
