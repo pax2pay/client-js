@@ -1,18 +1,24 @@
+import { Currency } from "isoly"
+import { isly } from "isly"
+import { TransferDestinationAddressType } from "./TransferDestinationAddressType"
+
 export interface FundingAccountSummaryResponse {
 	providerAccountId: string
 	accountId: string
 	balance: number
 	friendlyName: string
+	currency: Currency
+	type: TransferDestinationAddressType
 }
 
 export namespace FundingAccountSummaryResponse {
-	export function is(value: FundingAccountSummaryResponse | any): value is FundingAccountSummaryResponse {
-		return (
-			typeof value == "object" &&
-			typeof value.providerAccountId == "string" &&
-			typeof value.accountId == "string" &&
-			typeof value.balance == "number" &&
-			typeof value.friendlyName == "string"
-		)
-	}
+	export const type = isly.object<FundingAccountSummaryResponse>({
+		providerAccountId: isly.string(),
+		accountId: isly.string(),
+		balance: isly.number(),
+		friendlyName: isly.string(),
+		currency: isly.fromIs("Currency", Currency.is),
+		type: TransferDestinationAddressType.type,
+	})
+	export const is = type.is
 }
