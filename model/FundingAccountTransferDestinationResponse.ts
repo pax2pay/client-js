@@ -9,11 +9,9 @@ export interface FundingAccountTransferDestinationResponse extends FundingAccoun
 }
 
 export namespace FundingAccountTransferDestinationResponse {
-	export const type = FundingAccountSummaryResponse.type
-		.extend<FundingAccountTransferDestinationResponse>({
-			type: TransferDestinationAddressType.type,
-			currency: isly.fromIs("Currency", Currency.is),
-		})
-		.extend(FundingAccountSummaryResponse.type)
+	export const type = FundingAccountSummaryResponse.type.extend<FundingAccountTransferDestinationResponse>({
+		type: TransferDestinationAddressType.type,
+		currency: isly.fromIs("Currency", Currency.is),
+	})
 	export const is = type.is
 }
