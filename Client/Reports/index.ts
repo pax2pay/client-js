@@ -95,6 +95,32 @@ export class Reports {
 	async getOrganisationReportUrl(request: model.DownloadOrganisationSearchRequest) {
 		return await this.connection.post<model.DownloadableResponse>(`${this.folder}/organisation/download`, request)
 	}
+	async getInvocationsWithId(id: string) {
+		return await this.connection.get<model.ReportSubscriptionInvocationResponse[]>(
+			`${this.folder}/subscription/${id}/invocations`
+		)
+	}
+	async invokeSubscriptionWithId(id: string) {
+		return await this.connection.get<model.ReportSubscriptionResponse[]>(`${this.folder}/subscription/${id}/invoke`)
+	}
+	async invokeSubscriptions() {
+		return await this.connection.get<model.ReportSubscriptionResponse>(`${this.folder}/subscription/invoke`)
+	}
+	async createSubscription(request: model.ReportSubscriptionRequest) {
+		return await this.connection.post<model.ReportSubscriptionResponse>(`${this.folder}/subscription`, request)
+	}
+	async updateSubscriptionWithId(id: string, request: model.ReportSubscriptionRequest) {
+		return await this.connection.put<model.ReportSubscriptionResponse>(`${this.folder}/subscription/${id}`, request)
+	}
+	async deleteSubscriptionWithId(id: string) {
+		return await this.connection.remove<model.ReportSubscriptionResponse>(`${this.folder}/subscription/${id}`)
+	}
+	async getSubscriptionWithId(id: string) {
+		return await this.connection.get<model.ReportSubscriptionResponse>(`${this.folder}/subscription/${id}`)
+	}
+	async getSubscriptions() {
+		return await this.connection.get<model.ReportSubscriptionResponse[]>(`${this.folder}/subscription`)
+	}
 	static create(connection: Connection) {
 		return new Reports(connection)
 	}

@@ -80,7 +80,9 @@ import { CredentialResponse } from "./CredentialResponse"
 import { Criteria } from "./Criteria"
 import { CurrencyConversionRequest } from "./CurrencyConversionRequest"
 import { CurrencyConversionResponse } from "./CurrencyConversionResponse"
+import { DayOfWeek } from "./DayOfWeek"
 import { DeliveryStatus } from "./DeliveryStatus"
+import { DestinationType } from "./DestinationType"
 import { DownloadableResponse } from "./DownloadableResponse"
 import { DownloadCardReportRequest } from "./DownloadCardReportRequest"
 import { DownloadFileFormat } from "./DownloadFileFormat"
@@ -94,6 +96,7 @@ import { EditPaymentAmountScheduleRequest } from "./EditPaymentAmountScheduleReq
 import { EditPaymentCloseDateRequest } from "./EditPaymentCloseDateRequest"
 import { EditPaymentMetadataRequest } from "./EditPaymentMetadataRequest"
 import { EditPaymentScheduleRequest } from "./EditPaymentScheduleRequest"
+import { EmailReportFileDestination } from "./EmailReportFileDestination"
 import { EmailValidationResponse } from "./EmailValidationResponse"
 import { ErrorMessageDto } from "./ErrorMessageDto"
 import { ErrorResponse } from "./ErrorResponse"
@@ -193,6 +196,15 @@ import { Range } from "./Range"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
+import { ReportFileDestination } from "./Report/ReportFileDestination"
+import { ReportSubscriptionFrequencyRequest } from "./Report/ReportSubscriptionFrequencyRequest"
+import { ReportSubscriptionFrequencyType } from "./Report/ReportSubscriptionFrequencyType"
+import { ReportSubscriptionInvocationOutcome } from "./Report/ReportSubscriptionInvocationOutcome"
+import { ReportSubscriptionInvocationResponse } from "./Report/ReportSubscriptionInvocationResponse"
+import { ReportSubscriptionRequest } from "./Report/ReportSubscriptionRequest"
+import { ReportSubscriptionResponse } from "./Report/ReportSubscriptionResponse"
+import { ReportSubscriptionStatus } from "./Report/ReportSubscriptionStatus"
+import { ReportType } from "./Report/ReportType"
 import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
@@ -204,6 +216,7 @@ import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
 import { SetAvailableCardTypesRequest } from "./SetAvailableCardTypesRequest"
+import { SftpReportFileDestination } from "./SftpReportFileDestination"
 import { SsoLoginRequest } from "./SsoLoginRequest"
 import { SsoProviderConfig } from "./SsoProviderConfig"
 import { SsoProviderType } from "./SsoProviderType"
@@ -327,7 +340,6 @@ export {
 	CardTypeFlag,
 	CardUsage,
 	CategoryFundingAccountAccessRequest,
-	UpdateCategoryRequest,
 	CategoryLimitResponse,
 	CategoryResponse,
 	CategoryStatus,
@@ -345,7 +357,10 @@ export {
 	Criteria,
 	CurrencyConversionRequest,
 	CurrencyConversionResponse,
+	DayOfWeek,
 	DeliveryStatus,
+	DestinationType,
+	DownloadableResponse,
 	DownloadCardReportRequest,
 	DownloadFileFormat,
 	DownloadOrganisationSearchRequest,
@@ -358,6 +373,7 @@ export {
 	EditPaymentCloseDateRequest,
 	EditPaymentMetadataRequest,
 	EditPaymentScheduleRequest,
+	EmailReportFileDestination,
 	EmailValidationResponse,
 	ErrorMessageDto,
 	ErrorResponse,
@@ -457,7 +473,15 @@ export {
 	References,
 	RelogWithNewSessionDetailsRequest,
 	Report,
-	DownloadableResponse,
+	ReportFileDestination,
+	ReportSubscriptionFrequencyRequest,
+	ReportSubscriptionFrequencyType,
+	ReportSubscriptionInvocationOutcome,
+	ReportSubscriptionInvocationResponse,
+	ReportSubscriptionResponse,
+	ReportSubscriptionStatus,
+	ReportType,
+	ReportSubscriptionRequest,
 	RoleResponse,
 	RolesetResponse,
 	Room,
@@ -467,6 +491,7 @@ export {
 	SearchRolesetsRequest,
 	SecurityConfig,
 	SetAvailableCardTypesRequest,
+	SftpReportFileDestination,
 	Segment,
 	SsoLoginRequest,
 	SsoProviderConfig,
@@ -509,6 +534,7 @@ export {
 	TwoFactorAuthenticationRegistrationResponse,
 	UpdateAccountRequest,
 	UpdateBeneficiaryRequest,
+	UpdateCategoryRequest,
 	UpdateMerchantRequest,
 	UpdateRolesetRequest,
 	Usage,
