@@ -95,7 +95,7 @@ export class Reports {
 	async getOrganisationReportUrl(request: model.DownloadOrganisationSearchRequest) {
 		return await this.connection.post<model.DownloadableResponse>(`${this.folder}/organisation/download`, request)
 	}
-	async getInvokationsWithId(id: string) {
+	async getInvocationsWithId(id: string) {
 		return await this.connection.get<model.ReportSubscriptionInvocationResponse[]>(
 			`${this.folder}/subscription/${id}/invocations`
 		)
