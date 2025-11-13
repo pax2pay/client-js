@@ -27,11 +27,11 @@ export class Users extends List<model.UserResponse> {
 	async getUser(username: string): Promise<model.UserResponse | model.ErrorResponse> {
 		return await this.connection.get<model.UserResponse>(`${this.folder}/${username}`)
 	}
-	async getUsersActiveRoles(username: string): Promise<string[] | model.ErrorResponse> {
-		const response = await this.connection.get<{ list: string[]; totalCount: number }>(
+	async getUsersActiveRoles(username: string): Promise<model.Role[] | model.ErrorResponse> {
+		const response = await this.connection.get<{ list: model.Role[]; totalCount: number }>(
 			`${this.folder}/${username}/roles/minified`
 		)
-		return this.extractResponse<string>(response)
+		return this.extractResponse<model.Role>(response)
 	}
 	async getUsersRoles(username: string): Promise<model.UserRoleResponse | model.ErrorResponse> {
 		return await this.connection.get<model.UserRoleResponse>(`${this.folder}/${username}/roles`)
