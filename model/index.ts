@@ -205,6 +205,7 @@ import { ReportSubscriptionRequest } from "./Report/ReportSubscriptionRequest"
 import { ReportSubscriptionResponse } from "./Report/ReportSubscriptionResponse"
 import { ReportSubscriptionStatus } from "./Report/ReportSubscriptionStatus"
 import { ReportType } from "./Report/ReportType"
+import { Role } from "./Role"
 import { RoleResponse } from "./RoleResponse"
 import { RolesetResponse } from "./RolesetResponse"
 import { Room } from "./Room"
@@ -472,6 +473,7 @@ export {
 	Range,
 	References,
 	RelogWithNewSessionDetailsRequest,
+	Role,
 	Report,
 	ReportFileDestination,
 	ReportSubscriptionFrequencyRequest,

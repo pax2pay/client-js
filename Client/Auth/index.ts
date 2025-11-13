@@ -8,13 +8,13 @@ export class Auth {
 		return new Auth(connection)
 	}
 
-	get roles(): string[] | undefined {
-		return Session.roles.get()
+	get roles(): model.Role[] | undefined {
+		return Session.roles.get() as model.Role[] | undefined
 	}
-	set roles(roles: string[] | undefined) {
+	set roles(roles: model.Role[] | undefined) {
 		Session.roles.set(roles)
 	}
-	hasRole(role: string): boolean {
+	hasRole(role: model.Role): boolean {
 		return this.roles?.includes(role) ?? false
 	}
 	get features(): model.PaxpayFeature[] | undefined {
