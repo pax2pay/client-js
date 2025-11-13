@@ -41,7 +41,7 @@ export namespace Role {
 		"card-type.profile.edit-shared",
 		"card-type.profile.edit-default",
 		"card-type.profile.set",
-		"beneficiary.view", // beneficiaries
+		"beneficiary.view", // transfers & beneficiaries
 		"beneficiary.list",
 		"beneficiary.create",
 		"beneficiary.edit",
