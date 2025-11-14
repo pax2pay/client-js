@@ -5,6 +5,7 @@ import { Session } from "./Auth/Session"
 type DefaultCodes = 503
 export class Connection {
 	unauthorized: (connection: Connection) => Promise<boolean>
+	#pax2paxPortalLanguage?: string
 	#token?: string
 	#assumedOrg?: string
 	get token() {
@@ -50,6 +51,8 @@ export class Connection {
 		}
 		if (this.token)
 			requestHeaders["X-Auth-Token"] = this.token
+		if (this.#pax2paxPortalLanguage)
+			requestHeaders["Pax2pax-Portal-Language"] = this.#pax2paxPortalLanguage
 		if (this.assumedOrg)
 			requestHeaders["x-assume"] = this.assumedOrg
 		if (cookie)
