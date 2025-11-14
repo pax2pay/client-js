@@ -5,6 +5,11 @@ import { Session } from "./Auth/Session"
 type DefaultCodes = 503
 export class Connection {
 	unauthorized: (connection: Connection) => Promise<boolean>
+	#pax2payPortalLanguage?: string
+	set pax2payPortalLanguage(value: string) {
+		this.#pax2payPortalLanguage = value
+	}
+
 	#token?: string
 	#assumedOrg?: string
 	get token() {
@@ -50,6 +55,8 @@ export class Connection {
 		}
 		if (this.token)
 			requestHeaders["X-Auth-Token"] = this.token
+		if (this.#pax2payPortalLanguage)
+			requestHeaders["Pax2pay-Portal-Language"] = this.#pax2payPortalLanguage
 		if (this.assumedOrg)
 			requestHeaders["x-assume"] = this.assumedOrg
 		if (cookie)
