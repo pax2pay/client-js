@@ -56,7 +56,7 @@ export class Connection {
 		if (this.token)
 			requestHeaders["X-Auth-Token"] = this.token
 		if (this.#pax2payPortalLanguage)
-			requestHeaders["Pax2pax-Portal-Language"] = this.#pax2payPortalLanguage
+			requestHeaders["Pax2pay-Portal-Language"] = this.#pax2payPortalLanguage
 		if (this.assumedOrg)
 			requestHeaders["x-assume"] = this.assumedOrg
 		if (cookie)
