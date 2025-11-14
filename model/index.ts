@@ -21,6 +21,7 @@ import { ApiKeyCreateResponse } from "./ApiKeyCreateResponse"
 import { ApiKeyResponse } from "./ApiKeyResponse"
 import { AvailableCardTypesHasResponse } from "./AvailableCardTypesHasResponse"
 import { AvailableCardTypesResponse } from "./AvailableCardTypesResponse"
+import { Batch } from "./Batch"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
@@ -299,6 +300,7 @@ export {
 	ApiKeyResponse,
 	AvailableCardTypesHasResponse,
 	AvailableCardTypesResponse,
+	Batch,
 	BeneficiaryRequest,
 	BeneficiaryResponse,
 	BeneficiaryStatus,
