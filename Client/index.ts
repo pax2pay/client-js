@@ -67,6 +67,9 @@ export class Client {
 		newClient.connection.assumedOrg = orgCode
 		return newClient
 	}
+	setPortalLanguage(usedLanguage: string, defaultLanguage: string) {
+		this.connection.portalLanguage = `${usedLanguage};${defaultLanguage}`
+	}
 }
 
 export namespace Client {

@@ -6,6 +6,10 @@ type DefaultCodes = 503
 export class Connection {
 	unauthorized: (connection: Connection) => Promise<boolean>
 	#pax2paxPortalLanguage?: string
+	set portalLanguage(value: string) {
+		this.#pax2paxPortalLanguage = value
+	}
+
 	#token?: string
 	#assumedOrg?: string
 	get token() {
