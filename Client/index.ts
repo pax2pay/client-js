@@ -67,8 +67,8 @@ export class Client {
 		newClient.connection.assumedOrg = orgCode
 		return newClient
 	}
-	setPortalLanguage(usedLanguage: string, defaultLanguage: string) {
-		this.connection.portalLanguage = `${usedLanguage};${defaultLanguage}`
+	setPax2PayPortalLanguage(usedLanguage: string, defaultLanguage: string) {
+		this.connection.pax2payPortalLanguage = `${usedLanguage};${defaultLanguage}`
 	}
 }
 
