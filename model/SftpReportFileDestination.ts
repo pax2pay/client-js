@@ -6,7 +6,7 @@ export interface SftpReportFileDestination {
 	port?: number
 	password?: string
 	privateKey?: string
-	fingerPrint?: string
+	fingerprint?: string
 	path: string
 }
 export namespace SftpReportFileDestination {
@@ -16,7 +16,7 @@ export namespace SftpReportFileDestination {
 		port: isly.number("integer").optional(),
 		password: isly.string().optional(),
 		privateKey: isly.string().optional(),
-		fingerPrint: isly.string().optional(),
+		fingerprint: isly.string().optional(),
 		path: isly.string(),
 	})
 	export const is = type.is

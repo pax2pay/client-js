@@ -1,6 +1,6 @@
 import { isly } from "isly"
-import { DestinationType } from "../DestinationType"
 import { DownloadFileFormat } from "../DownloadFileFormat"
+import { ReportFileDestination } from "./ReportFileDestination"
 import { ReportSubscriptionFrequencyRequest } from "./ReportSubscriptionFrequencyRequest"
 import { ReportType } from "./ReportType"
 export interface ReportSubscriptionRequest {
@@ -9,7 +9,7 @@ export interface ReportSubscriptionRequest {
 	fileFormat: DownloadFileFormat
 	request?: Record<string, any>
 	frequency: ReportSubscriptionFrequencyRequest
-	destination: DestinationType
+	destination: ReportFileDestination
 }
 export namespace ReportSubscriptionRequest {
 	export const type = isly.object<ReportSubscriptionRequest>({
@@ -18,7 +18,7 @@ export namespace ReportSubscriptionRequest {
 		fileFormat: DownloadFileFormat.type,
 		request: isly.record(isly.string(), isly.any()).optional(),
 		frequency: isly.fromIs("ReportSubscriptionFrequencyRequest", ReportSubscriptionFrequencyRequest.is),
-		destination: DestinationType.type,
+		destination: isly.fromIs("ReportFileDestination", ReportFileDestination.is),
 	})
 	export const is = type.is
 }
