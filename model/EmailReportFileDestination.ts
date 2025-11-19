@@ -7,7 +7,7 @@ export interface EmailReportFileDestination {
 }
 export namespace EmailReportFileDestination {
 	export const type = isly.object<EmailReportFileDestination>({
-		to: isly.string(/\S+@\S+\.\S+/).array({ criteria: "minLength", value: 1 }),
+		to: isly.string(/\S+@\S+\.\S+/).array(),
 		subject: isly.string().optional(),
 		body: isly.string().optional(),
 	})

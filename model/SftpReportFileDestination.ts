@@ -11,7 +11,7 @@ export interface SftpReportFileDestination {
 }
 export namespace SftpReportFileDestination {
 	export const type = isly.object<SftpReportFileDestination>({
-		host: isly.string(),
+		host: isly.string(/^[\w-]+\.[\w.-]+$/),
 		user: isly.string(),
 		port: isly.number("integer").optional(),
 		password: isly.string().optional(),
