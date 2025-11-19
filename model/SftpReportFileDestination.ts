@@ -17,7 +17,7 @@ export namespace SftpReportFileDestination {
 		password: isly.string().optional(),
 		privateKey: isly.string().optional(),
 		fingerprint: isly.string().optional(),
-		path: isly.string(/^\/[^\s]*$/),
+		path: isly.string(),
 	})
 	export const is = type.is
 }
