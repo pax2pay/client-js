@@ -12,9 +12,9 @@ export class Batch extends List<model.RolesetResponse> {
 	async get(batchId: string): Promise<model.Batch.Response | model.ErrorResponse> {
 		return await this.connection.get<model.Batch.Response>(`${this.folder}/${batchId}`)
 	}
-	async list(type: model.Batch.Type, size?: number): Promise<model.Batch.Response[] | model.ErrorResponse> {
+	async listByType(type: model.Batch.Type, size?: number): Promise<model.Batch.Response[] | model.ErrorResponse> {
 		const response = await this.connection.get<{ list: model.Batch.Response[]; totalCount: number }>(
-			`${this.folder}/${type}`,
+			`${this.folder}/type/${type}`,
 			{ size }
 		)
 		return this.extractResponse<model.Batch.Response>(response)
