@@ -25,4 +25,11 @@ export class Batch extends List<model.RolesetResponse> {
 	async cancel(batchId: string): Promise<model.Batch.Response | model.ErrorResponse> {
 		return await this.connection.get<model.Batch.Response>(`${this.folder}/${batchId}/cancel`)
 	}
+	async listItems(batchId: string, size?: number): Promise<model.Batch.Item[] | model.ErrorResponse> {
+		const response = await this.connection.get<{ list: model.Batch.Item[]; totalCount: number }>(
+			`${this.folder}/${batchId}/items`,
+			{ size }
+		)
+		return this.extractResponse<model.Batch.Item>(response)
+	}
 }

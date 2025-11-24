@@ -1,14 +1,17 @@
 import { isly } from "isly"
+import { ProviderCode } from "./ProviderCode"
 
 export interface FundingAccountSummaryResponse {
+	providerCode: ProviderCode
 	providerAccountId: string
 	accountId: string
-	balance: number
+	balance: number // Does not exist anymore it seems
 	friendlyName: string
 }
 
 export namespace FundingAccountSummaryResponse {
 	export const type = isly.object<FundingAccountSummaryResponse>({
+		providerCode: ProviderCode.type,
 		providerAccountId: isly.string(),
 		accountId: isly.string(),
 		balance: isly.number(),

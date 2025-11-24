@@ -1,3 +1,4 @@
+import { Item as BItem } from "./Item"
 import { Response as BResponse } from "./Response"
 import { Result as BResult } from "./Result"
 import { Status as BStatus } from "./Status"
@@ -10,4 +11,5 @@ export namespace Batch {
 	export import Result = BResult
 	export import Status = BStatus
 	export import Summary = BSummary
+	export import Item = BItem
 }
