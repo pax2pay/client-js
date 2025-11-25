@@ -2,7 +2,6 @@ import { default as fetch } from "isomorphic-fetch"
 import * as model from "../model"
 import { Session } from "./Auth/Session"
 
-type DefaultCodes = 503
 export class Connection {
 	unauthorized: (connection: Connection) => Promise<boolean>
 	#pax2payPortalLanguage?: string
@@ -35,7 +34,7 @@ export class Connection {
 		request?: any,
 		parameters?: Record<string, any>,
 		header?: any
-	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
+	): Promise<Response | (model.ErrorResponse & { status?: number; value?: string })> {
 		const isMultipart = request && request instanceof FormData
 		const cookie = window.localStorage.getItem("cookie")
 		const publicKey = Session.publicKey.get()
@@ -108,7 +107,7 @@ export class Connection {
 			: response.headers.get("Content-Type")?.startsWith("application/json")
 			? response.ok
 				? response.headers.has("x-total-count")
-					? { list: await response.json(), totalCount: response.headers.get("x-total-count") }
+					? ({ list: await response.json(), totalCount: response.headers.get("x-total-count") } as Response)
 					: await response.json()
 				: { status: response.status, ...(await response.json()) }
 			: { status: response.status, value: await response.text() }
@@ -118,14 +117,14 @@ export class Connection {
 		request: any,
 		parameters?: Record<string, any>,
 		header?: any
-	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
+	): Promise<Response | (model.ErrorResponse & { status?: number; value?: string })> {
 		return await this.fetch<Response, Codes>(path, "POST", request, parameters, header)
 	}
 	async get<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
 		parameters?: Record<string, any>,
 		header?: any
-	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
+	): Promise<Response | (model.ErrorResponse & { status?: number; value?: string })> {
 		return await this.fetch<Response, Codes>(path, "GET", undefined, parameters, header)
 	}
 	async put<Response, Codes = 400 | 403 | 404 | 500>(
@@ -133,7 +132,7 @@ export class Connection {
 		request: any,
 		parameters?: Record<string, any>,
 		header?: any
-	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
+	): Promise<Response | (model.ErrorResponse & { status?: number; value?: string })> {
 		return await this.fetch<Response, Codes>(path, "PUT", request, parameters, header)
 	}
 	async remove<Response, Codes = 400 | 403 | 404 | 500>(
@@ -141,7 +140,7 @@ export class Connection {
 		request?: any,
 		parameters?: Record<string, any>,
 		header?: any
-	): Promise<Response | (model.ErrorResponse & { status: Codes | DefaultCodes })> {
+	): Promise<Response | (model.ErrorResponse & { status?: number; value?: string })> {
 		return await this.fetch<Response, Codes>(path, "DELETE", request, parameters, header)
 	}
 	static open(url: string, token: string | undefined): Connection {

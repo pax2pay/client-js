@@ -11,21 +11,19 @@ export class ApiKeys extends List<model.ApiKeyResponse> {
 	}
 	async create(
 		request: model.ApiKeyCreateRequest
-	): Promise<model.ApiKeyCreateResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined> {
+	): Promise<model.ApiKeyCreateResponse | (model.ErrorResponse & { status?: number }) | undefined> {
 		const result = await this.connection.post<model.ApiKeyCreateResponse, 400 | 403 | 404 | 500>(this.folder, request)
 		return result
 	}
 	async getApiKey(
 		identifier: string
-	): Promise<model.ApiKeyResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined> {
+	): Promise<model.ApiKeyResponse | (model.ErrorResponse & { status?: number }) | undefined> {
 		const result = await this.connection.get<model.ApiKeyResponse, 400 | 403 | 404 | 500>(
 			`${this.folder}/${identifier}`
 		)
 		return result
 	}
-	async getAllApiKeys(): Promise<
-		model.ApiKeyResponse[] | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
-	> {
+	async getAllApiKeys(): Promise<model.ApiKeyResponse[] | (model.ErrorResponse & { status?: number }) | undefined> {
 		const result = await this.connection.get<model.ApiKeyResponse[], 400 | 403 | 404 | 500>(this.folder, {
 			size: 500,
 			sort: "displayName",
@@ -34,7 +32,7 @@ export class ApiKeys extends List<model.ApiKeyResponse> {
 	}
 	async deleteApiKey(
 		identifier: string
-	): Promise<model.ApiKeyResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined> {
+	): Promise<model.ApiKeyResponse | (model.ErrorResponse & { status?: number }) | undefined> {
 		const result = await this.connection.remove<model.ApiKeyResponse, 400 | 403 | 404 | 500>(
 			`${this.folder}/${identifier}`
 		)
