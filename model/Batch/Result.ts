@@ -1,12 +1,14 @@
 import { isly } from "isly"
 
 export interface Result {
-	format: "TEST"
+	format: "csv"
+	linkUrl: string
 }
 
 export namespace Result {
 	export const type = isly.object<Result>({
-		format: isly.string("TEST"),
+		format: isly.string("csv"),
+		linkUrl: isly.string(),
 	})
 	export const is = type.is
 }

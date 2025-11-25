@@ -5,7 +5,7 @@ export interface FundingAccountSummaryResponse {
 	providerCode: ProviderCode
 	providerAccountId: string
 	accountId: string
-	balance: number // Does not exist anymore it seems
+	balance: number
 	friendlyName: string
 }
 
