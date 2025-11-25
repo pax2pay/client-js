@@ -40,7 +40,7 @@ export class Reports {
 	): Promise<
 		| model.StatementReportResponse
 		| (model.ErrorResponse & {
-				status: 400 | 403 | 404 | 500 | 503
+				status?: number
 		  })
 	> {
 		let result
@@ -64,7 +64,7 @@ export class Reports {
 	): Promise<
 		| { list: model.StatementSummaryReportResponse; totalCount: number }
 		| (model.ErrorResponse & {
-				status: 400 | 403 | 404 | 500 | 503
+				status?: number
 		  })
 	> {
 		return await this.connection.post<{ list: model.StatementSummaryReportResponse; totalCount: number }>(

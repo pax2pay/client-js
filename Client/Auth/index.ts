@@ -93,9 +93,7 @@ export class Auth {
 	isAssumed(): boolean {
 		return this.data.user?.organisation?.code != this.data.organisation
 	}
-	async assume(
-		code: string
-	): Promise<model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 })> {
+	async assume(code: string): Promise<model.LoginResponse | (model.ErrorResponse & { status?: number })> {
 		const result = await this.connection.get<model.LoginResponse, 400 | 403 | 404 | 500>(`auth/assume/org/${code}`)
 		if (!isError(result)) {
 			this.token = result.token
@@ -103,9 +101,7 @@ export class Auth {
 		}
 		return result
 	}
-	async unassume(): Promise<
-		model.LoginResponse | (model.ErrorResponse & { status: 400 | 403 | 404 | 500 | 503 }) | undefined
-	> {
+	async unassume(): Promise<model.LoginResponse | (model.ErrorResponse & { status?: number }) | undefined> {
 		return this.data.user?.organisation?.code ? await this.assume(this.data.user.organisation.code) : undefined
 	}
 
