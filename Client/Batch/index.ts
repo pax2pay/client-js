@@ -19,8 +19,12 @@ export class Batch extends List<model.RolesetResponse> {
 		})
 		return this.extractResponse<model.Batch.Response>(response)
 	}
-	async run(batchId: string): Promise<model.Batch.Response | model.ErrorResponse> {
-		return await this.connection.get<model.Batch.Response>(`${this.folder}/${batchId}/run`)
+	async run(batchId: string, otp?: string): Promise<model.Batch.Response | model.ErrorResponse> {
+		return await this.connection.get<model.Batch.Response>(
+			`${this.folder}/${batchId}/run`,
+			undefined,
+			otp ? { "x-otp": otp } : {}
+		)
 	}
 	async cancel(batchId: string): Promise<model.Batch.Response | model.ErrorResponse> {
 		return await this.connection.get<model.Batch.Response>(`${this.folder}/${batchId}/cancel`)
