@@ -43,11 +43,23 @@ export class Batch extends List<model.Batch.Response> {
 	async cancel(batchId: string): Promise<model.Batch.Response | model.ErrorResponse> {
 		return await this.connection.get<model.Batch.Response>(`${this.folder}/${batchId}/cancel`)
 	}
-	async listItems(batchId: string, size?: number): Promise<model.Batch.Item[] | model.ErrorResponse> {
-		const response = await this.connection.get<{ list: model.Batch.Item[]; totalCount: number }>(
-			`${this.folder}/${batchId}/items`,
-			{ size }
+	async listItems<I extends model.Batch.Item = model.Batch.Item>(
+		batchId: string,
+		previous?: Paginated<I>,
+		page?: number,
+		size?: number
+	): Promise<Paginated<I> | model.ErrorResponse> {
+		return await this.getNextPaginated(
+			previous,
+			(page, size, sort) =>
+				this.connection.get<{ list: I[]; totalCount: number }>(`${this.folder}/${batchId}/items`, {
+					page,
+					size,
+					sort,
+				}),
+			undefined,
+			page,
+			size
 		)
-		return this.extractResponse<model.Batch.Item>(response)
 	}
 }
