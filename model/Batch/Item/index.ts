@@ -23,10 +23,12 @@ export namespace Item {
 		task: isly.any().optional(),
 		result: isly.any().optional(),
 	})
+	export const is = baseType.is
 	export namespace Rebate {
 		export const type = baseType.extend<Item<IRebateTask, PaymentResponse>>({
 			task: IRebateTask.type.optional(),
 			result: PaymentResponse.type.optional(),
 		})
+		export const is = type.is
 	}
 }
