@@ -2,16 +2,16 @@ export type StatementReportRowActionType = typeof StatementReportRowActionType.v
 
 export namespace StatementReportRowActionType {
 	export const values = [
+		"TRANSFER_IN",
+		"TRANSFER_OUT",
+		"REFUND",
 		"AUTHORISATION",
 		"SETTLEMENT",
 		"REVERSAL",
-		"REFUND",
 		"AUTHORISATION_FEE",
 		"SETTLEMENT_FEE",
 		"REVERSAL_FEE",
 		"REFUND_FEE",
-		"TRANSFER_IN",
-		"TRANSFER_OUT",
 		"USABLE_CARD",
 		"FUTURE_TRANSFER",
 		"SCHEDULED_CARD_AMENDMENT",
