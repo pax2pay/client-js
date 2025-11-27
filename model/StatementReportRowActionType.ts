@@ -27,7 +27,7 @@ export namespace StatementReportRowActionType {
 		"USABLE_CARD",
 		"FUTURE_TRANSFER",
 		"SCHEDULED_CARD_AMENDMENT",
-	]
+	] as const
 	export function is(value: unknown): value is StatementReportRowActionType {
 		return typeof value == "string" && values.includes(value as StatementReportRowActionType)
 	}
