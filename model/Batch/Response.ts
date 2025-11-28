@@ -3,11 +3,12 @@ import { isly } from "isly"
 import { Result } from "./Result"
 import { Status } from "./Status"
 import { Summary } from "./Summary"
+import { Type } from "./Type"
 
 export interface Response {
 	id: string
 	name?: string
-	type: "REBATE"
+	type: Type
 	status: Status
 	summary: Summary
 	result?: Result
@@ -23,7 +24,7 @@ export namespace Response {
 	export const type = isly.object<Response>({
 		id: isly.string(),
 		name: isly.string().optional(),
-		type: isly.string("REBATE"), // BatchRequestType - but only REBATE is needed for now
+		type: Type.type,
 		status: Status.type,
 		summary: Summary.type,
 		result: Result.type.optional(),
