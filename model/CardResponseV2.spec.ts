@@ -138,6 +138,7 @@ describe("", () => {
 			batchId: "7rcvyvgccd",
 			state: "ACTIVE",
 			fundingAccount: {
+				providerCode: "modulr",
 				providerAccountId: "SomeAccount",
 				balance: 12345,
 				accountId: "test",

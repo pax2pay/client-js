@@ -1,6 +1,7 @@
 import { Accounts as ClientAccounts } from "./Accounts"
 import { ApiKeys as ClientApiKeys } from "./Api-keys"
 import { Auth as ClientAuth } from "./Auth"
+import { Batch as ClientBatch } from "./Batch"
 import { Beneficiaries as ClientBeneficiaries } from "./Beneficiaries"
 import { CardOptions as ClientCardOptions } from "./CardOptions"
 import { Cards as ClientCards } from "./Cards"
@@ -33,6 +34,7 @@ export class Client {
 	}
 	accounts = ClientAccounts.create(this.connection)
 	auth = ClientAuth.create(this.connection)
+	batch = ClientBatch.create(this.connection)
 	beneficiaries = ClientBeneficiaries.create(this.connection)
 	cardOptions = ClientCardOptions.create(this.connection)
 	cards = ClientCards.create(this.connection)
@@ -76,6 +78,7 @@ export namespace Client {
 	export type Accounts = ClientAccounts
 	export type Auth = ClientAuth
 	export type Beneficiaries = ClientBeneficiaries
+	export type Batch = ClientBatch
 	export type CardOptions = ClientCardOptions
 	export type Cards = ClientCards
 	export type CardTypes = ClientCardTypes
