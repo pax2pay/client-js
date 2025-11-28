@@ -109,7 +109,7 @@ export namespace Role {
 		"payment.cancel",
 		"payment.amend.balance",
 		"confirm-payee", // confirmation of payee
-		"batch.rebate.run",
+		"batch.rebate.run", // batch
 		"batch.rebate.view",
 	] as const
 	export const type = isly.string(values)
