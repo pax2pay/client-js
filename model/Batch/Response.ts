@@ -6,7 +6,7 @@ import { Summary } from "./Summary"
 
 export interface Response {
 	id: string
-	name: string
+	name?: string
 	type: "REBATE"
 	status: Status
 	summary: Summary
@@ -22,7 +22,7 @@ export interface Response {
 export namespace Response {
 	export const type = isly.object<Response>({
 		id: isly.string(),
-		name: isly.string(),
+		name: isly.string().optional(),
 		type: isly.string("REBATE"), // BatchRequestType - but only REBATE is needed for now
 		status: Status.type,
 		summary: Summary.type,
