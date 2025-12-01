@@ -1,12 +1,12 @@
 import { isly } from "isly"
 
-export interface AllowedMccConfig {
+export interface AllowedMcc {
 	allowedMccs: string[]
 	allowedRanges: string[]
 }
 
-export namespace AllowedMccConfig {
-	export const type = isly.object<AllowedMccConfig>({
+export namespace AllowedMcc {
+	export const type = isly.object<AllowedMcc>({
 		allowedMccs: isly.string().array(),
 		allowedRanges: isly.string().array(),
 	})
