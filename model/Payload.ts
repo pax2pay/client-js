@@ -1,4 +1,4 @@
-import { OrganisationConfig } from "./OrganisationConfig"
+import { OrganisationConfig } from "./Config/Organisation"
 import { UserConfig } from "./UserConfig"
 
 /**

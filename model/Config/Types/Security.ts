@@ -1,11 +1,11 @@
 import { isly } from "isly"
 
-export interface SecurityConfig {
+export interface Security {
 	enforce2fa?: boolean
 	passwordExpirationDays?: number
 }
-export namespace SecurityConfig {
-	export const type = isly.object<SecurityConfig>({
+export namespace Security {
+	export const type = isly.object<Security>({
 		enforce2fa: isly.boolean().optional(),
 		passwordExpirationDays: isly.number().optional(),
 	})

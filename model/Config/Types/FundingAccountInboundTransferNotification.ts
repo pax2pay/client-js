@@ -3,12 +3,12 @@ import { isly } from "isly"
 /**
  * Config related to notifications for deposits made into funding accounts
  */
-export interface FundingAccountInboundTransferNotificationConfig {
+export interface FundingAccountInboundTransferNotification {
 	enabled?: boolean
 	emails?: string[]
 }
-export namespace FundingAccountInboundTransferNotificationConfig {
-	export const type = isly.object<FundingAccountInboundTransferNotificationConfig>({
+export namespace FundingAccountInboundTransferNotification {
+	export const type = isly.object<FundingAccountInboundTransferNotification>({
 		enabled: isly.boolean().optional(),
 		emails: isly.string().array().optional(),
 	})

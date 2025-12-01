@@ -1,17 +1,17 @@
 import { isly } from "isly"
-import { ProviderCode } from "./ProviderCode"
+import { ProviderCode } from "../../ProviderCode"
 /**
  * Config related to card types
  */
-export interface CardTypesConfig {
+export interface CardTypes {
 	useLegacyCardTypesInResponse?: boolean
 	hideCardTypes?: any
 	onlyShowCardTypes?: any
 	aliases?: Partial<Record<ProviderCode, Record<string, string>>>
 }
 
-export namespace CardTypesConfig {
-	export const type = isly.object<CardTypesConfig>({
+export namespace CardTypes {
+	export const type = isly.object<CardTypes>({
 		useLegacyCardTypesInResponse: isly.boolean().optional(),
 		hideCardTypes: isly.any().optional(),
 		onlyShowCardTypes: isly.any().optional(),

@@ -34,7 +34,6 @@ import { BookingInfoResponse } from "./BookingInfoResponse"
 import { BookingInfoType } from "./BookingInfoType"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
-import { CardDeliveryEmailConfig } from "./CardDeliveryEmailConfig"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardForm } from "./CardForm"
@@ -57,7 +56,6 @@ import { CardTypeDefinition } from "./CardTypeDefinition"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeRequestAvailabilityType } from "./CardTypeRequestAvailabilityType"
 import { CardTypeResponse } from "./CardTypeResponse"
-import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardTypeFlag } from "./CardTypeSpecificationFlag"
@@ -67,6 +65,17 @@ import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAcc
 import { CategoryLimitResponse } from "./CategoryLimitResponse"
 import { CategoryResponse } from "./CategoryResponse"
 import { CategoryStatus } from "./CategoryStatus"
+import { OrganisationConfig } from "./Config/Organisation"
+import { CardDeliveryEmail } from "./Config/Types/CardDeliveryEmail"
+import { CardTypesConfig } from "./Config/Types/CardTypes"
+import { ForcedSettlementNotification } from "./Config/Types/ForcedSettlementNotification"
+import { FraudEmail } from "./Config/Types/FraudEmail"
+import { FundingAccountInboundTransferNotification } from "./Config/Types/FundingAccountInboundTransferNotification"
+import { FundingLimit } from "./Config/Types/FundingLimit"
+import { Limit } from "./Config/Types/FundingLimit/Limit"
+import { Security } from "./Config/Types/Security"
+import { SsoProvider } from "./Config/Types/SsoProvider"
+import { Type } from "./Config/Types/SsoProvider/Type"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
@@ -109,17 +118,13 @@ import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
 import { FlightBookingInfoResponse } from "./FlightBookingInfoResponse"
 import { FlightInfo } from "./FlightInfo"
-import { ForcedSettlementNotificationConfig } from "./ForcedSettlementNotificationConfig"
-import { FraudEmailConfig } from "./FraudEmailConfig"
 import { FundingAccountIdentifierType } from "./FundingAccountIdentifierType"
-import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingAccountResponseV2Basic } from "./FundingAccountResponseV2Basic"
 import { FundingAccountResponseV2Full } from "./FundingAccountResponseV2Full"
 import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
 import { FundingAccountSearchResponse } from "./FundingAccountSearchResponse"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { FundingAccountTransferDestinationResponse } from "./FundingAccountTransferDestinationResponse"
-import { FundingLimitConfig } from "./FundingLimitConfig"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
 import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognosisAmountPair"
@@ -136,7 +141,6 @@ import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
 import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
 import { InvokingSystem } from "./InvokingSystem"
 import { Issue } from "./Issue"
-import { Limit } from "./Limit"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
 import { MerchantDetails } from "./MerchantDetails"
@@ -154,7 +158,6 @@ import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
 import { OmnisetupRequest } from "./OmnisetupRequest"
 import { OmnisetupResponse } from "./OmnisetupResponse"
-import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationFlag } from "./OrganisationFlag"
 import { OrganisationRealm } from "./OrganisationRealm"
@@ -215,13 +218,10 @@ import { ScheduleEntry } from "./ScheduleEntry"
 import { Scheme } from "./Scheme"
 import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
-import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
 import { SetAvailableCardTypesRequest } from "./SetAvailableCardTypesRequest"
 import { SftpReportFileDestination } from "./SftpReportFileDestination"
 import { SsoLoginRequest } from "./SsoLoginRequest"
-import { SsoProviderConfig } from "./SsoProviderConfig"
-import { SsoProviderType } from "./SsoProviderType"
 import { StatementReportRequest } from "./StatementReportRequest"
 import { StatementReportResponse } from "./StatementReportResponse"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
@@ -311,7 +311,7 @@ export {
 	BookingInfoRequest,
 	BookingInfoResponse,
 	BookingInfoType,
-	CardDeliveryEmailConfig,
+	CardDeliveryEmail as CardDeliveryEmailConfig,
 	CardAmendmentScheduledTaskRequest,
 	CardAmendmentScheduledTaskResponse,
 	CardDeliveryRequest,
@@ -388,17 +388,17 @@ export {
 	FlightBookingInfoRequest,
 	FlightBookingInfoResponse,
 	FlightInfo,
-	ForcedSettlementNotificationConfig,
-	FraudEmailConfig,
+	ForcedSettlementNotification as ForcedSettlementNotificationConfig,
+	FraudEmail as FraudEmailConfig,
 	FundingAccountIdentifierType,
-	FundingAccountInboundTransferNotificationConfig,
+	FundingAccountInboundTransferNotification as FundingAccountInboundTransferNotificationConfig,
 	FundingAccountResponseV2Basic,
 	FundingAccountResponseV2Full,
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
 	FundingAccountSummaryResponse,
 	FundingAccountTransferDestinationResponse,
-	FundingLimitConfig,
+	FundingLimit as FundingLimitConfig,
 	FundingLimitRequest,
 	FundingLimitResponse,
 	FutureTransactionPrognosisAmountPair,
@@ -493,13 +493,13 @@ export {
 	Scheme,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
-	SecurityConfig,
+	Security as SecurityConfig,
 	SetAvailableCardTypesRequest,
 	SftpReportFileDestination,
 	Segment,
 	SsoLoginRequest,
-	SsoProviderConfig,
-	SsoProviderType,
+	SsoProvider as SsoProviderConfig,
+	Type as SsoProviderType,
 	SearchBeneficiaryRequest,
 	StatementReportRequest,
 	StatementReportResponse,
