@@ -1,8 +1,9 @@
 import { Currency } from "isoly"
 import { isly } from "isly"
-import { ProviderCode } from "../ProviderCode"
-import { Usage } from "../Usage"
-import { Types } from "./Types"
+import { ProviderCode } from "../../ProviderCode"
+import { Usage } from "../../Usage"
+import { Types } from "../Types"
+import { Security as OSecurity } from "./Security"
 /**
  * Organisation config, optional
  */
@@ -19,7 +20,7 @@ export interface Organisation {
 	fundingLimitConfig?: Types.FundingLimit
 	cardDeliveryEmailConfig?: Types.CardDeliveryEmail
 	portalHideMultipleUseOption?: boolean
-	securityConfig?: Types.Security
+	securityConfig?: OSecurity
 	fraudEmailConfig?: Types.FraudEmail
 	sso?: Partial<Record<Types.SsoProvider.Type, Types.SsoProvider>>
 	forcedSettlementNotificationConfig?: Types.ForcedSettlementNotification
@@ -40,10 +41,12 @@ export namespace Organisation {
 		fundingLimitConfig: Types.FundingLimit.type.optional(),
 		cardDeliveryEmailConfig: Types.CardDeliveryEmail.type.optional(),
 		portalHideMultipleUseOption: isly.boolean().optional(),
-		securityConfig: Types.Security.type.optional(),
+		securityConfig: OSecurity.type.optional(),
 		fraudEmailConfig: Types.FraudEmail.type.optional(),
 		sso: isly.record(Types.SsoProvider.Type.type, Types.SsoProvider.type).optional(),
 		forcedSettlementNotificationConfig: Types.ForcedSettlementNotification.type.optional(),
 	})
 	export const is = type.is
+
+	export import Security = OSecurity
 }
