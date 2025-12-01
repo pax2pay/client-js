@@ -65,9 +65,6 @@ import { CategoryLimitResponse } from "./CategoryLimitResponse"
 import { CategoryResponse } from "./CategoryResponse"
 import { CategoryStatus } from "./CategoryStatus"
 import { Config } from "./Config"
-import { InternalOrganisation } from "./Config/InternalOrganisation"
-import { AllowedMcc } from "./Config/Types/AllowedMcc"
-import { User } from "./Config/User"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
@@ -281,7 +278,6 @@ export {
 	AccountType,
 	AddressInfo,
 	AgentBookingInfo,
-	AllowedMcc as AllowedMccConfig,
 	AmendCardRequest,
 	AmountPair,
 	ApiKeyCreateRequest,
@@ -394,7 +390,6 @@ export {
 	InsertCardOptionRequest,
 	InsertCardRequest,
 	InternalBalanceLimit,
-	InternalOrganisation as InternalOrganisationConfig,
 	InvoiceBookingInfoRequest,
 	InvoiceBookingInfoResponse,
 	InvokingSystem,
@@ -521,7 +516,6 @@ export {
 	UpdateRolesetRequest,
 	Usage,
 	UserChangeRequest,
-	User as UserConfig,
 	UserLimitsDeleteRequest,
 	UserLimitsRequest,
 	UserLimitsResponse,
