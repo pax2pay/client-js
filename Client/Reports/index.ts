@@ -118,8 +118,12 @@ export class Reports {
 	async getSubscriptionWithId(id: string) {
 		return await this.connection.get<model.ReportSubscriptionResponse>(`${this.folder}/subscription/${id}`)
 	}
-	async getSubscriptions() {
-		return await this.connection.get<model.ReportSubscriptionResponse[]>(`${this.folder}/subscription`)
+	async getSubscriptions(page?: number, size?: number, sort?: string) {
+		return await this.connection.get<model.ReportSubscriptionResponse[]>(`${this.folder}/subscription`, {
+			page: page,
+			size: size,
+			sort: sort,
+		})
 	}
 	static create(connection: Connection) {
 		return new Reports(connection)
