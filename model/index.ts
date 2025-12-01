@@ -65,17 +65,8 @@ import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAcc
 import { CategoryLimitResponse } from "./CategoryLimitResponse"
 import { CategoryResponse } from "./CategoryResponse"
 import { CategoryStatus } from "./CategoryStatus"
-import { OrganisationConfig } from "./Config/Organisation"
-import { CardDeliveryEmail } from "./Config/Types/CardDeliveryEmail"
-import { CardTypesConfig } from "./Config/Types/CardTypes"
-import { ForcedSettlementNotification } from "./Config/Types/ForcedSettlementNotification"
-import { FraudEmail } from "./Config/Types/FraudEmail"
-import { FundingAccountInboundTransferNotification } from "./Config/Types/FundingAccountInboundTransferNotification"
-import { FundingLimit } from "./Config/Types/FundingLimit"
-import { Limit } from "./Config/Types/FundingLimit/Limit"
-import { Security } from "./Config/Types/Security"
-import { SsoProvider } from "./Config/Types/SsoProvider"
-import { Type } from "./Config/Types/SsoProvider/Type"
+import { Config } from "./Config"
+import { User } from "./Config/User"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
 import { ConfigTypesResponse } from "./ConfigTypesResponse"
@@ -173,7 +164,6 @@ import { PasswordResetResponse } from "./PasswordResetResponse"
 import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
 import { PaxpayFeature } from "./PaxpayFeature"
-import { Payload } from "./Payload"
 import { PaymentAccountState } from "./PaymentAccountState"
 import { PaymentAmountScheduleRequest } from "./PaymentAmountScheduleRequest"
 import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
@@ -264,7 +254,6 @@ import { UpdateMerchantRequest } from "./UpdateMerchantRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
 import { Usage } from "./Usage"
 import { UserChangeRequest } from "./UserChangeRequest"
-import { UserConfig } from "./UserConfig"
 import { UserLimitsDeleteRequest } from "./UserLimitsDeleteRequest"
 import { UserLimitsRequest } from "./UserLimitsRequest"
 import { UserLimitsResponse } from "./UserLimitsResponse"
@@ -311,7 +300,6 @@ export {
 	BookingInfoRequest,
 	BookingInfoResponse,
 	BookingInfoType,
-	CardDeliveryEmail as CardDeliveryEmailConfig,
 	CardAmendmentScheduledTaskRequest,
 	CardAmendmentScheduledTaskResponse,
 	CardDeliveryRequest,
@@ -337,7 +325,6 @@ export {
 	CardTypeInformation,
 	CardTypesResponse,
 	CardTypeResponse,
-	CardTypesConfig,
 	CardTypeSearchRequest,
 	CardTypeSpecification,
 	CardTypeFlag,
@@ -346,6 +333,7 @@ export {
 	CategoryLimitResponse,
 	CategoryResponse,
 	CategoryStatus,
+	Config,
 	ConfigMatchesRequest,
 	ConfigMatchesResponse,
 	ConfigTypesResponse,
@@ -388,17 +376,13 @@ export {
 	FlightBookingInfoRequest,
 	FlightBookingInfoResponse,
 	FlightInfo,
-	ForcedSettlementNotification as ForcedSettlementNotificationConfig,
-	FraudEmail as FraudEmailConfig,
 	FundingAccountIdentifierType,
-	FundingAccountInboundTransferNotification as FundingAccountInboundTransferNotificationConfig,
 	FundingAccountResponseV2Basic,
 	FundingAccountResponseV2Full,
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
 	FundingAccountSummaryResponse,
 	FundingAccountTransferDestinationResponse,
-	FundingLimit as FundingLimitConfig,
 	FundingLimitRequest,
 	FundingLimitResponse,
 	FutureTransactionPrognosisAmountPair,
@@ -415,7 +399,6 @@ export {
 	InvoiceBookingInfoResponse,
 	InvokingSystem,
 	Issue,
-	Limit,
 	LoginRequest,
 	LoginResponse,
 	MerchantDetails,
@@ -433,7 +416,6 @@ export {
 	OmnisetupProviderRequest,
 	OmnisetupRequest,
 	OmnisetupResponse,
-	OrganisationConfig,
 	OrganisationCreateRequest,
 	OrganisationFlag,
 	OrganisationRealm,
@@ -449,7 +431,6 @@ export {
 	PasswordValidateRequest,
 	PasswordValidateResponse,
 	PaxpayFeature,
-	Payload,
 	PaymentAccountState,
 	PaymentAmountScheduleRequest,
 	PaymentAmountScheduleResponse,
@@ -493,13 +474,10 @@ export {
 	Scheme,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
-	Security as SecurityConfig,
 	SetAvailableCardTypesRequest,
 	SftpReportFileDestination,
 	Segment,
 	SsoLoginRequest,
-	SsoProvider as SsoProviderConfig,
-	Type as SsoProviderType,
 	SearchBeneficiaryRequest,
 	StatementReportRequest,
 	StatementReportResponse,
@@ -543,7 +521,7 @@ export {
 	UpdateRolesetRequest,
 	Usage,
 	UserChangeRequest,
-	UserConfig,
+	User as UserConfig,
 	UserLimitsDeleteRequest,
 	UserLimitsRequest,
 	UserLimitsResponse,
