@@ -11,14 +11,14 @@ export class Configuration {
 	async getAvailableCurrency(providerCode: ProviderCode = "modulr"): Promise<Currency[] | model.ErrorResponse> {
 		return await this.connection.get<Currency[]>(`${this.folder}/currencies`, { provider: providerCode })
 	}
-	async getOrganisation(code?: string): Promise<model.OrganisationConfig | model.ErrorResponse> {
-		return await this.connection.get<model.OrganisationConfig>(`${this.folder}/organisation${code ? `/${code}` : ""}`)
+	async getOrganisation(code?: string): Promise<model.Config.Organisation | model.ErrorResponse> {
+		return await this.connection.get<model.Config.Organisation>(`${this.folder}/organisation${code ? `/${code}` : ""}`)
 	}
 	async updateOrganisation(
-		request: model.OrganisationConfig,
+		request: model.Config.Organisation,
 		code?: string
-	): Promise<model.OrganisationConfig | model.ErrorResponse> {
-		return await this.connection.post<model.OrganisationConfig>(
+	): Promise<model.Config.Organisation | model.ErrorResponse> {
+		return await this.connection.post<model.Config.Organisation>(
 			`${this.folder}/organisation${code ? `/${code}` : ""}`,
 			request
 		)

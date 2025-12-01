@@ -1,5 +1,5 @@
-import { OrganisationConfig } from "./Config/Organisation"
-import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
+import { Config } from "./Config"
+import { InternalOrganisation } from "./Config/InternalOrganisation"
 import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
@@ -10,8 +10,8 @@ export interface OmnisetupRequest {
 	organisation: OrganisationCreateRequest
 	users: UserRequest[]
 	providers: OmnisetupProviderRequest[]
-	organisationConfig?: OrganisationConfig
-	internalOrganisationConfig?: InternalOrganisationConfig
+	organisationConfig?: Config.Organisation
+	internalOrganisationConfig?: InternalOrganisation
 	sharedRolesets?: string[]
 }
 
@@ -25,9 +25,8 @@ export namespace OmnisetupRequest {
 			value.users.every((user: any) => UserRequest.is(user)) &&
 			Array.isArray(value.providers) &&
 			value.providers.every((item: any) => OmnisetupProviderRequest.is(item)) &&
-			(value.organisationConfig == undefined || OrganisationConfig.is(value.organisationConfig)) &&
-			(value.internalOrganisationConfig == undefined ||
-				InternalOrganisationConfig.is(value.internalOrganisationConfig)) &&
+			(value.organisationConfig == undefined || Config.Organisation.is(value.organisationConfig)) &&
+			(value.internalOrganisationConfig == undefined || InternalOrganisation.is(value.internalOrganisationConfig)) &&
 			(value.sharedRolesets == undefined ||
 				(Array.isArray(value.sharedRolesets) && value.sharedRolesets.every((item: any) => typeof item == "string")))
 		)

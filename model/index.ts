@@ -13,7 +13,6 @@ import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
-import { AllowedMccConfig } from "./AllowedMccConfig"
 import { AmendCardRequest } from "./AmendCardRequest"
 import { AmountPair } from "./AmountPair"
 import { ApiKeyCreateRequest } from "./ApiKeyCreateRequest"
@@ -66,6 +65,8 @@ import { CategoryLimitResponse } from "./CategoryLimitResponse"
 import { CategoryResponse } from "./CategoryResponse"
 import { CategoryStatus } from "./CategoryStatus"
 import { Config } from "./Config"
+import { InternalOrganisation } from "./Config/InternalOrganisation"
+import { AllowedMcc } from "./Config/Types/AllowedMcc"
 import { User } from "./Config/User"
 import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
 import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
@@ -127,7 +128,6 @@ import { Inclusion } from "./Inclusion"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
 import { InternalBalanceLimit } from "./InternalBalanceLimit"
-import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
 import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
 import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
 import { InvokingSystem } from "./InvokingSystem"
@@ -281,7 +281,7 @@ export {
 	AccountType,
 	AddressInfo,
 	AgentBookingInfo,
-	AllowedMccConfig,
+	AllowedMcc as AllowedMccConfig,
 	AmendCardRequest,
 	AmountPair,
 	ApiKeyCreateRequest,
@@ -394,7 +394,7 @@ export {
 	InsertCardOptionRequest,
 	InsertCardRequest,
 	InternalBalanceLimit,
-	InternalOrganisationConfig,
+	InternalOrganisation as InternalOrganisationConfig,
 	InvoiceBookingInfoRequest,
 	InvoiceBookingInfoResponse,
 	InvokingSystem,
