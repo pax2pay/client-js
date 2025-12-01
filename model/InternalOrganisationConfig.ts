@@ -1,6 +1,6 @@
 import { isly } from "isly"
 import { AllowedMccConfig } from "./AllowedMccConfig"
-import { FundingLimitConfig } from "./FundingLimitConfig"
+import { FundingLimit } from "./Config/Types/FundingLimit"
 import { OrganisationFlag } from "./OrganisationFlag"
 import { PaxpayFeature } from "./PaxpayFeature"
 import { TierID } from "./TierID"
@@ -9,7 +9,7 @@ export interface InternalOrganisationConfig {
 	flags?: OrganisationFlag[]
 	features?: PaxpayFeature[]
 	allowedMccConfig?: AllowedMccConfig
-	fundingLimitConfig?: FundingLimitConfig
+	fundingLimitConfig?: FundingLimit
 	tier?: TierID
 }
 
@@ -18,7 +18,7 @@ export namespace InternalOrganisationConfig {
 		flags: OrganisationFlag.type.array().optional(),
 		features: PaxpayFeature.type.array().optional(),
 		allowedMccConfig: AllowedMccConfig.type.optional(),
-		fundingLimitConfig: FundingLimitConfig.type.optional(),
+		fundingLimitConfig: FundingLimit.type.optional(),
 		tier: TierID.type.optional(),
 	})
 	export const is = type.is

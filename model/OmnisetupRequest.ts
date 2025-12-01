@@ -1,7 +1,7 @@
+import { OrganisationConfig } from "./Config/Organisation"
 import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
 import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
-import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { UserRequest } from "./UserRequest"
 

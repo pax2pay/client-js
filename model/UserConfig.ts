@@ -1,7 +1,7 @@
-import { CardTypesConfig } from "./CardTypesConfig"
-import { SecurityConfig } from "./SecurityConfig"
+import { CardTypesConfig } from "./Config/Types/CardTypes"
+import { Security } from "./Config/Types/Security"
 
 export interface UserConfig {
 	cardTypes?: CardTypesConfig
-	securityConfig?: SecurityConfig
+	securityConfig?: Security
 }

@@ -1,13 +1,13 @@
 import { isly } from "isly"
 
-export interface ApprovalNotificationConfig {
+export interface ApprovalNotification {
 	enabled: boolean
 	sendToAllValidApprovers?: boolean
 	additionalEmails?: string[]
 }
 
-export namespace ApprovalNotificationConfig {
-	export const type = isly.object<ApprovalNotificationConfig>({
+export namespace ApprovalNotification {
+	export const type = isly.object<ApprovalNotification>({
 		enabled: isly.boolean(),
 		sendToAllValidApprovers: isly.boolean().optional(),
 		additionalEmails: isly.string().array().optional(),
