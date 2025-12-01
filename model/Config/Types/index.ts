@@ -1,4 +1,3 @@
-import { AllowedMcc as TAllowedMcc } from "./AllowedMcc"
 import { ApprovalNotification as TApprovalNotification } from "./ApprovalNotification"
 import { CardDeliveryEmail as TCardDeliveryEmail } from "./CardDeliveryEmail"
 import { CardTypes as TCardTypes } from "./CardTypes"
@@ -10,7 +9,6 @@ import { Security as TSecurity } from "./Security"
 import { SsoProvider as TSsoProvider } from "./SsoProvider"
 
 export namespace Types {
-	export import AllowedMcc = TAllowedMcc
 	export import ApprovalNotification = TApprovalNotification
 	export import CardDeliveryEmail = TCardDeliveryEmail
 	export import CardTypes = TCardTypes
