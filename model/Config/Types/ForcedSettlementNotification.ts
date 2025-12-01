@@ -1,5 +1,6 @@
 import { isly } from "isly"
 
+// ForcedSettlementNotificationConfig
 export interface ForcedSettlementNotification {
 	enabled: boolean
 	usernames?: string[]

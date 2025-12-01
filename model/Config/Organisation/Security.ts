@@ -1,5 +1,6 @@
 import { isly } from "isly"
 
+// OrganisationSecurityConfig
 export interface Security {
 	enforce2fa?: boolean
 	passwordExpirationDays?: number

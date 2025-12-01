@@ -5,7 +5,6 @@ import { ForcedSettlementNotification as TForcedSettlementNotification } from ".
 import { FraudEmail as TFraudEmail } from "./FraudEmail"
 import { FundingAccountInboundTransferNotification as TFundingAccountInboundTransferNotification } from "./FundingAccountInboundTransferNotification"
 import { FundingLimit as TFundingLimit } from "./FundingLimit"
-import { Security as TSecurity } from "./Security"
 import { SsoProvider as TSsoProvider } from "./SsoProvider"
 
 export namespace Types {
@@ -16,6 +15,5 @@ export namespace Types {
 	export import FraudEmail = TFraudEmail
 	export import FundingAccountInboundTransferNotification = TFundingAccountInboundTransferNotification
 	export import FundingLimit = TFundingLimit
-	export import Security = TSecurity
 	export import SsoProvider = TSsoProvider
 }

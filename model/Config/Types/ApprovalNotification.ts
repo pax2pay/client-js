@@ -1,5 +1,6 @@
 import { isly } from "isly"
 
+// ApprovalNotificationConfig
 export interface ApprovalNotification {
 	enabled: boolean
 	sendToAllValidApprovers?: boolean

@@ -1,5 +1,6 @@
 import { isly } from "isly"
 
+// CardDeliveryEmailConfig
 export interface CardDeliveryEmail {
 	contactEmail?: string
 	useContactEmailAsReplyTo?: boolean

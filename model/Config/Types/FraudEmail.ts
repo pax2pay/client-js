@@ -1,5 +1,6 @@
 import { isly } from "isly"
 
+// FraudEmailConfig
 export interface FraudEmail {
 	enabled: boolean
 	emails?: string[]

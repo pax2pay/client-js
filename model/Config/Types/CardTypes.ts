@@ -1,8 +1,7 @@
 import { isly } from "isly"
 import { ProviderCode } from "../../ProviderCode"
-/**
- * Config related to card types
- */
+
+// CardTypesConfig
 export interface CardTypes {
 	useLegacyCardTypesInResponse?: boolean
 	hideCardTypes?: any

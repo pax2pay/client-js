@@ -3,6 +3,7 @@ import { isly } from "isly"
 /**
  * Config related to notifications for deposits made into funding accounts
  */
+// FundingAccountInboundTransferNotificationConfig
 export interface FundingAccountInboundTransferNotification {
 	enabled?: boolean
 	emails?: string[]
