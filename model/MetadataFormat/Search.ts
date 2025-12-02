@@ -6,6 +6,7 @@ export interface Search {
 	latestVersionOnly?: boolean
 	exactFieldNamesOnly?: boolean
 	fieldNames?: string[][]
+	filteredForPortal?: boolean
 }
 export namespace Search {
 	export const type = isly.object<Search>({
@@ -14,6 +15,7 @@ export namespace Search {
 		latestVersionOnly: isly.boolean().optional(),
 		exactFieldNamesOnly: isly.boolean().optional(),
 		fieldNames: isly.array(isly.array(isly.string())).optional(),
+		filteredForPortal: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
