@@ -7,6 +7,7 @@ import { FundingAccountInboundTransferNotification as CFundingAccountInboundTran
 import { FundingLimit as TFundingLimit } from "./FundingLimit"
 import { InternalOrganisation as CInternalOrganisation } from "./InternalOrganisation"
 import { Organisation as COrganisation } from "./Organisation"
+import { Security as CSecurity } from "./Security"
 import { SsoProvider as CSsoProvider } from "./SsoProvider"
 import { User as CUser } from "./User"
 
@@ -23,4 +24,5 @@ export namespace Config {
 	export import FundingAccountInboundTransferNotification = CFundingAccountInboundTransferNotification
 	export import FundingLimit = TFundingLimit
 	export import SsoProvider = CSsoProvider
+	export import Security = CSecurity
 }
