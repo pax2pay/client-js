@@ -1,12 +1,12 @@
 import { isly } from "isly"
-import { Types } from "./Types"
+import { CardTypes } from "./CardTypes"
 
 export interface User {
-	cardTypes?: Types.CardTypes
+	cardTypes?: CardTypes
 }
 export namespace User {
 	export const type = isly.object<User>({
-		cardTypes: Types.CardTypes.type.optional(),
+		cardTypes: CardTypes.type.optional(),
 	})
 	export const is = type.is
 }

@@ -1,7 +1,8 @@
 import { isly } from "isly"
-import { ProviderCode } from "../../../ProviderCode"
+import { ProviderCode } from "../../ProviderCode"
 import { Limit as FLimit } from "./Limit"
 
+// FundingLimitConfig
 export interface FundingLimit {
 	type: "ON_THRESHOLD" | "TIMED_ONLY" | "ON_THRESHOLD_AND_TIMED"
 	limits?: Partial<Record<ProviderCode, Record<string, FLimit>>>

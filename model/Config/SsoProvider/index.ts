@@ -1,6 +1,7 @@
 import { isly } from "isly"
 import { Type as SsoProviderType } from "./Type"
 
+// SsoProviderConfig
 export interface SsoProvider {
 	enabled?: boolean
 	domains?: string[]
