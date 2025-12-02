@@ -1,12 +1,13 @@
 import { isly } from "isly"
 
-export interface CardDeliveryEmailConfig {
+// CardDeliveryEmailConfig
+export interface CardDeliveryEmail {
 	contactEmail?: string
 	useContactEmailAsReplyTo?: boolean
 	contactPhoneNumber?: string
 }
-export namespace CardDeliveryEmailConfig {
-	export const type = isly.object<CardDeliveryEmailConfig>({
+export namespace CardDeliveryEmail {
+	export const type = isly.object<CardDeliveryEmail>({
 		contactEmail: isly.string().optional(),
 		useContactEmailAsReplyTo: isly.boolean().optional(),
 		contactPhoneNumber: isly.string().optional(),

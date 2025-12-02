@@ -1,9 +1,8 @@
 import { AccountResponse } from "./AccountResponse"
 import { CardTypeResponse } from "./CardTypeResponse"
+import { Config } from "./Config"
 import { CredentialResponse } from "./CredentialResponse"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
-import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
-import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationResponse } from "./OrganisationResponse"
 import { SupplierResponse } from "./SupplierResponse"
 import { UserResponse } from "./UserResponse"
@@ -11,8 +10,8 @@ import { UserResponse } from "./UserResponse"
 export interface OmnisetupResponse {
 	messages: string[]
 	organisation: OrganisationResponse
-	organisationConfig?: OrganisationConfig
-	internalOrganisationConfig?: InternalOrganisationConfig
+	organisationConfig?: Config.Organisation
+	internalOrganisationConfig?: Config.InternalOrganisation
 	users: UserResponse
 	suppliers: SupplierResponse[]
 	credentials: CredentialResponse[]

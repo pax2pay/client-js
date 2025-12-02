@@ -11,37 +11,40 @@ export class Configuration {
 	async getAvailableCurrency(providerCode: ProviderCode = "modulr"): Promise<Currency[] | model.ErrorResponse> {
 		return await this.connection.get<Currency[]>(`${this.folder}/currencies`, { provider: providerCode })
 	}
-	async getOrganisation(code?: string): Promise<model.OrganisationConfig | model.ErrorResponse> {
-		return await this.connection.get<model.OrganisationConfig>(`${this.folder}/organisation${code ? `/${code}` : ""}`)
+	async getOrganisation(code?: string): Promise<model.Config.Organisation | model.ErrorResponse> {
+		return await this.connection.get<model.Config.Organisation>(`${this.folder}/organisation${code ? `/${code}` : ""}`)
 	}
 	async updateOrganisation(
-		request: model.OrganisationConfig,
+		request: model.Config.Organisation,
 		code?: string
-	): Promise<model.OrganisationConfig | model.ErrorResponse> {
-		return await this.connection.post<model.OrganisationConfig>(
+	): Promise<model.Config.Organisation | model.ErrorResponse> {
+		return await this.connection.post<model.Config.Organisation>(
 			`${this.folder}/organisation${code ? `/${code}` : ""}`,
 			request
 		)
 	}
-	async getInternalOrganisation(code?: string): Promise<model.InternalOrganisationConfig | model.ErrorResponse> {
-		return await this.connection.get<model.InternalOrganisationConfig>(
+	async getInternalOrganisation(code?: string): Promise<model.Config.InternalOrganisation | model.ErrorResponse> {
+		return await this.connection.get<model.Config.InternalOrganisation>(
 			`${this.folder}/organisation_internal${code ? `/${code}` : ""}`
 		)
 	}
 	async updateInternalOrganisation(
-		request: model.InternalOrganisationConfig,
+		request: model.Config.InternalOrganisation,
 		code?: string
-	): Promise<model.InternalOrganisationConfig | model.ErrorResponse> {
-		return await this.connection.post<model.InternalOrganisationConfig>(
+	): Promise<model.Config.InternalOrganisation | model.ErrorResponse> {
+		return await this.connection.post<model.Config.InternalOrganisation>(
 			`${this.folder}/organisation_internal${code ? `/${code}` : ""}`,
 			request
 		)
 	}
-	async getUser(username?: string): Promise<model.UserConfig | model.ErrorResponse> {
-		return await this.connection.get<model.UserConfig>(`${this.folder}/user${username ? `/${username}` : ""}`)
+	async getUser(username?: string): Promise<model.Config.User | model.ErrorResponse> {
+		return await this.connection.get<model.Config.User>(`${this.folder}/user${username ? `/${username}` : ""}`)
 	}
-	async updateUser(request: model.UserConfig, username?: string): Promise<model.UserConfig | model.ErrorResponse> {
-		return await this.connection.post<model.UserConfig>(`${this.folder}/user${username ? `/${username}` : ""}`, request)
+	async updateUser(request: model.Config.User, username?: string): Promise<model.Config.User | model.ErrorResponse> {
+		return await this.connection.post<model.Config.User>(
+			`${this.folder}/user${username ? `/${username}` : ""}`,
+			request
+		)
 	}
 	async getPortalFeatures(): Promise<model.PaxpayFeature[] | model.ErrorResponse> {
 		return await this.connection.get<model.PaxpayFeature[]>(`${this.folder}/portal`)

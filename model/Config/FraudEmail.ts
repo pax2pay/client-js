@@ -1,11 +1,12 @@
 import { isly } from "isly"
 
-export interface FraudEmailConfig {
+// FraudEmailConfig
+export interface FraudEmail {
 	enabled: boolean
 	emails?: string[]
 }
-export namespace FraudEmailConfig {
-	export const type = isly.object<FraudEmailConfig>({
+export namespace FraudEmail {
+	export const type = isly.object<FraudEmail>({
 		enabled: isly.boolean(),
 		emails: isly.string().array().optional(),
 	})
