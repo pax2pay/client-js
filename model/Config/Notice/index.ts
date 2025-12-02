@@ -1,12 +1,13 @@
 import { isly } from "isly"
-import { Target } from "./Target"
-import { Type } from "./Type"
+import { FundingLimit as NFundingLimit } from "./FundingLimit"
+import { Target as NTarget } from "./Target"
+import { Type as NType } from "./Type"
 
 // NoticeConfiguration
-export interface Notice<T extends Type = Type, C = any> {
+export interface Notice<T extends NType = NType, C = any> {
 	type: T
 	configuration?: C
-	targets?: Target[]
+	targets?: NTarget[]
 }
 
 export namespace Notice {
@@ -16,4 +17,10 @@ export namespace Notice {
 		targets: isly.array(Target.type).optional(),
 	})
 	export const is = baseType.is
+
+	export import Type = NType
+	export import FundingLimit = NFundingLimit
+	export import Target = NTarget
 }
+
+export type FundingLimitNotice = Notice<"FUNDING_LIMIT", NFundingLimit>
