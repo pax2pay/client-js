@@ -55,7 +55,7 @@ export namespace Organisation {
 		fraudEmailConfig: FraudEmail.type.optional(),
 		sso: isly.record(SsoProvider.Type.type, SsoProvider.type).optional(),
 		forcedSettlementNotificationConfig: ForcedSettlementNotification.type.optional(),
-		noticeConfigurations: isly.array(Notice.baseType).optional(),
+		noticeConfigurations: isly.array(Notice.type).optional(),
 	})
 	export const is = type.is
 }
