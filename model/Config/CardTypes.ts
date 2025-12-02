@@ -1,5 +1,5 @@
 import { isly } from "isly"
-import { ProviderCode } from "../../ProviderCode"
+import { ProviderCode } from "../ProviderCode"
 
 // CardTypesConfig
 export interface CardTypes {
