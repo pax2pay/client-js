@@ -9,7 +9,8 @@ import { ForcedSettlementNotification } from "./ForcedSettlementNotification"
 import { FraudEmail } from "./FraudEmail"
 import { FundingAccountInboundTransferNotification } from "./FundingAccountInboundTransferNotification"
 import { FundingLimit } from "./FundingLimit"
-import { Security as OSecurity } from "./Security"
+import { Notice } from "./Notice"
+import { Security } from "./Security"
 import { SsoProvider } from "./SsoProvider"
 /**
  * Organisation config, optional
@@ -28,10 +29,11 @@ export interface Organisation {
 	fundingLimitConfig?: FundingLimit
 	cardDeliveryEmailConfig?: CardDeliveryEmail
 	portalHideMultipleUseOption?: boolean
-	securityConfig?: OSecurity
+	securityConfig?: Security
 	fraudEmailConfig?: FraudEmail
 	sso?: Partial<Record<SsoProvider.Type, SsoProvider>>
 	forcedSettlementNotificationConfig?: ForcedSettlementNotification
+	noticeConfigurations?: Notice[]
 }
 
 export namespace Organisation {
@@ -49,12 +51,11 @@ export namespace Organisation {
 		fundingLimitConfig: FundingLimit.type.optional(),
 		cardDeliveryEmailConfig: CardDeliveryEmail.type.optional(),
 		portalHideMultipleUseOption: isly.boolean().optional(),
-		securityConfig: OSecurity.type.optional(),
+		securityConfig: Security.type.optional(),
 		fraudEmailConfig: FraudEmail.type.optional(),
 		sso: isly.record(SsoProvider.Type.type, SsoProvider.type).optional(),
 		forcedSettlementNotificationConfig: ForcedSettlementNotification.type.optional(),
+		noticeConfigurations: isly.array(Notice.baseType).optional(),
 	})
 	export const is = type.is
-
-	export import Security = OSecurity
 }
