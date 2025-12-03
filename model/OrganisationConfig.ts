@@ -32,6 +32,7 @@ export interface OrganisationConfig {
 	fraudEmailConfig?: FraudEmailConfig
 	sso?: Partial<Record<SsoProviderType, SsoProviderConfig>>
 	forcedSettlementNotificationConfig?: ForcedSettlementNotificationConfig
+	portalMetadataFormatOrdering?: string[]
 }
 
 export namespace OrganisationConfig {
@@ -53,6 +54,7 @@ export namespace OrganisationConfig {
 		fraudEmailConfig: FraudEmailConfig.type.optional(),
 		sso: isly.record(SsoProviderType.type, SsoProviderConfig.type).optional(),
 		forcedSettlementNotificationConfig: ForcedSettlementNotificationConfig.type.optional(),
+		portalMetadataFormatOrdering: isly.string().array().optional(),
 	})
 	export const is = type.is
 }
