@@ -14,6 +14,7 @@ export interface Response {
 	organisations?: string[]
 	users?: string[]
 	rolesets?: string[]
+	createdOn?: string
 }
 
 export namespace Response {
@@ -28,6 +29,7 @@ export namespace Response {
 		organisations: isly.string().array().optional(),
 		users: isly.string().array().optional(),
 		rolesets: isly.string().array().optional(),
+		createdOn: isly.string().optional(),
 	})
 	export const is = type.is
 }

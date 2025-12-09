@@ -34,6 +34,7 @@ export interface Organisation {
 	sso?: Partial<Record<SsoProvider.Type, SsoProvider>>
 	forcedSettlementNotificationConfig?: ForcedSettlementNotification
 	noticeConfigurations?: Notice[]
+	portalMetadataFormatOrdering?: string[]
 }
 
 export namespace Organisation {
@@ -56,6 +57,7 @@ export namespace Organisation {
 		sso: isly.record(SsoProvider.Type.type, SsoProvider.type).optional(),
 		forcedSettlementNotificationConfig: ForcedSettlementNotification.type.optional(),
 		noticeConfigurations: isly.array(Notice.type).optional(),
+		portalMetadataFormatOrdering: isly.string().array().optional(),
 	})
 	export const is = type.is
 }
