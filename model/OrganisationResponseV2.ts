@@ -1,8 +1,7 @@
 import { DateTime } from "isoly"
 import { isly } from "isly"
 import { CardTypeInformation } from "./CardTypeInformation"
-import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
-import { OrganisationConfig } from "./OrganisationConfig"
+import { Config } from "./Config"
 import { OrganisationFlag } from "./OrganisationFlag"
 import { OrganisationRealm } from "./OrganisationRealm"
 import { OrganisationStatusV2 } from "./OrganisationStatusV2"
@@ -14,8 +13,8 @@ export interface OrganisationResponseV2 {
 	status: OrganisationStatusV2
 	realm?: OrganisationRealm | OrganisationRealm[]
 	credentials?: Partial<Record<ProviderCode, Record<string, any>>>
-	organisationConfig?: OrganisationConfig
-	internalOrganisationConfig?: InternalOrganisationConfig
+	organisationConfig?: Config.Organisation
+	internalOrganisationConfig?: Config.InternalOrganisation
 	cardTypes?: Partial<Record<ProviderCode, CardTypeInformation>>
 	createdOn: DateTime
 	channelPartners?: OrganisationFlag[]
@@ -28,8 +27,8 @@ export namespace OrganisationResponseV2 {
 		status: OrganisationStatusV2.type,
 		realm: isly.union(OrganisationRealm.type, isly.array(OrganisationRealm.type)).optional(),
 		credentials: isly.record(ProviderCode.type, isly.any()).optional(),
-		organisationConfig: isly.fromIs("OrganisationConfig", OrganisationConfig.is).optional(),
-		internalOrganisationConfig: isly.fromIs("InternalOrganisationConfig", InternalOrganisationConfig.is).optional(),
+		organisationConfig: isly.fromIs("Config.Organisation", Config.Organisation.is).optional(),
+		internalOrganisationConfig: isly.fromIs("Config.InternalOrganisation", Config.InternalOrganisation.is).optional(),
 		cardTypes: isly.record(ProviderCode.type, isly.fromIs("CardTypeInformation", CardTypeInformation.is)).optional(),
 		createdOn: isly.fromIs("DateTime", DateTime.is),
 		channelPartners: isly.array(OrganisationFlag.type).optional(),

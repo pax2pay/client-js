@@ -13,7 +13,6 @@ import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
-import { AllowedMccConfig } from "./AllowedMccConfig"
 import { AmendCardRequest } from "./AmendCardRequest"
 import { AmountPair } from "./AmountPair"
 import { ApiKeyCreateRequest } from "./ApiKeyCreateRequest"
@@ -34,7 +33,6 @@ import { BookingInfoResponse } from "./BookingInfoResponse"
 import { BookingInfoType } from "./BookingInfoType"
 import { CardAmendmentScheduledTaskRequest } from "./CardAmendmentScheduledTaskRequest"
 import { CardAmendmentScheduledTaskResponse } from "./CardAmendmentScheduledTaskResponse"
-import { CardDeliveryEmailConfig } from "./CardDeliveryEmailConfig"
 import { CardDeliveryRequest } from "./CardDeliveryRequest"
 import { CardDeliveryResponse } from "./CardDeliveryResponse"
 import { CardForm } from "./CardForm"
@@ -57,7 +55,6 @@ import { CardTypeDefinition } from "./CardTypeDefinition"
 import { CardTypeInformation } from "./CardTypeInformation"
 import { CardTypeRequestAvailabilityType } from "./CardTypeRequestAvailabilityType"
 import { CardTypeResponse } from "./CardTypeResponse"
-import { CardTypesConfig } from "./CardTypesConfig"
 import { CardTypeSearchRequest } from "./CardTypeSearchRequest"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { CardTypeFlag } from "./CardTypeSpecificationFlag"
@@ -67,9 +64,7 @@ import { CategoryFundingAccountAccessRequest } from "./CategoryFundingAccountAcc
 import { CategoryLimitResponse } from "./CategoryLimitResponse"
 import { CategoryResponse } from "./CategoryResponse"
 import { CategoryStatus } from "./CategoryStatus"
-import { ConfigMatchesRequest } from "./ConfigMatchesRequest"
-import { ConfigMatchesResponse } from "./ConfigMatchesResponse"
-import { ConfigTypesResponse } from "./ConfigTypesResponse"
+import { Config } from "./Config"
 import { ConfirmationOfPayeeAccountType } from "./ConfirmationOfPayeeAccountType"
 import { ConfirmationOfPayeeRequest } from "./ConfirmationOfPayeeRequest"
 import { ConfirmationOfPayeeResponse } from "./ConfirmationOfPayeeResponse"
@@ -109,17 +104,13 @@ import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
 import { FlightBookingInfoResponse } from "./FlightBookingInfoResponse"
 import { FlightInfo } from "./FlightInfo"
-import { ForcedSettlementNotificationConfig } from "./ForcedSettlementNotificationConfig"
-import { FraudEmailConfig } from "./FraudEmailConfig"
 import { FundingAccountIdentifierType } from "./FundingAccountIdentifierType"
-import { FundingAccountInboundTransferNotificationConfig } from "./FundingAccountInboundTransferNotificationConfig"
 import { FundingAccountResponseV2Basic } from "./FundingAccountResponseV2Basic"
 import { FundingAccountResponseV2Full } from "./FundingAccountResponseV2Full"
 import { FundingAccountSearchRequest } from "./FundingAccountSearchRequest"
 import { FundingAccountSearchResponse } from "./FundingAccountSearchResponse"
 import { FundingAccountSummaryResponse } from "./FundingAccountSummaryResponse"
 import { FundingAccountTransferDestinationResponse } from "./FundingAccountTransferDestinationResponse"
-import { FundingLimitConfig } from "./FundingLimitConfig"
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
 import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognosisAmountPair"
@@ -131,12 +122,10 @@ import { Inclusion } from "./Inclusion"
 import { InsertCardOptionRequest } from "./InsertCardOptionRequest"
 import { InsertCardRequest } from "./InsertCardRequest"
 import { InternalBalanceLimit } from "./InternalBalanceLimit"
-import { InternalOrganisationConfig } from "./InternalOrganisationConfig"
 import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
 import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
 import { InvokingSystem } from "./InvokingSystem"
 import { Issue } from "./Issue"
-import { Limit } from "./Limit"
 import { LoginRequest } from "./LoginRequest"
 import { LoginResponse } from "./LoginResponse"
 import { MerchantDetails } from "./MerchantDetails"
@@ -154,7 +143,6 @@ import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
 import { OmnisetupRequest } from "./OmnisetupRequest"
 import { OmnisetupResponse } from "./OmnisetupResponse"
-import { OrganisationConfig } from "./OrganisationConfig"
 import { OrganisationCreateRequest } from "./OrganisationCreateRequest"
 import { OrganisationFlag } from "./OrganisationFlag"
 import { OrganisationRealm } from "./OrganisationRealm"
@@ -170,7 +158,6 @@ import { PasswordResetResponse } from "./PasswordResetResponse"
 import { PasswordValidateRequest } from "./PasswordValidateRequest"
 import { PasswordValidateResponse } from "./PasswordValidateResponse"
 import { PaxpayFeature } from "./PaxpayFeature"
-import { Payload } from "./Payload"
 import { PaymentAccountState } from "./PaymentAccountState"
 import { PaymentAmountScheduleRequest } from "./PaymentAmountScheduleRequest"
 import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
@@ -215,13 +202,10 @@ import { ScheduleEntry } from "./ScheduleEntry"
 import { Scheme } from "./Scheme"
 import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
-import { SecurityConfig } from "./SecurityConfig"
 import { Segment } from "./Segment"
 import { SetAvailableCardTypesRequest } from "./SetAvailableCardTypesRequest"
 import { SftpReportFileDestination } from "./SftpReportFileDestination"
 import { SsoLoginRequest } from "./SsoLoginRequest"
-import { SsoProviderConfig } from "./SsoProviderConfig"
-import { SsoProviderType } from "./SsoProviderType"
 import { StatementReportRequest } from "./StatementReportRequest"
 import { StatementReportResponse } from "./StatementReportResponse"
 import { StatementReportResponseRow } from "./StatementReportResponseRow"
@@ -264,7 +248,6 @@ import { UpdateMerchantRequest } from "./UpdateMerchantRequest"
 import { UpdateRolesetRequest } from "./UpdateRolesetRequest"
 import { Usage } from "./Usage"
 import { UserChangeRequest } from "./UserChangeRequest"
-import { UserConfig } from "./UserConfig"
 import { UserLimitsDeleteRequest } from "./UserLimitsDeleteRequest"
 import { UserLimitsRequest } from "./UserLimitsRequest"
 import { UserLimitsResponse } from "./UserLimitsResponse"
@@ -292,7 +275,6 @@ export {
 	AccountType,
 	AddressInfo,
 	AgentBookingInfo,
-	AllowedMccConfig,
 	AmendCardRequest,
 	AmountPair,
 	ApiKeyCreateRequest,
@@ -311,7 +293,6 @@ export {
 	BookingInfoRequest,
 	BookingInfoResponse,
 	BookingInfoType,
-	CardDeliveryEmailConfig,
 	CardAmendmentScheduledTaskRequest,
 	CardAmendmentScheduledTaskResponse,
 	CardDeliveryRequest,
@@ -337,7 +318,6 @@ export {
 	CardTypeInformation,
 	CardTypesResponse,
 	CardTypeResponse,
-	CardTypesConfig,
 	CardTypeSearchRequest,
 	CardTypeSpecification,
 	CardTypeFlag,
@@ -346,9 +326,7 @@ export {
 	CategoryLimitResponse,
 	CategoryResponse,
 	CategoryStatus,
-	ConfigMatchesRequest,
-	ConfigMatchesResponse,
-	ConfigTypesResponse,
+	Config,
 	ConfirmationOfPayeeAccountType,
 	ConfirmationOfPayeeRequest,
 	ConfirmationOfPayeeResponse,
@@ -388,17 +366,13 @@ export {
 	FlightBookingInfoRequest,
 	FlightBookingInfoResponse,
 	FlightInfo,
-	ForcedSettlementNotificationConfig,
-	FraudEmailConfig,
 	FundingAccountIdentifierType,
-	FundingAccountInboundTransferNotificationConfig,
 	FundingAccountResponseV2Basic,
 	FundingAccountResponseV2Full,
 	FundingAccountSearchRequest,
 	FundingAccountSearchResponse,
 	FundingAccountSummaryResponse,
 	FundingAccountTransferDestinationResponse,
-	FundingLimitConfig,
 	FundingLimitRequest,
 	FundingLimitResponse,
 	FutureTransactionPrognosisAmountPair,
@@ -410,12 +384,10 @@ export {
 	InsertCardOptionRequest,
 	InsertCardRequest,
 	InternalBalanceLimit,
-	InternalOrganisationConfig,
 	InvoiceBookingInfoRequest,
 	InvoiceBookingInfoResponse,
 	InvokingSystem,
 	Issue,
-	Limit,
 	LoginRequest,
 	LoginResponse,
 	MerchantDetails,
@@ -433,7 +405,6 @@ export {
 	OmnisetupProviderRequest,
 	OmnisetupRequest,
 	OmnisetupResponse,
-	OrganisationConfig,
 	OrganisationCreateRequest,
 	OrganisationFlag,
 	OrganisationRealm,
@@ -449,7 +420,6 @@ export {
 	PasswordValidateRequest,
 	PasswordValidateResponse,
 	PaxpayFeature,
-	Payload,
 	PaymentAccountState,
 	PaymentAmountScheduleRequest,
 	PaymentAmountScheduleResponse,
@@ -493,13 +463,10 @@ export {
 	Scheme,
 	ScheduledTaskRequest,
 	SearchRolesetsRequest,
-	SecurityConfig,
 	SetAvailableCardTypesRequest,
 	SftpReportFileDestination,
 	Segment,
 	SsoLoginRequest,
-	SsoProviderConfig,
-	SsoProviderType,
 	SearchBeneficiaryRequest,
 	StatementReportRequest,
 	StatementReportResponse,
@@ -543,7 +510,6 @@ export {
 	UpdateRolesetRequest,
 	Usage,
 	UserChangeRequest,
-	UserConfig,
 	UserLimitsDeleteRequest,
 	UserLimitsRequest,
 	UserLimitsResponse,
