@@ -1,13 +1,10 @@
 import { isly } from "isly"
+import { Configuration as TConfiguration } from "./Configuration"
 
 // ConfigurableNoticeTarget
 export type Target = Target.Organisation | Target.User
 
 export namespace Target {
-	export const type = isly.union<Target>(Organisation.type, User.type)
-	export const is = type.is
-
-	export type Type = typeof Type.values[number]
 	export namespace Type {
 		export const values = ["ORGANISATION", "USER"] as const
 		export const type = isly.string(values)
@@ -37,4 +34,9 @@ export namespace Target {
 		})
 		export const is = type.is
 	}
+	export const type = isly.union<Target>(Organisation.type, User.type)
+	export const is = type.is
+
+	export type Type = typeof Type.values[number]
+	export type Configuration = TConfiguration
 }

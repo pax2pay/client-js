@@ -6,7 +6,7 @@ import { FraudEmail as CFraudEmail } from "./FraudEmail"
 import { FundingAccountInboundTransferNotification as CFundingAccountInboundTransferNotification } from "./FundingAccountInboundTransferNotification"
 import { FundingLimit as TFundingLimit } from "./FundingLimit"
 import { InternalOrganisation as CInternalOrganisation } from "./InternalOrganisation"
-import { FundingLimitNotice as CFundingLimitNotice, Notice as CNotice } from "./Notice"
+import { Notice as CNotice } from "./Notice"
 import { Organisation as COrganisation } from "./Organisation"
 import { Security as CSecurity } from "./Security"
 import { SsoProvider as CSsoProvider } from "./SsoProvider"
@@ -27,5 +27,4 @@ export namespace Config {
 	export import SsoProvider = CSsoProvider
 	export import Security = CSecurity
 	export import Notice = CNotice
-	export import FundingLimitNotice = CFundingLimitNotice
 }

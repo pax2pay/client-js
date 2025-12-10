@@ -1,6 +1,7 @@
 import { isly } from "isly"
 import { ProviderCode } from "../../ProviderCode"
 import { Limit as FLimit } from "./Limit"
+import { NoticeTriggerType as FNoticeTriggerType } from "./NoticeTriggerType"
 
 // FundingLimitConfig
 export interface FundingLimit {
@@ -15,4 +16,5 @@ export namespace FundingLimit {
 	export const is = type.is
 
 	export import Limit = FLimit
+	export import NoticeTriggerType = FNoticeTriggerType
 }

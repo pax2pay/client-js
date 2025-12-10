@@ -1,36 +1,33 @@
 import { isly } from "isly"
-import { FundingLimit as NFundingLimit } from "./FundingLimit"
+import { Configuration } from "./FundingLimit"
 import { Target as NTarget } from "./Target"
 import { Type as NType } from "./Type"
 
-// NoticeConfiguration
-export type Notice = FundingLimitNotice
-
 export namespace Notice {
-	export const type = isly.union<Notice>(FundingLimitNotice.type)
-	export interface Base<T extends NType = NType, C = any> {
+	export interface Base<T extends Type = Type, C = any> {
 		type: T
 		configuration?: C
-		targets?: NTarget[]
+		targets?: Target[]
 	}
 	export namespace Base {
 		export const type = isly.object<Notice.Base>({
-			type: Type.type,
+			type: NType.type,
 			configuration: isly.any().optional(),
-			targets: isly.array(Target.type).optional(),
+			targets: isly.array(NTarget.type).optional(),
 		})
 		export const is = type.is
 	}
-
-	export import Type = NType
-	export import FundingLimit = NFundingLimit
+	// FundingLimitNoticeConfiguration
+	export type FundingLimit = Notice.Base<"FUNDING_LIMIT", Configuration>
 	export import Target = NTarget
+	export import Type = NType
+	export namespace FundingLimit {
+		export const type = Notice.Base.type.extend<FundingLimit>({
+			type: isly.string("FUNDING_LIMIT"),
+			configuration: Configuration.type.optional(),
+		})
+	}
+	export const type = isly.union<Notice>(FundingLimit.type)
 }
-
-export type FundingLimitNotice = Notice.Base<"FUNDING_LIMIT", NFundingLimit>
-export namespace FundingLimitNotice {
-	export const type = Notice.Base.type.extend<FundingLimitNotice>({
-		type: isly.string("FUNDING_LIMIT"),
-		configuration: NFundingLimit.type.optional(),
-	})
-}
+// NoticeConfiguration
+export type Notice = Notice.FundingLimit

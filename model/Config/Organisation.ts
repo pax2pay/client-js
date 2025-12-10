@@ -10,6 +10,7 @@ import { FraudEmail } from "./FraudEmail"
 import { FundingAccountInboundTransferNotification } from "./FundingAccountInboundTransferNotification"
 import { FundingLimit } from "./FundingLimit"
 import { Notice } from "./Notice"
+import { Configuration } from "./Notice/Target/Configuration"
 import { Security } from "./Security"
 import { SsoProvider } from "./SsoProvider"
 /**
@@ -35,6 +36,7 @@ export interface Organisation {
 	forcedSettlementNotificationConfig?: ForcedSettlementNotification
 	noticeConfigurations?: Notice[]
 	portalMetadataFormatOrdering?: string[]
+	noticeTargetConfigurations?: Notice.Target.Configuration
 }
 
 export namespace Organisation {
@@ -58,6 +60,7 @@ export namespace Organisation {
 		forcedSettlementNotificationConfig: ForcedSettlementNotification.type.optional(),
 		noticeConfigurations: isly.array(Notice.type).optional(),
 		portalMetadataFormatOrdering: isly.string().array().optional(),
+		noticeTargetConfigurations: Configuration.type.optional(),
 	})
 	export const is = type.is
 }
