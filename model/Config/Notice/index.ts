@@ -1,5 +1,5 @@
 import { isly } from "isly"
-import { Configuration } from "./FundingLimit"
+import { Configuration as FConfiguration } from "./FundingLimit/Configuration"
 import { Target as NTarget } from "./Target"
 import { Type as NType } from "./Type"
 
@@ -18,14 +18,15 @@ export namespace Notice {
 		export const is = type.is
 	}
 	// FundingLimitNoticeConfiguration
-	export type FundingLimit = Notice.Base<"FUNDING_LIMIT", Configuration>
+	export type FundingLimit = Notice.Base<"FUNDING_LIMIT", FConfiguration>
 	export import Target = NTarget
 	export import Type = NType
 	export namespace FundingLimit {
 		export const type = Notice.Base.type.extend<FundingLimit>({
 			type: isly.string("FUNDING_LIMIT"),
-			configuration: Configuration.type.optional(),
+			configuration: FConfiguration.type.optional(),
 		})
+		export import Configuration = FConfiguration
 	}
 	export const type = isly.union<Notice>(FundingLimit.type)
 }

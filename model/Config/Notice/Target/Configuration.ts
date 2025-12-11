@@ -1,20 +1,20 @@
 import { isly } from "isly"
-import { Target } from "."
+import { Type } from "./Type"
+
 
 export interface Configuration {
-	type: Target.Type
+	type: Type
 	value?: string
 	emails?: string[]
 }
 
 export namespace Configuration {
 	export const type = isly.object<Configuration>({
-		type: Target.Type.type,
+		type: Type.type,
 		value: isly.string().optional(),
 		emails: isly
 			.string(/\S+@\S+\.\S+/)
 			.array()
 			.optional(),
 	})
-	export const is = type.is
 }
