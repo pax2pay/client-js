@@ -9,6 +9,7 @@ import { ForcedSettlementNotification } from "./ForcedSettlementNotification"
 import { FraudEmail } from "./FraudEmail"
 import { FundingAccountInboundTransferNotification } from "./FundingAccountInboundTransferNotification"
 import { FundingLimit } from "./FundingLimit"
+import { Notice } from "./Notice"
 import { Security } from "./Security"
 import { SsoProvider } from "./SsoProvider"
 /**
@@ -32,7 +33,9 @@ export interface Organisation {
 	fraudEmailConfig?: FraudEmail
 	sso?: Partial<Record<SsoProvider.Type, SsoProvider>>
 	forcedSettlementNotificationConfig?: ForcedSettlementNotification
+	noticeConfigurations?: Notice[]
 	portalMetadataFormatOrdering?: string[]
+	noticeTargetConfigurations?: Notice.Target.Configuration[]
 }
 
 export namespace Organisation {
@@ -54,7 +57,9 @@ export namespace Organisation {
 		fraudEmailConfig: FraudEmail.type.optional(),
 		sso: isly.record(SsoProvider.Type.type, SsoProvider.type).optional(),
 		forcedSettlementNotificationConfig: ForcedSettlementNotification.type.optional(),
+		noticeConfigurations: isly.array(Notice.type).optional(),
 		portalMetadataFormatOrdering: isly.string().array().optional(),
+		noticeTargetConfigurations: Notice.Target.Configuration.type.array().optional(),
 	})
 	export const is = type.is
 }
