@@ -1,7 +1,6 @@
 import { isly } from "isly"
 import { Type } from "./Type"
 
-
 export interface Configuration {
 	type: Type
 	value?: string
