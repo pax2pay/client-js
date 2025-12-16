@@ -29,4 +29,5 @@ export interface CreateCardRequest {
 	batchId?: string
 	merchantRestrictionId?: string
 	closeDate?: Date
+	minimumTransactionValue?: number
 }

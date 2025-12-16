@@ -36,6 +36,7 @@ export interface Organisation {
 	noticeConfigurations?: Notice[]
 	portalMetadataFormatOrdering?: string[]
 	noticeTargetConfigurations?: Notice.Target.Configuration[]
+	minimumTransactionValuePercentage?: number
 }
 
 export namespace Organisation {
@@ -60,6 +61,7 @@ export namespace Organisation {
 		noticeConfigurations: isly.array(Notice.type).optional(),
 		portalMetadataFormatOrdering: isly.string().array().optional(),
 		noticeTargetConfigurations: Notice.Target.Configuration.type.array().optional(),
+		minimumTransactionValuePercentage: isly.number().optional(),
 	})
 	export const is = type.is
 }

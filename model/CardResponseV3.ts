@@ -15,6 +15,7 @@ export interface CardResponseV3 extends SummaryCardResponseV3 {
 	activationDate: Date
 	closeDate?: Date
 	restrictedToMerchant?: boolean
+	minimumTransactionValue?: number
 }
 
 export namespace CardResponseV3 {
@@ -29,6 +30,7 @@ export namespace CardResponseV3 {
 		activationDate: isly.fromIs("Date", Date.is),
 		closeDate: isly.fromIs("Date", Date.is).optional(),
 		restrictedToMerchant: isly.boolean().optional(),
+		minimumTransactionValue: isly.number().optional(),
 	})
 	export const is = type.is
 }
