@@ -39,6 +39,7 @@ export interface CardResponseV2 {
 	batchId?: string
 	merchantRestriction?: MerchantResponse
 	closeDate?: Date
+	minimumTransactionValue?: number
 }
 
 export namespace CardResponseV2 {
@@ -70,6 +71,7 @@ export namespace CardResponseV2 {
 		batchId: isly.string().optional(),
 		merchantRestriction: MerchantResponse.type.optional(),
 		closeDate: isly.fromIs("Date", Date.is).optional(),
+		minimumTransactionValue: isly.number().optional(),
 	})
 	export const is = type.is
 }

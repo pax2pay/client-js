@@ -10,6 +10,7 @@ export interface PaymentCardCreateRequest {
 	usage?: CardUsage
 	closeDate?: isoly.Date
 	restrictToMerchant?: boolean
+	minimumTransactionValue?: number
 }
 export namespace PaymentCardCreateRequest {
 	export const type = isly.object<PaymentCardCreateRequest>({
@@ -18,6 +19,7 @@ export namespace PaymentCardCreateRequest {
 		usage: CardUsage.type.optional(),
 		closeDate: isly.fromIs("Date", isoly.Date.is).optional(),
 		restrictToMerchant: isly.boolean().optional(),
+		minimumTransactionValue: isly.number().optional(),
 	})
 	export const is = type.is
 }
