@@ -26,4 +26,23 @@ export namespace OrganisationFlag {
 	] as const
 	export const type = isly.string(types)
 	export const is = type.is
+	export function toDisplay(value: OrganisationFlag): string {
+		if (value == "PAX2PAY_DIRECT")
+			return "ppdirect"
+		if (value == "NET_STORMING")
+			return "net storming"
+		if (value == "AGENDAS_GROUP")
+			return "agendas group"
+		if (value == "EEA_CUSTOMER")
+			return "EEA"
+		if (value == "TRAVEL_CENTRE")
+			return "travel centre"
+		if (value == "THE_CRUISE_LINE")
+			return "the cruise line"
+		if (value == "DAVID_PETROVIC")
+			return "david petrovic"
+		if (value == "MICHAEL_KOVAS")
+			return "michael kovas"
+		return value.toLowerCase()
+	}
 }
