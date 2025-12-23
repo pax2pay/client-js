@@ -1,8 +1,9 @@
 import * as isoly from "isoly"
+import { TaskStatus } from "./TaskStatus"
 
 export interface ScheduledTaskResponse {
 	dueOn: isoly.DateTime
-	status: string
+	status: TaskStatus
 	taskType: string
 	taskId: string
 	newBalance?: number

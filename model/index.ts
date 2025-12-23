@@ -41,7 +41,6 @@ import { CardOptionSearch } from "./CardOptionSearch"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardResponseV3 } from "./CardResponseV3"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
-import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
 import { CardScheduleTaskType } from "./CardScheduleTaskType"
 import { CardSearch } from "./CardSearch"
 import { CardState } from "./CardState"
@@ -222,6 +221,7 @@ import { SummaryPaymentResponse } from "./SummaryPaymentResponse"
 import { SupplierBookingInfo } from "./SupplierBookingInfo"
 import { SupplierRequest } from "./SupplierRequest"
 import { SupplierResponse } from "./SupplierResponse"
+import { TaskStatus } from "./TaskStatus"
 import { TierFeatureResponse } from "./TierFeatureResponse"
 import { TierID } from "./TierID"
 import { TierLimitResponse } from "./TierLimitResponse"
@@ -303,7 +303,6 @@ export {
 	CardResponseV2,
 	CardResponseV3,
 	CardScheduleResponseItem,
-	CardScheduleTaskStatus,
 	CardScheduleTaskType,
 	CardSearch,
 	CardState,
@@ -484,6 +483,7 @@ export {
 	SupplierBookingInfo,
 	SupplierRequest,
 	SupplierResponse,
+	TaskStatus,
 	TierFeatureResponse,
 	TierID,
 	TierLimitResponse,
