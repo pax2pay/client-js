@@ -26,4 +26,11 @@ export namespace OrganisationFlag {
 	] as const
 	export const type = isly.string(types)
 	export const is = type.is
+	export function toDisplay(value: OrganisationFlag): string {
+		if (value == "PAX2PAY_DIRECT")
+			return "ppdirect"
+		if (value == "EEA_CUSTOMER")
+			return "EEA"
+		return value.toLowerCase().replaceAll("_", " ")
+	}
 }
