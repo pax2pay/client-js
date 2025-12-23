@@ -1,4 +1,4 @@
-import { CardScheduleTaskStatus } from "./CardScheduleTaskStatus"
+import { TaskStatus } from "./TaskStatus"
 
 describe("", () => {
 	it("", () => {
@@ -14,6 +14,6 @@ describe("", () => {
 			"PENDING_DECLINED",
 		]
 
-		expect(shouldBe.every(CardScheduleTaskStatus.is)).toBeTruthy()
+		expect(shouldBe.every(TaskStatus.is)).toBeTruthy()
 	})
 })

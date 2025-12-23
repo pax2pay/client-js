@@ -1,4 +1,5 @@
 import * as isoly from "isoly"
+import { TaskStatus } from "./TaskStatus"
 
 export interface ScheduleEntry {
 	readonly dueOn?: isoly.Date | isoly.DateTime
@@ -6,7 +7,7 @@ export interface ScheduleEntry {
 	readonly balanceDifferential?: number
 	readonly newBalance?: number
 	readonly desiredState?: string
-	readonly status?: string
+	readonly status?: TaskStatus
 }
 export namespace ScheduleEntry {
 	export function is(value: ScheduleEntry | any): value is ScheduleEntry {
@@ -17,7 +18,7 @@ export namespace ScheduleEntry {
 			(value.balanceDifferential == undefined || typeof value.balanceDifferential == "number") &&
 			(value.newBalance == undefined || typeof value.newBalance == "number") &&
 			(value.desiredState == undefined || typeof value.desiredState == "string") &&
-			(value.status == undefined || typeof value.status == "string")
+			(value.status == undefined || TaskStatus.is(value.status))
 		)
 	}
 }
