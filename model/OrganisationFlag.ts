@@ -31,6 +31,6 @@ export namespace OrganisationFlag {
 			return "ppdirect"
 		if (value == "EEA_CUSTOMER")
 			return "EEA"
-		return value.toLowerCase().replace("_", " ")
+		return value.toLowerCase().replaceAll("_", " ")
 	}
 }
