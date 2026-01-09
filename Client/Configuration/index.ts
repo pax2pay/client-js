@@ -11,6 +11,9 @@ export class Configuration {
 	async getAvailableCurrency(providerCode: ProviderCode = "modulr"): Promise<Currency[] | model.ErrorResponse> {
 		return await this.connection.get<Currency[]>(`${this.folder}/currencies`, { provider: providerCode })
 	}
+	async getAllCurrency() {
+		return await this.connection.get<Currency[]>(`${this.folder}/currencies/all`)
+	}
 	async getOrganisation(code?: string): Promise<model.Config.Organisation | model.ErrorResponse> {
 		return await this.connection.get<model.Config.Organisation>(`${this.folder}/organisation${code ? `/${code}` : ""}`)
 	}
