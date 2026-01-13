@@ -8,8 +8,11 @@ export class Configuration {
 	static create(connection: Connection) {
 		return new Configuration(connection)
 	}
-	async getAvailableCurrency(providerCode: ProviderCode = "modulr"): Promise<Currency[] | model.ErrorResponse> {
-		return await this.connection.get<Currency[]>(`${this.folder}/currencies`, { provider: providerCode })
+	async getAvailableCurrency(
+		providerCode: ProviderCode[] | ProviderCode = "modulr"
+	): Promise<Currency[] | model.ErrorResponse> {
+		const provider = Array.isArray(providerCode) ? providerCode.join(",") : providerCode
+		return await this.connection.get<Currency[]>(`${this.folder}/currencies`, { provider: provider })
 	}
 	async getAllCurrency() {
 		return await this.connection.get<Currency[]>(`${this.folder}/currencies/all`)
