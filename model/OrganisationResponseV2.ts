@@ -12,7 +12,7 @@ export interface OrganisationResponseV2 {
 	name: string
 	status: OrganisationStatusV2
 	realm?: OrganisationRealm | OrganisationRealm[]
-	credentials?: Partial<Record<ProviderCode, Record<string, any>>>
+	credentials?: OrganisationResponseV2.Credentials
 	organisationConfig?: Config.Organisation
 	internalOrganisationConfig?: Config.InternalOrganisation
 	cardTypes?: Partial<Record<ProviderCode, CardTypeInformation>>
@@ -21,12 +21,32 @@ export interface OrganisationResponseV2 {
 }
 
 export namespace OrganisationResponseV2 {
+	export type Credentials = Partial<Record<ProviderCode, Record<string, any>>> & {
+		pax2pay?: Credentials.Pax2Pay
+	}
+	export namespace Credentials {
+		export const type = isly.record(ProviderCode.type, isly.any())
+
+		// Pax2PayBankingCredentials in mpay
+		export type Pax2Pay = {
+			cardHolderName: string
+			organisationId: string
+		}
+		export namespace Pax2Pay {
+			export const keys: (keyof Pax2Pay)[] = ["cardHolderName", "organisationId"]
+			export const type = isly.object<Pax2Pay>({
+				cardHolderName: isly.string(),
+				organisationId: isly.string(),
+			})
+		}
+	}
+
 	export const type = isly.object<OrganisationResponseV2>({
 		code: isly.string(),
 		name: isly.string(),
 		status: OrganisationStatusV2.type,
 		realm: isly.union(OrganisationRealm.type, isly.array(OrganisationRealm.type)).optional(),
-		credentials: isly.record(ProviderCode.type, isly.any()).optional(),
+		credentials: OrganisationResponseV2.Credentials.type.optional(),
 		organisationConfig: isly.fromIs("Config.Organisation", Config.Organisation.is).optional(),
 		internalOrganisationConfig: isly.fromIs("Config.InternalOrganisation", Config.InternalOrganisation.is).optional(),
 		cardTypes: isly.record(ProviderCode.type, isly.fromIs("CardTypeInformation", CardTypeInformation.is)).optional(),
