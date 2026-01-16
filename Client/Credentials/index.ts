@@ -60,4 +60,8 @@ export class Credentials {
 			header
 		)
 	}
+	async remove(organisationCode: string, providerCode: ProviderCode): Promise<undefined | model.ErrorResponse> {
+		const header = { "x-assume": organisationCode }
+		return await this.connection.remove<undefined>(`${this.folder}/${providerCode}`, undefined, undefined, header)
+	}
 }
