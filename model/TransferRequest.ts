@@ -1,3 +1,4 @@
+import * as isoly from "isoly"
 import { MetadataRequest } from "./MetadataRequest"
 import { PaymentDeliveryRequest } from "./PaymentDeliveryRequest"
 import { ProviderCode } from "./ProviderCode"
@@ -11,11 +12,13 @@ export interface TransferRequest {
 	destinationProviderCode?: ProviderCode
 	destinationProviderAccountId?: string
 	amount: number
-	currency?: string
+	currency?: isoly.Currency
+	currencyReceived?: isoly.Currency
 	reference?: string
 	paymentDate?: string
 	metadata?: MetadataRequest
 	delivery?: PaymentDeliveryRequest
 	batchId?: string
 	verificationOfPayeeId?: string
+	fxQuoteId?: string
 }

@@ -11,8 +11,11 @@ import { TransferStatus } from "./TransferStatus"
 export interface TransferResponseV2 {
 	providerCode: ProviderCode
 	providerTransferId: string
+	externalId: string
 	amount: number
+	amountReceived: number
 	currency: Currency
+	currencyReceived?: Currency
 	status: TransferStatus
 	errorMessage?: string
 	createdDate: Date
@@ -32,8 +35,11 @@ export namespace TransferResponseV2 {
 	export const type = isly.object<TransferResponseV2>({
 		providerCode: ProviderCode.type,
 		providerTransferId: isly.string(),
+		externalId: isly.string(),
 		amount: isly.number(),
+		amountReceived: isly.number(),
 		currency: isly.fromIs("Currency", Currency.is),
+		currencyReceived: isly.fromIs("Currency", Currency.is).optional(),
 		status: TransferStatus.type,
 		errorMessage: isly.string().optional(),
 		createdDate: isly.fromIs("Date", Date.is),
