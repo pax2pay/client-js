@@ -32,4 +32,5 @@ export namespace CardStatement {
 		additionalInformation: isly.record(isly.string(), isly.any()).optional(),
 		id: isly.string().optional(),
 	})
+	export const is = type.is
 }
