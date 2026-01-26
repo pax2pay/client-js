@@ -13,7 +13,7 @@ export interface TransferResponseV2 {
 	providerTransferId: string
 	externalId: string
 	amount: number
-	amountReceived: number
+	amountReceived?: number
 	currency: Currency
 	currencyReceived?: Currency
 	status: TransferStatus
@@ -37,7 +37,7 @@ export namespace TransferResponseV2 {
 		providerTransferId: isly.string(),
 		externalId: isly.string(),
 		amount: isly.number(),
-		amountReceived: isly.number(),
+		amountReceived: isly.number().optional(),
 		currency: isly.fromIs("Currency", Currency.is),
 		currencyReceived: isly.fromIs("Currency", Currency.is).optional(),
 		status: TransferStatus.type,
