@@ -113,6 +113,8 @@ import { FundingAccountTransferDestinationResponse } from "./FundingAccountTrans
 import { FundingLimitRequest } from "./FundingLimitRequest"
 import { FundingLimitResponse } from "./FundingLimitResponse"
 import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognosisAmountPair"
+import { FxQuoteRequest } from "./FxQuoteRequest"
+import { FxQuoteResponse } from "./FxQuoteResponse"
 import { GenericPaymentOperation } from "./GenericPaymentOperation"
 import { HotelBookingInfoRequest } from "./HotelBookingInfoRequest"
 import { HotelBookingInfoResponse } from "./HotelBookingInfoResponse"
@@ -375,6 +377,8 @@ export {
 	FundingLimitRequest,
 	FundingLimitResponse,
 	FutureTransactionPrognosisAmountPair,
+	FxQuoteRequest,
+	FxQuoteResponse,
 	GenericPaymentOperation,
 	HotelBookingInfoRequest,
 	HotelBookingInfoResponse,

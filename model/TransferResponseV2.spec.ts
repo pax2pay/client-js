@@ -4,6 +4,7 @@ describe("TransferResponseV2 is", () => {
 		const json = {
 			providerCode: "modulr",
 			providerTransferId: "P12005RMB0",
+			externalId: "EXT12345",
 			amount: 1,
 			currency: "GBP",
 			status: "SETTLED",
