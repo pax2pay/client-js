@@ -7,6 +7,7 @@ export interface BeneficiaryRequest {
 	defaultReference?: string
 	name?: string
 	status?: BeneficiaryStatus
+	rebateQualifier?: string
 }
 export namespace BeneficiaryRequest {
 	export const type = isly.object<BeneficiaryRequest>({
@@ -14,6 +15,7 @@ export namespace BeneficiaryRequest {
 		defaultReference: isly.string().optional(),
 		name: isly.string().optional(),
 		status: isly.fromIs("BeneficiaryStatus", BeneficiaryStatus.is).optional(),
+		rebateQualifier: isly.string().optional(),
 	})
 	export const is = type.is
 }
