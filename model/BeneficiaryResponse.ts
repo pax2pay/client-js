@@ -12,6 +12,7 @@ export interface BeneficiaryResponse<
 	beneficiaryId: string
 	createdOn: string
 	defaultReference?: string
+	rebateQualifier?: string
 	history?: BeneficiaryResponse<T>[]
 }
 
@@ -23,6 +24,7 @@ export namespace BeneficiaryResponse {
 		beneficiaryId: isly.string(),
 		createdOn: isly.string(),
 		defaultReference: isly.string().optional(),
+		rebateQualifier: isly.string().optional(),
 		history: isly.fromIs("BeneficiaryResponse[]", Array.isArray).optional(), // Not checking same type because of risk of being slow
 	})
 	export const is = type.is

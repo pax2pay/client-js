@@ -9,4 +9,6 @@ export interface SearchBeneficiaryRequest {
 	name?: string
 	fullName?: string
 	fuzzySearch?: string
+	autoPopulateRebate?: boolean
+	rebateQualifier?: string
 }
