@@ -11,6 +11,7 @@ export namespace PaxpayFeature {
 		"BETA_PAYMENTS",
 		"RECONCILIATION_REPORT_V2",
 		"INSIGHTS_ROOM",
+		"INSIGHTS_ROOM_REBATE",
 		"DELIVERY_ATTACHMENT",
 		"REBATE_RECIPIENT",
 	] as const
