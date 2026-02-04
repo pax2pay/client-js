@@ -52,6 +52,9 @@ export class Beneficiaries extends List<model.BeneficiaryResponse> {
 			otp ? { "x-otp": otp } : {}
 		)
 	}
+	async downloadRebateBeneficiaryFile(beneficiaryId: string) {
+		return await this.connection.get<model.DownloadableResponse>(`${this.folder}/rebate/download`)
+	}
 	async delete(beneficiaryId: string) {
 		return await this.connection.remove<model.BeneficiaryResponse>(`${this.folder}/${beneficiaryId}`)
 	}
