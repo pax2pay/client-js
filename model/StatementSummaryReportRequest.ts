@@ -1,4 +1,5 @@
 import * as isoly from "isoly"
+import { Inclusion } from "./Inclusion"
 import { ProviderCode } from "./ProviderCode"
 import { BalanceType } from "./Report/BalanceType"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
@@ -15,4 +16,5 @@ export interface StatementSummaryReportRequest {
 	}
 	subType?: StatementReportSubType
 	period: "DAILY" | "WEEKLY" | "MONTHLY" | "QUARTERLY" | "YEARLY" | "ENTIRE"
+	rebateTransfers?: Inclusion
 }
