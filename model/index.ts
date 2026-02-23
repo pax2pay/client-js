@@ -22,6 +22,7 @@ import { AvailableCardTypesHasResponse } from "./AvailableCardTypesHasResponse"
 import { AvailableCardTypesResponse } from "./AvailableCardTypesResponse"
 import { Batch } from "./Batch"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
+import { BeneficiaryRequestStatus } from "./BeneficiaryRequestStatus"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
 import { BeneficiarySearchRequest } from "./BeneficiarySearchRequest"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
@@ -288,6 +289,7 @@ export {
 	AvailableCardTypesResponse,
 	Batch,
 	BeneficiaryRequest,
+	BeneficiaryRequestStatus,
 	BeneficiaryResponse,
 	BeneficiaryStatus,
 	BeneficiarySubType,

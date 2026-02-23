@@ -1,6 +1,6 @@
 import { isly } from "isly"
 import { AccountDetailsTransferDestinationResponse } from "./AccountDetailsTransferDestinationResponse"
-import { BeneficiaryStatus } from "./BeneficiaryStatus"
+import { BeneficiaryRequestStatus } from "./BeneficiaryRequestStatus"
 import { BeneficiarySubType } from "./BeneficiarySubType"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
 
@@ -8,7 +8,7 @@ export interface BeneficiaryResponse<
 	T extends TransferDestinationResponse = AccountDetailsTransferDestinationResponse
 > {
 	transferDestination: T
-	status: BeneficiaryStatus
+	status: BeneficiaryRequestStatus
 	name: string
 	beneficiaryId: string
 	createdOn: string
@@ -21,7 +21,7 @@ export interface BeneficiaryResponse<
 export namespace BeneficiaryResponse {
 	export const type = isly.object<BeneficiaryResponse<TransferDestinationResponse>>({
 		transferDestination: isly.fromIs("TransferDestinationResponse", TransferDestinationResponse.is),
-		status: isly.fromIs("BeneficiaryStatus", BeneficiaryStatus.is),
+		status: isly.fromIs("BeneficiaryRequestStatus", BeneficiaryRequestStatus.is),
 		name: isly.string(),
 		beneficiaryId: isly.string(),
 		createdOn: isly.string(),
