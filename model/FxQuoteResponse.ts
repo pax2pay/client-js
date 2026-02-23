@@ -11,6 +11,8 @@ export interface FxQuoteResponse {
 	amountReceived: number
 	fee: number
 	fxRate: number
+	markup?: number
+	markedUpFxRate?: number
 }
 
 export namespace FxQuoteResponse {
@@ -24,6 +26,8 @@ export namespace FxQuoteResponse {
 		amountReceived: isly.number(),
 		fee: isly.number(),
 		fxRate: isly.number(),
+		markup: isly.number().optional(),
+		markedUpFxRate: isly.number().optional(),
 	})
 	export const is = type.is
 }
