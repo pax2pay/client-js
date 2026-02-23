@@ -1,6 +1,7 @@
 import { isly } from "isly"
 import { AccountDetailsTransferDestinationResponse } from "./AccountDetailsTransferDestinationResponse"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
+import { BeneficiarySubType } from "./BeneficiarySubType"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
 
 export interface BeneficiaryResponse<
@@ -11,6 +12,7 @@ export interface BeneficiaryResponse<
 	name: string
 	beneficiaryId: string
 	createdOn: string
+	subType?: BeneficiarySubType
 	defaultReference?: string
 	rebateQualifier?: string
 	history?: BeneficiaryResponse<T>[]
@@ -23,6 +25,7 @@ export namespace BeneficiaryResponse {
 		name: isly.string(),
 		beneficiaryId: isly.string(),
 		createdOn: isly.string(),
+		subType: isly.fromIs("BeneficiarySubType", BeneficiarySubType.is).optional(),
 		defaultReference: isly.string().optional(),
 		rebateQualifier: isly.string().optional(),
 		history: isly.fromIs("BeneficiaryResponse[]", Array.isArray).optional(), // Not checking same type because of risk of being slow

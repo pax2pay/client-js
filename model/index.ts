@@ -23,7 +23,10 @@ import { AvailableCardTypesResponse } from "./AvailableCardTypesResponse"
 import { Batch } from "./Batch"
 import { BeneficiaryRequest } from "./BeneficiaryRequest"
 import { BeneficiaryResponse } from "./BeneficiaryResponse"
+import { BeneficiarySearchRequest } from "./BeneficiarySearchRequest"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
+import { BeneficiarySubType } from "./BeneficiarySubType"
+import { BeneficiarySubTypeSearch } from "./BeneficiarySubTypeSearch"
 import { BeneficiaryTransferDestinationResponse } from "./BeneficiaryTransferDestinationResponse"
 import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
 import { BookedProductInfo } from "./BookedProductInfo"
@@ -201,7 +204,6 @@ import { Room } from "./Room"
 import { ScheduledTaskRequest } from "./ScheduledTaskRequest"
 import { ScheduleEntry } from "./ScheduleEntry"
 import { Scheme } from "./Scheme"
-import { SearchBeneficiaryRequest } from "./SearchBeneficiaryRequest"
 import { SearchRolesetsRequest } from "./SearchRolesetsRequest"
 import { Segment } from "./Segment"
 import { SetAvailableCardTypesRequest } from "./SetAvailableCardTypesRequest"
@@ -288,6 +290,8 @@ export {
 	BeneficiaryRequest,
 	BeneficiaryResponse,
 	BeneficiaryStatus,
+	BeneficiarySubType,
+	BeneficiarySubTypeSearch,
 	BeneficiaryTransferDestinationResponse,
 	BillingTransactionAmountPair,
 	BookedProductInfo,
@@ -470,7 +474,7 @@ export {
 	SftpReportFileDestination,
 	Segment,
 	SsoLoginRequest,
-	SearchBeneficiaryRequest,
+	BeneficiarySearchRequest,
 	StatementReportRequest,
 	StatementReportResponse,
 	StatementReportResponseRow,

@@ -1,11 +1,14 @@
 import { Currency } from "isoly"
 import { BeneficiaryStatus } from "./BeneficiaryStatus"
+import { BeneficiarySubTypeSearch } from "./BeneficiarySubTypeSearch"
+import { TransferDestinationAddressType } from "./TransferDestinationAddressType"
 
-export interface SearchBeneficiaryRequest {
+export interface BeneficiarySearchRequest {
 	defaultReference?: string
 	currency?: Currency[]
-	type?: "SCAN" | "IBAN"
+	type?: TransferDestinationAddressType
 	status?: BeneficiaryStatus[]
+	subtype?: BeneficiarySubTypeSearch[]
 	name?: string
 	fullName?: string
 	fuzzySearch?: string
