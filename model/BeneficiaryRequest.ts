@@ -1,12 +1,15 @@
 import { isly } from "isly"
-import { BeneficiaryStatus } from "./BeneficiaryStatus"
+import { BeneficiaryRequestStatus } from "./BeneficiaryRequestStatus"
+import { BeneficiarySubType } from "./BeneficiarySubType"
 import { TransferDestinationRequest } from "./TransferDestinationRequest"
 
 export interface BeneficiaryRequest {
 	transferDestination: TransferDestinationRequest
 	defaultReference?: string
 	name?: string
-	status?: BeneficiaryStatus
+	//Deprecated, remove when ACTIVE_REBATE gone
+	status?: BeneficiaryRequestStatus
+	subtype?: BeneficiarySubType
 	rebateQualifier?: string
 }
 export namespace BeneficiaryRequest {
@@ -14,7 +17,8 @@ export namespace BeneficiaryRequest {
 		transferDestination: TransferDestinationRequest.type,
 		defaultReference: isly.string().optional(),
 		name: isly.string().optional(),
-		status: isly.fromIs("BeneficiaryStatus", BeneficiaryStatus.is).optional(),
+		status: isly.fromIs("BeneficiaryRequestStatus", BeneficiaryRequestStatus.is).optional(),
+		subtype: isly.fromIs("BeneficiarySubType", BeneficiarySubType.is).optional(),
 		rebateQualifier: isly.string().optional(),
 	})
 	export const is = type.is

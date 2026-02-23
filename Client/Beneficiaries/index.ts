@@ -24,7 +24,7 @@ export class Beneficiaries extends List<model.BeneficiaryResponse> {
 	async getBeneficiary(beneficiaryId: string) {
 		return await this.connection.get<model.BeneficiaryResponse>([this.folder, beneficiaryId].join("/"))
 	}
-	async searchBeneficiary(request: model.SearchBeneficiaryRequest, sort?: string) {
+	async searchBeneficiary(request: model.BeneficiarySearchRequest, sort?: string) {
 		const response = await this.connection.post<model.ErrorResponse | model.BeneficiaryResponse[]>(
 			`${this.folder}/searches`,
 			request,
