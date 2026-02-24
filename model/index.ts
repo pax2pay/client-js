@@ -185,6 +185,7 @@ import { ProviderCardTransactionOperation } from "./ProviderCardTransactionOpera
 import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
 import { ProviderTransferTransactionOperation } from "./ProviderTransferTransactionOperation"
+import { QualifiedAddress } from "./QualifiedAddress"
 import { Range } from "./Range"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
@@ -451,6 +452,7 @@ export {
 	ProviderCode,
 	ProviderResponse,
 	ProviderTransferTransactionOperation,
+	QualifiedAddress,
 	Range,
 	References,
 	RelogWithNewSessionDetailsRequest,

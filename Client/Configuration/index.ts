@@ -64,4 +64,7 @@ export class Configuration {
 	async getTierById(id: string): Promise<model.TierResponse | model.ErrorResponse> {
 		return await this.connection.get<model.TierResponse>(`${this.folder}/tiers/${id}`)
 	}
+	async getRebateAddresses(): Promise<model.QualifiedAddress[] | model.ErrorResponse> {
+		return await this.connection.get<model.QualifiedAddress[]>(`${this.folder}/key/setup/rebateAddresses`)
+	}
 }
