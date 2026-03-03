@@ -99,8 +99,13 @@ export class Users extends List<model.UserResponse> {
 			header
 		)
 	}
-	async removeTwoFactorAuthentication(username: string, otp: string): Promise<void | model.ErrorResponse> {
-		return await this.connection.remove(`${this.folder}/${username}/two-factor`, undefined, undefined, { "x-otp": otp })
+	async removeTwoFactorAuthentication(username: string, otp?: string): Promise<void | model.ErrorResponse> {
+		return await this.connection.remove(
+			`${this.folder}/${username}/two-factor`,
+			undefined,
+			undefined,
+			otp ? { "x-otp": otp } : {}
+		)
 	}
 	async searchUsers(
 		request: model.UserSearchRequest,
