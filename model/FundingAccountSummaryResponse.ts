@@ -5,8 +5,8 @@ export interface FundingAccountSummaryResponse {
 	providerCode: ProviderCode
 	providerAccountId: string
 	accountId: string
-	balance: number
 	friendlyName: string
+	balance?: number
 }
 
 export namespace FundingAccountSummaryResponse {
@@ -14,7 +14,7 @@ export namespace FundingAccountSummaryResponse {
 		providerCode: ProviderCode.type,
 		providerAccountId: isly.string(),
 		accountId: isly.string(),
-		balance: isly.number(),
+		balance: isly.number().optional(),
 		friendlyName: isly.string(),
 	})
 	export const is = type.is
