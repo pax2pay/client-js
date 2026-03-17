@@ -27,8 +27,118 @@ export class Connection {
 	set assumedOrg(value: string | undefined) {
 		this.#assumedOrg = value
 	}
+	async fetch<T, Codes = 400 | 403 | 404 | 500>(
+		path: string,
+		method: string,
+		request?: any,
+		parameters?: Record<string, any>,
+		overrides?: Record<string, string>
+	): Promise<T | (model.ErrorResponse & { status?: number; value?: string })> {
+		const url = this.buildUrl(path, parameters)
+		const headers = this.prepareHeaders(request, overrides)
+		const body = this.prepareBody(request)
 
-	async fetch<Response, Codes = 400 | 403 | 404 | 500>(
+		try {
+			const response = await fetch(url, { method, headers, body })
+
+			// Handle Side Effects (Cookies/2FA)
+			this.handleSessionSideEffects(response)
+
+			// Handle Auth Challenges
+			if (response.status === 401 && (await this.unauthorized(this))) {
+				return this.fetch<T, Codes>(path, method, request, parameters, overrides)
+			}
+
+			return await this.parseResponse(response)
+		} catch (error: any) {
+			console.error("Fetch Error:", error)
+			return { code: 500, errors: [{ message: error.message || "Internal Server Error" }] }
+		}
+	}
+	private buildUrl(path: string, parameters?: Record<string, any>): string {
+		const url = new URL(`${this.url}/${path}`)
+		if (parameters) {
+			Object.entries(parameters).forEach(([key, value]) => {
+				if (value === undefined)
+					return
+				// Handles arrays as comma-separated strings
+				url.searchParams.append(key, Array.isArray(value) ? value.join(",") : String(value))
+			})
+		}
+		return url.toString()
+	}
+	private prepareBody(request: any): BodyInit | undefined {
+		if (!request)
+			return undefined
+		if (request instanceof FormData || request instanceof Blob)
+			return request
+
+		// Clean strings by trimming before stringifying
+		return JSON.stringify(request, (_, v) => (typeof v === "string" ? v.trim() : v))
+	}
+	private prepareHeaders(request: any, overrides?: Record<string, string>): Record<string, string> {
+		const headers: Record<string, string> = {
+			"x-invoking-system": "portal_2",
+			...overrides,
+		}
+
+		// Content-Type Logic
+		if (request instanceof Blob) {
+			headers["Content-Type"] = "text/csv; charset=utf-8"
+		} else if (!(request instanceof FormData)) {
+			headers["Content-Type"] = "application/json; charset=utf-8"
+		}
+
+		// Session & Auth
+		const token = Session.authentication.get()?.token || this.token
+		if (token)
+			headers["X-Auth-Token"] = token
+		if (this.#pax2payPortalLanguage)
+			headers["Pax2pay-Portal-Language"] = this.#pax2payPortalLanguage
+		if (this.assumedOrg)
+			headers["x-assume"] = this.assumedOrg
+
+		const cookie = window.localStorage.getItem("cookie")
+		if (cookie)
+			headers["x-otp-cookie"] = cookie
+
+		const publicKey = Session.publicKey.get()
+		if (publicKey)
+			headers["cde-public-key"] = publicKey
+
+		return headers
+	}
+
+	private handleSessionSideEffects(response: Response): void {
+		const otpCookie = response.headers.get("x-otp-cookie")
+		if (otpCookie)
+			window.localStorage.setItem("cookie", otpCookie)
+
+		const isLoginPath = response.url.includes("login") || response.url.includes("sso/google")
+		if (response.status === 403 && isLoginPath && response.headers.has("X-Auth-Token")) {
+			Session.authentication.set({ token: response.headers.get("X-Auth-Token") ?? undefined })
+		}
+	}
+	private async parseResponse(response: Response): Promise<any> {
+		if (!response.ok && response.status === 503) {
+			return { code: 503, errors: [{ message: "Service unavailable" }] }
+		}
+
+		const contentType = response.headers.get("Content-Type") ?? ""
+
+		if (contentType.includes("application/json")) {
+			const json = await response.json()
+			if (!response.ok)
+				return { status: response.status, ...json }
+
+			const totalCount = response.headers.get("x-total-count")
+			return totalCount ? { list: json, totalCount } : json
+		}
+
+		// Fallback for text/csv or plain text
+		return { status: response.status, value: await response.text() }
+	}
+	async oldfetch<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
 		method: string,
 		request?: any,
@@ -36,6 +146,7 @@ export class Connection {
 		header?: any
 	): Promise<Response | (model.ErrorResponse & { status?: number; value?: string })> {
 		const isMultipart = request && request instanceof FormData
+		const isBlob = request && request instanceof Blob
 		const cookie = window.localStorage.getItem("cookie")
 		const publicKey = Session.publicKey.get()
 		let requestHeaders: Record<string, string> = { "x-invoking-system": "portal_2" }
@@ -45,6 +156,13 @@ export class Connection {
 				...requestHeaders,
 				"Content-Type": "application/json; charset=utf-8",
 			}
+		if (isBlob) {
+			requestHeaders = {
+				...header,
+				...requestHeaders,
+				"Content-Type": "text/csv; charset=utf-8",
+			}
+		}
 		try {
 			const data = Session.authentication.get()
 			this.#token = data?.token
@@ -79,9 +197,10 @@ export class Connection {
 			{
 				method,
 				headers: requestHeaders,
-				body: !isMultipart
-					? request && JSON.stringify(request, (_, value) => (typeof value == "string" ? value.trim() : value))
-					: request,
+				body:
+					!isMultipart && !isBlob
+						? request && JSON.stringify(request, (_, value) => (typeof value == "string" ? value.trim() : value))
+						: request,
 			}
 		).catch((error: Error) => {
 			caughtErrorResponse = { code: 500, errors: [{ message: error.message }] }
