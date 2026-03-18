@@ -134,103 +134,10 @@ export class Connection {
 			const totalCount = response.headers.get("x-total-count")
 			return totalCount ? { list: json, totalCount } : json
 		}
-
-		// Fallback for text/csv or plain text
+		// Fallback
 		return { status: response.status, value: await response.text() }
 	}
-	async oldfetch<Response, Codes = 400 | 403 | 404 | 500>(
-		path: string,
-		method: string,
-		request?: any,
-		parameters?: Record<string, any>,
-		header?: any
-	): Promise<Response | (model.ErrorResponse & { status?: number; value?: string })> {
-		const isMultipart = request && request instanceof FormData
-		const isBlob = request && request instanceof Blob
-		const cookie = window.localStorage.getItem("cookie")
-		const publicKey = Session.publicKey.get()
-		let requestHeaders: Record<string, string> = { "x-invoking-system": "portal_2" }
-		if (!isMultipart)
-			requestHeaders = {
-				...header,
-				...requestHeaders,
-				"Content-Type": "application/json; charset=utf-8",
-			}
-		if (isBlob) {
-			requestHeaders = {
-				...header,
-				...requestHeaders,
-				"Content-Type": "text/csv; charset=utf-8",
-			}
-		}
-		try {
-			const data = Session.authentication.get()
-			this.#token = data?.token
-		} catch (e) {
-			if (this.token)
-				console.error("Caught exception ", JSON.stringify(e))
-		}
-		if (this.token)
-			requestHeaders["X-Auth-Token"] = this.token
-		if (this.#pax2payPortalLanguage)
-			requestHeaders["Pax2pay-Portal-Language"] = this.#pax2payPortalLanguage
-		if (this.assumedOrg)
-			requestHeaders["x-assume"] = this.assumedOrg
-		if (cookie)
-			requestHeaders["x-otp-cookie"] = cookie
-		if (publicKey)
-			requestHeaders["cde-public-key"] = publicKey
-		let caughtErrorResponse
-		const response = await fetch(
-			this.url +
-				"/" +
-				path +
-				(parameters
-					? "?" +
-					  Object.entries(parameters)
-							.map(([key, value]) =>
-								Array.isArray(value) ? `${key}=${value.join(",")}` : value != undefined ? `${key}=${value}` : undefined
-							)
-							.filter(param => param != undefined)
-							.join("&")
-					: ""),
-			{
-				method,
-				headers: requestHeaders,
-				body:
-					!isMultipart && !isBlob
-						? request && JSON.stringify(request, (_, value) => (typeof value == "string" ? value.trim() : value))
-						: request,
-			}
-		).catch((error: Error) => {
-			caughtErrorResponse = { code: 500, errors: [{ message: error.message }] }
-			console.error(error)
-		})
-		if (caughtErrorResponse)
-			return caughtErrorResponse
-		if (response && response.headers.has("x-otp-cookie"))
-			window.localStorage.setItem("cookie", response.headers.get("x-otp-cookie") ?? "")
-		//get temp token to set up 2fa before login
-		if (
-			response &&
-			response.status == 403 &&
-			(response.url.includes("login") || response.url.includes("sso/google")) &&
-			response.headers.has("X-Auth-Token")
-		)
-			Session.authentication.set({ token: response.headers.get("X-Auth-Token") ?? undefined })
 
-		return !response
-			? { code: 503, errors: [{ message: "Service unavailable" }] }
-			: response.status == 401 && (await this.unauthorized(this))
-			? await this.fetch<Response, Codes>(path, method, request, parameters)
-			: response.headers.get("Content-Type")?.startsWith("application/json")
-			? response.ok
-				? response.headers.has("x-total-count")
-					? ({ list: await response.json(), totalCount: response.headers.get("x-total-count") } as Response)
-					: await response.json()
-				: { status: response.status, ...(await response.json()) }
-			: { status: response.status, value: await response.text() }
-	}
 	async post<Response, Codes = 400 | 403 | 404 | 500>(
 		path: string,
 		request: any,
