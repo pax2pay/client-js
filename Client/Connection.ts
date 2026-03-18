@@ -84,7 +84,7 @@ export class Connection {
 
 		// Content-Type Logic
 		if (request instanceof Blob) {
-			headers["Content-Type"] = "text/csv; charset=utf-8"
+			headers["Content-Type"] = `${request.type}; charset=utf-8`
 		} else if (!(request instanceof FormData)) {
 			headers["Content-Type"] = "application/json; charset=utf-8"
 		}
@@ -120,7 +120,7 @@ export class Connection {
 		}
 	}
 	private async parseResponse(response: Response): Promise<any> {
-		if (!response.ok && response.status === 503) {
+		if (!response || response.status === 503) {
 			return { code: 503, errors: [{ message: "Service unavailable" }] }
 		}
 
