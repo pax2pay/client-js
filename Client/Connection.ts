@@ -84,9 +84,9 @@ export class Connection {
 
 		// Content-Type Logic
 		if (request instanceof Blob) {
-			headers["Content-Type"] = `${request.type}; charset=utf-8`
+			headers["Content-Type"] = request.type
 		} else if (!(request instanceof FormData)) {
-			headers["Content-Type"] = "application/json; charset=utf-8"
+			headers["Content-Type"] = "application/json"
 		}
 
 		// Session & Auth
