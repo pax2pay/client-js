@@ -10,6 +10,9 @@ export class Batch extends List<model.Batch.Response> {
 	static create(connection: Connection) {
 		return new Batch(connection)
 	}
+	async create(type: model.Batch.Type, request: Blob): Promise<model.Batch.Response | model.ErrorResponse> {
+		return await this.connection.post<model.Batch.Response>(`${this.folder}/${type}`, request)
+	}
 	async get(batchId: string): Promise<model.Batch.Response | model.ErrorResponse> {
 		return await this.connection.get<model.Batch.Response>(`${this.folder}/${batchId}`)
 	}
