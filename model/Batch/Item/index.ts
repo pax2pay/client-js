@@ -16,6 +16,7 @@ export namespace Item {
 	export import Status = IStatus
 	export import RebateTask = IRebateTask
 	export type Rebate = Item<IRebateTask, PaymentResponse>
+	export type Payment = Item<PaymentRequest>
 	export const baseType = isly.object<Item<unknown, unknown>>({
 		type: Type.type,
 		status: IStatus.type,
