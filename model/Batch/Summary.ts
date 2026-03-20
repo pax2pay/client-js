@@ -5,6 +5,7 @@ export interface Summary {
 	failed: number
 	remaining: number
 	total: number
+	expectedTotal: number
 }
 
 export namespace Summary {
@@ -13,6 +14,7 @@ export namespace Summary {
 		failed: isly.number(),
 		remaining: isly.number(),
 		total: isly.number(),
+		expectedTotal: isly.number(),
 	})
 	export const is = type.is
 }
