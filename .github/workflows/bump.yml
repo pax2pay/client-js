@@ -6,7 +6,7 @@ on:
       - "master"
 jobs:
   bump-version:
-    name: "Deploy from master"
+    name: "Bump Version"
     timeout-minutes: 60
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci: version bump to ')"
@@ -20,8 +20,7 @@ jobs:
         uses: "actions/setup-node@v3"
         with:
           node-version: 20
-      - name: Update NPM
-        run: npm ci
+          cache: 'npm'
       - name: "Version Bump"
         id: version-bump
         uses: "phips28/gh-action-bump-version@master"
