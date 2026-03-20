@@ -16,6 +16,8 @@ jobs:
         uses: "actions/setup-node@v3"
         with:
           node-version: 20
+      - name: Update NPM
+        run: npm ci
       - name: Install
         run: npm ci
       - name: Build

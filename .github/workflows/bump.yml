@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 20
       - name: Update NPM
-        run: npm install -g npm
+        run: npm ci
       - name: "Version Bump"
         id: version-bump
         uses: "phips28/gh-action-bump-version@master"
