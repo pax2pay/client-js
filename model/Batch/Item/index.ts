@@ -11,6 +11,7 @@ export interface Item<T = unknown, R = unknown> {
 	errorMessage?: string
 	task?: T
 	result?: R
+	reference?: string
 }
 
 export namespace Item {
@@ -25,6 +26,7 @@ export namespace Item {
 		errorMessage: isly.string().optional(),
 		task: isly.any().optional(),
 		result: isly.any().optional(),
+		reference: isly.string().optional(),
 	})
 	export const is = baseType.is
 	export namespace Rebate {
