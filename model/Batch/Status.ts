@@ -10,6 +10,7 @@ export namespace Status {
 		"failed to finalise",
 		"cancelled",
 		"importing",
+		"finalising",
 		"finalising import",
 		"failed to import",
 	] as const
