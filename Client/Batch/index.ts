@@ -50,7 +50,8 @@ export class Batch extends List<model.Batch.Response> {
 		batchId: string,
 		previous?: Paginated<I>,
 		page?: number,
-		size?: number
+		size?: number,
+		sort = "ordinal"
 	): Promise<Paginated<I> | model.ErrorResponse> {
 		return await this.getNextPaginated(
 			previous,
@@ -62,7 +63,8 @@ export class Batch extends List<model.Batch.Response> {
 				}),
 			undefined,
 			page,
-			size
+			size,
+			sort
 		)
 	}
 }
