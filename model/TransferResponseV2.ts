@@ -14,6 +14,9 @@ export interface TransferResponseV2 {
 	externalId: string
 	amount: number
 	amountReceived?: number
+	fxRate?: number
+	fxFees?: number
+	percentMarkup?: number
 	currency: Currency
 	currencyReceived?: Currency
 	status: TransferStatus
@@ -38,6 +41,9 @@ export namespace TransferResponseV2 {
 		externalId: isly.string(),
 		amount: isly.number(),
 		amountReceived: isly.number().optional(),
+		fxRate: isly.number().optional(),
+		fxFees: isly.number().optional(),
+		percentMarkup: isly.number().optional(),
 		currency: isly.fromIs("Currency", Currency.is),
 		currencyReceived: isly.fromIs("Currency", Currency.is).optional(),
 		status: TransferStatus.type,
