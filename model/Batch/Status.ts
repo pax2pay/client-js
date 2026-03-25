@@ -8,6 +8,7 @@ export namespace Status {
 		"processing",
 		"completed",
 		"failed to finalise",
+		"cancelling",
 		"cancelled",
 		"importing",
 		"finalising",
