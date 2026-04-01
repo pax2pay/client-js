@@ -1,7 +1,7 @@
 import { BeneficiaryTransferDestinationResponse } from "./BeneficiaryTransferDestinationResponse"
 
 describe("BeneficiaryTransferDestinationResponse is", () => {
-	it("scan account", () => {
+	;(it("scan account", () => {
 		const json = {
 			sortCode: "000000",
 			accountNumber: "12255555",
@@ -22,5 +22,5 @@ describe("BeneficiaryTransferDestinationResponse is", () => {
 				currency: "EUR",
 			}
 			expect(BeneficiaryTransferDestinationResponse.is(json)).toBeTruthy()
-		})
+		}))
 })

@@ -15,8 +15,8 @@ describe("pax2pay.cards.create ixaris", () => {
 			})
 	)
 
-	for (const currency of ["EUR", "GBP", "USD"])
-		for (const cardType of ["VISA_DEBIT", "VISA_CREDIT", "MASTERCARD"])
+	for (const currency of ["EUR", "GBP", "USD"]) {
+		for (const cardType of ["VISA_DEBIT", "VISA_CREDIT", "MASTERCARD"]) {
 			it(`card ${currency} ${cardType}`, async () => {
 				const [request, expectedV2, expectedLegacy] = factory({
 					cardType: {
@@ -39,4 +39,6 @@ describe("pax2pay.cards.create ixaris", () => {
 				expect(cardV2).toMatchObject(expectedV2)
 				expect(cardLegacy).toMatchObject(expectedLegacy)
 			})
+		}
+	}
 })

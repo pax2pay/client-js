@@ -16,7 +16,7 @@ const transactionType = [
 	"PENDING_DECLINE",
 ] as const
 
-export type TransactionType = typeof transactionType[number]
+export type TransactionType = (typeof transactionType)[number]
 
 export namespace TransactionType {
 	export function is(value: TransactionType | any): value is TransactionType {

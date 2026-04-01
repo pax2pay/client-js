@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type Role = typeof Role.values[number]
+export type Role = (typeof Role.values)[number]
 
 export namespace Role {
 	export const values = [

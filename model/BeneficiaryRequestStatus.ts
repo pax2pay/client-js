@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type BeneficiaryRequestStatus = typeof BeneficiaryRequestStatus.values[number]
+export type BeneficiaryRequestStatus = (typeof BeneficiaryRequestStatus.values)[number]
 
 //ACTIVE_REBATE and ACTIVE_MERCHANT are deprecated, but we keep them here for backward compatibility
 export namespace BeneficiaryRequestStatus {

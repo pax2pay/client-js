@@ -15,8 +15,8 @@ describe("pax2pay.cards.create modulr", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	for (const currency of ["EUR", "GBP", "PLN", "USD"])
-		for (const cardType of ["VISA_DEBIT_CORPORATE", "VISA", "VISA_CREDIT_CORPORATE", "VISA_DEBIT"])
+	for (const currency of ["EUR", "GBP", "PLN", "USD"]) {
+		for (const cardType of ["VISA_DEBIT_CORPORATE", "VISA", "VISA_CREDIT_CORPORATE", "VISA_DEBIT"]) {
 			it(`card ${currency} ${cardType}`, async () => {
 				const [request, expectedV2, expectedLegacy] = factory({
 					cardType: {
@@ -39,4 +39,6 @@ describe("pax2pay.cards.create modulr", () => {
 				expect(cardV2).toMatchObject(expectedV2)
 				expect(cardLegacy).toMatchObject(expectedLegacy)
 			})
+		}
+	}
 })

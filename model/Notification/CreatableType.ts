@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type CreatableType = typeof CreatableType.values[number]
+export type CreatableType = (typeof CreatableType.values)[number]
 
 export namespace CreatableType {
 	export const values = ["news"] as const

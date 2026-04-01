@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type PaxpayFeature = typeof PaxpayFeature.values[number]
+export type PaxpayFeature = (typeof PaxpayFeature.values)[number]
 
 export namespace PaxpayFeature {
 	export const values = [

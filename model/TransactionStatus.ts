@@ -9,7 +9,7 @@ const transactionStatus = [
 	"WITHDRAWN",
 ] as const
 
-export type TransactionStatus = typeof transactionStatus[number]
+export type TransactionStatus = (typeof transactionStatus)[number]
 
 export namespace TransactionStatus {
 	export function is(value: unknown): value is TransactionStatus {

@@ -1,4 +1,4 @@
-export type StatementReportRowActionType = typeof StatementReportRowActionType.values[number]
+export type StatementReportRowActionType = (typeof StatementReportRowActionType.values)[number]
 
 export namespace StatementReportRowActionType {
 	export const values = [
@@ -26,12 +26,15 @@ export namespace StatementReportRowActionType {
 		return typeof value == "string" && values.includes(value as StatementReportRowActionType)
 	}
 	export function toDisplay(value: StatementReportRowActionType): string {
-		if (value == "REFUND_FEE")
+		if (value == "REFUND_FEE") {
 			return "FEE_REFUND"
-		if (value == "REVERSAL_FEE")
+		}
+		if (value == "REVERSAL_FEE") {
 			return "FEE_REVERSAL"
-		if (value == "SCHEDULED_CARD_AMENDMENT")
+		}
+		if (value == "SCHEDULED_CARD_AMENDMENT") {
 			return "SCHEDULED_CARD"
+		}
 		return value
 	}
 }

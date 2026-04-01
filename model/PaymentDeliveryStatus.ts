@@ -1,7 +1,7 @@
 import { isly } from "isly"
 import { DeliveryStatus } from "./DeliveryStatus"
 
-export type PaymentDeliveryStatus = typeof PaymentDeliveryStatus.values[number]
+export type PaymentDeliveryStatus = (typeof PaymentDeliveryStatus.values)[number]
 
 export namespace PaymentDeliveryStatus {
 	export const values = ["success", "failure", "todo", "pending", "declined"] as const

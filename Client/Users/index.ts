@@ -88,10 +88,12 @@ export class Users extends List<model.UserResponse> {
 		tempToken?: string
 	): Promise<model.TwoFactorAuthenticationRegistrationResponse | model.ErrorResponse> {
 		let header = {}
-		if (otp)
+		if (otp) {
 			header = { ...header, "x-otp": otp }
-		if (tempToken)
+		}
+		if (tempToken) {
 			header = { ...header, "X-Auth-Token": tempToken }
+		}
 		return await this.connection.post<model.TwoFactorAuthenticationRegistrationResponse>(
 			`${this.folder}/${username}/two-factor`,
 			{},

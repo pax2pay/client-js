@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type ReportSubscriptionInvocationOutcome = typeof ReportSubscriptionInvocationOutcome.values[number]
+export type ReportSubscriptionInvocationOutcome = (typeof ReportSubscriptionInvocationOutcome.values)[number]
 
 export namespace ReportSubscriptionInvocationOutcome {
 	export const values = ["SUCCESS", "FAILURE"] as const

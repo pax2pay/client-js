@@ -15,8 +15,8 @@ describe("pax2pay.cards.create fake", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	for (const currency of ["EUR", "GBP", "SEK", "JPY", "BRL"])
-		for (const cardType of ["VISA_CREDIT", "MASTERCARD"])
+	for (const currency of ["EUR", "GBP", "SEK", "JPY", "BRL"]) {
+		for (const cardType of ["VISA_CREDIT", "MASTERCARD"]) {
 			it(`card ${currency} ${cardType}`, async () => {
 				const [request, expectedV2, expectedLegacy] = factory({
 					cardType: {
@@ -29,11 +29,11 @@ describe("pax2pay.cards.create fake", () => {
 				const cardV2 = await client?.cards.create(request)
 				const cardLegacy = await client?.cards.createLegacy(request)
 
-				if (ErrorResponse.is(cardV2))
+				if (ErrorResponse.is(cardV2)) {
 					throw Error(cardV2.errors?.[0].message)
-				else if (ErrorResponse.is(cardLegacy))
+				} else if (ErrorResponse.is(cardLegacy)) {
 					throw Error(cardLegacy.errors?.[0].message)
-				else {
+				} else {
 					expect(cardV2).toBeTruthy()
 					expect(cardLegacy).toBeTruthy()
 
@@ -41,4 +41,6 @@ describe("pax2pay.cards.create fake", () => {
 					expect(cardLegacy).toMatchObject(expectedLegacy)
 				}
 			})
+		}
+	}
 })

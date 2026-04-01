@@ -1,7 +1,7 @@
 import { isly } from "isly"
 import { Usage } from "./Usage"
 
-export type CardUsage = typeof CardUsage.values[number]
+export type CardUsage = (typeof CardUsage.values)[number]
 
 export namespace CardUsage {
 	export const values = ["single", "single allow test auth", "multiple", "scheduled"] as const

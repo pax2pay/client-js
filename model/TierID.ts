@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type TierID = typeof TierID.types[number]
+export type TierID = (typeof TierID.types)[number]
 
 export namespace TierID {
 	export const types = ["tier1", "tier2", "tier3", "legacy"] as const

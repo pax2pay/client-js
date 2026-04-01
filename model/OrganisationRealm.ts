@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type OrganisationRealm = typeof OrganisationRealm.values[number]
+export type OrganisationRealm = (typeof OrganisationRealm.values)[number]
 
 export namespace OrganisationRealm {
 	export const values = ["uk", "eu"] as const

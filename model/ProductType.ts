@@ -12,7 +12,7 @@ const productType = [
 	"ATTRACTION",
 	"BAGGAGE_TRACKING",
 ] as const
-export type ProductType = typeof productType[number]
+export type ProductType = (typeof productType)[number]
 
 export namespace ProductType {
 	export function is(value: unknown): value is ProductType {

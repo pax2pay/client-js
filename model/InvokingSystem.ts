@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type InvokingSystem = typeof InvokingSystem.types[number]
+export type InvokingSystem = (typeof InvokingSystem.types)[number]
 
 export namespace InvokingSystem {
 	export const types = [

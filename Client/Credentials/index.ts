@@ -28,10 +28,11 @@ export class Credentials {
 			parameters,
 			header
 		)
-		if (model.ErrorResponse.is(response))
+		if (model.ErrorResponse.is(response)) {
 			return response
-		else
+		} else {
 			return response.list
+		}
 	}
 
 	async update(

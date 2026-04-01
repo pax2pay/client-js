@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type Scheme = typeof Scheme.types[number]
+export type Scheme = (typeof Scheme.types)[number]
 
 export namespace Scheme {
 	export const types = ["VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DINERS_CLUB"] as const

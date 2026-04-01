@@ -5,7 +5,7 @@ import { BeneficiarySubType } from "./BeneficiarySubType"
 import { TransferDestinationResponse } from "./TransferDestinationResponse"
 
 export interface BeneficiaryResponse<
-	T extends TransferDestinationResponse = AccountDetailsTransferDestinationResponse
+	T extends TransferDestinationResponse = AccountDetailsTransferDestinationResponse,
 > {
 	transferDestination: T
 	status: BeneficiaryRequestStatus

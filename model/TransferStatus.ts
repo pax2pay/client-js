@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type TransferStatus = typeof TransferStatus.values[number]
+export type TransferStatus = (typeof TransferStatus.values)[number]
 
 export namespace TransferStatus {
 	export const values = [

@@ -1,6 +1,6 @@
 const beneficiaryStatus = ["ACTIVE", "DELETED", "OUTDATED", "INACTIVE"] as const
 
-export type BeneficiaryStatus = typeof beneficiaryStatus[number]
+export type BeneficiaryStatus = (typeof beneficiaryStatus)[number]
 
 export namespace BeneficiaryStatus {
 	export function is(value: unknown): value is BeneficiaryStatus {

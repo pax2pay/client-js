@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type SubFormatType = typeof SubFormatType.values[number]
+export type SubFormatType = (typeof SubFormatType.values)[number]
 export namespace SubFormatType {
 	export const values = ["top2", "top5"] as const
 	export function expectedInputLength(value: SubFormatType) {

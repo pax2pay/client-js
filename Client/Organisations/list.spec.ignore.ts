@@ -15,7 +15,7 @@ describe("pax2pay.organisations.list", () => {
 	it("all orgs", async () => {
 		const organizations = await client?.organisations.list()
 		expect(Array.isArray(organizations)).toEqual(true)
-		if (Array.isArray(organizations))
+		if (Array.isArray(organizations)) {
 			for (const organization of organizations) {
 				expect(organization).toMatchObject({
 					code: expect.stringContaining(""),
@@ -24,5 +24,6 @@ describe("pax2pay.organisations.list", () => {
 					status: expect.stringMatching(/(ACTIVE)|(INACTIVE)/),
 				})
 			}
+		}
 	})
 })

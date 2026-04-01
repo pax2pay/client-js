@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type AccountState = typeof AccountState.values[number]
+export type AccountState = (typeof AccountState.values)[number]
 
 export namespace AccountState {
 	export const values = [

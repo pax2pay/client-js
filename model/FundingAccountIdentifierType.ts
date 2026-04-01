@@ -1,6 +1,6 @@
 const fundingAccountIdentifierType = ["SCAN", "IBAN", "UNKNOWN"] as const
 
-export type FundingAccountIdentifierType = typeof fundingAccountIdentifierType[number]
+export type FundingAccountIdentifierType = (typeof fundingAccountIdentifierType)[number]
 
 export namespace FundingAccountIdentifierType {
 	export function is(value: unknown): value is FundingAccountIdentifierType {

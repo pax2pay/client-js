@@ -17,7 +17,7 @@ export namespace Session {
 							return storage[key] ?? null
 						},
 					}
-			  })()
+				})()
 			: window.sessionStorage
 
 	export const roles = Item.create("roles", {

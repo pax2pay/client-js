@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type PaymentOperationType = typeof PaymentOperationType.types[number]
+export type PaymentOperationType = (typeof PaymentOperationType.types)[number]
 
 export namespace PaymentOperationType {
 	export const types = [
@@ -82,22 +82,30 @@ export namespace PaymentOperationType {
 	export const type = isly.string(types)
 	export const is = type.is
 	export function toDisplay(value: PaymentOperationType): string {
-		if (value == "reversal fee")
+		if (value == "reversal fee") {
 			return "fee reversal"
-		if (value == "refund fee")
+		}
+		if (value == "refund fee") {
 			return "fee refund"
-		if (value == "thawed")
+		}
+		if (value == "thawed") {
 			return "unfrozen"
-		if (value == "direct debit")
+		}
+		if (value == "direct debit") {
 			return "Direct Debit"
-		if (value == "faster payments")
+		}
+		if (value == "faster payments") {
 			return "Faster Payments"
-		if (value == "SEPA instant")
+		}
+		if (value == "SEPA instant") {
 			return "SEPA Instant"
-		if (value == "provider internal")
+		}
+		if (value == "provider internal") {
 			return "Provider Internal"
-		if (value == "chargeback")
+		}
+		if (value == "chargeback") {
 			return "Chargeback"
+		}
 		return value
 	}
 }

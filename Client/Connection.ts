@@ -17,7 +17,10 @@ export class Connection {
 	set token(value: string | undefined) {
 		this.#token = value
 	}
-	private constructor(readonly url: string, token?: string) {
+	private constructor(
+		readonly url: string,
+		token?: string
+	) {
 		this.#token = token
 	}
 
@@ -59,8 +62,9 @@ export class Connection {
 		const url = new URL(`${this.url}/${path}`)
 		if (parameters) {
 			Object.entries(parameters).forEach(([key, value]) => {
-				if (value === undefined)
+				if (value === undefined) {
 					return
+				}
 				// Handles arrays as comma-separated strings
 				url.searchParams.append(key, Array.isArray(value) ? value.join(",") : String(value))
 			})
@@ -68,10 +72,12 @@ export class Connection {
 		return url.toString()
 	}
 	private prepareBody(request: any): BodyInit | undefined {
-		if (!request)
+		if (!request) {
 			return undefined
-		if (request instanceof FormData || request instanceof Blob)
+		}
+		if (request instanceof FormData || request instanceof Blob) {
 			return request
+		}
 
 		// Clean strings by trimming before stringifying
 		return JSON.stringify(request, (_, v) => (typeof v === "string" ? v.trim() : v))
@@ -91,28 +97,34 @@ export class Connection {
 
 		// Session & Auth
 		const token = Session.authentication.get()?.token || this.token
-		if (token)
+		if (token) {
 			headers["X-Auth-Token"] = token
-		if (this.#pax2payPortalLanguage)
+		}
+		if (this.#pax2payPortalLanguage) {
 			headers["Pax2pay-Portal-Language"] = this.#pax2payPortalLanguage
-		if (this.assumedOrg)
+		}
+		if (this.assumedOrg) {
 			headers["x-assume"] = this.assumedOrg
+		}
 
 		const cookie = window.localStorage.getItem("cookie")
-		if (cookie)
+		if (cookie) {
 			headers["x-otp-cookie"] = cookie
+		}
 
 		const publicKey = Session.publicKey.get()
-		if (publicKey)
+		if (publicKey) {
 			headers["cde-public-key"] = publicKey
+		}
 
 		return headers
 	}
 
 	private handleSessionSideEffects(response: Response): void {
 		const otpCookie = response.headers.get("x-otp-cookie")
-		if (otpCookie)
+		if (otpCookie) {
 			window.localStorage.setItem("cookie", otpCookie)
+		}
 
 		const isLoginPath = response.url.includes("login") || response.url.includes("sso/google")
 		if (response.status === 403 && isLoginPath && response.headers.has("X-Auth-Token")) {
@@ -128,8 +140,9 @@ export class Connection {
 
 		if (contentType.includes("application/json")) {
 			const json = await response.json()
-			if (!response.ok)
+			if (!response.ok) {
 				return { status: response.status, ...json }
+			}
 
 			const totalCount = response.headers.get("x-total-count")
 			return totalCount ? { list: json, totalCount } : json
