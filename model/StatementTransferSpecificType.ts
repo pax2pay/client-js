@@ -8,7 +8,7 @@ const statementTransferSpecificType = [
 	"PROVIDER_INTERNAL",
 	"SWIFT",
 ] as const
-export type StatementTransferSpecificType = typeof statementTransferSpecificType[number]
+export type StatementTransferSpecificType = (typeof statementTransferSpecificType)[number]
 
 export namespace StatementTransferSpecificType {
 	export function is(value: unknown): value is StatementTransferSpecificType {

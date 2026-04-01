@@ -1,6 +1,6 @@
 const transferDirections = ["IN", "OUT"] as const
 
-export type TransferDirection = typeof transferDirections[number]
+export type TransferDirection = (typeof transferDirections)[number]
 
 export namespace TransferDirection {
 	export function is(value: unknown): value is TransferDirection {

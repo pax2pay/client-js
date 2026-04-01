@@ -1,7 +1,7 @@
 import { isly } from "isly"
 
 // SsoProviderType
-export type Type = typeof Type.values[number]
+export type Type = (typeof Type.values)[number]
 
 export namespace Type {
 	export const values = ["GOOGLE"] as const

@@ -57,7 +57,10 @@ export class Client {
 	rolesets = ClientRolesets.create(this.connection)
 	apiKeys = ClientApiKeys.create(this.connection)
 
-	constructor(private connection: Connection, private $authenticate?: Authenticate) {
+	constructor(
+		private connection: Connection,
+		private $authenticate?: Authenticate
+	) {
 		connection.unauthorized = async () => (await this.$authenticate?.(this)) ?? false
 	}
 	static create(url: string, token?: string | Authenticate) {

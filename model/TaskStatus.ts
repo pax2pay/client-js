@@ -1,4 +1,4 @@
-export type TaskStatus = typeof TaskStatus.values[number]
+export type TaskStatus = (typeof TaskStatus.values)[number]
 
 export namespace TaskStatus {
 	export const values = [

@@ -1,7 +1,7 @@
 import { isly } from "isly"
 import { OrganisationStatusV2 } from "./OrganisationStatusV2"
 
-export type OrganisationStatus = typeof OrganisationStatus.values[number]
+export type OrganisationStatus = (typeof OrganisationStatus.values)[number]
 
 export namespace OrganisationStatus {
 	export const values = ["ACTIVE", "INACTIVE", "DELETED"] as const

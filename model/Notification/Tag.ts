@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type Tag = typeof Tag.values[number]
+export type Tag = (typeof Tag.values)[number]
 
 export namespace Tag {
 	export const values = [] as const

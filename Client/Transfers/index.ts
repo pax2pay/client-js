@@ -58,12 +58,13 @@ export class Transfers extends List<model.TransferResponseV2> {
 		)
 	}
 	async donloadReceipt(transferId: string, providerCode?: ProviderCode) {
-		if (providerCode)
+		if (providerCode) {
 			return await this.connection.get<model.DownloadableResponse>(
 				`v2/${this.folder}/${providerCode}/${transferId}/download`
 			)
-		else
+		} else {
 			return await this.connection.get<model.DownloadableResponse>(`v2/${this.folder}/${transferId}/download`)
+		}
 	}
 	async getFxQuote(request: model.FxQuoteRequest) {
 		return await this.connection.post<model.FxQuoteResponse>(`v2/${this.folder}/fx/quote`, request)

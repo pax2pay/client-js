@@ -26,8 +26,9 @@ describe("pax2pay.transfers.list", () => {
 		assert(Array.isArray(transfers))
 
 		expect(transfers).toHaveLength(20)
-		for (const transfer of transfers)
+		for (const transfer of transfers) {
 			expect(transfer).toMatchObject(expected)
+		}
 
 		const transfers100 = await client?.transfers.list(1, 100)
 
@@ -36,7 +37,8 @@ describe("pax2pay.transfers.list", () => {
 		assert(Array.isArray(transfers100))
 
 		expect(transfers100).toHaveLength(100)
-		for (const transfer of transfers100)
+		for (const transfer of transfers100) {
 			expect(transfer).toMatchObject(expected)
+		}
 	})
 })

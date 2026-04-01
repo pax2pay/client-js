@@ -55,11 +55,14 @@ describe("pax2pay.cards.list", () => {
 		}
 
 		const list = await client?.cards.list()
-		if (Array.isArray(list))
-			for (const card of list)
+		if (Array.isArray(list)) {
+			for (const card of list) {
 				expect(card).toMatchObject(expected)
+			}
+		}
 		//if list only returns one card.
-		else
+		else {
 			expect(list).toMatchObject(expected)
+		}
 	})
 })

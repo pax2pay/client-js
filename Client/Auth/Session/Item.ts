@@ -9,10 +9,11 @@ export class Item<K extends string, V> {
 		return this.fromString(this.storage.getItem(this.key) ?? undefined)
 	}
 	set(value: V | undefined): V | undefined {
-		if (value != undefined && value != null)
+		if (value != undefined && value != null) {
 			this.storage.setItem(this.key, this.toString(value))
-		else
+		} else {
 			this.storage.removeItem(this.key)
+		}
 		return value
 	}
 

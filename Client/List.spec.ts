@@ -12,12 +12,14 @@ for (let i = 1; i <= 100; i++) {
 }
 
 async function getFunction(page: number, size: number, sort?: string) {
-	if (sort == "fail")
+	if (sort == "fail") {
 		return { code: 400, errors: [{ message: "requested failure" }] } as model.ErrorResponse
+	}
 
 	const result = { list: testList.slice(page * size, page * size + size), totalCount: testList.length }
-	if (sort == "desc")
+	if (sort == "desc") {
 		result.list = result.list.sort((a, b) => b - a)
+	}
 	return result
 }
 

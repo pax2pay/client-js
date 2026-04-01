@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type ConfirmationOfPayeeResponseStatus = typeof ConfirmationOfPayeeResponseStatus.values[number]
+export type ConfirmationOfPayeeResponseStatus = (typeof ConfirmationOfPayeeResponseStatus.values)[number]
 
 export namespace ConfirmationOfPayeeResponseStatus {
 	export const values = ["confirmed", "close match", "no match", "not supported", "blocked"] as const

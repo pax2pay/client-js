@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type ReportSubscriptionFrequencyType = typeof ReportSubscriptionFrequencyType.values[number]
+export type ReportSubscriptionFrequencyType = (typeof ReportSubscriptionFrequencyType.values)[number]
 
 export namespace ReportSubscriptionFrequencyType {
 	export const values = ["DAILY", "WEEKLY", "MONTHLY"] as const

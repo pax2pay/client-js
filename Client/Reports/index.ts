@@ -52,8 +52,9 @@ export class Reports {
 				size: pageSize,
 			}
 		)
-		if (!model.ErrorResponse.is(result) && "list" in result)
+		if (!model.ErrorResponse.is(result) && "list" in result) {
 			result = result.list
+		}
 		return result
 	}
 	async getStatementSummaryReport(

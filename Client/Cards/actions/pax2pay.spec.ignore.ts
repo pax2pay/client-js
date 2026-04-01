@@ -17,8 +17,8 @@ describe("pax2pay.cards.actions pax2pay", () => {
 				password: process.env.password ?? "password",
 			})
 	)
-	for (const currency of ["GBP"])
-		for (const cardType of ["jittest"])
+	for (const currency of ["GBP"]) {
+		for (const cardType of ["jittest"]) {
 			it(`card ${currency} ${cardType}`, async () => {
 				const request = factory({
 					cardType: {
@@ -37,4 +37,6 @@ describe("pax2pay.cards.actions pax2pay", () => {
 
 				await actionTest(cardLegacy, client)
 			})
+		}
+	}
 })

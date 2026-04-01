@@ -15,8 +15,8 @@ describe("pax2pay.users.list", () => {
 	it("first page", async () => {
 		const users = await client?.users.list()
 		expect(Array.isArray(users)).toEqual(true)
-		if (Array.isArray(users))
-			for (const user of users)
+		if (Array.isArray(users)) {
+			for (const user of users) {
 				expect(user).toMatchObject({
 					"2fa": {
 						enabled: expect.any(Boolean),
@@ -31,11 +31,14 @@ describe("pax2pay.users.list", () => {
 						status: expect.stringMatching(/(ACTIVE)|(INACTIVE)/),
 					},
 				})
+			}
+		}
 	})
 	it.skip("username asc, email desc", async () => {
 		const users = await client?.users.list(0, 20, ["username", { property: "email", direction: "descending" }])
 		expect(Array.isArray(users)).toEqual(true)
-		if (Array.isArray(users))
+		if (Array.isArray(users)) {
 			expect(users).toHaveLength(20)
+		}
 	})
 })

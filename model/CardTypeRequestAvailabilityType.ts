@@ -1,6 +1,6 @@
 import { isly } from "isly"
 
-export type CardTypeRequestAvailabilityType = typeof CardTypeRequestAvailabilityType.values[number]
+export type CardTypeRequestAvailabilityType = (typeof CardTypeRequestAvailabilityType.values)[number]
 
 export namespace CardTypeRequestAvailabilityType {
 	export const values = ["organisation", "roleset", "category", "user"] as const

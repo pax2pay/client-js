@@ -60,9 +60,10 @@ export abstract class List<Response extends { [key: string]: any }> {
 	}
 
 	extractResponse<R = Response>(value: R[] | { list: R[]; totalCount: number } | model.ErrorResponse) {
-		if (!model.ErrorResponse.is(value) && "list" in value)
+		if (!model.ErrorResponse.is(value) && "list" in value) {
 			return value.list
-		else
+		} else {
 			return value
+		}
 	}
 }
