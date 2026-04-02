@@ -9,11 +9,9 @@ export interface CardStatement {
 	description: string
 	type: string
 	status?: string
-	balance: number
 	transactionBalance: number
 	billingBalance: number
 	fundsChanged?: number
-	currency?: isoly.Currency
 	transactionCurrency?: isoly.Currency
 	billingCurrency?: isoly.Currency
 	fxRate?: number
@@ -30,11 +28,9 @@ export namespace CardStatement {
 		description: isly.string(),
 		type: isly.string(),
 		status: isly.string().optional(),
-		balance: isly.number(),
 		transactionBalance: isly.number(),
 		billingBalance: isly.number(),
 		fundsChanged: isly.number().optional(),
-		currency: isly.fromIs("isoly.Currency", isoly.Currency.is).optional(),
 		transactionCurrency: isly.fromIs("isoly.Currency", isoly.Currency.is).optional(),
 		billingCurrency: isly.fromIs("isoly.Currency", isoly.Currency.is).optional(),
 		fxRate: isly.number().optional(),
