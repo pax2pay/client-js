@@ -34,7 +34,7 @@ export abstract class List<Response extends { [key: string]: any }> {
 				return new Paginated([], previous.totalCount, previous.page, previous.size, true)
 			}
 
-			page = previous.nextPage()
+			page = chosenPage ?? previous.nextPage()
 			size = chosenSize ?? previous.size
 		} else {
 			page = page ?? 0
