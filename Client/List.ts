@@ -26,37 +26,37 @@ export abstract class List<Response extends { [key: string]: any }> {
 		chosenSort?: string
 	) {
 		const sort = chosenSort
-		let page = chosenPage
-		let size = chosenSize
-		let result
+		let page: number
+		let size: number
+
 		if (previous) {
 			if (previous.hasNextPage() == false) {
 				return new Paginated([], previous.totalCount, previous.page, previous.size, true)
 			}
-
-			page = previous.nextPage()
+			page = chosenPage ?? previous.nextPage()
 			size = chosenSize ?? previous.size
 		} else {
-			page = page ?? 0
+			page = chosenPage ?? 0
 			size = chosenSize ?? this.DEFAULT_PAGE_SIZE
 		}
 
 		const response = await callback(page, size, sort, request)
-		if (model.ErrorResponse.is(response)) {
-			result = response
-		} else {
-			let totalCount = -1
-			let list: R[]
-			if (!Array.isArray(response)) {
-				list = response.list
-				totalCount = response.totalCount
-			} else {
-				list = response
-			}
 
-			result = new Paginated(list, totalCount, page, size, list.length < size)
+		if (model.ErrorResponse.is(response)) {
+			return response
 		}
-		return result
+
+		let totalCount = -1
+		let list: R[]
+
+		if (!Array.isArray(response)) {
+			list = response.list
+			totalCount = response.totalCount
+		} else {
+			list = response
+		}
+
+		return new Paginated(list, totalCount, page, size, list.length < size)
 	}
 
 	extractResponse<R = Response>(value: R[] | { list: R[]; totalCount: number } | model.ErrorResponse) {

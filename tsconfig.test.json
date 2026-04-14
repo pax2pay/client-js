@@ -15,6 +15,7 @@
 		"outDir": "dist",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
+		"strictPropertyInitialization": false,
 		"paths": { 
 			"*": ["types/*"] 
 		}
