@@ -42,7 +42,7 @@ export class Connection {
 		const body = this.prepareBody(request)
 
 		try {
-			const response = await fetch(url, { method, headers, body })
+			const response = await fetch(url, { method, headers, body, credentials: 'include' })
 
 			// Handle Side Effects (Cookies/2FA)
 			this.handleSessionSideEffects(response)
