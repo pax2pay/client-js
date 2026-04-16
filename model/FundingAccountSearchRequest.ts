@@ -11,7 +11,7 @@ export interface FundingAccountSearchRequest {
 	providerCodes?: ProviderCode[]
 	currency?: string
 	balance?: number
-	accountState?: AccountState
+	accountState?: AccountState[]
 	providerAccountId?: string
 	realm?: OrganisationRealm
 	overrideCategoryAccess?: boolean
