@@ -76,7 +76,7 @@ export class Accounts extends List<model.AccountResponse> {
 		)
 	}
 	async searchFundingAccountV2Full(request: model.FundingAccountSearchRequest, size = 500, sort = "friendlyName") {
-		return await this.connection.post<model.FundingAccountResponseV2Full[]>(
+		const response = await this.connection.post<{ list: model.FundingAccountResponseV2Full[]; totalCount: number }>(
 			`v2/${this.folder}/info/searches`,
 			request,
 			{
@@ -84,12 +84,18 @@ export class Accounts extends List<model.AccountResponse> {
 				sort: sort,
 			}
 		)
+		return this.extractResponse(response)
 	}
 	async searchFundingAccountV2Basic(request: model.FundingAccountSearchRequest, size = 500, sort = "friendlyName") {
-		return await this.connection.post<model.FundingAccountResponseV2Full[]>(`v2/${this.folder}/searches`, request, {
-			size: size,
-			sort: sort,
-		})
+		const response = await this.connection.post<{ list: model.FundingAccountResponseV2Basic[]; totalCount: number }>(
+			`v2/${this.folder}/searches`,
+			request,
+			{
+				size: size,
+				sort: sort,
+			}
+		)
+		return this.extractResponse(response)
 	}
 	async getFundingAccounts(
 		searchRequest: model.FundingAccountSearchRequest
