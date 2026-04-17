@@ -75,6 +75,28 @@ export class Accounts extends List<model.AccountResponse> {
 			`v2/${this.folder}/${providerCode}/${providerAccountId}/info`
 		)
 	}
+	async searchFundingAccountV2Full(request: model.FundingAccountSearchRequest, size = 500, sort = "friendlyName") {
+		const response = await this.connection.post<{ list: model.FundingAccountResponseV2Full[]; totalCount: number }>(
+			`v2/${this.folder}/info/searches`,
+			request,
+			{
+				size: size,
+				sort: sort,
+			}
+		)
+		return this.extractResponse(response)
+	}
+	async searchFundingAccountV2Basic(request: model.FundingAccountSearchRequest, size = 500, sort = "friendlyName") {
+		const response = await this.connection.post<{ list: model.FundingAccountResponseV2Basic[]; totalCount: number }>(
+			`v2/${this.folder}/searches`,
+			request,
+			{
+				size: size,
+				sort: sort,
+			}
+		)
+		return this.extractResponse(response)
+	}
 	async getFundingAccounts(
 		searchRequest: model.FundingAccountSearchRequest
 	): Promise<model.ErrorResponse | model.AccountResponse[]> {
