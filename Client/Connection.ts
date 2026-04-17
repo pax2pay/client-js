@@ -107,11 +107,6 @@ export class Connection {
 			headers["x-assume"] = this.assumedOrg
 		}
 
-		const cookie = window.localStorage.getItem("cookie")
-		if (cookie) {
-			headers["x-otp-cookie"] = cookie
-		}
-
 		const publicKey = Session.publicKey.get()
 		if (publicKey) {
 			headers["cde-public-key"] = publicKey
@@ -121,11 +116,6 @@ export class Connection {
 	}
 
 	private handleSessionSideEffects(response: Response): void {
-		const otpCookie = response.headers.get("x-otp-cookie")
-		if (otpCookie) {
-			window.localStorage.setItem("cookie", otpCookie)
-		}
-
 		const isLoginPath = response.url.includes("login") || response.url.includes("sso/google")
 		if (response.status === 403 && isLoginPath && response.headers.has("X-Auth-Token")) {
 			Session.authentication.set({ token: response.headers.get("X-Auth-Token") ?? undefined })
