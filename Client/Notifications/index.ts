@@ -14,6 +14,12 @@ export class Notifications extends List<model.Notification.Response> {
 	async save(request: model.Notification.InsertRequest): Promise<model.Notification.Response | model.ErrorResponse> {
 		return await this.connection.post<model.Notification.Response>(`${this.folder}`, request)
 	}
+	async update(
+		request: model.Notification.UpdateRequest,
+		id: string
+	): Promise<model.Notification.Response | model.ErrorResponse> {
+		return await this.connection.put<model.Notification.Response>(`${this.folder}/${id}`, request)
+	}
 	async markAsRead(id: string): Promise<model.Notification.Response | model.ErrorResponse> {
 		return await this.connection.put<model.Notification.Response>(`${this.folder}/${id}/read`, undefined)
 	}
