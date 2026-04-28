@@ -15,8 +15,8 @@ export class Notifications extends List<model.Notification.Response> {
 		return await this.connection.post<model.Notification.Response>(`${this.folder}`, request)
 	}
 	async update(
-		request: model.Notification.UpdateRequest,
-		id: string
+		id: string,
+		request: model.Notification.UpdateRequest
 	): Promise<model.Notification.Response | model.ErrorResponse> {
 		return await this.connection.put<model.Notification.Response>(`${this.folder}/${id}`, request)
 	}
