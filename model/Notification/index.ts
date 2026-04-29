@@ -5,6 +5,7 @@ import { Response as NotificationResponse } from "./Response"
 import { Tag as NotificationTag } from "./Tag"
 import { TargetRequest as NotificationTargetRequest } from "./TargetRequest"
 import { Type as NotificationType } from "./Type"
+import { UpdateRequest as NotificationUpdateRequest } from "./UpdateRequest"
 
 export namespace Notification {
 	export import Format = NotificationFormat
@@ -14,4 +15,5 @@ export namespace Notification {
 	export import TargetRequest = NotificationTargetRequest
 	export import Type = NotificationType
 	export import CreatableType = NotificationCreatableType
+	export import UpdateRequest = NotificationUpdateRequest
 }
