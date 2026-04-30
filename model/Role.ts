@@ -24,6 +24,7 @@ export namespace Role {
 		"funding-account.create-new",
 		"card.create", // cards
 		"card.list",
+		"card.list.only-own",
 		"card.view",
 		"card.cancel",
 		"card.freeze-thaw",
