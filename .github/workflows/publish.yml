@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "release-*"
+
 jobs:
   publish:
     name: "Publish from master"
@@ -11,19 +12,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout source code"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v4"
+
       - name: "Setup Node"
-        uses: "actions/setup-node@v3"
+        uses: "actions/setup-node@v4"
         with:
           node-version: 20
+          # Setting the registry-url here tells the action to automatically 
+          # generate a correct .npmrc for you.
+          registry-url: 'https://registry.npmjs.org'
+          # Explicitly setting the scope ensures the token is mapped to @pax2pay
+          scope: '@pax2pay'
+
       - name: Install
         run: npm ci
+
       - name: Build
         run: npm run build
+
       - name: Publish
-        run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc  
-          npm publish --access public
-        shell: bash
+        # We use the built-in NODE_AUTH_TOKEN variable which setup-node 
+        # specifically looks for to authenticate the publish.
+        run: npm publish --access public
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
