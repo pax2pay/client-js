@@ -14,6 +14,7 @@ export namespace PaxpayFeature {
 		"INSIGHTS_ROOM_REBATE",
 		"DELIVERY_ATTACHMENT",
 		"REBATE_RECIPIENT",
+		"TRANSFER_PAYMENTS_MODULR",
 	] as const
 	export const type = isly.string(values)
 	export const is = type.is
