@@ -17,7 +17,7 @@ export class Batch extends List<model.Batch.Response> {
 		return await this.connection.get<model.Batch.Response>(`${this.folder}/${batchId}`)
 	}
 	async listByType(
-		type: model.Batch.Type,
+		type: model.Batch.Type[],
 		previous?: Paginated<model.Batch.Response>,
 		page?: number,
 		size?: number,
