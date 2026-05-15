@@ -77,6 +77,9 @@ export class Auth {
 		}
 		return result
 	}
+	async trust() {
+		return await this.connection.get<model.MPayProcessResponse, 400 | 403 | 404 | 500>(`auth/trust`)
+	}
 	async refresh(request?: model.RelogWithNewSessionDetailsRequest) {
 		let result
 		if (request) {
@@ -104,7 +107,6 @@ export class Auth {
 	async unassume(): Promise<model.LoginResponse | (model.ErrorResponse & { status?: number }) | undefined> {
 		return this.data.user?.organisation?.code ? await this.assume(this.data.user.organisation.code) : undefined
 	}
-
 	async logout() {
 		this.roles = undefined
 		this.features = undefined

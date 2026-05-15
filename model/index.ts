@@ -143,6 +143,7 @@ import { MerchantType } from "./MerchantType"
 import { MetadataFormat } from "./MetadataFormat"
 import { MetadataRequest } from "./MetadataRequest"
 import { MetadataResponse } from "./MetadataResponse"
+import { MPayProcessResponse } from "./MPayProcessResponse"
 import { Notification } from "./Notification"
 import { OmnisetupFlags } from "./OmnisetupFlags"
 import { OmnisetupProviderRequest } from "./OmnisetupProviderRequest"
@@ -410,6 +411,7 @@ export {
 	MetadataFormat,
 	MetadataRequest,
 	MetadataResponse,
+	MPayProcessResponse,
 	Notification,
 	OmnisetupFlags,
 	OmnisetupProviderRequest,
