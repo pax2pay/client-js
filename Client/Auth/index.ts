@@ -78,7 +78,7 @@ export class Auth {
 		return result
 	}
 	async trust() {
-		return await this.connection.get<model.MPayProcessResponse, 400 | 403 | 404 | 500>(`auth/trust`)
+		return await this.connection.post<model.MPayProcessResponse, 400 | 403 | 404 | 500>(`auth/trust`)
 	}
 	async refresh(request?: model.RelogWithNewSessionDetailsRequest) {
 		let result
