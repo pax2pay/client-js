@@ -86,6 +86,7 @@ import { DownloadableResponse } from "./DownloadableResponse"
 import { DownloadCardReportRequest } from "./DownloadCardReportRequest"
 import { DownloadFileFormat } from "./DownloadFileFormat"
 import { DownloadOrganisationSearchRequest } from "./DownloadOrganisationSearchRequest"
+import { DownloadPaymentReportRequest } from "./DownloadPaymentReportRequest"
 import { DownloadReconciliationReportRequest } from "./DownloadReconciliationReportRequest"
 import { DownloadStatementReportRequest } from "./DownloadStatementReportRequest"
 import { DownloadUserReportRequest } from "./DownloadUserReportRequest"
@@ -354,6 +355,7 @@ export {
 	DownloadCardReportRequest,
 	DownloadFileFormat,
 	DownloadOrganisationSearchRequest,
+	DownloadPaymentReportRequest,
 	DownloadReconciliationReportRequest,
 	DownloadStatementReportRequest,
 	DownloadUserReportRequest,
