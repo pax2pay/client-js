@@ -103,6 +103,7 @@ import { ErrorResponse } from "./ErrorResponse"
 import { ExistingBeneficiaryRequest } from "./ExistingBeneficiaryRequest"
 import { ExternalDestination } from "./ExternalDestination"
 import { ExternalSource } from "./ExternalSource"
+import { FileUploadedDownloadableResponse } from "./FileUploadedDownloadableResponse"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
 import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
@@ -372,6 +373,7 @@ export {
 	ExistingBeneficiaryRequest,
 	ExternalDestination,
 	ExternalSource,
+	FileUploadedDownloadableResponse,
 	FiveFieldsBookingInfoRequest,
 	FiveFieldsBookingInfoResponse,
 	FlightBookingInfoRequest,
