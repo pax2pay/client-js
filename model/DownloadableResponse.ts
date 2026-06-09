@@ -1,6 +1,5 @@
-import { FileUploadedDownloadableResponse } from "./FileUploadedDownloadableResponse"
-
-export interface DownloadableResponse extends FileUploadedDownloadableResponse {
+export interface DownloadableResponse {
+	url: string
 	fileSize: number
 	fileName: string
 }
