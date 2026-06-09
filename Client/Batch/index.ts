@@ -67,4 +67,7 @@ export class Batch extends List<model.Batch.Response> {
 			sort
 		)
 	}
+	async downloadBatchPaymentTemplate(): Promise<model.DownloadableResponse | model.ErrorResponse> {
+		return await this.connection.get<model.DownloadableResponse>(`${this.folder}/payment/template`)
+	}
 }
