@@ -30,7 +30,7 @@ export class Auth {
 		return Session.authentication.get() ?? {}
 	}
 	set data(value: Partial<model.LoginResponse> | undefined) {
-		Session.authentication.set(value) ?? {}
+		Session.authentication.set(value)
 	}
 	get token(): string | undefined {
 		return this.connection.token
