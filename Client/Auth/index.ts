@@ -78,9 +78,14 @@ export class Auth {
 		return result
 	}
 	async trust(turnstileToken: string) {
-		return await this.connection.post<model.MPayProcessResponse, 400 | 403 | 404 | 500>(`auth/trust`, undefined, undefined, {
-			"cf-turnstile-response": turnstileToken,
-		})
+		return await this.connection.post<model.MPayProcessResponse, 400 | 403 | 404 | 500>(
+			`auth/trust`,
+			undefined,
+			undefined,
+			{
+				"cf-turnstile-response": turnstileToken,
+			}
+		)
 	}
 	async refresh(request?: model.RelogWithNewSessionDetailsRequest) {
 		let result
