@@ -8,6 +8,8 @@ export interface StatementRowIds {
 	orderId?: string
 	providerTransferId?: string
 	merchantDetails?: MerchantDetails
+	providerTransactionId?: string
+	schemeTransactionReference?: string
 }
 
 export namespace StatementRowIds {
@@ -19,7 +21,9 @@ export namespace StatementRowIds {
 			(value.providerCardId == undefined || typeof value.providerCardId == "string") &&
 			(value.orderId == undefined || typeof value.orderId == "string") &&
 			(value.providerTransferId == undefined || typeof value.providerTransferId == "string") &&
-			(value.merchantDetails == undefined || MerchantDetails.is(value.merchantDetails))
+			(value.merchantDetails == undefined || MerchantDetails.is(value.merchantDetails)) &&
+			(value.providerTransactionId == undefined || typeof value.providerTransactionId == "string") &&
+			(value.schemeTransactionReference == undefined || typeof value.schemeTransactionReference == "string")
 		)
 	}
 }
