@@ -1,4 +1,3 @@
-import { default as fetch } from "isomorphic-fetch"
 import * as model from "../model"
 import { Session } from "./Auth/Session"
 

@@ -30,7 +30,7 @@ export class Auth {
 		return Session.authentication.get() ?? {}
 	}
 	set data(value: Partial<model.LoginResponse> | undefined) {
-		Session.authentication.set(value) ?? {}
+		Session.authentication.set(value)
 	}
 	get token(): string | undefined {
 		return this.connection.token
@@ -78,9 +78,14 @@ export class Auth {
 		return result
 	}
 	async trust(turnstileToken: string) {
-		return await this.connection.post<model.MPayProcessResponse, 400 | 403 | 404 | 500>(`auth/trust`, undefined, undefined, {
-			"cf-turnstile-response": turnstileToken,
-		})
+		return await this.connection.post<model.MPayProcessResponse, 400 | 403 | 404 | 500>(
+			`auth/trust`,
+			undefined,
+			undefined,
+			{
+				"cf-turnstile-response": turnstileToken,
+			}
+		)
 	}
 	async refresh(request?: model.RelogWithNewSessionDetailsRequest) {
 		let result
