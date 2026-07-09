@@ -36,15 +36,14 @@ export class Payments extends List<model.PaymentResponse> {
 		previous?: Paginated<model.SummaryPaymentResponse>,
 		page?: number,
 		size?: number,
-		sort = "createdOn,desc",
-		includeCount = true
+		sort = "createdOn,desc"
 	) {
 		return await this.getNextPaginated(
 			previous,
 			(page, size, sort, request) =>
 				this.connection.post<
 					{ list: model.SummaryPaymentResponse[]; totalCount: number } | model.SummaryPaymentResponse[]
-				>(`${this.folder}/searches`, request, { page, size, sort, includeCount }),
+				>(`${this.folder}/searches`, request, { page, size, sort }),
 			request,
 			page,
 			size,
