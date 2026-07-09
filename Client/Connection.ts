@@ -51,7 +51,7 @@ export class Connection {
 				return this.fetch<T, Codes>(path, method, request, parameters, overrides)
 			}
 
-			return await this.parseResponse(response)
+			return await this.parseResponse(response, parameters?.includeCount)
 		} catch (error: any) {
 			console.error("Fetch Error:", error)
 			return { code: 500, errors: [{ message: error.message || "Internal Server Error" }] }
@@ -128,7 +128,7 @@ export class Connection {
 			Session.authentication.set({ token: response.headers.get("X-Auth-Token") ?? undefined })
 		}
 	}
-	private async parseResponse(response: Response): Promise<any> {
+	private async parseResponse(response: Response, includeCount = false): Promise<any> {
 		if (!response || response.status === 503) {
 			return { code: 503, errors: [{ message: "Service unavailable" }] }
 		}
@@ -140,9 +140,11 @@ export class Connection {
 			if (!response.ok) {
 				return { status: response.status, ...json }
 			}
-
-			const totalCount = response.headers.get("x-total-count")
-			return totalCount ? { list: json, totalCount } : json
+			if (includeCount) {
+				const totalCount = response.headers.get("x-total-count")
+				return totalCount ? { list: json, totalCount } : json
+			}
+			return json
 		}
 		// Fallback
 		return { status: response.status, value: await response.text() }

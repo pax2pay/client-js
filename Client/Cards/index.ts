@@ -81,21 +81,17 @@ export class Cards extends List<model.CardResponseV2> {
 		page?: number,
 		size?: number,
 		sort = "account.id,desc",
-		includeCount = true
+		includeCount = false
 	): Promise<model.ErrorResponse | Paginated<model.CardResponseV2>> {
 		return await this.getNextPaginated<model.CardResponseV2>(
 			previous,
 			(page, size, sort, request) =>
-				this.connection.post<{ list: model.CardResponseV2[]; totalCount: number } | model.CardResponseV2[]>(
-					`v2/${this.folder}/searches`,
-					request,
-					{
-						page: page,
-						size: size,
-						sort: sort,
-						includeCount: includeCount,
-					}
-				),
+				this.connection.post<model.CardResponseV2[]>(`v2/${this.folder}/searches`, request, {
+					page: page,
+					size: size,
+					sort: sort,
+					includeCount: includeCount,
+				}),
 			request,
 			page,
 			size,
