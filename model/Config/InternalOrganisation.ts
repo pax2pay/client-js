@@ -3,6 +3,7 @@ import { OrganisationFlag } from "../OrganisationFlag"
 import { PaxpayFeature } from "../PaxpayFeature"
 import { TierID } from "../TierID"
 import { FundingLimit } from "./FundingLimit"
+import { RebateRecipientConfiguration } from "../RebateRecipientConfiguration"
 
 // InternalOrganisationConfig
 export interface InternalOrganisation {
@@ -10,6 +11,7 @@ export interface InternalOrganisation {
 	features?: PaxpayFeature[]
 	fundingLimitConfig?: FundingLimit
 	tier?: TierID
+	rebateRecipientConfiguration?: RebateRecipientConfiguration
 }
 
 export namespace InternalOrganisation {
@@ -18,6 +20,7 @@ export namespace InternalOrganisation {
 		features: PaxpayFeature.type.array().optional(),
 		fundingLimitConfig: FundingLimit.type.optional(),
 		tier: TierID.type.optional(),
+		rebateRecipientConfiguration: RebateRecipientConfiguration.type.optional(),
 	})
 	export const is = type.is
 }

@@ -16,6 +16,7 @@ import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AmendCardRequest } from "./AmendCardRequest"
 import { AmountPair } from "./AmountPair"
 import { ApiKeyCreateRequest } from "./ApiKeyCreateRequest"
+import { Address} from "./Address"
 import { ApiKeyCreateResponse } from "./ApiKeyCreateResponse"
 import { ApiKeyResponse } from "./ApiKeyResponse"
 import { AvailableCardTypesHasResponse } from "./AvailableCardTypesHasResponse"
@@ -193,6 +194,7 @@ import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
 import { ReportFileDestination } from "./Report/ReportFileDestination"
+import { RebateRecipientConfiguration } from "./RebateRecipientConfiguration"
 import { ReportSubscriptionFrequencyRequest } from "./Report/ReportSubscriptionFrequencyRequest"
 import { ReportSubscriptionFrequencyType } from "./Report/ReportSubscriptionFrequencyType"
 import { ReportSubscriptionInvocationOutcome } from "./Report/ReportSubscriptionInvocationOutcome"
@@ -281,6 +283,7 @@ export {
 	AccountState,
 	AccountSummary,
 	AccountType,
+	Address,
 	AddressInfo,
 	AgentBookingInfo,
 	AmendCardRequest,
@@ -463,7 +466,8 @@ export {
 	Role,
 	Report,
 	ReportFileDestination,
-	ReportSubscriptionFrequencyRequest,
+  RebateRecipientConfiguration,
+  ReportSubscriptionFrequencyRequest,
 	ReportSubscriptionFrequencyType,
 	ReportSubscriptionInvocationOutcome,
 	ReportSubscriptionInvocationResponse,
