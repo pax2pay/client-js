@@ -11,12 +11,12 @@ import { AccountSearchRequest } from "./AccountSearchRequest"
 import { AccountState } from "./AccountState"
 import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
+import { Address } from "./Address"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AmendCardRequest } from "./AmendCardRequest"
 import { AmountPair } from "./AmountPair"
 import { ApiKeyCreateRequest } from "./ApiKeyCreateRequest"
-import { Address} from "./Address"
 import { ApiKeyCreateResponse } from "./ApiKeyCreateResponse"
 import { ApiKeyResponse } from "./ApiKeyResponse"
 import { AvailableCardTypesHasResponse } from "./AvailableCardTypesHasResponse"
@@ -190,11 +190,11 @@ import { ProviderResponse } from "./ProviderResponse"
 import { ProviderTransferTransactionOperation } from "./ProviderTransferTransactionOperation"
 import { QualifiedAddress } from "./QualifiedAddress"
 import { Range } from "./Range"
+import { RebateRecipientConfiguration } from "./RebateRecipientConfiguration"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
 import { ReportFileDestination } from "./Report/ReportFileDestination"
-import { RebateRecipientConfiguration } from "./RebateRecipientConfiguration"
 import { ReportSubscriptionFrequencyRequest } from "./Report/ReportSubscriptionFrequencyRequest"
 import { ReportSubscriptionFrequencyType } from "./Report/ReportSubscriptionFrequencyType"
 import { ReportSubscriptionInvocationOutcome } from "./Report/ReportSubscriptionInvocationOutcome"
@@ -466,8 +466,8 @@ export {
 	Role,
 	Report,
 	ReportFileDestination,
-  RebateRecipientConfiguration,
-  ReportSubscriptionFrequencyRequest,
+	RebateRecipientConfiguration,
+	ReportSubscriptionFrequencyRequest,
 	ReportSubscriptionFrequencyType,
 	ReportSubscriptionInvocationOutcome,
 	ReportSubscriptionInvocationResponse,

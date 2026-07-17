@@ -1,9 +1,9 @@
 import { isly } from "isly"
 import { OrganisationFlag } from "../OrganisationFlag"
 import { PaxpayFeature } from "../PaxpayFeature"
+import { RebateRecipientConfiguration } from "../RebateRecipientConfiguration"
 import { TierID } from "../TierID"
 import { FundingLimit } from "./FundingLimit"
-import { RebateRecipientConfiguration } from "../RebateRecipientConfiguration"
 
 // InternalOrganisationConfig
 export interface InternalOrganisation {

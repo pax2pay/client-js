@@ -1,11 +1,11 @@
 import { isly } from "isly"
-import {Address} from "./Address"
+import { Address } from "./Address"
 
 export interface RebateRecipientConfiguration {
-	enabled:boolean
+	enabled: boolean
 	address: Address
-	qualifiedAddresses:Record<string, Address>
-	qualifiers:string[]
+	qualifiedAddresses: Record<string, Address>
+	qualifiers: string[]
 }
 
 export namespace RebateRecipientConfiguration {
