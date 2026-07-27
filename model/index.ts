@@ -189,6 +189,7 @@ import { ProviderResponse } from "./ProviderResponse"
 import { ProviderTransferTransactionOperation } from "./ProviderTransferTransactionOperation"
 import { QualifiedAddress } from "./QualifiedAddress"
 import { Range } from "./Range"
+import { RebateRecipientConfiguration } from "./RebateRecipientConfiguration"
 import { References } from "./References"
 import { RelogWithNewSessionDetailsRequest } from "./RelogWithNewSessionDetailsRequest"
 import { Report } from "./Report"
@@ -463,6 +464,7 @@ export {
 	Role,
 	Report,
 	ReportFileDestination,
+	RebateRecipientConfiguration,
 	ReportSubscriptionFrequencyRequest,
 	ReportSubscriptionFrequencyType,
 	ReportSubscriptionInvocationOutcome,
