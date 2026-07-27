@@ -11,7 +11,6 @@ import { AccountSearchRequest } from "./AccountSearchRequest"
 import { AccountState } from "./AccountState"
 import { AccountSummary } from "./AccountSummary"
 import { AccountType } from "./AccountType"
-import { Address } from "./Address"
 import { AddressInfo } from "./AddressInfo"
 import { AgentBookingInfo } from "./AgentBookingInfo"
 import { AmendCardRequest } from "./AmendCardRequest"
@@ -283,7 +282,6 @@ export {
 	AccountState,
 	AccountSummary,
 	AccountType,
-	Address,
 	AddressInfo,
 	AgentBookingInfo,
 	AmendCardRequest,
