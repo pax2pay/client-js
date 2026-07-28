@@ -186,6 +186,7 @@ import { ProductType } from "./ProductType"
 import { ProviderCardTransactionOperation } from "./ProviderCardTransactionOperation"
 import { ProviderCode } from "./ProviderCode"
 import { ProviderResponse } from "./ProviderResponse"
+import { ProviderTransactionSubType } from "./ProviderTransactionSubType"
 import { ProviderTransferTransactionOperation } from "./ProviderTransferTransactionOperation"
 import { QualifiedAddress } from "./QualifiedAddress"
 import { Range } from "./Range"
@@ -456,6 +457,7 @@ export {
 	ProviderCardTransactionOperation,
 	ProviderCode,
 	ProviderResponse,
+	ProviderTransactionSubType,
 	ProviderTransferTransactionOperation,
 	QualifiedAddress,
 	Range,
