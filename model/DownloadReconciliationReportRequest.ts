@@ -1,7 +1,10 @@
 import * as isoly from "isoly"
 import { isly } from "isly"
 import { DownloadFileFormat } from "./DownloadFileFormat"
+import { Inclusion } from "./Inclusion"
 import { ProviderCode } from "./ProviderCode"
+import { ProviderTransactionSubType } from "./ProviderTransactionSubType"
+import { TransferDirection } from "./TransferDirection"
 export interface DownloadReconciliationReportRequest {
 	fileFormat: DownloadFileFormat
 	locale?: string
@@ -9,6 +12,9 @@ export interface DownloadReconciliationReportRequest {
 	providerAccountId?: string
 	version?: "LEGACY" | "V2"
 	dateRange?: isoly.DateRange
+	providerTransactionTypes?: ProviderTransactionSubType[]
+	transferDirection?: TransferDirection
+	rebateTransfers?: Inclusion
 }
 
 export namespace DownloadReconciliationReportRequest {
@@ -19,6 +25,9 @@ export namespace DownloadReconciliationReportRequest {
 		providerAccountId: isly.string().optional(),
 		version: isly.string(["LEGACY", "V2"]).optional(),
 		dateRange: isly.fromIs("DateRange", isoly.DateRange.is).optional(),
+		providerTransactionTypes: ProviderTransactionSubType.type.array().optional(),
+		transferDirection: isly.fromIs("TransferDirection", TransferDirection.is).optional(),
+		rebateTransfers: Inclusion.type.optional(),
 	})
 	export const is = type.is
 }
