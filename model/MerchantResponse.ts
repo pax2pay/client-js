@@ -13,6 +13,7 @@ export interface MerchantResponse {
 	beneficiaries?: Partial<Record<Currency, BeneficiaryResponse>>
 	status: MerchantResponseStatus
 	organisations?: string[]
+	isDefault?: boolean
 }
 
 export namespace MerchantResponse {
@@ -27,6 +28,7 @@ export namespace MerchantResponse {
 			.record(isly.fromIs("Currency", Currency.is), isly.fromIs("BeneficiaryResponse", BeneficiaryResponse.is))
 			.optional(),
 		organisations: isly.string().array().optional(),
+		isDefault: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
