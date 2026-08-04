@@ -3,4 +3,7 @@ export interface MerchantSearchRequest {
 	name?: string
 	isSuitableForCardMerchantRestriction?: boolean
 	status?: ("ACTIVE" | "DELETED")[]
+	isDefault?: boolean
+	lockable?: boolean
+	used?: boolean
 }
