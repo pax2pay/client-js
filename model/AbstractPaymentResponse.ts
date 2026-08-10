@@ -8,6 +8,7 @@ import { SummaryMerchantResponse } from "./SummaryMerchantResponse"
 
 export interface AbstractPaymentResponse {
 	id: string
+	batchId?: string
 	account: string
 	amount: number
 	remaining: number
@@ -24,6 +25,7 @@ export interface AbstractPaymentResponse {
 export namespace AbstractPaymentResponse {
 	export const type = isly.object<AbstractPaymentResponse>({
 		id: isly.string(),
+		batchId: isly.string().optional(),
 		account: isly.string(),
 		amount: isly.number(),
 		remaining: isly.number(),
