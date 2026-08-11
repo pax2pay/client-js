@@ -1,10 +1,12 @@
 import * as isoly from "isoly"
+import { isly } from "isly"
 import { BillingTransactionAmountPair } from "./BillingTransactionAmountPair"
 import { CardResponseV2 } from "./CardResponseV2"
 import { CardResponseV2Summary } from "./CardResponseV2Summary"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognosisAmountPair"
 import { MetadataResponse } from "./MetadataResponse"
+import { PaymentResponse } from "./PaymentResponse"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementRowIds } from "./StatementRowIds"
@@ -27,27 +29,31 @@ export interface StatementReportResponseRow {
 	card?: CardResponseV2 | CardResponseV2Summary
 	scheduledTask?: CardScheduleResponseItem
 	transfer?: TransferResponseV2 | TransferResponseV2Summary
+	payment?: PaymentResponse
 }
 
 export namespace StatementReportResponseRow {
-	export function is(value: StatementReportResponseRow | any): value is StatementReportResponseRow {
-		return (
-			typeof value == "object" &&
-			StatementReportRowActionType.is(value.actionType) &&
-			BillingTransactionAmountPair.is(value.amount) &&
-			(value.bookingInfo == undefined || MetadataResponse.is(value.bookingInfo)) &&
-			(value.postedDate == undefined || isoly.DateTime.is(value.postedDate)) &&
-			(value.transactionDate == undefined || isoly.DateTime.is(value.transactionDate)) &&
-			(typeof value.balance == "number" || value.balance == undefined) &&
-			(typeof value.actualBalance == "number" || value.actualBalance == undefined) &&
-			(typeof value.availableBalance == "number" || value.availableBalance == undefined) &&
-			StatementReportRowType.is(value.rowType) &&
-			(value.transferType == undefined || StatementTransferSpecificType.is(value.transferType)) &&
-			StatementRowIds.is(value.ids) &&
-			(value.card == undefined || CardResponseV2.is(value.card) || CardResponseV2Summary.is(value.card)) &&
-			(value.transfer == undefined ||
-				TransferResponseV2.is(value.transfer) ||
-				TransferResponseV2Summary.is(value.transfer))
-		)
-	}
+	export const type = isly.object<StatementReportResponseRow>({
+		actionType: isly.fromIs("StatementReportRowActionType", StatementReportRowActionType.is),
+		amount: isly.union(
+			BillingTransactionAmountPair.type,
+			isly.fromIs("FutureTransactionPrognosisAmountPair", FutureTransactionPrognosisAmountPair.is)
+		),
+		bookingInfo: MetadataResponse.type.optional(),
+		postedDate: isly.fromIs("DateTime", isoly.DateTime.is).optional(),
+		transactionDate: isly.fromIs("DateTime", isoly.DateTime.is).optional(),
+		balance: isly.number().optional(),
+		actualBalance: isly.number().optional(),
+		availableBalance: isly.number().optional(),
+		rowType: isly.fromIs("StatementReportRowType", StatementReportRowType.is),
+		transferType: isly.fromIs("StatementTransferSpecificType", StatementTransferSpecificType.is).optional(),
+		ids: isly.fromIs("StatementRowIds", StatementRowIds.is),
+		card: isly.union(CardResponseV2.type, isly.fromIs("CardResponseV2Summary", CardResponseV2Summary.is)).optional(),
+		scheduledTask: isly.fromIs("CardScheduleResponseItem", CardScheduleResponseItem.is).optional(),
+		transfer: isly
+			.union(TransferResponseV2.type, isly.fromIs("TransferResponseV2Summary", TransferResponseV2Summary.is))
+			.optional(),
+		payment: PaymentResponse.type.optional(),
+	})
+	export const is = type.is
 }
