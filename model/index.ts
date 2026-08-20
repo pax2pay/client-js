@@ -178,6 +178,7 @@ import { PaymentOperation } from "./PaymentOperation"
 import { PaymentOperationType } from "./PaymentOperationType"
 import { PaymentRequest } from "./PaymentRequest"
 import { PaymentResponse } from "./PaymentResponse"
+import { PaymentScheduleResponseStatus } from "./PaymentScheduleResponseStatus"
 import { PaymentSearch } from "./PaymentSearch"
 import { PaymentStatus } from "./PaymentStatus"
 import { PaymentTransferCreateRequest } from "./PaymentTransferCreateRequest"
@@ -449,6 +450,7 @@ export {
 	PaymentOperationType,
 	PaymentRequest,
 	PaymentResponse,
+	PaymentScheduleResponseStatus,
 	PaymentSearch,
 	PaymentStatus,
 	PaymentTransferCreateRequest,
