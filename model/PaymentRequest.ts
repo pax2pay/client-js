@@ -2,7 +2,6 @@ import { Currency } from "isoly"
 import { isly } from "isly"
 import { MetadataRequest } from "./MetadataRequest"
 import { PaymentAmountScheduleRequest } from "./PaymentAmountScheduleRequest"
-import { PaymentAmountScheduleResponse } from "./PaymentAmountScheduleResponse"
 import { PaymentCardCreateRequest } from "./PaymentCardCreateRequest"
 import { PaymentDeliveryRequest } from "./PaymentDeliveryRequest"
 import { PaymentMerchantRequest } from "./PaymentMerchantRequest"
@@ -19,7 +18,7 @@ export interface PaymentRequest {
 	card?: PaymentCardCreateRequest
 	transfer?: PaymentTransferCreateRequest
 	delivery?: PaymentDeliveryRequest
-	schedule?: PaymentAmountScheduleResponse[]
+	schedule?: PaymentAmountScheduleRequest[]
 }
 export namespace PaymentRequest {
 	export const type = isly.object<PaymentRequest>({

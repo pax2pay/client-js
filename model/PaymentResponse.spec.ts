@@ -15,10 +15,12 @@ describe("PaymentResponse", () => {
 				{
 					amount: 200,
 					date: "2024-12-10",
+					state: "executed",
 				},
 				{
 					amount: 100,
 					date: "2024-12-16",
+					state: "upcoming",
 				},
 			],
 			currency: "GBP",
@@ -76,6 +78,7 @@ describe("PaymentResponse", () => {
 				{
 					amount: 100,
 					date: "2025-04-11",
+					state: "upcoming",
 				},
 			],
 			currency: "EUR",
