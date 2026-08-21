@@ -165,6 +165,13 @@ describe("StatementReportResponseRow is", () => {
 				currency: "GBP",
 				state: "active",
 				method: "card",
+				card: {
+					id: "C0000001",
+					providerCode: "modulr",
+					providerCardId: "V21001M33H",
+					cardType: "virtual",
+					pan: "1234",
+				},
 				createdBy: "lucym",
 				createdOn: "2022-10-11T10:29:15.398511",
 			},
