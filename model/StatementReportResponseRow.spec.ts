@@ -91,6 +91,87 @@ describe("StatementReportResponseRow is", () => {
 		expect(StatementReportResponseRow.is(json)).toBeTruthy()
 	})
 
+	it("card row full with payment", async () => {
+		const json = {
+			actionType: "AUTHORISATION",
+			amount: {
+				billing: {
+					amount: -1,
+					currency: "GBP",
+				},
+				transaction: {
+					amount: -1,
+					currency: "GBP",
+				},
+				fxRate: 1,
+			},
+			postedDate: "2022-10-11T10:29:15.398511",
+			transactionDate: "2022-10-11T10:29:15.398511",
+			actualBalance: -1,
+			availableBalance: -1,
+			rowType: "full",
+			ids: {
+				rowId: "R000000000000424",
+				providerCode: "modulr",
+				providerCardId: "V21001M33H",
+			},
+			payment: {
+				id: "Y0000036I",
+				batchId: "BAT0000001",
+				account: "A0000SJ",
+				amount: 1,
+				remaining: 1,
+				total: 1,
+				currency: "GBP",
+				state: "active",
+				method: "card",
+				createdBy: "lucym",
+				createdOn: "2022-10-11T10:29:15.398511",
+			},
+		}
+		expect(StatementReportResponseRow.is(json)).toBeTruthy()
+	})
+
+	it("card row summary with payment", async () => {
+		const json = {
+			actionType: "AUTHORISATION",
+			amount: {
+				billing: {
+					amount: -1,
+					currency: "GBP",
+				},
+				transaction: {
+					amount: -1,
+					currency: "GBP",
+				},
+				fxRate: 1,
+			},
+			postedDate: "2022-10-11T10:29:15.398511",
+			actualBalance: -1,
+			availableBalance: -1,
+			rowType: "summary",
+			ids: {
+				rowId: "R000000000000424",
+				providerCode: "modulr",
+				providerCardId: "V21001M33H",
+			},
+			payment: {
+				id: "Y0000036I",
+				batchId: "BAT0000001",
+				account: "A0000SJ",
+				amount: 1,
+				remaining: 1,
+				total: 1,
+				currency: "GBP",
+				state: "active",
+				method: "card",
+				createdBy: "lucym",
+				createdOn: "2022-10-11T10:29:15.398511",
+			},
+		}
+		expect(StatementReportResponseRow.is(json)).toBeTruthy()
+	})
+
 	it("should be false", async () => {
 		expect(StatementReportResponseRow.is(noAmount)).toBeFalsy()
 

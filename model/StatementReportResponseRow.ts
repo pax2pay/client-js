@@ -5,10 +5,12 @@ import { CardResponseV2Summary } from "./CardResponseV2Summary"
 import { CardScheduleResponseItem } from "./CardScheduleResponseItem"
 import { FutureTransactionPrognosisAmountPair } from "./FutureTransactionPrognosisAmountPair"
 import { MetadataResponse } from "./MetadataResponse"
+import { PaymentResponse } from "./PaymentResponse"
 import { StatementReportRowActionType } from "./StatementReportRowActionType"
 import { StatementReportRowType } from "./StatementReportRowType"
 import { StatementRowIds } from "./StatementRowIds"
 import { StatementTransferSpecificType } from "./StatementTransferSpecificType"
+import { SummaryPaymentResponse } from "./SummaryPaymentResponse"
 import { TransferResponseV2 } from "./TransferResponseV2"
 import { TransferResponseV2Summary } from "./TransferResponseV2Summary"
 
@@ -24,9 +26,11 @@ export interface StatementReportResponseRow {
 	rowType: StatementReportRowType
 	transferType?: StatementTransferSpecificType
 	ids: StatementRowIds
+	/** @deprecated Use payment.card instead. Will be removed in a future release. */
 	card?: CardResponseV2 | CardResponseV2Summary
 	scheduledTask?: CardScheduleResponseItem
 	transfer?: TransferResponseV2 | TransferResponseV2Summary
+	payment?: PaymentResponse | SummaryPaymentResponse
 }
 
 export namespace StatementReportResponseRow {
@@ -47,7 +51,8 @@ export namespace StatementReportResponseRow {
 			(value.card == undefined || CardResponseV2.is(value.card) || CardResponseV2Summary.is(value.card)) &&
 			(value.transfer == undefined ||
 				TransferResponseV2.is(value.transfer) ||
-				TransferResponseV2Summary.is(value.transfer))
+				TransferResponseV2Summary.is(value.transfer)) &&
+			(value.payment == undefined || PaymentResponse.is(value.payment) || SummaryPaymentResponse.is(value.payment))
 		)
 	}
 }
