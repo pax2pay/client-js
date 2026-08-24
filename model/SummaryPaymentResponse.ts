@@ -8,3 +8,11 @@ export interface SummaryPaymentResponse extends AbstractPaymentResponse {
 	card?: SummaryCardResponseV3
 	transfer?: TransferResponseV3
 }
+export namespace SummaryPaymentResponse {
+	export const type = AbstractPaymentResponse.type.extend<SummaryPaymentResponse>({
+		merchant: SummaryMerchantResponse.type.optional(),
+		card: SummaryCardResponseV3.type.optional(),
+		transfer: TransferResponseV3.type.optional(),
+	})
+	export const is = type.is
+}
