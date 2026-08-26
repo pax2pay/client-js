@@ -14,6 +14,8 @@ export interface MerchantResponse {
 	status: MerchantResponseStatus
 	organisations?: string[]
 	isDefault?: boolean
+	restrictable?: boolean
+	autoAssigned?: boolean
 }
 
 export namespace MerchantResponse {
@@ -29,6 +31,8 @@ export namespace MerchantResponse {
 			.optional(),
 		organisations: isly.string().array().optional(),
 		isDefault: isly.boolean().optional(),
+		restrictable: isly.boolean().optional(),
+		autoAssigned: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
