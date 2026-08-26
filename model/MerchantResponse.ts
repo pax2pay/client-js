@@ -32,7 +32,7 @@ export namespace MerchantResponse {
 		organisations: isly.string().array().optional(),
 		isDefault: isly.boolean().optional(),
 		restrictable: isly.boolean().optional(),
-		autoAssinged: isly.boolean().optional(),
+		autoAssigned: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
