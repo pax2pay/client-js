@@ -15,7 +15,7 @@ export interface MerchantResponse {
 	organisations?: string[]
 	isDefault?: boolean
 	restrictable?: boolean
-	autoAssinged?: boolean
+	autoAssigned?: boolean
 }
 
 export namespace MerchantResponse {
