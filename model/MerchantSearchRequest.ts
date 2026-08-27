@@ -7,4 +7,5 @@ export interface MerchantSearchRequest {
 	assigned?: boolean
 	own?: boolean
 	used?: boolean
+	hasBeneficiaries?: boolean
 }
