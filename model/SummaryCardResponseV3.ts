@@ -8,6 +8,7 @@ export interface SummaryCardResponseV3 {
 	cardType: string
 	pan: string
 	hasDeclines?: boolean
+	restrictedToMerchant?: boolean
 }
 
 export namespace SummaryCardResponseV3 {
@@ -18,6 +19,7 @@ export namespace SummaryCardResponseV3 {
 		cardType: isly.string(),
 		pan: isly.string(),
 		hasDeclines: isly.boolean().optional(),
+		restrictedToMerchant: isly.boolean().optional(),
 	})
 	export const is = type.is
 }
