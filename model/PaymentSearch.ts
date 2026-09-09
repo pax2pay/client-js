@@ -34,8 +34,6 @@ export interface PaymentSearch {
 	cardUsage?: CardUsage
 	transferReference?: string
 	metadataText?: string
-	includeCount?: boolean
-	onlyCount?: boolean
 	hasOperations?: PaymentOperationType[]
 	doesntHaveOperations?: PaymentOperationType[]
 }
@@ -65,8 +63,6 @@ export namespace PaymentSearch {
 		cardUsage: CardUsage.type.optional(),
 		transferReference: isly.string().optional(),
 		metadataText: isly.string().optional(),
-		includeCount: isly.boolean().optional(),
-		onlyCount: isly.boolean().optional(),
 		hasOperations: PaymentOperationType.type.array().optional(),
 		doesntHaveOperations: PaymentOperationType.type.array().optional(),
 	})
