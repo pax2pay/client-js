@@ -1,8 +1,16 @@
-/**
- * On successful registration, information required to be presented to the user will be returned. Much of this cannot be re-obtained, so please do not lose!
- */
+import { isly } from "isly"
+
 export interface TwoFactorAuthenticationRegistrationResponse {
-	userId?: string
+	userId: string
 	backupCodes?: string[]
 	qrCode?: string
+}
+
+export namespace TwoFactorAuthenticationRegistrationResponse {
+	export const type = isly.object<TwoFactorAuthenticationRegistrationResponse>({
+		userId: isly.string(),
+		backupCodes: isly.array(isly.string()).optional(),
+		qrCode: isly.string().optional(),
+	})
+	export const is = type.is
 }
