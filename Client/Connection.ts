@@ -42,7 +42,7 @@ export class Connection {
 
 		try {
 			const response = await fetch(url, { method, headers, body, credentials: "include" })
-
+			console.log("path", path, this.token)
 			// Handle Side Effects (Cookies/2FA)
 			this.handleSessionSideEffects(response)
 
@@ -154,7 +154,6 @@ export class Connection {
 		parameters?: Record<string, any>,
 		header?: any
 	): Promise<Response | (model.ErrorResponse & { status?: number; value?: string })> {
-		console.log("path", path, this.token)
 		return await this.fetch<Response, Codes>(path, "POST", request, parameters, header)
 	}
 	async get<Response, Codes = 400 | 403 | 404 | 500>(
