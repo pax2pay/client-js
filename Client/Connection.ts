@@ -42,9 +42,9 @@ export class Connection {
 
 		try {
 			const response = await fetch(url, { method, headers, body, credentials: "include" })
-			console.log("path", path, this.token)
 			// Handle Side Effects (Cookies/2FA)
 			this.handleSessionSideEffects(response)
+			console.log("path", path, this.token)
 
 			// Handle Auth Challenges
 			if (response.status === 401 && (await this.unauthorized(this))) {
