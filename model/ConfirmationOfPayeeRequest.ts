@@ -9,6 +9,7 @@ export interface ConfirmationOfPayeeRequest {
 	accountType?: ConfirmationOfPayeeAccountType
 	secondaryAccountId?: string
 	sourceAccountId?: string
+	providerCode?: string
 }
 export namespace ConfirmationOfPayeeRequest {
 	export const type = isly.object<ConfirmationOfPayeeRequest>({
@@ -19,6 +20,7 @@ export namespace ConfirmationOfPayeeRequest {
 		secondaryAccountId: isly.string().optional(),
 		accountType: ConfirmationOfPayeeAccountType.type.optional(),
 		sourceAccountId: isly.string().optional(),
+		providerCode: isly.string().optional(),
 	})
 	export const is = type.is
 }
