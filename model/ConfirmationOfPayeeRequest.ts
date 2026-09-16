@@ -1,5 +1,6 @@
 import { isly } from "isly"
 import { ConfirmationOfPayeeAccountType } from "./ConfirmationOfPayeeAccountType"
+import { ProviderCode } from "./ProviderCode"
 
 export interface ConfirmationOfPayeeRequest {
 	accountNumber?: string
@@ -9,6 +10,7 @@ export interface ConfirmationOfPayeeRequest {
 	accountType?: ConfirmationOfPayeeAccountType
 	secondaryAccountId?: string
 	sourceAccountId?: string
+	providerCode?: ProviderCode
 }
 export namespace ConfirmationOfPayeeRequest {
 	export const type = isly.object<ConfirmationOfPayeeRequest>({
@@ -19,6 +21,7 @@ export namespace ConfirmationOfPayeeRequest {
 		secondaryAccountId: isly.string().optional(),
 		accountType: ConfirmationOfPayeeAccountType.type.optional(),
 		sourceAccountId: isly.string().optional(),
+		providerCode: ProviderCode.type.optional(),
 	})
 	export const is = type.is
 }
