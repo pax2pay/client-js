@@ -8,6 +8,7 @@ export namespace Role {
 		"user.list",
 		"user.list.own-category",
 		"user.view.other",
+		"user.edit.email",
 		"user.edit.self",
 		"user.edit.other",
 		"user.edit-status",
