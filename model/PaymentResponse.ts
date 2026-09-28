@@ -7,12 +7,14 @@ export interface PaymentResponse extends BasePaymentResponse {
 	card?: CardResponseV3
 	transfer?: TransferResponseV3
 	operations?: PaymentOperation[]
+	document?: string
 }
 export namespace PaymentResponse {
 	export const type = BasePaymentResponse.type.extend<PaymentResponse>({
 		card: isly.fromIs("CardResponseV3", CardResponseV3.is).optional(),
 		transfer: isly.fromIs("TransferResponseV3", TransferResponseV3.is).optional(),
 		operations: isly.array(PaymentOperation.type).optional(),
+		document: isly.string().optional(),
 	})
 	export const is = type.is
 }

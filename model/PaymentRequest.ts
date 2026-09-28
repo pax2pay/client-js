@@ -19,6 +19,8 @@ export interface PaymentRequest {
 	transfer?: PaymentTransferCreateRequest
 	delivery?: PaymentDeliveryRequest
 	schedule?: PaymentAmountScheduleRequest[]
+	/** The invoice this payment is made against, from Payments.draftFromInvoice */
+	document?: string
 }
 export namespace PaymentRequest {
 	export const type = isly.object<PaymentRequest>({
@@ -33,6 +35,7 @@ export namespace PaymentRequest {
 		transfer: isly.fromIs("PaymentTransferCreateRequest", PaymentTransferCreateRequest.is).optional(),
 		delivery: isly.fromIs("PaymentDeliveryRequest", PaymentDeliveryRequest.is).optional(),
 		schedule: isly.array(isly.fromIs("PaymentAmountScheduleRequest", PaymentAmountScheduleRequest.is)).optional(),
+		document: isly.string().optional(),
 	})
 	export const is = type.is
 }

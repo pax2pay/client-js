@@ -25,6 +25,11 @@ export class Payments extends List<model.PaymentResponse> {
 		)
 		return await this.connection.post<model.PaymentResponse>(this.folder, formData)
 	}
+	async draftFromInvoice(file: File) {
+		const formData = new FormData()
+		formData.append("file", file, file.name)
+		return await this.connection.post<model.InvoicePaymentDraft>(`${this.folder}/invoice`, formData)
+	}
 	async createTokenised(request: model.PaymentRequest) {
 		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(`${this.folder}/tokenised`, request)
 	}
