@@ -131,7 +131,6 @@ import { InsertCardRequest } from "./InsertCardRequest"
 import { InternalBalanceLimit } from "./InternalBalanceLimit"
 import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
 import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
-import { InvoicePaymentDraft } from "./InvoicePaymentDraft"
 import { InvokingSystem } from "./InvokingSystem"
 import { Issue } from "./Issue"
 import { LoginRequest } from "./LoginRequest"
@@ -405,7 +404,6 @@ export {
 	InternalBalanceLimit,
 	InvoiceBookingInfoRequest,
 	InvoiceBookingInfoResponse,
-	InvoicePaymentDraft,
 	InvokingSystem,
 	Issue,
 	LoginRequest,
