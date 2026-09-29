@@ -71,3 +71,13 @@ describe("ErrorMessageDto", () => {
 		expect(ErrorMessageDto.is(validErrorMessageDto)).toBe(true)
 	})
 })
+
+describe("ErrorResponse.Document", () => {
+	it("recognises a document that is still being scanned", () => {
+		expect(ErrorResponse.Document.isNotReady({ code: 21, errors: [{ message: "still being scanned" }] })).toBe(true)
+	})
+	it("does not treat other errors or a missing error as not ready", () => {
+		expect(ErrorResponse.Document.isNotReady({ code: 400 })).toBe(false)
+		expect(ErrorResponse.Document.isNotReady(undefined)).toBe(false)
+	})
+})

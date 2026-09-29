@@ -111,6 +111,9 @@ export namespace Role {
 		"payment.cancel",
 		"payment.amend.balance",
 		"confirm-payee", // confirmation of payee
+		"document.create", // documents
+		"document.view",
+		"document.delete",
 		"batch.rebate.run", // batch
 		"batch.rebate.view",
 	] as const

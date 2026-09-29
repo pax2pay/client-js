@@ -28,4 +28,11 @@ export namespace ErrorResponse {
 			return error?.code == requiredCode
 		}
 	}
+	export namespace Document {
+		/** 409 while an invoice's document is still being scanned - retry the payment shortly */
+		export const notReadyCode = 21
+		export function isNotReady(error?: ErrorResponse): boolean {
+			return error?.code == notReadyCode
+		}
+	}
 }
