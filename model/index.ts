@@ -103,6 +103,7 @@ import { ErrorResponse } from "./ErrorResponse"
 import { ExistingBeneficiaryRequest } from "./ExistingBeneficiaryRequest"
 import { ExternalDestination } from "./ExternalDestination"
 import { ExternalSource } from "./ExternalSource"
+import { ExtractionSummary } from "./ExtractionSummary"
 import { FiveFieldsBookingInfoRequest } from "./FiveFieldsBookingInfoRequest"
 import { FiveFieldsBookingInfoResponse } from "./FiveFieldsBookingInfoResponse"
 import { FlightBookingInfoRequest } from "./FlightBookingInfoRequest"
@@ -130,7 +131,6 @@ import { InsertCardRequest } from "./InsertCardRequest"
 import { InternalBalanceLimit } from "./InternalBalanceLimit"
 import { InvoiceBookingInfoRequest } from "./InvoiceBookingInfoRequest"
 import { InvoiceBookingInfoResponse } from "./InvoiceBookingInfoResponse"
-import { InvoicePaymentDraft } from "./InvoicePaymentDraft"
 import { InvokingSystem } from "./InvokingSystem"
 import { Issue } from "./Issue"
 import { LoginRequest } from "./LoginRequest"
@@ -376,6 +376,7 @@ export {
 	ExistingBeneficiaryRequest,
 	ExternalDestination,
 	ExternalSource,
+	ExtractionSummary,
 	FiveFieldsBookingInfoRequest,
 	FiveFieldsBookingInfoResponse,
 	FlightBookingInfoRequest,
@@ -403,7 +404,6 @@ export {
 	InternalBalanceLimit,
 	InvoiceBookingInfoRequest,
 	InvoiceBookingInfoResponse,
-	InvoicePaymentDraft,
 	InvokingSystem,
 	Issue,
 	LoginRequest,

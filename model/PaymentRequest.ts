@@ -1,5 +1,6 @@
 import { Currency } from "isoly"
 import { isly } from "isly"
+import { ExtractionSummary } from "./ExtractionSummary"
 import { MetadataRequest } from "./MetadataRequest"
 import { PaymentAmountScheduleRequest } from "./PaymentAmountScheduleRequest"
 import { PaymentCardCreateRequest } from "./PaymentCardCreateRequest"
@@ -21,6 +22,8 @@ export interface PaymentRequest {
 	schedule?: PaymentAmountScheduleRequest[]
 	/** The invoice this payment is made against, from Payments.draftFromInvoice */
 	document?: string
+	/** Read-only: set on a draft from Payments.draftFromInvoice, ignored if sent back */
+	_extraction?: ExtractionSummary
 }
 export namespace PaymentRequest {
 	export const type = isly.object<PaymentRequest>({
@@ -36,6 +39,7 @@ export namespace PaymentRequest {
 		delivery: isly.fromIs("PaymentDeliveryRequest", PaymentDeliveryRequest.is).optional(),
 		schedule: isly.array(isly.fromIs("PaymentAmountScheduleRequest", PaymentAmountScheduleRequest.is)).optional(),
 		document: isly.string().optional(),
+		_extraction: ExtractionSummary.type.optional(),
 	})
 	export const is = type.is
 }
