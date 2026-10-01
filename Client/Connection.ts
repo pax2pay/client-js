@@ -36,6 +36,28 @@ export class Connection {
 		parameters?: Record<string, any>,
 		overrides?: Record<string, string>
 	): Promise<T | (model.ErrorResponse & { status?: number; value?: string })> {
+		return await this.send(path, method, request, parameters, overrides, response => this.parseResponse(response))
+	}
+	/** Fetches a binary response, such as a file, as a Blob. Errors are parsed as usual. */
+	async download(
+		path: string,
+		parameters?: Record<string, any>,
+		header?: any
+	): Promise<Blob | (model.ErrorResponse & { status?: number; value?: string })> {
+		return await this.send(path, "GET", undefined, parameters, header, async response =>
+			response.ok && !(response.headers.get("Content-Type") ?? "").includes("application/json")
+				? await response.blob()
+				: await this.parseResponse(response)
+		)
+	}
+	private async send<T>(
+		path: string,
+		method: string,
+		request: any,
+		parameters: Record<string, any> | undefined,
+		overrides: Record<string, string> | undefined,
+		parse: (response: Response) => Promise<T>
+	): Promise<T | (model.ErrorResponse & { status?: number; value?: string })> {
 		const url = this.buildUrl(path, parameters)
 		const headers = this.prepareHeaders(request, overrides)
 		const body = this.prepareBody(request)
@@ -48,10 +70,10 @@ export class Connection {
 
 			// Handle Auth Challenges
 			if (response.status === 401 && (await this.unauthorized(this))) {
-				return this.fetch<T, Codes>(path, method, request, parameters, overrides)
+				return this.send(path, method, request, parameters, overrides, parse)
 			}
 
-			return await this.parseResponse(response)
+			return await parse(response)
 		} catch (error: any) {
 			console.error("Fetch Error:", error)
 			return { code: 500, errors: [{ message: error.message || "Internal Server Error" }] }
