@@ -12,6 +12,7 @@ import { ConfirmationOfPayee as ClientConfirmationOfPayee } from "./Confirmation
 import { Connection } from "./Connection"
 import { Credentials as ClientCredentials } from "./Credentials"
 import { Currency as ClientCurrency } from "./Currency"
+import { Documents as ClientDocuments } from "./Documents"
 import { Email as ClientEmail } from "./Email"
 import { List as ClientList } from "./List"
 import { Merchants as ClientMerchants } from "./Merchants"
@@ -44,6 +45,7 @@ export class Client {
 	confirmationOfPayee = ClientConfirmationOfPayee.create(this.connection)
 	credentials = ClientCredentials.create(this.connection)
 	currency = ClientCurrency.create(this.connection)
+	documents = ClientDocuments.create(this.connection)
 	email = ClientEmail.create(this.connection)
 	merchants = ClientMerchants.create(this.connection)
 	metadata = ClientMetadata.create(this.connection)
@@ -90,6 +92,7 @@ export namespace Client {
 	export type ConfirmationOfPayee = ClientConfirmationOfPayee
 	export type Credentials = ClientCredentials
 	export type Currency = ClientCurrency
+	export type Documents = ClientDocuments
 	export type Email = ClientEmail
 	export type Merchants = ClientMerchants
 	export type Metadata = ClientMetadata
