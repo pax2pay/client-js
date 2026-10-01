@@ -44,11 +44,9 @@ export class Connection {
 		parameters?: Record<string, any>,
 		header?: any
 	): Promise<Blob | (model.ErrorResponse & { status?: number; value?: string })> {
-		return await this.send(path, "GET", undefined, parameters, header, response => this.parseDownload(response))
-	}
-	private async parseDownload(response: Response) {
-		const isJson = response.headers.get("Content-Type")?.includes("application/json") ?? false
-		return response.ok && !isJson ? await response.blob() : await this.parseResponse(response)
+		return await this.send(path, "GET", undefined, parameters, header, async response =>
+			response.ok ? await response.blob() : await this.parseResponse(response)
+		)
 	}
 	private async send<T>(
 		path: string,
