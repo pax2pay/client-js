@@ -67,6 +67,23 @@ export class Batch extends List<model.Batch.Response> {
 			sort
 		)
 	}
+	/** Adds items to a batch that is waiting to be run, from item requests or a csv/xlsx file in the batch's format */
+	async addItems(
+		batchId: string,
+		request: model.Batch.Item.Request[] | Blob
+	): Promise<model.Batch.Response | model.ErrorResponse> {
+		return await this.connection.post<model.Batch.Response>(`${this.folder}/${batchId}/items`, request)
+	}
+	async editItem<I extends model.Batch.Item = model.Batch.Item>(
+		batchId: string,
+		itemId: string,
+		request: model.Batch.Item.Request
+	): Promise<I | model.ErrorResponse> {
+		return await this.connection.put<I>(`${this.folder}/${batchId}/item/${itemId}`, request)
+	}
+	async removeItem(batchId: string, itemId: string): Promise<model.Batch.Response | model.ErrorResponse> {
+		return await this.connection.remove<model.Batch.Response>(`${this.folder}/${batchId}/item/${itemId}`)
+	}
 	async downloadBatchPaymentTemplate(): Promise<model.DownloadableResponse | model.ErrorResponse> {
 		return await this.connection.get<model.DownloadableResponse>(`${this.folder}/payment/template`)
 	}

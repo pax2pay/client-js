@@ -3,9 +3,11 @@ import { PaymentResponse } from "../../PaymentResponse"
 import { Type } from "../Type"
 import { PaymentTask as IPaymentTask } from "./PaymentTask"
 import { RebateTask as IRebateTask } from "./RebateTask"
+import { Request as IRequest } from "./Request"
 import { Status as IStatus } from "./Status"
 
 export interface Item<T = unknown, R = unknown> {
+	id: string
 	type: Type
 	status: IStatus
 	errorMessage?: string
@@ -18,9 +20,11 @@ export namespace Item {
 	export import Status = IStatus
 	export import RebateTask = IRebateTask
 	export import PaymentTask = IPaymentTask
+	export import Request = IRequest
 	export type Rebate = Item<IRebateTask, PaymentResponse>
 	export type Payment = Item<IPaymentTask, PaymentResponse>
 	export const baseType = isly.object<Item<unknown, unknown>>({
+		id: isly.string(),
 		type: Type.type,
 		status: IStatus.type,
 		errorMessage: isly.string().optional(),
