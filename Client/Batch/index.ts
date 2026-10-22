@@ -79,10 +79,10 @@ export class Batch extends List<model.Batch.Response> {
 		itemId: string,
 		request: model.Batch.Item.Request
 	): Promise<I | model.ErrorResponse> {
-		return await this.connection.put<I>(`${this.folder}/${batchId}/item/${itemId}`, request)
+		return await this.connection.put<I>(`${this.folder}/${batchId}/items/${itemId}`, request)
 	}
 	async removeItem(batchId: string, itemId: string): Promise<model.Batch.Response | model.ErrorResponse> {
-		return await this.connection.remove<model.Batch.Response>(`${this.folder}/${batchId}/item/${itemId}`)
+		return await this.connection.remove<model.Batch.Response>(`${this.folder}/${batchId}/items/${itemId}`)
 	}
 	async downloadBatchPaymentTemplate(): Promise<model.DownloadableResponse | model.ErrorResponse> {
 		return await this.connection.get<model.DownloadableResponse>(`${this.folder}/payment/template`)
