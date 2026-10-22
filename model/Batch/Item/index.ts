@@ -1,3 +1,4 @@
+import { DateTime } from "isoly"
 import { isly } from "isly"
 import { PaymentResponse } from "../../PaymentResponse"
 import { Type } from "../Type"
@@ -14,6 +15,10 @@ export interface Item<T = unknown, R = unknown> {
 	task?: T
 	result?: R
 	reference?: string
+	createdOn?: DateTime
+	createdBy?: string
+	updatedOn?: DateTime
+	updatedBy?: string
 }
 
 export namespace Item {
@@ -31,6 +36,10 @@ export namespace Item {
 		task: isly.any().optional(),
 		result: isly.any().optional(),
 		reference: isly.string().optional(),
+		createdOn: isly.fromIs("DateTime", DateTime.is).optional(),
+		createdBy: isly.string().optional(),
+		updatedOn: isly.fromIs("DateTime", DateTime.is).optional(),
+		updatedBy: isly.string().optional(),
 	})
 	export const is = baseType.is
 	export namespace Rebate {

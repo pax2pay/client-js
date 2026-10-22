@@ -74,6 +74,7 @@ export class Batch extends List<model.Batch.Response> {
 	): Promise<model.Batch.Response | model.ErrorResponse> {
 		return await this.connection.post<model.Batch.Response>(`${this.folder}/${batchId}/items`, request)
 	}
+	/** Replaces a todo or failed import item with an item request, and returns the item, now todo */
 	async editItem<I extends model.Batch.Item = model.Batch.Item>(
 		batchId: string,
 		itemId: string,
@@ -81,8 +82,12 @@ export class Batch extends List<model.Batch.Response> {
 	): Promise<I | model.ErrorResponse> {
 		return await this.connection.put<I>(`${this.folder}/${batchId}/items/${itemId}`, request)
 	}
-	async removeItem(batchId: string, itemId: string): Promise<model.Batch.Response | model.ErrorResponse> {
-		return await this.connection.remove<model.Batch.Response>(`${this.folder}/${batchId}/items/${itemId}`)
+	/** Removes a todo or failed import item, and returns the item, now deleted */
+	async removeItem<I extends model.Batch.Item = model.Batch.Item>(
+		batchId: string,
+		itemId: string
+	): Promise<I | model.ErrorResponse> {
+		return await this.connection.remove<I>(`${this.folder}/${batchId}/items/${itemId}`)
 	}
 	async downloadBatchPaymentTemplate(): Promise<model.DownloadableResponse | model.ErrorResponse> {
 		return await this.connection.get<model.DownloadableResponse>(`${this.folder}/payment/template`)
