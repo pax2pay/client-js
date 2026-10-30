@@ -1,6 +1,7 @@
 import { isly } from "isly"
 import { CardTypeSpecification } from "./CardTypeSpecification"
 import { ProviderCode } from "./ProviderCode"
+import { Usage } from "./Usage"
 
 /**
  * The card to be created
@@ -10,6 +11,8 @@ export interface InsertCardRequest {
 	cardType: CardTypeSpecification | string
 	useAs?: CardTypeSpecification | string
 	providerAccountId?: string
+	/** Usage of the cards created, unset meaning single use */
+	usage?: Usage
 }
 
 export namespace InsertCardRequest {
@@ -18,6 +21,7 @@ export namespace InsertCardRequest {
 		cardType: isly.union(CardTypeSpecification.type, isly.string()),
 		useAs: isly.union(CardTypeSpecification.type, isly.string()).optional(),
 		providerAccountId: isly.string().optional(),
+		usage: Usage.type.optional(),
 	})
 	export const is = type.is
 }
