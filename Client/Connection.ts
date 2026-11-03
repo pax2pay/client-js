@@ -34,9 +34,18 @@ export class Connection {
 		method: string,
 		request?: any,
 		parameters?: Record<string, any>,
-		overrides?: Record<string, string>
+		overrides?: Record<string, string>,
+		options?: Connection.Options
 	): Promise<T | (model.ErrorResponse & { status?: number; value?: string })> {
-		return await this.send(path, method, request, parameters, overrides, response => this.parseResponse(response))
+		return await this.send(
+			path,
+			method,
+			request,
+			parameters,
+			overrides,
+			response => this.parseResponse(response),
+			options
+		)
 	}
 	/** Fetches a binary response, such as a file, as a Blob. Errors are parsed as usual. */
 	async download(
@@ -54,21 +63,28 @@ export class Connection {
 		request: any,
 		parameters: Record<string, any> | undefined,
 		overrides: Record<string, string> | undefined,
-		parse: (response: Response) => Promise<T>
+		parse: (response: Response) => Promise<T>,
+		options?: Connection.Options
 	): Promise<T | (model.ErrorResponse & { status?: number; value?: string })> {
 		const url = this.buildUrl(path, parameters)
 		const headers = this.prepareHeaders(request, overrides)
 		const body = this.prepareBody(request)
 
 		try {
-			const response = await fetch(url, { method, headers, body, credentials: "include" })
+			const response = await fetch(url, {
+				method,
+				headers,
+				body,
+				credentials: "include",
+				keepalive: options?.keepalive,
+			})
 
 			// Handle Side Effects (Cookies/2FA)
 			this.handleSessionSideEffects(response)
 
 			// Handle Auth Challenges
 			if (response.status === 401 && (await this.unauthorized(this))) {
-				return this.send(path, method, request, parameters, overrides, parse)
+				return this.send(path, method, request, parameters, overrides, parse, options)
 			}
 
 			return await parse(response)
@@ -195,9 +211,10 @@ export class Connection {
 		path: string,
 		request?: any,
 		parameters?: Record<string, any>,
-		header?: any
+		header?: any,
+		options?: Connection.Options
 	): Promise<Response | (model.ErrorResponse & { status?: number; value?: string })> {
-		return await this.fetch<Response, Codes>(path, "DELETE", request, parameters, header)
+		return await this.fetch<Response, Codes>(path, "DELETE", request, parameters, header, options)
 	}
 	static open(url: string, token: string | undefined): Connection {
 		return new Connection(url, token)
@@ -206,5 +223,11 @@ export class Connection {
 		value: (model.ErrorResponse & { status: number }) | any
 	): value is model.ErrorResponse & { status: number } {
 		return typeof value == "object" && typeof value.status == "number" && value.status >= 400
+	}
+}
+export namespace Connection {
+	export interface Options {
+		/** Lets the request finish after the page is gone, e.g. one sent while it unloads. */
+		keepalive?: boolean
 	}
 }

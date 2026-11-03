@@ -31,8 +31,14 @@ export class Payments extends List<model.PaymentResponse> {
 		formData.append("file", file, file.name)
 		return await this.connection.post<Partial<model.PaymentRequest>>(`${this.folder}/invoice`, formData)
 	}
-	async deleteInvoice(id: string) {
-		return await this.connection.remove<model.PaymentResponse>(`${this.folder}/invoice/${id}`)
+	async deleteInvoice(id: string, options?: Connection.Options) {
+		return await this.connection.remove<model.PaymentResponse>(
+			`${this.folder}/invoice/${id}`,
+			undefined,
+			undefined,
+			undefined,
+			options
+		)
 	}
 	async createTokenised(request: model.PaymentRequest) {
 		return await this.connection.post<model.ErrorResponse | model.PaymentResponse>(`${this.folder}/tokenised`, request)

@@ -13,3 +13,13 @@ describe("Payments.draftFromInvoice", () => {
 		expect(result).toEqual({ document: "D0000001" })
 	})
 })
+
+describe("Payments.deleteInvoice", () => {
+	it("deletes payments/invoice/{id}, passing the request options on", async () => {
+		const connection = { remove: jest.fn().mockResolvedValue({}) } as unknown as Connection
+		await Payments.create(connection).deleteInvoice("D0000001", { keepalive: true })
+		expect(connection.remove).toHaveBeenCalledWith("payments/invoice/D0000001", undefined, undefined, undefined, {
+			keepalive: true,
+		})
+	})
+})
