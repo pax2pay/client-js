@@ -12,6 +12,7 @@ export interface Item<T = unknown, R = unknown> {
 	type: Type
 	status: IStatus
 	errorMessage?: string
+	errorMessages?: string[]
 	task?: T
 	result?: R
 	reference?: string
@@ -33,6 +34,7 @@ export namespace Item {
 		type: Type.type,
 		status: IStatus.type,
 		errorMessage: isly.string().optional(),
+		errorMessages: isly.array(isly.string()).optional(),
 		task: isly.any().optional(),
 		result: isly.any().optional(),
 		reference: isly.string().optional(),
