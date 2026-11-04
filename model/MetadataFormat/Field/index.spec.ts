@@ -164,6 +164,29 @@ describe("MetadataFieldRequest", () => {
 		expect(objectFields.every(MetadataFormat.Field.List.is)).toBeFalsy()
 		expect(listFields.every(MetadataFormat.Field.List.is)).toBeTruthy()
 	})
+	it("accepts every category the server sends", () => {
+		const categorised = MetadataFormat.Field.ValueCategory.values.map(category => ({
+			name: "field",
+			type: "string",
+			category,
+		}))
+		expect(categorised.every(MetadataFormat.Field.Value.is)).toBeTruthy()
+	})
+	it("accepts a category it does not know yet", () => {
+		const passengers = {
+			name: "passengers",
+			fields: [
+				{ name: "leadPassengerName", type: "string", category: "customer name" },
+				{ name: "adults", type: "integer", category: "some future category" },
+			],
+		}
+		expect(MetadataFormat.Field.Value.is(passengers.fields[1])).toBeTruthy()
+		expect(MetadataFormat.Field.Object.is(passengers)).toBeTruthy()
+		expect(MetadataFormat.Field.is(passengers)).toBeTruthy()
+	})
+	it("rejects a category that is not a string", () => {
+		expect(MetadataFormat.Field.Value.is({ name: "adults", type: "integer", category: 3 })).toBeFalsy()
+	})
 	it("is", () => {
 		expect(valueFields.every(MetadataFormat.Field.is)).toBeTruthy()
 		expect(objectFields.every(MetadataFormat.Field.is)).toBeTruthy()

@@ -57,12 +57,13 @@ export namespace Field {
 
 		export interface Value {
 			type: FValueType
-			category?: FValueCategory
+			// unknown categories are kept, so a category added on the server doesn't hide the field
+			category?: FValueCategory | (string & Record<never, never>)
 		}
 		export namespace Value {
 			export const type = isly.object<Value>({
 				type: FValueType.type,
-				category: FValueCategory.type.optional(),
+				category: isly.string().optional(),
 			})
 			export const is = type.is
 		}
