@@ -85,6 +85,7 @@ import { DestinationType } from "./DestinationType"
 import { DownloadableResponse } from "./DownloadableResponse"
 import { DownloadCardReportRequest } from "./DownloadCardReportRequest"
 import { DownloadFileFormat } from "./DownloadFileFormat"
+import { DownloadMerchantBookingReportRequest } from "./DownloadMerchantBookingReportRequest"
 import { DownloadOrganisationSearchRequest } from "./DownloadOrganisationSearchRequest"
 import { DownloadPaymentReportRequest } from "./DownloadPaymentReportRequest"
 import { DownloadReconciliationReportRequest } from "./DownloadReconciliationReportRequest"
@@ -358,6 +359,7 @@ export {
 	DownloadableResponse,
 	DownloadCardReportRequest,
 	DownloadFileFormat,
+	DownloadMerchantBookingReportRequest,
 	DownloadOrganisationSearchRequest,
 	DownloadPaymentReportRequest,
 	DownloadReconciliationReportRequest,

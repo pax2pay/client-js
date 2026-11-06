@@ -99,6 +99,9 @@ export class Reports {
 	async getOrganisationReportUrl(request: model.DownloadOrganisationSearchRequest) {
 		return await this.connection.post<model.DownloadableResponse>(`${this.folder}/organisation/download`, request)
 	}
+	async getMerchantBookingReportUrl(request: model.DownloadMerchantBookingReportRequest) {
+		return await this.connection.post<model.DownloadableResponse>(`${this.folder}/merchant-bookings/download`, request)
+	}
 	async getInvocationsWithId(id: string, page?: number, size?: number, sort?: string) {
 		return await this.connection.get<model.ReportSubscriptionInvocationResponse[]>(
 			`${this.folder}/subscription/${id}/invocations`,
