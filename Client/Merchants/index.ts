@@ -38,7 +38,7 @@ export class Merchants extends List<model.MerchantResponse> {
 		previous?: Paginated<model.MerchantResponse>,
 		page?: number,
 		size?: number,
-		sort = "name",
+		sort?: string,
 		organisationCode?: string
 	): Promise<model.ErrorResponse | Paginated<model.MerchantResponse>> {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
@@ -57,7 +57,7 @@ export class Merchants extends List<model.MerchantResponse> {
 			sort
 		)
 	}
-	async getAll(organisationCode?: string, sort = "name") {
+	async getAll(organisationCode?: string, sort?: string) {
 		const header = organisationCode ? { "x-assume": organisationCode } : undefined
 		const response = await this.connection.get<model.ErrorResponse | model.MerchantResponse[]>(
 			this.folder,
