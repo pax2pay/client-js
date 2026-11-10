@@ -361,6 +361,7 @@ export {
 	DownloadCardReportRequest,
 	DownloadFileFormat,
 	DraftAlternative,
+	DownloadMerchantBookingReportRequest,
 	DownloadOrganisationSearchRequest,
 	DownloadPaymentReportRequest,
 	DownloadReconciliationReportRequest,
