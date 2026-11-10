@@ -91,6 +91,7 @@ import { DownloadPaymentReportRequest } from "./DownloadPaymentReportRequest"
 import { DownloadReconciliationReportRequest } from "./DownloadReconciliationReportRequest"
 import { DownloadStatementReportRequest } from "./DownloadStatementReportRequest"
 import { DownloadUserReportRequest } from "./DownloadUserReportRequest"
+import { DraftAlternative } from "./DraftAlternative"
 import { EditCloseDateRequest } from "./EditCloseDateRequest"
 import { EditPaymentAmountRequest } from "./EditPaymentAmountRequest"
 import { EditPaymentAmountScheduleRequest } from "./EditPaymentAmountScheduleRequest"
@@ -359,7 +360,7 @@ export {
 	DownloadableResponse,
 	DownloadCardReportRequest,
 	DownloadFileFormat,
-	DownloadMerchantBookingReportRequest,
+	DraftAlternative,
 	DownloadOrganisationSearchRequest,
 	DownloadPaymentReportRequest,
 	DownloadReconciliationReportRequest,
