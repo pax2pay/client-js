@@ -123,4 +123,25 @@ describe("PaymentResponse", () => {
 		}
 		expect(PaymentResponse.is(res)).toBeTruthy()
 	})
+	it("multiple locked merchants are valid", () => {
+		const res = {
+			id: "Y000000DR",
+			account: "A00003O",
+			amount: 100,
+			remaining: 100,
+			total: 100,
+			currency: "EUR",
+			state: "active",
+			method: "card",
+			merchants: [
+				{ name: "first", id: "M00000F", status: "active", locked: true },
+				{ name: "second", id: "M00000G", status: "active", locked: true },
+				{ name: "third", id: "M00000H", status: "active", autoAssigned: true },
+			],
+			createdBy: "test",
+			createdOn: "2026-11-12T10:43:17.288652939",
+		}
+		expect(PaymentResponse.is(res)).toBeTruthy()
+		expect(PaymentResponse.is({ ...res, merchants: [{ name: "first", status: "active", locked: "yes" }] })).toBeFalsy()
+	})
 })

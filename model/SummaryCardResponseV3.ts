@@ -8,6 +8,7 @@ export interface SummaryCardResponseV3 {
 	cardType: string
 	pan: string
 	hasDeclines?: boolean
+	/** @deprecated true if locked to any merchant; the payment's merchants marked locked say which */
 	restrictedToMerchant?: boolean
 }
 
