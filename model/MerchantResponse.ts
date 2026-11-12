@@ -16,6 +16,8 @@ export interface MerchantResponse {
 	isDefault?: boolean
 	restrictable?: boolean
 	autoAssigned?: boolean
+	/** On a payment's merchant, true when the payment's card is restricted to this merchant */
+	locked?: boolean
 }
 
 export namespace MerchantResponse {
@@ -33,6 +35,7 @@ export namespace MerchantResponse {
 		isDefault: isly.boolean().optional(),
 		restrictable: isly.boolean().optional(),
 		autoAssigned: isly.boolean().optional(),
+		locked: isly.boolean().optional(),
 	})
 	export const is = type.is
 }

@@ -9,6 +9,7 @@ export interface PaymentCardCreateRequest {
 	expires?: YearMonth
 	usage?: CardUsage
 	closeDate?: isoly.Date
+	/** @deprecated set locked on the payment's merchants instead */
 	restrictToMerchant?: boolean
 	minimumTransactionValue?: number
 }

@@ -27,6 +27,7 @@ export interface CreateCardRequest {
 	delivery?: CardDeliveryRequest
 	state?: string
 	batchId?: string
+	/** @deprecated create the card through Payments.create with a locked merchant */
 	merchantRestrictionId?: string
 	closeDate?: Date
 	minimumTransactionValue?: number

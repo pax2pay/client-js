@@ -15,7 +15,10 @@ export interface PaymentRequest {
 	amount?: number
 	currency: Currency
 	method?: "card" | "transfer"
+	/** @deprecated use merchants */
 	merchant?: PaymentMerchantRequest
+	/** Merchants associated with this payment, at most 50. Those marked locked are the merchants the payment's card is restricted to. */
+	merchants?: PaymentMerchantRequest[]
 	meta?: MetadataRequest
 	card?: PaymentCardCreateRequest
 	transfer?: PaymentTransferCreateRequest
@@ -36,6 +39,7 @@ export namespace PaymentRequest {
 		currency: isly.fromIs("Currency", Currency.is),
 		method: isly.string(["card", "transfer"]).optional(),
 		merchant: isly.fromIs("PaymentMerchantRequest", PaymentMerchantRequest.is).optional(),
+		merchants: isly.array(isly.fromIs("PaymentMerchantRequest", PaymentMerchantRequest.is)).optional(),
 		meta: MetadataRequest.type.optional(),
 		card: isly.fromIs("PaymentCardCreateRequest", PaymentCardCreateRequest.is).optional(),
 		transfer: isly.fromIs("PaymentTransferCreateRequest", PaymentTransferCreateRequest.is).optional(),

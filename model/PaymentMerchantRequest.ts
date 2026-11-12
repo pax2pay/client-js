@@ -6,6 +6,8 @@ export interface PaymentMerchantRequest {
 	name?: string
 	mcc?: string
 	type?: MerchantType
+	/** Locks the payment's card to this merchant. Card payments only, and only with certain providers. */
+	locked?: boolean
 }
 
 export namespace PaymentMerchantRequest {
@@ -14,6 +16,7 @@ export namespace PaymentMerchantRequest {
 		name: isly.string().optional(),
 		mcc: isly.string().optional(),
 		type: MerchantType.type.optional(),
+		locked: isly.boolean().optional(),
 	})
 	export const is = type.is
 }

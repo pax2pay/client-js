@@ -37,6 +37,7 @@ export interface CardResponseV2 {
 	bookingInfo?: MetadataResponse
 	delivery?: CardDeliveryResponse
 	batchId?: string
+	/** @deprecated only the first locked merchant; the payment's merchants marked locked are the full set */
 	merchantRestriction?: MerchantResponse
 	closeDate?: Date
 	minimumTransactionValue?: number

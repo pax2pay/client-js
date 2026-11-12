@@ -16,6 +16,7 @@ export interface AbstractPaymentResponse {
 	schedule?: PaymentAmountScheduleResponse[]
 	currency: Currency
 	state: PaymentStatus
+	/** @deprecated use merchants */
 	merchant?: SummaryMerchantResponse
 	method: PaymentMethodType
 	meta?: MetadataResponse
